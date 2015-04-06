@@ -24,8 +24,10 @@ class ComposeHomeViewController: UIViewController {
     }
     
     @IBAction func saveMail(segue:UIStoryboardSegue) {
-        let composeMailViewController = segue.sourceViewController as ComposeMailViewController
-        mails.append(composeMailViewController.mail)
+        
+        // Gotta get this working...
+        //        let composeMailViewController = segue.sourceViewController as ComposeMailViewController
+        //        mails.append(composeMailViewController.mail)
         
         composeHomeMessage.text = "Mail sent."
     }

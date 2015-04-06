@@ -33,6 +33,5 @@ class MailViewController: UIViewController {
         var mailText:String = "Dear \(loggedInUser.name),\n\n\(mail.content)\n\nSincerely,\n\n\(from.name)"
         return mailText
     }
-    
 
 }

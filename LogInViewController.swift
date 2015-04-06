@@ -8,10 +8,9 @@
 
 import UIKit
 
-var people:[Person] = personData
+var people = [Person]()
 
 class LogInViewController: UIViewController {
-    
     
     @IBOutlet weak var UsernameTextField: UITextField!
 
@@ -19,6 +18,22 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        DataManager.getAllPeopleWithSuccess{ (peopleData) -> Void in
+            let json = JSON(data: peopleData)
+            
+            for personDict in json.arrayValue {
+                var id: String = personDict["_id"]["$oid"].stringValue
+                var username: String = personDict["username"].stringValue
+                var name: String = personDict["name"].stringValue
+                
+                var person = Person(id: id, username: username, name: name, address1: nil, city: nil, state: nil, zip: nil)
+                
+                people.append(person)
+            }
+
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {

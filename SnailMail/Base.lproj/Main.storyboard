@@ -189,7 +189,6 @@
         <!--My Mailbox View Controller-->
         <scene sceneID="wwp-52-gHD">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="06D-Tf-C9u" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="FXY-Ck-mzJ" customClass="MyMailboxViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Wgc-Jo-OCW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -239,6 +238,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="06D-Tf-C9u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1387.5" y="167.5"/>
         </scene>

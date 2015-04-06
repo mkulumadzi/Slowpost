@@ -8,17 +8,10 @@
 
 import UIKit
 
-var mails:[Mail] = mailData
-
 class MyMailboxViewController: UITableViewController {
-
-
-    var mailForUser:[Mail]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        mailForUser = getMailForUser(mails)
 
     }
 
@@ -31,24 +24,14 @@ class MyMailboxViewController: UITableViewController {
         return 1
     }
     
-    func getMailForUser(mails: Array<Mail>) -> Array<Mail> {
-        var mailForUser = [Mail]()
-        for mail in mails {
-            if mail.to == loggedInUser.username {
-                mailForUser.append(mail)
-            }
-        }
-        return mailForUser
-    }
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mailForUser.count
+        return mailbox.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MailCell", forIndexPath: indexPath) as MailCell
         
-        let mail = mailForUser[indexPath.row] as Mail
+        let mail = mailbox[indexPath.row] as Mail
         let fromPerson = getPerson(mail.from)
         
         cell.mail = mail

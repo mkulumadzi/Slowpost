@@ -9,11 +9,14 @@
 import UIKit
 
 class Mail: NSObject {
+    
+    var id:String
     var from:String
     var to:String
     var content:String
     
-    init(from:String, to:String, content:String) {
+    init(id:String, from:String, to:String, content:String) {
+        self.id = id
         self.from = from
         self.to = to
         self.content = content

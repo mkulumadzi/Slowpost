@@ -9,6 +9,7 @@
 import UIKit
 
 var loggedInUser:Person!
+var mailbox = [Mail]()
 
 class WelcomeScreenViewController: UIViewController {
 
@@ -28,6 +29,23 @@ class WelcomeScreenViewController: UIViewController {
             performSegueWithIdentifier("LogIn", sender: self)
         }
         else {
+                
+            DataManager.getMyMailboxWithSuccess{ (mailData) -> Void in
+                let json = JSON(data: mailData)
+                
+                for mailDict in json.arrayValue {
+                    var id: String = mailDict["_id"]["$oid"].stringValue
+                    var from: String = mailDict["from"].stringValue
+                    var to: String = mailDict["to"].stringValue
+                    var content: String = mailDict["content"].stringValue
+                    
+                    var mail = Mail(id: id, from: from, to: to, content: content)
+                    
+                    mailbox.append(mail)
+                }
+                
+            }
+            
             performSegueWithIdentifier("GoToHomeScreen", sender: self)
         }
     }
@@ -36,6 +54,7 @@ class WelcomeScreenViewController: UIViewController {
         super.viewDidAppear(true)
         
         checkLogin()
+        
     }
     
 
