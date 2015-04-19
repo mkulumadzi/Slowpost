@@ -29,16 +29,16 @@ class MyMailboxViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MailCell", forIndexPath: indexPath) as MailCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("MailCell", forIndexPath: indexPath) as? MailCell
         
         let mail = mailbox[indexPath.row] as Mail
         let fromPerson = getPerson(mail.from)
         
-        cell.mail = mail
-        cell.from = fromPerson
-        cell.fromLabel.text = "From: \(fromPerson.name)"
+        cell?.mail = mail
+        cell?.from = fromPerson
+        cell?.fromLabel.text = "From: \(fromPerson.name)"
         
-        return cell
+        return cell!
         
     }
     
@@ -55,10 +55,10 @@ class MyMailboxViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "viewMail" {
-            let mailViewController = segue.destinationViewController as MailViewController
+            let mailViewController = segue.destinationViewController as? MailViewController
             if let mailCell = sender as? MailCell {
-                mailViewController.mail = mailCell.mail
-                mailViewController.from = mailCell.from
+                mailViewController?.mail = mailCell.mail
+                mailViewController?.from = mailCell.from
                 
             }
         }

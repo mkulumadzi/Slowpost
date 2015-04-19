@@ -139,9 +139,9 @@ extension JSON: SequenceType{
         get {
             switch self.type {
             case .Array:
-                return (self.object as [AnyObject]).isEmpty
+                return (self.object as? [AnyObject]).isEmpty
             case .Dictionary:
-                return (self.object as [String : AnyObject]).isEmpty
+                return (self.object as? [String : AnyObject]).isEmpty
             default:
                 return false
             }
