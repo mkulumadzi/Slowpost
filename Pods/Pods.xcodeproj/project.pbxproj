@@ -7,213 +7,293 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		124D7526EA2592719757A169 /* Pods-SnailMail-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BBEE3E398C581A56C4EF6F0 /* Pods-SnailMail-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5F38C9511848D1BE736AFD41 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E909DFDB23DE3C0AE8B243 /* Foundation.framework */; };
-		800F54060F6D1DEBDE76388A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E909DFDB23DE3C0AE8B243 /* Foundation.framework */; };
-		BA14D0E7B00A9F4D886DA70B /* Pods-SnailMail-Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A8045BC22A76B5D93363F786 /* Pods-SnailMail-Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C982A4728493CB1310DE628E /* Pods-SnailMail-Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C8F5244D90F859328406676D /* Pods-SnailMail-Alamofire-dummy.m */; };
-		E5DD5B4A89FF5F5E74DCAE1A /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5463C8A349EB062CC581978E /* Alamofire.swift */; };
-		FD43137FA0F1087A48956365 /* Pods-SnailMail-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 24F3C133516D347E7C450C02 /* Pods-SnailMail-dummy.m */; };
+		11FAD5AC536EA0F70FB8C361 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A999830585BEFF43C1556AF5 /* Foundation.framework */; };
+		43D74C2F56F8750E2B4A33C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A999830585BEFF43C1556AF5 /* Foundation.framework */; };
+		4CFA05CA9EF17E55F2CEE166 /* Pods-SnailMail-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BBA2D725AD0E97D0ACECF663 /* Pods-SnailMail-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		57B3B5679C9DD79B2B115BE0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A999830585BEFF43C1556AF5 /* Foundation.framework */; };
+		59CC3DC170F1F2547104EE94 /* Pods-SnailMail-Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A83616C6C9A24845775642CD /* Pods-SnailMail-Alamofire-dummy.m */; };
+		6D49339F63032BD04A2EA22A /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5944629D59105EDC36AEC9F2 /* Alamofire.swift */; };
+		70AD90DCFFA777CE55B1EC88 /* Pods-SnailMail-Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DD73A4AC31DFBAD8404E8A08 /* Pods-SnailMail-Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A0873A2E5F5A5867B438574C /* Pods-SnailMail-SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C6F2F05D6C7777337F181C8 /* Pods-SnailMail-SwiftyJSON-dummy.m */; };
+		BE2EDD233B0B926019C7EF6A /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 255D8D7C7A9B7000793A0ACF /* SwiftyJSON.swift */; };
+		E413C15AA7E2AB38FE954CA7 /* Pods-SnailMail-SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 446C4B01E080AA249FA23D8C /* Pods-SnailMail-SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F34E92CB5613CCFCB025A698 /* Pods-SnailMail-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A54BA4F6800319026B72BBB1 /* Pods-SnailMail-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		580EA3BE4B2985708A6FC51E /* PBXContainerItemProxy */ = {
+		9B42BD7E33CBC8CFC3C5B00A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 48E875E10268B3B600E8116E /* Project object */;
+			containerPortal = EC56E4EFA4A130C9265B4628 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D07DC3686E1007181C06DF9F;
+			remoteGlobalIDString = D2BF3B88C0EB78D50A91E029;
 			remoteInfo = "Pods-SnailMail-Alamofire";
+		};
+		9D6D7DAE420E14086BDFCD99 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EC56E4EFA4A130C9265B4628 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A306001274ADFC07D8AB06F;
+			remoteInfo = "Pods-SnailMail-SwiftyJSON";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		01431781BA031A01935A6B2E /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		027609CE59342CAFBC16F46E /* Pods-SnailMail-Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SnailMail-Alamofire-prefix.pch"; sourceTree = "<group>"; };
-		0FAFB54330157B0C6E6BABE5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		15CB860FBB8A915557708802 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		15E909DFDB23DE3C0AE8B243 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		165D14B0A5C79ED37C175224 /* Pods-SnailMail-Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SnailMail-Alamofire.xcconfig"; sourceTree = "<group>"; };
-		1C57A81822F5C62DABC4FE83 /* Pods-SnailMail-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SnailMail-acknowledgements.markdown"; sourceTree = "<group>"; };
-		24F3C133516D347E7C450C02 /* Pods-SnailMail-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SnailMail-dummy.m"; sourceTree = "<group>"; };
-		397C56FB0A10750E2744BBD2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3AF00A71E9DD13DB1B10CEBC /* Pods_SnailMail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnailMail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5463C8A349EB062CC581978E /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
-		578DDF0F5C3191E20ADF1E34 /* Pods-SnailMail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SnailMail.debug.xcconfig"; sourceTree = "<group>"; };
-		634A709DD1C62514C9892EE6 /* Pods-SnailMail-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SnailMail-frameworks.sh"; sourceTree = "<group>"; };
-		64DAF5A817584FB1297E2891 /* Pods-SnailMail-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SnailMail-acknowledgements.plist"; sourceTree = "<group>"; };
-		6AE761A1B5E6A264A4C7D4D5 /* Pods-SnailMail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SnailMail.release.xcconfig"; sourceTree = "<group>"; };
-		771CC77D459B5F38166BBC94 /* Pods-SnailMail-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SnailMail-environment.h"; sourceTree = "<group>"; };
-		7BBEE3E398C581A56C4EF6F0 /* Pods-SnailMail-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SnailMail-umbrella.h"; sourceTree = "<group>"; };
-		7C095EFEF49E795834A63EBB /* Pods-SnailMail-Alamofire-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SnailMail-Alamofire-Private.xcconfig"; sourceTree = "<group>"; };
-		91010C6903D5DED7F7EBEA50 /* Pods-SnailMail.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SnailMail.modulemap"; sourceTree = "<group>"; };
-		995C76763AF3956F75CFFC83 /* Pods-SnailMail-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SnailMail-resources.sh"; sourceTree = "<group>"; };
-		A8045BC22A76B5D93363F786 /* Pods-SnailMail-Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SnailMail-Alamofire-umbrella.h"; sourceTree = "<group>"; };
-		A8940719BEB3A7DFE92CAEAF /* Pods-SnailMail-Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SnailMail-Alamofire.modulemap"; sourceTree = "<group>"; };
-		C8F5244D90F859328406676D /* Pods-SnailMail-Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SnailMail-Alamofire-dummy.m"; sourceTree = "<group>"; };
+		041A64526EAA56E4C1D80961 /* Pods-SnailMail-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SnailMail-acknowledgements.plist"; sourceTree = "<group>"; };
+		2413B5A4F39C759FC9134C3D /* Pods-SnailMail-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SnailMail-acknowledgements.markdown"; sourceTree = "<group>"; };
+		255D8D7C7A9B7000793A0ACF /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON.swift; sourceTree = "<group>"; };
+		2D03A8935150D59E3B14BC9A /* Pods-SnailMail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SnailMail.release.xcconfig"; sourceTree = "<group>"; };
+		3026A611FDA305FC18BF3923 /* Pods-SnailMail-SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SnailMail-SwiftyJSON.modulemap"; sourceTree = "<group>"; };
+		331CCF34BF98ED24F91625DA /* Pods-SnailMail-SwiftyJSON-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SnailMail-SwiftyJSON-Private.xcconfig"; sourceTree = "<group>"; };
+		3BC6F1D812A3A8AE49D88E9B /* Pods-SnailMail-Alamofire-Private.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SnailMail-Alamofire-Private.xcconfig"; sourceTree = "<group>"; };
+		446C4B01E080AA249FA23D8C /* Pods-SnailMail-SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SnailMail-SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
+		4B4E81A7CA1F230B6C6A53C8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4DC54FF06A524908CAB9C87B /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		549689BA734E5561E7905C46 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5944629D59105EDC36AEC9F2 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
+		606B3E30FE9E190F9F03ACBD /* Pods-SnailMail-SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SnailMail-SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
+		6517BE4DC59C88A8DDB0B90F /* Pods-SnailMail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SnailMail.debug.xcconfig"; sourceTree = "<group>"; };
+		69D3730BEA3BE24CE1A9A5C3 /* Pods-SnailMail-Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SnailMail-Alamofire.xcconfig"; sourceTree = "<group>"; };
+		79F43C0515874998A81519C0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		85E8F71AAD18E8045D26BF1A /* Pods-SnailMail-Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SnailMail-Alamofire.modulemap"; sourceTree = "<group>"; };
+		9C6F2F05D6C7777337F181C8 /* Pods-SnailMail-SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SnailMail-SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
+		9DCFD1432DD50CBEEF9D47FE /* Pods_SnailMail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnailMail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A54BA4F6800319026B72BBB1 /* Pods-SnailMail-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SnailMail-dummy.m"; sourceTree = "<group>"; };
+		A55EBD6D9738C27B78C4778C /* Pods-SnailMail-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SnailMail-resources.sh"; sourceTree = "<group>"; };
+		A83616C6C9A24845775642CD /* Pods-SnailMail-Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SnailMail-Alamofire-dummy.m"; sourceTree = "<group>"; };
+		A999830585BEFF43C1556AF5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		AAC8B09EF94B0ED7BE8B7660 /* Pods-SnailMail-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SnailMail-frameworks.sh"; sourceTree = "<group>"; };
+		BBA2D725AD0E97D0ACECF663 /* Pods-SnailMail-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SnailMail-umbrella.h"; sourceTree = "<group>"; };
+		BE9CD5D33829CDD1808D5F14 /* Pods-SnailMail.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SnailMail.modulemap"; sourceTree = "<group>"; };
+		C5E0A8F14F01C81AB09E4F67 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		CC80F389FAD1613256408757 /* Pods-SnailMail-SwiftyJSON.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SnailMail-SwiftyJSON.xcconfig"; sourceTree = "<group>"; };
+		D4136BD0D9A61EC1BFC605FA /* Pods-SnailMail-Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SnailMail-Alamofire-prefix.pch"; sourceTree = "<group>"; };
+		DAB57C45671372B08780352C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD73A4AC31DFBAD8404E8A08 /* Pods-SnailMail-Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SnailMail-Alamofire-umbrella.h"; sourceTree = "<group>"; };
+		EAB996CA30C58CEC533050BE /* Pods-SnailMail-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SnailMail-environment.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		45F24EE37DB0E2E9F391553D /* Frameworks */ = {
+		C294A3DF755E616EF384AC04 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F38C9511848D1BE736AFD41 /* Foundation.framework in Frameworks */,
+				57B3B5679C9DD79B2B115BE0 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		BF971BB00F7DC5DABB74A0D4 /* Frameworks */ = {
+		CDADE1CB6C018996AEE88CFF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				800F54060F6D1DEBDE76388A /* Foundation.framework in Frameworks */,
+				43D74C2F56F8750E2B4A33C7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6F8F0ACBF5AE0B492D270D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11FAD5AC536EA0F70FB8C361 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0005F3394209B58EB735065B /* Pods */ = {
+		09DFF1E1E084537B9702979C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1DA4CB898553645477AADD62 /* Alamofire */,
+				549689BA734E5561E7905C46 /* Alamofire.framework */,
+				9DCFD1432DD50CBEEF9D47FE /* Pods_SnailMail.framework */,
+				4DC54FF06A524908CAB9C87B /* SwiftyJSON.framework */,
 			);
-			name = Pods;
+			name = Products;
 			sourceTree = "<group>";
 		};
-		1DA4CB898553645477AADD62 /* Alamofire */ = {
+		15B8689DDD29AAA46FD280D3 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				5463C8A349EB062CC581978E /* Alamofire.swift */,
-				56CACE9F9197E732769247D5 /* Support Files */,
+				A999830585BEFF43C1556AF5 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		28BBDE6DD5435158EFD9E840 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				5944629D59105EDC36AEC9F2 /* Alamofire.swift */,
+				D4E7DE2F8A6012766A291609 /* Support Files */,
 			);
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
-		56CACE9F9197E732769247D5 /* Support Files */ = {
+		3FF3B37368396889CA881320 /* Pods-SnailMail */ = {
 			isa = PBXGroup;
 			children = (
-				397C56FB0A10750E2744BBD2 /* Info.plist */,
-				A8940719BEB3A7DFE92CAEAF /* Pods-SnailMail-Alamofire.modulemap */,
-				165D14B0A5C79ED37C175224 /* Pods-SnailMail-Alamofire.xcconfig */,
-				7C095EFEF49E795834A63EBB /* Pods-SnailMail-Alamofire-Private.xcconfig */,
-				C8F5244D90F859328406676D /* Pods-SnailMail-Alamofire-dummy.m */,
-				027609CE59342CAFBC16F46E /* Pods-SnailMail-Alamofire-prefix.pch */,
-				A8045BC22A76B5D93363F786 /* Pods-SnailMail-Alamofire-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/Pods-SnailMail-Alamofire";
-			sourceTree = "<group>";
-		};
-		5D91D1DEC33C5A0FAAD42D21 /* Pods-SnailMail */ = {
-			isa = PBXGroup;
-			children = (
-				0FAFB54330157B0C6E6BABE5 /* Info.plist */,
-				91010C6903D5DED7F7EBEA50 /* Pods-SnailMail.modulemap */,
-				1C57A81822F5C62DABC4FE83 /* Pods-SnailMail-acknowledgements.markdown */,
-				64DAF5A817584FB1297E2891 /* Pods-SnailMail-acknowledgements.plist */,
-				24F3C133516D347E7C450C02 /* Pods-SnailMail-dummy.m */,
-				771CC77D459B5F38166BBC94 /* Pods-SnailMail-environment.h */,
-				634A709DD1C62514C9892EE6 /* Pods-SnailMail-frameworks.sh */,
-				995C76763AF3956F75CFFC83 /* Pods-SnailMail-resources.sh */,
-				7BBEE3E398C581A56C4EF6F0 /* Pods-SnailMail-umbrella.h */,
-				578DDF0F5C3191E20ADF1E34 /* Pods-SnailMail.debug.xcconfig */,
-				6AE761A1B5E6A264A4C7D4D5 /* Pods-SnailMail.release.xcconfig */,
+				DAB57C45671372B08780352C /* Info.plist */,
+				BE9CD5D33829CDD1808D5F14 /* Pods-SnailMail.modulemap */,
+				2413B5A4F39C759FC9134C3D /* Pods-SnailMail-acknowledgements.markdown */,
+				041A64526EAA56E4C1D80961 /* Pods-SnailMail-acknowledgements.plist */,
+				A54BA4F6800319026B72BBB1 /* Pods-SnailMail-dummy.m */,
+				EAB996CA30C58CEC533050BE /* Pods-SnailMail-environment.h */,
+				AAC8B09EF94B0ED7BE8B7660 /* Pods-SnailMail-frameworks.sh */,
+				A55EBD6D9738C27B78C4778C /* Pods-SnailMail-resources.sh */,
+				BBA2D725AD0E97D0ACECF663 /* Pods-SnailMail-umbrella.h */,
+				6517BE4DC59C88A8DDB0B90F /* Pods-SnailMail.debug.xcconfig */,
+				2D03A8935150D59E3B14BC9A /* Pods-SnailMail.release.xcconfig */,
 			);
 			name = "Pods-SnailMail";
 			path = "Target Support Files/Pods-SnailMail";
 			sourceTree = "<group>";
 		};
-		96F5AD3BE55CCCFA8230E642 /* Targets Support Files */ = {
+		65BF792AC9AB48E4392C41B7 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				5D91D1DEC33C5A0FAAD42D21 /* Pods-SnailMail */,
+				79F43C0515874998A81519C0 /* Info.plist */,
+				3026A611FDA305FC18BF3923 /* Pods-SnailMail-SwiftyJSON.modulemap */,
+				CC80F389FAD1613256408757 /* Pods-SnailMail-SwiftyJSON.xcconfig */,
+				331CCF34BF98ED24F91625DA /* Pods-SnailMail-SwiftyJSON-Private.xcconfig */,
+				9C6F2F05D6C7777337F181C8 /* Pods-SnailMail-SwiftyJSON-dummy.m */,
+				606B3E30FE9E190F9F03ACBD /* Pods-SnailMail-SwiftyJSON-prefix.pch */,
+				446C4B01E080AA249FA23D8C /* Pods-SnailMail-SwiftyJSON-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-SnailMail-SwiftyJSON";
+			sourceTree = "<group>";
+		};
+		984F92F61AE83A8FC46B2EF4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				15B8689DDD29AAA46FD280D3 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A2B50075887D3E22A97D3691 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				3FF3B37368396889CA881320 /* Pods-SnailMail */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		9E35C71D23F5EDF8D9196A4D /* iOS */ = {
+		C55EAD8DD0D5568BD239387F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				15E909DFDB23DE3C0AE8B243 /* Foundation.framework */,
+				28BBDE6DD5435158EFD9E840 /* Alamofire */,
+				D153703FF72A40E4C8D15145 /* SwiftyJSON */,
 			);
-			name = iOS;
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		B1B2A47B5CAFF1FCDCDA9652 /* Products */ = {
+		D153703FF72A40E4C8D15145 /* SwiftyJSON */ = {
 			isa = PBXGroup;
 			children = (
-				01431781BA031A01935A6B2E /* Alamofire.framework */,
-				3AF00A71E9DD13DB1B10CEBC /* Pods_SnailMail.framework */,
+				255D8D7C7A9B7000793A0ACF /* SwiftyJSON.swift */,
+				65BF792AC9AB48E4392C41B7 /* Support Files */,
 			);
-			name = Products;
+			path = SwiftyJSON;
 			sourceTree = "<group>";
 		};
-		EB5F57B2357A64DD603689D0 = {
+		D4E7DE2F8A6012766A291609 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				15CB860FBB8A915557708802 /* Podfile */,
-				FAA9A58EA6E4EA02F88CDB03 /* Frameworks */,
-				0005F3394209B58EB735065B /* Pods */,
-				B1B2A47B5CAFF1FCDCDA9652 /* Products */,
-				96F5AD3BE55CCCFA8230E642 /* Targets Support Files */,
+				4B4E81A7CA1F230B6C6A53C8 /* Info.plist */,
+				85E8F71AAD18E8045D26BF1A /* Pods-SnailMail-Alamofire.modulemap */,
+				69D3730BEA3BE24CE1A9A5C3 /* Pods-SnailMail-Alamofire.xcconfig */,
+				3BC6F1D812A3A8AE49D88E9B /* Pods-SnailMail-Alamofire-Private.xcconfig */,
+				A83616C6C9A24845775642CD /* Pods-SnailMail-Alamofire-dummy.m */,
+				D4136BD0D9A61EC1BFC605FA /* Pods-SnailMail-Alamofire-prefix.pch */,
+				DD73A4AC31DFBAD8404E8A08 /* Pods-SnailMail-Alamofire-umbrella.h */,
 			);
+			name = "Support Files";
+			path = "../Target Support Files/Pods-SnailMail-Alamofire";
 			sourceTree = "<group>";
 		};
-		FAA9A58EA6E4EA02F88CDB03 /* Frameworks */ = {
+		FD86D1F0293DC36CE00232BE = {
 			isa = PBXGroup;
 			children = (
-				9E35C71D23F5EDF8D9196A4D /* iOS */,
+				C5E0A8F14F01C81AB09E4F67 /* Podfile */,
+				984F92F61AE83A8FC46B2EF4 /* Frameworks */,
+				C55EAD8DD0D5568BD239387F /* Pods */,
+				09DFF1E1E084537B9702979C /* Products */,
+				A2B50075887D3E22A97D3691 /* Targets Support Files */,
 			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		4967395C5E9B607F801EED71 /* Headers */ = {
+		3CF377AF815A64CDA73DF915 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				124D7526EA2592719757A169 /* Pods-SnailMail-umbrella.h in Headers */,
+				4CFA05CA9EF17E55F2CEE166 /* Pods-SnailMail-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D8657C9F11E3471B3B1DD647 /* Headers */ = {
+		AC0473ECD6E68B119D10AD91 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA14D0E7B00A9F4D886DA70B /* Pods-SnailMail-Alamofire-umbrella.h in Headers */,
+				70AD90DCFFA777CE55B1EC88 /* Pods-SnailMail-Alamofire-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F281A55D02FEEC6B88B01BF6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E413C15AA7E2AB38FE954CA7 /* Pods-SnailMail-SwiftyJSON-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		7080A89FB605312E3E17D3BE /* Pods-SnailMail */ = {
+		3A306001274ADFC07D8AB06F /* Pods-SnailMail-SwiftyJSON */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6BCDD13B56EC5BFF4D31AB06 /* Build configuration list for PBXNativeTarget "Pods-SnailMail" */;
+			buildConfigurationList = CD576AC62FD5F8E981FA0DA8 /* Build configuration list for PBXNativeTarget "Pods-SnailMail-SwiftyJSON" */;
 			buildPhases = (
-				AF80929C54E37FDC6293CC45 /* Sources */,
-				45F24EE37DB0E2E9F391553D /* Frameworks */,
-				4967395C5E9B607F801EED71 /* Headers */,
+				EA48D0E59E83D6B093A8C7E6 /* Sources */,
+				D6F8F0ACBF5AE0B492D270D7 /* Frameworks */,
+				F281A55D02FEEC6B88B01BF6 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				0E6D1EAF0EB5AD6B57C6DE1C /* PBXTargetDependency */,
+			);
+			name = "Pods-SnailMail-SwiftyJSON";
+			productName = "Pods-SnailMail-SwiftyJSON";
+			productReference = 4DC54FF06A524908CAB9C87B /* SwiftyJSON.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		673B35F450681E87D2B6432D /* Pods-SnailMail */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F99136AE0980B5EFF12EB033 /* Build configuration list for PBXNativeTarget "Pods-SnailMail" */;
+			buildPhases = (
+				5272B7C6FDBA826A4FEDB63E /* Sources */,
+				CDADE1CB6C018996AEE88CFF /* Frameworks */,
+				3CF377AF815A64CDA73DF915 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				40F3F561B0EC8909587CA481 /* PBXTargetDependency */,
+				14B37EA846622AEB7462B3C6 /* PBXTargetDependency */,
 			);
 			name = "Pods-SnailMail";
 			productName = "Pods-SnailMail";
-			productReference = 3AF00A71E9DD13DB1B10CEBC /* Pods_SnailMail.framework */;
+			productReference = 9DCFD1432DD50CBEEF9D47FE /* Pods_SnailMail.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		D07DC3686E1007181C06DF9F /* Pods-SnailMail-Alamofire */ = {
+		D2BF3B88C0EB78D50A91E029 /* Pods-SnailMail-Alamofire */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E58F5E509BEB146798FC9541 /* Build configuration list for PBXNativeTarget "Pods-SnailMail-Alamofire" */;
+			buildConfigurationList = 2B7BE46472FB28F9A95C89B5 /* Build configuration list for PBXNativeTarget "Pods-SnailMail-Alamofire" */;
 			buildPhases = (
-				2FCD0D34A760B16386858BD1 /* Sources */,
-				BF971BB00F7DC5DABB74A0D4 /* Frameworks */,
-				D8657C9F11E3471B3B1DD647 /* Headers */,
+				05C6FCDB0FC57A8138311CDF /* Sources */,
+				C294A3DF755E616EF384AC04 /* Frameworks */,
+				AC0473ECD6E68B119D10AD91 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -221,68 +301,84 @@
 			);
 			name = "Pods-SnailMail-Alamofire";
 			productName = "Pods-SnailMail-Alamofire";
-			productReference = 01431781BA031A01935A6B2E /* Alamofire.framework */;
+			productReference = 549689BA734E5561E7905C46 /* Alamofire.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		48E875E10268B3B600E8116E /* Project object */ = {
+		EC56E4EFA4A130C9265B4628 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
 			};
-			buildConfigurationList = 6B1F8CAFB55A7232AA2D4A69 /* Build configuration list for PBXProject "Pods" */;
+			buildConfigurationList = 05647F2A52D757FBCBA8C3FA /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = EB5F57B2357A64DD603689D0;
-			productRefGroup = B1B2A47B5CAFF1FCDCDA9652 /* Products */;
+			mainGroup = FD86D1F0293DC36CE00232BE;
+			productRefGroup = 09DFF1E1E084537B9702979C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7080A89FB605312E3E17D3BE /* Pods-SnailMail */,
-				D07DC3686E1007181C06DF9F /* Pods-SnailMail-Alamofire */,
+				673B35F450681E87D2B6432D /* Pods-SnailMail */,
+				D2BF3B88C0EB78D50A91E029 /* Pods-SnailMail-Alamofire */,
+				3A306001274ADFC07D8AB06F /* Pods-SnailMail-SwiftyJSON */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2FCD0D34A760B16386858BD1 /* Sources */ = {
+		05C6FCDB0FC57A8138311CDF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5DD5B4A89FF5F5E74DCAE1A /* Alamofire.swift in Sources */,
-				C982A4728493CB1310DE628E /* Pods-SnailMail-Alamofire-dummy.m in Sources */,
+				6D49339F63032BD04A2EA22A /* Alamofire.swift in Sources */,
+				59CC3DC170F1F2547104EE94 /* Pods-SnailMail-Alamofire-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		AF80929C54E37FDC6293CC45 /* Sources */ = {
+		5272B7C6FDBA826A4FEDB63E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD43137FA0F1087A48956365 /* Pods-SnailMail-dummy.m in Sources */,
+				F34E92CB5613CCFCB025A698 /* Pods-SnailMail-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EA48D0E59E83D6B093A8C7E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0873A2E5F5A5867B438574C /* Pods-SnailMail-SwiftyJSON-dummy.m in Sources */,
+				BE2EDD233B0B926019C7EF6A /* SwiftyJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0E6D1EAF0EB5AD6B57C6DE1C /* PBXTargetDependency */ = {
+		14B37EA846622AEB7462B3C6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-SnailMail-SwiftyJSON";
+			target = 3A306001274ADFC07D8AB06F /* Pods-SnailMail-SwiftyJSON */;
+			targetProxy = 9D6D7DAE420E14086BDFCD99 /* PBXContainerItemProxy */;
+		};
+		40F3F561B0EC8909587CA481 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-SnailMail-Alamofire";
-			target = D07DC3686E1007181C06DF9F /* Pods-SnailMail-Alamofire */;
-			targetProxy = 580EA3BE4B2985708A6FC51E /* PBXContainerItemProxy */;
+			target = D2BF3B88C0EB78D50A91E029 /* Pods-SnailMail-Alamofire */;
+			targetProxy = 9B42BD7E33CBC8CFC3C5B00A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0E6809B2A2319C759135B12A /* Debug */ = {
+		1E3EFE71C78A9A67BEE3F6E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 578DDF0F5C3191E20ADF1E34 /* Pods-SnailMail.debug.xcconfig */;
+			baseConfigurationReference = 331CCF34BF98ED24F91625DA /* Pods-SnailMail-SwiftyJSON-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -291,16 +387,14 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-SnailMail/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SnailMail-SwiftyJSON/Pods-SnailMail-SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-SnailMail-SwiftyJSON/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-SnailMail/Pods-SnailMail.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-SnailMail-SwiftyJSON/Pods-SnailMail-SwiftyJSON.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_NAME = Pods_SnailMail;
+				PRODUCT_NAME = SwiftyJSON;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -310,9 +404,9 @@
 			};
 			name = Debug;
 		};
-		6F263D3E5D431BFE9129A84D /* Release */ = {
+		38002FF97474A888A9E056F7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6AE761A1B5E6A264A4C7D4D5 /* Pods-SnailMail.release.xcconfig */;
+			baseConfigurationReference = 2D03A8935150D59E3B14BC9A /* Pods-SnailMail.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -339,9 +433,9 @@
 			};
 			name = Release;
 		};
-		7C58DA77EED7B6736A2C2FEA /* Debug */ = {
+		6433AB0486DB30AC6B71B3E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7C095EFEF49E795834A63EBB /* Pods-SnailMail-Alamofire-Private.xcconfig */;
+			baseConfigurationReference = 3BC6F1D812A3A8AE49D88E9B /* Pods-SnailMail-Alamofire-Private.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -367,7 +461,91 @@
 			};
 			name = Debug;
 		};
-		C88C08792F11AACB6E756844 /* Debug */ = {
+		9CBB007245DD49F656B4D15F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 331CCF34BF98ED24F91625DA /* Pods-SnailMail-SwiftyJSON-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SnailMail-SwiftyJSON/Pods-SnailMail-SwiftyJSON-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-SnailMail-SwiftyJSON/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-SnailMail-SwiftyJSON/Pods-SnailMail-SwiftyJSON.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = SwiftyJSON;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		9F6F7CC79E65A52B22D0812A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3BC6F1D812A3A8AE49D88E9B /* Pods-SnailMail-Alamofire-Private.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Pods-SnailMail-Alamofire/Pods-SnailMail-Alamofire-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Pods-SnailMail-Alamofire/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-SnailMail-Alamofire/Pods-SnailMail-Alamofire.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Alamofire;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		AFEADE496B897AC828AABAC7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6517BE4DC59C88A8DDB0B90F /* Pods-SnailMail.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-SnailMail/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Pods-SnailMail/Pods-SnailMail.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = Pods_SnailMail;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		BC6557B6324D6C8CF5C1ACE5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -406,7 +584,7 @@
 			};
 			name = Debug;
 		};
-		C8F2C6C09610D8C3784F97C1 /* Release */ = {
+		F4705745055FF3744D918314 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -440,64 +618,46 @@
 			};
 			name = Release;
 		};
-		CB8CD7B43695AFB05F084761 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7C095EFEF49E795834A63EBB /* Pods-SnailMail-Alamofire-Private.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Pods-SnailMail-Alamofire/Pods-SnailMail-Alamofire-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Pods-SnailMail-Alamofire/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Pods-SnailMail-Alamofire/Pods-SnailMail-Alamofire.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = Alamofire;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6B1F8CAFB55A7232AA2D4A69 /* Build configuration list for PBXProject "Pods" */ = {
+		05647F2A52D757FBCBA8C3FA /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C88C08792F11AACB6E756844 /* Debug */,
-				C8F2C6C09610D8C3784F97C1 /* Release */,
+				BC6557B6324D6C8CF5C1ACE5 /* Debug */,
+				F4705745055FF3744D918314 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6BCDD13B56EC5BFF4D31AB06 /* Build configuration list for PBXNativeTarget "Pods-SnailMail" */ = {
+		2B7BE46472FB28F9A95C89B5 /* Build configuration list for PBXNativeTarget "Pods-SnailMail-Alamofire" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0E6809B2A2319C759135B12A /* Debug */,
-				6F263D3E5D431BFE9129A84D /* Release */,
+				6433AB0486DB30AC6B71B3E2 /* Debug */,
+				9F6F7CC79E65A52B22D0812A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E58F5E509BEB146798FC9541 /* Build configuration list for PBXNativeTarget "Pods-SnailMail-Alamofire" */ = {
+		CD576AC62FD5F8E981FA0DA8 /* Build configuration list for PBXNativeTarget "Pods-SnailMail-SwiftyJSON" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7C58DA77EED7B6736A2C2FEA /* Debug */,
-				CB8CD7B43695AFB05F084761 /* Release */,
+				1E3EFE71C78A9A67BEE3F6E5 /* Debug */,
+				9CBB007245DD49F656B4D15F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F99136AE0980B5EFF12EB033 /* Build configuration list for PBXNativeTarget "Pods-SnailMail" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AFEADE496B897AC828AABAC7 /* Debug */,
+				38002FF97474A888A9E056F7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 48E875E10268B3B600E8116E /* Project object */;
+	rootObject = EC56E4EFA4A130C9265B4628 /* Project object */;
 }

@@ -7,8 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CC6105F31AC393F900D15150 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6105F21AC393F900D15150 /* SwiftyJSON.swift */; };
+		CC23DE2A1AE54C0300AFEDE4 /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC23DE291AE54C0300AFEDE4 /* login.storyboard */; };
+		CC23DE2C1AE54C1A00AFEDE4 /* mailbox.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC23DE2B1AE54C1A00AFEDE4 /* mailbox.storyboard */; };
+		CC23DE2E1AE54C2B00AFEDE4 /* compose.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC23DE2D1AE54C2B00AFEDE4 /* compose.storyboard */; };
+		CC23DE311AE5555800AFEDE4 /* 037_Pen.png in Resources */ = {isa = PBXBuildFile; fileRef = CC23DE301AE5555800AFEDE4 /* 037_Pen.png */; };
+		CC23DE331AE555AB00AFEDE4 /* 037_Pen_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC23DE321AE555AB00AFEDE4 /* 037_Pen_2x.png */; };
 		CC6105F51AC3941900D15150 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6105F41AC3941900D15150 /* DataManager.swift */; };
+		CC7DFB401AE473BF0062BD07 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7DFB3F1AE473BF0062BD07 /* SwiftyJSON.swift */; };
+		CC7DFB421AE473CE0062BD07 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7DFB411AE473CE0062BD07 /* Alamofire.swift */; };
 		CC96E49C1ABCC8EB001E6D27 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E49B1ABCC8EB001E6D27 /* WelcomeScreenViewController.swift */; };
 		CC96E4A01ABCCBF2001E6D27 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E49F1ABCCBF2001E6D27 /* LogInViewController.swift */; };
 		CC96E4A91ABCD91A001E6D27 /* Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E4A81ABCD91A001E6D27 /* Mail.swift */; };
@@ -18,7 +24,6 @@
 		CC96E4BE1AC0A7FA001E6D27 /* snail_mail_without_background_small.png in Resources */ = {isa = PBXBuildFile; fileRef = CC96E4B61AC0A7FA001E6D27 /* snail_mail_without_background_small.png */; };
 		CC96E4C11AC0AE16001E6D27 /* mailbox_small_white.png in Resources */ = {isa = PBXBuildFile; fileRef = CC96E4C01AC0AE16001E6D27 /* mailbox_small_white.png */; };
 		CC96E4C31AC0AF43001E6D27 /* compose_small_white.png in Resources */ = {isa = PBXBuildFile; fileRef = CC96E4C21AC0AF43001E6D27 /* compose_small_white.png */; };
-		CC96E4C71AC0B1AC001E6D27 /* ComposeHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E4C61AC0B1AC001E6D27 /* ComposeHomeViewController.swift */; };
 		CC96E4C91AC0B334001E6D27 /* ComposeMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E4C81AC0B334001E6D27 /* ComposeMailViewController.swift */; };
 		CCCB1A531AB0D48A0067F100 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCB1A521AB0D48A0067F100 /* AppDelegate.swift */; };
 		CCCB1A551AB0D48A0067F100 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCB1A541AB0D48A0067F100 /* ViewController.swift */; };
@@ -46,8 +51,14 @@
 		62F08564CDDFD93EAA1E21E5 /* Pods-SnailMail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnailMail.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SnailMail/Pods-SnailMail.debug.xcconfig"; sourceTree = "<group>"; };
 		6B594EB116F451FEF2FA49E1 /* Pods-SnailMail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnailMail.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnailMail/Pods-SnailMail.release.xcconfig"; sourceTree = "<group>"; };
 		A48D46F0C7DC76E3F2B153DC /* Pods_SnailMail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnailMail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CC6105F21AC393F900D15150 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		CC23DE291AE54C0300AFEDE4 /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = login.storyboard; sourceTree = "<group>"; };
+		CC23DE2B1AE54C1A00AFEDE4 /* mailbox.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = mailbox.storyboard; sourceTree = "<group>"; };
+		CC23DE2D1AE54C2B00AFEDE4 /* compose.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = compose.storyboard; sourceTree = "<group>"; };
+		CC23DE301AE5555800AFEDE4 /* 037_Pen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 037_Pen.png; sourceTree = "<group>"; };
+		CC23DE321AE555AB00AFEDE4 /* 037_Pen_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 037_Pen_2x.png; sourceTree = "<group>"; };
 		CC6105F41AC3941900D15150 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		CC7DFB3F1AE473BF0062BD07 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		CC7DFB411AE473CE0062BD07 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		CC96E49B1ABCC8EB001E6D27 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
 		CC96E49F1ABCCBF2001E6D27 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogInViewController.swift; path = ../LogInViewController.swift; sourceTree = "<group>"; };
 		CC96E4A81ABCD91A001E6D27 /* Mail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mail.swift; sourceTree = "<group>"; };
@@ -57,7 +68,6 @@
 		CC96E4B61AC0A7FA001E6D27 /* snail_mail_without_background_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snail_mail_without_background_small.png; sourceTree = "<group>"; };
 		CC96E4C01AC0AE16001E6D27 /* mailbox_small_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mailbox_small_white.png; sourceTree = "<group>"; };
 		CC96E4C21AC0AF43001E6D27 /* compose_small_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compose_small_white.png; sourceTree = "<group>"; };
-		CC96E4C61AC0B1AC001E6D27 /* ComposeHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeHomeViewController.swift; sourceTree = "<group>"; };
 		CC96E4C81AC0B334001E6D27 /* ComposeMailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeMailViewController.swift; sourceTree = "<group>"; };
 		CCCB1A4D1AB0D48A0067F100 /* SnailMail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnailMail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCCB1A511AB0D48A0067F100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -93,15 +103,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CC96E4A31ABCD5AB001E6D27 /* Resources */ = {
+		CC23DE241AE54BB100AFEDE4 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				CC23DE281AE54BD100AFEDE4 /* Compose */,
+				CC23DE271AE54BC700AFEDE4 /* Mailbox */,
+				CC23DE251AE54BB800AFEDE4 /* Login */,
+			);
+			name = Features;
+			sourceTree = "<group>";
+		};
+		CC23DE251AE54BB800AFEDE4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CC96E49F1ABCCBF2001E6D27 /* LogInViewController.swift */,
+				CC23DE291AE54C0300AFEDE4 /* login.storyboard */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		CC23DE271AE54BC700AFEDE4 /* Mailbox */ = {
+			isa = PBXGroup;
+			children = (
+				CC23DE2B1AE54C1A00AFEDE4 /* mailbox.storyboard */,
+				CC96E4AC1ABCDEB5001E6D27 /* MailCell.swift */,
+				CCCB1A7A1AB0DE780067F100 /* MyMailboxViewController.swift */,
+				CC96E4AE1AC0876D001E6D27 /* MailViewController.swift */,
+			);
+			name = Mailbox;
+			sourceTree = "<group>";
+		};
+		CC23DE281AE54BD100AFEDE4 /* Compose */ = {
+			isa = PBXGroup;
+			children = (
+				CC23DE2D1AE54C2B00AFEDE4 /* compose.storyboard */,
+				CC96E4C81AC0B334001E6D27 /* ComposeMailViewController.swift */,
+			);
+			name = Compose;
+			sourceTree = "<group>";
+		};
+		CC23DE2F1AE54C4900AFEDE4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CCCB1A761AB0D9930067F100 /* SampleData.swift */,
+				CCCB1A741AB0D87F0067F100 /* Person.swift */,
+				CC96E4A81ABCD91A001E6D27 /* Mail.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		CC96E4A31ABCD5AB001E6D27 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				CC23DE321AE555AB00AFEDE4 /* 037_Pen_2x.png */,
+				CC23DE301AE5555800AFEDE4 /* 037_Pen.png */,
 				CC96E4C21AC0AF43001E6D27 /* compose_small_white.png */,
 				CC96E4C01AC0AE16001E6D27 /* mailbox_small_white.png */,
 				CC96E4B31AC0A7FA001E6D27 /* snailmail_without_background_large.png */,
 				CC96E4B61AC0A7FA001E6D27 /* snail_mail_without_background_small.png */,
 			);
-			name = Resources;
+			name = Images;
 			sourceTree = "<group>";
 		};
 		CCCB1A441AB0D48A0067F100 = {
@@ -127,24 +188,18 @@
 		CCCB1A4F1AB0D48A0067F100 /* SnailMail */ = {
 			isa = PBXGroup;
 			children = (
-				CC96E4A31ABCD5AB001E6D27 /* Resources */,
-				CC96E49F1ABCCBF2001E6D27 /* LogInViewController.swift */,
+				CC23DE2F1AE54C4900AFEDE4 /* Models */,
+				CC23DE241AE54BB100AFEDE4 /* Features */,
+				CC96E4A31ABCD5AB001E6D27 /* Images */,
+				CC7DFB3F1AE473BF0062BD07 /* SwiftyJSON.swift */,
+				CC7DFB411AE473CE0062BD07 /* Alamofire.swift */,
 				CCCB1A521AB0D48A0067F100 /* AppDelegate.swift */,
-				CC6105F21AC393F900D15150 /* SwiftyJSON.swift */,
 				CCCB1A541AB0D48A0067F100 /* ViewController.swift */,
 				CCCB1A561AB0D48A0067F100 /* Main.storyboard */,
 				CCCB1A591AB0D48A0067F100 /* Images.xcassets */,
 				CCCB1A5B1AB0D48A0067F100 /* LaunchScreen.xib */,
 				CCCB1A501AB0D48A0067F100 /* Supporting Files */,
-				CCCB1A741AB0D87F0067F100 /* Person.swift */,
-				CC96E4A81ABCD91A001E6D27 /* Mail.swift */,
-				CC96E4AC1ABCDEB5001E6D27 /* MailCell.swift */,
-				CCCB1A761AB0D9930067F100 /* SampleData.swift */,
-				CCCB1A7A1AB0DE780067F100 /* MyMailboxViewController.swift */,
 				CC96E49B1ABCC8EB001E6D27 /* WelcomeScreenViewController.swift */,
-				CC96E4AE1AC0876D001E6D27 /* MailViewController.swift */,
-				CC96E4C61AC0B1AC001E6D27 /* ComposeHomeViewController.swift */,
-				CC96E4C81AC0B334001E6D27 /* ComposeMailViewController.swift */,
 				CC6105F41AC3941900D15150 /* DataManager.swift */,
 			);
 			path = SnailMail;
@@ -276,13 +331,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC23DE2A1AE54C0300AFEDE4 /* login.storyboard in Resources */,
 				CC96E4C31AC0AF43001E6D27 /* compose_small_white.png in Resources */,
 				CCCB1A581AB0D48A0067F100 /* Main.storyboard in Resources */,
+				CC23DE2C1AE54C1A00AFEDE4 /* mailbox.storyboard in Resources */,
 				CC96E4C11AC0AE16001E6D27 /* mailbox_small_white.png in Resources */,
 				CC96E4BB1AC0A7FA001E6D27 /* snailmail_without_background_large.png in Resources */,
 				CCCB1A5D1AB0D48A0067F100 /* LaunchScreen.xib in Resources */,
+				CC23DE2E1AE54C2B00AFEDE4 /* compose.storyboard in Resources */,
 				CC96E4BE1AC0A7FA001E6D27 /* snail_mail_without_background_small.png in Resources */,
+				CC23DE311AE5555800AFEDE4 /* 037_Pen.png in Resources */,
 				CCCB1A5A1AB0D48A0067F100 /* Images.xcassets in Resources */,
+				CC23DE331AE555AB00AFEDE4 /* 037_Pen_2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,14 +413,14 @@
 				CC96E4C91AC0B334001E6D27 /* ComposeMailViewController.swift in Sources */,
 				CC6105F51AC3941900D15150 /* DataManager.swift in Sources */,
 				CCCB1A551AB0D48A0067F100 /* ViewController.swift in Sources */,
+				CC7DFB401AE473BF0062BD07 /* SwiftyJSON.swift in Sources */,
+				CC7DFB421AE473CE0062BD07 /* Alamofire.swift in Sources */,
 				CCCB1A751AB0D87F0067F100 /* Person.swift in Sources */,
 				CC96E4A01ABCCBF2001E6D27 /* LogInViewController.swift in Sources */,
 				CC96E4AD1ABCDEB5001E6D27 /* MailCell.swift in Sources */,
-				CC96E4C71AC0B1AC001E6D27 /* ComposeHomeViewController.swift in Sources */,
 				CCCB1A771AB0D9930067F100 /* SampleData.swift in Sources */,
 				CC96E49C1ABCC8EB001E6D27 /* WelcomeScreenViewController.swift in Sources */,
 				CCCB1A531AB0D48A0067F100 /* AppDelegate.swift in Sources */,
-				CC6105F31AC393F900D15150 /* SwiftyJSON.swift in Sources */,
 				CC96E4AF1AC0876D001E6D27 /* MailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

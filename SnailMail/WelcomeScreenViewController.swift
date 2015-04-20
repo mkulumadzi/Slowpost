@@ -26,7 +26,13 @@ class WelcomeScreenViewController: UIViewController {
     
     func checkLogin() {
         if loggedInUser == nil {
-            performSegueWithIdentifier("LogIn", sender: self)
+            //performSegueWithIdentifier("LogIn", sender: self)
+            
+            var storyboard = UIStoryboard(name: "login", bundle: nil)
+            var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+            
+            self.presentViewController(controller, animated: true, completion: nil)
+            
         }
         else {
                 
@@ -46,9 +52,17 @@ class WelcomeScreenViewController: UIViewController {
                 
             }
             
-            performSegueWithIdentifier("GoToHomeScreen", sender: self)
+            //performSegueWithIdentifier("GoToHomeScreen", sender: self)
+            
+            var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
+            var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+            
+            self.presentViewController(controller, animated: true, completion: nil)
+            
+            
         }
     }
+    
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)

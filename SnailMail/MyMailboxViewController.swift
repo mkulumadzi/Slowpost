@@ -10,6 +10,8 @@ import UIKit
 
 class MyMailboxViewController: UITableViewController {
     
+    @IBOutlet weak var messageLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -62,6 +64,17 @@ class MyMailboxViewController: UITableViewController {
                 
             }
         }
+    }
+    
+    
+    @IBAction func Compose(sender: AnyObject) {
+        
+        var storyboard = UIStoryboard(name: "compose", bundle: nil)
+        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+        
+        self.presentViewController(controller, animated: true, completion: nil)
+        
+        
     }
 
 }

@@ -39,6 +39,16 @@ class ComposeMailViewController: UIViewController {
             mail = Mail(id: "foo", from: "\(loggedInUser.username)", to: "\(toField.text)", content: "\(composeText.text)")
         }
     }
+    
+    @IBAction func sendMail(sender: AnyObject) {
+        mail = Mail(id: "foo", from: "\(loggedInUser.username)", to: "\(toField.text)", content: "\(composeText.text)")
+        
+        var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
+        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+        
+        self.presentViewController(controller, animated: true, completion: nil)
+        
+    }
 
     /*
     // MARK: - Navigation
