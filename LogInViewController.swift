@@ -19,6 +19,7 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //This is something that should be optimized...
         DataManager.getAllPeopleWithSuccess{ (peopleData) -> Void in
             let json = JSON(data: peopleData)
             
