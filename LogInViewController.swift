@@ -56,6 +56,8 @@ class LogInViewController: UIViewController {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
     }
+    
+    
 
     
 }

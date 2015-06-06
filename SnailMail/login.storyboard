@@ -7,6 +7,7 @@
         <mutableArray key="OpenSans-Light.ttf">
             <string>OpenSans-Light</string>
             <string>OpenSans-Light</string>
+            <string>OpenSans-Light</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
@@ -120,7 +121,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="signUp:" destination="cqE-Qh-T2s" eventType="touchUpInside" id="5W8-Wq-n8f"/>
+                                    <segue destination="VlT-9s-rBm" kind="show" identifier="signUpSuccessful" id="1NM-97-VuS"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SnailMail Postman.png" translatesAutoresizingMaskIntoConstraints="NO" id="oMM-Cy-Luv">
@@ -138,6 +139,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Zp-98-wzK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="859.5" y="-476.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="i3S-Y5-XvT">
+            <objects>
+                <viewController storyboardIdentifier="registrationSuccessful" id="VlT-9s-rBm" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aLJ-th-8vJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="rgM-kU-Bvj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TE0-No-XXi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to SnailMail!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZg-zl-3ET">
+                                <rect key="frame" x="6" y="107" width="363" height="229"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="64"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vDr-jz-VxR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1351.5" y="-476.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LEI-4n-ctm">

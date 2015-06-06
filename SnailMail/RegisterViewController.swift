@@ -31,8 +31,14 @@ class RegisterViewController: UIViewController {
         super.touchesBegan(touches, withEvent: event)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "signUpSuccessful" {
+            signUp()
+        }
+    }
     
-    @IBAction func signUp(sender: AnyObject) {
+    
+    func signUp() {
         
         let newPersonEndpoint = "\(PostOfficeURL)person/new"
         let parameters = ["name": "\(nameTextField.text)", "username": "\(usernameTextField.text)"]
@@ -45,12 +51,16 @@ class RegisterViewController: UIViewController {
                 else if let response: AnyObject = response {
                     if response.statusCode == 201 {
                         println("You've registered!")
+                        var personURL:String = response.allHeaderFields["Location"] as! String
+                        println(personURL)
                     }
-                    println(response.statusCode)
                 }
             }
-        
     }
+    
+//    func logInAfterSignup(requestURL: String) -> Person {
+//        
+//    }
     
 //    @IBAction func LogIn(sender: AnyObject) {
 //        for user in people {
