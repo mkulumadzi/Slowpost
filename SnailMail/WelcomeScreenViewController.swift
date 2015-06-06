@@ -26,7 +26,6 @@ class WelcomeScreenViewController: UIViewController {
     
     func checkLogin() {
         if loggedInUser == nil {
-            //performSegueWithIdentifier("LogIn", sender: self)
             
             var storyboard = UIStoryboard(name: "login", bundle: nil)
             var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
