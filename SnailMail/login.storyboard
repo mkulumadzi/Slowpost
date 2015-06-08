@@ -121,7 +121,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="VlT-9s-rBm" kind="show" identifier="signUpSuccessful" id="1NM-97-VuS"/>
+                                    <action selector="signUpPressed:" destination="cqE-Qh-T2s" eventType="touchUpInside" id="o2a-OR-vYs"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SnailMail Postman.png" translatesAutoresizingMaskIntoConstraints="NO" id="oMM-Cy-Luv">
@@ -134,16 +134,17 @@
                     <connections>
                         <outlet property="nameTextField" destination="VGQ-6a-6wA" id="fdE-Zf-mlF"/>
                         <outlet property="usernameTextField" destination="P5I-cq-lFh" id="Emp-pd-KaD"/>
+                        <segue destination="VlT-9s-rBm" kind="show" identifier="signUpSuccessful" id="DCi-hp-CHY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Zp-98-wzK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="859.5" y="-476.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign Up Successful View Controller-->
         <scene sceneID="i3S-Y5-XvT">
             <objects>
-                <viewController storyboardIdentifier="registrationSuccessful" id="VlT-9s-rBm" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="registrationSuccessful" id="VlT-9s-rBm" customClass="SignUpSuccessfulViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aLJ-th-8vJ"/>
                         <viewControllerLayoutGuide type="bottom" id="rgM-kU-Bvj"/>

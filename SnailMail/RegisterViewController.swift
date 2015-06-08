@@ -14,8 +14,6 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     
-    var person:Person!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,14 +29,26 @@ class RegisterViewController: UIViewController {
         super.touchesBegan(touches, withEvent: event)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "signUpSuccessful" {
-            signUp()
-        }
+    @IBAction func signUpPressed(sender: AnyObject) {
+        var personURL:String!
+
+        signUp( { (error, result) -> Void in
+            if result != nil {
+                personURL = result as! String
+                self.getPerson(personURL, completion: { (error, result) -> Void in
+                    if result != nil {
+                        if let user = result as? Person {
+                            loggedInUser = user
+                            self.performSegueWithIdentifier("signUpSuccessful", sender: nil)
+                        }
+                    }
+                })
+            }
+        })
+        
     }
     
-    
-    func signUp() {
+    func signUp(completion: (error: NSError?, result: AnyObject?) -> Void) {
         
         let newPersonEndpoint = "\(PostOfficeURL)person/new"
         let parameters = ["name": "\(nameTextField.text)", "username": "\(usernameTextField.text)"]
@@ -47,31 +57,40 @@ class RegisterViewController: UIViewController {
             .response { (request, response, data, error) in
                 if let anError = error {
                     println(error)
+                    completion(error: error, result: nil)
                 }
                 else if let response: AnyObject = response {
                     if response.statusCode == 201 {
-                        println("You've registered!")
-                        var personURL:String = response.allHeaderFields["Location"] as! String
-                        println(personURL)
+                        completion(error: nil, result: response.allHeaderFields["Location"] as! String)
+                    }
+                }
+        }
+        
+    }
+    
+    func getPerson(personURL:String, completion: (error: NSError?, result: AnyObject?) -> Void) {
+        
+        Alamofire.request(.GET, personURL)
+            .response { (request, response, data, error) in
+                if let anError = error {
+                    completion(error: error, result: nil)
+                }
+                else if let response: AnyObject = response {
+                    if response.statusCode == 404 {
+                        completion(error: error, result: response.statusCode)
                     }
                 }
             }
+            .responseJSON { (_, _, JSON, error) in
+                var person:Person!
+                var response = JSON as! NSDictionary
+                var id:String = response.objectForKey("_id")!.objectForKey("$oid") as! String
+                var name:String = response.objectForKey("name") as! String
+                var username:String = response.objectForKey("username") as! String
+                person = Person(id: id, username: username, name: name, address1: nil, city: nil, state: nil, zip: nil)
+                completion(error: nil, result: person)
+        }
+        
     }
-    
-//    func logInAfterSignup(requestURL: String) -> Person {
-//        
-//    }
-    
-//    @IBAction func LogIn(sender: AnyObject) {
-//        for user in people {
-//            if user.username == UsernameTextField.text {
-//                loggedInUser = user
-//                self.dismissViewControllerAnimated(true, completion: nil)
-//            }
-//        }
-//    }
-    
-    
-    
     
 }
