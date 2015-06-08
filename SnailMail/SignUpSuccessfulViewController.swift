@@ -22,4 +22,11 @@ class SignUpSuccessfulViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    @IBAction func goToMailbox(sender: AnyObject) {
+        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
+    
 }
