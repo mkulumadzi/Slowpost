@@ -13,6 +13,7 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +36,7 @@ class RegisterViewController: UIViewController {
         signUp( { (error, result) -> Void in
             if result != nil {
                 personURL = result as! String
-                self.getPerson(personURL, completion: { (error, result) -> Void in
+                DataManager.getPerson(personURL, completion: { (error, result) -> Void in
                     if result != nil {
                         if let user = result as? Person {
                             loggedInUser = user
@@ -51,7 +52,7 @@ class RegisterViewController: UIViewController {
     func signUp(completion: (error: NSError?, result: AnyObject?) -> Void) {
         
         let newPersonEndpoint = "\(PostOfficeURL)person/new"
-        let parameters = ["name": "\(nameTextField.text)", "username": "\(usernameTextField.text)"]
+        let parameters = ["name": "\(nameTextField.text)", "username": "\(usernameTextField.text)", "password": "\(passwordTextField.text)"]
         
         Alamofire.request(.POST, newPersonEndpoint, parameters: parameters, encoding: .JSON)
             .response { (request, response, data, error) in
@@ -64,31 +65,6 @@ class RegisterViewController: UIViewController {
                         completion(error: nil, result: response.allHeaderFields["Location"] as! String)
                     }
                 }
-        }
-        
-    }
-    
-    func getPerson(personURL:String, completion: (error: NSError?, result: AnyObject?) -> Void) {
-        
-        Alamofire.request(.GET, personURL)
-            .response { (request, response, data, error) in
-                if let anError = error {
-                    completion(error: error, result: nil)
-                }
-                else if let response: AnyObject = response {
-                    if response.statusCode == 404 {
-                        completion(error: error, result: response.statusCode)
-                    }
-                }
-            }
-            .responseJSON { (_, _, JSON, error) in
-                var person:Person!
-                var response = JSON as! NSDictionary
-                var id:String = response.objectForKey("_id")!.objectForKey("$oid") as! String
-                var name:String = response.objectForKey("name") as! String
-                var username:String = response.objectForKey("username") as! String
-                person = Person(id: id, username: username, name: name, address1: nil, city: nil, state: nil, zip: nil)
-                completion(error: nil, result: person)
         }
         
     }

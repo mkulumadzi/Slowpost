@@ -7,22 +7,39 @@
 //
 
 import Foundation
+import Alamofire
 
 
 //URL for Heroku instance of PostOfice server
 let PostOfficeURL = "https://safe-ocean-2040.herokuapp.com/"
 
 class DataManager {
+   
+      class func getPerson(personURL:String, completion: (error: NSError?, result: AnyObject?) -> Void) {
     
-//    class func getAllMailWithSuccess(success: ((mailData: NSData!) -> Void)) {
-//    
-//        loadDataFromURL(NSURL(string: "\(PostOfficeURL)/mail")!, completion: {(data,error) -> Void in
-//            
-//            if let urlData = data {
-//                success(mailData: urlData)
-//            }
-//        })
-//    }
+            Alamofire.request(.GET, personURL)
+                .response { (request, response, data, error) in
+                    if let anError = error {
+                        completion(error: error, result: nil)
+                    }
+                    else if let response: AnyObject = response {
+                        if response.statusCode == 404 {
+                            completion(error: error, result: response.statusCode)
+                        }
+                    }
+                }
+                .responseJSON { (_, _, JSON, error) in
+                    var person:Person!
+                    var response = JSON as! NSDictionary
+                    var id:String = response.objectForKey("_id")!.objectForKey("$oid") as! String
+                    var name:String = response.objectForKey("name") as! String
+                    var username:String = response.objectForKey("username") as! String
+                    person = Person(id: id, username: username, name: name, address1: nil, city: nil, state: nil, zip: nil)
+                    completion(error: nil, result: person)
+            }
+            
+        }
+    
     
     class func getMyMailboxWithSuccess(success: ((mailData: NSData!) -> Void)) {
         
