@@ -54,18 +54,37 @@ class DataManager {
                     if response.statusCode == 404 {
                         completion(error: error, result: response.statusCode)
                     }
-//                    else if response.statusCode == 200 {
-//                        println(data)
-//                        completion(error: nil, result: data)
-//                    }
                 }
         }
             .responseJSON { (_, _, JSON, error) in
-                var response = JSON as! NSArray
-                println(response)
-                completion(error: nil, result: response)
+                println(JSON)
+                if let jsonResult = JSON as? Array<NSDictionary> {
+                    var people_array = [Person]()
+                    for jsonEntry in jsonResult {
+                        let id = jsonEntry.objectForKey("_id")!.objectForKey("$oid") as! String
+                        let username:String = jsonEntry.objectForKey("username") as! String
+                        let name:String = jsonEntry.objectForKey("name") as! String
+                        let address1 = jsonEntry.objectForKey("address1") as? String
+                        let city = jsonEntry.objectForKey("city") as? String
+                        let state = jsonEntry.objectForKey("state") as? String
+                        let zip = jsonEntry.objectForKey("zip") as? String
+
+                        var new_person = Person(id: id, username: username, name: name, address1: address1, city: city, state: state, zip: zip)
+                        
+                        people_array.append(new_person)
+                    }
+                    completion(error: nil, result: people_array)
+                }
+                else {
+                    println("Unexpected JSON result")
+                }
         }
     }
+    
+// TO DO: Abstract the above to create a person generically
+//    class func createPersonFromJson(jsonEntry: NSDictionary) -> Person {
+//        
+//    }
 
     class func getMyMailboxWithSuccess(success: ((mailData: NSData!) -> Void)) {
         

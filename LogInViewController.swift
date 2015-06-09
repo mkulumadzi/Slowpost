@@ -21,22 +21,6 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        //This is something that should be optimized...
-//        DataManager.getAllPeopleWithSuccess{ (peopleData) -> Void in
-//            let json = JSON(data: peopleData)
-//            
-//            for personDict in json.arrayValue {
-//                var id: String = personDict["_id"]["$oid"].stringValue
-//                var username: String = personDict["username"].stringValue
-//                var name: String = personDict["name"].stringValue
-//                
-//                var person = Person(id: id, username: username, name: name, address1: nil, city: nil, state: nil, zip: nil)
-//                
-//                people.append(person)
-//            }
-//
-//        }
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,13 +37,18 @@ class LogInViewController: UIViewController {
             }
             else if let result: AnyObject = result {
                 if result as! String == "Success" {
-                    println("Log In Succeeded")
                     DataManager.getPeople("username=\(self.UsernameTextField.text)", completion: { (error, result) -> Void in
                         if error != nil {
                             println(error)
                         }
-                        else if result != nil {
-                            println(result)
+                        else if let personArray = result as? Array<Person> {
+                            //Assume Person Array will always have only 1 entry, since username is unique... but should do a better job of handling this...
+                            loggedInUser = personArray[0]
+                            
+                            var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+                            self.presentViewController(controller, animated: true, completion: nil)
+                            
                         }
                     })
                 }
@@ -91,18 +80,6 @@ class LogInViewController: UIViewController {
         }
         
     }
-    
-//    func getLoggedInPerson {
-//        self.getPerson(personURL, completion: { (error, result) -> Void in
-//            if result != nil {
-//                if let user = result as? Person {
-//                    loggedInUser = user
-//                    self.performSegueWithIdentifier("signUpSuccessful", sender: nil)
-//                }
-//            }
-//        })
-//    }
-    
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         view.endEditing(true)
