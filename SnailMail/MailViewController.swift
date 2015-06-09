@@ -30,7 +30,7 @@ class MailViewController: UIViewController {
     }
     
     func generateMailText () -> String {
-        var mailText:String = "Dear \(loggedInUser.name),\n\n\(mail.content)\n\nSincerely,\n\n\(from.name)"
+        var mailText:String = "\(mail.content)"
         return mailText
     }
 
