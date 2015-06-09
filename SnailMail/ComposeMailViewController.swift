@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class ComposeMailViewController: UIViewController {
     
@@ -34,20 +35,31 @@ class ComposeMailViewController: UIViewController {
         super.touchesBegan(touches, withEvent: event)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "saveMail" {
-            mail = Mail(id: "foo", status: "DRAFT", from: "\(loggedInUser.username)", to: "\(toField.text)", content: "\(composeText.text)")
-        }
+    @IBAction func sendMail(sender: AnyObject) {
+        
+        sendMailToPostoffice( { (error, result) -> Void in
+            if result!.statusCode == 201 {
+                self.performSegueWithIdentifier("mailSent", sender: nil)
+            }
+        })
+        
     }
     
-    @IBAction func sendMail(sender: AnyObject) {
-        mail = Mail(id: "foo", status: "DRAFT", from: "\(loggedInUser.username)", to: "\(toField.text)", content: "\(composeText.text)")
-        
-        var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
-        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-        
-        self.presentViewController(controller, animated: true, completion: nil)
-        
+    func sendMailToPostoffice(completion: (error: NSError?, result: AnyObject?) -> Void) {
+    
+        let sendMailEndpoint = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mail/send"
+        let parameters = ["to": "\(toField.text)", "content": "\(composeText.text)"]
+    
+        Alamofire.request(.POST, sendMailEndpoint, parameters: parameters, encoding: .JSON)
+            .response { (request, response, data, error) in
+                if let anError = error {
+                    println(error)
+                    completion(error: error, result: nil)
+                }
+                else if let response: AnyObject = response {
+                    completion(error: nil, result: response)
+                }
+        }
     }
 
     /*
