@@ -13,13 +13,13 @@ import UIKit
 class Person: NSObject {
     var id:String
     var username:String
-    var name:String
+    var name:String!
     var address1:String!
     var city:String!
     var state:String!
     var zip:String!
     
-    init(id:String, username:String, name:String, address1:String?, city:String?, state:String?, zip:String?) {
+    init(id:String, username:String, name:String?, address1:String?, city:String?, state:String?, zip:String?) {
         self.id = id
         self.username = username
         self.name = name

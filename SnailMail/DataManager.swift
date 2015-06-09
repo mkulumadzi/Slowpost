@@ -70,7 +70,7 @@ class DataManager {
         
         let id = jsonEntry.objectForKey("_id")!.objectForKey("$oid") as! String
         let username:String = jsonEntry.objectForKey("username") as! String
-        let name:String = jsonEntry.objectForKey("name") as! String
+        let name = jsonEntry.objectForKey("name") as? String
         let address1 = jsonEntry.objectForKey("address1") as? String
         let city = jsonEntry.objectForKey("city") as? String
         let state = jsonEntry.objectForKey("state") as? String
@@ -80,46 +80,47 @@ class DataManager {
         
         return new_person
     }
-
-    class func getMyMailboxWithSuccess(success: ((mailData: NSData!) -> Void)) {
-        
-        loadDataFromURL(NSURL(string: "\(PostOfficeURL)/person/id/\(loggedInUser.id)/mailbox")!, completion: {(data,error) -> Void in
-            
-            if let urlData = data {
-                success(mailData: urlData)
-            }
-        })
-        
-    }
     
-    class func getAllPeopleWithSuccess(success: ((peopleData: NSData!) -> Void)) {
+    class func getMyMailbox( completion: (error: NSError?, result: AnyObject?) -> Void) {
         
-        loadDataFromURL(NSURL(string: "\(PostOfficeURL)/people")!, completion: {(data,error) -> Void in
-            
-            if let urlData = data {
-                success(peopleData:urlData)
-            }
-        })
-    }
-    
-    class func loadDataFromURL(url: NSURL, completion:(data: NSData?, error: NSError?) -> Void) {
-        var session = NSURLSession.sharedSession()
+        let mailboxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/mailbox"
         
-        // Use NSURLSession to get data from an NSURL
-        let loadDataTask = session.dataTaskWithURL(url, completionHandler: { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
-            if let responseError = error {
-                completion(data: nil, error: responseError)
-            } else if let httpResponse = response as? NSHTTPURLResponse {
-                if httpResponse.statusCode != 200 {
-                    var statusError = NSError(domain:"com.bigedubs", code:httpResponse.statusCode, userInfo:[NSLocalizedDescriptionKey : "HTTP status code has unexpected value."])
-                    completion(data: nil, error: statusError)
-                } else {
-                    completion(data: data, error: nil)
+        Alamofire.request(.GET, mailboxURL)
+            .response { (request, response, data, error) in
+                if let anError = error {
+                    completion(error: error, result: nil)
+                }
+                else if let response: AnyObject = response {
+                    if response.statusCode == 404 {
+                        completion(error: error, result: response.statusCode)
+                    }
                 }
             }
-        })
+            .responseJSON { (_, _, JSON, error) in
+                if let jsonResult = JSON as? Array<NSDictionary> {
+                    var mail_array = [Mail]()
+                    for jsonEntry in jsonResult {
+                        mail_array.append(self.createMailFromJson(jsonEntry))
+                    }
+                    completion(error: nil, result: mail_array)
+                }
+                else {
+                    println("Unexpected JSON result")
+                }
+        }
+    }
+    
+    class func createMailFromJson(jsonEntry: NSDictionary) -> Mail {
         
-        loadDataTask.resume()
+        let id = jsonEntry.objectForKey("_id")!.objectForKey("$oid") as! String
+        let status = jsonEntry.objectForKey("status") as! String
+        let from = jsonEntry.objectForKey("from") as! String
+        let to = jsonEntry.objectForKey("to") as! String
+        let content = jsonEntry.objectForKey("content") as! String
+        
+        var new_mail = Mail(id: id, status: status, from: from, to: to, content: content)
+        
+        return new_mail
     }
     
 

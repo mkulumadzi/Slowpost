@@ -14,6 +14,8 @@ class MyMailboxViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //To do: Figure out how to pause loading this view until the mailbox has finished loading
 
     }
 

@@ -9,8 +9,6 @@
 import UIKit
 import Alamofire
 
-var people = [Person]()
-
 class LogInViewController: UIViewController {
     
     @IBOutlet weak var UsernameTextField: UITextField!

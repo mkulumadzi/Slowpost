@@ -36,12 +36,12 @@ class ComposeMailViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "saveMail" {
-            mail = Mail(id: "foo", from: "\(loggedInUser.username)", to: "\(toField.text)", content: "\(composeText.text)")
+            mail = Mail(id: "foo", status: "DRAFT", from: "\(loggedInUser.username)", to: "\(toField.text)", content: "\(composeText.text)")
         }
     }
     
     @IBAction func sendMail(sender: AnyObject) {
-        mail = Mail(id: "foo", from: "\(loggedInUser.username)", to: "\(toField.text)", content: "\(composeText.text)")
+        mail = Mail(id: "foo", status: "DRAFT", from: "\(loggedInUser.username)", to: "\(toField.text)", content: "\(composeText.text)")
         
         var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
         var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController

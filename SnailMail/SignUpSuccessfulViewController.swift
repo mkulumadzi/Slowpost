@@ -13,8 +13,6 @@ class SignUpSuccessfulViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println(loggedInUser.username)
-        
     }
     
     override func didReceiveMemoryWarning() {
