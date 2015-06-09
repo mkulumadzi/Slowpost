@@ -40,7 +40,33 @@ class DataManager {
             
         }
     
-    
+    class func getPeople(parameters:String, completion: (error: NSError?, result: AnyObject?) -> Void) {
+        
+        let peopleURL = "\(PostOfficeURL)people?\(parameters)"
+        println(peopleURL)
+        
+        Alamofire.request(.GET, peopleURL)
+            .response { (request, response, data, error) in
+                if let anError = error {
+                    completion(error: error, result: nil)
+                }
+                else if let response: AnyObject = response {
+                    if response.statusCode == 404 {
+                        completion(error: error, result: response.statusCode)
+                    }
+//                    else if response.statusCode == 200 {
+//                        println(data)
+//                        completion(error: nil, result: data)
+//                    }
+                }
+        }
+            .responseJSON { (_, _, JSON, error) in
+                var response = JSON as! NSArray
+                println(response)
+                completion(error: nil, result: response)
+        }
+    }
+
     class func getMyMailboxWithSuccess(success: ((mailData: NSData!) -> Void)) {
         
         loadDataFromURL(NSURL(string: "\(PostOfficeURL)/person/id/\(loggedInUser.id)/mailbox")!, completion: {(data,error) -> Void in

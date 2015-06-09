@@ -53,7 +53,15 @@ class LogInViewController: UIViewController {
             }
             else if let result: AnyObject = result {
                 if result as! String == "Success" {
-                    println("Log in succeeded")
+                    println("Log In Succeeded")
+                    DataManager.getPeople("username=\(self.UsernameTextField.text)", completion: { (error, result) -> Void in
+                        if error != nil {
+                            println(error)
+                        }
+                        else if result != nil {
+                            println(result)
+                        }
+                    })
                 }
                 else {
                     println("Log in failed")
