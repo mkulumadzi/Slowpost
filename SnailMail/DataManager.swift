@@ -29,13 +29,10 @@ class DataManager {
                     }
                 }
                 .responseJSON { (_, _, JSON, error) in
-                    var person:Person!
-                    var response = JSON as! NSDictionary
-                    var id:String = response.objectForKey("_id")!.objectForKey("$oid") as! String
-                    var name:String = response.objectForKey("name") as! String
-                    var username:String = response.objectForKey("username") as! String
-                    person = Person(id: id, username: username, name: name, address1: nil, city: nil, state: nil, zip: nil)
-                    completion(error: nil, result: person)
+                    if let response = JSON as? NSDictionary {
+                        var person:Person! = self.createPersonFromJson(response)
+                        completion(error: nil, result: person)
+                    }
             }
             
         }
@@ -43,7 +40,6 @@ class DataManager {
     class func getPeople(parameters:String, completion: (error: NSError?, result: AnyObject?) -> Void) {
         
         let peopleURL = "\(PostOfficeURL)people?\(parameters)"
-        println(peopleURL)
         
         Alamofire.request(.GET, peopleURL)
             .response { (request, response, data, error) in
@@ -57,21 +53,10 @@ class DataManager {
                 }
         }
             .responseJSON { (_, _, JSON, error) in
-                println(JSON)
                 if let jsonResult = JSON as? Array<NSDictionary> {
                     var people_array = [Person]()
                     for jsonEntry in jsonResult {
-                        let id = jsonEntry.objectForKey("_id")!.objectForKey("$oid") as! String
-                        let username:String = jsonEntry.objectForKey("username") as! String
-                        let name:String = jsonEntry.objectForKey("name") as! String
-                        let address1 = jsonEntry.objectForKey("address1") as? String
-                        let city = jsonEntry.objectForKey("city") as? String
-                        let state = jsonEntry.objectForKey("state") as? String
-                        let zip = jsonEntry.objectForKey("zip") as? String
-
-                        var new_person = Person(id: id, username: username, name: name, address1: address1, city: city, state: state, zip: zip)
-                        
-                        people_array.append(new_person)
+                        people_array.append(self.createPersonFromJson(jsonEntry))
                     }
                     completion(error: nil, result: people_array)
                 }
@@ -81,10 +66,20 @@ class DataManager {
         }
     }
     
-// TO DO: Abstract the above to create a person generically
-//    class func createPersonFromJson(jsonEntry: NSDictionary) -> Person {
-//        
-//    }
+    class func createPersonFromJson(jsonEntry: NSDictionary) -> Person {
+        
+        let id = jsonEntry.objectForKey("_id")!.objectForKey("$oid") as! String
+        let username:String = jsonEntry.objectForKey("username") as! String
+        let name:String = jsonEntry.objectForKey("name") as! String
+        let address1 = jsonEntry.objectForKey("address1") as? String
+        let city = jsonEntry.objectForKey("city") as? String
+        let state = jsonEntry.objectForKey("state") as? String
+        let zip = jsonEntry.objectForKey("zip") as? String
+        
+        var new_person = Person(id: id, username: username, name: name, address1: address1, city: city, state: state, zip: zip)
+        
+        return new_person
+    }
 
     class func getMyMailboxWithSuccess(success: ((mailData: NSData!) -> Void)) {
         
