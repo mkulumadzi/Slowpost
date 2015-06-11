@@ -35,6 +35,14 @@ class ComposeMailViewController: UIViewController {
         super.touchesBegan(touches, withEvent: event)
     }
     
+    
+    @IBAction func cancelButtonPressed(sender: AnyObject) {
+        var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
+        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+        
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
+    
     @IBAction func sendMail(sender: AnyObject) {
         
         sendMailToPostoffice( { (error, result) -> Void in

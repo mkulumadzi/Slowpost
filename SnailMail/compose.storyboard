@@ -30,18 +30,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="To" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nUO-3F-6TE">
-                                <rect key="frame" x="56" y="358" width="262" height="30"/>
+                                <rect key="frame" x="56" y="404" width="262" height="30"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kiv-Wq-vjl">
-                                <rect key="frame" x="12" y="42" width="350" height="296"/>
+                                <rect key="frame" x="12" y="88" width="350" height="296"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCq-fq-A1t">
-                                <rect key="frame" x="56" y="404" width="262" height="30"/>
+                                <rect key="frame" x="56" y="450" width="262" height="30"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="Send">
@@ -52,6 +52,26 @@
                                     <action selector="sendMail:" destination="uNW-RF-l3y" eventType="touchUpInside" id="5Dq-ON-EHa"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWb-XX-khE">
+                                <rect key="frame" x="0.0" y="-2" width="375" height="74"/>
+                                <color key="barTintColor" red="0.1107749048" green="0.35971699099999999" blue="0.21808578870000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <navigationItem prompt="  " id="mHk-V1-sC0">
+                                        <barButtonItem key="leftBarButtonItem" style="done" id="HBn-ea-Y7m">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oeL-IF-uME">
+                                                <rect key="frame" x="16" y="7" width="24" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="close-round-white.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="cancelButtonPressed:" destination="uNW-RF-l3y" eventType="touchUpInside" id="UWK-3G-759"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -113,5 +133,6 @@
     </scenes>
     <resources>
         <image name="SnailMail Postman.png" width="2048" height="1536"/>
+        <image name="close-round-white.png" width="512" height="512"/>
     </resources>
 </document>
