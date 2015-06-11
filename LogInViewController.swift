@@ -13,6 +13,7 @@ class LogInViewController: UIViewController {
     
     @IBOutlet weak var UsernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var warningLabel: UILabel!
 
     var person:Person!
     
@@ -26,6 +27,11 @@ class LogInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+//To do: Figure out how to reset label when editing happens; this wasn't working...
+//    @IBAction func editingLogin(sender: AnyObject) {
+//        println("Firing!")
+//        self.warningLabel.text = ""
+//    }
     
     @IBAction func LogIn(sender: AnyObject) {
 
@@ -51,7 +57,7 @@ class LogInViewController: UIViewController {
                     })
                 }
                 else {
-                    println("Log in failed")
+                    self.warningLabel.text = "Invalid login"
                 }
             }
         })

@@ -122,6 +122,5 @@ class DataManager {
         
         return new_mail
     }
-    
 
 }

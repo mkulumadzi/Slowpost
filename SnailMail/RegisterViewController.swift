@@ -30,6 +30,11 @@ class RegisterViewController: UIViewController {
         super.touchesBegan(touches, withEvent: event)
     }
     
+    
+    @IBAction func cancel(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
+    
     @IBAction func signUpPressed(sender: AnyObject) {
         var personURL:String!
 
