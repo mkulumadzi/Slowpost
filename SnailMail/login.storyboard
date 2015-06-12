@@ -160,7 +160,7 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r1v-eC-hRt">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="barTintColor" red="0.1107749048" green="0.35971699099999999" blue="0.21808578870000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.10980392156862745" green="0.36078431372549019" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

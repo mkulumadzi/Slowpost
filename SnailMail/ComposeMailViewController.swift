@@ -11,11 +11,7 @@ import Alamofire
 
 class ComposeMailViewController: UIViewController {
     
-    
     @IBOutlet weak var composeText: UITextView!
-    @IBOutlet weak var toField: UITextField!
-    
-    var mail:Mail!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +31,6 @@ class ComposeMailViewController: UIViewController {
         super.touchesBegan(touches, withEvent: event)
     }
     
-    
     @IBAction func cancelButtonPressed(sender: AnyObject) {
         var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
         var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
@@ -43,32 +38,16 @@ class ComposeMailViewController: UIViewController {
         self.presentViewController(controller, animated: true, completion: nil)
     }
     
-    @IBAction func sendMail(sender: AnyObject) {
-        
-        sendMailToPostoffice( { (error, result) -> Void in
-            if result!.statusCode == 201 {
-                self.performSegueWithIdentifier("mailSent", sender: nil)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "SelectRecipient" {
+            let toViewController = segue.destinationViewController as? ToViewController
+            if let contents = composeText.text {
+                toViewController?.contents = contents
             }
-        })
-        
-    }
-    
-    func sendMailToPostoffice(completion: (error: NSError?, result: AnyObject?) -> Void) {
-    
-        let sendMailEndpoint = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mail/send"
-        let parameters = ["to": "\(toField.text)", "content": "\(composeText.text)"]
-    
-        Alamofire.request(.POST, sendMailEndpoint, parameters: parameters, encoding: .JSON)
-            .response { (request, response, data, error) in
-                if let anError = error {
-                    println(error)
-                    completion(error: error, result: nil)
-                }
-                else if let response: AnyObject = response {
-                    completion(error: nil, result: response)
-                }
         }
     }
+    
+    
 
     /*
     // MARK: - Navigation

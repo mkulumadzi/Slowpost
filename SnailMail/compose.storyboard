@@ -8,9 +8,6 @@
             <string>OpenSans-Light</string>
             <string>OpenSans-Light</string>
         </mutableArray>
-        <mutableArray key="OpenSans-Regular.ttf">
-            <string>OpenSans</string>
-        </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
@@ -29,32 +26,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="To" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nUO-3F-6TE">
-                                <rect key="frame" x="56" y="404" width="262" height="30"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kiv-Wq-vjl">
                                 <rect key="frame" x="12" y="88" width="350" height="296"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YCq-fq-A1t">
-                                <rect key="frame" x="56" y="450" width="262" height="30"/>
-                                <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                <state key="normal" title="Send">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendMail:" destination="uNW-RF-l3y" eventType="touchUpInside" id="5Dq-ON-EHa"/>
-                                </connections>
-                            </button>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yWb-XX-khE">
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWb-XX-khE">
                                 <rect key="frame" x="0.0" y="-2" width="375" height="74"/>
-                                <color key="barTintColor" red="0.1107749048" green="0.35971699099999999" blue="0.21808578870000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.10980392156862745" green="0.36078431372549019" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem prompt="  " id="mHk-V1-sC0">
                                         <barButtonItem key="leftBarButtonItem" style="done" id="HBn-ea-Y7m">
@@ -69,6 +53,18 @@
                                                 </connections>
                                             </button>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="done" id="664-rB-tQy">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Smv-vT-ERw">
+                                                <rect key="frame" x="323" y="37" width="36" height="36"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="arrow-right-c-white.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="56L-ux-Lnu" kind="show" identifier="SelectRecipient" id="khj-ii-htO"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -79,8 +75,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="composeText" destination="kiv-Wq-vjl" id="Gx8-pH-tKg"/>
-                        <outlet property="toField" destination="nUO-3F-6TE" id="vym-Xh-ZdM"/>
-                        <segue destination="xfs-yB-txn" kind="show" identifier="mailSent" id="YR3-uC-sW4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wwg-pC-olF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -125,14 +119,95 @@
                         <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="ExW-Ya-iZ9" id="0ct-Gg-xij"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KBp-5r-LFJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="ExW-Ya-iZ9">
+                    <connections>
+                        <outlet property="delegate" destination="xfs-yB-txn" id="q7r-0B-mFy"/>
+                        <outlet property="searchContentsController" destination="xfs-yB-txn" id="dzc-ev-GuH"/>
+                        <outlet property="searchResultsDataSource" destination="xfs-yB-txn" id="RXp-Pz-xYA"/>
+                        <outlet property="searchResultsDelegate" destination="xfs-yB-txn" id="zQp-Ei-0II"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="2437.5" y="973.5"/>
+            <point key="canvasLocation" x="2887.5" y="973.5"/>
+        </scene>
+        <!--To View Controller-->
+        <scene sceneID="fT4-r7-D5g">
+            <objects>
+                <viewController id="56L-ux-Lnu" customClass="ToViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DaV-in-3s9"/>
+                        <viewControllerLayoutGuide type="bottom" id="z2b-dc-6Oc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8rF-TK-R8E">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="j7P-4p-ATv">
+                                <rect key="frame" x="0.0" y="113" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1BE-gL-cIj">
+                                <rect key="frame" x="0.0" y="-5" width="375" height="74"/>
+                                <color key="barTintColor" red="0.1107749048" green="0.35971699099999999" blue="0.21808578870000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <navigationItem prompt="  " id="GGy-NX-PHU">
+                                        <barButtonItem key="leftBarButtonItem" style="done" id="LqY-Cm-V30">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HWp-TV-Zgy">
+                                                <rect key="frame" x="16" y="-204" width="36" height="36"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="arrow-left-c-white.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="backToCompose:" destination="56L-ux-Lnu" eventType="touchUpInside" id="aUY-1b-fq4"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="done" id="JYt-Ug-bwa">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zoC-Zg-29J">
+                                                <rect key="frame" x="-23" y="-15" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
+                                                <state key="normal" title="Send">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="sendMail:" destination="56L-ux-Lnu" eventType="touchUpInside" id="nKg-Uh-1kt"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <searchBar contentMode="redraw" fixedFrame="YES" text="" placeholder="email" translatesAutoresizingMaskIntoConstraints="NO" id="FXR-ug-bxD">
+                                <rect key="frame" x="0.0" y="69" width="375" height="44"/>
+                                <color key="barTintColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="toSearchField" destination="FXR-ug-bxD" id="YVg-pm-du0"/>
+                        <segue destination="xfs-yB-txn" kind="show" identifier="mailSent" id="txG-fW-qgA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UJY-Gj-eOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2388.5" y="973.5"/>
         </scene>
     </scenes>
     <resources>
         <image name="SnailMail Postman.png" width="2048" height="1536"/>
+        <image name="arrow-left-c-white.png" width="512" height="512"/>
+        <image name="arrow-right-c-white.png" width="512" height="512"/>
         <image name="close-round-white.png" width="512" height="512"/>
     </resources>
 </document>
