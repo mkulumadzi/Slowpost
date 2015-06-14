@@ -33,5 +33,9 @@ class MailViewController: UIViewController {
         var mailText:String = "\(mail.content)"
         return mailText
     }
+    
+    @IBAction func closeMailView(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
 
 }

@@ -45,6 +45,12 @@
 		D20D8ED11B2A45FE00BBF6B5 /* arrow-left-c-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8ECF1B2A45FE00BBF6B5 /* arrow-left-c-white.png */; };
 		D20D8ED21B2A45FE00BBF6B5 /* arrow-right-c-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8ED01B2A45FE00BBF6B5 /* arrow-right-c-white.png */; };
 		D20D8ED41B2A510700BBF6B5 /* ToViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D8ED31B2A510700BBF6B5 /* ToViewController.swift */; };
+		D20D8EDB1B2B384E00BBF6B5 /* compose-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8ED51B2B384E00BBF6B5 /* compose-white.png */; };
+		D20D8EDC1B2B384E00BBF6B5 /* compose.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8ED61B2B384E00BBF6B5 /* compose.png */; };
+		D20D8EDD1B2B384E00BBF6B5 /* edit.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8ED71B2B384E00BBF6B5 /* edit.png */; };
+		D20D8EDE1B2B384E00BBF6B5 /* ios7-compose-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8ED81B2B384E00BBF6B5 /* ios7-compose-outline.png */; };
+		D20D8EDF1B2B384E00BBF6B5 /* ios7-compose.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8ED91B2B384E00BBF6B5 /* ios7-compose.png */; };
+		D20D8EE01B2B384E00BBF6B5 /* plus-round.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8EDA1B2B384E00BBF6B5 /* plus-round.png */; };
 		D25A9C9C1B2259D300ABBBA4 /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C911B2259D300ABBBA4 /* Apache License.txt */; };
 		D25A9C9D1B2259D300ABBBA4 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */; };
 		D25A9C9E1B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */; };
@@ -118,6 +124,12 @@
 		D20D8ECF1B2A45FE00BBF6B5 /* arrow-left-c-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-left-c-white.png"; sourceTree = "<group>"; };
 		D20D8ED01B2A45FE00BBF6B5 /* arrow-right-c-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-right-c-white.png"; sourceTree = "<group>"; };
 		D20D8ED31B2A510700BBF6B5 /* ToViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToViewController.swift; sourceTree = "<group>"; };
+		D20D8ED51B2B384E00BBF6B5 /* compose-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compose-white.png"; sourceTree = "<group>"; };
+		D20D8ED61B2B384E00BBF6B5 /* compose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compose.png; sourceTree = "<group>"; };
+		D20D8ED71B2B384E00BBF6B5 /* edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = edit.png; sourceTree = "<group>"; };
+		D20D8ED81B2B384E00BBF6B5 /* ios7-compose-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-compose-outline.png"; sourceTree = "<group>"; };
+		D20D8ED91B2B384E00BBF6B5 /* ios7-compose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-compose.png"; sourceTree = "<group>"; };
+		D20D8EDA1B2B384E00BBF6B5 /* plus-round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-round.png"; sourceTree = "<group>"; };
 		D25A9C911B2259D300ABBBA4 /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apache License.txt"; sourceTree = "<group>"; };
 		D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -210,6 +222,12 @@
 		CC96E4A31ABCD5AB001E6D27 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D20D8ED51B2B384E00BBF6B5 /* compose-white.png */,
+				D20D8ED61B2B384E00BBF6B5 /* compose.png */,
+				D20D8ED71B2B384E00BBF6B5 /* edit.png */,
+				D20D8ED81B2B384E00BBF6B5 /* ios7-compose-outline.png */,
+				D20D8ED91B2B384E00BBF6B5 /* ios7-compose.png */,
+				D20D8EDA1B2B384E00BBF6B5 /* plus-round.png */,
 				D20D8ECF1B2A45FE00BBF6B5 /* arrow-left-c-white.png */,
 				D20D8ED01B2A45FE00BBF6B5 /* arrow-right-c-white.png */,
 				D20D8ECD1B2A2C1500BBF6B5 /* close-round-white.png */,
@@ -415,30 +433,36 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC23DE2A1AE54C0300AFEDE4 /* login.storyboard in Resources */,
+				D20D8EDF1B2B384E00BBF6B5 /* ios7-compose.png in Resources */,
 				D25A9CA01B2259D300ABBBA4 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				D25A9C9C1B2259D300ABBBA4 /* Apache License.txt in Resources */,
 				D25A9CA21B2259D300ABBBA4 /* OpenSans-Light.ttf in Resources */,
+				D20D8EDC1B2B384E00BBF6B5 /* compose.png in Resources */,
 				CC96E4C31AC0AF43001E6D27 /* compose_small_white.png in Resources */,
 				D20D8ED11B2A45FE00BBF6B5 /* arrow-left-c-white.png in Resources */,
 				CCCB1A581AB0D48A0067F100 /* Main.storyboard in Resources */,
 				D20D8ECA1B27A3B400BBF6B5 /* close.png in Resources */,
+				D20D8EDE1B2B384E00BBF6B5 /* ios7-compose-outline.png in Resources */,
 				CC23DE2C1AE54C1A00AFEDE4 /* mailbox.storyboard in Resources */,
 				CC96E4C11AC0AE16001E6D27 /* mailbox_small_white.png in Resources */,
 				CC96E4BB1AC0A7FA001E6D27 /* snailmail_without_background_large.png in Resources */,
 				CCCB1A5D1AB0D48A0067F100 /* LaunchScreen.xib in Resources */,
 				D25A9CA41B2259D300ABBBA4 /* OpenSans-Regular.ttf in Resources */,
 				D25A9CA11B2259D300ABBBA4 /* OpenSans-Italic.ttf in Resources */,
+				D20D8EDB1B2B384E00BBF6B5 /* compose-white.png in Resources */,
 				D25A9CB01B26024100ABBBA4 /* SnailMail Postman.png in Resources */,
 				D25A9CA51B2259D300ABBBA4 /* OpenSans-Semibold.ttf in Resources */,
 				D20D8EC21B27A39100BBF6B5 /* arrow-down-c.png in Resources */,
 				D25A9CA61B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				D25A9C9D1B2259D300ABBBA4 /* OpenSans-Bold.ttf in Resources */,
+				D20D8EDD1B2B384E00BBF6B5 /* edit.png in Resources */,
 				D25A9C9E1B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf in Resources */,
 				CC23DE2E1AE54C2B00AFEDE4 /* compose.storyboard in Resources */,
 				D25A9CA31B2259D300ABBBA4 /* OpenSans-LightItalic.ttf in Resources */,
 				D25A9C9F1B2259D300ABBBA4 /* OpenSans-ExtraBold.ttf in Resources */,
 				CC96E4BE1AC0A7FA001E6D27 /* snail_mail_without_background_small.png in Resources */,
 				D20D8ECE1B2A2C1500BBF6B5 /* close-round-white.png in Resources */,
+				D20D8EE01B2B384E00BBF6B5 /* plus-round.png in Resources */,
 				D20D8EC81B27A3A900BBF6B5 /* arrow-up-c.png in Resources */,
 				CC23DE311AE5555800AFEDE4 /* 037_Pen.png in Resources */,
 				CCCB1A5A1AB0D48A0067F100 /* Images.xcassets in Resources */,
