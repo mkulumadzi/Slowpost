@@ -9,13 +9,19 @@
 import UIKit
 import Alamofire
 
-class ToViewController: UIViewController {
+class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var contents:String!
+    var toUsername:String!
+    var toList: [Person] = []
+    
     @IBOutlet weak var toSearchField: UISearchBar!
+    @IBOutlet weak var toPersonList: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        toList = people
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,7 +50,7 @@ class ToViewController: UIViewController {
     func sendMailToPostoffice(completion: (error: NSError?, result: AnyObject?) -> Void) {
         
         let sendMailEndpoint = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mail/send"
-        let parameters = ["to": "\(toSearchField.text)", "content": "\(contents)"]
+        let parameters = ["to": "\(toUsername)", "content": "\(contents)"]
         
         Alamofire.request(.POST, sendMailEndpoint, parameters: parameters, encoding: .JSON)
             .response { (request, response, data, error) in
@@ -60,6 +66,31 @@ class ToViewController: UIViewController {
     
     @IBAction func backToCompose(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: {})
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return toList.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("personCell", forIndexPath: indexPath) as? PersonCell
+        
+        let person = toList[indexPath.row] as Person
+        cell?.personNameLabel.text = person.name
+        cell?.usernameLabel.text = person.username
+        
+        return cell!
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let person = toList[indexPath.row] as Person
+        
+        toUsername = person.username
+        
     }
     
 //    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

@@ -51,6 +51,7 @@
 		D20D8EDE1B2B384E00BBF6B5 /* ios7-compose-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8ED81B2B384E00BBF6B5 /* ios7-compose-outline.png */; };
 		D20D8EDF1B2B384E00BBF6B5 /* ios7-compose.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8ED91B2B384E00BBF6B5 /* ios7-compose.png */; };
 		D20D8EE01B2B384E00BBF6B5 /* plus-round.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8EDA1B2B384E00BBF6B5 /* plus-round.png */; };
+		D20D8EE21B2E448100BBF6B5 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D8EE11B2E448100BBF6B5 /* PersonCell.swift */; };
 		D25A9C9C1B2259D300ABBBA4 /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C911B2259D300ABBBA4 /* Apache License.txt */; };
 		D25A9C9D1B2259D300ABBBA4 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */; };
 		D25A9C9E1B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */; };
@@ -130,6 +131,7 @@
 		D20D8ED81B2B384E00BBF6B5 /* ios7-compose-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-compose-outline.png"; sourceTree = "<group>"; };
 		D20D8ED91B2B384E00BBF6B5 /* ios7-compose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-compose.png"; sourceTree = "<group>"; };
 		D20D8EDA1B2B384E00BBF6B5 /* plus-round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-round.png"; sourceTree = "<group>"; };
+		D20D8EE11B2E448100BBF6B5 /* PersonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 		D25A9C911B2259D300ABBBA4 /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apache License.txt"; sourceTree = "<group>"; };
 		D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				CC96E4C81AC0B334001E6D27 /* ComposeMailViewController.swift */,
 				D20088861B27750C004657C4 /* MailSentViewController.swift */,
 				D20D8ED31B2A510700BBF6B5 /* ToViewController.swift */,
+				D20D8EE11B2E448100BBF6B5 /* PersonCell.swift */,
 			);
 			name = Compose;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				D20088871B27750C004657C4 /* MailSentViewController.swift in Sources */,
 				CC6105F51AC3941900D15150 /* DataManager.swift in Sources */,
 				D25A9CB21B261D2400ABBBA4 /* SignUpSuccessfulViewController.swift in Sources */,
+				D20D8EE21B2E448100BBF6B5 /* PersonCell.swift in Sources */,
 				CCCB1A551AB0D48A0067F100 /* ViewController.swift in Sources */,
 				CC7DFB401AE473BF0062BD07 /* SwiftyJSON.swift in Sources */,
 				D25A9CAC1B225D3400ABBBA4 /* RegisterViewController.swift in Sources */,
