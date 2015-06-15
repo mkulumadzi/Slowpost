@@ -71,6 +71,7 @@
 		D2D8662E1B2F50D300847051 /* ios7-email-outline-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D8662D1B2F50D300847051 /* ios7-email-outline-white.png */; };
 		D2D866311B2F52A600847051 /* profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2D866301B2F52A600847051 /* profile.storyboard */; };
 		D2D866331B2F52EB00847051 /* ViewProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D866321B2F52EB00847051 /* ViewProfileViewController.swift */; };
+		D2D866351B2F5A7300847051 /* dancingBanana.gif in Resources */ = {isa = PBXBuildFile; fileRef = D2D866341B2F5A7300847051 /* dancingBanana.gif */; };
 		D3CA1197D3BE0D4C283DA039 /* Pods_SnailMail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48D46F0C7DC76E3F2B153DC /* Pods_SnailMail.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -156,6 +157,7 @@
 		D2D8662D1B2F50D300847051 /* ios7-email-outline-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-email-outline-white.png"; sourceTree = "<group>"; };
 		D2D866301B2F52A600847051 /* profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = profile.storyboard; sourceTree = "<group>"; };
 		D2D866321B2F52EB00847051 /* ViewProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProfileViewController.swift; sourceTree = "<group>"; };
+		D2D866341B2F5A7300847051 /* dancingBanana.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = dancingBanana.gif; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +238,7 @@
 		CC96E4A31ABCD5AB001E6D27 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D2D866341B2F5A7300847051 /* dancingBanana.gif */,
 				D2D8662D1B2F50D300847051 /* ios7-email-outline-white.png */,
 				D2D8662B1B2F50CC00847051 /* ios7-contact-outline-white.png */,
 				D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */,
@@ -485,6 +488,7 @@
 				D20D8EC21B27A39100BBF6B5 /* arrow-down-c.png in Resources */,
 				D25A9CA61B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				D25A9C9D1B2259D300ABBBA4 /* OpenSans-Bold.ttf in Resources */,
+				D2D866351B2F5A7300847051 /* dancingBanana.gif in Resources */,
 				D20D8EDD1B2B384E00BBF6B5 /* edit.png in Resources */,
 				D25A9C9E1B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf in Resources */,
 				CC23DE2E1AE54C2B00AFEDE4 /* compose.storyboard in Resources */,
