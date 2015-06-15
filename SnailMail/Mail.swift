@@ -15,13 +15,15 @@ class Mail: NSObject {
     var from:String
     var to:String
     var content:String
+    var cardId:String?
     
-    init(id:String, status:String, from:String, to:String, content:String) {
+    init(id:String, status:String, from:String, to:String, content:String, cardId:String?) {
         self.id = id
         self.status = status
         self.from = from
         self.to = to
         self.content = content
+        self.cardId = cardId!
         super.init()
     }
 }

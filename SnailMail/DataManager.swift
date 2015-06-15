@@ -119,7 +119,8 @@ class DataManager {
         let to = jsonEntry.objectForKey("to") as! String
         let content = jsonEntry.objectForKey("content") as! String
         
-        var new_mail = Mail(id: id, status: status, from: from, to: to, content: content)
+        //To Do: Allow card ID to be set
+        var new_mail = Mail(id: id, status: status, from: from, to: to, content: content, cardId: nil)
         
         return new_mail
     }

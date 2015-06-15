@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     var contents:String!
     var toUsername:String!
@@ -29,13 +29,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         // Dispose of any resources that can be recreated.
     }
     
-//    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        return 1
-//    }
-//    
-//    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 1
-//    }
     
     @IBAction func sendMail(sender: AnyObject) {
         
@@ -45,6 +38,29 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             }
         })
         
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        println("Editing began!")
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        var newArray:[Person] = toList.filter() {
+            self.listMatches(self.toSearchField.text, inString: $0.username).count >= 1
+        }
+        toList = newArray
+        self.toPersonList.reloadData()
+    }
+    
+    func listMatches(pattern: String, inString string: String) -> [String] {
+        let regex = NSRegularExpression(pattern: pattern, options: .allZeros, error: nil)
+        let range = NSMakeRange(0, count(string))
+        let matches = regex?.matchesInString(string, options: .allZeros, range: range) as! [NSTextCheckingResult]
+        
+        return matches.map {
+            let range = $0.range
+            return (string as NSString).substringWithRange(range)
+        }
     }
     
     func sendMailToPostoffice(completion: (error: NSError?, result: AnyObject?) -> Void) {
@@ -92,52 +108,5 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         toUsername = person.username
         
     }
-    
-//    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCellWithIdentifier("MailCell", forIndexPath: indexPath) as? MailCell
-//        
-//        let mail = mailbox[indexPath.row] as Mail
-//        let fromPerson = getPerson(mail.from)
-//        
-//        cell?.mail = mail
-//        cell?.from = fromPerson
-//        cell?.fromLabel.text = "From: \(fromPerson.name)"
-//        
-//        return cell!
-//        
-//    }
-//    
-//    //I'm sure there is a better way to do this...
-//    func getPerson(username: String) -> Person {
-//        var person_to_get:Person!
-//        for person in people {
-//            if person.username == username {
-//                person_to_get = person
-//            }
-//        }
-//        return person_to_get
-//    }
-//    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "viewMail" {
-//            let mailViewController = segue.destinationViewController as? MailViewController
-//            if let mailCell = sender as? MailCell {
-//                mailViewController?.mail = mailCell.mail
-//                mailViewController?.from = mailCell.from
-//                
-//            }
-//        }
-//    }
-//    
-//    
-//    @IBAction func Compose(sender: AnyObject) {
-//        
-//        var storyboard = UIStoryboard(name: "compose", bundle: nil)
-//        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-//        
-//        self.presentViewController(controller, animated: true, completion: nil)
-//        
-//        
-//    }
     
 }
