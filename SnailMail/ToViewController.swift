@@ -44,10 +44,14 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
         toList = people
-        var newArray:[Person] = toList.filter() {
-            self.listMatches(self.toSearchField.text, inString: $0.username).count >= 1 || self.listMatches(self.toSearchField.text, inString: $0.name).count >= 1
+        
+        if self.toSearchField.text.isEmpty == false {
+            var newArray:[Person] = toList.filter() {
+                self.listMatches(self.toSearchField.text, inString: $0.username).count >= 1 || self.listMatches(self.toSearchField.text, inString: $0.name).count >= 1
+            }
+            toList = newArray
         }
-        toList = newArray
+        
         self.toPersonList.reloadData()
     }
     
