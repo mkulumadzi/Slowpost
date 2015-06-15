@@ -50,6 +50,9 @@
                                 <state key="normal" image="log-out-white.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="logOut:" destination="g8k-5t-a0b" eventType="touchUpInside" id="TJm-Uk-Mub"/>
+                                </connections>
                             </button>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fkV-9t-uOF">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>

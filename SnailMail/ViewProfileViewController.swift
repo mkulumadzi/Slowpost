@@ -57,5 +57,15 @@ class ViewProfileViewController: UIViewController {
         self.presentViewController(controller, animated: true, completion: nil)
     }
 
+    @IBAction func logOut(sender: AnyObject) {
+        loggedInUser = nil
+        
+        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+        
+        self.presentViewController(controller, animated: true, completion: nil)
+        
+        
+    }
 
 }
