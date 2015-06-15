@@ -11,7 +11,8 @@ import UIKit
 class MailViewController: UIViewController {
     
 
-    @IBOutlet weak var mailText: UILabel!
+    
+    @IBOutlet weak var mailText: UITextView!
     
     var mail:Mail!
     var from:Person!

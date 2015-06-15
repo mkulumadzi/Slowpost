@@ -78,6 +78,7 @@
 		D2D8663F1B2F62B200847051 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */; };
 		D2D866411B2F6F7700847051 /* ios7-email-outline-light-yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866401B2F6F7700847051 /* ios7-email-outline-light-yellow.png */; };
 		D2D866431B2F6FD500847051 /* ios7-contact-outline-light-yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866421B2F6FD500847051 /* ios7-contact-outline-light-yellow.png */; };
+		D2D866461B2F77BE00847051 /* SnailMail at the Beach.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866451B2F77BE00847051 /* SnailMail at the Beach.png */; };
 		D3CA1197D3BE0D4C283DA039 /* Pods_SnailMail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48D46F0C7DC76E3F2B153DC /* Pods_SnailMail.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -170,6 +171,7 @@
 		D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		D2D866401B2F6F7700847051 /* ios7-email-outline-light-yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-email-outline-light-yellow.png"; sourceTree = "<group>"; };
 		D2D866421B2F6FD500847051 /* ios7-contact-outline-light-yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-contact-outline-light-yellow.png"; sourceTree = "<group>"; };
+		D2D866451B2F77BE00847051 /* SnailMail at the Beach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnailMail at the Beach.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +311,7 @@
 		CCCB1A4F1AB0D48A0067F100 /* SnailMail */ = {
 			isa = PBXGroup;
 			children = (
+				D2D866441B2F77B200847051 /* Postcards */,
 				D25A9C741B2256D400ABBBA4 /* Fonts */,
 				CC23DE2F1AE54C4900AFEDE4 /* Models */,
 				CC23DE241AE54BB100AFEDE4 /* Features */,
@@ -376,6 +379,14 @@
 				D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */,
 			);
 			name = Profile;
+			sourceTree = "<group>";
+		};
+		D2D866441B2F77B200847051 /* Postcards */ = {
+			isa = PBXGroup;
+			children = (
+				D2D866451B2F77BE00847051 /* SnailMail at the Beach.png */,
+			);
+			name = Postcards;
 			sourceTree = "<group>";
 		};
 		D5068536573A35C154CCA1CF /* Pods */ = {
@@ -522,6 +533,7 @@
 				D20D8EE01B2B384E00BBF6B5 /* plus-round.png in Resources */,
 				D2D866371B2F5B8D00847051 /* log-out.png in Resources */,
 				D20D8EC81B27A3A900BBF6B5 /* arrow-up-c.png in Resources */,
+				D2D866461B2F77BE00847051 /* SnailMail at the Beach.png in Resources */,
 				CC23DE311AE5555800AFEDE4 /* 037_Pen.png in Resources */,
 				CCCB1A5A1AB0D48A0067F100 /* Images.xcassets in Resources */,
 				D20D8EC61B27A3A000BBF6B5 /* arrow-right-c.png in Resources */,
