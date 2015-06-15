@@ -64,6 +64,13 @@
 		D25A9CAC1B225D3400ABBBA4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25A9CAB1B225D3400ABBBA4 /* RegisterViewController.swift */; };
 		D25A9CB01B26024100ABBBA4 /* SnailMail Postman.png in Resources */ = {isa = PBXBuildFile; fileRef = D25A9CAF1B26024100ABBBA4 /* SnailMail Postman.png */; };
 		D25A9CB21B261D2400ABBBA4 /* SignUpSuccessfulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25A9CB11B261D2400ABBBA4 /* SignUpSuccessfulViewController.swift */; };
+		D2D866261B2F4AF800847051 /* ios7-person-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866251B2F4AF800847051 /* ios7-person-outline.png */; };
+		D2D866281B2F4B1C00847051 /* ios7-email-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866271B2F4B1C00847051 /* ios7-email-outline.png */; };
+		D2D8662A1B2F4B7F00847051 /* ios7-contact-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */; };
+		D2D8662C1B2F50CC00847051 /* ios7-contact-outline-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D8662B1B2F50CC00847051 /* ios7-contact-outline-white.png */; };
+		D2D8662E1B2F50D300847051 /* ios7-email-outline-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D8662D1B2F50D300847051 /* ios7-email-outline-white.png */; };
+		D2D866311B2F52A600847051 /* profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2D866301B2F52A600847051 /* profile.storyboard */; };
+		D2D866331B2F52EB00847051 /* ViewProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D866321B2F52EB00847051 /* ViewProfileViewController.swift */; };
 		D3CA1197D3BE0D4C283DA039 /* Pods_SnailMail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48D46F0C7DC76E3F2B153DC /* Pods_SnailMail.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -142,6 +149,13 @@
 		D25A9CAB1B225D3400ABBBA4 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D25A9CAF1B26024100ABBBA4 /* SnailMail Postman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnailMail Postman.png"; sourceTree = "<group>"; };
 		D25A9CB11B261D2400ABBBA4 /* SignUpSuccessfulViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpSuccessfulViewController.swift; sourceTree = "<group>"; };
+		D2D866251B2F4AF800847051 /* ios7-person-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-person-outline.png"; sourceTree = "<group>"; };
+		D2D866271B2F4B1C00847051 /* ios7-email-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-email-outline.png"; sourceTree = "<group>"; };
+		D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-contact-outline.png"; sourceTree = "<group>"; };
+		D2D8662B1B2F50CC00847051 /* ios7-contact-outline-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-contact-outline-white.png"; sourceTree = "<group>"; };
+		D2D8662D1B2F50D300847051 /* ios7-email-outline-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-email-outline-white.png"; sourceTree = "<group>"; };
+		D2D866301B2F52A600847051 /* profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = profile.storyboard; sourceTree = "<group>"; };
+		D2D866321B2F52EB00847051 /* ViewProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +180,7 @@
 		CC23DE241AE54BB100AFEDE4 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D2D8662F1B2F528C00847051 /* Profile */,
 				CC23DE281AE54BD100AFEDE4 /* Compose */,
 				CC23DE271AE54BC700AFEDE4 /* Mailbox */,
 				CC23DE251AE54BB800AFEDE4 /* Login */,
@@ -221,6 +236,11 @@
 		CC96E4A31ABCD5AB001E6D27 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D2D8662D1B2F50D300847051 /* ios7-email-outline-white.png */,
+				D2D8662B1B2F50CC00847051 /* ios7-contact-outline-white.png */,
+				D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */,
+				D2D866271B2F4B1C00847051 /* ios7-email-outline.png */,
+				D2D866251B2F4AF800847051 /* ios7-person-outline.png */,
 				D20D8ED51B2B384E00BBF6B5 /* compose-white.png */,
 				D20D8ED61B2B384E00BBF6B5 /* compose.png */,
 				D20D8ED71B2B384E00BBF6B5 /* edit.png */,
@@ -328,6 +348,15 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		D2D8662F1B2F528C00847051 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D2D866301B2F52A600847051 /* profile.storyboard */,
+				D2D866321B2F52EB00847051 /* ViewProfileViewController.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		D5068536573A35C154CCA1CF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,9 +460,11 @@
 			files = (
 				CC23DE2A1AE54C0300AFEDE4 /* login.storyboard in Resources */,
 				D20D8EDF1B2B384E00BBF6B5 /* ios7-compose.png in Resources */,
+				D2D866311B2F52A600847051 /* profile.storyboard in Resources */,
 				D25A9CA01B2259D300ABBBA4 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				D25A9C9C1B2259D300ABBBA4 /* Apache License.txt in Resources */,
 				D25A9CA21B2259D300ABBBA4 /* OpenSans-Light.ttf in Resources */,
+				D2D866281B2F4B1C00847051 /* ios7-email-outline.png in Resources */,
 				D20D8EDC1B2B384E00BBF6B5 /* compose.png in Resources */,
 				CC96E4C31AC0AF43001E6D27 /* compose_small_white.png in Resources */,
 				D20D8ED11B2A45FE00BBF6B5 /* arrow-left-c-white.png in Resources */,
@@ -445,10 +476,12 @@
 				CC96E4BB1AC0A7FA001E6D27 /* snailmail_without_background_large.png in Resources */,
 				CCCB1A5D1AB0D48A0067F100 /* LaunchScreen.xib in Resources */,
 				D25A9CA41B2259D300ABBBA4 /* OpenSans-Regular.ttf in Resources */,
+				D2D8662E1B2F50D300847051 /* ios7-email-outline-white.png in Resources */,
 				D25A9CA11B2259D300ABBBA4 /* OpenSans-Italic.ttf in Resources */,
 				D20D8EDB1B2B384E00BBF6B5 /* compose-white.png in Resources */,
 				D25A9CB01B26024100ABBBA4 /* SnailMail Postman.png in Resources */,
 				D25A9CA51B2259D300ABBBA4 /* OpenSans-Semibold.ttf in Resources */,
+				D2D8662C1B2F50CC00847051 /* ios7-contact-outline-white.png in Resources */,
 				D20D8EC21B27A39100BBF6B5 /* arrow-down-c.png in Resources */,
 				D25A9CA61B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				D25A9C9D1B2259D300ABBBA4 /* OpenSans-Bold.ttf in Resources */,
@@ -458,12 +491,14 @@
 				D25A9CA31B2259D300ABBBA4 /* OpenSans-LightItalic.ttf in Resources */,
 				D25A9C9F1B2259D300ABBBA4 /* OpenSans-ExtraBold.ttf in Resources */,
 				CC96E4BE1AC0A7FA001E6D27 /* snail_mail_without_background_small.png in Resources */,
+				D2D866261B2F4AF800847051 /* ios7-person-outline.png in Resources */,
 				D20D8ECE1B2A2C1500BBF6B5 /* close-round-white.png in Resources */,
 				D20D8EE01B2B384E00BBF6B5 /* plus-round.png in Resources */,
 				D20D8EC81B27A3A900BBF6B5 /* arrow-up-c.png in Resources */,
 				CC23DE311AE5555800AFEDE4 /* 037_Pen.png in Resources */,
 				CCCB1A5A1AB0D48A0067F100 /* Images.xcassets in Resources */,
 				D20D8EC61B27A3A000BBF6B5 /* arrow-right-c.png in Resources */,
+				D2D8662A1B2F4B7F00847051 /* ios7-contact-outline.png in Resources */,
 				D20D8EC41B27A39900BBF6B5 /* arrow-left-c.png in Resources */,
 				D20D8ED21B2A45FE00BBF6B5 /* arrow-right-c-white.png in Resources */,
 				CC23DE331AE555AB00AFEDE4 /* 037_Pen_2x.png in Resources */,
@@ -545,6 +580,7 @@
 				CC96E4A01ABCCBF2001E6D27 /* LogInViewController.swift in Sources */,
 				D20D8ED41B2A510700BBF6B5 /* ToViewController.swift in Sources */,
 				CC96E4AD1ABCDEB5001E6D27 /* MailCell.swift in Sources */,
+				D2D866331B2F52EB00847051 /* ViewProfileViewController.swift in Sources */,
 				D20D8ECC1B27A84B00BBF6B5 /* PersonalDetailsViewController.swift in Sources */,
 				CCCB1A771AB0D9930067F100 /* SampleData.swift in Sources */,
 				CC96E49C1ABCC8EB001E6D27 /* WelcomeScreenViewController.swift in Sources */,

@@ -43,45 +43,28 @@ class WelcomeScreenViewController: UIViewController {
                 }
                 else if let mailArray = result as? Array<Mail> {
                     mailbox = mailArray
+                    //Get all peoplle records
+                    DataManager.getPeople("", completion: { (error, result) -> Void in
+                        if error != nil {
+                            println(error)
+                        }
+                        else if let peopleArray = result as? Array<Person> {
+                            people = peopleArray
+                            self.goToHomeScreen()
+                        }
+                    })
                 }
             })
-            
-            //Get all peoplle records
-            DataManager.getPeople("", completion: { (error, result) -> Void in
-                if error != nil {
-                    println(error)
-                }
-                else if let peopleArray = result as? Array<Person> {
-                    people = peopleArray
-                }
-            })
-                
-                
-//            DataManager.getMyMailboxWithSuccess{ (mailData) -> Void in
-//                let json = JSON(data: mailData)
-//                
-//                for mailDict in json.arrayValue {
-//                    var id: String = mailDict["_id"]["$oid"].stringValue
-//                    var from: String = mailDict["from"].stringValue
-//                    var to: String = mailDict["to"].stringValue
-//                    var content: String = mailDict["content"].stringValue
-//                    
-//                    var mail = Mail(id: id, from: from, to: to, content: content)
-//                    
-//                    mailbox.append(mail)
-//                }
-//                
-//            }
-            
-            //performSegueWithIdentifier("GoToHomeScreen", sender: self)
-            
-            var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
-            var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-            
-            self.presentViewController(controller, animated: true, completion: nil)
             
             
         }
+    }
+    
+    func goToHomeScreen() {
+        var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
+        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+        
+        self.presentViewController(controller, animated: true, completion: nil)
     }
     
     

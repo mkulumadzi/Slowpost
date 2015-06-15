@@ -10,6 +10,7 @@ import UIKit
 
 class MailCell: UITableViewCell {
 
+
     @IBOutlet weak var fromLabel: UILabel!
     
     var mail:Mail!

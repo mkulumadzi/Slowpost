@@ -8,9 +8,9 @@
 
 import UIKit
 
-class MyMailboxViewController: UITableViewController {
+class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
-    @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var mailTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,15 +24,15 @@ class MyMailboxViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mailbox.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MailCell", forIndexPath: indexPath) as? MailCell
         
         let mail = mailbox[indexPath.row] as Mail
@@ -76,6 +76,15 @@ class MyMailboxViewController: UITableViewController {
         
         self.presentViewController(controller, animated: true, completion: nil)
         
+    }
+    
+    
+    @IBAction func Profile(sender: AnyObject) {
+        
+        var storyboard = UIStoryboard(name: "profile", bundle: nil)
+        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+        
+        self.presentViewController(controller, animated: false, completion: nil)
         
     }
 
