@@ -40,10 +40,21 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         
         cell?.mail = mail
         cell?.from = fromPerson
-        cell?.fromLabel.text = "From: \(fromPerson.name)"
+        cell?.fromLabel.text = fromPerson.name
+        
+        cell?.mailImage.image = getImage(mail)
         
         return cell!
         
+    }
+    
+    func getImage(mail: Mail) -> UIImage {
+        if mail.image != nil {
+            if let image = UIImage(named: mail.image) {
+                return image
+            }
+        }
+        return UIImage(named: "Default Card.png")!
     }
     
     //I'm sure there is a better way to do this...

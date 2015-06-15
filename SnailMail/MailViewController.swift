@@ -35,6 +35,7 @@ class MailViewController: UIViewController {
         return mailText
     }
     
+    //To Do: Abstract this function into a separate class.
     func getImage() -> UIImage {
         if mail.image != nil {
             if let image = UIImage(named: mail.image) {

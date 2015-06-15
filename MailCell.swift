@@ -12,13 +12,14 @@ class MailCell: UITableViewCell {
 
 
     @IBOutlet weak var fromLabel: UILabel!
+    @IBOutlet weak var mailImage: UIImageView!
     
     var mail:Mail!
     var from:Person!
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
