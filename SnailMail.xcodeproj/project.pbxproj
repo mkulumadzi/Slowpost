@@ -72,6 +72,10 @@
 		D2D866311B2F52A600847051 /* profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2D866301B2F52A600847051 /* profile.storyboard */; };
 		D2D866331B2F52EB00847051 /* ViewProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D866321B2F52EB00847051 /* ViewProfileViewController.swift */; };
 		D2D866351B2F5A7300847051 /* dancingBanana.gif in Resources */ = {isa = PBXBuildFile; fileRef = D2D866341B2F5A7300847051 /* dancingBanana.gif */; };
+		D2D866371B2F5B8D00847051 /* log-out.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866361B2F5B8D00847051 /* log-out.png */; };
+		D2D866391B2F5DF900847051 /* log-out-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866381B2F5DF900847051 /* log-out-white.png */; };
+		D2D8663D1B2F5F4A00847051 /* edit-grey.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D8663C1B2F5F4A00847051 /* edit-grey.png */; };
+		D2D8663F1B2F62B200847051 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */; };
 		D3CA1197D3BE0D4C283DA039 /* Pods_SnailMail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48D46F0C7DC76E3F2B153DC /* Pods_SnailMail.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -158,6 +162,10 @@
 		D2D866301B2F52A600847051 /* profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = profile.storyboard; sourceTree = "<group>"; };
 		D2D866321B2F52EB00847051 /* ViewProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProfileViewController.swift; sourceTree = "<group>"; };
 		D2D866341B2F5A7300847051 /* dancingBanana.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = dancingBanana.gif; sourceTree = "<group>"; };
+		D2D866361B2F5B8D00847051 /* log-out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log-out.png"; sourceTree = "<group>"; };
+		D2D866381B2F5DF900847051 /* log-out-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log-out-white.png"; sourceTree = "<group>"; };
+		D2D8663C1B2F5F4A00847051 /* edit-grey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-grey.png"; sourceTree = "<group>"; };
+		D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +246,9 @@
 		CC96E4A31ABCD5AB001E6D27 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D2D8663C1B2F5F4A00847051 /* edit-grey.png */,
+				D2D866381B2F5DF900847051 /* log-out-white.png */,
+				D2D866361B2F5B8D00847051 /* log-out.png */,
 				D2D866341B2F5A7300847051 /* dancingBanana.gif */,
 				D2D8662D1B2F50D300847051 /* ios7-email-outline-white.png */,
 				D2D8662B1B2F50CC00847051 /* ios7-contact-outline-white.png */,
@@ -356,6 +367,7 @@
 			children = (
 				D2D866301B2F52A600847051 /* profile.storyboard */,
 				D2D866321B2F52EB00847051 /* ViewProfileViewController.swift */,
+				D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -471,6 +483,7 @@
 				D20D8EDC1B2B384E00BBF6B5 /* compose.png in Resources */,
 				CC96E4C31AC0AF43001E6D27 /* compose_small_white.png in Resources */,
 				D20D8ED11B2A45FE00BBF6B5 /* arrow-left-c-white.png in Resources */,
+				D2D8663D1B2F5F4A00847051 /* edit-grey.png in Resources */,
 				CCCB1A581AB0D48A0067F100 /* Main.storyboard in Resources */,
 				D20D8ECA1B27A3B400BBF6B5 /* close.png in Resources */,
 				D20D8EDE1B2B384E00BBF6B5 /* ios7-compose-outline.png in Resources */,
@@ -493,11 +506,13 @@
 				D25A9C9E1B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf in Resources */,
 				CC23DE2E1AE54C2B00AFEDE4 /* compose.storyboard in Resources */,
 				D25A9CA31B2259D300ABBBA4 /* OpenSans-LightItalic.ttf in Resources */,
+				D2D866391B2F5DF900847051 /* log-out-white.png in Resources */,
 				D25A9C9F1B2259D300ABBBA4 /* OpenSans-ExtraBold.ttf in Resources */,
 				CC96E4BE1AC0A7FA001E6D27 /* snail_mail_without_background_small.png in Resources */,
 				D2D866261B2F4AF800847051 /* ios7-person-outline.png in Resources */,
 				D20D8ECE1B2A2C1500BBF6B5 /* close-round-white.png in Resources */,
 				D20D8EE01B2B384E00BBF6B5 /* plus-round.png in Resources */,
+				D2D866371B2F5B8D00847051 /* log-out.png in Resources */,
 				D20D8EC81B27A3A900BBF6B5 /* arrow-up-c.png in Resources */,
 				CC23DE311AE5555800AFEDE4 /* 037_Pen.png in Resources */,
 				CCCB1A5A1AB0D48A0067F100 /* Images.xcassets in Resources */,
@@ -579,6 +594,7 @@
 				D25A9CB21B261D2400ABBBA4 /* SignUpSuccessfulViewController.swift in Sources */,
 				D20D8EE21B2E448100BBF6B5 /* PersonCell.swift in Sources */,
 				CCCB1A551AB0D48A0067F100 /* ViewController.swift in Sources */,
+				D2D8663F1B2F62B200847051 /* EditProfileViewController.swift in Sources */,
 				D25A9CAC1B225D3400ABBBA4 /* RegisterViewController.swift in Sources */,
 				CCCB1A751AB0D87F0067F100 /* Person.swift in Sources */,
 				CC96E4A01ABCCBF2001E6D27 /* LogInViewController.swift in Sources */,

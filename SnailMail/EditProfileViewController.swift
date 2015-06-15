@@ -1,39 +1,47 @@
 //
-//  LogInViewController2.swift
+//  EditProfileViewController.swift
 //  SnailMail
 //
-//  Created by Evan Waters on 3/20/15.
+//  Created by Evan Waters on 6/15/15.
 //  Copyright (c) 2015 Evan Waters. All rights reserved.
 //
 
 import UIKit
 import Alamofire
 
-class PersonalDetailsViewController: UIViewController {
+class EditProfileViewController: UIViewController {
 
-    @IBOutlet weak var addressTextField: UITextField!
-    @IBOutlet weak var cityTextField: UITextField!
-    @IBOutlet weak var stateTextField: UITextField!
-    @IBOutlet weak var zipTextField: UITextField!
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var address1Field: UITextField!
+    @IBOutlet weak var cityField: UITextField!
+    @IBOutlet weak var stateField: UITextField!
+    @IBOutlet weak var zipField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        nameField.text = loggedInUser.name
+        emailLabel.text = loggedInUser.username
+        address1Field.text = loggedInUser.address1
+        cityField.text = loggedInUser.city
+        stateField.text = loggedInUser.state
+        zipField.text = loggedInUser.zip
+        
+
+        // Do any additional setup after loading the view.
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-        view.endEditing(true)
-        super.touchesBegan(touches, withEvent: event)
+    @IBAction func Cancel(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
     }
-    
-    @IBAction func signUpComleted(sender: AnyObject) {
-        
-        let parameters = ["address1": "\(addressTextField.text)", "city": "\(cityTextField.text)", "state": "\(stateTextField.text)", "zip": "\(zipTextField.text)"]
+
+    @IBAction func saveEditedInfo(sender: AnyObject) {
         
         self.updatePerson( { (error, result) -> Void in
             if error != nil {
@@ -49,7 +57,7 @@ class PersonalDetailsViewController: UIViewController {
     func updatePerson(completion: (error: NSError?, result: AnyObject?) -> Void) {
         
         let updatePersonURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)"
-        let parameters = ["address1": "\(addressTextField.text)", "city": "\(cityTextField.text)", "state": "\(stateTextField.text)", "zip": "\(zipTextField.text)"]
+        let parameters = ["name": "\(nameField.text)", "address1": "\(address1Field.text)", "city": "\(cityField.text)", "state": "\(stateField.text)", "zip": "\(zipField.text)"]
         
         Alamofire.request(.POST, updatePersonURL, parameters: parameters, encoding: .JSON)
             .response { (request, response, data, error) in
@@ -75,11 +83,15 @@ class PersonalDetailsViewController: UIViewController {
             if result != nil {
                 if let user = result as? Person {
                     loggedInUser = user
-                    self.performSegueWithIdentifier("signUpComplete", sender: nil)
+                    
+                    var storyboard = UIStoryboard(name: "profile", bundle: nil)
+                    var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+                    self.presentViewController(controller, animated: true, completion: nil)
+                    
+                    
                 }
             }
         })
         
     }
-    
 }

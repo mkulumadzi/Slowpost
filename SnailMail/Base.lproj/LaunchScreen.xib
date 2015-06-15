@@ -21,9 +21,6 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="snail_mail_without_background_small.png" translatesAutoresizingMaskIntoConstraints="NO" id="REb-NU-N3J">
-                    <rect key="frame" x="61" y="239" width="253" height="189"/>
-                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
@@ -31,7 +28,4 @@
             <point key="canvasLocation" x="547.5" y="454.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="snail_mail_without_background_small.png" width="320" height="240"/>
-    </resources>
 </document>
