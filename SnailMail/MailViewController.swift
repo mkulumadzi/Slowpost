@@ -10,9 +10,8 @@ import UIKit
 
 class MailViewController: UIViewController {
     
-
-    
     @IBOutlet weak var mailText: UITextView!
+    @IBOutlet weak var mailImage: UIImageView!
     
     var mail:Mail!
     var from:Person!
@@ -21,6 +20,7 @@ class MailViewController: UIViewController {
         super.viewDidLoad()
         
         mailText.text = generateMailText()
+        mailImage.image = getImage()
 
         // Do any additional setup after loading the view.
     }
@@ -33,6 +33,15 @@ class MailViewController: UIViewController {
     func generateMailText () -> String {
         var mailText:String = "\(mail.content)"
         return mailText
+    }
+    
+    func getImage() -> UIImage {
+        if mail.image != nil {
+            if let image = UIImage(named: mail.image) {
+                return image
+            }
+        }
+        return UIImage(named: "Default Card.png")!
     }
     
     @IBAction func closeMailView(sender: AnyObject) {

@@ -118,9 +118,9 @@ class DataManager {
         let from = jsonEntry.objectForKey("from") as! String
         let to = jsonEntry.objectForKey("to") as! String
         let content = jsonEntry.objectForKey("content") as! String
+        let image = jsonEntry.objectForKey("image") as? String
         
-        //To Do: Allow card ID to be set
-        var new_mail = Mail(id: id, status: status, from: from, to: to, content: content)
+        var new_mail = Mail(id: id, status: status, from: from, to: to, content: content, image: image)
         
         return new_mail
     }

@@ -150,6 +150,7 @@
                     <navigationItem key="navigationItem" id="0gQ-Dh-bnm"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="mailImage" destination="uqQ-le-jNV" id="bVt-Wd-RpG"/>
                         <outlet property="mailText" destination="KhT-xO-PoX" id="spd-D7-bZk"/>
                     </connections>
                 </viewController>
