@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A917A841366A505CE0BDDBAD"
-               BuildableName = "SwiftyJSON.framework"
-               BlueprintName = "Pods-SnailMail-SwiftyJSON"
+               BlueprintIdentifier = "C8331C0AF27345BAEFD352D5"
+               BuildableName = "Regex.framework"
+               BlueprintName = "Pods-SnailMail-Regex"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

@@ -1,13 +1,16 @@
 PODS:
-  - Alamofire (1.2.0)
+  - Alamofire (1.2.3)
+  - Regex (0.2.1)
   - SwiftyJSON (2.2.0)
 
 DEPENDENCIES:
   - Alamofire (~> 1.1)
+  - Regex (~> 0.2.1)
   - SwiftyJSON (>= 2.2)
 
 SPEC CHECKSUMS:
-  Alamofire: d765c5c1713aa64106b0228aaa600a1e6851f68d
+  Alamofire: 5550bf0b575ed1a4bf9be572f9463e1015cc169e
+  Regex: 14d9745c19442ccdf920234e50d463ba659f58c4
   SwiftyJSON: 0b3e6c07af17ff745e77e8e9984097b55c956e5c
 
-COCOAPODS: 0.36.4
+COCOAPODS: 0.37.2

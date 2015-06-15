@@ -6,33 +6,43 @@
 	<dict>
 		<key>Pods-SnailMail-Alamofire.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-SnailMail-Regex.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-SnailMail-SwiftyJSON.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-SnailMail.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3A306001274ADFC07D8AB06F</key>
+		<key>4BEF65A3798694C7990FDBD7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>673B35F450681E87D2B6432D</key>
+		<key>9CACCF66536A0086251EB3B1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D2BF3B88C0EB78D50A91E029</key>
+		<key>A917A841366A505CE0BDDBAD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C8331C0AF27345BAEFD352D5</key>
 		<dict>
 			<key>primary</key>
 			<true/>

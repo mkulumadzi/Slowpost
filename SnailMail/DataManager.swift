@@ -11,8 +11,8 @@ import Alamofire
 
 
 //URL for Heroku instance of PostOfice server
-//let PostOfficeURL = "https://safe-ocean-2040.herokuapp.com/"
-let PostOfficeURL = "http://localhost:9292/"
+let PostOfficeURL = "https://safe-ocean-2040.herokuapp.com/"
+//let PostOfficeURL = "http://localhost:9292/"
 
 class DataManager {
    
@@ -120,7 +120,7 @@ class DataManager {
         let content = jsonEntry.objectForKey("content") as! String
         
         //To Do: Allow card ID to be set
-        var new_mail = Mail(id: id, status: status, from: from, to: to, content: content, cardId: nil)
+        var new_mail = Mail(id: id, status: status, from: from, to: to, content: content)
         
         return new_mail
     }

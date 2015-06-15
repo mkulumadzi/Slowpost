@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 
+
 class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     var contents:String!
@@ -40,13 +41,11 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
     }
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        println("Editing began!")
-    }
-    
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        toList = people
         var newArray:[Person] = toList.filter() {
-            self.listMatches(self.toSearchField.text, inString: $0.username).count >= 1
+            self.listMatches(self.toSearchField.text, inString: $0.username).count >= 1 || self.listMatches(self.toSearchField.text, inString: $0.name).count >= 1
         }
         toList = newArray
         self.toPersonList.reloadData()

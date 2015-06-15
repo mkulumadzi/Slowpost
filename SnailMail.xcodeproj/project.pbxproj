@@ -13,8 +13,6 @@
 		CC23DE311AE5555800AFEDE4 /* 037_Pen.png in Resources */ = {isa = PBXBuildFile; fileRef = CC23DE301AE5555800AFEDE4 /* 037_Pen.png */; };
 		CC23DE331AE555AB00AFEDE4 /* 037_Pen_2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC23DE321AE555AB00AFEDE4 /* 037_Pen_2x.png */; };
 		CC6105F51AC3941900D15150 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6105F41AC3941900D15150 /* DataManager.swift */; };
-		CC7DFB401AE473BF0062BD07 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7DFB3F1AE473BF0062BD07 /* SwiftyJSON.swift */; };
-		CC7DFB421AE473CE0062BD07 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7DFB411AE473CE0062BD07 /* Alamofire.swift */; };
 		CC96E49C1ABCC8EB001E6D27 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E49B1ABCC8EB001E6D27 /* WelcomeScreenViewController.swift */; };
 		CC96E4A01ABCCBF2001E6D27 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E49F1ABCCBF2001E6D27 /* LogInViewController.swift */; };
 		CC96E4A91ABCD91A001E6D27 /* Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E4A81ABCD91A001E6D27 /* Mail.swift */; };
@@ -89,8 +87,6 @@
 		CC23DE301AE5555800AFEDE4 /* 037_Pen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 037_Pen.png; sourceTree = "<group>"; };
 		CC23DE321AE555AB00AFEDE4 /* 037_Pen_2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 037_Pen_2x.png; sourceTree = "<group>"; };
 		CC6105F41AC3941900D15150 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		CC7DFB3F1AE473BF0062BD07 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
-		CC7DFB411AE473CE0062BD07 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
 		CC96E49B1ABCC8EB001E6D27 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
 		CC96E49F1ABCCBF2001E6D27 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogInViewController.swift; path = ../LogInViewController.swift; sourceTree = "<group>"; };
 		CC96E4A81ABCD91A001E6D27 /* Mail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mail.swift; sourceTree = "<group>"; };
@@ -277,8 +273,6 @@
 				CC23DE2F1AE54C4900AFEDE4 /* Models */,
 				CC23DE241AE54BB100AFEDE4 /* Features */,
 				CC96E4A31ABCD5AB001E6D27 /* Images */,
-				CC7DFB3F1AE473BF0062BD07 /* SwiftyJSON.swift */,
-				CC7DFB411AE473CE0062BD07 /* Alamofire.swift */,
 				CCCB1A521AB0D48A0067F100 /* AppDelegate.swift */,
 				CCCB1A541AB0D48A0067F100 /* ViewController.swift */,
 				CCCB1A561AB0D48A0067F100 /* Main.storyboard */,
@@ -546,9 +540,7 @@
 				D25A9CB21B261D2400ABBBA4 /* SignUpSuccessfulViewController.swift in Sources */,
 				D20D8EE21B2E448100BBF6B5 /* PersonCell.swift in Sources */,
 				CCCB1A551AB0D48A0067F100 /* ViewController.swift in Sources */,
-				CC7DFB401AE473BF0062BD07 /* SwiftyJSON.swift in Sources */,
 				D25A9CAC1B225D3400ABBBA4 /* RegisterViewController.swift in Sources */,
-				CC7DFB421AE473CE0062BD07 /* Alamofire.swift in Sources */,
 				CCCB1A751AB0D87F0067F100 /* Person.swift in Sources */,
 				CC96E4A01ABCCBF2001E6D27 /* LogInViewController.swift in Sources */,
 				D20D8ED41B2A510700BBF6B5 /* ToViewController.swift in Sources */,
