@@ -58,7 +58,7 @@
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7wd-Xq-bki">
                                             <rect key="frame" x="16" y="-234" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" image="ios7-email-outline.png">
+                                            <state key="normal" image="ios7-email-outline-light-yellow.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
@@ -158,6 +158,6 @@
         <image name="close-round-white.png" width="512" height="512"/>
         <image name="compose-white.png" width="512" height="512"/>
         <image name="ios7-contact-outline-white.png" width="512" height="512"/>
-        <image name="ios7-email-outline.png" width="512" height="512"/>
+        <image name="ios7-email-outline-light-yellow.png" width="512" height="512"/>
     </resources>
 </document>
