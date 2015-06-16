@@ -99,6 +99,7 @@
 		D2E956641B30A8AC00CA8CC8 /* Signs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E956571B30A8AC00CA8CC8 /* Signs.jpg */; };
 		D2E956661B30AAD900CA8CC8 /* ios7-checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E956651B30AAD900CA8CC8 /* ios7-checkmark.png */; };
 		D2E956681B30AD7F00CA8CC8 /* ios7-checkmark-not-checked.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E956671B30AD7F00CA8CC8 /* ios7-checkmark-not-checked.png */; };
+		D2E9566A1B30BAAB00CA8CC8 /* checkmark-round-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E956691B30BAAB00CA8CC8 /* checkmark-round-white.png */; };
 		D3CA1197D3BE0D4C283DA039 /* Pods_SnailMail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48D46F0C7DC76E3F2B153DC /* Pods_SnailMail.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -212,6 +213,7 @@
 		D2E956571B30A8AC00CA8CC8 /* Signs.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Signs.jpg; sourceTree = "<group>"; };
 		D2E956651B30AAD900CA8CC8 /* ios7-checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-checkmark.png"; sourceTree = "<group>"; };
 		D2E956671B30AD7F00CA8CC8 /* ios7-checkmark-not-checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-checkmark-not-checked.png"; sourceTree = "<group>"; };
+		D2E956691B30BAAB00CA8CC8 /* checkmark-round-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark-round-white.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -294,6 +296,7 @@
 		CC96E4A31ABCD5AB001E6D27 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D2E956691B30BAAB00CA8CC8 /* checkmark-round-white.png */,
 				D2E956671B30AD7F00CA8CC8 /* ios7-checkmark-not-checked.png */,
 				D2E956651B30AAD900CA8CC8 /* ios7-checkmark.png */,
 				D2D866421B2F6FD500847051 /* ios7-contact-outline-light-yellow.png */,
@@ -600,6 +603,7 @@
 				CC23DE2E1AE54C2B00AFEDE4 /* compose.storyboard in Resources */,
 				D25A9CA31B2259D300ABBBA4 /* OpenSans-LightItalic.ttf in Resources */,
 				D2D866391B2F5DF900847051 /* log-out-white.png in Resources */,
+				D2E9566A1B30BAAB00CA8CC8 /* checkmark-round-white.png in Resources */,
 				D25A9C9F1B2259D300ABBBA4 /* OpenSans-ExtraBold.ttf in Resources */,
 				CC96E4BE1AC0A7FA001E6D27 /* snail_mail_without_background_small.png in Resources */,
 				D2D866261B2F4AF800847051 /* ios7-person-outline.png in Resources */,

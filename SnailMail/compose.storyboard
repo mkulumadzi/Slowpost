@@ -18,6 +18,9 @@
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -54,6 +57,12 @@
                                             <segue destination="uNW-RF-l3y" kind="show" identifier="composeMessage" id="4J4-AU-Na0"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Card" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6m-Wa-oTJ">
+                                        <rect key="frame" x="168" y="21" width="39" height="24"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.10980392160000001" green="0.36078431370000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -137,15 +146,21 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HGZ-08-as4">
-                                        <rect key="frame" x="308" y="18" width="59" height="30"/>
+                                        <rect key="frame" x="337" y="18" width="24" height="24"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
-                                        <state key="normal" title="Send">
+                                        <state key="normal" image="checkmark-round-white.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="sendMail:" destination="uNW-RF-l3y" eventType="touchUpInside" id="BXg-qE-lCe"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJj-hV-blS">
+                                        <rect key="frame" x="151" y="21" width="72" height="24"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.10980392160000001" green="0.36078431370000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -292,6 +307,12 @@
                                             <segue destination="z1i-ko-pF7" kind="show" identifier="selectImage" id="wU3-H6-aep"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recipient" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umF-fg-43Z">
+                                        <rect key="frame" x="149" y="18" width="77" height="24"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.10980392160000001" green="0.36078431370000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -321,6 +342,7 @@
         <image name="SnailMail Postman.png" width="2048" height="1536"/>
         <image name="arrow-left-c-white.png" width="512" height="512"/>
         <image name="arrow-right-c-white.png" width="512" height="512"/>
+        <image name="checkmark-round-white.png" width="512" height="512"/>
         <image name="close-round-white.png" width="512" height="512"/>
         <image name="ios7-checkmark-not-checked.png" width="512" height="512"/>
     </resources>
