@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uNW-RF-l3y">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="z1i-ko-pF7">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -21,10 +21,88 @@
         </mutableArray>
     </customFonts>
     <scenes>
+        <!--Choose Card View Controller-->
+        <scene sceneID="bQQ-CI-qeJ">
+            <objects>
+                <viewController storyboardIdentifier="InitialController" id="z1i-ko-pF7" customClass="ChooseCardViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Eej-wH-HxO"/>
+                        <viewControllerLayoutGuide type="bottom" id="PjK-zz-hIw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KBQ-d2-vI0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VUa-IR-aT0">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWJ-GO-G1u">
+                                        <rect key="frame" x="8" y="18" width="24" height="24"/>
+                                        <state key="normal" image="close-round-white.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelButtonPressed:" destination="z1i-ko-pF7" eventType="touchUpInside" id="Gnv-3o-SDk"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Al4-Hd-l4i">
+                                        <rect key="frame" x="321" y="18" width="30" height="30"/>
+                                        <state key="normal" image="arrow-right-c-white.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="uNW-RF-l3y" kind="show" identifier="composeMessage" id="7HZ-ZU-gZT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.10980392160000001" green="0.36078431370000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ra4-CK-oJ7">
+                                <rect key="frame" x="0.0" y="48" width="375" height="625"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QM5-am-YK2">
+                                    <size key="itemSize" width="355" height="267"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CardCell" id="Gnk-y3-ba1" customClass="CardCollectionViewCell" customModule="SnailMail" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="267"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tnB-P3-OLy">
+                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="267"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <outlet property="cardImage" destination="tnB-P3-OLy" id="luJ-u2-WUy"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="z1i-ko-pF7" id="q6g-wn-15K"/>
+                                    <outlet property="delegate" destination="z1i-ko-pF7" id="NZa-xc-015"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M80-pT-5by" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1371.5" y="973.5"/>
+        </scene>
         <!--Compose Mail View Controller-->
         <scene sceneID="BaF-2i-HAc">
             <objects>
-                <viewController storyboardIdentifier="InitialController" id="uNW-RF-l3y" customClass="ComposeMailViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uNW-RF-l3y" customClass="ComposeMailViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kTe-CR-dcv"/>
                         <viewControllerLayoutGuide type="bottom" id="gNS-Nl-7MF"/>
@@ -43,11 +121,12 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3be-hb-sFe">
-                                        <rect key="frame" x="8" y="18" width="24" height="24"/>
-                                        <state key="normal" image="close-round-white.png">
+                                        <rect key="frame" x="8" y="18" width="30" height="30"/>
+                                        <state key="normal" image="arrow-left-c-white.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="backToCard:" destination="uNW-RF-l3y" eventType="touchUpInside" id="VbF-QO-mk2"/>
                                             <action selector="cancelButtonPressed:" destination="uNW-RF-l3y" eventType="touchUpInside" id="S1Y-by-dv3"/>
                                         </connections>
                                     </button>

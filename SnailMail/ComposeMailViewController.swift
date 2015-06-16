@@ -11,6 +11,7 @@ import Alamofire
 
 class ComposeMailViewController: UIViewController {
     
+    var imageName:String!
     @IBOutlet weak var composeText: UITextView!
 
     override func viewDidLoad() {
@@ -31,11 +32,8 @@ class ComposeMailViewController: UIViewController {
         super.touchesBegan(touches, withEvent: event)
     }
     
-    @IBAction func cancelButtonPressed(sender: AnyObject) {
-        var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
-        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-        
-        self.presentViewController(controller, animated: true, completion: nil)
+    @IBAction func backToCard(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -44,19 +42,10 @@ class ComposeMailViewController: UIViewController {
             if let contents = composeText.text {
                 toViewController?.contents = contents
             }
+            if let name = imageName {
+                toViewController?.imageName = name
+            }
         }
     }
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

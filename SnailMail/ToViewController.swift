@@ -13,6 +13,7 @@ import Alamofire
 class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     var contents:String!
+    var imageName:String!
     var toUsername:String!
     var toList: [Person] = []
     
@@ -69,7 +70,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func sendMailToPostoffice(completion: (error: NSError?, result: AnyObject?) -> Void) {
         
         let sendMailEndpoint = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mail/send"
-        let parameters = ["to": "\(toUsername)", "content": "\(contents)"]
+        let parameters = ["to": "\(toUsername)", "content": "\(contents)", "image": "\(imageName)"]
         
         Alamofire.request(.POST, sendMailEndpoint, parameters: parameters, encoding: .JSON)
             .response { (request, response, data, error) in
