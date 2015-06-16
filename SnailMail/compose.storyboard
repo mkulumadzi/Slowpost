@@ -61,7 +61,7 @@
                                 <rect key="frame" x="0.0" y="48" width="375" height="625"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QM5-am-YK2">
-                                    <size key="itemSize" width="355" height="267"/>
+                                    <size key="itemSize" width="355" height="245"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -71,17 +71,21 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="355" height="267"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="355" height="245"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tnB-P3-OLy">
-                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="267"/>
+                                                    <rect key="frame" x="31" y="0.0" width="324" height="245"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ios7-checkmark-not-checked.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Zh-b1-vVs">
+                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
                                             <outlet property="cardImage" destination="tnB-P3-OLy" id="luJ-u2-WUy"/>
+                                            <outlet property="checkMarkIcon" destination="7Zh-b1-vVs" id="2d1-Mj-4xw"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -94,6 +98,9 @@
                         <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="cardCollection" destination="ra4-CK-oJ7" id="ekh-wb-5sf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M80-pT-5by" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -316,5 +323,6 @@
         <image name="arrow-left-c-white.png" width="512" height="512"/>
         <image name="arrow-right-c-white.png" width="512" height="512"/>
         <image name="close-round-white.png" width="512" height="512"/>
+        <image name="ios7-checkmark-not-checked.png" width="512" height="512"/>
     </resources>
 </document>

@@ -16,6 +16,8 @@ class ChooseCardViewController: UIViewController, UICollectionViewDataSource, UI
     var photoArray = [UIImage]()
     var imageName:String!
 
+    @IBOutlet weak var cardCollection: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -60,14 +62,17 @@ class ChooseCardViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        
-        println("Image selected!")
+        println("cell selected!")
         
         let imageSelected = photoNames[indexPath.row]
-        
         imageName = imageSelected
         
     }
+    
+//    func checkCell(cell: CardCollectionViewCell) {
+//        println("got here!")
+//        cell.checkMarkIcon.image = UIImage(named: "ios7-checkmark.png")
+//    }
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
         var storyboard = UIStoryboard(name: "mailbox", bundle: nil)

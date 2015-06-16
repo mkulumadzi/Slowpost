@@ -97,6 +97,8 @@
 		D2E956621B30A8AC00CA8CC8 /* Reflection.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E956551B30A8AC00CA8CC8 /* Reflection.jpg */; };
 		D2E956631B30A8AC00CA8CC8 /* Salamander.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E956561B30A8AC00CA8CC8 /* Salamander.jpg */; };
 		D2E956641B30A8AC00CA8CC8 /* Signs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E956571B30A8AC00CA8CC8 /* Signs.jpg */; };
+		D2E956661B30AAD900CA8CC8 /* ios7-checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E956651B30AAD900CA8CC8 /* ios7-checkmark.png */; };
+		D2E956681B30AD7F00CA8CC8 /* ios7-checkmark-not-checked.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E956671B30AD7F00CA8CC8 /* ios7-checkmark-not-checked.png */; };
 		D3CA1197D3BE0D4C283DA039 /* Pods_SnailMail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48D46F0C7DC76E3F2B153DC /* Pods_SnailMail.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -208,6 +210,8 @@
 		D2E956551B30A8AC00CA8CC8 /* Reflection.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Reflection.jpg; sourceTree = "<group>"; };
 		D2E956561B30A8AC00CA8CC8 /* Salamander.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Salamander.jpg; sourceTree = "<group>"; };
 		D2E956571B30A8AC00CA8CC8 /* Signs.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Signs.jpg; sourceTree = "<group>"; };
+		D2E956651B30AAD900CA8CC8 /* ios7-checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-checkmark.png"; sourceTree = "<group>"; };
+		D2E956671B30AD7F00CA8CC8 /* ios7-checkmark-not-checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-checkmark-not-checked.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +294,8 @@
 		CC96E4A31ABCD5AB001E6D27 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D2E956671B30AD7F00CA8CC8 /* ios7-checkmark-not-checked.png */,
+				D2E956651B30AAD900CA8CC8 /* ios7-checkmark.png */,
 				D2D866421B2F6FD500847051 /* ios7-contact-outline-light-yellow.png */,
 				D2D866401B2F6F7700847051 /* ios7-email-outline-light-yellow.png */,
 				D2D8663C1B2F5F4A00847051 /* edit-grey.png */,
@@ -573,6 +579,7 @@
 				D25A9CA41B2259D300ABBBA4 /* OpenSans-Regular.ttf in Resources */,
 				D2E9565D1B30A8AC00CA8CC8 /* Ooh.jpg in Resources */,
 				D2D866411B2F6F7700847051 /* ios7-email-outline-light-yellow.png in Resources */,
+				D2E956661B30AAD900CA8CC8 /* ios7-checkmark.png in Resources */,
 				D2D8662E1B2F50D300847051 /* ios7-email-outline-white.png in Resources */,
 				D25A9CA11B2259D300ABBBA4 /* OpenSans-Italic.ttf in Resources */,
 				D2D866431B2F6FD500847051 /* ios7-contact-outline-light-yellow.png in Resources */,
@@ -584,6 +591,7 @@
 				D2E9565C1B30A8AC00CA8CC8 /* Kili Sunrise.jpg in Resources */,
 				D25A9CA61B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				D25A9C9D1B2259D300ABBBA4 /* OpenSans-Bold.ttf in Resources */,
+				D2E956681B30AD7F00CA8CC8 /* ios7-checkmark-not-checked.png in Resources */,
 				D2D866351B2F5A7300847051 /* dancingBanana.gif in Resources */,
 				D2E9565B1B30A8AC00CA8CC8 /* Fireworks.jpg in Resources */,
 				D20D8EDD1B2B384E00BBF6B5 /* edit.png in Resources */,
