@@ -12,8 +12,8 @@ import Alamofire
 
 class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
-    var contents:String!
-    var imageName:String!
+//    var contents:String!
+//    var imageName:String!
     var toUsername:String!
     var toList: [Person] = []
     
@@ -32,15 +32,15 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     
-    @IBAction func sendMail(sender: AnyObject) {
-        
-        sendMailToPostoffice( { (error, result) -> Void in
-            if result!.statusCode == 201 {
-                self.performSegueWithIdentifier("mailSent", sender: nil)
-            }
-        })
-        
-    }
+//    @IBAction func sendMail(sender: AnyObject) {
+//        
+//        sendMailToPostoffice( { (error, result) -> Void in
+//            if result!.statusCode == 201 {
+//                self.performSegueWithIdentifier("mailSent", sender: nil)
+//            }
+//        })
+//        
+//    }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
@@ -67,26 +67,26 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
-    func sendMailToPostoffice(completion: (error: NSError?, result: AnyObject?) -> Void) {
-        
-        let sendMailEndpoint = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mail/send"
-        let parameters = ["to": "\(toUsername)", "content": "\(contents)", "image": "\(imageName)"]
-        
-        Alamofire.request(.POST, sendMailEndpoint, parameters: parameters, encoding: .JSON)
-            .response { (request, response, data, error) in
-                if let anError = error {
-                    println(error)
-                    completion(error: error, result: nil)
-                }
-                else if let response: AnyObject = response {
-                    completion(error: nil, result: response)
-                }
-        }
-    }
+//    func sendMailToPostoffice(completion: (error: NSError?, result: AnyObject?) -> Void) {
+//        
+//        let sendMailEndpoint = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mail/send"
+//        let parameters = ["to": "\(toUsername)", "content": "\(contents)", "image": "\(imageName)"]
+//        
+//        Alamofire.request(.POST, sendMailEndpoint, parameters: parameters, encoding: .JSON)
+//            .response { (request, response, data, error) in
+//                if let anError = error {
+//                    println(error)
+//                    completion(error: error, result: nil)
+//                }
+//                else if let response: AnyObject = response {
+//                    completion(error: nil, result: response)
+//                }
+//        }
+//    }
     
-    @IBAction func backToCompose(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: {})
-    }
+//    @IBAction func backToCompose(sender: AnyObject) {
+//        self.dismissViewControllerAnimated(true, completion: {})
+//    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -111,6 +111,22 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         toUsername = person.username
         
+    }
+    
+    @IBAction func cancelButtonPressed(sender: AnyObject) {
+        var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
+        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+        
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "selectImage" {
+            let chooseCardViewController = segue.destinationViewController as? ChooseCardViewController
+            if let to = toUsername {
+                chooseCardViewController?.toUsername = to
+            }
+        }
     }
     
 }

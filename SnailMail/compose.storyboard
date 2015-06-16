@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="z1i-ko-pF7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="56L-ux-Lnu">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
@@ -24,7 +24,7 @@
         <!--Choose Card View Controller-->
         <scene sceneID="bQQ-CI-qeJ">
             <objects>
-                <viewController storyboardIdentifier="InitialController" id="z1i-ko-pF7" customClass="ChooseCardViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="z1i-ko-pF7" customClass="ChooseCardViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Eej-wH-HxO"/>
                         <viewControllerLayoutGuide type="bottom" id="PjK-zz-hIw"/>
@@ -37,21 +37,21 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWJ-GO-G1u">
-                                        <rect key="frame" x="8" y="18" width="24" height="24"/>
-                                        <state key="normal" image="close-round-white.png">
+                                        <rect key="frame" x="8" y="18" width="30" height="30"/>
+                                        <state key="normal" image="arrow-left-c-white.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="cancelButtonPressed:" destination="z1i-ko-pF7" eventType="touchUpInside" id="Gnv-3o-SDk"/>
+                                            <action selector="backToSelectRecipient:" destination="z1i-ko-pF7" eventType="touchUpInside" id="EBt-aB-EI3"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Al4-Hd-l4i">
-                                        <rect key="frame" x="321" y="18" width="30" height="30"/>
+                                        <rect key="frame" x="337" y="18" width="30" height="30"/>
                                         <state key="normal" image="arrow-right-c-white.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="uNW-RF-l3y" kind="show" identifier="composeMessage" id="7HZ-ZU-gZT"/>
+                                            <segue destination="uNW-RF-l3y" kind="show" identifier="composeMessage" id="4J4-AU-Na0"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -104,7 +104,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M80-pT-5by" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1371.5" y="973.5"/>
+            <point key="canvasLocation" x="1925.5" y="973.5"/>
         </scene>
         <!--Compose Mail View Controller-->
         <scene sceneID="BaF-2i-HAc">
@@ -134,16 +134,16 @@
                                         </state>
                                         <connections>
                                             <action selector="backToCard:" destination="uNW-RF-l3y" eventType="touchUpInside" id="VbF-QO-mk2"/>
-                                            <action selector="cancelButtonPressed:" destination="uNW-RF-l3y" eventType="touchUpInside" id="S1Y-by-dv3"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HGZ-08-as4">
-                                        <rect key="frame" x="337" y="18" width="30" height="30"/>
-                                        <state key="normal" image="arrow-right-c-white.png">
+                                        <rect key="frame" x="308" y="18" width="59" height="30"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                                        <state key="normal" title="Send">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="56L-ux-Lnu" kind="showDetail" identifier="SelectRecipient" id="2Ni-kF-ZEs"/>
+                                            <action selector="sendMail:" destination="uNW-RF-l3y" eventType="touchUpInside" id="BXg-qE-lCe"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -162,12 +162,13 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="composeText" destination="kiv-Wq-vjl" id="Gx8-pH-tKg"/>
+                        <segue destination="xfs-yB-txn" kind="show" identifier="sendMail" id="pNN-yi-cjN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wwg-pC-olF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="6mN-R4-H4K"/>
             </objects>
-            <point key="canvasLocation" x="1889.5" y="973.5"/>
+            <point key="canvasLocation" x="2409.5" y="973.5"/>
         </scene>
         <!--Mail Sent View Controller-->
         <scene sceneID="MbD-Kh-aPK">
@@ -225,7 +226,7 @@
         <!--To View Controller-->
         <scene sceneID="fT4-r7-D5g">
             <objects>
-                <viewController id="56L-ux-Lnu" customClass="ToViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialController" id="56L-ux-Lnu" customClass="ToViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DaV-in-3s9"/>
                         <viewControllerLayoutGuide type="bottom" id="z2b-dc-6Oc"/>
@@ -273,23 +274,22 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9k-oy-Iqi">
-                                        <rect key="frame" x="8" y="18" width="30" height="30"/>
-                                        <state key="normal" image="arrow-left-c-white.png">
+                                        <rect key="frame" x="8" y="18" width="24" height="24"/>
+                                        <state key="normal" image="close-round-white.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="backToCompose:" destination="56L-ux-Lnu" eventType="touchUpInside" id="D8P-fT-3FJ"/>
+                                            <action selector="cancelButtonPressed:" destination="56L-ux-Lnu" eventType="touchUpInside" id="ozB-Fp-AqL"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YhM-ZW-ANz">
-                                        <rect key="frame" x="283" y="18" width="83" height="30"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
-                                        <state key="normal" title="Send">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YhM-ZW-ANz">
+                                        <rect key="frame" x="337" y="18" width="30" height="30"/>
+                                        <state key="normal" image="arrow-right-c-white.png">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="sendMail:" destination="56L-ux-Lnu" eventType="touchUpInside" id="fsQ-7a-eW0"/>
+                                            <segue destination="z1i-ko-pF7" kind="show" identifier="selectImage" id="wU3-H6-aep"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -310,12 +310,11 @@
                     <connections>
                         <outlet property="toPersonList" destination="j7P-4p-ATv" id="I3m-NF-aKn"/>
                         <outlet property="toSearchField" destination="FXR-ug-bxD" id="YVg-pm-du0"/>
-                        <segue destination="xfs-yB-txn" kind="show" identifier="mailSent" id="txG-fW-qgA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJY-Gj-eOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2388.5" y="973.5"/>
+            <point key="canvasLocation" x="1446.5" y="973.5"/>
         </scene>
     </scenes>
     <resources>

@@ -15,6 +15,7 @@ class ChooseCardViewController: UIViewController, UICollectionViewDataSource, UI
     
     var photoArray = [UIImage]()
     var imageName:String!
+    var toUsername:String!
 
     @IBOutlet weak var cardCollection: UICollectionView!
     
@@ -62,23 +63,10 @@ class ChooseCardViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        println("cell selected!")
         
         let imageSelected = photoNames[indexPath.row]
         imageName = imageSelected
         
-    }
-    
-//    func checkCell(cell: CardCollectionViewCell) {
-//        println("got here!")
-//        cell.checkMarkIcon.image = UIImage(named: "ios7-checkmark.png")
-//    }
-    
-    @IBAction func cancelButtonPressed(sender: AnyObject) {
-        var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
-        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-        
-        self.presentViewController(controller, animated: true, completion: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -87,7 +75,14 @@ class ChooseCardViewController: UIViewController, UICollectionViewDataSource, UI
             if let name = imageName {
                 composeMailViewController?.imageName = name
             }
+            if let to = toUsername {
+                composeMailViewController!.toUsername = to
+            }
         }
+    }
+    
+    @IBAction func backToSelectRecipient(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
     }
 
 }

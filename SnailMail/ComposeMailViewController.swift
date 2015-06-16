@@ -12,6 +12,8 @@ import Alamofire
 class ComposeMailViewController: UIViewController {
     
     var imageName:String!
+    var toUsername:String!
+    
     @IBOutlet weak var composeText: UITextView!
 
     override func viewDidLoad() {
@@ -36,15 +38,42 @@ class ComposeMailViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: {})
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "SelectRecipient" {
-            let toViewController = segue.destinationViewController as? ToViewController
-            if let contents = composeText.text {
-                toViewController?.contents = contents
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "SelectRecipient" {
+//            let toViewController = segue.destinationViewController as? ToViewController
+//            if let contents = composeText.text {
+//                toViewController?.contents = contents
+//            }
+//            if let name = imageName {
+//                toViewController?.imageName = name
+//            }
+//        }
+//    }
+    
+    @IBAction func sendMail(sender: AnyObject) {
+        
+        sendMailToPostoffice( { (error, result) -> Void in
+            if result!.statusCode == 201 {
+                self.performSegueWithIdentifier("sendMail", sender: nil)
             }
-            if let name = imageName {
-                toViewController?.imageName = name
-            }
+        })
+        
+    }
+    
+    func sendMailToPostoffice(completion: (error: NSError?, result: AnyObject?) -> Void) {
+        
+        let sendMailEndpoint = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mail/send"
+        let parameters = ["to": "\(toUsername)", "content": "\(composeText.text)", "image": "\(imageName)"]
+        
+        Alamofire.request(.POST, sendMailEndpoint, parameters: parameters, encoding: .JSON)
+            .response { (request, response, data, error) in
+                if let anError = error {
+                    println(error)
+                    completion(error: error, result: nil)
+                }
+                else if let response: AnyObject = response {
+                    completion(error: nil, result: response)
+                }
         }
     }
 
