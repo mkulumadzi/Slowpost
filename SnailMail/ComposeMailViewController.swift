@@ -46,18 +46,6 @@ class ComposeMailViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: {})
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "SelectRecipient" {
-//            let toViewController = segue.destinationViewController as? ToViewController
-//            if let contents = composeText.text {
-//                toViewController?.contents = contents
-//            }
-//            if let name = imageName {
-//                toViewController?.imageName = name
-//            }
-//        }
-//    }
-    
     @IBAction func sendMail(sender: AnyObject) {
         
         sendMailToPostoffice( { (error, result) -> Void in

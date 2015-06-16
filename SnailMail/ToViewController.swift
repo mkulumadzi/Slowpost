@@ -11,9 +11,7 @@ import Alamofire
 
 
 class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
-    
-//    var contents:String!
-//    var imageName:String!
+
     var toUsername:String!
     var toList: [Person] = []
     
@@ -30,17 +28,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-//    @IBAction func sendMail(sender: AnyObject) {
-//        
-//        sendMailToPostoffice( { (error, result) -> Void in
-//            if result!.statusCode == 201 {
-//                self.performSegueWithIdentifier("mailSent", sender: nil)
-//            }
-//        })
-//        
-//    }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
@@ -67,27 +54,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
-//    func sendMailToPostoffice(completion: (error: NSError?, result: AnyObject?) -> Void) {
-//        
-//        let sendMailEndpoint = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mail/send"
-//        let parameters = ["to": "\(toUsername)", "content": "\(contents)", "image": "\(imageName)"]
-//        
-//        Alamofire.request(.POST, sendMailEndpoint, parameters: parameters, encoding: .JSON)
-//            .response { (request, response, data, error) in
-//                if let anError = error {
-//                    println(error)
-//                    completion(error: error, result: nil)
-//                }
-//                else if let response: AnyObject = response {
-//                    completion(error: nil, result: response)
-//                }
-//        }
-//    }
-    
-//    @IBAction func backToCompose(sender: AnyObject) {
-//        self.dismissViewControllerAnimated(true, completion: {})
-//    }
-    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -109,6 +75,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let person = toList[indexPath.row] as Person
         
+        toSearchField.text = person.username
         toUsername = person.username
         
     }
@@ -125,6 +92,9 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             let chooseCardViewController = segue.destinationViewController as? ChooseCardViewController
             if let to = toUsername {
                 chooseCardViewController?.toUsername = to
+            }
+            else {
+                chooseCardViewController?.toUsername = toSearchField.text
             }
         }
     }
