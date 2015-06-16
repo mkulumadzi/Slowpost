@@ -17,11 +17,13 @@ class ChooseCardViewController: UIViewController, UICollectionViewDataSource, UI
     var imageName:String!
     var toUsername:String!
 
+    @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var cardCollection: UICollectionView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        toLabel.text = toUsername
         populatePhotoArray()
 
         // Do any additional setup after loading the view.

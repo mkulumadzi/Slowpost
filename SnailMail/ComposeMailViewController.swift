@@ -14,10 +14,18 @@ class ComposeMailViewController: UIViewController {
     var imageName:String!
     var toUsername:String!
     
+    @IBOutlet weak var toLabel: UILabel!
+    @IBOutlet weak var imagePreview: UIImageView!
     @IBOutlet weak var composeText: UITextView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        toLabel.text = toUsername
+        
+        if let image = imageName {
+            imagePreview.image = UIImage(named: image)
+        }
         
         resignFirstResponder()
 
