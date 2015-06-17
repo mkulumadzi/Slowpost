@@ -1,0 +1,37 @@
+//
+//  SentMailTableViewCell.swift
+//  SnailMail
+//
+//  Created by Evan Waters on 6/16/15.
+//  Copyright (c) 2015 Evan Waters. All rights reserved.
+//
+
+import UIKit
+
+class SentMailTableViewCell: UITableViewCell {
+    
+    var mail: Mail!
+    var person: Person!
+    
+    @IBOutlet weak var cardImage: UIImageView!
+    @IBOutlet weak var toName: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        toName.text = person.name
+    }
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        // Configure the view for the selected state
+    }
+
+}

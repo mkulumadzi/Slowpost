@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var mailTable: UITableView!
     

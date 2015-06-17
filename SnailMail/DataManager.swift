@@ -111,6 +111,36 @@ class DataManager {
         }
     }
     
+    class func getMyOutbox( completion: (error: NSError?, result: AnyObject?) -> Void) {
+        
+        let mailboxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/outbox"
+        
+        Alamofire.request(.GET, mailboxURL)
+            .response { (request, response, data, error) in
+                if let anError = error {
+                    completion(error: error, result: nil)
+                }
+                else if let response: AnyObject = response {
+                    if response.statusCode == 404 {
+                        completion(error: error, result: response.statusCode)
+                    }
+                }
+            }
+            .responseJSON { (_, _, JSON, error) in
+                if let jsonResult = JSON as? Array<NSDictionary> {
+                    var mail_array = [Mail]()
+                    for jsonEntry in jsonResult {
+                        mail_array.append(self.createMailFromJson(jsonEntry))
+                    }
+                    completion(error: nil, result: mail_array)
+                }
+                else {
+                    println("Unexpected JSON result")
+                }
+        }
+    }
+    
+    
     class func createMailFromJson(jsonEntry: NSDictionary) -> Mail {
         
         let id = jsonEntry.objectForKey("_id")!.objectForKey("$oid") as! String
