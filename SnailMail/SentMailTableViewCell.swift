@@ -16,11 +16,13 @@ class SentMailTableViewCell: UITableViewCell {
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var toName: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var mailContent: UILabel!
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
         toName.text = person.name
+        mailContent.text = mail.content
     }
 
     override func awakeFromNib() {
@@ -33,5 +35,7 @@ class SentMailTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    
 
 }

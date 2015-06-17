@@ -15,11 +15,11 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var sentMailTable: UITableView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getOutbox()
+        
         nameLabel.text = loggedInUser.name
 
         // Do any additional setup after loading the view.
@@ -65,6 +65,12 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
                 self.sentMailTable.reloadData()
             }
         })
+    }
+    
+    func configureTableView() {
+        println("configuring!")
+        sentMailTable.rowHeight = UITableViewAutomaticDimension
+        sentMailTable.estimatedRowHeight = 386
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
