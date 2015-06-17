@@ -9,18 +9,13 @@
 import UIKit
 
 class ViewProfileViewController: UIViewController {
-
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
     
+    @IBOutlet weak var nameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         nameLabel.text = loggedInUser.name
-        emailLabel.text = loggedInUser.username
-        addressLabel.text = self.renderAddressString()
 
         // Do any additional setup after loading the view.
     }
@@ -28,17 +23,6 @@ class ViewProfileViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func renderAddressString() -> String {
-        
-        var addressString = "\(loggedInUser.address1)\n\(loggedInUser.city), \(loggedInUser.state) \(loggedInUser.zip)"
-        
-        if addressString.isEmpty == true {
-            addressString = ""
-        }
-        
-        return addressString
     }
     
 
