@@ -21,7 +21,8 @@ class SentMailTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        toName.text = person.name
+        toName.text = "To: \(person.name)"
+        statusLabel.text = mail.status
         mailContent.text = mail.content
     }
 

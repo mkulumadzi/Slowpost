@@ -135,7 +135,7 @@
                                 <rect key="frame" x="0.0" y="48" width="375" height="280"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sy2-jF-OSQ">
-                                <rect key="frame" x="0.0" y="0.0" width="382" height="48"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AVd-FY-BNI">
                                         <rect key="frame" x="8" y="18" width="24" height="24"/>
@@ -149,7 +149,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.10980392160000001" green="0.36078431370000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <textView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" fixedFrame="YES" pagingEnabled="YES" indicatorStyle="black" editable="NO" text="Message content" translatesAutoresizingMaskIntoConstraints="NO" id="KhT-xO-PoX">
+                            <textView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" fixedFrame="YES" indicatorStyle="black" editable="NO" text="Message content" translatesAutoresizingMaskIntoConstraints="NO" id="KhT-xO-PoX">
                                 <rect key="frame" x="0.0" y="327" width="375" height="340"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>

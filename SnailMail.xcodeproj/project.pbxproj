@@ -65,6 +65,7 @@
 		D25A9CB01B26024100ABBBA4 /* SnailMail Postman.png in Resources */ = {isa = PBXBuildFile; fileRef = D25A9CAF1B26024100ABBBA4 /* SnailMail Postman.png */; };
 		D25A9CB21B261D2400ABBBA4 /* SignUpSuccessfulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25A9CB11B261D2400ABBBA4 /* SignUpSuccessfulViewController.swift */; };
 		D2B651AD1B31411C00134C23 /* SentMailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B651AC1B31411C00134C23 /* SentMailTableViewCell.swift */; };
+		D2B651AF1B32561700134C23 /* SnailMail Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B651AE1B32561700134C23 /* SnailMail Icon.png */; };
 		D2D866261B2F4AF800847051 /* ios7-person-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866251B2F4AF800847051 /* ios7-person-outline.png */; };
 		D2D866281B2F4B1C00847051 /* ios7-email-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866271B2F4B1C00847051 /* ios7-email-outline.png */; };
 		D2D8662A1B2F4B7F00847051 /* ios7-contact-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */; };
@@ -180,6 +181,7 @@
 		D25A9CAF1B26024100ABBBA4 /* SnailMail Postman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnailMail Postman.png"; sourceTree = "<group>"; };
 		D25A9CB11B261D2400ABBBA4 /* SignUpSuccessfulViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpSuccessfulViewController.swift; sourceTree = "<group>"; };
 		D2B651AC1B31411C00134C23 /* SentMailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMailTableViewCell.swift; sourceTree = "<group>"; };
+		D2B651AE1B32561700134C23 /* SnailMail Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnailMail Icon.png"; sourceTree = "<group>"; };
 		D2D866251B2F4AF800847051 /* ios7-person-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-person-outline.png"; sourceTree = "<group>"; };
 		D2D866271B2F4B1C00847051 /* ios7-email-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-email-outline.png"; sourceTree = "<group>"; };
 		D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-contact-outline.png"; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 		CC96E4A31ABCD5AB001E6D27 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D2B651AE1B32561700134C23 /* SnailMail Icon.png */,
 				D2E956691B30BAAB00CA8CC8 /* checkmark-round-white.png */,
 				D2E956671B30AD7F00CA8CC8 /* ios7-checkmark-not-checked.png */,
 				D2E956651B30AAD900CA8CC8 /* ios7-checkmark.png */,
@@ -586,6 +589,7 @@
 				D2E9565D1B30A8AC00CA8CC8 /* Ooh.jpg in Resources */,
 				D2D866411B2F6F7700847051 /* ios7-email-outline-light-yellow.png in Resources */,
 				D2E956661B30AAD900CA8CC8 /* ios7-checkmark.png in Resources */,
+				D2B651AF1B32561700134C23 /* SnailMail Icon.png in Resources */,
 				D2D8662E1B2F50D300847051 /* ios7-email-outline-white.png in Resources */,
 				D25A9CA11B2259D300ABBBA4 /* OpenSans-Italic.ttf in Resources */,
 				D2D866431B2F6FD500847051 /* ios7-contact-outline-light-yellow.png in Resources */,

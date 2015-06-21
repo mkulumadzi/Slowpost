@@ -24,6 +24,12 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
 
         // Do any additional setup after loading the view.
     }
+    
+//    override func viewDidAppear(animated: Bool) {
+//        
+//        sentMailTable.reloadData()
+//        
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -63,14 +69,13 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
             else if let mailArray = result as? Array<Mail> {
                 self.outbox = mailArray
                 self.sentMailTable.reloadData()
+                self.configureTableView()
             }
         })
     }
     
     func configureTableView() {
-        println("configuring!")
-        sentMailTable.rowHeight = UITableViewAutomaticDimension
-        sentMailTable.estimatedRowHeight = 386
+        sentMailTable.estimatedRowHeight = 370
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -94,6 +99,11 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         return cell!
         
     }
+    
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        println("Well this is happening")
+//        return UITableViewAutomaticDimension
+//    }
     
     //I'm sure there is a better way to do this...
     func getPerson(username: String) -> Person {
