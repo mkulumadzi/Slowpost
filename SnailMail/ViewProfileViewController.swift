@@ -67,7 +67,7 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
                 println(error)
             }
             else if let mailArray = result as? Array<Mail> {
-                self.outbox = mailArray
+                self.outbox = mailArray.sorted { $0.updatedAt.compare($1.updatedAt) == NSComparisonResult.OrderedDescending }
                 self.sentMailTable.reloadData()
                 self.configureTableView()
             }

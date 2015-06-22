@@ -44,7 +44,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         cell?.mail = mail
         cell?.from = fromPerson
         cell?.fromLabel.text = fromPerson.name
-        cell?.arrivalLabel.text = "Arrived \(dateFormatter.stringFromDate(mail.scheduledToArrive))"
+        cell?.arrivalLabel.text = "Arrived on \(dateFormatter.stringFromDate(mail.scheduledToArrive))"
         
         cell?.mailImage.image = getImage(mail)
         

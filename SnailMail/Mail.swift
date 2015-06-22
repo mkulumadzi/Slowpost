@@ -17,8 +17,10 @@ class Mail: NSObject {
     var content:String
     var image:String!
     var scheduledToArrive:NSDate!
+    var updatedAt:NSDate
+    var createdAt:NSDate
     
-    init(id:String, status:String, from:String, to:String, content:String, image:String?, scheduledToArrive:NSDate?) {
+    init(id:String, status:String, from:String, to:String, content:String, image:String?, scheduledToArrive:NSDate?, updatedAt:NSDate, createdAt:NSDate) {
         self.id = id
         self.status = status
         self.from = from
@@ -26,6 +28,8 @@ class Mail: NSObject {
         self.content = content
         self.image = image
         self.scheduledToArrive = scheduledToArrive
+        self.updatedAt = updatedAt
+        self.createdAt = createdAt
         super.init()
     }
 }

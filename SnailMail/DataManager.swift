@@ -77,7 +77,13 @@ class DataManager {
         let state = jsonEntry.objectForKey("state") as? String
         let zip = jsonEntry.objectForKey("zip") as? String
         
-        var new_person = Person(id: id, username: username, name: name, address1: address1, city: city, state: state, zip: zip)
+        let updatedString = jsonEntry.objectForKey("updated_at") as! String
+        let updatedAt = NSDate(dateString: updatedString)
+        
+        let createdString = jsonEntry.objectForKey("created_at") as! String
+        let createdAt = NSDate(dateString: createdString)
+        
+        var new_person = Person(id: id, username: username, name: name, address1: address1, city: city, state: state, zip: zip, updatedAt: updatedAt, createdAt: createdAt)
         
         return new_person
     }
@@ -149,10 +155,18 @@ class DataManager {
         let to = jsonEntry.objectForKey("to") as! String
         let content = jsonEntry.objectForKey("content") as! String
         let image = jsonEntry.objectForKey("image") as? String
+        
         let arrivalString = jsonEntry.objectForKey("scheduled_to_arrive") as? String
         let scheduledToArrive = NSDate(dateString: arrivalString!)
         
-        var new_mail = Mail(id: id, status: status, from: from, to: to, content: content, image: image, scheduledToArrive: scheduledToArrive)
+        let updatedString = jsonEntry.objectForKey("updated_at") as! String
+        let updatedAt = NSDate(dateString: updatedString)
+        
+        let createdString = jsonEntry.objectForKey("created_at") as! String
+        let createdAt = NSDate(dateString: createdString)
+        
+        
+        var new_mail = Mail(id: id, status: status, from: from, to: to, content: content, image: image, scheduledToArrive: scheduledToArrive, updatedAt: updatedAt, createdAt: createdAt)
         
         return new_mail
     }

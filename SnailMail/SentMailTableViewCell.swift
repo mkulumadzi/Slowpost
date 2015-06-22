@@ -21,8 +21,13 @@ class SentMailTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let updated = dateFormatter.stringFromDate(mail.updatedAt)
+        
+        
         toName.text = "To: \(person.name)"
-        statusLabel.text = mail.status
+        statusLabel.text = "\(mail.status.capitalizedString) on \(updated)"
         mailContent.text = mail.content
     }
 
