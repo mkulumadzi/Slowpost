@@ -3,6 +3,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="OpenSans-Light.ttf">
@@ -47,7 +48,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="748" verticalHuggingPriority="751" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="8" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1Cx-Sp-3Un">
-                                <rect key="frame" x="30" y="256" width="540" height="30"/>
+                                <rect key="frame" x="30" y="267" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="WLv-fW-fWb"/>
                                 </constraints>
@@ -55,19 +56,24 @@
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" verticalCompressionResistancePriority="748" text="SnailMail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="29Z-NH-vug">
-                                <rect key="frame" x="30" y="20" width="540" height="80"/>
+                                <rect key="frame" x="30" y="20" width="540" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="3Dm-Ii-XXr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="64"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="3Dm-Ii-XXr"/>
+                                    </mask>
+                                </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="746" verticalHuggingPriority="746" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hez-ky-lsM">
-                                <rect key="frame" x="30" y="336" width="540" height="33"/>
+                                <rect key="frame" x="30" y="347" width="540" height="30"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="33" id="YGF-2J-gq8"/>
+                                    <constraint firstAttribute="height" constant="30" id="YGF-2J-gq8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="Log In">
@@ -79,7 +85,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="749" verticalHuggingPriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="img-9d-DTv">
-                                <rect key="frame" x="30" y="216" width="540" height="30"/>
+                                <rect key="frame" x="30" y="227" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ML2-sa-gVp"/>
                                 </constraints>
@@ -93,7 +99,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="745" verticalHuggingPriority="745" text="Warning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="elN-z1-2gF">
-                                <rect key="frame" x="30" y="379" width="540" height="21"/>
+                                <rect key="frame" x="30" y="387" width="540" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="2dl-B7-0qB"/>
                                 </constraints>
@@ -102,13 +108,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="749" image="SnailMail Icon Set" translatesAutoresizingMaskIntoConstraints="NO" id="8Jo-sS-8dl">
-                                <rect key="frame" x="227" y="110" width="146" height="96"/>
+                                <rect key="frame" x="225" y="118" width="150" height="99"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="8Jo-sS-8dl" secondAttribute="height" multiplier="93:61" id="HPf-Wn-zzT"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="747" verticalHuggingPriority="748" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="8" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Y1L-HG-f5a">
-                                <rect key="frame" x="30" y="296" width="540" height="30"/>
+                                <rect key="frame" x="30" y="307" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="U0h-Ue-2T7"/>
                                 </constraints>
@@ -135,6 +141,7 @@
                             <constraint firstAttribute="trailing" secondItem="29Z-NH-vug" secondAttribute="trailing" constant="30" id="aQX-QX-i7p"/>
                             <constraint firstAttribute="centerX" secondItem="29Z-NH-vug" secondAttribute="centerX" id="gOp-hM-anH"/>
                             <constraint firstAttribute="trailing" secondItem="Y1L-HG-f5a" secondAttribute="trailing" constant="30" id="gjP-hW-WVv"/>
+                            <constraint firstAttribute="height" secondItem="8Jo-sS-8dl" secondAttribute="height" multiplier="0.15" id="hwb-D3-ObE"/>
                             <constraint firstItem="img-9d-DTv" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" constant="30" id="maO-NU-LWi"/>
                             <constraint firstItem="img-9d-DTv" firstAttribute="top" secondItem="1Cx-Sp-3Un" secondAttribute="bottom" constant="7" id="nyZ-sy-3WX"/>
                             <constraint firstItem="1Cx-Sp-3Un" firstAttribute="top" secondItem="8Jo-sS-8dl" secondAttribute="bottom" constant="8" id="pz6-qM-kQ9"/>
@@ -146,7 +153,9 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="nyZ-sy-3WX"/>
+                                <exclude reference="hwb-D3-ObE"/>
                                 <exclude reference="pz6-qM-kQ9"/>
+                                <exclude reference="CcB-I9-ndp"/>
                             </mask>
                         </variation>
                     </view>

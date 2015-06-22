@@ -25,11 +25,9 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         // Do any additional setup after loading the view.
     }
     
-//    override func viewDidAppear(animated: Bool) {
-//        
-//        sentMailTable.reloadData()
-//        
-//    }
+    override func viewDidAppear(animated: Bool) {
+        sentMailTable.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
