@@ -75,6 +75,7 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func configureTableView() {
+        sentMailTable.rowHeight = UITableViewAutomaticDimension
         sentMailTable.estimatedRowHeight = 370
     }
     
@@ -95,7 +96,7 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         cell?.mail = mail
         cell?.person = toPerson
         cell?.cardImage.image = getImage(mail)
-        cell?.mailContent.sizeToFit()
+//        cell?.mailContent.sizeToFit()
         
         return cell!
         

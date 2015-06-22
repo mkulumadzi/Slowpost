@@ -66,6 +66,8 @@
 		D25A9CB21B261D2400ABBBA4 /* SignUpSuccessfulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25A9CB11B261D2400ABBBA4 /* SignUpSuccessfulViewController.swift */; };
 		D2B651AD1B31411C00134C23 /* SentMailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B651AC1B31411C00134C23 /* SentMailTableViewCell.swift */; };
 		D2B651AF1B32561700134C23 /* SnailMail Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B651AE1B32561700134C23 /* SnailMail Icon.png */; };
+		D2B651E31B38711E00134C23 /* SnailMail Closeup.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B651E21B38711E00134C23 /* SnailMail Closeup.png */; };
+		D2B651E51B38712900134C23 /* Default Card.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B651E41B38712900134C23 /* Default Card.png */; };
 		D2D866261B2F4AF800847051 /* ios7-person-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866251B2F4AF800847051 /* ios7-person-outline.png */; };
 		D2D866281B2F4B1C00847051 /* ios7-email-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866271B2F4B1C00847051 /* ios7-email-outline.png */; };
 		D2D8662A1B2F4B7F00847051 /* ios7-contact-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */; };
@@ -82,8 +84,6 @@
 		D2D866431B2F6FD500847051 /* ios7-contact-outline-light-yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866421B2F6FD500847051 /* ios7-contact-outline-light-yellow.png */; };
 		D2D866461B2F77BE00847051 /* SnailMail at the Beach.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866451B2F77BE00847051 /* SnailMail at the Beach.png */; };
 		D2E956401B2F8ECD00CA8CC8 /* Parachute.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E9563F1B2F8ECD00CA8CC8 /* Parachute.png */; };
-		D2E956421B2F8ED400CA8CC8 /* Default Card.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E956411B2F8ED400CA8CC8 /* Default Card.png */; };
-		D2E956441B2F8EE000CA8CC8 /* SnailMail Closeup.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E956431B2F8EE000CA8CC8 /* SnailMail Closeup.png */; };
 		D2E956461B30952800CA8CC8 /* ChooseCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E956451B30952800CA8CC8 /* ChooseCardViewController.swift */; };
 		D2E9564A1B309AA100CA8CC8 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */; };
 		D2E956581B30A8AC00CA8CC8 /* Sevilla.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E9564B1B30A8AC00CA8CC8 /* Sevilla.jpg */; };
@@ -182,6 +182,8 @@
 		D25A9CB11B261D2400ABBBA4 /* SignUpSuccessfulViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpSuccessfulViewController.swift; sourceTree = "<group>"; };
 		D2B651AC1B31411C00134C23 /* SentMailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMailTableViewCell.swift; sourceTree = "<group>"; };
 		D2B651AE1B32561700134C23 /* SnailMail Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnailMail Icon.png"; sourceTree = "<group>"; };
+		D2B651E21B38711E00134C23 /* SnailMail Closeup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnailMail Closeup.png"; sourceTree = "<group>"; };
+		D2B651E41B38712900134C23 /* Default Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default Card.png"; sourceTree = "<group>"; };
 		D2D866251B2F4AF800847051 /* ios7-person-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-person-outline.png"; sourceTree = "<group>"; };
 		D2D866271B2F4B1C00847051 /* ios7-email-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-email-outline.png"; sourceTree = "<group>"; };
 		D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-contact-outline.png"; sourceTree = "<group>"; };
@@ -198,8 +200,6 @@
 		D2D866421B2F6FD500847051 /* ios7-contact-outline-light-yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-contact-outline-light-yellow.png"; sourceTree = "<group>"; };
 		D2D866451B2F77BE00847051 /* SnailMail at the Beach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnailMail at the Beach.png"; sourceTree = "<group>"; };
 		D2E9563F1B2F8ECD00CA8CC8 /* Parachute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Parachute.png; sourceTree = "<group>"; };
-		D2E956411B2F8ED400CA8CC8 /* Default Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default Card.png"; sourceTree = "<group>"; };
-		D2E956431B2F8EE000CA8CC8 /* SnailMail Closeup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnailMail Closeup.png"; sourceTree = "<group>"; };
 		D2E956451B30952800CA8CC8 /* ChooseCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCardViewController.swift; sourceTree = "<group>"; };
 		D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		D2E9564B1B30A8AC00CA8CC8 /* Sevilla.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sevilla.jpg; sourceTree = "<group>"; };
@@ -453,6 +453,8 @@
 		D2D866441B2F77B200847051 /* Postcards */ = {
 			isa = PBXGroup;
 			children = (
+				D2B651E21B38711E00134C23 /* SnailMail Closeup.png */,
+				D2B651E41B38712900134C23 /* Default Card.png */,
 				D2E9564B1B30A8AC00CA8CC8 /* Sevilla.jpg */,
 				D2E9564C1B30A8AC00CA8CC8 /* Dhow.jpg */,
 				D2E9564D1B30A8AC00CA8CC8 /* Fig Arch.jpg */,
@@ -467,8 +469,6 @@
 				D2E956561B30A8AC00CA8CC8 /* Salamander.jpg */,
 				D2E956571B30A8AC00CA8CC8 /* Signs.jpg */,
 				D2D866451B2F77BE00847051 /* SnailMail at the Beach.png */,
-				D2E956411B2F8ED400CA8CC8 /* Default Card.png */,
-				D2E956431B2F8EE000CA8CC8 /* SnailMail Closeup.png */,
 				D2E9563F1B2F8ECD00CA8CC8 /* Parachute.png */,
 			);
 			name = Postcards;
@@ -594,7 +594,6 @@
 				D2E9565A1B30A8AC00CA8CC8 /* Fig Arch.jpg in Resources */,
 				D2E956581B30A8AC00CA8CC8 /* Sevilla.jpg in Resources */,
 				D20D8ECA1B27A3B400BBF6B5 /* close.png in Resources */,
-				D2E956421B2F8ED400CA8CC8 /* Default Card.png in Resources */,
 				D2E956401B2F8ECD00CA8CC8 /* Parachute.png in Resources */,
 				D20D8EDE1B2B384E00BBF6B5 /* ios7-compose-outline.png in Resources */,
 				CC23DE2C1AE54C1A00AFEDE4 /* mailbox.storyboard in Resources */,
@@ -605,6 +604,7 @@
 				D2E9565D1B30A8AC00CA8CC8 /* Ooh.jpg in Resources */,
 				D2D866411B2F6F7700847051 /* ios7-email-outline-light-yellow.png in Resources */,
 				D2E956661B30AAD900CA8CC8 /* ios7-checkmark.png in Resources */,
+				D2B651E51B38712900134C23 /* Default Card.png in Resources */,
 				D2B651AF1B32561700134C23 /* SnailMail Icon.png in Resources */,
 				D2D8662E1B2F50D300847051 /* ios7-email-outline-white.png in Resources */,
 				D25A9CA11B2259D300ABBBA4 /* OpenSans-Italic.ttf in Resources */,
@@ -622,7 +622,6 @@
 				D2E9565B1B30A8AC00CA8CC8 /* Fireworks.jpg in Resources */,
 				D20D8EDD1B2B384E00BBF6B5 /* edit.png in Resources */,
 				D25A9C9E1B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf in Resources */,
-				D2E956441B2F8EE000CA8CC8 /* SnailMail Closeup.png in Resources */,
 				CC23DE2E1AE54C2B00AFEDE4 /* compose.storyboard in Resources */,
 				D25A9CA31B2259D300ABBBA4 /* OpenSans-LightItalic.ttf in Resources */,
 				D2D866391B2F5DF900847051 /* log-out-white.png in Resources */,
@@ -646,6 +645,7 @@
 				D20D8EC41B27A39900BBF6B5 /* arrow-left-c.png in Resources */,
 				D20D8ED21B2A45FE00BBF6B5 /* arrow-right-c-white.png in Resources */,
 				CC23DE331AE555AB00AFEDE4 /* 037_Pen_2x.png in Resources */,
+				D2B651E31B38711E00134C23 /* SnailMail Closeup.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

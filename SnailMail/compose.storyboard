@@ -123,7 +123,7 @@
                                 <rect key="frame" x="0.0" y="94" width="600" height="506"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QM5-am-YK2">
-                                    <size key="itemSize" width="300" height="182"/>
+                                    <size key="itemSize" width="300" height="204"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
@@ -133,13 +133,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="182"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="204"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tnB-P3-OLy">
-                                                    <rect key="frame" x="37" y="5" width="258" height="172"/>
+                                                    <rect key="frame" x="37" y="5" width="258" height="194"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="tnB-P3-OLy" secondAttribute="height" multiplier="3:2" id="NPZ-Sp-LTH"/>
+                                                        <constraint firstAttribute="width" secondItem="tnB-P3-OLy" secondAttribute="height" multiplier="4:3" id="NPZ-Sp-LTH"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ios7-checkmark-not-checked.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Zh-b1-vVs">
@@ -196,7 +196,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Xo2-fI-zmF">
-                                <rect key="frame" x="40" y="62" width="410" height="24"/>
+                                <rect key="frame" x="40" y="62" width="530" height="24"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -209,7 +209,7 @@
                             <constraint firstItem="ra4-CK-oJ7" firstAttribute="leading" secondItem="KBQ-d2-vI0" secondAttribute="leading" id="NCi-rz-g35"/>
                             <constraint firstItem="ra4-CK-oJ7" firstAttribute="top" secondItem="Xo2-fI-zmF" secondAttribute="bottom" id="OfU-lA-xRF"/>
                             <constraint firstItem="VUa-IR-aT0" firstAttribute="leading" secondItem="KBQ-d2-vI0" secondAttribute="leading" id="Pc5-EQ-Cct"/>
-                            <constraint firstAttribute="trailing" secondItem="Xo2-fI-zmF" secondAttribute="trailing" constant="150" id="RlP-fp-T9B"/>
+                            <constraint firstAttribute="trailing" secondItem="Xo2-fI-zmF" secondAttribute="trailing" constant="30" id="RlP-fp-T9B"/>
                             <constraint firstItem="VUa-IR-aT0" firstAttribute="top" secondItem="KBQ-d2-vI0" secondAttribute="top" id="SHf-A2-86V"/>
                             <constraint firstAttribute="bottom" secondItem="ra4-CK-oJ7" secondAttribute="bottom" id="W5c-vC-gO7"/>
                             <constraint firstItem="VUa-IR-aT0" firstAttribute="top" secondItem="KBQ-d2-vI0" secondAttribute="top" id="c2h-OM-vSX"/>
@@ -321,14 +321,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default Card.png" translatesAutoresizingMaskIntoConstraints="NO" id="huH-mK-UMT">
-                                <rect key="frame" x="470" y="58" width="120" height="80"/>
+                                <rect key="frame" x="483" y="58" width="107" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="6R3-am-Loh"/>
-                                    <constraint firstAttribute="width" secondItem="huH-mK-UMT" secondAttribute="height" multiplier="3:2" id="Gb9-bj-acp"/>
+                                    <constraint firstAttribute="width" secondItem="huH-mK-UMT" secondAttribute="height" multiplier="4:3" id="Gb9-bj-acp"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KiO-xd-bKI">
-                                <rect key="frame" x="40" y="62" width="394" height="24"/>
+                                <rect key="frame" x="40" y="62" width="433" height="24"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -344,6 +344,7 @@
                             <constraint firstItem="huH-mK-UMT" firstAttribute="top" secondItem="IVs-Ly-4bv" secondAttribute="bottom" constant="10" id="MQG-yL-4c6"/>
                             <constraint firstItem="GcV-KG-RdI" firstAttribute="top" secondItem="IVs-Ly-4bv" secondAttribute="bottom" constant="14" id="T6a-1G-mTJ"/>
                             <constraint firstAttribute="trailing" secondItem="kiv-Wq-vjl" secondAttribute="trailing" constant="10" id="bc3-6g-DUh"/>
+                            <constraint firstItem="huH-mK-UMT" firstAttribute="leading" secondItem="KiO-xd-bKI" secondAttribute="trailing" constant="10" id="bsa-MN-XPL"/>
                             <constraint firstItem="kiv-Wq-vjl" firstAttribute="top" secondItem="huH-mK-UMT" secondAttribute="bottom" constant="10" id="hUH-W7-Rez"/>
                             <constraint firstAttribute="trailing" secondItem="IVs-Ly-4bv" secondAttribute="trailing" id="i18-wX-9Em"/>
                             <constraint firstItem="KiO-xd-bKI" firstAttribute="top" secondItem="IVs-Ly-4bv" secondAttribute="bottom" constant="14" id="miG-SE-PlU"/>
@@ -354,6 +355,7 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="5Dx-3g-qPj"/>
                                 <exclude reference="3Fe-Qp-BAj"/>
                             </mask>
                         </variation>

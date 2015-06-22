@@ -11,8 +11,8 @@ import Alamofire
 
 
 //URL for Heroku instance of PostOfice server
-//let PostOfficeURL = "https://safe-ocean-2040.herokuapp.com/"
-let PostOfficeURL = "http://localhost:9292/"
+let PostOfficeURL = "https://safe-ocean-2040.herokuapp.com/"
+//let PostOfficeURL = "http://localhost:9292/"
 
 class DataManager {
    
