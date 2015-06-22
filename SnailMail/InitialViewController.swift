@@ -1,5 +1,5 @@
 //
-//  WelcomeScreenViewController.swift
+//  InitialViewController.swift
 //  SnailMail
 //
 //  Created by Evan Waters on 3/20/15.
@@ -12,7 +12,7 @@ var loggedInUser:Person!
 var mailbox = [Mail]()
 var people = [Person]()
 
-class WelcomeScreenViewController: UIViewController {
+class InitialViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,7 @@ class WelcomeScreenViewController: UIViewController {
                     println(error)
                 }
                 else if let mailArray = result as? Array<Mail> {
-                    mailbox = mailArray
+                    mailbox = mailArray.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
                     //Get all peoplle records
                     DataManager.getPeople("", completion: { (error, result) -> Void in
                         if error != nil {

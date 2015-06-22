@@ -10,6 +10,9 @@
             <string>OpenSans-Light</string>
             <string>OpenSans-Light</string>
         </mutableArray>
+        <mutableArray key="OpenSans-LightItalic.ttf">
+            <string>OpenSansLight-Italic</string>
+        </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
         </mutableArray>
@@ -37,7 +40,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kDI-WB-Wvr" id="JaT-pv-R5G">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXp-uy-X4x">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FromLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXp-uy-X4x" userLabel="FromLabel">
                                                     <rect key="frame" x="107" y="28" width="450" height="24"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -49,6 +52,12 @@
                                                         <constraint firstAttribute="width" secondItem="wSz-by-QZp" secondAttribute="height" multiplier="4:3" id="PCL-22-Soz"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vva-fI-tRb">
+                                                    <rect key="frame" x="107" y="52" width="450" height="21"/>
+                                                    <fontDescription key="fontDescription" name="OpenSansLight-Italic" family="Open Sans" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="wSz-by-QZp" firstAttribute="top" secondItem="JaT-pv-R5G" secondAttribute="top" constant="5" id="A5G-Qv-z8e"/>
@@ -56,10 +65,13 @@
                                                 <constraint firstItem="wSz-by-QZp" firstAttribute="leading" secondItem="JaT-pv-R5G" secondAttribute="leading" constant="5" id="FrF-h6-MAe"/>
                                                 <constraint firstItem="wSz-by-QZp" firstAttribute="top" secondItem="JaT-pv-R5G" secondAttribute="topMargin" constant="1" id="Oq7-Xn-pRq"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="wSz-by-QZp" secondAttribute="bottom" constant="1" id="Qaz-fz-RPW"/>
+                                                <constraint firstItem="vva-fI-tRb" firstAttribute="top" secondItem="cXp-uy-X4x" secondAttribute="bottom" id="RHS-jc-K2w"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="wSz-by-QZp" secondAttribute="trailing" constant="456" id="RuX-kQ-HJ2"/>
+                                                <constraint firstItem="vva-fI-tRb" firstAttribute="leading" secondItem="wSz-by-QZp" secondAttribute="trailing" constant="10" id="Snv-2w-Oyx"/>
                                                 <constraint firstAttribute="trailing" secondItem="cXp-uy-X4x" secondAttribute="trailing" constant="10" id="YmL-ZG-Mnv"/>
                                                 <constraint firstItem="wSz-by-QZp" firstAttribute="leading" secondItem="JaT-pv-R5G" secondAttribute="leadingMargin" constant="1" id="b7j-Rb-j4Q"/>
                                                 <constraint firstAttribute="centerY" secondItem="cXp-uy-X4x" secondAttribute="centerY" id="h5Q-iZ-l5S"/>
+                                                <constraint firstAttribute="trailing" secondItem="vva-fI-tRb" secondAttribute="trailing" constant="10" id="pwb-ZJ-bJx"/>
                                                 <constraint firstItem="cXp-uy-X4x" firstAttribute="leading" secondItem="wSz-by-QZp" secondAttribute="trailing" constant="10" id="ylD-nj-i3U"/>
                                             </constraints>
                                             <variation key="default">
@@ -72,6 +84,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="arrivalLabel" destination="vva-fI-tRb" id="3zC-my-miN"/>
                                             <outlet property="fromLabel" destination="cXp-uy-X4x" id="xhw-Sw-5ZF"/>
                                             <outlet property="mailImage" destination="wSz-by-QZp" id="qbz-6N-OlB"/>
                                             <segue destination="gCE-4u-4GZ" kind="show" identifier="viewMail" id="l1s-Xr-3HN"/>

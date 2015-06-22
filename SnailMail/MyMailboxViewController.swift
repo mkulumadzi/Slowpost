@@ -38,9 +38,13 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         let mail = mailbox[indexPath.row] as Mail
         let fromPerson = getPerson(mail.from)
         
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
         cell?.mail = mail
         cell?.from = fromPerson
         cell?.fromLabel.text = fromPerson.name
+        cell?.arrivalLabel.text = "Arrived \(dateFormatter.stringFromDate(mail.scheduledToArrive))"
         
         cell?.mailImage.image = getImage(mail)
         

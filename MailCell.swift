@@ -13,6 +13,7 @@ class MailCell: UITableViewCell {
 
     @IBOutlet weak var fromLabel: UILabel!
     @IBOutlet weak var mailImage: UIImageView!
+    @IBOutlet weak var arrivalLabel: UILabel!
     
     var mail:Mail!
     var from:Person!

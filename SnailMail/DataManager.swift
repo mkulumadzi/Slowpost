@@ -149,8 +149,10 @@ class DataManager {
         let to = jsonEntry.objectForKey("to") as! String
         let content = jsonEntry.objectForKey("content") as! String
         let image = jsonEntry.objectForKey("image") as? String
+        let arrivalString = jsonEntry.objectForKey("scheduled_to_arrive") as? String
+        let scheduledToArrive = NSDate(dateString: arrivalString!)
         
-        var new_mail = Mail(id: id, status: status, from: from, to: to, content: content, image: image)
+        var new_mail = Mail(id: id, status: status, from: from, to: to, content: content, image: image, scheduledToArrive: scheduledToArrive)
         
         return new_mail
     }
