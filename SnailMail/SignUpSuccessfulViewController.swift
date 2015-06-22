@@ -22,7 +22,7 @@ class SignUpSuccessfulViewController: UIViewController {
     
     
     @IBAction func goToMailbox(sender: AnyObject) {
-        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var storyboard = UIStoryboard(name: "initial", bundle: nil)
         var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
         self.presentViewController(controller, animated: true, completion: nil)
     }

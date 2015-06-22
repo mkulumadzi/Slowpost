@@ -50,7 +50,7 @@ class LogInViewController: UIViewController {
                             //Assume Person Array will always have only 1 entry, since username is unique... but should do a better job of handling this...
                             loggedInUser = personArray[0]
                             
-                            var storyboard = UIStoryboard(name: "Main", bundle: nil)
+                            var storyboard = UIStoryboard(name: "initial", bundle: nil)
                             var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
                             self.presentViewController(controller, animated: true, completion: nil)
                             

@@ -55,7 +55,7 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func logOut(sender: AnyObject) {
         loggedInUser = nil
         
-        var storyboard = UIStoryboard(name: "Main", bundle: nil)
+        var storyboard = UIStoryboard(name: "initial", bundle: nil)
         var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
         
         self.presentViewController(controller, animated: true, completion: nil)
@@ -95,15 +95,15 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         cell?.mail = mail
         cell?.person = toPerson
         cell?.cardImage.image = getImage(mail)
+        cell?.mailContent.sizeToFit()
         
         return cell!
         
     }
     
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        println("Well this is happening")
-//        return UITableViewAutomaticDimension
-//    }
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
     
     //I'm sure there is a better way to do this...
     func getPerson(username: String) -> Person {
