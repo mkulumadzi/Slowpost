@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CCCB1A4C1AB0D48A0067F100"
-               BuildableName = "SnailMail.app"
-               BlueprintName = "SnailMail"
-               ReferencedContainer = "container:SnailMail.xcodeproj">
+               BuildableName = "Snailtale.app"
+               BlueprintName = "Snailtale"
+               ReferencedContainer = "container:Snailtale.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CCCB1A611AB0D48A0067F100"
-               BuildableName = "SnailMailTests.xctest"
-               BlueprintName = "SnailMailTests"
-               ReferencedContainer = "container:SnailMail.xcodeproj">
+               BuildableName = "SnailtaleTests.xctest"
+               BlueprintName = "SnailtaleTests"
+               ReferencedContainer = "container:Snailtale.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CCCB1A611AB0D48A0067F100"
-               BuildableName = "SnailMailTests.xctest"
-               BlueprintName = "SnailMailTests"
-               ReferencedContainer = "container:SnailMail.xcodeproj">
+               BuildableName = "SnailtaleTests.xctest"
+               BlueprintName = "SnailtaleTests"
+               ReferencedContainer = "container:Snailtale.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CCCB1A4C1AB0D48A0067F100"
-            BuildableName = "SnailMail.app"
-            BlueprintName = "SnailMail"
-            ReferencedContainer = "container:SnailMail.xcodeproj">
+            BuildableName = "Snailtale.app"
+            BlueprintName = "Snailtale"
+            ReferencedContainer = "container:Snailtale.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CCCB1A4C1AB0D48A0067F100"
-            BuildableName = "SnailMail.app"
-            BlueprintName = "SnailMail"
-            ReferencedContainer = "container:SnailMail.xcodeproj">
+            BuildableName = "Snailtale.app"
+            BlueprintName = "Snailtale"
+            ReferencedContainer = "container:Snailtale.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CCCB1A4C1AB0D48A0067F100"
-            BuildableName = "SnailMail.app"
-            BlueprintName = "SnailMail"
-            ReferencedContainer = "container:SnailMail.xcodeproj">
+            BuildableName = "Snailtale.app"
+            BlueprintName = "Snailtale"
+            ReferencedContainer = "container:Snailtale.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

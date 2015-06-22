@@ -11,8 +11,7 @@ import Alamofire
 
 
 //URL for Heroku instance of PostOfice server
-let PostOfficeURL = "https://snailmail-production.herokuapp.com/"
-
+let PostOfficeURL = "https://snailmail-staging.herokuapp.com/"
 //let PostOfficeURL = "http://localhost:9292/"
 
 class DataManager {
