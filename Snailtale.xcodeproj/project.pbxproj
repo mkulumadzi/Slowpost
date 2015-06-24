@@ -50,6 +50,7 @@
 		D20D8EDF1B2B384E00BBF6B5 /* ios7-compose.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8ED91B2B384E00BBF6B5 /* ios7-compose.png */; };
 		D20D8EE01B2B384E00BBF6B5 /* plus-round.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8EDA1B2B384E00BBF6B5 /* plus-round.png */; };
 		D20D8EE21B2E448100BBF6B5 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D8EE11B2E448100BBF6B5 /* PersonCell.swift */; };
+		D24A359E1B3A29A70045E165 /* Configurations.plist in Resources */ = {isa = PBXBuildFile; fileRef = D24A359D1B3A29A70045E165 /* Configurations.plist */; };
 		D25A9C9C1B2259D300ABBBA4 /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C911B2259D300ABBBA4 /* Apache License.txt */; };
 		D25A9C9D1B2259D300ABBBA4 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */; };
 		D25A9C9E1B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */; };
@@ -167,6 +168,7 @@
 		D20D8ED91B2B384E00BBF6B5 /* ios7-compose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-compose.png"; sourceTree = "<group>"; };
 		D20D8EDA1B2B384E00BBF6B5 /* plus-round.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-round.png"; sourceTree = "<group>"; };
 		D20D8EE11B2E448100BBF6B5 /* PersonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
+		D24A359D1B3A29A70045E165 /* Configurations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configurations.plist; sourceTree = "<group>"; };
 		D25A9C911B2259D300ABBBA4 /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apache License.txt"; sourceTree = "<group>"; };
 		D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				CCCB1A511AB0D48A0067F100 /* Info.plist */,
+				D24A359D1B3A29A70045E165 /* Configurations.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 				CC96E4C11AC0AE16001E6D27 /* mailbox_small_white.png in Resources */,
 				CC96E4BB1AC0A7FA001E6D27 /* snailmail_without_background_large.png in Resources */,
 				CCCB1A5D1AB0D48A0067F100 /* LaunchScreen.xib in Resources */,
+				D24A359E1B3A29A70045E165 /* Configurations.plist in Resources */,
 				D25A9CA41B2259D300ABBBA4 /* OpenSans-Regular.ttf in Resources */,
 				D2E9565D1B30A8AC00CA8CC8 /* Ooh.jpg in Resources */,
 				D2D866411B2F6F7700847051 /* ios7-email-outline-light-yellow.png in Resources */,
