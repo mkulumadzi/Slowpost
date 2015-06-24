@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9CACCF66536A0086251EB3B1"
+               BlueprintIdentifier = "B50C3D41C4E127030E850E53"
                BuildableName = "Pods_SnailMail.framework"
                BlueprintName = "Pods-SnailMail"
                ReferencedContainer = "container:Pods.xcodeproj">

@@ -11,11 +11,39 @@ import Alamofire
 
 
 //URL for Heroku instance of PostOfice server
-let PostOfficeURL = "https://snailmail-production.herokuapp.com/"
-
-//let PostOfficeURL = "http://localhost:9292/"
+let PostOfficeURL = DataManager.getPostOfficeURL()
 
 class DataManager {
+
+    class func getCurrentConfiguration() -> String {
+        var myDict: NSDictionary?
+        var currentConfiguration = ""
+        
+        if let path = NSBundle.mainBundle().pathForResource("Info", ofType: "plist") {
+            myDict = NSDictionary(contentsOfFile: path)
+        }
+        if let dict = myDict {
+            currentConfiguration = dict["Configuration"] as! String
+        }
+        
+        return currentConfiguration
+    }
+    
+    class func getPostOfficeURL() -> String {
+        var myDict: NSDictionary?
+        var currentConfiguration = getCurrentConfiguration()
+        var postOfficeURL = ""
+        
+        if let path = NSBundle.mainBundle().pathForResource("Configurations", ofType: "plist") {
+            myDict = NSDictionary(contentsOfFile: path)
+        }
+        if let dict = myDict {
+            var configDict: NSDictionary = (dict[currentConfiguration] as? NSDictionary)!
+            postOfficeURL = configDict["PostOfficeURL"] as! String
+        }
+        
+        return postOfficeURL
+    }
    
       class func getPerson(personURL:String, completion: (error: NSError?, result: AnyObject?) -> Void) {
     
