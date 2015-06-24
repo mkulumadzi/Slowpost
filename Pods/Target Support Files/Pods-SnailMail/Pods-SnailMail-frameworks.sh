@@ -52,6 +52,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Regex.framework'
   install_framework 'SwiftyJSON.framework'
 fi
+if [[ "$CONFIGURATION" == "Staging" ]]; then
+  install_framework 'Alamofire.framework'
+  install_framework 'Regex.framework'
+  install_framework 'SwiftyJSON.framework'
+fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Alamofire.framework'
   install_framework 'Regex.framework'

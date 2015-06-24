@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0640"
+   LastUpgradeVersion = "0630"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "69681E80136AA70C1B25A104"
-               BuildableName = "SwiftyJSON.framework"
-               BlueprintName = "Pods-SnailMail-SwiftyJSON"
-               ReferencedContainer = "container:Pods.xcodeproj">
+               BlueprintIdentifier = "CCCB1A4C1AB0D48A0067F100"
+               BuildableName = "Snailtale.app"
+               BlueprintName = "SnailMail"
+               ReferencedContainer = "container:SnailMail.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,16 +29,35 @@
       buildConfiguration = "Debug">
       <Testables>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "CCCB1A4C1AB0D48A0067F100"
+            BuildableName = "Snailtale.app"
+            BlueprintName = "SnailMail"
+            ReferencedContainer = "container:SnailMail.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
+      buildConfiguration = "Staging"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "CCCB1A4C1AB0D48A0067F100"
+            BuildableName = "Snailtale.app"
+            BlueprintName = "SnailMail"
+            ReferencedContainer = "container:SnailMail.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -48,6 +67,16 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "CCCB1A4C1AB0D48A0067F100"
+            BuildableName = "Snailtale.app"
+            BlueprintName = "SnailMail"
+            ReferencedContainer = "container:SnailMail.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

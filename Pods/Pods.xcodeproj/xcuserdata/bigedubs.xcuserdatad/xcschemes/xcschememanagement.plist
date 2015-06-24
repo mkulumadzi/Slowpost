@@ -9,48 +9,48 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>1</integer>
 		</dict>
 		<key>Pods-SnailMail-Regex.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Pods-SnailMail-SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>3</integer>
 		</dict>
 		<key>Pods-SnailMail.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>4BEF65A3798694C7990FDBD7</key>
+		<key>69681E80136AA70C1B25A104</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9CACCF66536A0086251EB3B1</key>
+		<key>796561FEF7F3D7ED11B88B88</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A917A841366A505CE0BDDBAD</key>
+		<key>B50C3D41C4E127030E850E53</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C8331C0AF27345BAEFD352D5</key>
+		<key>FE3B7B54BC3D6093378851D5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
