@@ -39,7 +39,7 @@
         <!--Log In View Controller-->
         <scene sceneID="68U-Yf-3Uf">
             <objects>
-                <viewController storyboardIdentifier="InitialController" id="5Lt-wu-z72" customClass="LogInViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialController" id="5Lt-wu-z72" customClass="LogInViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CYa-XF-MvS"/>
                         <viewControllerLayoutGuide type="bottom" id="1DP-Og-uUK"/>
@@ -56,7 +56,7 @@
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" verticalCompressionResistancePriority="748" text="Snailtale" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="29Z-NH-vug">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" verticalCompressionResistancePriority="748" text="Cheeriyo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="29Z-NH-vug">
                                 <rect key="frame" x="30" y="20" width="540" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="3Dm-Ii-XXr"/>
@@ -176,7 +176,7 @@
         <!--Register View Controller-->
         <scene sceneID="FC7-Kj-SAs">
             <objects>
-                <viewController id="cqE-Qh-T2s" customClass="RegisterViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cqE-Qh-T2s" customClass="RegisterViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5ay-1r-pEx"/>
                         <viewControllerLayoutGuide type="bottom" id="ZQI-81-jr8"/>
@@ -310,7 +310,7 @@
         <!--Sign Up Successful View Controller-->
         <scene sceneID="i3S-Y5-XvT">
             <objects>
-                <viewController storyboardIdentifier="registrationSuccessful" id="VlT-9s-rBm" customClass="SignUpSuccessfulViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="registrationSuccessful" id="VlT-9s-rBm" customClass="SignUpSuccessfulViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aLJ-th-8vJ"/>
                         <viewControllerLayoutGuide type="bottom" id="rgM-kU-Bvj"/>
@@ -337,7 +337,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snailtale" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="86c-Qy-Pz4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cheeriyo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="86c-Qy-Pz4">
                                 <rect key="frame" x="30" y="150" width="540" height="88"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="64"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -372,7 +372,7 @@
         <!--Personal Details View Controller-->
         <scene sceneID="H6P-Iz-wBZ">
             <objects>
-                <viewController id="50O-Yf-FNf" customClass="PersonalDetailsViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="50O-Yf-FNf" customClass="PersonalDetailsViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1gb-GM-fft"/>
                         <viewControllerLayoutGuide type="bottom" id="zr6-sk-r2h"/>

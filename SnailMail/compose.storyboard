@@ -33,7 +33,7 @@
         <!--Choose Card View Controller-->
         <scene sceneID="bQQ-CI-qeJ">
             <objects>
-                <viewController id="z1i-ko-pF7" customClass="ChooseCardViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="z1i-ko-pF7" customClass="ChooseCardViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Eej-wH-HxO"/>
                         <viewControllerLayoutGuide type="bottom" id="PjK-zz-hIw"/>
@@ -129,7 +129,7 @@
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="CardCell" id="Gnk-y3-ba1" customClass="CardCollectionViewCell" customModule="SnailMail" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="CardCell" id="Gnk-y3-ba1" customClass="CardCollectionViewCell" customModule="Snailtale" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -240,7 +240,7 @@
         <!--Compose Mail View Controller-->
         <scene sceneID="BaF-2i-HAc">
             <objects>
-                <viewController id="uNW-RF-l3y" customClass="ComposeMailViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uNW-RF-l3y" customClass="ComposeMailViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kTe-CR-dcv"/>
                         <viewControllerLayoutGuide type="bottom" id="gNS-Nl-7MF"/>
@@ -376,7 +376,7 @@
         <!--Mail Sent View Controller-->
         <scene sceneID="MbD-Kh-aPK">
             <objects>
-                <viewController id="xfs-yB-txn" customClass="MailSentViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xfs-yB-txn" customClass="MailSentViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="k3i-FL-VHg"/>
                         <viewControllerLayoutGuide type="bottom" id="cZt-sG-5AD"/>
@@ -403,7 +403,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SnailMail Postman Set" translatesAutoresizingMaskIntoConstraints="NO" id="dMI-hF-bde">
                                 <rect key="frame" x="250" y="419" width="100" height="181"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Snailtale has been sent, and will arrive in 2 to 3 days!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="F5G-V8-E7p">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your mail has been sent, and will arrive in 2 to 3 days!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="F5G-V8-E7p">
                                 <rect key="frame" x="30" y="156" width="540" height="99"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="36"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -442,7 +442,7 @@
         <!--To View Controller-->
         <scene sceneID="fT4-r7-D5g">
             <objects>
-                <viewController storyboardIdentifier="InitialController" id="56L-ux-Lnu" customClass="ToViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialController" id="56L-ux-Lnu" customClass="ToViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DaV-in-3s9"/>
                         <viewControllerLayoutGuide type="bottom" id="z2b-dc-6Oc"/>
@@ -455,7 +455,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="508"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="personCell" id="cXn-kV-8jj" customClass="PersonCell" customModule="SnailMail" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="personCell" id="cXn-kV-8jj" customClass="PersonCell" customModule="Snailtale" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cXn-kV-8jj" id="wjn-aq-Tzt">
