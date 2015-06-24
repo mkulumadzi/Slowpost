@@ -137,14 +137,14 @@
 		CC96E4C01AC0AE16001E6D27 /* mailbox_small_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mailbox_small_white.png; sourceTree = "<group>"; };
 		CC96E4C21AC0AF43001E6D27 /* compose_small_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compose_small_white.png; sourceTree = "<group>"; };
 		CC96E4C81AC0B334001E6D27 /* ComposeMailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeMailViewController.swift; sourceTree = "<group>"; };
-		CCCB1A4D1AB0D48A0067F100 /* Snailtale.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snailtale.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCCB1A4D1AB0D48A0067F100 /* SnailMail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnailMail.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCCB1A511AB0D48A0067F100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCCB1A521AB0D48A0067F100 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCCB1A541AB0D48A0067F100 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CCCB1A571AB0D48A0067F100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/initial.storyboard; sourceTree = "<group>"; };
 		CCCB1A591AB0D48A0067F100 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CCCB1A5C1AB0D48A0067F100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		CCCB1A621AB0D48A0067F100 /* SnailtaleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnailtaleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCCB1A621AB0D48A0067F100 /* SnailMailTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnailMailTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCCB1A671AB0D48A0067F100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCCB1A681AB0D48A0067F100 /* SnailtaleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnailtaleTests.swift; sourceTree = "<group>"; };
 		CCCB1A741AB0D87F0067F100 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -359,8 +359,8 @@
 		CCCB1A4E1AB0D48A0067F100 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CCCB1A4D1AB0D48A0067F100 /* Snailtale.app */,
-				CCCB1A621AB0D48A0067F100 /* SnailtaleTests.xctest */,
+				CCCB1A4D1AB0D48A0067F100 /* SnailMail.app */,
+				CCCB1A621AB0D48A0067F100 /* SnailMailTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -517,7 +517,7 @@
 			);
 			name = SnailMail;
 			productName = SnailMail;
-			productReference = CCCB1A4D1AB0D48A0067F100 /* Snailtale.app */;
+			productReference = CCCB1A4D1AB0D48A0067F100 /* SnailMail.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CCCB1A611AB0D48A0067F100 /* SnailMailTests */ = {
@@ -535,7 +535,7 @@
 			);
 			name = SnailMailTests;
 			productName = SnailMailTests;
-			productReference = CCCB1A621AB0D48A0067F100 /* SnailtaleTests.xctest */;
+			productReference = CCCB1A621AB0D48A0067F100 /* SnailMailTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
