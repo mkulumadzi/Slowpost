@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class ComposeMailViewController: UIViewController {
+class ComposeMailViewController: UIViewController, UITextViewDelegate {
     
     var imageName:String!
     var toUsername:String!
@@ -17,6 +17,7 @@ class ComposeMailViewController: UIViewController {
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var imagePreview: UIImageView!
     @IBOutlet weak var composeText: UITextView!
+    @IBOutlet weak var doneButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +48,8 @@ class ComposeMailViewController: UIViewController {
     }
     
     @IBAction func sendMail(sender: AnyObject) {
-        
+        doneButton.enabled = false
+
         sendMailToPostoffice( { (error, result) -> Void in
             if result!.statusCode == 201 {
                 self.performSegueWithIdentifier("sendMail", sender: nil)
@@ -71,6 +73,10 @@ class ComposeMailViewController: UIViewController {
                     completion(error: nil, result: response)
                 }
         }
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        doneButton.enabled = true
     }
 
 }

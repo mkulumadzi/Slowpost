@@ -262,6 +262,9 @@
                                         <exclude reference="rd4-EE-l2q"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="uNW-RF-l3y" id="IEQ-0b-oAn"/>
+                                </connections>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVs-Ly-4bv">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="48"/>
@@ -363,6 +366,7 @@
                     <navigationItem key="navigationItem" id="ZB5-Cb-qq3"/>
                     <connections>
                         <outlet property="composeText" destination="kiv-Wq-vjl" id="Gx8-pH-tKg"/>
+                        <outlet property="doneButton" destination="HGZ-08-as4" id="cVl-D5-4uu"/>
                         <outlet property="imagePreview" destination="huH-mK-UMT" id="FrZ-wP-cSx"/>
                         <outlet property="toLabel" destination="KiO-xd-bKI" id="UbM-XW-CnN"/>
                         <segue destination="xfs-yB-txn" kind="show" identifier="sendMail" id="pNN-yi-cjN"/>

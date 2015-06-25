@@ -17,6 +17,7 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var cityField: UITextField!
     @IBOutlet weak var stateField: UITextField!
     @IBOutlet weak var zipField: UITextField!
+    @IBOutlet weak var saveButton: SnailMailTextUIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,7 @@ class EditProfileViewController: UIViewController {
     }
 
     @IBAction func saveEditedInfo(sender: AnyObject) {
+        saveButton.disable()
         
         self.updatePerson( { (error, result) -> Void in
             if error != nil {
@@ -93,5 +95,9 @@ class EditProfileViewController: UIViewController {
             }
         })
         
+    }
+    
+    @IBAction func editingChanged(sender: AnyObject) {
+        saveButton.enable()
     }
 }

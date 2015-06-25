@@ -290,26 +290,41 @@
                                 <rect key="frame" x="30" y="78" width="540" height="30"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="editingChanged:" destination="qNd-F5-aPS" eventType="editingChanged" id="ODE-Kx-7cG"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LS1-6o-LrV">
                                 <rect key="frame" x="30" y="168" width="540" height="30"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="editingChanged:" destination="qNd-F5-aPS" eventType="editingChanged" id="WD7-vK-RZe"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PFt-xu-Tsb">
                                 <rect key="frame" x="30" y="208" width="540" height="30"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="editingChanged:" destination="qNd-F5-aPS" eventType="editingChanged" id="4nz-Y2-C3y"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FBE-VS-iq7">
                                 <rect key="frame" x="30" y="248" width="540" height="30"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="editingChanged:" destination="qNd-F5-aPS" eventType="editingChanged" id="PqA-Jn-fbT"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DM6-gP-T1s">
                                 <rect key="frame" x="30" y="288" width="540" height="30"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="editingChanged:" destination="qNd-F5-aPS" eventType="editingChanged" id="p9w-ST-OcR"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0a-2H-KEY">
                                 <rect key="frame" x="30" y="118" width="540" height="20"/>
@@ -317,9 +332,12 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVJ-ZN-GQd">
-                                <rect key="frame" x="30" y="328" width="540" height="33"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVJ-ZN-GQd" customClass="SnailMailTextUIButton" customModule="SnailMail" customModuleProvider="target">
+                                <rect key="frame" x="30" y="328" width="540" height="30"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="yxB-Ef-Aqn"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="Save">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -363,6 +381,7 @@
                         <outlet property="cityField" destination="PFt-xu-Tsb" id="xS7-xT-KbV"/>
                         <outlet property="emailLabel" destination="N0a-2H-KEY" id="5R1-f9-q3W"/>
                         <outlet property="nameField" destination="UPU-ci-qfd" id="QFc-tI-RQk"/>
+                        <outlet property="saveButton" destination="uVJ-ZN-GQd" id="fmx-yh-jKP"/>
                         <outlet property="stateField" destination="FBE-VS-iq7" id="CyY-y8-czP"/>
                         <outlet property="zipField" destination="DM6-gP-T1s" id="szQ-xK-IvU"/>
                     </connections>
