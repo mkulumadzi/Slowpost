@@ -21,8 +21,12 @@
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Session" syncable="YES">
+        <attribute name="loggedInUser" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Person" positionX="-54" positionY="-9" width="128" height="180"/>
         <element name="Mail" positionX="-36" positionY="72" width="128" height="165"/>
+        <element name="Person" positionX="-54" positionY="-9" width="128" height="180"/>
+        <element name="Session" positionX="-45" positionY="90" width="128" height="60"/>
     </elements>
 </model>

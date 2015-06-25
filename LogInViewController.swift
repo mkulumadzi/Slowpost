@@ -38,20 +38,12 @@ class LogInViewController: UIViewController {
             }
             else if let result: AnyObject = result {
                 if result as! String == "Success" {
-                    DataManager.getPeople("username=\(self.UsernameTextField.text)", completion: { (error, result) -> Void in
-                        if error != nil {
-                            println(error)
-                        }
-                        else if let personArray = result as? Array<Person> {
-                            //Assume Person Array will always have only 1 entry, since username is unique... but should do a better job of handling this...
-                            loggedInUser = personArray[0]
-                            
-                            var storyboard = UIStoryboard(name: "initial", bundle: nil)
-                            var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-                            self.presentViewController(controller, animated: true, completion: nil)
-                            
-                        }
-                    })
+                    
+                    DataManager.saveLoginToSession(self.UsernameTextField.text)
+                    var storyboard = UIStoryboard(name: "initial", bundle: nil)
+                    var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+                    self.presentViewController(controller, animated: true, completion: nil)
+                    
                 }
                 else {
                     self.warningLabel.show("Invalid login")

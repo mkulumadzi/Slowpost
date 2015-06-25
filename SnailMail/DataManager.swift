@@ -235,5 +235,43 @@ class DataManager {
         
         coreDataPeople.append(tempPerson)
     }
+    
+    class func saveLoginToSession(username: String) {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let entity = NSEntityDescription.entityForName("Session", inManagedObjectContext: managedContext)
+        
+        let session = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
+        
+        session.setValue(username, forKey: "loggedInUser")
+        
+        var error: NSError?
+        if !managedContext.save(&error) {
+            println("Error saving session \(error), \(error?.userInfo)")
+        }
+        
+    }
+    
+    class func getUsernameFromSession() -> String {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest = NSFetchRequest(entityName: "Session")
+        
+        var error: NSError?
+        
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
+        
+        if let session = fetchedResults {
+            if let username = session[0].valueForKey("loggedInUser") as? String {
+                return username
+            }
+        }
+        
+        return ""
+    }
 
 }

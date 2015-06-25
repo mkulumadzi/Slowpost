@@ -30,43 +30,21 @@ class InitialViewController: UIViewController {
     
     func checkLogin() {
         if loggedInUser == nil {
-            
-            var storyboard = UIStoryboard(name: "login", bundle: nil)
-            var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-            
-            self.presentViewController(controller, animated: true, completion: nil)
-            
+            let username = DataManager.getUsernameFromSession()
+            if username != "" {
+                self.setLoggedInUserFromUsername(username)
+            }
+            else {
+                var storyboard = UIStoryboard(name: "login", bundle: nil)
+                var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+                
+                self.presentViewController(controller, animated: true, completion: nil)
+            }
         }
         else {
-            
-            //Initially populate mailbox by retrieving mail for the user
-            DataManager.getMyMailbox( { (error, result) -> Void in
-                if error != nil {
-                    println(error)
-                }
-                else if let mailArray = result as? Array<Mail> {
-                    mailbox = mailArray.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
-                    //Get all peoplle records
-                    DataManager.getPeople("", completion: { (error, result) -> Void in
-                        if error != nil {
-                            println(error)
-                        }
-                        else if let peopleArray = result as? Array<Person> {
-                            people = peopleArray
-                            self.goToHomeScreen()
-                        }
-                    })
-                }
-            })
-            
-            
+            getMailbox()
         }
     }
-
-//To Do: Come back to this!
-//    func savePeopleToCoreData(people: [Person]) {
-//        
-//    }
     
     func goToHomeScreen() {
         var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
@@ -81,6 +59,45 @@ class InitialViewController: UIViewController {
         
         checkLogin()
         
+    }
+    
+    func setLoggedInUserFromUsername(username: String) {
+        
+        DataManager.getPeople("username=\(username)", completion: { (error, result) -> Void in
+            if error != nil {
+                println(error)
+            }
+            else if let personArray = result as? Array<Person> {
+                //Assume Person Array will always have only 1 entry, since username is unique... but should do a better job of handling this...
+                loggedInUser = personArray[0]
+                self.getMailbox()
+                
+            }
+        })
+        
+    }
+        
+    func getMailbox() {
+        
+        //Initially populate mailbox by retrieving mail for the user
+        DataManager.getMyMailbox( { (error, result) -> Void in
+            if error != nil {
+                println(error)
+            }
+            else if let mailArray = result as? Array<Mail> {
+                mailbox = mailArray.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
+                //Get all peoplle records
+                DataManager.getPeople("", completion: { (error, result) -> Void in
+                    if error != nil {
+                        println(error)
+                    }
+                    else if let peopleArray = result as? Array<Person> {
+                        people = peopleArray
+                        self.goToHomeScreen()
+                    }
+                })
+            }
+        })
     }
 
 }
