@@ -14,6 +14,7 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var UsernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var warningLabel: UILabel!
+    @IBOutlet weak var logInButton: UIButton!
 
     var person:Person!
     
@@ -28,6 +29,10 @@ class LogInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
+    
+    
 //To do: Figure out how to reset label when editing happens; this wasn't working...
 //    @IBAction func editingLogin(sender: AnyObject) {
 //        println("Firing!")
@@ -35,6 +40,7 @@ class LogInViewController: UIViewController {
 //    }
     
     @IBAction func LogIn(sender: AnyObject) {
+        disableLogin()
 
         attemptLogIn( { (error, result) -> Void in
             if  error != nil {
@@ -92,6 +98,22 @@ class LogInViewController: UIViewController {
     }
     
     
-
+    @IBAction func usernameEditingChanged(sender: AnyObject) {
+        enableLogin()
+    }
+    
+    @IBAction func passwordEditingChanged(sender: AnyObject) {
+        enableLogin()
+    }
+    
+    func disableLogin() {
+        logInButton.enabled = false
+        logInButton.backgroundColor = UIColor.darkGrayColor()
+    }
+    
+    func enableLogin() {
+        logInButton.enabled = true
+        logInButton.backgroundColor = UIColor(red: 51/255, green: 153/255, blue: 102/255, alpha: 1.0)
+    }
     
 }

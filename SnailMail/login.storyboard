@@ -49,6 +49,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <connections>
+                                    <action selector="usernameEditingChanged:" destination="5Lt-wu-z72" eventType="editingChanged" id="umd-tL-kiX"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" verticalCompressionResistancePriority="748" text="SnailMail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="29Z-NH-vug">
                                 <rect key="frame" x="30" y="20" width="540" height="88"/>
@@ -66,7 +69,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="746" verticalHuggingPriority="746" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hez-ky-lsM">
                                 <rect key="frame" x="30" y="347" width="540" height="30"/>
-                                <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="YGF-2J-gq8"/>
                                 </constraints>
@@ -115,6 +118,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="passwordEditingChanged:" destination="5Lt-wu-z72" eventType="editingChanged" id="RDP-7H-rto"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -158,6 +164,7 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="UsernameTextField" destination="1Cx-Sp-3Un" id="Skl-Ic-wfx"/>
+                        <outlet property="logInButton" destination="Hez-ky-lsM" id="Ouv-QK-GZV"/>
                         <outlet property="passwordTextField" destination="Y1L-HG-f5a" id="Zei-ZG-VCf"/>
                         <outlet property="warningLabel" destination="elN-z1-2gF" id="IDs-T8-sR3"/>
                     </connections>
