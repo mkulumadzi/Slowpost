@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 var loggedInUser:Person!
 var mailbox = [Mail]()
 var people = [Person]()
+var coreDataPeople = [NSManagedObject]()
+var coreDataMail = [NSManagedObject]()
 
 class InitialViewController: UIViewController {
 
@@ -59,6 +62,11 @@ class InitialViewController: UIViewController {
             
         }
     }
+
+//To Do: Come back to this!
+//    func savePeopleToCoreData(people: [Person]) {
+//        
+//    }
     
     func goToHomeScreen() {
         var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
