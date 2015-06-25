@@ -62,6 +62,7 @@
 		D25A9CAC1B225D3400ABBBA4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25A9CAB1B225D3400ABBBA4 /* RegisterViewController.swift */; };
 		D25A9CB21B261D2400ABBBA4 /* SignUpSuccessfulViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25A9CB11B261D2400ABBBA4 /* SignUpSuccessfulViewController.swift */; };
 		D27E194E1B3B770C0052687F /* SnailMailModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D27E194C1B3B770C0052687F /* SnailMailModel.xcdatamodeld */; };
+		D2A361361B3CAC5D00811D14 /* SnailMailTextUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A361351B3CAC5D00811D14 /* SnailMailTextUIButton.swift */; };
 		D2B651AD1B31411C00134C23 /* SentMailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B651AC1B31411C00134C23 /* SentMailTableViewCell.swift */; };
 		D2B651AF1B32561700134C23 /* SnailMail Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B651AE1B32561700134C23 /* SnailMail Icon.png */; };
 		D2B651E31B38711E00134C23 /* SnailMail Closeup.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B651E21B38711E00134C23 /* SnailMail Closeup.png */; };
@@ -179,6 +180,7 @@
 		D25A9CAB1B225D3400ABBBA4 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D25A9CB11B261D2400ABBBA4 /* SignUpSuccessfulViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpSuccessfulViewController.swift; sourceTree = "<group>"; };
 		D27E194D1B3B770C0052687F /* SnailMailModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SnailMailModel.xcdatamodel; sourceTree = "<group>"; };
+		D2A361351B3CAC5D00811D14 /* SnailMailTextUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnailMailTextUIButton.swift; sourceTree = "<group>"; };
 		D2B651AC1B31411C00134C23 /* SentMailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMailTableViewCell.swift; sourceTree = "<group>"; };
 		D2B651AE1B32561700134C23 /* SnailMail Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnailMail Icon.png"; sourceTree = "<group>"; };
 		D2B651E21B38711E00134C23 /* SnailMail Closeup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnailMail Closeup.png"; sourceTree = "<group>"; };
@@ -364,12 +366,10 @@
 		CCCB1A4F1AB0D48A0067F100 /* SnailMail */ = {
 			isa = PBXGroup;
 			children = (
+				D2A361341B3CAC2500811D14 /* Customizations */,
 				D2B651E01B37BC5900134C23 /* Services */,
-				D2D866441B2F77B200847051 /* Postcards */,
-				D25A9C741B2256D400ABBBA4 /* Fonts */,
 				CC23DE2F1AE54C4900AFEDE4 /* Models */,
 				CC23DE241AE54BB100AFEDE4 /* Features */,
-				CC96E4A31ABCD5AB001E6D27 /* Images */,
 				CCCB1A521AB0D48A0067F100 /* AppDelegate.swift */,
 				CCCB1A541AB0D48A0067F100 /* ViewController.swift */,
 				CCCB1A591AB0D48A0067F100 /* Images.xcassets */,
@@ -383,6 +383,9 @@
 		CCCB1A501AB0D48A0067F100 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CC96E4A31ABCD5AB001E6D27 /* Images */,
+				D25A9C741B2256D400ABBBA4 /* Fonts */,
+				D2D866441B2F77B200847051 /* Postcards */,
 				CCCB1A511AB0D48A0067F100 /* Info.plist */,
 				D2C071051B3A3E99000154E8 /* Configurations.plist */,
 			);
@@ -422,6 +425,14 @@
 				D25A9C9B1B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		D2A361341B3CAC2500811D14 /* Customizations */ = {
+			isa = PBXGroup;
+			children = (
+				D2A361351B3CAC5D00811D14 /* SnailMailTextUIButton.swift */,
+			);
+			name = Customizations;
 			sourceTree = "<group>";
 		};
 		D2B651E01B37BC5900134C23 /* Services */ = {
@@ -722,6 +733,7 @@
 				CC96E4C91AC0B334001E6D27 /* ComposeMailViewController.swift in Sources */,
 				D20088871B27750C004657C4 /* MailSentViewController.swift in Sources */,
 				CC6105F51AC3941900D15150 /* DataManager.swift in Sources */,
+				D2A361361B3CAC5D00811D14 /* SnailMailTextUIButton.swift in Sources */,
 				D25A9CB21B261D2400ABBBA4 /* SignUpSuccessfulViewController.swift in Sources */,
 				D20D8EE21B2E448100BBF6B5 /* PersonCell.swift in Sources */,
 				CCCB1A551AB0D48A0067F100 /* ViewController.swift in Sources */,

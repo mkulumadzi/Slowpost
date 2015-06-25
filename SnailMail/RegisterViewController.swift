@@ -14,6 +14,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var signUpButton: SnailMailTextUIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,8 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func signUpPressed(sender: AnyObject) {
+        signUpButton.disable()
+        
         var personURL:String!
 
         signUp( { (error, result) -> Void in
@@ -46,8 +49,6 @@ class RegisterViewController: UIViewController {
                         if let user = result as? Person {
                             loggedInUser = user
                             self.performSegueWithIdentifier("signUpComplete", sender: nil)
-//                            self.goToMailbox()
-//                        self.performSegueWithIdentifier("signUpSuccessful", sender: nil)
                         }
                     }
                 })
@@ -76,10 +77,8 @@ class RegisterViewController: UIViewController {
         
     }
     
-//    func goToMailbox() {
-//        var storyboard = UIStoryboard(name: "initial", bundle: nil)
-//        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-//        self.presentViewController(controller, animated: true, completion: nil)
-//    }
+    @IBAction func editingChanged(sender: AnyObject) {
+        signUpButton.enable()
+    }
     
 }
