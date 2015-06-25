@@ -36,20 +36,31 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier("MailCell", forIndexPath: indexPath) as? MailCell
         
         let mail = mailbox[indexPath.row] as Mail
-        let fromPerson = getPerson(mail.from)
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         cell?.mail = mail
-        cell?.from = fromPerson
-        cell?.fromLabel.text = fromPerson.name
+        
+        getPersonForCell(cell!, mail: mail)
+        
         cell?.arrivalLabel.text = "Arrived on \(dateFormatter.stringFromDate(mail.scheduledToArrive))"
         
         cell?.mailImage.image = getImage(mail)
         
         return cell!
         
+    }
+    
+    func getPersonForCell(cell: MailCell, mail: Mail) {
+        
+        if let person = find(people.map({ $0.username }), mail.from) {
+            cell.from = people[person]
+            cell.fromLabel.text = people[person].name
+        }
+        else {
+            cell.fromLabel.text = mail.from
+        }
     }
     
     func getImage(mail: Mail) -> UIImage {
@@ -59,17 +70,6 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
         return UIImage(named: "Default Card.png")!
-    }
-    
-    //I'm sure there is a better way to do this...
-    func getPerson(username: String) -> Person {
-        var person_to_get:Person!
-        for person in people {
-            if person.username == username {
-                person_to_get = person
-            }
-        }
-        return person_to_get
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

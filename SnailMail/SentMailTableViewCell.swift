@@ -25,8 +25,13 @@ class SentMailTableViewCell: UITableViewCell {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let updated = dateFormatter.stringFromDate(mail.updatedAt)
         
+        if let name = person?.name {
+            toName.text = "To: \(person.name)"
+        }
+        else {
+            toName.text = "To: \(mail.to)"
+        }
         
-        toName.text = "To: \(person.name)"
         statusLabel.text = "\(mail.status.capitalizedString) on \(updated)"
         mailContent.text = mail.content
     }

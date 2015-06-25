@@ -89,12 +89,13 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableView.dequeueReusableCellWithIdentifier("MailCell", forIndexPath: indexPath) as? SentMailTableViewCell
         
         let mail = outbox[indexPath.row] as Mail
-        let toPerson = getPerson(mail.to)
+        
+        if let person = find(people.map({ $0.username }), mail.to) {
+            cell?.person = people[person]
+        }
         
         cell?.mail = mail
-        cell?.person = toPerson
         cell?.cardImage.image = getImage(mail)
-//        cell?.mailContent.sizeToFit()
         
         return cell!
         
@@ -102,17 +103,6 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
-    }
-    
-    //I'm sure there is a better way to do this...
-    func getPerson(username: String) -> Person {
-        var person_to_get:Person!
-        for person in people {
-            if person.username == username {
-                person_to_get = person
-            }
-        }
-        return person_to_get
     }
     
     func getImage(mail: Mail) -> UIImage {
