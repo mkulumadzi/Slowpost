@@ -13,14 +13,14 @@ class LogInViewController: UIViewController {
     
     @IBOutlet weak var UsernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var warningLabel: UILabel!
     @IBOutlet weak var logInButton: SnailMailTextUIButton!
-
+    @IBOutlet weak var warningLabel: WarningUILabel!
+    
     var person:Person!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        warningLabel.text = ""
+        warningLabel.hide()
         
     }
     
@@ -28,16 +28,6 @@ class LogInViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
-    
-    
-//To do: Figure out how to reset label when editing happens; this wasn't working...
-//    @IBAction func editingLogin(sender: AnyObject) {
-//        println("Firing!")
-//        self.warningLabel.text = ""
-//    }
     
     @IBAction func LogIn(sender: AnyObject) {
         logInButton.disable()
@@ -64,7 +54,7 @@ class LogInViewController: UIViewController {
                     })
                 }
                 else {
-                    self.warningLabel.text = "Invalid login"
+                    self.warningLabel.show("Invalid login")
                 }
             }
         })
@@ -97,14 +87,8 @@ class LogInViewController: UIViewController {
         super.touchesBegan(touches, withEvent: event)
     }
     
-    
-    @IBAction func usernameEditingChanged(sender: AnyObject) {
-        warningLabel.text = ""
-        logInButton.enable()
-    }
-    
-    @IBAction func passwordEditingChanged(sender: AnyObject) {
-        warningLabel.text = ""
+    @IBAction func editingChanged(sender: AnyObject) {
+        warningLabel.hide()
         logInButton.enable()
     }
     

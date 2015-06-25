@@ -15,9 +15,12 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signUpButton: SnailMailTextUIButton!
+    @IBOutlet weak var warningLabel: WarningUILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        warningLabel.hide()
         
     }
     
@@ -42,16 +45,21 @@ class RegisterViewController: UIViewController {
         var personURL:String!
 
         signUp( { (error, result) -> Void in
-            if result != nil {
-                personURL = result as! String
-                DataManager.getPerson(personURL, completion: { (error, result) -> Void in
-                    if result != nil {
-                        if let user = result as? Person {
-                            loggedInUser = user
-                            self.performSegueWithIdentifier("signUpComplete", sender: nil)
+            if let response = result as? [String] {
+                if response[0] == "Success" {
+                    personURL = response[1]
+                    DataManager.getPerson(personURL, completion: { (error, result) -> Void in
+                        if result != nil {
+                            if let user = result as? Person {
+                                loggedInUser = user
+                                self.performSegueWithIdentifier("signUpComplete", sender: nil)
+                            }
                         }
-                    }
-                })
+                    })
+                }
+                else if response[1] == "Forbidden" {
+                    self.warningLabel.show("Username already registered")
+                }
             }
         })
         
@@ -70,7 +78,10 @@ class RegisterViewController: UIViewController {
                 }
                 else if let response: AnyObject = response {
                     if response.statusCode == 201 {
-                        completion(error: nil, result: response.allHeaderFields["Location"] as! String)
+                        completion(error: nil, result: ["Success", response.allHeaderFields["Location"] as! String])
+                    }
+                    if response.statusCode == 403 {
+                        completion(error: nil, result: ["Failure", "Forbidden"])
                     }
                 }
         }
@@ -79,6 +90,7 @@ class RegisterViewController: UIViewController {
     
     @IBAction func editingChanged(sender: AnyObject) {
         signUpButton.enable()
+        warningLabel.hide()
     }
     
 }

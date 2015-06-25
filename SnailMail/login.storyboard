@@ -18,15 +18,14 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
-        </mutableArray>
-        <mutableArray key="OpenSans-SemiboldItalic.ttf">
-            <string>OpenSans-SemiboldItalic</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -50,7 +49,7 @@
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <connections>
-                                    <action selector="usernameEditingChanged:" destination="5Lt-wu-z72" eventType="editingChanged" id="umd-tL-kiX"/>
+                                    <action selector="editingChanged:" destination="5Lt-wu-z72" eventType="editingChanged" id="Vjf-60-bS5"/>
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" verticalCompressionResistancePriority="748" text="SnailMail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="29Z-NH-vug">
@@ -96,15 +95,6 @@
                                     <segue destination="cqE-Qh-T2s" kind="presentation" id="7Oy-dj-qOr"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="745" verticalHuggingPriority="745" text="Warning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="elN-z1-2gF">
-                                <rect key="frame" x="30" y="387" width="540" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="2dl-B7-0qB"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-SemiboldItalic" family="Open Sans" pointSize="15"/>
-                                <color key="textColor" red="0.29803922772407532" green="0.29803922772407532" blue="0.29803922772407532" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="749" image="SnailMail Icon Set" translatesAutoresizingMaskIntoConstraints="NO" id="8Jo-sS-8dl">
                                 <rect key="frame" x="225" y="118" width="150" height="99"/>
                                 <constraints>
@@ -119,23 +109,31 @@
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no" secureTextEntry="YES"/>
                                 <connections>
-                                    <action selector="passwordEditingChanged:" destination="5Lt-wu-z72" eventType="editingChanged" id="RDP-7H-rto"/>
+                                    <action selector="editingChanged:" destination="5Lt-wu-z72" eventType="editingChanged" id="ugm-l4-h3A"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkc-KO-jnT" customClass="WarningUILabel" customModule="SnailMail" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="48"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="nvr-2r-Qwf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="elN-z1-2gF" firstAttribute="top" secondItem="Hez-ky-lsM" secondAttribute="bottom" constant="10" id="5Rj-1l-5Dp"/>
+                            <constraint firstItem="zkc-KO-jnT" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" id="5BT-vi-BiZ"/>
                             <constraint firstItem="1Cx-Sp-3Un" firstAttribute="top" secondItem="img-9d-DTv" secondAttribute="bottom" constant="10" id="6qb-NZ-SGG"/>
                             <constraint firstItem="8Jo-sS-8dl" firstAttribute="top" secondItem="29Z-NH-vug" secondAttribute="bottom" constant="10" id="8l1-lK-Yyd"/>
-                            <constraint firstItem="1DP-Og-uUK" firstAttribute="top" secondItem="elN-z1-2gF" secondAttribute="bottom" constant="200" id="CcB-I9-ndp"/>
                             <constraint firstItem="29Z-NH-vug" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" constant="30" id="ESq-EP-uxa"/>
                             <constraint firstAttribute="trailing" secondItem="Hez-ky-lsM" secondAttribute="trailing" constant="30" id="EZw-aT-q09"/>
-                            <constraint firstItem="elN-z1-2gF" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" constant="30" id="K8s-E0-ht3"/>
                             <constraint firstItem="Y1L-HG-f5a" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" constant="30" id="MVg-aG-XpJ"/>
                             <constraint firstAttribute="centerX" secondItem="8Jo-sS-8dl" secondAttribute="centerX" id="Qvn-Vq-NEE"/>
                             <constraint firstAttribute="trailing" secondItem="1Cx-Sp-3Un" secondAttribute="trailing" constant="30" id="T26-Dd-pWw"/>
-                            <constraint firstAttribute="trailing" secondItem="elN-z1-2gF" secondAttribute="trailing" constant="30" id="Vw2-rh-zYk"/>
+                            <constraint firstItem="zkc-KO-jnT" firstAttribute="top" secondItem="55F-o5-Mq3" secondAttribute="top" id="Ut2-yo-Fgc"/>
                             <constraint firstItem="1Cx-Sp-3Un" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" constant="30" id="VwY-xU-UiE"/>
                             <constraint firstItem="29Z-NH-vug" firstAttribute="top" secondItem="CYa-XF-MvS" secondAttribute="bottom" id="Y47-8B-IZU"/>
                             <constraint firstItem="img-9d-DTv" firstAttribute="top" secondItem="8Jo-sS-8dl" secondAttribute="bottom" constant="10" id="ZZs-fq-PU7"/>
@@ -150,13 +148,13 @@
                             <constraint firstItem="Hez-ky-lsM" firstAttribute="top" secondItem="Y1L-HG-f5a" secondAttribute="bottom" constant="10" id="t7E-sP-gIy"/>
                             <constraint firstItem="Hez-ky-lsM" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" constant="30" id="t9o-c3-9dW"/>
                             <constraint firstItem="Y1L-HG-f5a" firstAttribute="top" secondItem="1Cx-Sp-3Un" secondAttribute="bottom" constant="10" id="urM-Kt-db7"/>
+                            <constraint firstAttribute="trailing" secondItem="zkc-KO-jnT" secondAttribute="trailing" id="wEJ-uF-FH4"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="nyZ-sy-3WX"/>
                                 <exclude reference="hwb-D3-ObE"/>
                                 <exclude reference="pz6-qM-kQ9"/>
-                                <exclude reference="CcB-I9-ndp"/>
                             </mask>
                         </variation>
                     </view>
@@ -166,7 +164,7 @@
                         <outlet property="UsernameTextField" destination="1Cx-Sp-3Un" id="Skl-Ic-wfx"/>
                         <outlet property="logInButton" destination="Hez-ky-lsM" id="Ouv-QK-GZV"/>
                         <outlet property="passwordTextField" destination="Y1L-HG-f5a" id="Zei-ZG-VCf"/>
-                        <outlet property="warningLabel" destination="elN-z1-2gF" id="IDs-T8-sR3"/>
+                        <outlet property="warningLabel" destination="zkc-KO-jnT" id="gvs-yx-OMN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x4O-nt-Oii" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -268,6 +266,22 @@
                                     <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="ssz-Wc-Wtv"/>
                                 </connections>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aQ-qm-rHK" customClass="WarningUILabel" customModule="SnailMail" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="48" width="600" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="PR5-HP-wUd"/>
+                                    <constraint firstAttribute="height" constant="30" id="bl5-jW-fcf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="PR5-HP-wUd"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -285,10 +299,13 @@
                             <constraint firstItem="xyr-83-Khb" firstAttribute="top" secondItem="YL5-63-9jW" secondAttribute="top" id="Ivi-E7-GZX"/>
                             <constraint firstAttribute="trailing" secondItem="xyr-83-Khb" secondAttribute="trailing" id="MB0-0d-4Iz"/>
                             <constraint firstItem="VGQ-6a-6wA" firstAttribute="top" secondItem="xyr-83-Khb" secondAttribute="bottom" constant="30" id="Sdn-2w-DzN"/>
+                            <constraint firstAttribute="trailing" secondItem="8aQ-qm-rHK" secondAttribute="trailing" id="UCx-Bs-3nE"/>
                             <constraint firstAttribute="trailing" secondItem="vTt-uY-DQ5" secondAttribute="trailing" constant="30" id="UGI-es-xUO"/>
                             <constraint firstItem="Nfc-Fc-WhF" firstAttribute="top" secondItem="P5I-cq-lFh" secondAttribute="bottom" constant="10" id="WU0-e3-L6c"/>
+                            <constraint firstItem="8aQ-qm-rHK" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" id="XJQ-hw-mBd"/>
                             <constraint firstAttribute="bottom" secondItem="oMM-Cy-Luv" secondAttribute="bottom" id="dRs-qi-bIM"/>
                             <constraint firstItem="oMM-Cy-Luv" firstAttribute="top" secondItem="vTt-uY-DQ5" secondAttribute="bottom" constant="30" id="egt-vI-gr9"/>
+                            <constraint firstItem="8aQ-qm-rHK" firstAttribute="top" secondItem="xyr-83-Khb" secondAttribute="bottom" id="g5e-sK-ueh"/>
                             <constraint firstItem="wDO-IO-wRn" firstAttribute="top" secondItem="xyr-83-Khb" secondAttribute="bottom" constant="20" id="iHW-BN-yoa"/>
                             <constraint firstAttribute="trailing" secondItem="Nfc-Fc-WhF" secondAttribute="trailing" constant="30" id="o26-Fx-U6V"/>
                             <constraint firstItem="vTt-uY-DQ5" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="qHx-J0-XXf"/>
@@ -311,6 +328,7 @@
                         <outlet property="passwordTextField" destination="Nfc-Fc-WhF" id="GB7-l5-llc"/>
                         <outlet property="signUpButton" destination="vTt-uY-DQ5" id="M1o-eM-R41"/>
                         <outlet property="usernameTextField" destination="P5I-cq-lFh" id="Emp-pd-KaD"/>
+                        <outlet property="warningLabel" destination="8aQ-qm-rHK" id="LAo-un-FAk"/>
                         <segue destination="VlT-9s-rBm" kind="show" identifier="signUpComplete" id="i4m-1J-saL"/>
                     </connections>
                 </viewController>
