@@ -100,4 +100,9 @@ class EditProfileViewController: UIViewController {
     @IBAction func editingChanged(sender: AnyObject) {
         saveButton.enable()
     }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
 }
