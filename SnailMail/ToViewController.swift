@@ -17,10 +17,12 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     @IBOutlet weak var toSearchField: UISearchBar!
     @IBOutlet weak var toPersonList: UITableView!
+    @IBOutlet weak var nextButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        validateNextButton()
         toList = people
     }
     
@@ -34,12 +36,17 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         toList = people
         
         if self.toSearchField.text.isEmpty == false {
+            toUsername = self.toSearchField.text
             var newArray:[Person] = toList.filter() {
                 self.listMatches(self.toSearchField.text, inString: $0.username).count >= 1 || self.listMatches(self.toSearchField.text, inString: $0.name).count >= 1
             }
             toList = newArray
         }
+        else {
+            toUsername = nil
+        }
         
+        validateNextButton()
         self.toPersonList.reloadData()
     }
     
@@ -51,6 +58,15 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         return matches.map {
             let range = $0.range
             return (string as NSString).substringWithRange(range)
+        }
+    }
+    
+    func validateNextButton() {
+        if toUsername == nil {
+            nextButton.enabled = false
+        }
+        else {
+            nextButton.enabled = true
         }
     }
     
@@ -77,6 +93,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         toSearchField.text = person.username
         toUsername = person.username
+        validateNextButton()
         
     }
     
@@ -90,12 +107,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "selectImage" {
             let chooseCardViewController = segue.destinationViewController as? ChooseCardViewController
-            if let to = toUsername {
-                chooseCardViewController?.toUsername = to
-            }
-            else {
-                chooseCardViewController?.toUsername = toSearchField.text
-            }
+            chooseCardViewController?.toUsername = toUsername
         }
     }
     

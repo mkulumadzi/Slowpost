@@ -37,7 +37,6 @@
 		D20D8EC61B27A3A000BBF6B5 /* arrow-right-c.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8EC51B27A3A000BBF6B5 /* arrow-right-c.png */; };
 		D20D8EC81B27A3A900BBF6B5 /* arrow-up-c.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8EC71B27A3A900BBF6B5 /* arrow-up-c.png */; };
 		D20D8ECA1B27A3B400BBF6B5 /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8EC91B27A3B400BBF6B5 /* close.png */; };
-		D20D8ECC1B27A84B00BBF6B5 /* PersonalDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D8ECB1B27A84B00BBF6B5 /* PersonalDetailsViewController.swift */; };
 		D20D8ECE1B2A2C1500BBF6B5 /* close-round-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8ECD1B2A2C1500BBF6B5 /* close-round-white.png */; };
 		D20D8ED11B2A45FE00BBF6B5 /* arrow-left-c-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8ECF1B2A45FE00BBF6B5 /* arrow-left-c-white.png */; };
 		D20D8ED21B2A45FE00BBF6B5 /* arrow-right-c-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8ED01B2A45FE00BBF6B5 /* arrow-right-c-white.png */; };
@@ -155,7 +154,6 @@
 		D20D8EC51B27A3A000BBF6B5 /* arrow-right-c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-right-c.png"; sourceTree = "<group>"; };
 		D20D8EC71B27A3A900BBF6B5 /* arrow-up-c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-up-c.png"; sourceTree = "<group>"; };
 		D20D8EC91B27A3B400BBF6B5 /* close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = close.png; sourceTree = "<group>"; };
-		D20D8ECB1B27A84B00BBF6B5 /* PersonalDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalDetailsViewController.swift; sourceTree = "<group>"; };
 		D20D8ECD1B2A2C1500BBF6B5 /* close-round-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-round-white.png"; sourceTree = "<group>"; };
 		D20D8ECF1B2A45FE00BBF6B5 /* arrow-left-c-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-left-c-white.png"; sourceTree = "<group>"; };
 		D20D8ED01B2A45FE00BBF6B5 /* arrow-right-c-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-right-c-white.png"; sourceTree = "<group>"; };
@@ -262,7 +260,6 @@
 				CC23DE291AE54C0300AFEDE4 /* login.storyboard */,
 				D25A9CAB1B225D3400ABBBA4 /* RegisterViewController.swift */,
 				D25A9CB11B261D2400ABBBA4 /* SignUpSuccessfulViewController.swift */,
-				D20D8ECB1B27A84B00BBF6B5 /* PersonalDetailsViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -736,7 +733,6 @@
 				D20D8ED41B2A510700BBF6B5 /* ToViewController.swift in Sources */,
 				CC96E4AD1ABCDEB5001E6D27 /* MailCell.swift in Sources */,
 				D2D866331B2F52EB00847051 /* ViewProfileViewController.swift in Sources */,
-				D20D8ECC1B27A84B00BBF6B5 /* PersonalDetailsViewController.swift in Sources */,
 				D2B651E71B38827100134C23 /* Extensions.swift in Sources */,
 				D27E194E1B3B770C0052687F /* SnailMailModel.xcdatamodeld in Sources */,
 				CC96E49C1ABCC8EB001E6D27 /* InitialViewController.swift in Sources */,

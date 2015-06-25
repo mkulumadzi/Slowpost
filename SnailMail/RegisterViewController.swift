@@ -45,7 +45,9 @@ class RegisterViewController: UIViewController {
                     if result != nil {
                         if let user = result as? Person {
                             loggedInUser = user
-                            self.performSegueWithIdentifier("signUpSuccessful", sender: nil)
+                            self.performSegueWithIdentifier("signUpComplete", sender: nil)
+//                            self.goToMailbox()
+//                        self.performSegueWithIdentifier("signUpSuccessful", sender: nil)
                         }
                     }
                 })
@@ -73,5 +75,11 @@ class RegisterViewController: UIViewController {
         }
         
     }
+    
+//    func goToMailbox() {
+//        var storyboard = UIStoryboard(name: "initial", bundle: nil)
+//        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+//        self.presentViewController(controller, animated: true, completion: nil)
+//    }
     
 }

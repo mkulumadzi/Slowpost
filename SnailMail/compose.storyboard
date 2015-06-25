@@ -570,6 +570,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="nextButton" destination="YhM-ZW-ANz" id="RZj-m5-A6x"/>
                         <outlet property="toPersonList" destination="j7P-4p-ATv" id="I3m-NF-aKn"/>
                         <outlet property="toSearchField" destination="FXR-ug-bxD" id="YVg-pm-du0"/>
                     </connections>
