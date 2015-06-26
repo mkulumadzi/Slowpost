@@ -17,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
+        
         return true
     }
 
@@ -104,6 +107,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 abort()
             }
         }
+    }
+    
+    // MARK: Adding functions for notifications
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWIthDeviceToken deviceToken:NSData) {
+        NSLog("Did register for Remote Notifications with Device Token \(deviceToken)")
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationWithError error: NSError) {
+        NSLog("Did fail to register for Remote Notifications")
+        NSLog("\(error), \(error.localizedDescription)")
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotifiation payload: NSDictionary) {
+        
     }
 
 }
