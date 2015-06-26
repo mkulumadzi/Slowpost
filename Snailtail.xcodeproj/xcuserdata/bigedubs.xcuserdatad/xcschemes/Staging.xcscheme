@@ -16,22 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CCCB1A4C1AB0D48A0067F100"
                BuildableName = "SnailMail.app"
-               BlueprintName = "SnailMail"
-               ReferencedContainer = "container:SnailMail.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CCCB1A611AB0D48A0067F100"
-               BuildableName = "SnailMailTests.xctest"
-               BlueprintName = "SnailMailTests"
-               ReferencedContainer = "container:SnailMail.xcodeproj">
+               BlueprintName = "Snailtail"
+               ReferencedContainer = "container:Snailtail.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -42,24 +28,14 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "CCCB1A611AB0D48A0067F100"
-               BuildableName = "SnailMailTests.xctest"
-               BlueprintName = "SnailMailTests"
-               ReferencedContainer = "container:SnailMail.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CCCB1A4C1AB0D48A0067F100"
             BuildableName = "SnailMail.app"
-            BlueprintName = "SnailMail"
-            ReferencedContainer = "container:SnailMail.xcodeproj">
+            BlueprintName = "Snailtail"
+            ReferencedContainer = "container:Snailtail.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -68,7 +44,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
+      buildConfiguration = "Staging"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
@@ -78,8 +54,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CCCB1A4C1AB0D48A0067F100"
             BuildableName = "SnailMail.app"
-            BlueprintName = "SnailMail"
-            ReferencedContainer = "container:SnailMail.xcodeproj">
+            BlueprintName = "Snailtail"
+            ReferencedContainer = "container:Snailtail.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -97,8 +73,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CCCB1A4C1AB0D48A0067F100"
             BuildableName = "SnailMail.app"
-            BlueprintName = "SnailMail"
-            ReferencedContainer = "container:SnailMail.xcodeproj">
+            BlueprintName = "Snailtail"
+            ReferencedContainer = "container:Snailtail.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
