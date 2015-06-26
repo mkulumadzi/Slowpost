@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CCCB1A4C1AB0D48A0067F100"
-               BuildableName = "Snailtail.app"
+               BuildableName = "Snailtale.app"
                BlueprintName = "Snailtale"
                ReferencedContainer = "container:Snailtale.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CCCB1A4C1AB0D48A0067F100"
-            BuildableName = "Snailtail.app"
+            BuildableName = "Snailtale.app"
             BlueprintName = "Snailtale"
             ReferencedContainer = "container:Snailtale.xcodeproj">
          </BuildableReference>
@@ -44,7 +44,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Staging"
+      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
@@ -53,7 +53,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CCCB1A4C1AB0D48A0067F100"
-            BuildableName = "Snailtail.app"
+            BuildableName = "Snailtale.app"
             BlueprintName = "Snailtale"
             ReferencedContainer = "container:Snailtale.xcodeproj">
          </BuildableReference>
@@ -72,14 +72,14 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CCCB1A4C1AB0D48A0067F100"
-            BuildableName = "Snailtail.app"
+            BuildableName = "Snailtale.app"
             BlueprintName = "Snailtale"
             ReferencedContainer = "container:Snailtale.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Debug">
+      buildConfiguration = "Release">
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Staging"

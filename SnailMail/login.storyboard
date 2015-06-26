@@ -32,7 +32,7 @@
         <!--Log In View Controller-->
         <scene sceneID="68U-Yf-3Uf">
             <objects>
-                <viewController storyboardIdentifier="InitialController" id="5Lt-wu-z72" customClass="LogInViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialController" id="5Lt-wu-z72" customClass="LogInViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CYa-XF-MvS"/>
                         <viewControllerLayoutGuide type="bottom" id="1DP-Og-uUK"/>
@@ -52,7 +52,7 @@
                                     <action selector="editingChanged:" destination="5Lt-wu-z72" eventType="editingChanged" id="Vjf-60-bS5"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" verticalCompressionResistancePriority="748" text="Snailtail" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="29Z-NH-vug">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" verticalCompressionResistancePriority="748" text="Snailtale" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="29Z-NH-vug">
                                 <rect key="frame" x="30" y="20" width="540" height="88"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="3Dm-Ii-XXr"/>
@@ -66,7 +66,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="746" verticalHuggingPriority="746" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hez-ky-lsM" customClass="SnailMailTextUIButton" customModule="SnailMail" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="746" verticalHuggingPriority="746" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hez-ky-lsM" customClass="SnailMailTextUIButton" customModule="Snailtale" customModuleProvider="target">
                                 <rect key="frame" x="30" y="347" width="540" height="30"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -112,7 +112,7 @@
                                     <action selector="editingChanged:" destination="5Lt-wu-z72" eventType="editingChanged" id="ugm-l4-h3A"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkc-KO-jnT" customClass="WarningUILabel" customModule="SnailMail" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkc-KO-jnT" customClass="WarningUILabel" customModule="Snailtale" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="48"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -175,7 +175,7 @@
         <!--Register View Controller-->
         <scene sceneID="FC7-Kj-SAs">
             <objects>
-                <viewController id="cqE-Qh-T2s" customClass="RegisterViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cqE-Qh-T2s" customClass="RegisterViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5ay-1r-pEx"/>
                         <viewControllerLayoutGuide type="bottom" id="ZQI-81-jr8"/>
@@ -207,7 +207,7 @@
                                     <constraint firstAttribute="width" secondItem="oMM-Cy-Luv" secondAttribute="height" multiplier="100:181" id="uFw-jn-5jv"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTt-uY-DQ5" customClass="SnailMailTextUIButton" customModule="SnailMail" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTt-uY-DQ5" customClass="SnailMailTextUIButton" customModule="Snailtale" customModuleProvider="target">
                                 <rect key="frame" x="30" y="309" width="540" height="30"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -266,7 +266,7 @@
                                     <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="ssz-Wc-Wtv"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aQ-qm-rHK" customClass="WarningUILabel" customModule="SnailMail" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aQ-qm-rHK" customClass="WarningUILabel" customModule="Snailtale" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="48" width="600" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -339,7 +339,7 @@
         <!--Sign Up Successful View Controller-->
         <scene sceneID="i3S-Y5-XvT">
             <objects>
-                <viewController storyboardIdentifier="registrationSuccessful" id="VlT-9s-rBm" customClass="SignUpSuccessfulViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="registrationSuccessful" id="VlT-9s-rBm" customClass="SignUpSuccessfulViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aLJ-th-8vJ"/>
                         <viewControllerLayoutGuide type="bottom" id="rgM-kU-Bvj"/>
@@ -366,7 +366,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snailtail" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="86c-Qy-Pz4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snailtale" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="86c-Qy-Pz4">
                                 <rect key="frame" x="30" y="150" width="540" height="88"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="64"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

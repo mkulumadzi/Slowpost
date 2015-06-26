@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "CCCB1A4C1AB0D48A0067F100"
-               BuildableName = "SnailMail.app"
-               BlueprintName = "Snailtail"
-               ReferencedContainer = "container:Snailtail.xcodeproj">
+               BuildableName = "Snailtail.app"
+               BlueprintName = "Snailtale"
+               ReferencedContainer = "container:Snailtale.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CCCB1A4C1AB0D48A0067F100"
-            BuildableName = "SnailMail.app"
-            BlueprintName = "Snailtail"
-            ReferencedContainer = "container:Snailtail.xcodeproj">
+            BuildableName = "Snailtail.app"
+            BlueprintName = "Snailtale"
+            ReferencedContainer = "container:Snailtale.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CCCB1A4C1AB0D48A0067F100"
-            BuildableName = "SnailMail.app"
-            BlueprintName = "Snailtail"
-            ReferencedContainer = "container:Snailtail.xcodeproj">
+            BuildableName = "Snailtail.app"
+            BlueprintName = "Snailtale"
+            ReferencedContainer = "container:Snailtale.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "CCCB1A4C1AB0D48A0067F100"
-            BuildableName = "SnailMail.app"
-            BlueprintName = "Snailtail"
-            ReferencedContainer = "container:Snailtail.xcodeproj">
+            BuildableName = "Snailtail.app"
+            BlueprintName = "Snailtale"
+            ReferencedContainer = "container:Snailtale.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
@@ -82,7 +82,7 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Staging"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
