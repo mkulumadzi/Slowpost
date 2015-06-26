@@ -266,10 +266,11 @@ class DataManager {
         let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
         
         if let session = fetchedResults {
-            if let username = session[0].valueForKey("loggedInUser") as? String {
-                return username
+            if session.count > 0 {
+                var username = session[0].valueForKey("loggedInUser") as? String
+                return username!
+                }
             }
-        }
         
         return ""
     }

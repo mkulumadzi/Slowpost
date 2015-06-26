@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -51,6 +52,8 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     @IBAction func logOut(sender: AnyObject) {
+        deleteSession()
+        
         loggedInUser = nil
         
         var storyboard = UIStoryboard(name: "initial", bundle: nil)
@@ -58,6 +61,23 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         
         self.presentViewController(controller, animated: true, completion: nil)
     }
+    
+    func deleteSession() {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest = NSFetchRequest(entityName: "Session")
+        var error: NSError?
+        
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
+        
+        let session = fetchedResults![0] as NSManagedObject
+        
+        managedContext.deleteObject(session)
+        
+    }
+
     
     func getOutbox() {
         DataManager.getMyOutbox( { (error, result) -> Void in
