@@ -23,7 +23,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         super.viewDidLoad()
         
         validateNextButton()
-        toList = people
+        toList = people.filter({$0.username != loggedInUser.username})
     }
     
     override func didReceiveMemoryWarning() {
