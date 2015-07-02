@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+var deviceToken:String!
 var loggedInUser:Person!
 var mailbox = [Mail]()
 var people = [Person]()

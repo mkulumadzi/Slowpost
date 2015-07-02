@@ -15,7 +15,8 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //To do: Figure out how to pause loading this view until the mailbox has finished loading
+        //Sending the device token to the PostOffice server
+        println("The token is \(deviceToken)")
 
     }
 

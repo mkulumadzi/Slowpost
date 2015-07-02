@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
         
+        application.registerForRemoteNotifications()
+        
         return true
     }
 
@@ -111,8 +113,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: Adding functions for notifications
     
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWIthDeviceToken deviceToken:NSData) {
-        NSLog("Did register for Remote Notifications with Device Token \(deviceToken)")
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken token:NSData) {
+        
+        let tokenChars = UnsafePointer<CChar>(token.bytes)
+        var tokenString = ""
+        
+        for var i = 0; i < token.length; i++ {
+            tokenString += String(format: "%02.2hhx", arguments: [tokenChars[i]])
+        }
+        
+        deviceToken = tokenString
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationWithError error: NSError) {

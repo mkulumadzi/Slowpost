@@ -274,5 +274,23 @@ class DataManager {
         
         return ""
     }
+    
+//    class func saveDeviceTokenToSession(deviceToken: String) {
+//        
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let managedContext = appDelegate.managedObjectContext!
+//        
+//        let entity = NSEntityDescription.entityForName("Session", inManagedObjectContext: managedContext)
+//        
+//        let session = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
+//        
+//        session.setValue(deviceToken, forKey: "deviceToken")
+//        
+//        var error: NSError?
+//        if !managedContext.save(&error) {
+//            println("Error saving session \(error), \(error?.userInfo)")
+//        }
+//        
+//    }
 
 }
