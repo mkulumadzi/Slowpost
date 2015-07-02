@@ -131,7 +131,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didReceiveRemoteNotifiation payload: NSDictionary) {
-        
+        println("Got a notification!")
+        println(payload)
     }
 
 }

@@ -48,6 +48,11 @@ class InitialViewController: UIViewController {
     }
     
     func goToHomeScreen() {
+        
+        //Sending the device token to the PostOffice server
+        registerDeviceToken()
+        
+        
         var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
         var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
         
@@ -97,6 +102,20 @@ class InitialViewController: UIViewController {
                         self.goToHomeScreen()
                     }
                 })
+            }
+        })
+    }
+    
+    func registerDeviceToken() {
+        let person = loggedInUser
+        let parameters = ["device_token": deviceToken as String]
+        
+        DataManager.updatePerson(person, parameters: parameters, completion: { (error, result) -> Void in
+            if error != nil {
+                println(error)
+            }
+            else {
+                println("Successfully registered device token!")
             }
         })
     }
