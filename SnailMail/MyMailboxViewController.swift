@@ -16,7 +16,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         
         //Sending the device token to the PostOffice server
-        println("The token is \(deviceToken)")
+        registerDeviceToken()
 
     }
 
@@ -71,6 +71,20 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
         return UIImage(named: "Default Card.png")!
+    }
+    
+    func registerDeviceToken() {
+        let person = loggedInUser
+        let parameters = ["device_token": deviceToken as String]
+        
+        DataManager.updatePerson(person, parameters: parameters, completion: { (error, result) -> Void in
+            if error != nil {
+                println(error)
+            }
+            else {
+                println("Successfully registered device token!")
+            }
+        })
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

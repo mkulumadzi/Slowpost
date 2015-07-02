@@ -275,22 +275,23 @@ class DataManager {
         return ""
     }
     
-//    class func saveDeviceTokenToSession(deviceToken: String) {
-//        
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let managedContext = appDelegate.managedObjectContext!
-//        
-//        let entity = NSEntityDescription.entityForName("Session", inManagedObjectContext: managedContext)
-//        
-//        let session = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
-//        
-//        session.setValue(deviceToken, forKey: "deviceToken")
-//        
-//        var error: NSError?
-//        if !managedContext.save(&error) {
-//            println("Error saving session \(error), \(error?.userInfo)")
-//        }
-//        
-//    }
+    class func updatePerson(person: Person, parameters: [String: String], completion: (error: NSError?, result: AnyObject?) -> Void) {
+        
+        let updatePersonURL = "\(PostOfficeURL)/person/id/\(person.id)"
+        
+        Alamofire.request(.POST, updatePersonURL, parameters: parameters, encoding: .JSON)
+            .response { (request, response, data, error) in
+                if let anError = error {
+                    println(error)
+                    completion(error: error, result: nil)
+                }
+                else if let response: AnyObject = response {
+                    if response.statusCode == 204 {
+                        completion(error: nil, result: "Update succeeded")
+                    }
+                }
+        }
+        
+    }
 
 }
