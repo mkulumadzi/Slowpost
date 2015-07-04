@@ -561,6 +561,11 @@
 					CCCB1A4C1AB0D48A0067F100 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = X9T7R56238;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					CCCB1A611AB0D48A0067F100 = {
 						CreatedOnToolsVersion = 6.2;

@@ -123,6 +123,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         deviceToken = tokenString
+        NSLog(tokenString)
+        
+        
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationWithError error: NSError) {
@@ -130,10 +133,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSLog("\(error), \(error.localizedDescription)")
     }
     
-    func application(application: UIApplication, didReceiveRemoteNotifiation payload: NSDictionary) {
-        println("Got a notification!")
-        println(payload)
+    
+//    When a remote notification arrives, the system displays the notification to the user and launches the app in the background (if needed) so that it can call this method. Launching your app in the background gives you time to process the notification and download any data associated with it, minimizing the amount of time that elapses between the arrival of the notification and displaying that data to the user.
+//    
+//    As soon as you finish processing the notification, you must call the block in the handler parameter or your app will be terminated. Your app has up to 30 seconds of wall-clock time to process the notification and call the specified completion handler block. In practice, you should call the handler block as soon as you are done processing the notification. The system tracks the elapsed time, power usage, and data costs for your app’s background downloads. Apps that use significant amounts of power when processing remote notifications may not always be woken up early to process future notifications.
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void ) {
+        
+        println(userInfo)
+                
+        completionHandler(UIBackgroundFetchResult.NewData)
+        
     }
-
+  
+//    The app calls this method when the user taps an action button in an alert displayed in response to a remote notification. Remote notifications that include a category key in their payload display buttons for the actions in the corresponding category. If the user taps one of those buttons, the system wakes up the app (launching it if needed) and calls this method in the background. Your implementation of this method should perform the action associated with the specified identifier and execute the block in the completionHandler parameter as soon as you are done. Failure to execute the completion handler block at the end of your implementation will cause your app to be terminated.
+//    
+//    To configure the actions for a given category, create a UIUserNotificationActionSettings object and register it with the app when you call the registerUserNotificationSettings: method.
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject: AnyObject], comletionHandler completionHandler: () -> Void ) {
+        
+    }
+    
+//    func setLocalNotification() {
+//        var localNotification: UILocalNotification = UILocalNotification()
+//        localNotification.alertAction = "Testing notifications on iOS8"
+//        localNotification.alertBody = "Woww it works!!"
+//        localNotification.fireDate = NSDate(timeIntervalSinceNow: 30)
+//        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
+//    }
+    
 }
 
