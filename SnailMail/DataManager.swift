@@ -293,5 +293,50 @@ class DataManager {
         }
         
     }
+    
+    class func readMail(mail: Mail, completion: (error: NSError?, result: AnyObject?) -> Void) {
+        
+        let readMailURL = "\(PostOfficeURL)/mail/id/\(mail.id)/read"
+        
+        Alamofire.request(.POST, readMailURL)
+            .response { (request, response, data, error) in
+                if let anError = error {
+                    println(error)
+                    completion(error: error, result: nil)
+                }
+                else if let response: AnyObject = response {
+                    if response.statusCode == 204 {
+                        completion(error: nil, result: "Mail read")
+                    }
+                }
+        }
+        
+    }
+    
+    class func getMailById(id: String, completion: (error: NSError?, result: AnyObject?) -> Void) {
+        
+        let mailURL = "\(PostOfficeURL)/mail/id/\(id)"
+        
+        Alamofire.request(.GET, mailURL)
+            .response { (request, response, data, error) in
+                if let anError = error {
+                    completion(error: error, result: nil)
+                }
+                else if let response: AnyObject = response {
+                    if response.statusCode == 404 {
+                        completion(error: error, result: response.statusCode)
+                    }
+                }
+            }
+            .responseJSON { (_, _, JSON, error) in
+                if let jsonResult = JSON as? NSDictionary {
+                    var mail = self.createMailFromJson(jsonResult)
+                    completion(error: nil, result: mail)
+                }
+                else {
+                    println("Unexpected JSON result")
+                }
+        }
+    }
 
 }

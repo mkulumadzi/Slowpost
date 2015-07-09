@@ -15,12 +15,18 @@ class MailViewController: UIViewController {
     
     var mail:Mail!
     var from:Person!
-
+    var updatedMail:Mail!
+    var row:Int!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         mailText.text = generateMailText()
         mailImage.image = getImage()
+        
+        if mail.status == "DELIVERED" {
+            readMail(mail)
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -43,6 +49,32 @@ class MailViewController: UIViewController {
             }
         }
         return UIImage(named: "Default Card.png")!
+    }
+    
+    func readMail(mail:Mail) {
+        
+        DataManager.readMail(mail, completion: { (error, result) -> Void in
+            if error != nil {
+                println(error)
+            }
+            else {
+                self.updateMail(mail)
+            }
+        })
+    }
+    
+    func updateMail(mail:Mail) {
+        
+        DataManager.getMailById(mail.id, completion: { (error, result) -> Void in
+            if error != nil {
+                println(error)
+            }
+            else {
+                self.updatedMail = result as! Mail
+                mailbox[self.row] = self.updatedMail
+            }
+        })
+        
     }
     
     @IBAction func closeMailView(sender: AnyObject) {

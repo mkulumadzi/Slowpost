@@ -14,7 +14,12 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        mailTable.reloadData()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        mailTable.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,42 +37,15 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MailCell", forIndexPath: indexPath) as? MailCell
-        
         let mail = mailbox[indexPath.row] as Mail
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
+        cell!.mail = mail
+        cell!.row = indexPath.row
         
-        cell?.mail = mail
-        
-        getPersonForCell(cell!, mail: mail)
-        
-        cell?.arrivalLabel.text = "Arrived on \(dateFormatter.stringFromDate(mail.scheduledToArrive))"
-        
-        cell?.mailImage.image = getImage(mail)
+        cell!.formatCell()
         
         return cell!
         
-    }
-    
-    func getPersonForCell(cell: MailCell, mail: Mail) {
-        
-        if let person = find(people.map({ $0.username }), mail.from) {
-            cell.from = people[person]
-            cell.fromLabel.text = people[person].name
-        }
-        else {
-            cell.fromLabel.text = mail.from
-        }
-    }
-    
-    func getImage(mail: Mail) -> UIImage {
-        if mail.image != nil {
-            if let image = UIImage(named: mail.image) {
-                return image
-            }
-        }
-        return UIImage(named: "Default Card.png")!
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -76,6 +54,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
             if let mailCell = sender as? MailCell {
                 mailViewController?.mail = mailCell.mail
                 mailViewController?.from = mailCell.from
+                mailViewController?.row = mailCell.row
                 
             }
         }
