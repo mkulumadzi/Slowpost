@@ -25,13 +25,10 @@ class MailCell: UITableViewCell {
     }
     
     func formatCell() {
-
         getPerson(mail)
-        
+        setStyleBasedOnMailStatus()
         mailImage.image = getImage(mail)
-        
         setStatusLabel()
-
     }
     
     func getPerson(mail: Mail) {
@@ -42,6 +39,16 @@ class MailCell: UITableViewCell {
         }
         else {
             self.fromLabel.text = mail.from
+        }
+        
+    }
+    
+    func setStyleBasedOnMailStatus() {
+        switch mail.status {
+            case "DELIVERED":
+                fromLabel.font = UIFont (name: "OpenSans-Semibold", size: 17)
+            default:
+                fromLabel.font = UIFont (name: "OpenSans-Light", size: 17)
         }
     }
     
