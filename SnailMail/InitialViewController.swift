@@ -75,9 +75,19 @@ class InitialViewController: UIViewController {
                 println(error)
             }
             else if let personArray = result as? Array<Person> {
-                //Assume Person Array will always have only 1 entry, since username is unique... but should do a better job of handling this...
-                loggedInUser = personArray[0]
-                self.getMailbox()
+                
+                //Assume if logged in user exists, person array will always have only 1 entry, since username is unique... but should do a better job of handling this...
+                if personArray.count > 0 {
+                    loggedInUser = personArray[0]
+                    self.getMailbox()
+                }
+                // If session is stored for a user that has been deleted, need to log in again
+                else {
+                    var storyboard = UIStoryboard(name: "login", bundle: nil)
+                    var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+                    
+                    self.presentViewController(controller, animated: true, completion: nil)
+                }
                 
             }
         })
