@@ -125,9 +125,6 @@ class InitialViewController: UIViewController {
             if error != nil {
                 println(error)
             }
-            else {
-                println("Successfully registered device token!")
-            }
         })
     }
 
