@@ -12,9 +12,18 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBOutlet weak var mailTable: UITableView!
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
+        
+        return refreshControl
+        }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mailTable.reloadData()
+        
+        mailTable.addSubview(self.refreshControl)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -48,6 +57,26 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
     
+    func refreshMailbox() {
+        
+        //Refresh mailbox by retrieving mail for the user
+        DataManager.getMyMailbox( { (error, result) -> Void in
+            if error != nil {
+                println(error)
+            }
+            else if let mailArray = result as? Array<Mail> {
+                mailbox = mailArray.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
+                self.mailTable.reloadData()
+            }
+        })
+    }
+    
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        refreshMailbox()
+        refreshControl.endRefreshing()
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "viewMail" {
             let mailViewController = segue.destinationViewController as? MailViewController
@@ -59,7 +88,6 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
     }
-    
     
     @IBAction func Compose(sender: AnyObject) {
         
