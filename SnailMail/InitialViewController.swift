@@ -49,9 +49,10 @@ class InitialViewController: UIViewController {
     
     func goToHomeScreen() {
         
-        //Sending the device token to the PostOffice server
-        registerDeviceToken()
-        
+        if deviceToken != nil {
+            //Sending the device token to the PostOffice server
+            registerDeviceToken()
+        }
         
         var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
         var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
