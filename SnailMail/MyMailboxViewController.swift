@@ -21,6 +21,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        refreshMailbox()
         mailTable.reloadData()
         
         mailTable.addSubview(self.refreshControl)
