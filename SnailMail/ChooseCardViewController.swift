@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChooseCardViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class ChooseCardViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     //To Do: Make an image server and do away with this hard coding stuff
     var photoNames = ["SnailMail at the Beach.png", "Sevilla.jpg", "Default Card.png", "Fig Arch.jpg", "SnailMail Closeup.png", "Fireworks.jpg", "Parachute.png", "Kili Sunrise.jpg", "Ooh.jpg", "Smiles.jpg", "Glacier.jpg", "Ice.jpg", "Prairie.jpg", "Reflection.jpg", "Salamander.jpg", "Signs.jpg"]
@@ -37,6 +37,7 @@ class ChooseCardViewController: UIViewController, UICollectionViewDataSource, UI
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
+
     
     func populatePhotoArray() {
         
@@ -48,6 +49,21 @@ class ChooseCardViewController: UIViewController, UICollectionViewDataSource, UI
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoArray.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize {
+        
+        println("got here")
+        
+        var width:CGFloat = self.cardCollection.frame.width - 20
+        var height:CGFloat = width * 3 / 4
+        
+        var cardSize = CGSize.init(width: width, height: height)
+        
+        println(cardSize)
+        
+        return cardSize
+        
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
