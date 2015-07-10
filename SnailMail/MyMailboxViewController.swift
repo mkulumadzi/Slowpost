@@ -29,6 +29,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
+        refreshMailbox()
         mailTable.reloadData()
     }
 

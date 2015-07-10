@@ -8,7 +8,7 @@
         <!--SnailMail-->
         <scene sceneID="cz6-31-KdU">
             <objects>
-                <viewController storyboardIdentifier="InitialController" id="vyY-w3-kfL" customClass="InitialViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialController" id="vyY-w3-kfL" customClass="InitialViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fzF-Bo-auZ"/>
                         <viewControllerLayoutGuide type="bottom" id="wHu-jc-c8I"/>
@@ -34,7 +34,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aY7-R7-Gyq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-184.6875" y="567.78169014084506"/>
+            <point key="canvasLocation" x="355" y="303"/>
         </scene>
     </scenes>
     <resources>

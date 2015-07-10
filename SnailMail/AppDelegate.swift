@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import Foundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -138,7 +139,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //    As soon as you finish processing the notification, you must call the block in the handler parameter or your app will be terminated. Your app has up to 30 seconds of wall-clock time to process the notification and call the specified completion handler block. In practice, you should call the handler block as soon as you are done processing the notification. The system tracks the elapsed time, power usage, and data costs for your app’s background downloads. Apps that use significant amounts of power when processing remote notifications may not always be woken up early to process future notifications.
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void ) {
-                
+        
+        if let type = userInfo["type"] as? NSString {
+            if type == "New Mail" {
+                let storyboard = UIStoryboard(name: "mailbox", bundle: nil)
+                let controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+                self.window!.rootViewController = controller
+            }
+        }
+        
         completionHandler(UIBackgroundFetchResult.NewData)
         
     }
