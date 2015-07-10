@@ -13,6 +13,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     
     var imageName:String!
     var toUsername:String!
+    var keyboardShowing:Bool!
     
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var imagePreview: UIImageView!
@@ -22,11 +23,18 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        keyboardShowing = false
         toLabel.text = toUsername
+        
+        composeText.textContainerInset.left = 10
+        composeText.textContainerInset.right = 10
         
         if let image = imageName {
             imagePreview.image = UIImage(named: image)
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
         
         resignFirstResponder()
 
@@ -36,6 +44,22 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func keyboardShow(notification: NSNotification) {
+        self.keyboardShowing = true
+        
+        let userInfo = notification.userInfo!
+        var r = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+        r = self.composeText.convertRect(r, fromView:nil)
+        self.composeText.contentInset.bottom = r.size.height
+        self.composeText.scrollIndicatorInsets.bottom = r.size.height
+    }
+    
+    func keyboardHide(notification:NSNotification) {
+        self.keyboardShowing = false
+        self.composeText.contentInset = UIEdgeInsetsZero
+        self.composeText.scrollIndicatorInsets = UIEdgeInsetsZero
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {

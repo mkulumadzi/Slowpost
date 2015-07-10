@@ -11,12 +11,12 @@
             <string>OpenSans-Light</string>
             <string>OpenSans-Light</string>
             <string>OpenSans-Light</string>
-            <string>OpenSans-Light</string>
         </mutableArray>
         <mutableArray key="OpenSans-LightItalic.ttf">
             <string>OpenSansLight-Italic</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
@@ -208,12 +208,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kiv-Wq-vjl">
-                                <rect key="frame" x="10" y="148" width="580" height="210"/>
+                                <rect key="frame" x="0.0" y="148" width="600" height="452"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="rd4-EE-l2q"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -292,14 +292,15 @@
                             <constraint firstItem="gNS-Nl-7MF" firstAttribute="top" secondItem="kiv-Wq-vjl" secondAttribute="bottom" constant="201" id="3Fe-Qp-BAj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KiO-xd-bKI" secondAttribute="trailing" constant="150" id="5Dx-3g-qPj"/>
                             <constraint firstItem="KiO-xd-bKI" firstAttribute="top" secondItem="Kc9-po-0wy" secondAttribute="bottom" constant="14" id="7lI-84-lyh"/>
-                            <constraint firstItem="kiv-Wq-vjl" firstAttribute="leading" secondItem="CRi-0L-spj" secondAttribute="leading" constant="10" id="BCn-MU-Fqf"/>
+                            <constraint firstItem="kiv-Wq-vjl" firstAttribute="leading" secondItem="CRi-0L-spj" secondAttribute="leading" id="BCn-MU-Fqf"/>
                             <constraint firstItem="huH-mK-UMT" firstAttribute="top" secondItem="Kc9-po-0wy" secondAttribute="bottom" constant="10" id="DQr-2e-sKc"/>
                             <constraint firstItem="GcV-KG-RdI" firstAttribute="top" secondItem="Kc9-po-0wy" secondAttribute="bottom" constant="14" id="IOL-F0-04L"/>
                             <constraint firstAttribute="trailing" secondItem="huH-mK-UMT" secondAttribute="trailing" constant="10" id="JHD-Ih-fKs"/>
                             <constraint firstItem="Kc9-po-0wy" firstAttribute="leading" secondItem="CRi-0L-spj" secondAttribute="leading" id="Ltv-5b-4wK"/>
-                            <constraint firstAttribute="trailing" secondItem="kiv-Wq-vjl" secondAttribute="trailing" constant="10" id="bc3-6g-DUh"/>
+                            <constraint firstAttribute="trailing" secondItem="kiv-Wq-vjl" secondAttribute="trailing" id="bc3-6g-DUh"/>
                             <constraint firstItem="huH-mK-UMT" firstAttribute="leading" secondItem="KiO-xd-bKI" secondAttribute="trailing" constant="10" id="bsa-MN-XPL"/>
                             <constraint firstItem="kiv-Wq-vjl" firstAttribute="top" secondItem="huH-mK-UMT" secondAttribute="bottom" constant="10" id="hUH-W7-Rez"/>
+                            <constraint firstItem="gNS-Nl-7MF" firstAttribute="top" secondItem="kiv-Wq-vjl" secondAttribute="bottom" id="lsY-X2-2SS"/>
                             <constraint firstItem="Kc9-po-0wy" firstAttribute="top" secondItem="CRi-0L-spj" secondAttribute="top" id="mkd-nJ-WS4"/>
                             <constraint firstItem="KiO-xd-bKI" firstAttribute="leading" secondItem="GcV-KG-RdI" secondAttribute="trailing" constant="2" id="qXh-pT-Bp3"/>
                             <constraint firstAttribute="trailing" secondItem="Kc9-po-0wy" secondAttribute="trailing" id="rds-cx-RxP"/>
@@ -309,6 +310,7 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="5Dx-3g-qPj"/>
+                                <exclude reference="zsh-dg-x1e"/>
                                 <exclude reference="3Fe-Qp-BAj"/>
                             </mask>
                         </variation>
