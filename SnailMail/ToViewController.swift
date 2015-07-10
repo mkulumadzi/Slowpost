@@ -18,9 +18,13 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     @IBOutlet weak var toSearchField: UISearchBar!
     @IBOutlet weak var toPersonList: UITableView!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var warningLabel: WarningUILabel!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        warningLabel.hide()
         
         validateNextButton()
         toList = people.filter({$0.username != loggedInUser.username})
@@ -47,6 +51,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
         
         validateNextButton()
+        warningLabel.hide()
         self.toPersonList.reloadData()
     }
     
@@ -97,12 +102,38 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
     }
     
+    func isValidUsername(username: String) -> Bool {
+        
+        //This RegEx validates whether the username is a valid email.
+        let emailRegEx = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+        
+        let usernameTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        
+        if usernameTest.evaluateWithObject(username) == true {
+            return true
+        } else {
+            return false
+        }
+
+    }
+    
     @IBAction func cancelButtonPressed(sender: AnyObject) {
         var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
         var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
         
         self.presentViewController(controller, animated: true, completion: nil)
     }
+    
+    
+    @IBAction func selectImage(sender: AnyObject) {
+        
+        if isValidUsername(toUsername) {
+            self.performSegueWithIdentifier("selectImage", sender: nil)
+        } else {
+            warningLabel.show("Recipient must be registered user or valid email address.")
+        }
+    }
+
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "selectImage" {

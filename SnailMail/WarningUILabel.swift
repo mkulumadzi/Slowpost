@@ -21,6 +21,7 @@ class WarningUILabel: UILabel {
     func hide() {
         self.text = ""
         self.backgroundColor = UIColor.clearColor()
+        
     }
     
     func show(message: String) {

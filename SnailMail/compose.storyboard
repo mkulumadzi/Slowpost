@@ -20,6 +20,7 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -456,7 +457,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="j7P-4p-ATv">
-                                <rect key="frame" x="0.0" y="92" width="600" height="508"/>
+                                <rect key="frame" x="0.0" y="116" width="600" height="484"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="personCell" id="cXn-kV-8jj" customClass="PersonCell" customModule="Snailtale" customModuleProvider="target">
@@ -526,7 +527,7 @@
                                             <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="z1i-ko-pF7" kind="show" identifier="selectImage" id="wU3-H6-aep"/>
+                                            <action selector="selectImage:" destination="56L-ux-Lnu" eventType="touchUpInside" id="XPU-kk-XKK"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipient" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umF-fg-43Z">
@@ -548,7 +549,7 @@
                                 </constraints>
                             </view>
                             <searchBar contentMode="redraw" text="" placeholder="email" translatesAutoresizingMaskIntoConstraints="NO" id="FXR-ug-bxD">
-                                <rect key="frame" x="0.0" y="48" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ssJ-fP-Am6"/>
                                 </constraints>
@@ -558,25 +559,43 @@
                                     <outlet property="delegate" destination="56L-ux-Lnu" id="axs-Zf-QWV"/>
                                 </connections>
                             </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zBk-j3-1iC" userLabel="warningLabel" customClass="WarningUILabel" customModule="Snailtale" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="48" width="600" height="24"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="FXR-ug-bxD" firstAttribute="top" secondItem="1An-5p-awb" secondAttribute="bottom" id="3WG-HR-Njc"/>
+                            <constraint firstItem="FXR-ug-bxD" firstAttribute="top" secondItem="1An-5p-awb" secondAttribute="bottom" constant="30" id="3WG-HR-Njc"/>
                             <constraint firstItem="j7P-4p-ATv" firstAttribute="top" secondItem="FXR-ug-bxD" secondAttribute="bottom" id="5oO-fC-1vs"/>
+                            <constraint firstAttribute="trailing" secondItem="zBk-j3-1iC" secondAttribute="trailing" id="9Nc-IG-JIg"/>
                             <constraint firstAttribute="trailing" secondItem="j7P-4p-ATv" secondAttribute="trailing" id="B8p-DB-vk5"/>
+                            <constraint firstItem="zBk-j3-1iC" firstAttribute="leading" secondItem="8rF-TK-R8E" secondAttribute="leading" id="CQH-h1-3XB"/>
                             <constraint firstAttribute="trailing" secondItem="FXR-ug-bxD" secondAttribute="trailing" id="KM1-g0-2uT"/>
                             <constraint firstItem="1An-5p-awb" firstAttribute="top" secondItem="8rF-TK-R8E" secondAttribute="top" id="b6m-N0-o4v"/>
                             <constraint firstAttribute="bottom" secondItem="j7P-4p-ATv" secondAttribute="bottom" id="cPk-Bh-nPH"/>
+                            <constraint firstItem="zBk-j3-1iC" firstAttribute="top" secondItem="1An-5p-awb" secondAttribute="bottom" id="eCb-BQ-MuS"/>
                             <constraint firstItem="1An-5p-awb" firstAttribute="leading" secondItem="8rF-TK-R8E" secondAttribute="leading" id="ieh-xQ-ajg"/>
                             <constraint firstAttribute="trailing" secondItem="1An-5p-awb" secondAttribute="trailing" id="j6e-vn-ceR"/>
                             <constraint firstItem="FXR-ug-bxD" firstAttribute="leading" secondItem="8rF-TK-R8E" secondAttribute="leading" id="jzv-dc-k3r"/>
+                            <constraint firstItem="FXR-ug-bxD" firstAttribute="top" secondItem="zBk-j3-1iC" secondAttribute="bottom" id="qp4-jb-PdG"/>
                             <constraint firstItem="j7P-4p-ATv" firstAttribute="leading" secondItem="8rF-TK-R8E" secondAttribute="leading" id="rao-k6-Mm5"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="3WG-HR-Njc"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
-                        <outlet property="nextButton" destination="YhM-ZW-ANz" id="RZj-m5-A6x"/>
+                        <outlet property="nextButton" destination="YhM-ZW-ANz" id="3L7-cY-ek4"/>
                         <outlet property="toPersonList" destination="j7P-4p-ATv" id="I3m-NF-aKn"/>
                         <outlet property="toSearchField" destination="FXR-ug-bxD" id="YVg-pm-du0"/>
+                        <outlet property="warningLabel" destination="zBk-j3-1iC" id="5WO-lm-7cq"/>
+                        <segue destination="z1i-ko-pF7" kind="show" identifier="selectImage" id="Qeo-sI-YLf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJY-Gj-eOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
