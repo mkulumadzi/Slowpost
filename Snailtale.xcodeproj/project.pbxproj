@@ -105,7 +105,7 @@
 		D2E956681B30AD7F00CA8CC8 /* ios7-checkmark-not-checked.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E956671B30AD7F00CA8CC8 /* ios7-checkmark-not-checked.png */; };
 		D2E9566A1B30BAAB00CA8CC8 /* checkmark-round-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E956691B30BAAB00CA8CC8 /* checkmark-round-white.png */; };
 		D2F87CA41B389700003245E2 /* SnailMail Postman.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F87CA31B389700003245E2 /* SnailMail Postman.png */; };
-		D3CA1197D3BE0D4C283DA039 /* Pods_SnailMail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48D46F0C7DC76E3F2B153DC /* Pods_SnailMail.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		E5D02391CACF592B9BA15159 /* Pods_Snailtale.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDB1D6CC35A2BF18637C5F85 /* Pods_Snailtale.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +122,7 @@
 		62F08564CDDFD93EAA1E21E5 /* Pods-SnailMail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnailMail.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SnailMail/Pods-SnailMail.debug.xcconfig"; sourceTree = "<group>"; };
 		6B594EB116F451FEF2FA49E1 /* Pods-SnailMail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnailMail.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnailMail/Pods-SnailMail.release.xcconfig"; sourceTree = "<group>"; };
 		A48D46F0C7DC76E3F2B153DC /* Pods_SnailMail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnailMail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7FE69CA51D0BBD005CCDDD3 /* Pods-Snailtale.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snailtale.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Snailtale/Pods-Snailtale.debug.xcconfig"; sourceTree = "<group>"; };
 		CC23DE291AE54C0300AFEDE4 /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = login.storyboard; sourceTree = "<group>"; };
 		CC23DE2B1AE54C1A00AFEDE4 /* mailbox.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = mailbox.storyboard; sourceTree = "<group>"; };
 		CC23DE2D1AE54C2B00AFEDE4 /* compose.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = compose.storyboard; sourceTree = "<group>"; };
@@ -180,6 +181,7 @@
 		D25A9C9B1B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		D25A9CAB1B225D3400ABBBA4 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D25A9CB11B261D2400ABBBA4 /* SignUpSuccessfulViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpSuccessfulViewController.swift; sourceTree = "<group>"; };
+		D26B9F7FC8CA4A05A73C4557 /* Pods-Snailtale.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snailtale.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Snailtale/Pods-Snailtale.testing.xcconfig"; sourceTree = "<group>"; };
 		D27E194D1B3B770C0052687F /* SnailMailModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SnailMailModel.xcdatamodel; sourceTree = "<group>"; };
 		D2A361351B3CAC5D00811D14 /* SnailMailTextUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnailMailTextUIButton.swift; sourceTree = "<group>"; };
 		D2A361371B3CB52B00811D14 /* WarningUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarningUILabel.swift; sourceTree = "<group>"; };
@@ -224,6 +226,9 @@
 		D2E956671B30AD7F00CA8CC8 /* ios7-checkmark-not-checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-checkmark-not-checked.png"; sourceTree = "<group>"; };
 		D2E956691B30BAAB00CA8CC8 /* checkmark-round-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark-round-white.png"; sourceTree = "<group>"; };
 		D2F87CA31B389700003245E2 /* SnailMail Postman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnailMail Postman.png"; sourceTree = "<group>"; };
+		E0C0EF4C88B0E40F68186A74 /* Pods-Snailtale.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snailtale.staging.xcconfig"; path = "Pods/Target Support Files/Pods-Snailtale/Pods-Snailtale.staging.xcconfig"; sourceTree = "<group>"; };
+		E191B8CC9ACEAD0414ADA6DD /* Pods-Snailtale.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snailtale.release.xcconfig"; path = "Pods/Target Support Files/Pods-Snailtale/Pods-Snailtale.release.xcconfig"; sourceTree = "<group>"; };
+		EDB1D6CC35A2BF18637C5F85 /* Pods_Snailtale.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Snailtale.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,7 +236,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3CA1197D3BE0D4C283DA039 /* Pods_SnailMail.framework in Frameworks */,
+				E5D02391CACF592B9BA15159 /* Pods_Snailtale.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +501,10 @@
 			children = (
 				62F08564CDDFD93EAA1E21E5 /* Pods-SnailMail.debug.xcconfig */,
 				6B594EB116F451FEF2FA49E1 /* Pods-SnailMail.release.xcconfig */,
+				A7FE69CA51D0BBD005CCDDD3 /* Pods-Snailtale.debug.xcconfig */,
+				E0C0EF4C88B0E40F68186A74 /* Pods-Snailtale.staging.xcconfig */,
+				D26B9F7FC8CA4A05A73C4557 /* Pods-Snailtale.testing.xcconfig */,
+				E191B8CC9ACEAD0414ADA6DD /* Pods-Snailtale.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -504,6 +513,7 @@
 			isa = PBXGroup;
 			children = (
 				A48D46F0C7DC76E3F2B153DC /* Pods_SnailMail.framework */,
+				EDB1D6CC35A2BF18637C5F85 /* Pods_Snailtale.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -694,7 +704,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SnailMail/Pods-SnailMail-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Snailtale/Pods-Snailtale-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		1797408795249C9975BFDA8B /* Check Pods Manifest.lock */ = {
@@ -724,7 +734,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SnailMail/Pods-SnailMail-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Snailtale/Pods-Snailtale-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -879,7 +889,7 @@
 		};
 		CCCB1A6D1AB0D48A0067F100 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 62F08564CDDFD93EAA1E21E5 /* Pods-SnailMail.debug.xcconfig */;
+			baseConfigurationReference = A7FE69CA51D0BBD005CCDDD3 /* Pods-Snailtale.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -897,7 +907,7 @@
 		};
 		CCCB1A6E1AB0D48A0067F100 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B594EB116F451FEF2FA49E1 /* Pods-SnailMail.release.xcconfig */;
+			baseConfigurationReference = E191B8CC9ACEAD0414ADA6DD /* Pods-Snailtale.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -927,7 +937,7 @@
 				INFOPLIST_FILE = SnailMailTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SnailtaleTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnailMail.app/SnailMail";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snailtale.app/Snailtale";
 			};
 			name = Debug;
 		};
@@ -942,7 +952,7 @@
 				INFOPLIST_FILE = SnailMailTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SnailtaleTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnailMail.app/SnailMail";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snailtale.app/Snailtale";
 			};
 			name = Release;
 		};
@@ -990,7 +1000,7 @@
 		};
 		D2C071031B3A3E68000154E8 /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 62F08564CDDFD93EAA1E21E5 /* Pods-SnailMail.debug.xcconfig */;
+			baseConfigurationReference = E0C0EF4C88B0E40F68186A74 /* Pods-Snailtale.staging.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1021,9 +1031,88 @@
 				INFOPLIST_FILE = SnailMailTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SnailtaleTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnailMail.app/SnailMail";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snailtale.app/Snailtale";
 			};
 			name = Staging;
+		};
+		D2CC61BC1B5046BB00616EE4 /* Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Testing;
+		};
+		D2CC61BD1B5046BB00616EE4 /* Testing */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D26B9F7FC8CA4A05A73C4557 /* Pods-Snailtale.testing.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = SnailMail/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = Snailtale;
+				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Testing;
+		};
+		D2CC61BE1B5046BB00616EE4 /* Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SnailMailTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = SnailtaleTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snailtale.app/Snailtale";
+			};
+			name = Testing;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1033,6 +1122,7 @@
 			buildConfigurations = (
 				CCCB1A6A1AB0D48A0067F100 /* Debug */,
 				D2C071021B3A3E68000154E8 /* Staging */,
+				D2CC61BC1B5046BB00616EE4 /* Testing */,
 				CCCB1A6B1AB0D48A0067F100 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1043,6 +1133,7 @@
 			buildConfigurations = (
 				CCCB1A6D1AB0D48A0067F100 /* Debug */,
 				D2C071031B3A3E68000154E8 /* Staging */,
+				D2CC61BD1B5046BB00616EE4 /* Testing */,
 				CCCB1A6E1AB0D48A0067F100 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1053,6 +1144,7 @@
 			buildConfigurations = (
 				CCCB1A701AB0D48A0067F100 /* Debug */,
 				D2C071041B3A3E68000154E8 /* Staging */,
+				D2CC61BE1B5046BB00616EE4 /* Testing */,
 				CCCB1A711AB0D48A0067F100 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

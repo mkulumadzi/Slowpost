@@ -4,53 +4,45 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-SnailMail-Alamofire.xcscheme</key>
+		<key>Pods-Snailtale-Alamofire.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
-		<key>Pods-SnailMail-Regex.xcscheme</key>
+		<key>Pods-Snailtale-Regex.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
-		<key>Pods-SnailMail-SwiftyJSON.xcscheme</key>
+		<key>Pods-Snailtale-SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
-		<key>Pods-SnailMail.xcscheme</key>
+		<key>Pods-Snailtale.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>0</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>69681E80136AA70C1B25A104</key>
+		<key>1A257825315ED5BA8DD7F409</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>796561FEF7F3D7ED11B88B88</key>
+		<key>6E7E6F5338302D0AD98C90A0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B50C3D41C4E127030E850E53</key>
+		<key>797D2EA5FC18EFDC1FC3BE83</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FE3B7B54BC3D6093378851D5</key>
+		<key>CE25B3C533360A528994F404</key>
 		<dict>
 			<key>primary</key>
 			<true/>
