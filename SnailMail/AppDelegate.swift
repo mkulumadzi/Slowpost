@@ -23,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         application.registerForRemoteNotifications()
         
+        //Manually set font for nav bar header (couldn't set in storyboard)
+        UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName : UIFont(name: "OpenSans-Semibold", size: 17)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
+        
         return true
     }
 

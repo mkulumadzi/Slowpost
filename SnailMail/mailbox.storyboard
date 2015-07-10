@@ -105,8 +105,9 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="7Xn-Vk-Jev"/>
                                     <barButtonItem style="plain" id="4ng-M5-n4Q">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7wd-Xq-bki">
-                                            <rect key="frame" x="73" y="7" width="36" height="36"/>
+                                            <rect key="frame" x="116" y="4" width="50" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <inset key="contentEdgeInsets" minX="7" minY="3" maxX="7" maxY="3"/>
                                             <state key="normal" image="ios7-email-outline-light-yellow.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -115,8 +116,9 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="sDM-S2-gCg"/>
                                     <barButtonItem style="plain" id="lce-Mf-qQL">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ef4-mF-BW9">
-                                            <rect key="frame" x="173" y="7" width="36" height="36"/>
+                                            <rect key="frame" x="268" y="4" width="50" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <inset key="contentEdgeInsets" minX="7" minY="3" maxX="7" maxY="3"/>
                                             <state key="normal" image="compose-white.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -128,8 +130,9 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="gRl-mZ-rl7"/>
                                     <barButtonItem style="plain" id="MTW-Dt-XKI">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nGu-0Y-8O7">
-                                            <rect key="frame" x="269" y="7" width="36" height="36"/>
+                                            <rect key="frame" x="435" y="4" width="50" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <inset key="contentEdgeInsets" minX="7" minY="3" maxX="7" maxY="3"/>
                                             <state key="normal" image="ios7-contact-outline-white.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -175,7 +178,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c9l-ay-6JP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1425.5" y="167.5"/>
+            <point key="canvasLocation" x="1425" y="167"/>
         </scene>
         <!--Mail View Controller-->
         <scene sceneID="eOb-cY-wTl">
@@ -195,57 +198,53 @@
                                     <constraint firstAttribute="width" secondItem="uqQ-le-jNV" secondAttribute="height" multiplier="75:56" id="20O-CK-c7i"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sy2-jF-OSQ">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="48"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AVd-FY-BNI">
-                                        <rect key="frame" x="8" y="18" width="24" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="4dS-sx-dI6"/>
-                                            <constraint firstAttribute="width" constant="24" id="6Le-UX-mfR"/>
-                                            <constraint firstAttribute="width" secondItem="AVd-FY-BNI" secondAttribute="height" multiplier="1:1" id="UUr-xu-0MT"/>
-                                        </constraints>
-                                        <state key="normal" image="close-round-white.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="closeMailView:" destination="gCE-4u-4GZ" eventType="touchUpInside" id="WlO-cF-GZp"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.10980392160000001" green="0.36078431370000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="AVd-FY-BNI" firstAttribute="leading" secondItem="sy2-jF-OSQ" secondAttribute="leading" constant="8" id="IHN-TM-ZPB"/>
-                                    <constraint firstAttribute="height" constant="48" id="hac-ae-FFr"/>
-                                    <constraint firstItem="AVd-FY-BNI" firstAttribute="top" secondItem="sy2-jF-OSQ" secondAttribute="top" constant="18" id="r6N-cs-uW1"/>
-                                </constraints>
-                            </view>
                             <textView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" indicatorStyle="black" editable="NO" text="Message content" translatesAutoresizingMaskIntoConstraints="NO" id="KhT-xO-PoX">
                                 <rect key="frame" x="0.0" y="496" width="600" height="104"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kaI-lE-wHl">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="DAq-ug-1Rm"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.10980392160000001" green="0.36078431370000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <items>
+                                    <navigationItem id="2vU-c3-oxm">
+                                        <barButtonItem key="leftBarButtonItem" style="done" id="rSb-8J-uuc">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GJf-tk-Zg4" userLabel="cancelButton">
+                                                <rect key="frame" x="16" y="-230" width="24" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="close-round-white.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="closeMailView:" destination="gCE-4u-4GZ" eventType="touchUpInside" id="CeO-LY-gHa"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="sy2-jF-OSQ" firstAttribute="top" secondItem="LMP-UL-sSq" secondAttribute="top" id="0tn-vT-wyj"/>
-                            <constraint firstItem="uqQ-le-jNV" firstAttribute="top" secondItem="sy2-jF-OSQ" secondAttribute="bottom" id="6Mz-Fm-9yY"/>
+                            <constraint firstItem="uqQ-le-jNV" firstAttribute="top" secondItem="kaI-lE-wHl" secondAttribute="bottom" id="2v0-Z2-6AR"/>
                             <constraint firstAttribute="trailing" secondItem="uqQ-le-jNV" secondAttribute="trailing" id="6Ui-7e-GCq"/>
                             <constraint firstItem="KhT-xO-PoX" firstAttribute="top" secondItem="uqQ-le-jNV" secondAttribute="bottom" id="9oy-rl-7qz"/>
-                            <constraint firstItem="KhT-xO-PoX" firstAttribute="top" secondItem="sy2-jF-OSQ" secondAttribute="bottom" id="QGo-HJ-njj"/>
+                            <constraint firstItem="kaI-lE-wHl" firstAttribute="top" secondItem="LMP-UL-sSq" secondAttribute="top" id="Chl-pC-3CH"/>
                             <constraint firstItem="KhT-xO-PoX" firstAttribute="leading" secondItem="LMP-UL-sSq" secondAttribute="leading" id="QPN-QA-eGr"/>
                             <constraint firstItem="uqQ-le-jNV" firstAttribute="leading" secondItem="LMP-UL-sSq" secondAttribute="leading" id="T6K-AY-OZT"/>
-                            <constraint firstAttribute="trailing" secondItem="sy2-jF-OSQ" secondAttribute="trailing" id="T7n-xR-s0C"/>
                             <constraint firstAttribute="bottom" secondItem="KhT-xO-PoX" secondAttribute="bottom" id="YoN-K2-kip"/>
+                            <constraint firstItem="kaI-lE-wHl" firstAttribute="leading" secondItem="LMP-UL-sSq" secondAttribute="leading" id="aQc-x1-LTB"/>
                             <constraint firstAttribute="trailing" secondItem="KhT-xO-PoX" secondAttribute="trailing" id="e1x-il-g5u"/>
-                            <constraint firstItem="sy2-jF-OSQ" firstAttribute="leading" secondItem="LMP-UL-sSq" secondAttribute="leading" id="e3K-A8-uOZ"/>
+                            <constraint firstAttribute="trailing" secondItem="kaI-lE-wHl" secondAttribute="trailing" id="glb-df-zv8"/>
                             <constraint firstItem="KhT-xO-PoX" firstAttribute="bottom" secondItem="uqQ-le-jNV" secondAttribute="bottom" constant="339" id="hzm-BO-EyC"/>
                             <constraint firstItem="KhT-xO-PoX" firstAttribute="top" secondItem="uqQ-le-jNV" secondAttribute="top" id="lsf-YN-cXs"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="QGo-HJ-njj"/>
                                 <exclude reference="hzm-BO-EyC"/>
                                 <exclude reference="lsf-YN-cXs"/>
                             </mask>

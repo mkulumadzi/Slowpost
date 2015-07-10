@@ -24,14 +24,13 @@
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
-            <string>OpenSans-Semibold</string>
         </mutableArray>
     </customFonts>
     <scenes>
         <!--View Profile View Controller-->
         <scene sceneID="XoO-di-eAU">
             <objects>
-                <viewController storyboardIdentifier="InitialController" id="g8k-5t-a0b" customClass="ViewProfileViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialController" id="g8k-5t-a0b" customClass="ViewProfileViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nwd-qv-gcm"/>
                         <viewControllerLayoutGuide type="bottom" id="MA3-Gi-lBX"/>
@@ -47,11 +46,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cKu-gA-55u">
-                                <rect key="frame" x="562" y="30" width="30" height="30"/>
+                                <rect key="frame" x="542" y="30" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="jEe-TX-n9n"/>
-                                    <constraint firstAttribute="height" constant="30" id="z99-IU-MBX"/>
+                                    <constraint firstAttribute="width" constant="50" id="jEe-TX-n9n"/>
+                                    <constraint firstAttribute="height" constant="50" id="z99-IU-MBX"/>
                                 </constraints>
+                                <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                                 <state key="normal" image="log-out.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -68,8 +68,9 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="CBw-l3-MJ6"/>
                                     <barButtonItem style="plain" id="vUk-aZ-Ci8">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uya-Ea-EIi">
-                                            <rect key="frame" x="73" y="7" width="36" height="36"/>
+                                            <rect key="frame" x="123" y="4" width="50" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <inset key="contentEdgeInsets" minX="7" minY="3" maxX="7" maxY="3"/>
                                             <state key="normal" image="ios7-email-outline-white.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -81,8 +82,9 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="P2g-zT-NhP"/>
                                     <barButtonItem style="plain" id="o4v-Be-otv">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rNh-lz-u4m">
-                                            <rect key="frame" x="173" y="7" width="36" height="36"/>
+                                            <rect key="frame" x="282" y="4" width="50" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <inset key="contentEdgeInsets" minX="7" minY="3" maxX="7" maxY="3"/>
                                             <state key="normal" image="compose-white.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -94,8 +96,9 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="t61-xg-Xxx"/>
                                     <barButtonItem style="plain" id="Wvl-ft-P2q">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="g84-Zf-8Wb">
-                                            <rect key="frame" x="269" y="7" width="36" height="36"/>
+                                            <rect key="frame" x="435" y="4" width="50" height="44"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <inset key="contentEdgeInsets" minX="7" minY="3" maxX="7" maxY="3"/>
                                             <state key="normal" image="ios7-contact-outline-light-yellow.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -120,7 +123,7 @@
                                 <rect key="frame" x="0.0" y="104" width="600" height="572"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MailCell" rowHeight="550" id="OET-Qs-ejm" customClass="SentMailTableViewCell" customModule="SnailMail" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MailCell" rowHeight="550" id="OET-Qs-ejm" customClass="SentMailTableViewCell" customModule="Snailtale" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OET-Qs-ejm" id="vjw-Ba-QIw">
@@ -245,7 +248,7 @@
         <!--Edit Profile View Controller-->
         <scene sceneID="rBe-8S-gKs">
             <objects>
-                <viewController id="qNd-F5-aPS" customClass="EditProfileViewController" customModule="SnailMail" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qNd-F5-aPS" customClass="EditProfileViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mck-tZ-RLz"/>
                         <viewControllerLayoutGuide type="bottom" id="6x9-os-mOW"/>
@@ -254,38 +257,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="720"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PaX-vL-5Tb">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="48"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xj7-nc-Iq3">
-                                        <rect key="frame" x="8" y="18" width="24" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="mjE-Uz-iDn"/>
-                                            <constraint firstAttribute="height" constant="24" id="nVa-B2-TYl"/>
-                                        </constraints>
-                                        <state key="normal" image="close-round-white.png">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="Cancel:" destination="qNd-F5-aPS" eventType="touchUpInside" id="WoL-OV-G8D"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit your Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qGl-oT-q0c">
-                                        <rect key="frame" x="234" y="14" width="132" height="24"/>
-                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.10980392156862745" green="0.36078431372549019" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="Xj7-nc-Iq3" firstAttribute="top" secondItem="PaX-vL-5Tb" secondAttribute="top" constant="18" id="LjS-sk-ifV"/>
-                                    <constraint firstAttribute="height" constant="48" id="deG-Kn-Ylf"/>
-                                    <constraint firstItem="qGl-oT-q0c" firstAttribute="top" secondItem="PaX-vL-5Tb" secondAttribute="top" constant="14" id="isi-IW-7BJ"/>
-                                    <constraint firstAttribute="centerX" secondItem="qGl-oT-q0c" secondAttribute="centerX" id="pIG-Qz-E7y"/>
-                                    <constraint firstItem="Xj7-nc-Iq3" firstAttribute="leading" secondItem="PaX-vL-5Tb" secondAttribute="leading" constant="8" id="tcz-Zg-oBj"/>
-                                </constraints>
-                            </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UPU-ci-qfd">
                                 <rect key="frame" x="30" y="78" width="540" height="30"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
@@ -332,7 +303,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVJ-ZN-GQd" customClass="SnailMailTextUIButton" customModule="SnailMail" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uVJ-ZN-GQd" customClass="SnailMailTextUIButton" customModule="Snailtale" customModuleProvider="target">
                                 <rect key="frame" x="30" y="328" width="540" height="30"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -347,13 +318,41 @@
                                     <action selector="saveEditedInfo:" destination="qNd-F5-aPS" eventType="touchUpInside" id="aWA-Hr-XGa"/>
                                 </connections>
                             </button>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MA2-Ov-gBi">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="xYZ-w3-49b"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.10980392160000001" green="0.36078431370000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Edit Your Profile" id="9Zi-ze-GOc">
+                                        <barButtonItem key="leftBarButtonItem" style="done" id="Y3y-CY-7nH">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dKR-LJ-UZL" userLabel="cancelButton">
+                                                <rect key="frame" x="16" y="-234" width="24" height="24"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="close-round-white.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="Cancel:" destination="qNd-F5-aPS" eventType="touchUpInside" id="g04-BG-UH7"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="DM6-gP-T1s" firstAttribute="leading" secondItem="2jU-Kb-9JR" secondAttribute="leading" constant="30" id="1Fk-3v-hwB"/>
                             <constraint firstItem="PFt-xu-Tsb" firstAttribute="top" secondItem="LS1-6o-LrV" secondAttribute="bottom" constant="10" id="1Vc-LP-T7D"/>
                             <constraint firstItem="UPU-ci-qfd" firstAttribute="leading" secondItem="2jU-Kb-9JR" secondAttribute="leading" constant="30" id="29U-Am-9CE"/>
-                            <constraint firstItem="UPU-ci-qfd" firstAttribute="top" secondItem="PaX-vL-5Tb" secondAttribute="bottom" constant="30" id="65w-k9-A0Q"/>
+                            <constraint firstAttribute="trailing" secondItem="MA2-Ov-gBi" secondAttribute="trailing" id="7Kf-bq-SVi"/>
                             <constraint firstItem="uVJ-ZN-GQd" firstAttribute="top" secondItem="DM6-gP-T1s" secondAttribute="bottom" constant="10" id="846-m6-Gtn"/>
                             <constraint firstAttribute="trailing" secondItem="N0a-2H-KEY" secondAttribute="trailing" constant="30" id="8XV-fd-a5e"/>
                             <constraint firstItem="LS1-6o-LrV" firstAttribute="leading" secondItem="2jU-Kb-9JR" secondAttribute="leading" constant="30" id="E5b-JC-Wa2"/>
@@ -361,7 +360,8 @@
                             <constraint firstItem="LS1-6o-LrV" firstAttribute="top" secondItem="N0a-2H-KEY" secondAttribute="bottom" constant="30" id="LoT-Kl-fDl"/>
                             <constraint firstItem="N0a-2H-KEY" firstAttribute="leading" secondItem="2jU-Kb-9JR" secondAttribute="leading" constant="30" id="UHM-gE-nEC"/>
                             <constraint firstAttribute="trailing" secondItem="DM6-gP-T1s" secondAttribute="trailing" constant="30" id="Z19-cL-uqO"/>
-                            <constraint firstItem="PaX-vL-5Tb" firstAttribute="leading" secondItem="2jU-Kb-9JR" secondAttribute="leading" id="c5m-en-D0Z"/>
+                            <constraint firstItem="UPU-ci-qfd" firstAttribute="top" secondItem="MA2-Ov-gBi" secondAttribute="bottom" constant="30" id="bvM-It-sq8"/>
+                            <constraint firstItem="MA2-Ov-gBi" firstAttribute="leading" secondItem="2jU-Kb-9JR" secondAttribute="leading" id="dtd-Hh-yLJ"/>
                             <constraint firstItem="DM6-gP-T1s" firstAttribute="top" secondItem="FBE-VS-iq7" secondAttribute="bottom" constant="10" id="eX8-VW-yC7"/>
                             <constraint firstItem="PFt-xu-Tsb" firstAttribute="leading" secondItem="2jU-Kb-9JR" secondAttribute="leading" constant="30" id="f2a-dJ-Oin"/>
                             <constraint firstAttribute="trailing" secondItem="UPU-ci-qfd" secondAttribute="trailing" constant="30" id="fLe-Ka-f9G"/>
@@ -370,10 +370,9 @@
                             <constraint firstItem="FBE-VS-iq7" firstAttribute="top" secondItem="PFt-xu-Tsb" secondAttribute="bottom" constant="10" id="jJC-42-XF9"/>
                             <constraint firstItem="FBE-VS-iq7" firstAttribute="leading" secondItem="2jU-Kb-9JR" secondAttribute="leading" constant="30" id="l2n-d0-07q"/>
                             <constraint firstAttribute="trailing" secondItem="PFt-xu-Tsb" secondAttribute="trailing" constant="30" id="lXe-Kd-JJN"/>
+                            <constraint firstItem="MA2-Ov-gBi" firstAttribute="top" secondItem="2jU-Kb-9JR" secondAttribute="top" id="r1D-WJ-ifv"/>
                             <constraint firstItem="uVJ-ZN-GQd" firstAttribute="leading" secondItem="2jU-Kb-9JR" secondAttribute="leading" constant="30" id="txL-Ci-3Rw"/>
                             <constraint firstAttribute="trailing" secondItem="LS1-6o-LrV" secondAttribute="trailing" constant="30" id="vEO-jH-OgE"/>
-                            <constraint firstItem="PaX-vL-5Tb" firstAttribute="top" secondItem="2jU-Kb-9JR" secondAttribute="top" id="yiO-gG-g8A"/>
-                            <constraint firstAttribute="trailing" secondItem="PaX-vL-5Tb" secondAttribute="trailing" id="zAn-ZY-9vI"/>
                         </constraints>
                     </view>
                     <connections>
