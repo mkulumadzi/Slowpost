@@ -33,6 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        
+        updateAppIconBadge(application)
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -148,13 +150,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-//    func setLocalNotification() {
-//        var localNotification: UILocalNotification = UILocalNotification()
-//        localNotification.alertAction = "Testing notifications on iOS8"
-//        localNotification.alertBody = "Woww it works!!"
-//        localNotification.fireDate = NSDate(timeIntervalSinceNow: 30)
-//        UIApplication.sharedApplication().scheduleLocalNotification(localNotification)
-//    }
+
+    //Refreshing app badge icon based on number of unread mail
+    func updateAppIconBadge(application: UIApplication) {
+        var numberUnread:Int = mailbox.filter{$0.status == "DELIVERED"}.count
+        application.applicationIconBadgeNumber = numberUnread
+    }
     
 }
 
