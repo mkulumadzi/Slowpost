@@ -53,14 +53,10 @@ class ChooseCardViewController: UIViewController, UICollectionViewDataSource, UI
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize {
         
-        println("got here")
-        
         var width:CGFloat = self.cardCollection.frame.width - 20
         var height:CGFloat = width * 3 / 4
         
         var cardSize = CGSize.init(width: width, height: height)
-        
-        println(cardSize)
         
         return cardSize
         
