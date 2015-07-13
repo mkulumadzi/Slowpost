@@ -12,7 +12,9 @@ import Alamofire
 class EditProfileViewController: UIViewController {
 
     @IBOutlet weak var nameField: UITextField!
-    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var phoneField: UITextField!
     @IBOutlet weak var address1Field: UITextField!
     @IBOutlet weak var cityField: UITextField!
     @IBOutlet weak var stateField: UITextField!
@@ -23,12 +25,16 @@ class EditProfileViewController: UIViewController {
         super.viewDidLoad()
         
         nameField.text = loggedInUser.name
-        emailLabel.text = loggedInUser.username
+        usernameField.text = loggedInUser.username
+        emailField.text = loggedInUser.email
+        phoneField.text = loggedInUser.phone
         address1Field.text = loggedInUser.address1
         cityField.text = loggedInUser.city
         stateField.text = loggedInUser.state
         zipField.text = loggedInUser.zip
         
+        usernameField.enabled = false
+        emailField.enabled = false
 
         // Do any additional setup after loading the view.
     }
@@ -59,7 +65,7 @@ class EditProfileViewController: UIViewController {
     func updatePerson(completion: (error: NSError?, result: AnyObject?) -> Void) {
         
         let updatePersonURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)"
-        let parameters = ["name": "\(nameField.text)", "address1": "\(address1Field.text)", "city": "\(cityField.text)", "state": "\(stateField.text)", "zip": "\(zipField.text)"]
+        let parameters = ["name": "\(nameField.text)", "phone": "\(phoneField.text)", "address1": "\(address1Field.text)", "city": "\(cityField.text)", "state": "\(stateField.text)", "zip": "\(zipField.text)"]
         
         Alamofire.request(.POST, updatePersonURL, parameters: parameters, encoding: .JSON)
             .response { (request, response, data, error) in

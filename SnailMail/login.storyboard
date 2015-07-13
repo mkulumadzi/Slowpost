@@ -42,7 +42,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="748" verticalHuggingPriority="751" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="8" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1Cx-Sp-3Un">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="748" verticalHuggingPriority="751" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="8" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1Cx-Sp-3Un">
                                 <rect key="frame" x="30" y="267" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="WLv-fW-fWb"/>
@@ -331,12 +331,12 @@
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="emailTextField" destination="P5I-cq-lFh" id="Xx3-DK-2f7"/>
+                        <outlet property="emailTextField" destination="P5I-cq-lFh" id="9zA-yl-P3b"/>
                         <outlet property="nameTextField" destination="VGQ-6a-6wA" id="fdE-Zf-mlF"/>
                         <outlet property="passwordTextField" destination="Nfc-Fc-WhF" id="GB7-l5-llc"/>
                         <outlet property="phoneTextField" destination="ac9-aQ-31f" id="Iro-v1-kzw"/>
                         <outlet property="signUpButton" destination="vTt-uY-DQ5" id="M1o-eM-R41"/>
-                        <outlet property="usernameTextField" destination="P5I-cq-lFh" id="Emp-pd-KaD"/>
+                        <outlet property="usernameTextField" destination="pYC-iI-xKM" id="6Ns-fC-e4v"/>
                         <outlet property="warningLabel" destination="8aQ-qm-rHK" id="LAo-un-FAk"/>
                         <segue destination="VlT-9s-rBm" kind="show" identifier="signUpComplete" id="i4m-1J-saL"/>
                     </connections>
