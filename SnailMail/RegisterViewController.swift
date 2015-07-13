@@ -13,6 +13,8 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signUpButton: SnailMailTextUIButton!
     @IBOutlet weak var warningLabel: WarningUILabel!
@@ -68,7 +70,7 @@ class RegisterViewController: UIViewController {
     func signUp(completion: (error: NSError?, result: AnyObject?) -> Void) {
         
         let newPersonEndpoint = "\(PostOfficeURL)person/new"
-        let parameters = ["name": "\(nameTextField.text)", "username": "\(usernameTextField.text)", "password": "\(passwordTextField.text)"]
+        let parameters = ["name": "\(nameTextField.text)", "username": "\(usernameTextField.text)", "email": "\(emailTextField.text)", "phone": "\(phoneTextField.text)", "password": "\(passwordTextField.text)"]
         
         Alamofire.request(.POST, newPersonEndpoint, parameters: parameters, encoding: .JSON)
             .response { (request, response, data, error) in

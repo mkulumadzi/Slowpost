@@ -10,9 +10,10 @@
             <string>OpenSans-Light</string>
             <string>OpenSans-Light</string>
             <string>OpenSans-Light</string>
-            <string>OpenSans-Light</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+            <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
@@ -185,7 +186,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VGQ-6a-6wA">
-                                <rect key="frame" x="30" y="189" width="540" height="30"/>
+                                <rect key="frame" x="30" y="80" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Sa5-ec-ezx"/>
                                 </constraints>
@@ -195,20 +196,8 @@
                                     <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="Mvm-sb-IE6"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please create your login information." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wDO-IO-wRn">
-                                <rect key="frame" x="16" y="80" width="568" height="99"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="36"/>
-                                <color key="textColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SnailMail Postman Set" translatesAutoresizingMaskIntoConstraints="NO" id="oMM-Cy-Luv">
-                                <rect key="frame" x="250" y="419" width="100" height="181"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="oMM-Cy-Luv" secondAttribute="height" multiplier="100:181" id="uFw-jn-5jv"/>
-                                </constraints>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTt-uY-DQ5" customClass="SnailMailTextUIButton" customModule="Snailtale" customModuleProvider="target">
-                                <rect key="frame" x="30" y="309" width="540" height="30"/>
+                                <rect key="frame" x="30" y="280" width="540" height="30"/>
                                 <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="0rb-A5-0UC"/>
@@ -223,7 +212,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Nfc-Fc-WhF">
-                                <rect key="frame" x="30" y="269" width="540" height="30"/>
+                                <rect key="frame" x="30" y="240" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="dcm-H7-lcb"/>
                                 </constraints>
@@ -234,7 +223,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="P5I-cq-lFh">
-                                <rect key="frame" x="30" y="229" width="540" height="30"/>
+                                <rect key="frame" x="30" y="160" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Tco-OY-Y9H"/>
                                 </constraints>
@@ -270,7 +259,7 @@
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem id="1cA-FW-AJV">
+                                    <navigationItem title="Register" id="1cA-FW-AJV">
                                         <barButtonItem key="leftBarButtonItem" style="done" id="Lta-SE-sv9">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PTo-b4-bts">
                                                 <rect key="frame" x="16" y="-234" width="24" height="24"/>
@@ -286,45 +275,66 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ac9-aQ-31f">
+                                <rect key="frame" x="30" y="200" width="540" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="8Bh-bK-Y7I"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pYC-iI-xKM">
+                                <rect key="frame" x="30" y="120" width="540" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ahi-kO-Ubb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="P5I-cq-lFh" firstAttribute="top" secondItem="VGQ-6a-6wA" secondAttribute="bottom" constant="10" id="393-Pl-oue"/>
                             <constraint firstItem="vTt-uY-DQ5" firstAttribute="top" secondItem="Nfc-Fc-WhF" secondAttribute="bottom" constant="10" id="73V-il-2BE"/>
-                            <constraint firstItem="wDO-IO-wRn" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="16" id="7QF-D9-OuP"/>
-                            <constraint firstItem="VGQ-6a-6wA" firstAttribute="top" secondItem="wDO-IO-wRn" secondAttribute="bottom" constant="10" id="7ai-qS-D5d"/>
+                            <constraint firstItem="ac9-aQ-31f" firstAttribute="top" secondItem="P5I-cq-lFh" secondAttribute="bottom" constant="10" id="8D7-WV-UUM"/>
                             <constraint firstAttribute="trailing" secondItem="P5I-cq-lFh" secondAttribute="trailing" constant="30" id="96y-53-c3a"/>
                             <constraint firstAttribute="trailing" secondItem="VGQ-6a-6wA" secondAttribute="trailing" constant="30" id="9vy-EU-yZv"/>
                             <constraint firstItem="P5I-cq-lFh" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="B8V-qf-Rx7"/>
-                            <constraint firstItem="oMM-Cy-Luv" firstAttribute="top" secondItem="vTt-uY-DQ5" secondAttribute="bottom" constant="80" id="Eg4-KR-bIh"/>
+                            <constraint firstItem="pYC-iI-xKM" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="CSg-rr-rmR"/>
                             <constraint firstItem="tZF-2h-GJP" firstAttribute="top" secondItem="YL5-63-9jW" secondAttribute="top" id="Hxx-1L-wBk"/>
                             <constraint firstItem="VGQ-6a-6wA" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="I9B-8l-kjq"/>
                             <constraint firstItem="Nfc-Fc-WhF" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="IdK-M9-ICB"/>
+                            <constraint firstItem="ac9-aQ-31f" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="K7Y-d0-6Xm"/>
+                            <constraint firstItem="Nfc-Fc-WhF" firstAttribute="top" secondItem="ac9-aQ-31f" secondAttribute="bottom" constant="10" id="Kfg-k5-zIS"/>
                             <constraint firstAttribute="trailing" secondItem="8aQ-qm-rHK" secondAttribute="trailing" id="UCx-Bs-3nE"/>
                             <constraint firstAttribute="trailing" secondItem="vTt-uY-DQ5" secondAttribute="trailing" constant="30" id="UGI-es-xUO"/>
                             <constraint firstItem="Nfc-Fc-WhF" firstAttribute="top" secondItem="P5I-cq-lFh" secondAttribute="bottom" constant="10" id="WU0-e3-L6c"/>
                             <constraint firstItem="8aQ-qm-rHK" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" id="XJQ-hw-mBd"/>
                             <constraint firstItem="8aQ-qm-rHK" firstAttribute="top" secondItem="tZF-2h-GJP" secondAttribute="bottom" id="bBF-6v-Yk3"/>
                             <constraint firstAttribute="trailing" secondItem="tZF-2h-GJP" secondAttribute="trailing" id="bod-1e-Iad"/>
-                            <constraint firstAttribute="bottom" secondItem="oMM-Cy-Luv" secondAttribute="bottom" id="dRs-qi-bIM"/>
-                            <constraint firstItem="oMM-Cy-Luv" firstAttribute="top" secondItem="vTt-uY-DQ5" secondAttribute="bottom" constant="30" id="egt-vI-gr9"/>
+                            <constraint firstItem="VGQ-6a-6wA" firstAttribute="top" secondItem="tZF-2h-GJP" secondAttribute="bottom" constant="36" id="hLz-gw-qLE"/>
+                            <constraint firstItem="P5I-cq-lFh" firstAttribute="top" secondItem="pYC-iI-xKM" secondAttribute="bottom" constant="10" id="mDd-eT-Qbf"/>
                             <constraint firstAttribute="trailing" secondItem="Nfc-Fc-WhF" secondAttribute="trailing" constant="30" id="o26-Fx-U6V"/>
+                            <constraint firstItem="pYC-iI-xKM" firstAttribute="top" secondItem="VGQ-6a-6wA" secondAttribute="bottom" constant="10" id="onX-8i-cJL"/>
+                            <constraint firstAttribute="trailing" secondItem="ac9-aQ-31f" secondAttribute="trailing" constant="30" id="pO2-Zc-EcL"/>
                             <constraint firstItem="vTt-uY-DQ5" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="qHx-J0-XXf"/>
-                            <constraint firstAttribute="trailing" secondItem="wDO-IO-wRn" secondAttribute="trailing" constant="16" id="rng-St-MXo"/>
+                            <constraint firstAttribute="trailing" secondItem="pYC-iI-xKM" secondAttribute="trailing" constant="30" id="uYc-aR-0bj"/>
                             <constraint firstItem="tZF-2h-GJP" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" id="v8n-2r-Ex8"/>
-                            <constraint firstAttribute="centerX" secondItem="oMM-Cy-Luv" secondAttribute="centerX" id="veP-vB-eOm"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="egt-vI-gr9"/>
+                                <exclude reference="393-Pl-oue"/>
+                                <exclude reference="WU0-e3-L6c"/>
                             </mask>
                         </variation>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="emailTextField" destination="P5I-cq-lFh" id="Xx3-DK-2f7"/>
                         <outlet property="nameTextField" destination="VGQ-6a-6wA" id="fdE-Zf-mlF"/>
                         <outlet property="passwordTextField" destination="Nfc-Fc-WhF" id="GB7-l5-llc"/>
+                        <outlet property="phoneTextField" destination="ac9-aQ-31f" id="Iro-v1-kzw"/>
                         <outlet property="signUpButton" destination="vTt-uY-DQ5" id="M1o-eM-R41"/>
                         <outlet property="usernameTextField" destination="P5I-cq-lFh" id="Emp-pd-KaD"/>
                         <outlet property="warningLabel" destination="8aQ-qm-rHK" id="LAo-un-FAk"/>
@@ -400,7 +410,6 @@
     </scenes>
     <resources>
         <image name="SnailMail Icon Set" width="150" height="99"/>
-        <image name="SnailMail Postman Set" width="100" height="181"/>
         <image name="close-round-white.png" width="512" height="512"/>
     </resources>
 </document>

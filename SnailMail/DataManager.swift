@@ -110,7 +110,9 @@ class DataManager {
         
         let id = jsonEntry.objectForKey("_id")!.objectForKey("$oid") as! String
         let username:String = jsonEntry.objectForKey("username") as! String
+        let email:String = jsonEntry.objectForKey("email") as! String
         let name = jsonEntry.objectForKey("name") as? String
+        let phone = jsonEntry.objectForKey("phone") as? String
         let address1 = jsonEntry.objectForKey("address1") as? String
         let city = jsonEntry.objectForKey("city") as? String
         let state = jsonEntry.objectForKey("state") as? String
@@ -122,7 +124,7 @@ class DataManager {
         let createdString = jsonEntry.objectForKey("created_at") as! String
         let createdAt = NSDate(dateString: createdString)
         
-        var new_person = Person(id: id, username: username, name: name, address1: address1, city: city, state: state, zip: zip, updatedAt: updatedAt, createdAt: createdAt)
+        var new_person = Person(id: id, username: username, email: email, name: name, phone: phone, address1: address1, city: city, state: state, zip: zip, updatedAt: updatedAt, createdAt: createdAt)
         
         return new_person
     }
