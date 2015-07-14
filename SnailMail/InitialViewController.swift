@@ -13,6 +13,7 @@ var deviceToken:String!
 var loggedInUser:Person!
 var mailbox = [Mail]()
 var people = [Person]()
+var penpals = [Person]()
 var coreDataPeople = [NSManagedObject]()
 var coreDataMail = [NSManagedObject]()
 
@@ -103,13 +104,14 @@ class InitialViewController: UIViewController {
             }
             else if let mailArray = result as? Array<Mail> {
                 mailbox = mailArray.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
-                //Get all peoplle records
-                DataManager.getPeople("", completion: { (error, result) -> Void in
+                
+                //Get all 'penpal' records whom the user has sent mail to or received mail from
+                DataManager.getPenpals(loggedInUser.id, completion: { (error, result) -> Void in
                     if error != nil {
                         println(error)
                     }
                     else if let peopleArray = result as? Array<Person> {
-                        people = peopleArray
+                        penpals = peopleArray
                         self.goToHomeScreen()
                     }
                 })

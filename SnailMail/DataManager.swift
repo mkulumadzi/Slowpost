@@ -110,7 +110,7 @@ class DataManager {
         
         let id = jsonEntry.objectForKey("_id")!.objectForKey("$oid") as! String
         let username:String = jsonEntry.objectForKey("username") as! String
-        let email:String = jsonEntry.objectForKey("email") as! String
+        let email = jsonEntry.objectForKey("email") as? String
         let name = jsonEntry.objectForKey("name") as? String
         let phone = jsonEntry.objectForKey("phone") as? String
         let address1 = jsonEntry.objectForKey("address1") as? String
@@ -269,7 +269,6 @@ class DataManager {
         
         if let session = fetchedResults {
             if session.count > 0 {
-                println("I think this is what crashes it")
                 if let id = session[0].valueForKey("loggedInUserId") as? String {
                     return id
                 }
@@ -341,6 +340,41 @@ class DataManager {
                     println("Unexpected JSON result")
                 }
         }
+    }
+    
+    //Using penpals to refer to people whom the user has sent mail to, or received mail from. On the postoffice server, this is the /contacts route
+    //This function largely duplicates the getPeople function, should consolidate the two
+    class func getPenpals(id: String, completion: (error: NSError?, result: AnyObject?) -> Void) {
+        
+        
+        let contactsURL = "\(PostOfficeURL)person/id/\(id)/contacts"
+        
+        Alamofire.request(.GET, contactsURL)
+            .response { (request, response, data, error) in
+                if let anError = error {
+                    completion(error: error, result: nil)
+                }
+                else if let response: AnyObject = response {
+                    if response.statusCode == 404 {
+                        completion(error: error, result: response.statusCode)
+                    }
+                }
+            }
+            .responseJSON { (_, _, JSON, error) in
+                if let jsonResult = JSON as? Array<NSDictionary> {
+                    var people_array = [Person]()
+                    for jsonEntry in jsonResult {
+                        people_array.append(self.createPersonFromJson(jsonEntry))
+                    }
+                    completion(error: nil, result: people_array)
+                }
+                else {
+                    println("Unexpected JSON result")
+                }
+        }
+        
+        
+        
     }
 
 }

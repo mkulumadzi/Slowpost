@@ -13,7 +13,7 @@ import UIKit
 class Person: NSObject {
     var id:String
     var username:String
-    var email:String
+    var email:String!
     var name:String!
     var phone:String!
     var address1:String!
@@ -23,7 +23,7 @@ class Person: NSObject {
     var updatedAt:NSDate
     var createdAt:NSDate
     
-    init(id:String, username:String, email:String, name:String?, phone:String?, address1:String?, city:String?, state:String?, zip:String?, updatedAt:NSDate, createdAt:NSDate) {
+    init(id:String, username:String, email:String?, name:String?, phone:String?, address1:String?, city:String?, state:String?, zip:String?, updatedAt:NSDate, createdAt:NSDate) {
         self.id = id
         self.username = username
         self.email = email
