@@ -37,9 +37,10 @@ class LogInViewController: UIViewController {
                 println(error)
             }
             else if let result: AnyObject = result {
-                if result as! String == "Success" {
+                if let person:Person = result as? Person {
+                    DataManager.saveLoginToSession(person.id)
+                    loggedInUser = person
                     
-                    DataManager.saveLoginToSession(self.UsernameTextField.text)
                     var storyboard = UIStoryboard(name: "initial", bundle: nil)
                     var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
                     self.presentViewController(controller, animated: true, completion: nil)
@@ -55,6 +56,7 @@ class LogInViewController: UIViewController {
     
     func attemptLogIn(completion: (error: NSError?, result: AnyObject?) -> Void) {
         
+        //Sending field as 'username'; postoffice server checks for username and email match
         let parameters = ["username": "\(UsernameTextField.text)", "password": "\(passwordTextField.text)"]
         
         Alamofire.request(.POST, "\(PostOfficeURL)login", parameters: parameters, encoding: .JSON)
@@ -63,12 +65,18 @@ class LogInViewController: UIViewController {
                     completion(error: error, result: nil)
                 }
                 else if let response: AnyObject = response {
-                    if response.statusCode == 200 {
-                        completion(error: nil, result: "Success" as String!)
-                    }
+//                    if response.statusCode == 200 {
+//                        completion(error: nil, result: "Success" as String!)
+//                    }
                     if response.statusCode == 401 {
-                        completion(error: nil, result: "Failure" as String!)
+                        completion(error: nil, result: response.statusCode)
                     }
+                }
+            }
+            .responseJSON { (_, _, JSON, error) in
+                if let response = JSON as? NSDictionary {
+                    var person:Person! = DataManager.createPersonFromJson(response)
+                    completion(error: nil, result: person)
                 }
         }
         

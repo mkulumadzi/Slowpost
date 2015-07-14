@@ -31,9 +31,9 @@ class InitialViewController: UIViewController {
     
     func checkLogin() {
         if loggedInUser == nil {
-            let username = DataManager.getUsernameFromSession()
-            if username != "" {
-                self.setLoggedInUserFromUsername(username)
+            let userId = DataManager.getUserIdFromSession()
+            if userId != "" {
+                self.setLoggedInUserFromUserId(userId)
             }
             else {
                 var storyboard = UIStoryboard(name: "login", bundle: nil)
@@ -68,9 +68,9 @@ class InitialViewController: UIViewController {
         
     }
     
-    func setLoggedInUserFromUsername(username: String) {
+    func setLoggedInUserFromUserId(userId: String) {
         
-        DataManager.getPeople("username=\(username)", completion: { (error, result) -> Void in
+        DataManager.getPeople("id=\(userId)", completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }

@@ -238,7 +238,7 @@ class DataManager {
         coreDataPeople.append(tempPerson)
     }
     
-    class func saveLoginToSession(username: String) {
+    class func saveLoginToSession(userId: String) {
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
@@ -247,7 +247,7 @@ class DataManager {
         
         let session = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
         
-        session.setValue(username, forKey: "loggedInUser")
+        session.setValue(userId, forKey: "loggedInUserId")
         
         var error: NSError?
         if !managedContext.save(&error) {
@@ -256,7 +256,7 @@ class DataManager {
         
     }
     
-    class func getUsernameFromSession() -> String {
+    class func getUserIdFromSession() -> String {
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
@@ -269,10 +269,12 @@ class DataManager {
         
         if let session = fetchedResults {
             if session.count > 0 {
-                var username = session[0].valueForKey("loggedInUser") as? String
-                return username!
+                println("I think this is what crashes it")
+                if let id = session[0].valueForKey("loggedInUserId") as? String {
+                    return id
                 }
             }
+        }
         
         return ""
     }
