@@ -22,12 +22,18 @@ class InitialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+        checkLogin()
+        
     }
     
     func checkLogin() {
@@ -44,6 +50,7 @@ class InitialViewController: UIViewController {
             }
         }
         else {
+            AddressBookHelper.checkAuthorizationStatus(self)
             getMailbox()
         }
     }
@@ -61,14 +68,6 @@ class InitialViewController: UIViewController {
         self.presentViewController(controller, animated: true, completion: nil)
     }
     
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true)
-        
-        checkLogin()
-        
-    }
-    
     func setLoggedInUserFromUserId(userId: String) {
         
         DataManager.getPeople("id=\(userId)", completion: { (error, result) -> Void in
@@ -80,6 +79,7 @@ class InitialViewController: UIViewController {
                 //Assume if logged in user exists, person array will always have only 1 entry, since username is unique... but should do a better job of handling this...
                 if personArray.count > 0 {
                     loggedInUser = personArray[0]
+                    AddressBookHelper.checkAuthorizationStatus(self)
                     self.getMailbox()
                 }
                 // If session is stored for a user that has been deleted, need to log in again

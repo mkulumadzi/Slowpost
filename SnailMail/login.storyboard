@@ -338,48 +338,12 @@
                         <outlet property="signUpButton" destination="vTt-uY-DQ5" id="M1o-eM-R41"/>
                         <outlet property="usernameTextField" destination="pYC-iI-xKM" id="6Ns-fC-e4v"/>
                         <outlet property="warningLabel" destination="8aQ-qm-rHK" id="LAo-un-FAk"/>
-                        <segue destination="34f-xq-GT4" kind="show" identifier="signUpComplete" id="hUx-0W-Lb8"/>
+                        <segue destination="VlT-9s-rBm" kind="show" identifier="signUpComplete" id="U17-Tr-S6j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Zp-98-wzK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="701" y="-476"/>
-        </scene>
-        <!--Address Book Request View Controller-->
-        <scene sceneID="j5b-qa-p1Y">
-            <objects>
-                <viewController id="34f-xq-GT4" customClass="AddressBookRequestViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="N6a-zi-6tf"/>
-                        <viewControllerLayoutGuide type="bottom" id="6AG-jg-EAl"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="DOY-wx-YhW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJ4-Ui-3ff">
-                                <rect key="frame" x="284" y="285" width="32" height="30"/>
-                                <state key="normal" title="Next">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="nextButtonTapped:" destination="34f-xq-GT4" eventType="touchUpInside" id="fgd-L0-cEd"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="centerY" secondItem="mJ4-Ui-3ff" secondAttribute="centerY" id="UN7-7c-tB8"/>
-                            <constraint firstAttribute="centerX" secondItem="mJ4-Ui-3ff" secondAttribute="centerX" id="fE2-Nt-L3L"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <segue destination="VlT-9s-rBm" kind="show" identifier="initialWelcomeScreen" id="8lR-0j-50D"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tcv-bE-O3Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1391" y="-476"/>
         </scene>
         <!--Sign Up Successful View Controller-->
         <scene sceneID="i3S-Y5-XvT">
@@ -441,7 +405,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vDr-jz-VxR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2077" y="-476"/>
+            <point key="canvasLocation" x="1423" y="-476"/>
         </scene>
     </scenes>
     <resources>
