@@ -50,6 +50,7 @@
 		D20D8EE21B2E448100BBF6B5 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D8EE11B2E448100BBF6B5 /* PersonCell.swift */; };
 		D21D79D51B5093430014510E /* ios7-checkmark-not-checked.png in Resources */ = {isa = PBXBuildFile; fileRef = D21D79D41B5093430014510E /* ios7-checkmark-not-checked.png */; };
 		D21D79D71B5093490014510E /* ios7-checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = D21D79D61B5093490014510E /* ios7-checkmark.png */; };
+		D21D79D91B55E5F50014510E /* AddressBookRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D79D81B55E5F50014510E /* AddressBookRequestViewController.swift */; };
 		D25A9C9C1B2259D300ABBBA4 /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C911B2259D300ABBBA4 /* Apache License.txt */; };
 		D25A9C9D1B2259D300ABBBA4 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */; };
 		D25A9C9E1B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */; };
@@ -170,6 +171,7 @@
 		D20D8EE11B2E448100BBF6B5 /* PersonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 		D21D79D41B5093430014510E /* ios7-checkmark-not-checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-checkmark-not-checked.png"; sourceTree = "<group>"; };
 		D21D79D61B5093490014510E /* ios7-checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-checkmark.png"; sourceTree = "<group>"; };
+		D21D79D81B55E5F50014510E /* AddressBookRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookRequestViewController.swift; sourceTree = "<group>"; };
 		D25A9C911B2259D300ABBBA4 /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apache License.txt"; sourceTree = "<group>"; };
 		D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				CC23DE291AE54C0300AFEDE4 /* login.storyboard */,
 				D25A9CAB1B225D3400ABBBA4 /* RegisterViewController.swift */,
 				D25A9CB11B261D2400ABBBA4 /* SignUpSuccessfulViewController.swift */,
+				D21D79D81B55E5F50014510E /* AddressBookRequestViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -752,6 +755,7 @@
 				D20088871B27750C004657C4 /* MailSentViewController.swift in Sources */,
 				CC6105F51AC3941900D15150 /* DataManager.swift in Sources */,
 				D2A361361B3CAC5D00811D14 /* SnailMailTextUIButton.swift in Sources */,
+				D21D79D91B55E5F50014510E /* AddressBookRequestViewController.swift in Sources */,
 				D25A9CB21B261D2400ABBBA4 /* SignUpSuccessfulViewController.swift in Sources */,
 				D20D8EE21B2E448100BBF6B5 /* PersonCell.swift in Sources */,
 				CCCB1A551AB0D48A0067F100 /* ViewController.swift in Sources */,
