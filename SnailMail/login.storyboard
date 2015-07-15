@@ -356,7 +356,22 @@
                     <view key="view" contentMode="scaleToFill" id="DOY-wx-YhW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJ4-Ui-3ff">
+                                <rect key="frame" x="284" y="285" width="32" height="30"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextButtonTapped:" destination="34f-xq-GT4" eventType="touchUpInside" id="fgd-L0-cEd"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="mJ4-Ui-3ff" secondAttribute="centerY" id="UN7-7c-tB8"/>
+                            <constraint firstAttribute="centerX" secondItem="mJ4-Ui-3ff" secondAttribute="centerX" id="fE2-Nt-L3L"/>
+                        </constraints>
                     </view>
                     <connections>
                         <segue destination="VlT-9s-rBm" kind="show" identifier="initialWelcomeScreen" id="8lR-0j-50D"/>
