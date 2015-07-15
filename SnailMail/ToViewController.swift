@@ -25,6 +25,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        reloadPenpals()
+
         warningLabel.hide()
         
         validateNextButton()
@@ -106,7 +108,12 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return penpalList.count
+            if penpalList.count > 0 {
+                return penpalList.count
+            }
+            else {
+                return 1
+            }
         case 1:
             return otherUsersList.count
         default:
@@ -119,13 +126,19 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         switch indexPath.section {
         case 0:
-            let person = penpalList[indexPath.row] as Person
-            cell?.personNameLabel.text = person.name
-            cell?.usernameLabel.text = person.username
+            if penpalList.count > 0 {
+                let person = penpalList[indexPath.row] as Person
+                cell?.personNameLabel.text = person.name
+                cell?.usernameLabel.text = "@" + person.username
+            }
+            else {
+                cell?.personNameLabel.text = ""
+                cell?.usernameLabel.text = "No results"
+            }
         case 1:
             let person = otherUsersList[indexPath.row] as Person
             cell?.personNameLabel.text = person.name
-            cell?.usernameLabel.text = person.username
+            cell?.usernameLabel.text = "@" + person.username
         default:
             cell?.personNameLabel.text = ""
             cell?.usernameLabel.text = ""
@@ -184,6 +197,19 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             else if let peopleArray = result as? Array<Person> {
                 self.otherUsersList = peopleArray
                 self.toPersonList.reloadData()
+            }
+        })
+    }
+    
+    func reloadPenpals() {
+        
+        //Get all 'penpal' records whom the user has sent mail to or received mail from
+        DataManager.getPenpals(loggedInUser.id, completion: { (error, result) -> Void in
+            if error != nil {
+                println(error)
+            }
+            else if let peopleArray = result as? Array<Person> {
+                penpals = peopleArray
             }
         })
     }
