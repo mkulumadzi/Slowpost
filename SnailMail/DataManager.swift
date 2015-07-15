@@ -346,7 +346,6 @@ class DataManager {
     //This function largely duplicates the getPeople function, should consolidate the two
     class func getPenpals(id: String, completion: (error: NSError?, result: AnyObject?) -> Void) {
         
-        
         let contactsURL = "\(PostOfficeURL)person/id/\(id)/contacts"
         
         Alamofire.request(.GET, contactsURL)
@@ -373,6 +372,38 @@ class DataManager {
                 }
         }
         
+    }
+    
+    //Searching for people based on partial search strings
+    class func searchPeople(term: String, completion: (error: NSError?, result: AnyObject?) -> Void) {
+        
+        //Limiting number of records returned to 10
+        let searchPeopleURL = "\(PostOfficeURL)people/search?term=\(term)&limit=10"
+        
+        //Really need to abstract this part instead of just copying and pasting it...
+        Alamofire.request(.GET, searchPeopleURL)
+            .response { (request, response, data, error) in
+                if let anError = error {
+                    completion(error: error, result: nil)
+                }
+                else if let response: AnyObject = response {
+                    if response.statusCode == 404 {
+                        completion(error: error, result: response.statusCode)
+                    }
+                }
+            }
+            .responseJSON { (_, _, JSON, error) in
+                if let jsonResult = JSON as? Array<NSDictionary> {
+                    var people_array = [Person]()
+                    for jsonEntry in jsonResult {
+                        people_array.append(self.createPersonFromJson(jsonEntry))
+                    }
+                    completion(error: nil, result: people_array)
+                }
+                else {
+                    println("Unexpected JSON result")
+                }
+        }
         
         
     }

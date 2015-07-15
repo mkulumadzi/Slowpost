@@ -13,7 +13,8 @@ import Alamofire
 class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     var toUsername:String!
-    var toList: [Person] = []
+    var penpalList: [Person] = []
+    var otherUsersList: [Person] = []
     
     @IBOutlet weak var toSearchField: UISearchBar!
     @IBOutlet weak var toPersonList: UITableView!
@@ -27,7 +28,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         warningLabel.hide()
         
         validateNextButton()
-        toList = people.filter({$0.username != loggedInUser.username})
+        penpalList = penpals.filter({$0.username != loggedInUser.username})
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,17 +38,24 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
-        toList = people
+        penpalList = penpals.filter({$0.username != loggedInUser.username})
         
         if self.toSearchField.text.isEmpty == false {
+            
             toUsername = self.toSearchField.text
-            var newArray:[Person] = toList.filter() {
+            var newArray:[Person] = penpalList.filter() {
                 self.listMatches(self.toSearchField.text, inString: $0.username).count >= 1 || self.listMatches(self.toSearchField.text, inString: $0.name).count >= 1
             }
-            toList = newArray
+            penpalList = newArray
+            
+            if penpalList.count == 0 {
+                self.searchPeople(self.toSearchField.text)
+            }
+            
         }
         else {
             toUsername = nil
+            otherUsersList = []
         }
         
         validateNextButton()
@@ -76,45 +84,73 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        if penpalList.count > 0 {
+            return 1
+        }
+        else {
+            return 2
+        }
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Your SnailTale contacts"
+        case 1:
+            return "Other users"
+        default:
+            return nil
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return toList.count
+        switch section {
+        case 0:
+            return penpalList.count
+        case 1:
+            return otherUsersList.count
+        default:
+            return 0
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("personCell", forIndexPath: indexPath) as? PersonCell
         
-        let person = toList[indexPath.row] as Person
-        cell?.personNameLabel.text = person.name
-        cell?.usernameLabel.text = person.username
+        switch indexPath.section {
+        case 0:
+            let person = penpalList[indexPath.row] as Person
+            cell?.personNameLabel.text = person.name
+            cell?.usernameLabel.text = person.username
+        case 1:
+            let person = otherUsersList[indexPath.row] as Person
+            cell?.personNameLabel.text = person.name
+            cell?.usernameLabel.text = person.username
+        default:
+            cell?.personNameLabel.text = ""
+            cell?.usernameLabel.text = ""
+        }
         
         return cell!
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let person = toList[indexPath.row] as Person
         
-        toSearchField.text = person.username
-        toUsername = person.username
+        switch indexPath.section {
+        case 0:
+            let person = penpalList[indexPath.row] as Person
+            toSearchField.text = person.username
+            toUsername = person.username
+        case 1:
+            let person = otherUsersList[indexPath.row] as Person
+            toSearchField.text = person.username
+            toUsername = person.username
+        default:
+            toUsername = nil
+        }
+        
         validateNextButton()
         
-    }
-    
-    func isValidUsername(username: String) -> Bool {
-        
-        //This RegEx validates whether the username is a valid email.
-        let emailRegEx = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
-        
-        let usernameTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        
-        if usernameTest.evaluateWithObject(username) == true {
-            return true
-        } else {
-            return false
-        }
-
     }
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
@@ -126,12 +162,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     
     @IBAction func selectImage(sender: AnyObject) {
-        
-        if isValidUsername(toUsername) {
-            self.performSegueWithIdentifier("selectImage", sender: nil)
-        } else {
-            warningLabel.show("Recipient must be registered user or valid email address.")
-        }
+        self.performSegueWithIdentifier("selectImage", sender: nil)
     }
 
     
@@ -140,6 +171,21 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             let chooseCardViewController = segue.destinationViewController as? ChooseCardViewController
             chooseCardViewController?.toUsername = toUsername
         }
+    }
+    
+    func searchPeople(term: String) {
+        
+        var searchResults = [Person]()
+    
+        DataManager.searchPeople(toSearchField.text, completion: { (error, result) -> Void in
+            if error != nil {
+                println(error)
+            }
+            else if let peopleArray = result as? Array<Person> {
+                self.otherUsersList = peopleArray
+                self.toPersonList.reloadData()
+            }
+        })
     }
     
 }
