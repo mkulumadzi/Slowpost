@@ -93,7 +93,7 @@ class AddressBookHelper {
     
     func getEmailsFromContact(person: ABRecord) -> [NSString] {
         var emails = [NSString]()
-        var emailRecords : ABMultiValueRef = ABRecordCopyValue(person, kABPersonPhoneProperty).takeUnretainedValue() as ABMultiValueRef
+        var emailRecords : ABMultiValueRef = ABRecordCopyValue(person, kABPersonEmailProperty).takeUnretainedValue() as ABMultiValueRef
         
         for(var numberIndex : CFIndex = 0; numberIndex < ABMultiValueGetCount(emailRecords); numberIndex++) {
             let emailUnmaganed = ABMultiValueCopyValueAtIndex(emailRecords, numberIndex)
