@@ -33,9 +33,9 @@ class MailCell: UITableViewCell {
     
     func getPerson(mail: Mail) {
         
-        if let person = find(people.map({ $0.username }), mail.from) {
-            self.from = people[person]
-            self.fromLabel.text = people[person].name
+        if let person = find(penpals.map({ $0.username }), mail.from) {
+            self.from = penpals[person]
+            self.fromLabel.text = penpals[person].name
         }
         else {
             self.fromLabel.text = mail.from

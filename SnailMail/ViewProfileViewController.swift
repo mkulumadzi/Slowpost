@@ -110,8 +110,8 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         
         let mail = outbox[indexPath.row] as Mail
         
-        if let person = find(people.map({ $0.username }), mail.to) {
-            cell?.person = people[person]
+        if let person = find(penpals.map({ $0.username }), mail.to) {
+            cell?.person = penpals[person]
         }
         
         cell?.mail = mail

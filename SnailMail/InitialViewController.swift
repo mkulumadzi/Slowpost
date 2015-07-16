@@ -13,7 +13,6 @@ import AddressBook
 var deviceToken:String!
 var loggedInUser:Person!
 var mailbox = [Mail]()
-var people = [Person]()
 var penpals = [Person]()
 var registeredContacts = [Person]()
 var coreDataPeople = [NSManagedObject]()
