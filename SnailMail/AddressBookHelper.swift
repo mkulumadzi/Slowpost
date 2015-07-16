@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import AddressBook
+import SwiftyJSON
 
 var addressBook:ABAddressBook!
 

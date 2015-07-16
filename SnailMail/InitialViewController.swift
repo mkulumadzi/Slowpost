@@ -137,8 +137,6 @@ class InitialViewController: UIViewController {
                 }
                 else if let peopleArray = result as? Array<Person> {
                     registeredContacts = peopleArray
-                    println("Got these contacts!")
-                    println(registeredContacts)
                 }
             })
             

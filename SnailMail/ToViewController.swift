@@ -14,6 +14,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
 
     var toUsername:String!
     var penpalList: [Person] = []
+    var contactsList: [Person] = []
     var otherUsersList: [Person] = []
     
     @IBOutlet weak var toSearchField: UISearchBar!
@@ -30,7 +31,10 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         warningLabel.hide()
         
         validateNextButton()
+        
         penpalList = penpals.filter({$0.username != loggedInUser.username})
+        contactsList = registeredContacts.filter({$0.username != loggedInUser.username})
+        excludePenpalsFromContactsList()
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,14 +45,22 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
         penpalList = penpals.filter({$0.username != loggedInUser.username})
+        contactsList = registeredContacts.filter({$0.username != loggedInUser.username})
+        excludePenpalsFromContactsList()
         
         if self.toSearchField.text.isEmpty == false {
             
             toUsername = self.toSearchField.text
-            var newArray:[Person] = penpalList.filter() {
+            
+            var newPenpalArray:[Person] = penpalList.filter() {
                 self.listMatches(self.toSearchField.text, inString: $0.username).count >= 1 || self.listMatches(self.toSearchField.text, inString: $0.name).count >= 1
             }
-            penpalList = newArray
+            penpalList = newPenpalArray
+            
+            var newContactsArray:[Person] = contactsList.filter() {
+                self.listMatches(self.toSearchField.text, inString: $0.username).count >= 1 || self.listMatches(self.toSearchField.text, inString: $0.name).count >= 1
+            }
+            contactsList = newContactsArray
             
             if penpalList.count == 0 {
                 self.searchPeople(self.toSearchField.text)
@@ -86,19 +98,21 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if penpalList.count > 0 {
-            return 1
+        if penpalList.count > 0 || contactsList.count > 0 {
+            return 2
         }
         else {
-            return 2
+            return 3
         }
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Your SnailTale contacts"
+            return "Your penpals"
         case 1:
+            return "Other contacts on Snailtale"
+        case 2:
             return "Other users"
         default:
             return nil
@@ -115,6 +129,13 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 return 1
             }
         case 1:
+            if contactsList.count > 0 {
+                return contactsList.count
+            }
+            else {
+                return 1
+            }
+        case 2:
             return otherUsersList.count
         default:
             return 0
@@ -136,6 +157,16 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 cell?.usernameLabel.text = "No results"
             }
         case 1:
+            if contactsList.count > 0 {
+                let person = contactsList[indexPath.row] as Person
+                cell?.personNameLabel.text = person.name
+                cell?.usernameLabel.text = "@" + person.username
+            }
+            else {
+                cell?.personNameLabel.text = ""
+                cell?.usernameLabel.text = "No results"
+            }
+        case 2:
             let person = otherUsersList[indexPath.row] as Person
             cell?.personNameLabel.text = person.name
             cell?.usernameLabel.text = "@" + person.username
@@ -155,6 +186,10 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             toSearchField.text = person.username
             toUsername = person.username
         case 1:
+            let person = contactsList[indexPath.row] as Person
+            toSearchField.text = person.username
+            toUsername = person.username
+        case 2:
             let person = otherUsersList[indexPath.row] as Person
             toSearchField.text = person.username
             toUsername = person.username
@@ -212,6 +247,20 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 penpals = peopleArray
             }
         })
+    }
+    
+    func excludePenpalsFromContactsList() {
+        for penpal in penpalList {
+            var i = 0
+            for contact in contactsList {
+                if penpal.username == contact.username {
+                    contactsList.removeAtIndex(i)
+                }
+                else {
+                    i += 1
+                }
+            }
+        }
     }
     
 }
