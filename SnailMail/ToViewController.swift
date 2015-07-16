@@ -201,6 +201,13 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
     }
     
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        header.contentView.backgroundColor = UIColor.lightGrayColor()
+        header.textLabel.textColor = UIColor.blackColor()
+        header.textLabel.font = UIFont(name: "OpenSans-Semibold", size: 15)
+    }
+    
     @IBAction func cancelButtonPressed(sender: AnyObject) {
         var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
         var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
