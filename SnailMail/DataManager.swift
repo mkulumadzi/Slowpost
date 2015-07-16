@@ -407,7 +407,7 @@ class DataManager {
     }
     
     //Bulk search of people based on a users' contact info
-    class func bulkPersonSearch(completion: (error: NSError?, result: AnyObject?) -> Void) {
+    class func bulkPersonSearch(parameters: [NSDictionary], completion: (error: NSError?, result: AnyObject?) -> Void) {
         
         let bulkPersonSearchURL = NSURL.init(string: "\(PostOfficeURL)/people/bulk_search")
         
@@ -415,17 +415,19 @@ class DataManager {
         request.HTTPMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let parameters =
-            [
-                [
-                    "emails": ["nwaters4@gmail.com", "www.icloud.com"],
-                    "phoneNumbers": ["(555) 564-8583","(415) 555-3695"]
-                ],
-                [
-                    "emails": ["d-higgins@mac.com"],
-                    "phoneNumbers": ["555-478-7672", "(408) 555-5270","(408) 555-3514"]
-                ]
-            ]
+//        let parameters =
+//            [
+//                [
+//                    "emails": ["nwaters4@gmail.com", "www.icloud.com"],
+//                    "name": "John Appleseed",
+//                    "phoneNumbers": ["(555) 564-8583","(415) 555-3695"]
+//                ],
+//                [
+//                    "emails": ["d-higgins@mac.com"],
+//                    "name": "Foo bar",
+//                    "phoneNumbers": ["555-478-7672", "(408) 555-5270","(408) 555-3514"]
+//                ]
+//            ]
         
         var error: NSError?
         request.HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: nil, error: &error)

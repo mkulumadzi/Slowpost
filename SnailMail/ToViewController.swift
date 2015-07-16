@@ -25,8 +25,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        println(registeredContacts)
-        
         reloadPenpals()
 
         warningLabel.hide()

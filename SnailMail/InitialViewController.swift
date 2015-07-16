@@ -131,12 +131,13 @@ class InitialViewController: UIViewController {
             
             var contacts:[NSDictionary] = AddressBookHelper.getContactsFromAddresssBook(addressBook)
             
-            DataManager.bulkPersonSearch({ (error, result) -> Void in
+            DataManager.bulkPersonSearch(contacts, completion: { (error, result) -> Void in
                 if error != nil {
                     println(error)
                 }
                 else if let peopleArray = result as? Array<Person> {
                     registeredContacts = peopleArray
+                    println("Got these contacts!")
                     println(registeredContacts)
                 }
             })
