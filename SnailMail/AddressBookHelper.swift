@@ -22,7 +22,6 @@ class AddressBookHelper {
             println("Unauthorized")
         case .Authorized:
             addressBook =  ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
-            println(AddressBookHelper.getContactsFromAddresssBook(addressBook))
         case .NotDetermined:
             addressBookHelper.promptForAddressBookAccess(sender)
         }

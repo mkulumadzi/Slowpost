@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 import CoreData
-
+import SwiftyJSON
 
 //URL for Heroku instance of PostOfice server
 let PostOfficeURL = DataManager.getPostOfficeURL()
@@ -382,6 +382,57 @@ class DataManager {
         
         //Really need to abstract this part instead of just copying and pasting it...
         Alamofire.request(.GET, searchPeopleURL)
+            .response { (request, response, data, error) in
+                if let anError = error {
+                    completion(error: error, result: nil)
+                }
+                else if let response: AnyObject = response {
+                    if response.statusCode == 404 {
+                        completion(error: error, result: response.statusCode)
+                    }
+                }
+            }
+            .responseJSON { (_, _, JSON, error) in
+                if let jsonResult = JSON as? Array<NSDictionary> {
+                    var people_array = [Person]()
+                    for jsonEntry in jsonResult {
+                        people_array.append(self.createPersonFromJson(jsonEntry))
+                    }
+                    completion(error: nil, result: people_array)
+                }
+                else {
+                    println("Unexpected JSON result")
+                }
+        }
+    }
+    
+    //Bulk search of people based on a users' contact info
+    class func bulkPersonSearch(completion: (error: NSError?, result: AnyObject?) -> Void) {
+        
+        let bulkPersonSearchURL = NSURL.init(string: "\(PostOfficeURL)/people/bulk_search")
+        
+        let request = NSMutableURLRequest(URL: bulkPersonSearchURL!)
+        request.HTTPMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let parameters =
+            [
+                [
+                    "emails": ["nwaters4@gmail.com", "www.icloud.com"],
+                    "phoneNumbers": ["(555) 564-8583","(415) 555-3695"]
+                ],
+                [
+                    "emails": ["d-higgins@mac.com"],
+                    "phoneNumbers": ["555-478-7672", "(408) 555-5270","(408) 555-3514"]
+                ]
+            ]
+        
+        var error: NSError?
+        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: nil, error: &error)
+        
+        
+        //Really need to abstract this part instead of just copying and pasting it...
+        Alamofire.request(request)
             .response { (request, response, data, error) in
                 if let anError = error {
                     completion(error: error, result: nil)

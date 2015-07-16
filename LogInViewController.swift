@@ -65,9 +65,6 @@ class LogInViewController: UIViewController {
                     completion(error: error, result: nil)
                 }
                 else if let response: AnyObject = response {
-//                    if response.statusCode == 200 {
-//                        completion(error: nil, result: "Success" as String!)
-//                    }
                     if response.statusCode == 401 {
                         completion(error: nil, result: response.statusCode)
                     }

@@ -8,12 +8,14 @@
 
 import UIKit
 import CoreData
+import AddressBook
 
 var deviceToken:String!
 var loggedInUser:Person!
 var mailbox = [Mail]()
 var people = [Person]()
 var penpals = [Person]()
+var registeredContacts = [Person]()
 var coreDataPeople = [NSManagedObject]()
 var coreDataMail = [NSManagedObject]()
 
@@ -51,6 +53,7 @@ class InitialViewController: UIViewController {
         }
         else {
             AddressBookHelper.checkAuthorizationStatus(self)
+            getRegisteredContactsIfAuthorized()
             getMailbox()
         }
     }
@@ -80,6 +83,7 @@ class InitialViewController: UIViewController {
                 if personArray.count > 0 {
                     loggedInUser = personArray[0]
                     AddressBookHelper.checkAuthorizationStatus(self)
+                    self.getRegisteredContactsIfAuthorized()
                     self.getMailbox()
                 }
                 // If session is stored for a user that has been deleted, need to log in again
@@ -117,6 +121,29 @@ class InitialViewController: UIViewController {
                 })
             }
         })
+    }
+    
+    func getRegisteredContactsIfAuthorized() {
+        
+        let authorizationStatus = ABAddressBookGetAuthorizationStatus()
+        switch authorizationStatus {
+        case .Authorized:
+            
+            var contacts:[NSDictionary] = AddressBookHelper.getContactsFromAddresssBook(addressBook)
+            
+            DataManager.bulkPersonSearch({ (error, result) -> Void in
+                if error != nil {
+                    println(error)
+                }
+                else if let peopleArray = result as? Array<Person> {
+                    registeredContacts = peopleArray
+                    println(registeredContacts)
+                }
+            })
+            
+        default:
+            println("Not authorized")
+        }
     }
     
     func registerDeviceToken() {
