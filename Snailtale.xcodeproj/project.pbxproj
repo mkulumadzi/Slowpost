@@ -172,6 +172,7 @@
 		D21D79D41B5093430014510E /* ios7-checkmark-not-checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-checkmark-not-checked.png"; sourceTree = "<group>"; };
 		D21D79D61B5093490014510E /* ios7-checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-checkmark.png"; sourceTree = "<group>"; };
 		D21D79DC1B56ED540014510E /* AddressBookHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookHelper.swift; sourceTree = "<group>"; };
+		D2222A741B588695007E74BB /* SnailMailModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SnailMailModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		D25A9C911B2259D300ABBBA4 /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apache License.txt"; sourceTree = "<group>"; };
 		D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -1164,9 +1165,10 @@
 		D27E194C1B3B770C0052687F /* SnailMailModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D2222A741B588695007E74BB /* SnailMailModel 2.xcdatamodel */,
 				D27E194D1B3B770C0052687F /* SnailMailModel.xcdatamodel */,
 			);
-			currentVersion = D27E194D1B3B770C0052687F /* SnailMailModel.xcdatamodel */;
+			currentVersion = D2222A741B588695007E74BB /* SnailMailModel 2.xcdatamodel */;
 			path = SnailMailModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -22,7 +22,7 @@
         <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Session" syncable="YES">
-        <attribute name="loggedInUser" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="loggedInUserId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Mail" positionX="-36" positionY="72" width="128" height="165"/>
