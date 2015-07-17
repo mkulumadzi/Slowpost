@@ -81,6 +81,8 @@ class ChooseCardViewController: UIViewController, UICollectionViewDataSource, UI
         let imageSelected = photoNames[indexPath.row]
         imageName = imageSelected
         
+        self.performSegueWithIdentifier("composeMessage", sender: nil)
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

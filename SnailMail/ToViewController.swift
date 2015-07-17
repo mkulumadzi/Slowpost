@@ -186,17 +186,20 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 let person = penpalList[indexPath.row] as Person
                 toSearchField.text = person.username
                 toPerson = person
+                self.performSegueWithIdentifier("selectImage", sender: nil)
             }
         case 1:
             if contactsList.count > 0 {
                 let person = contactsList[indexPath.row] as Person
                 toSearchField.text = person.username
                 toPerson = person
+                self.performSegueWithIdentifier("selectImage", sender: nil)
             }
         case 2:
             let person = otherUsersList[indexPath.row] as Person
             toSearchField.text = person.username
             toPerson = person
+            self.performSegueWithIdentifier("selectImage", sender: nil)
         default:
             toPerson = nil
         }
