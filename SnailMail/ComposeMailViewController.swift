@@ -12,7 +12,7 @@ import Alamofire
 class ComposeMailViewController: UIViewController, UITextViewDelegate {
     
     var imageName:String!
-    var toUsername:String!
+    var toPerson:Person!
     var keyboardShowing:Bool!
     
     @IBOutlet weak var toLabel: UILabel!
@@ -24,7 +24,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         
         keyboardShowing = false
-        toLabel.text = toUsername
+        toLabel.text = toPerson.name
         
         composeText.textContainerInset.left = 10
         composeText.textContainerInset.right = 10
@@ -85,7 +85,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     func sendMailToPostoffice(completion: (error: NSError?, result: AnyObject?) -> Void) {
         
         let sendMailEndpoint = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mail/send"
-        let parameters = ["to": "\(toUsername)", "content": "\(composeText.text)", "image": "\(imageName)"]
+        let parameters = ["to": "\(toPerson.username)", "content": "\(composeText.text)", "image": "\(imageName)"]
         
         Alamofire.request(.POST, sendMailEndpoint, parameters: parameters, encoding: .JSON)
             .response { (request, response, data, error) in

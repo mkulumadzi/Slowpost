@@ -12,7 +12,7 @@ import Alamofire
 
 class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
-    var toUsername:String!
+    var toPerson:Person!
     var penpalList: [Person] = []
     var contactsList: [Person] = []
     var otherUsersList: [Person] = []
@@ -50,7 +50,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         if self.toSearchField.text.isEmpty == false {
             
-            toUsername = self.toSearchField.text
+//            toUsername = self.toSearchField.text
             
             var newPenpalArray:[Person] = penpalList.filter() {
                 self.listMatches(self.toSearchField.text, inString: $0.username).count >= 1 || self.listMatches(self.toSearchField.text, inString: $0.name).count >= 1
@@ -68,7 +68,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             
         }
         else {
-            toUsername = nil
+            toPerson = nil
             otherUsersList = []
         }
         
@@ -89,7 +89,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func validateNextButton() {
-        if toUsername == nil {
+        if toPerson == nil {
             nextButton.enabled = false
         }
         else {
@@ -182,19 +182,23 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         switch indexPath.section {
         case 0:
-            let person = penpalList[indexPath.row] as Person
-            toSearchField.text = person.username
-            toUsername = person.username
+            if penpalList.count > 0 {
+                let person = penpalList[indexPath.row] as Person
+                toSearchField.text = person.username
+                toPerson = person
+            }
         case 1:
-            let person = contactsList[indexPath.row] as Person
-            toSearchField.text = person.username
-            toUsername = person.username
+            if contactsList.count > 0 {
+                let person = contactsList[indexPath.row] as Person
+                toSearchField.text = person.username
+                toPerson = person
+            }
         case 2:
             let person = otherUsersList[indexPath.row] as Person
             toSearchField.text = person.username
-            toUsername = person.username
+            toPerson = person
         default:
-            toUsername = nil
+            toPerson = nil
         }
         
         validateNextButton()
@@ -224,7 +228,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "selectImage" {
             let chooseCardViewController = segue.destinationViewController as? ChooseCardViewController
-            chooseCardViewController?.toUsername = toUsername
+            chooseCardViewController?.toPerson = toPerson
         }
     }
     

@@ -15,7 +15,7 @@ class ChooseCardViewController: UIViewController, UICollectionViewDataSource, UI
     
     var photoArray = [UIImage]()
     var imageName:String!
-    var toUsername:String!
+    var toPerson:Person!
 
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var cardCollection: UICollectionView!
@@ -23,7 +23,7 @@ class ChooseCardViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        toLabel.text = toUsername
+        toLabel.text = toPerson.name
         populatePhotoArray()
 
         // Do any additional setup after loading the view.
@@ -89,9 +89,7 @@ class ChooseCardViewController: UIViewController, UICollectionViewDataSource, UI
             if let name = imageName {
                 composeMailViewController?.imageName = name
             }
-            if let to = toUsername {
-                composeMailViewController!.toUsername = to
-            }
+            composeMailViewController!.toPerson = toPerson
         }
     }
     
