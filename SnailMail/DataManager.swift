@@ -377,8 +377,18 @@ class DataManager {
     //Searching for people based on partial search strings
     class func searchPeople(term: String, completion: (error: NSError?, result: AnyObject?) -> Void) {
         
+        //Replacing any spaces in the search string with +
+        
+        var searchString = ""
+        if term.rangeOfString(" ") != nil {
+            searchString = term.stringByReplacingOccurrencesOfString(" ", withString: "+")
+        }
+        else {
+            searchString = term
+        }
+        
         //Limiting number of records returned to 10
-        let searchPeopleURL = "\(PostOfficeURL)people/search?term=\(term)&limit=10"
+        let searchPeopleURL = "\(PostOfficeURL)people/search?term=\(searchString)&limit=10"
         
         //Really need to abstract this part instead of just copying and pasting it...
         Alamofire.request(.GET, searchPeopleURL)
