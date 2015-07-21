@@ -70,15 +70,16 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         let fetchRequest = NSFetchRequest(entityName: "Session")
         var error: NSError?
         
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error)! as [AnyObject]
         
-        let session = fetchedResults![0] as NSManagedObject
-        
-        managedContext.deleteObject(session)
+        if fetchedResults.count > 0 {
+            if let session = fetchedResults[0] as? NSManagedObject {
+                managedContext.deleteObject(session)
+            }
+        }
         
     }
 
-    
     func getOutbox() {
         DataManager.getMyOutbox( { (error, result) -> Void in
             if error != nil {

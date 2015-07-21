@@ -59,8 +59,9 @@ class RegisterViewController: UIViewController {
                         }
                     })
                 }
-                else if response[1] == "Forbidden" {
-                    self.warningLabel.show("Username already registered")
+                else if response[0] == "Failure" {
+                    let error_message = response[1]
+                    self.warningLabel.show(error_message)
                 }
             }
         })
@@ -82,12 +83,18 @@ class RegisterViewController: UIViewController {
                     if response.statusCode == 201 {
                         completion(error: nil, result: ["Success", response.allHeaderFields["Location"] as! String])
                     }
-                    if response.statusCode == 403 {
-                        completion(error: nil, result: ["Failure", "Forbidden"])
+                }
+            }
+            .responseJSON { (_, _, JSON, error) in
+                if let response_body = JSON as? NSDictionary {
+                    if let error_message = response_body["message"] as? String {
+                        completion(error: nil, result: ["Failure", error_message])
+                    }
+                    else {
+                        println("No error message")
                     }
                 }
-        }
-        
+            }
     }
     
     @IBAction func editingChanged(sender: AnyObject) {

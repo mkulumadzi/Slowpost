@@ -47,7 +47,6 @@ class AddressBookHelper {
     func accessGranted() {
         println("Access granted!")
         addressBook =  ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
-        println(AddressBookHelper.getContactsFromAddresssBook(addressBook))
     }
     
     func openSettings() {

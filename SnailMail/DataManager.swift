@@ -101,7 +101,7 @@ class DataManager {
                     completion(error: nil, result: people_array)
                 }
                 else {
-                    println("Unexpected JSON result")
+                    println("Unexpected JSON result for \(peopleURL)")
                 }
         }
     }
@@ -153,16 +153,16 @@ class DataManager {
                     completion(error: nil, result: mail_array)
                 }
                 else {
-                    println("Unexpected JSON result")
+                    println("Unexpected JSON result for \(mailboxURL)")
                 }
         }
     }
     
     class func getMyOutbox( completion: (error: NSError?, result: AnyObject?) -> Void) {
         
-        let mailboxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/outbox"
+        let outboxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/outbox"
         
-        Alamofire.request(.GET, mailboxURL)
+        Alamofire.request(.GET, outboxURL)
             .response { (request, response, data, error) in
                 if let anError = error {
                     completion(error: error, result: nil)
@@ -182,7 +182,7 @@ class DataManager {
                     completion(error: nil, result: mail_array)
                 }
                 else {
-                    println("Unexpected JSON result")
+                    println("Unexpected JSON result for \(outboxURL)")
                 }
         }
     }
@@ -337,7 +337,7 @@ class DataManager {
                     completion(error: nil, result: mail)
                 }
                 else {
-                    println("Unexpected JSON result")
+                    println("Unexpected JSON result for \(mailURL)")
                 }
         }
     }
@@ -368,7 +368,7 @@ class DataManager {
                     completion(error: nil, result: people_array)
                 }
                 else {
-                    println("Unexpected JSON result")
+                    println("Unexpected JSON result for \(contactsURL)")
                 }
         }
         
@@ -401,7 +401,7 @@ class DataManager {
                     completion(error: nil, result: people_array)
                 }
                 else {
-                    println("Unexpected JSON result")
+                    println("Unexpected JSON result for \(searchPeopleURL)")
                 }
         }
     }
@@ -414,20 +414,6 @@ class DataManager {
         let request = NSMutableURLRequest(URL: bulkPersonSearchURL!)
         request.HTTPMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-//        let parameters =
-//            [
-//                [
-//                    "emails": ["nwaters4@gmail.com", "www.icloud.com"],
-//                    "name": "John Appleseed",
-//                    "phoneNumbers": ["(555) 564-8583","(415) 555-3695"]
-//                ],
-//                [
-//                    "emails": ["d-higgins@mac.com"],
-//                    "name": "Foo bar",
-//                    "phoneNumbers": ["555-478-7672", "(408) 555-5270","(408) 555-3514"]
-//                ]
-//            ]
         
         var error: NSError?
         request.HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: nil, error: &error)
@@ -454,7 +440,7 @@ class DataManager {
                     completion(error: nil, result: people_array)
                 }
                 else {
-                    println("Unexpected JSON result")
+                    println("Unexpected JSON result for \(bulkPersonSearchURL)")
                 }
         }
         
