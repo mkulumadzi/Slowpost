@@ -41,7 +41,6 @@ class InitialViewController: UIViewController {
         if loggedInUser == nil {
             let userId = DataManager.getUserIdFromSession()
             if userId != "" {
-                println("found userId \(userId)")
                 self.setLoggedInUserFromUserId(userId)
             }
             else {

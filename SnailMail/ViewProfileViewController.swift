@@ -64,8 +64,6 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     func deleteSession() {
         
-        println("deleting session!")
-        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         

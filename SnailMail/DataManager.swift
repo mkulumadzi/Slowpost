@@ -240,8 +240,6 @@ class DataManager {
     
     class func saveLoginToSession(userId: String) {
         
-        println("Saving login to session!")
-        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
