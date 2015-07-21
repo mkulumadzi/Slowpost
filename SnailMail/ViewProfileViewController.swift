@@ -64,18 +64,18 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     func deleteSession() {
         
+        println("deleting session!")
+        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
         let fetchRequest = NSFetchRequest(entityName: "Session")
         var error: NSError?
         
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error)! as [AnyObject]
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
         
-        if fetchedResults.count > 0 {
-            if let session = fetchedResults[0] as? NSManagedObject {
-                managedContext.deleteObject(session)
-            }
+        for session:NSManagedObject in fetchedResults! {
+            managedContext.deleteObject(session)
         }
         
     }

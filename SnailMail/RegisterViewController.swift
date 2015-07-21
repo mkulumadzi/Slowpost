@@ -54,6 +54,7 @@ class RegisterViewController: UIViewController {
                         if result != nil {
                             if let user = result as? Person {
                                 loggedInUser = user
+                                DataManager.saveLoginToSession(loggedInUser.id)
                                 self.performSegueWithIdentifier("signUpComplete", sender: nil)
                             }
                         }
