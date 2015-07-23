@@ -11,15 +11,25 @@ import Alamofire
 
 class LogInViewController: UIViewController {
     
-    @IBOutlet weak var UsernameTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var UsernameTextField: BottomBorderUITextField!
+    @IBOutlet weak var passwordTextField: BottomBorderUITextField!
     @IBOutlet weak var logInButton: SnailMailTextUIButton!
     @IBOutlet weak var warningLabel: WarningUILabel!
+    @IBOutlet weak var navBar: UINavigationBar!
     
     var person:Person!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Quicksand-Regular", size: 24)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
+        
+        UsernameTextField.addBottomLayer()
+        passwordTextField.addBottomLayer()
+        
+        logInButton.layer.cornerRadius = 5
+        
+        validateLogInButton()
         warningLabel.hide()
         
     }
@@ -86,7 +96,20 @@ class LogInViewController: UIViewController {
     
     @IBAction func editingChanged(sender: AnyObject) {
         warningLabel.hide()
-        logInButton.enable()
+        validateLogInButton()
+    }
+    
+    func validateLogInButton() {
+        if UsernameTextField.text != "" && passwordTextField.text != "" {
+            logInButton.enable()
+        }
+        else {
+            logInButton.disable()
+        }
+    }
+    
+    @IBAction func cancel(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
     }
     
 }

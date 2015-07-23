@@ -18,13 +18,12 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordTextField: BottomBorderUITextField!
     @IBOutlet weak var signUpButton: SnailMailTextUIButton!
     @IBOutlet weak var warningLabel: WarningUILabel!
-    
-    
-//    bottomLine.frame = CGRectMake(0.0, myTextField.frame.height - 1, myTextField.frame.width, 1.0)
-//    bottomLine.backgroundColor = UIColor.whiteColor().CGColor
+    @IBOutlet weak var navBar: UINavigationBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Quicksand-Regular", size: 24)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
         
         nameTextField.addBottomLayer()
         usernameTextField.addBottomLayer()
@@ -39,10 +38,6 @@ class RegisterViewController: UIViewController {
         
     }
     
-//    override func viewDidLayoutSubviews() {
-//        nameTextField.addBottomLayer()
-//    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -51,11 +46,6 @@ class RegisterViewController: UIViewController {
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
-    }
-    
-    
-    @IBAction func cancel(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: {})
     }
     
     @IBAction func signUpPressed(sender: AnyObject) {
@@ -133,6 +123,10 @@ class RegisterViewController: UIViewController {
         var storyboard = UIStoryboard(name: "initial", bundle: nil)
         var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
         self.presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    @IBAction func cancel(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
     }
     
 }
