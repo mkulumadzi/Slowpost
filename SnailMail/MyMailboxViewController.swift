@@ -10,6 +10,7 @@ import UIKit
 
 class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+
     @IBOutlet weak var mailTable: UITableView!
     
     lazy var refreshControl: UIRefreshControl = {

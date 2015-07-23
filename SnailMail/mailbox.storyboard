@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HIv-5t-pJf">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FDW-3x-N4Y">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="OpenSans-Light.ttf">
-            <string>OpenSans-Light</string>
             <string>OpenSans-Light</string>
         </mutableArray>
         <mutableArray key="OpenSans-LightItalic.ttf">
@@ -19,40 +17,39 @@
     </customFonts>
     <scenes>
         <!--My Mailbox View Controller-->
-        <scene sceneID="l4c-zP-Oup">
+        <scene sceneID="JpG-41-qr0">
             <objects>
-                <viewController storyboardIdentifier="InitialController" id="HIv-5t-pJf" customClass="MyMailboxViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialController" id="FDW-3x-N4Y" customClass="MyMailboxViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="TOi-cL-hxo"/>
-                        <viewControllerLayoutGuide type="bottom" id="fgY-D0-YkJ"/>
+                        <viewControllerLayoutGuide type="top" id="Hi5-28-vx8"/>
+                        <viewControllerLayoutGuide type="bottom" id="9eH-L3-ARz"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="DOZ-Qf-rKj">
+                    <view key="view" contentMode="scaleToFill" id="QUY-qP-gTk">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yS9-wa-A98">
-                                <rect key="frame" x="0.0" y="63" width="600" height="443"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RKL-Qp-DiU">
+                                <rect key="frame" x="0.0" y="45" width="600" height="605"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MailCell" rowHeight="80" id="kDI-WB-Wvr" customClass="MailCell" customModule="Snailtale" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MailCell" rowHeight="80" id="wvb-F7-Xxt" customClass="MailCell" customModule="Snailtale" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kDI-WB-Wvr" id="JaT-pv-R5G">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wvb-F7-Xxt" id="mBP-Ah-o1k">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FromLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cXp-uy-X4x" userLabel="FromLabel">
-                                                    <rect key="frame" x="107" y="28" width="450" height="24"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
-                                                    <color key="textColor" red="0.14509803921568629" green="0.14901960784313725" blue="0.15294117647058825" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wSz-by-QZp">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4j1-dE-jdq">
                                                     <rect key="frame" x="5" y="5" width="92" height="69"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="wSz-by-QZp" secondAttribute="height" multiplier="4:3" id="PCL-22-Soz"/>
+                                                        <constraint firstAttribute="width" secondItem="4j1-dE-jdq" secondAttribute="height" multiplier="4:3" id="lq8-Y4-iIJ"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vva-fI-tRb">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FromLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nX-Lh-btm" userLabel="FromLabel">
+                                                    <rect key="frame" x="107" y="28" width="450" height="24"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StatusLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxJ-qT-mV2" userLabel="StatusLabel">
                                                     <rect key="frame" x="107" y="52" width="450" height="21"/>
                                                     <fontDescription key="fontDescription" name="OpenSansLight-Italic" family="Open Sans" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -60,126 +57,54 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="wSz-by-QZp" firstAttribute="top" secondItem="JaT-pv-R5G" secondAttribute="top" constant="5" id="A5G-Qv-z8e"/>
-                                                <constraint firstAttribute="bottom" secondItem="wSz-by-QZp" secondAttribute="bottom" constant="5" id="DAl-ZK-9hA"/>
-                                                <constraint firstItem="wSz-by-QZp" firstAttribute="leading" secondItem="JaT-pv-R5G" secondAttribute="leading" constant="5" id="FrF-h6-MAe"/>
-                                                <constraint firstItem="wSz-by-QZp" firstAttribute="top" secondItem="JaT-pv-R5G" secondAttribute="topMargin" constant="1" id="Oq7-Xn-pRq"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="wSz-by-QZp" secondAttribute="bottom" constant="1" id="Qaz-fz-RPW"/>
-                                                <constraint firstItem="vva-fI-tRb" firstAttribute="top" secondItem="cXp-uy-X4x" secondAttribute="bottom" id="RHS-jc-K2w"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="wSz-by-QZp" secondAttribute="trailing" constant="456" id="RuX-kQ-HJ2"/>
-                                                <constraint firstItem="vva-fI-tRb" firstAttribute="leading" secondItem="wSz-by-QZp" secondAttribute="trailing" constant="10" id="Snv-2w-Oyx"/>
-                                                <constraint firstAttribute="trailing" secondItem="cXp-uy-X4x" secondAttribute="trailing" constant="10" id="YmL-ZG-Mnv"/>
-                                                <constraint firstItem="wSz-by-QZp" firstAttribute="leading" secondItem="JaT-pv-R5G" secondAttribute="leadingMargin" constant="1" id="b7j-Rb-j4Q"/>
-                                                <constraint firstAttribute="centerY" secondItem="cXp-uy-X4x" secondAttribute="centerY" id="h5Q-iZ-l5S"/>
-                                                <constraint firstAttribute="trailing" secondItem="vva-fI-tRb" secondAttribute="trailing" constant="10" id="pwb-ZJ-bJx"/>
-                                                <constraint firstItem="cXp-uy-X4x" firstAttribute="leading" secondItem="wSz-by-QZp" secondAttribute="trailing" constant="10" id="ylD-nj-i3U"/>
+                                                <constraint firstItem="xxJ-qT-mV2" firstAttribute="top" secondItem="5nX-Lh-btm" secondAttribute="bottom" id="5qj-9R-ZFK"/>
+                                                <constraint firstAttribute="trailing" secondItem="5nX-Lh-btm" secondAttribute="trailing" constant="10" id="768-uH-Ea0"/>
+                                                <constraint firstAttribute="trailing" secondItem="xxJ-qT-mV2" secondAttribute="trailing" constant="10" id="9zk-Sd-psF"/>
+                                                <constraint firstItem="4j1-dE-jdq" firstAttribute="leading" secondItem="mBP-Ah-o1k" secondAttribute="leading" constant="5" id="O6v-I0-qY3"/>
+                                                <constraint firstItem="xxJ-qT-mV2" firstAttribute="leading" secondItem="4j1-dE-jdq" secondAttribute="trailing" constant="10" id="QpW-I8-wLv"/>
+                                                <constraint firstAttribute="bottom" secondItem="4j1-dE-jdq" secondAttribute="bottom" constant="5" id="el1-68-1z9"/>
+                                                <constraint firstAttribute="centerY" secondItem="5nX-Lh-btm" secondAttribute="centerY" id="hYI-O4-fbK"/>
+                                                <constraint firstItem="5nX-Lh-btm" firstAttribute="leading" secondItem="4j1-dE-jdq" secondAttribute="trailing" constant="10" id="oWn-gr-w6F"/>
+                                                <constraint firstItem="4j1-dE-jdq" firstAttribute="top" secondItem="mBP-Ah-o1k" secondAttribute="top" constant="5" id="xsG-Oy-j9K"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="Oq7-Xn-pRq"/>
-                                                    <exclude reference="Qaz-fz-RPW"/>
-                                                    <exclude reference="RuX-kQ-HJ2"/>
-                                                    <exclude reference="b7j-Rb-j4Q"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="arrivalLabel" destination="vva-fI-tRb" id="3zC-my-miN"/>
-                                            <outlet property="fromLabel" destination="cXp-uy-X4x" id="xhw-Sw-5ZF"/>
-                                            <outlet property="mailImage" destination="wSz-by-QZp" id="qbz-6N-OlB"/>
-                                            <segue destination="gCE-4u-4GZ" kind="show" identifier="viewMail" id="l1s-Xr-3HN"/>
+                                            <outlet property="fromLabel" destination="5nX-Lh-btm" id="bxo-pm-eLt"/>
+                                            <outlet property="mailImage" destination="4j1-dE-jdq" id="K4I-jw-Emg"/>
+                                            <outlet property="statusLabel" destination="xxJ-qT-mV2" id="i3r-CJ-qpq"/>
+                                            <segue destination="gCE-4u-4GZ" kind="show" identifier="viewMail" id="vnD-Wl-POp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="HIv-5t-pJf" id="Ubv-pv-z7Y"/>
-                                    <outlet property="delegate" destination="HIv-5t-pJf" id="R99-9R-Ff4"/>
+                                    <outlet property="dataSource" destination="FDW-3x-N4Y" id="N17-ba-NBg"/>
+                                    <outlet property="delegate" destination="FDW-3x-N4Y" id="8k1-Px-rqL"/>
                                 </connections>
                             </tableView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cr7-Ze-0V4">
-                                <rect key="frame" x="0.0" y="506" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="hT2-de-0yJ"/>
-                                </constraints>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="7Xn-Vk-Jev"/>
-                                    <barButtonItem style="plain" id="4ng-M5-n4Q">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7wd-Xq-bki">
-                                            <rect key="frame" x="116" y="4" width="50" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <inset key="contentEdgeInsets" minX="7" minY="3" maxX="7" maxY="3"/>
-                                            <state key="normal" image="ios7-email-outline-light-yellow.png">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                        </button>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="sDM-S2-gCg"/>
-                                    <barButtonItem style="plain" id="lce-Mf-qQL">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ef4-mF-BW9">
-                                            <rect key="frame" x="268" y="4" width="50" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <inset key="contentEdgeInsets" minX="7" minY="3" maxX="7" maxY="3"/>
-                                            <state key="normal" image="compose-white.png">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="Compose:" destination="HIv-5t-pJf" eventType="touchUpInside" id="nWN-pu-clF"/>
-                                            </connections>
-                                        </button>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="gRl-mZ-rl7"/>
-                                    <barButtonItem style="plain" id="MTW-Dt-XKI">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nGu-0Y-8O7">
-                                            <rect key="frame" x="435" y="4" width="50" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <inset key="contentEdgeInsets" minX="7" minY="3" maxX="7" maxY="3"/>
-                                            <state key="normal" image="ios7-contact-outline-white.png">
-                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                            </state>
-                                            <connections>
-                                                <action selector="Profile:" destination="HIv-5t-pJf" eventType="touchUpInside" id="Pip-lZ-OCK"/>
-                                            </connections>
-                                        </button>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="3EK-VC-jYp"/>
-                                </items>
-                                <color key="barTintColor" red="0.14509803921568629" green="0.14901960784313725" blue="0.15294117647058825" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </toolbar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Mailbox" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="fYA-gf-lDV">
-                                <rect key="frame" x="10" y="20" width="560" height="33"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="24"/>
-                                <color key="textColor" red="1" green="0.97647058823529409" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.29411764705882354" green="0.53333333333333333" blue="0.63529411764705879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="fYA-gf-lDV" secondAttribute="trailing" constant="30" id="0Jm-IG-qOL"/>
-                            <constraint firstItem="fYA-gf-lDV" firstAttribute="top" secondItem="TOi-cL-hxo" secondAttribute="bottom" id="7FF-rI-qce"/>
-                            <constraint firstItem="cr7-Ze-0V4" firstAttribute="leading" secondItem="DOZ-Qf-rKj" secondAttribute="leading" id="Our-Cn-fTh"/>
-                            <constraint firstItem="fYA-gf-lDV" firstAttribute="leading" secondItem="DOZ-Qf-rKj" secondAttribute="leading" constant="10" id="Riv-je-QfJ"/>
-                            <constraint firstAttribute="bottom" secondItem="cr7-Ze-0V4" secondAttribute="bottom" constant="50" id="RrQ-5k-eks"/>
-                            <constraint firstItem="cr7-Ze-0V4" firstAttribute="top" secondItem="yS9-wa-A98" secondAttribute="bottom" id="STw-mv-4ra"/>
-                            <constraint firstAttribute="trailing" secondItem="yS9-wa-A98" secondAttribute="trailing" id="cFJ-xD-OIf"/>
-                            <constraint firstItem="cr7-Ze-0V4" firstAttribute="top" secondItem="yS9-wa-A98" secondAttribute="bottom" id="cON-Ko-REK"/>
-                            <constraint firstItem="yS9-wa-A98" firstAttribute="top" secondItem="fYA-gf-lDV" secondAttribute="bottom" constant="10" id="dTw-Ks-E7Q"/>
-                            <constraint firstAttribute="trailing" secondItem="cr7-Ze-0V4" secondAttribute="trailing" id="fit-Mf-Hbz"/>
-                            <constraint firstItem="yS9-wa-A98" firstAttribute="leading" secondItem="DOZ-Qf-rKj" secondAttribute="leading" id="uqw-4e-xXi"/>
+                            <constraint firstItem="RKL-Qp-DiU" firstAttribute="top" secondItem="QUY-qP-gTk" secondAttribute="top" constant="45" id="OcX-P7-hk7"/>
+                            <constraint firstItem="9eH-L3-ARz" firstAttribute="top" secondItem="RKL-Qp-DiU" secondAttribute="bottom" constant="-50" id="eEw-y3-CLv"/>
+                            <constraint firstAttribute="trailing" secondItem="RKL-Qp-DiU" secondAttribute="trailing" id="kZr-00-xMA"/>
+                            <constraint firstItem="9eH-L3-ARz" firstAttribute="top" secondItem="RKL-Qp-DiU" secondAttribute="bottom" constant="-40" id="kti-H6-nfI"/>
+                            <constraint firstItem="9eH-L3-ARz" firstAttribute="top" secondItem="RKL-Qp-DiU" secondAttribute="bottom" id="sRI-8v-ndP"/>
+                            <constraint firstItem="RKL-Qp-DiU" firstAttribute="leading" secondItem="QUY-qP-gTk" secondAttribute="leading" id="wBb-Tp-HHl"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="cON-Ko-REK"/>
+                                <exclude reference="kti-H6-nfI"/>
+                                <exclude reference="sRI-8v-ndP"/>
                             </mask>
                         </variation>
                     </view>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="mailTable" destination="yS9-wa-A98" id="X9G-JN-Gav"/>
+                        <outlet property="mailTable" destination="RKL-Qp-DiU" id="9I4-yy-7Xl"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c9l-ay-6JP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kQ3-h1-Y7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1425" y="167"/>
+            <point key="canvasLocation" x="1365" y="167"/>
         </scene>
         <!--Mail View Controller-->
         <scene sceneID="eOb-cY-wTl">
@@ -264,8 +189,5 @@
     </scenes>
     <resources>
         <image name="close-round-white.png" width="512" height="512"/>
-        <image name="compose-white.png" width="512" height="512"/>
-        <image name="ios7-contact-outline-white.png" width="512" height="512"/>
-        <image name="ios7-email-outline-light-yellow.png" width="512" height="512"/>
     </resources>
 </document>

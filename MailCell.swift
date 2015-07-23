@@ -11,9 +11,13 @@ import UIKit
 class MailCell: UITableViewCell {
 
 
+//    @IBOutlet weak var fromLabel: UILabel!
+//    @IBOutlet weak var mailImage: UIImageView!
+//    @IBOutlet weak var arrivalLabel: UILabel!
     @IBOutlet weak var fromLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var mailImage: UIImageView!
-    @IBOutlet weak var arrivalLabel: UILabel!
+    
     
     var mail:Mail!
     var from:Person!
@@ -66,10 +70,10 @@ class MailCell: UITableViewCell {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         
         if mail.status == "DELIVERED" {
-            arrivalLabel.text = "Arrived on \(dateFormatter.stringFromDate(mail.scheduledToArrive))"
+            statusLabel.text = "Arrived on \(dateFormatter.stringFromDate(mail.scheduledToArrive))"
         }
         else if mail.status == "READ" {
-            arrivalLabel.text = "Read on \(dateFormatter.stringFromDate(mail.updatedAt))"
+            statusLabel.text = "Read on \(dateFormatter.stringFromDate(mail.updatedAt))"
         }
     }
     
