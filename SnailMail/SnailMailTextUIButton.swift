@@ -20,12 +20,12 @@ class SnailMailTextUIButton: UIButton {
     
     func disable() {
         self.enabled = false
-        self.backgroundColor = UIColor.darkGrayColor()
+        self.backgroundColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
     }
     
     func enable() {
         self.enabled = true
-        self.backgroundColor = UIColor(red: 51/255, green: 153/255, blue: 102/255, alpha: 1.0)
+        self.backgroundColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
     }
 
 }

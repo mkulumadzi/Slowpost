@@ -11,20 +11,37 @@ import Alamofire
 
 class RegisterViewController: UIViewController {
     
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var phoneTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var nameTextField: BottomBorderUITextField!
+    @IBOutlet weak var usernameTextField: BottomBorderUITextField!
+    @IBOutlet weak var emailTextField: BottomBorderUITextField!
+    @IBOutlet weak var phoneTextField: BottomBorderUITextField!
+    @IBOutlet weak var passwordTextField: BottomBorderUITextField!
     @IBOutlet weak var signUpButton: SnailMailTextUIButton!
     @IBOutlet weak var warningLabel: WarningUILabel!
+    
+    
+//    bottomLine.frame = CGRectMake(0.0, myTextField.frame.height - 1, myTextField.frame.width, 1.0)
+//    bottomLine.backgroundColor = UIColor.whiteColor().CGColor
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        nameTextField.addBottomLayer()
+        usernameTextField.addBottomLayer()
+        emailTextField.addBottomLayer()
+        phoneTextField.addBottomLayer()
+        passwordTextField.addBottomLayer()
+        
+        signUpButton.layer.cornerRadius = 5
+        validateSignUpButton()
+        
         warningLabel.hide()
         
     }
+    
+//    override func viewDidLayoutSubviews() {
+//        nameTextField.addBottomLayer()
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -99,8 +116,17 @@ class RegisterViewController: UIViewController {
     }
     
     @IBAction func editingChanged(sender: AnyObject) {
-        signUpButton.enable()
+        validateSignUpButton()
         warningLabel.hide()
+    }
+    
+    func validateSignUpButton() {
+        if nameTextField.text != "" && usernameTextField.text != "" && emailTextField.text != "" && phoneTextField.text != "" && passwordTextField.text != "" {
+            signUpButton.enable()
+        }
+        else {
+            signUpButton.disable()
+        }
     }
     
 }

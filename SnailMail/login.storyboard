@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5Lt-wu-z72">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6az-Oz-1fo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -7,7 +7,6 @@
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="OpenSans-Light.ttf">
-            <string>OpenSans-Light</string>
             <string>OpenSans-Light</string>
             <string>OpenSans-Light</string>
         </mutableArray>
@@ -27,13 +26,20 @@
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+        </mutableArray>
+        <mutableArray key="Quicksand-Regular.otf">
+            <string>Quicksand-Regular</string>
+            <string>Quicksand-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
         <!--Log In View Controller-->
         <scene sceneID="68U-Yf-3Uf">
             <objects>
-                <viewController storyboardIdentifier="InitialController" id="5Lt-wu-z72" customClass="LogInViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5Lt-wu-z72" customClass="LogInViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CYa-XF-MvS"/>
                         <viewControllerLayoutGuide type="bottom" id="1DP-Og-uUK"/>
@@ -43,7 +49,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="748" verticalHuggingPriority="751" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username or Email" minimumFontSize="8" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1Cx-Sp-3Un">
-                                <rect key="frame" x="30" y="267" width="540" height="30"/>
+                                <rect key="frame" x="30" y="249" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="WLv-fW-fWb"/>
                                 </constraints>
@@ -53,13 +59,13 @@
                                     <action selector="editingChanged:" destination="5Lt-wu-z72" eventType="editingChanged" id="Vjf-60-bS5"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" verticalCompressionResistancePriority="748" text="Snailtale" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="29Z-NH-vug">
-                                <rect key="frame" x="30" y="20" width="540" height="88"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" verticalCompressionResistancePriority="748" text="Slowpost" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="29Z-NH-vug">
+                                <rect key="frame" x="30" y="20" width="540" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="3Dm-Ii-XXr"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="64"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="64"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -68,8 +74,8 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="746" verticalHuggingPriority="746" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hez-ky-lsM" customClass="SnailMailTextUIButton" customModule="Snailtale" customModuleProvider="target">
-                                <rect key="frame" x="30" y="347" width="540" height="30"/>
-                                <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="30" y="329" width="540" height="30"/>
+                                <color key="backgroundColor" red="0.46666666666666667" green="0.47058823529411764" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="YGF-2J-gq8"/>
                                 </constraints>
@@ -83,27 +89,24 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="749" verticalHuggingPriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="img-9d-DTv">
-                                <rect key="frame" x="30" y="227" width="540" height="30"/>
+                                <rect key="frame" x="30" y="209" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ML2-sa-gVp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="Not registered? Sign up.">
-                                    <color key="titleColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.46666666666666667" green="0.47058823529411764" blue="0.45098039215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="cqE-Qh-T2s" kind="presentation" id="7Oy-dj-qOr"/>
-                                </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="749" image="SnailMail Icon Set" translatesAutoresizingMaskIntoConstraints="NO" id="8Jo-sS-8dl">
-                                <rect key="frame" x="225" y="118" width="150" height="99"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="749" image="Slowpost Icon Set" translatesAutoresizingMaskIntoConstraints="NO" id="8Jo-sS-8dl">
+                                <rect key="frame" x="225" y="105" width="150" height="94"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="8Jo-sS-8dl" secondAttribute="height" multiplier="93:61" id="HPf-Wn-zzT"/>
+                                    <constraint firstAttribute="width" secondItem="8Jo-sS-8dl" secondAttribute="height" multiplier="1.59:1" id="HPf-Wn-zzT"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="747" verticalHuggingPriority="748" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="8" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Y1L-HG-f5a">
-                                <rect key="frame" x="30" y="307" width="540" height="30"/>
+                                <rect key="frame" x="30" y="289" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="U0h-Ue-2T7"/>
                                 </constraints>
@@ -115,16 +118,16 @@
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkc-KO-jnT" customClass="WarningUILabel" customModule="Snailtale" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="48"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.47058823529411764" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="nvr-2r-Qwf"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="zkc-KO-jnT" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" id="5BT-vi-BiZ"/>
                             <constraint firstItem="1Cx-Sp-3Un" firstAttribute="top" secondItem="img-9d-DTv" secondAttribute="bottom" constant="10" id="6qb-NZ-SGG"/>
@@ -171,7 +174,132 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x4O-nt-Oii" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="ruy-vO-V81"/>
             </objects>
-            <point key="canvasLocation" x="10" y="-476"/>
+            <point key="canvasLocation" x="839" y="-36"/>
+        </scene>
+        <!--Welcome Screen View Controller-->
+        <scene sceneID="blT-42-FqB">
+            <objects>
+                <viewController storyboardIdentifier="InitialController" id="6az-Oz-1fo" customClass="WelcomeScreenViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="boI-ld-BNa"/>
+                        <viewControllerLayoutGuide type="bottom" id="BeG-BJ-kuz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NAm-uN-6Ak">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="axl-Uf-9b7">
+                                <rect key="frame" x="0.0" y="291" width="600" height="309"/>
+                                <color key="backgroundColor" red="0.0" green="0.47058823529411764" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" verticalCompressionResistancePriority="748" text="Slowpost" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="byn-Cg-zDt">
+                                <rect key="frame" x="0.0" y="92" width="600" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="LPW-ld-n6o"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="64"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="LPW-ld-n6o"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="751" verticalCompressionResistancePriority="749" image="Slowpost Icon Set" translatesAutoresizingMaskIntoConstraints="NO" id="qPE-D6-7mL">
+                                <rect key="frame" x="225" y="197" width="150" height="94"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qPE-D6-7mL" secondAttribute="height" multiplier="1.59:1" id="pfd-0P-LwI"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j9Q-uI-TfF">
+                                <rect key="frame" x="0.0" y="68" width="600" height="24"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xW2-jZ-v8l">
+                                <rect key="frame" x="30" y="321" width="540" height="40"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9Oh-IC-X1G"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="WtC-B8-Ph9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Sign up">
+                                    <color key="titleColor" red="0.0" green="0.47058823529411764" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="WtC-B8-Ph9"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="cqE-Qh-T2s" kind="show" id="oe3-02-QV0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2OY-YI-TWu">
+                                <rect key="frame" x="30" y="371" width="540" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Nll-wH-dCc"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="Reg-YE-s8r"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Log in">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Reg-YE-s8r"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="5Lt-wu-z72" kind="show" id="GtF-BA-g6C"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.71372549019607845" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="j9Q-uI-TfF" secondAttribute="trailing" id="1rE-L2-NRV"/>
+                            <constraint firstAttribute="trailing" secondItem="xW2-jZ-v8l" secondAttribute="trailing" constant="30" id="2zm-Fp-SRC"/>
+                            <constraint firstItem="BeG-BJ-kuz" firstAttribute="top" secondItem="axl-Uf-9b7" secondAttribute="bottom" id="3c6-Ij-Z5U"/>
+                            <constraint firstItem="j9Q-uI-TfF" firstAttribute="leading" secondItem="NAm-uN-6Ak" secondAttribute="leading" id="Adx-qc-Par"/>
+                            <constraint firstItem="byn-Cg-zDt" firstAttribute="leading" secondItem="NAm-uN-6Ak" secondAttribute="leading" id="B02-xl-Gio"/>
+                            <constraint firstItem="qPE-D6-7mL" firstAttribute="width" secondItem="qPE-D6-7mL" secondAttribute="height" multiplier="1.59:1" id="Fmc-RJ-uif"/>
+                            <constraint firstItem="2OY-YI-TWu" firstAttribute="leading" secondItem="NAm-uN-6Ak" secondAttribute="leading" constant="30" id="Go7-BV-aSj"/>
+                            <constraint firstItem="qPE-D6-7mL" firstAttribute="top" secondItem="byn-Cg-zDt" secondAttribute="bottom" constant="30" id="N8t-28-UbW"/>
+                            <constraint firstAttribute="centerX" secondItem="qPE-D6-7mL" secondAttribute="centerX" id="NaL-Gg-ZcG"/>
+                            <constraint firstItem="axl-Uf-9b7" firstAttribute="top" secondItem="qPE-D6-7mL" secondAttribute="bottom" id="SKS-Cf-W5Y"/>
+                            <constraint firstItem="j9Q-uI-TfF" firstAttribute="top" secondItem="boI-ld-BNa" secondAttribute="bottom" constant="48" id="VHD-3P-73k"/>
+                            <constraint firstItem="byn-Cg-zDt" firstAttribute="top" secondItem="j9Q-uI-TfF" secondAttribute="bottom" id="W3X-j9-aPb"/>
+                            <constraint firstItem="2OY-YI-TWu" firstAttribute="top" secondItem="xW2-jZ-v8l" secondAttribute="bottom" constant="10" id="aZY-3J-GsS"/>
+                            <constraint firstItem="xW2-jZ-v8l" firstAttribute="leading" secondItem="NAm-uN-6Ak" secondAttribute="leading" constant="30" id="bB3-TQ-tJR"/>
+                            <constraint firstAttribute="trailing" secondItem="2OY-YI-TWu" secondAttribute="trailing" constant="30" id="ckm-XP-qzn"/>
+                            <constraint firstAttribute="trailing" secondItem="byn-Cg-zDt" secondAttribute="trailing" id="fia-BY-GaP"/>
+                            <constraint firstItem="axl-Uf-9b7" firstAttribute="leading" secondItem="NAm-uN-6Ak" secondAttribute="leading" id="gIV-Qg-bkX"/>
+                            <constraint firstItem="xW2-jZ-v8l" firstAttribute="top" secondItem="qPE-D6-7mL" secondAttribute="bottom" constant="30" id="lH2-ZY-9Pr"/>
+                            <constraint firstItem="byn-Cg-zDt" firstAttribute="top" secondItem="boI-ld-BNa" secondAttribute="bottom" constant="48" id="uZn-Wr-YNj"/>
+                            <constraint firstAttribute="trailing" secondItem="axl-Uf-9b7" secondAttribute="trailing" id="xyx-2W-BC1"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="uZn-Wr-YNj"/>
+                                <exclude reference="Fmc-RJ-uif"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="logInButton" destination="2OY-YI-TWu" id="Y2A-Wt-Oom"/>
+                        <outlet property="signUpButton" destination="xW2-jZ-v8l" id="bxk-LR-eFB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NHd-Oh-yPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="96" y="-464"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="FC7-Kj-SAs">
@@ -185,22 +313,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VGQ-6a-6wA">
-                                <rect key="frame" x="30" y="80" width="540" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VGQ-6a-6wA" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
+                                <rect key="frame" x="30" y="86" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Sa5-ec-ezx"/>
                                 </constraints>
+                                <color key="textColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="Mvm-sb-IE6"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTt-uY-DQ5" customClass="SnailMailTextUIButton" customModule="Snailtale" customModuleProvider="target">
-                                <rect key="frame" x="30" y="280" width="540" height="30"/>
-                                <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="30" y="286" width="540" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="0rb-A5-0UC"/>
+                                    <constraint firstAttribute="height" constant="40" id="0rb-A5-0UC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="Sign up">
@@ -211,22 +340,24 @@
                                     <action selector="signUpPressed:" destination="cqE-Qh-T2s" eventType="touchUpInside" id="o2a-OR-vYs"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Nfc-Fc-WhF">
-                                <rect key="frame" x="30" y="240" width="540" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Nfc-Fc-WhF" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
+                                <rect key="frame" x="30" y="246" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="dcm-H7-lcb"/>
                                 </constraints>
+                                <color key="textColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="QkX-L7-Q4L"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="P5I-cq-lFh">
-                                <rect key="frame" x="30" y="160" width="540" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="P5I-cq-lFh" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
+                                <rect key="frame" x="30" y="166" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Tco-OY-Y9H"/>
                                 </constraints>
+                                <color key="textColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                 <connections>
@@ -234,14 +365,14 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aQ-qm-rHK" customClass="WarningUILabel" customModule="Snailtale" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="600" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="50" width="600" height="30"/>
+                                <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="PR5-HP-wUd"/>
                                     <constraint firstAttribute="height" constant="30" id="bl5-jW-fcf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -250,21 +381,22 @@
                                 </variation>
                             </label>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZF-2h-GJP">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="yH7-Ei-xxh"/>
+                                    <constraint firstAttribute="height" constant="50" id="yH7-Ei-xxh"/>
                                 </constraints>
-                                <color key="barTintColor" red="0.10980392160000001" green="0.36078431370000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Register" id="1cA-FW-AJV">
                                         <barButtonItem key="leftBarButtonItem" style="done" id="Lta-SE-sv9">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PTo-b4-bts">
-                                                <rect key="frame" x="16" y="-234" width="24" height="24"/>
+                                                <rect key="frame" x="16" y="16" width="20" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="close-round-white.png">
+                                                <state key="normal" image="ios7-close-empty-white.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -275,30 +407,32 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ac9-aQ-31f">
-                                <rect key="frame" x="30" y="200" width="540" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ac9-aQ-31f" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
+                                <rect key="frame" x="30" y="206" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="8Bh-bK-Y7I"/>
                                 </constraints>
+                                <color key="textColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="iJI-aC-uiu"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pYC-iI-xKM">
-                                <rect key="frame" x="30" y="120" width="540" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pYC-iI-xKM" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
+                                <rect key="frame" x="30" y="126" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ahi-kO-Ubb"/>
                                 </constraints>
+                                <color key="textColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="5kS-Sa-Hz4"/>
                                 </connections>
                             </textField>
                         </subviews>
-                        <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="P5I-cq-lFh" firstAttribute="top" secondItem="VGQ-6a-6wA" secondAttribute="bottom" constant="10" id="393-Pl-oue"/>
                             <constraint firstItem="vTt-uY-DQ5" firstAttribute="top" secondItem="Nfc-Fc-WhF" secondAttribute="bottom" constant="10" id="73V-il-2BE"/>
@@ -349,7 +483,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Zp-98-wzK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="701" y="-476"/>
+            <point key="canvasLocation" x="839" y="-724"/>
         </scene>
         <!--Sign Up Successful View Controller-->
         <scene sceneID="i3S-Y5-XvT">
@@ -411,11 +545,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vDr-jz-VxR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1423" y="-476"/>
+            <point key="canvasLocation" x="1561" y="-724"/>
         </scene>
     </scenes>
     <resources>
-        <image name="SnailMail Icon Set" width="150" height="99"/>
-        <image name="close-round-white.png" width="512" height="512"/>
+        <image name="Slowpost Icon Set" width="150" height="95"/>
+        <image name="ios7-close-empty-white.png" width="192" height="192"/>
     </resources>
 </document>

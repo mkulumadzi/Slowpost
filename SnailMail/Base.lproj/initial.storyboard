@@ -17,17 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SnailMail Icon Set" translatesAutoresizingMaskIntoConstraints="NO" id="idz-6k-kBb">
-                                <rect key="frame" x="225" y="251" width="150" height="99"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Slowpost Icon Set" translatesAutoresizingMaskIntoConstraints="NO" id="gS2-fo-EqC">
+                                <rect key="frame" x="225" y="253" width="151" height="95"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="idz-6k-kBb" secondAttribute="height" multiplier="73:48" id="O3I-ar-b6X"/>
+                                    <constraint firstAttribute="width" secondItem="gS2-fo-EqC" secondAttribute="height" multiplier="1.59:1" id="jH7-8k-MVA"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="idz-6k-kBb" secondAttribute="centerX" id="0Ag-0z-2Ek"/>
-                            <constraint firstAttribute="centerY" secondItem="idz-6k-kBb" secondAttribute="centerY" id="1Cj-Fv-GnV"/>
+                            <constraint firstAttribute="centerX" secondItem="gS2-fo-EqC" secondAttribute="centerX" id="00n-rD-4U1"/>
+                            <constraint firstAttribute="centerY" secondItem="gS2-fo-EqC" secondAttribute="centerY" id="xBK-mU-rUi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="SnailMail" id="yZM-9R-1kR"/>
@@ -38,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SnailMail Icon Set" width="150" height="99"/>
+        <image name="Slowpost Icon Set" width="150" height="95"/>
     </resources>
 </document>
