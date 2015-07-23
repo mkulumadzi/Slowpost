@@ -72,7 +72,7 @@ class RegisterViewController: UIViewController {
                             if let user = result as? Person {
                                 loggedInUser = user
                                 DataManager.saveLoginToSession(loggedInUser.id)
-                                self.performSegueWithIdentifier("signUpComplete", sender: nil)
+                                self.goToMailbox(self)
                             }
                         }
                     })
@@ -127,6 +127,12 @@ class RegisterViewController: UIViewController {
         else {
             signUpButton.disable()
         }
+    }
+    
+    func goToMailbox(sender: AnyObject) {
+        var storyboard = UIStoryboard(name: "initial", bundle: nil)
+        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+        self.presentViewController(controller, animated: true, completion: nil)
     }
     
 }
