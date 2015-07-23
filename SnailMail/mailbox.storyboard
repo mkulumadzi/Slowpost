@@ -31,7 +31,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="yS9-wa-A98">
-                                <rect key="frame" x="0.0" y="63" width="600" height="493"/>
+                                <rect key="frame" x="0.0" y="63" width="600" height="443"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MailCell" rowHeight="80" id="kDI-WB-Wvr" customClass="MailCell" customModule="Snailtale" customModuleProvider="target">
@@ -97,7 +97,7 @@
                                 </connections>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cr7-Ze-0V4">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="506" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="hT2-de-0yJ"/>
                                 </constraints>
@@ -158,7 +158,7 @@
                             <constraint firstItem="fYA-gf-lDV" firstAttribute="top" secondItem="TOi-cL-hxo" secondAttribute="bottom" id="7FF-rI-qce"/>
                             <constraint firstItem="cr7-Ze-0V4" firstAttribute="leading" secondItem="DOZ-Qf-rKj" secondAttribute="leading" id="Our-Cn-fTh"/>
                             <constraint firstItem="fYA-gf-lDV" firstAttribute="leading" secondItem="DOZ-Qf-rKj" secondAttribute="leading" constant="10" id="Riv-je-QfJ"/>
-                            <constraint firstAttribute="bottom" secondItem="cr7-Ze-0V4" secondAttribute="bottom" id="RrQ-5k-eks"/>
+                            <constraint firstAttribute="bottom" secondItem="cr7-Ze-0V4" secondAttribute="bottom" constant="50" id="RrQ-5k-eks"/>
                             <constraint firstItem="cr7-Ze-0V4" firstAttribute="top" secondItem="yS9-wa-A98" secondAttribute="bottom" id="STw-mv-4ra"/>
                             <constraint firstAttribute="trailing" secondItem="yS9-wa-A98" secondAttribute="trailing" id="cFJ-xD-OIf"/>
                             <constraint firstItem="cr7-Ze-0V4" firstAttribute="top" secondItem="yS9-wa-A98" secondAttribute="bottom" id="cON-Ko-REK"/>
@@ -172,6 +172,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mailTable" destination="yS9-wa-A98" id="X9G-JN-Gav"/>
                     </connections>
