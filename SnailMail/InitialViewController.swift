@@ -64,8 +64,6 @@ class InitialViewController: UIViewController {
             registerDeviceToken()
         }
         
-//Editing this to experiment with tab bar controller
-//        var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
         var storyboard = UIStoryboard(name: "home", bundle: nil)
         var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
         

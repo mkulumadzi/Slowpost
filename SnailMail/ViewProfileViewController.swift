@@ -36,20 +36,20 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
 
-    @IBAction func Mailbox(sender: AnyObject) {
-        var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
-        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-        
-        self.presentViewController(controller, animated: false, completion: nil)
-    }
-    
-    
-    @IBAction func Compose(sender: AnyObject) {
-        var storyboard = UIStoryboard(name: "compose", bundle: nil)
-        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-        
-        self.presentViewController(controller, animated: true, completion: nil)
-    }
+//    @IBAction func Mailbox(sender: AnyObject) {
+//        var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
+//        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+//        
+//        self.presentViewController(controller, animated: false, completion: nil)
+//    }
+//    
+//    
+//    @IBAction func Compose(sender: AnyObject) {
+//        var storyboard = UIStoryboard(name: "compose", bundle: nil)
+//        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+//        
+//        self.presentViewController(controller, animated: true, completion: nil)
+//    }
 
     @IBAction func logOut(sender: AnyObject) {
         deleteSession()

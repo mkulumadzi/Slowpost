@@ -1,5 +1,5 @@
 //
-//  ProfileTablViewController.swift
+//  ComposeTabViewController.swift
 //  Snailtale
 //
 //  Created by Evan Waters on 7/23/15.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ProfileTabViewController: UITabBarController {
+class ComposeTabViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        showProfile()
+        compose()
 
         // Do any additional setup after loading the view.
     }
@@ -23,13 +23,10 @@ class ProfileTabViewController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-    func showProfile() {
-        var storyboard = UIStoryboard(name: "profile", bundle: nil)
-        var controller = storyboard.instantiateInitialViewController() as! UIViewController
-        addChildViewController(controller)
-        view.addSubview(controller.view)
-        controller.didMoveToParentViewController(self)
-        
+    func compose() {
+        var storyboard = UIStoryboard(name: "compose", bundle: nil)
+        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+        self.presentViewController(controller, animated: true, completion: nil)
     }
     
 

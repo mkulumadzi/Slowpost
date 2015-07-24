@@ -92,23 +92,24 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    @IBAction func Compose(sender: AnyObject) {
-        
-        var storyboard = UIStoryboard(name: "compose", bundle: nil)
-        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-        
-        self.presentViewController(controller, animated: true, completion: nil)
-        
-    }
-    
-    
-    @IBAction func Profile(sender: AnyObject) {
-        
-        var storyboard = UIStoryboard(name: "profile", bundle: nil)
-        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-        
-        self.presentViewController(controller, animated: false, completion: nil)
-        
-    }
+//
+//    @IBAction func Compose(sender: AnyObject) {
+//        
+//        var storyboard = UIStoryboard(name: "compose", bundle: nil)
+//        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+//        
+//        self.presentViewController(controller, animated: true, completion: nil)
+//        
+//    }
+//    
+//    
+//    @IBAction func Profile(sender: AnyObject) {
+//        
+//        var storyboard = UIStoryboard(name: "profile", bundle: nil)
+//        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+//        
+//        self.presentViewController(controller, animated: false, completion: nil)
+//        
+//    }
 
 }
