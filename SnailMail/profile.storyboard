@@ -285,7 +285,7 @@
                                     <navigationItem title="Edit Your Profile" id="9Zi-ze-GOc">
                                         <barButtonItem key="leftBarButtonItem" style="done" id="Y3y-CY-7nH">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dKR-LJ-UZL" userLabel="cancelButton">
-                                                <rect key="frame" x="16" y="-234" width="24" height="24"/>
+                                                <rect key="frame" x="16" y="14" width="20" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="ios7-close-empty-white.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
