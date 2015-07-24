@@ -23,6 +23,26 @@
             </objects>
             <point key="canvasLocation" x="492" y="646"/>
         </scene>
+        <!--Compose-->
+        <scene sceneID="6XD-R5-ayk">
+            <objects>
+                <viewController id="xuH-H0-8NY" customClass="ComposeTabPlaceholderViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lQc-8q-L8u"/>
+                        <viewControllerLayoutGuide type="bottom" id="dlA-2c-157"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dVG-w3-H1t">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Compose" image="Compose Tab Bar Item (grey)" id="VD2-Xd-fru"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4MQ-q6-bax" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="142" y="1322"/>
+        </scene>
         <!--Mailbox Tab View Controller-->
         <scene sceneID="sJw-PD-NuB">
             <objects>
@@ -61,15 +81,17 @@
                     </tabBar>
                     <connections>
                         <segue destination="pAQ-5W-Mdz" kind="relationship" relationship="viewControllers" id="6rV-MT-BsZ"/>
+                        <segue destination="xuH-H0-8NY" kind="relationship" relationship="viewControllers" id="Zw8-rn-cj9"/>
                         <segue destination="xIs-ox-2Jy" kind="relationship" relationship="viewControllers" id="0Yc-Kd-uB2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H4G-Ub-cEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="122" y="-161"/>
+            <point key="canvasLocation" x="142" y="-99"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Compose Tab Bar Item (grey)" width="50" height="48"/>
         <image name="Mail Tab Bar Item (grey)" width="50" height="34"/>
         <image name="Profile Tab Bar Item (grey)" width="50" height="50"/>
     </resources>

@@ -216,7 +216,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
-        var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
+        var storyboard = UIStoryboard(name: "home", bundle: nil)
         var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
         
         self.presentViewController(controller, animated: true, completion: nil)
