@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CoreData
+//import CoreData
 
 class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -36,32 +36,32 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func logOut(sender: AnyObject) {
-        deleteSession()
-        
-        loggedInUser = nil
-        
-        var storyboard = UIStoryboard(name: "initial", bundle: nil)
-        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-        
-        self.presentViewController(controller, animated: true, completion: nil)
-    }
-    
-    func deleteSession() {
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        
-        let fetchRequest = NSFetchRequest(entityName: "Session")
-        var error: NSError?
-        
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
-        
-        for session:NSManagedObject in fetchedResults! {
-            managedContext.deleteObject(session)
-        }
-        
-    }
+//    @IBAction func logOut(sender: AnyObject) {
+//        deleteSession()
+//        
+//        loggedInUser = nil
+//        
+//        var storyboard = UIStoryboard(name: "initial", bundle: nil)
+//        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+//        
+//        self.presentViewController(controller, animated: true, completion: nil)
+//    }
+//    
+//    func deleteSession() {
+//        
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let managedContext = appDelegate.managedObjectContext!
+//        
+//        let fetchRequest = NSFetchRequest(entityName: "Session")
+//        var error: NSError?
+//        
+//        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
+//        
+//        for session:NSManagedObject in fetchedResults! {
+//            managedContext.deleteObject(session)
+//        }
+//        
+//    }
 
     func getOutbox() {
         DataManager.getMyOutbox( { (error, result) -> Void in
@@ -118,5 +118,11 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         return UIImage(named: "Default Card.png")!
     }
     
+    @IBAction func showSettingsMenu(sender: AnyObject) {
+        self.performSegueWithIdentifier("showSettingsMenu", sender: nil)
+    }
+    
+    @IBAction func cancelFromSettingsMenuToProfileViewController(segue:UIStoryboardSegue) {
+    }
 
 }

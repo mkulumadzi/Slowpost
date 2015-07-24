@@ -220,7 +220,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="cqE-Qh-T2s" kind="show" id="oe3-02-QV0"/>
+                                    <segue destination="cqE-Qh-T2s" kind="presentation" modalTransitionStyle="crossDissolve" id="oe3-02-QV0"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2OY-YI-TWu">
@@ -241,7 +241,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="5Lt-wu-z72" kind="show" id="GtF-BA-g6C"/>
+                                    <segue destination="5Lt-wu-z72" kind="presentation" modalTransitionStyle="crossDissolve" id="GtF-BA-g6C"/>
                                 </connections>
                             </button>
                         </subviews>

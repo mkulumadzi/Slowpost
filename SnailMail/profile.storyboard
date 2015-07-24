@@ -25,6 +25,9 @@
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -157,7 +160,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="qNd-F5-aPS" kind="show" id="6pb-bn-hui"/>
+                                                    <action selector="showSettingsMenu:" destination="g8k-5t-a0b" eventType="touchUpInside" id="Z8a-MN-2h4"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -188,6 +191,7 @@
                         <outlet property="navBar" destination="Px6-Ss-QJm" id="owt-kg-YL3"/>
                         <outlet property="navBarTitle" destination="mpB-Gv-GfZ" id="vdd-kP-4H5"/>
                         <outlet property="sentMailTable" destination="hQd-A0-PJc" id="xEu-V5-sfb"/>
+                        <segue destination="cqg-F0-8cv" kind="presentation" identifier="showSettingsMenu" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="9fw-HE-e6U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3wR-Rj-Q72" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -203,7 +207,7 @@
                         <viewControllerLayoutGuide type="bottom" id="6x9-os-mOW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2jU-Kb-9JR">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UPU-ci-qfd" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
@@ -297,7 +301,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="Cancel:" destination="qNd-F5-aPS" eventType="touchUpInside" id="g04-BG-UH7"/>
+                                                    <segue destination="UQl-4W-VWd" kind="unwind" unwindAction="cancelFromSettingsMenuToProfileViewController:" id="iSs-c4-QUw"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -400,8 +404,121 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0WG-Cg-kym" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="UQl-4W-VWd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="769.5" y="322.5"/>
+            <point key="canvasLocation" x="1459" y="322"/>
+        </scene>
+        <!--Settings Menu View Controller-->
+        <scene sceneID="fId-qm-ciU">
+            <objects>
+                <viewController storyboardIdentifier="SettingsMenu" id="cqg-F0-8cv" customClass="SettingsMenuViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="p7J-3t-4nq"/>
+                        <viewControllerLayoutGuide type="bottom" id="Seh-xi-4Fq"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="9oI-aC-1i6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Utj-NL-La3">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="A3D-Hr-YoE" appends="YES" id="IIh-hV-ive"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kIb-iS-wjG">
+                                <rect key="frame" x="30" y="75" width="540" height="40"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="zS8-Ep-tUp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleColor" red="0.0" green="0.71372549019607845" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logOut:" destination="cqg-F0-8cv" eventType="touchUpInside" id="eMR-Mj-seq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vP9-6K-3DR">
+                                <rect key="frame" x="30" y="120" width="540" height="40"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Pkv-qH-QRz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Edit Profile">
+                                    <color key="titleColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="qNd-F5-aPS" kind="presentation" modalTransitionStyle="coverVertical" id="wWt-8B-2kT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8c-ey-obT">
+                                <rect key="frame" x="30" y="170" width="540" height="40"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="bjo-gL-yQg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="8j5-d4-9vg" kind="unwind" unwindAction="cancelFromSettingsMenuToProfileViewController:" id="TDF-1v-hHz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="i8c-ey-obT" firstAttribute="leading" secondItem="9oI-aC-1i6" secondAttribute="leading" constant="30" id="0hN-Yq-Xfr"/>
+                            <constraint firstAttribute="trailing" secondItem="vP9-6K-3DR" secondAttribute="trailing" constant="30" id="1dd-a7-tTy"/>
+                            <constraint firstItem="vP9-6K-3DR" firstAttribute="top" secondItem="kIb-iS-wjG" secondAttribute="bottom" constant="10" id="2Cx-YX-1xd"/>
+                            <constraint firstAttribute="centerY" secondItem="kIb-iS-wjG" secondAttribute="centerY" id="CQz-WU-HkI"/>
+                            <constraint firstItem="vP9-6K-3DR" firstAttribute="top" secondItem="kIb-iS-wjG" secondAttribute="bottom" constant="5" id="DHg-B8-o6u"/>
+                            <constraint firstItem="kIb-iS-wjG" firstAttribute="top" secondItem="p7J-3t-4nq" secondAttribute="bottom" constant="55" id="FhD-4A-aUq"/>
+                            <constraint firstItem="Utj-NL-La3" firstAttribute="leading" secondItem="9oI-aC-1i6" secondAttribute="leading" id="KSR-lE-K8h"/>
+                            <constraint firstItem="Utj-NL-La3" firstAttribute="top" secondItem="9oI-aC-1i6" secondAttribute="top" id="KYP-Kp-8gu"/>
+                            <constraint firstItem="kIb-iS-wjG" firstAttribute="leading" secondItem="9oI-aC-1i6" secondAttribute="leading" constant="30" id="KpU-5h-ifY"/>
+                            <constraint firstItem="Seh-xi-4Fq" firstAttribute="top" secondItem="Utj-NL-La3" secondAttribute="bottom" id="VZl-RI-bre"/>
+                            <constraint firstAttribute="centerX" secondItem="vP9-6K-3DR" secondAttribute="centerX" id="eiu-Na-beC"/>
+                            <constraint firstItem="i8c-ey-obT" firstAttribute="top" secondItem="vP9-6K-3DR" secondAttribute="bottom" constant="10" id="gVd-xd-Vq8"/>
+                            <constraint firstAttribute="trailing" secondItem="kIb-iS-wjG" secondAttribute="trailing" constant="30" id="jGM-Q1-9vg"/>
+                            <constraint firstItem="vP9-6K-3DR" firstAttribute="leading" secondItem="9oI-aC-1i6" secondAttribute="leading" constant="30" id="oqB-BB-RcX"/>
+                            <constraint firstAttribute="trailing" secondItem="Utj-NL-La3" secondAttribute="trailing" id="p0o-7w-T9A"/>
+                            <constraint firstAttribute="centerX" secondItem="kIb-iS-wjG" secondAttribute="centerX" id="rLV-g7-AzQ"/>
+                            <constraint firstAttribute="trailing" secondItem="i8c-ey-obT" secondAttribute="trailing" constant="30" id="zIB-CL-J4J"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="CQz-WU-HkI"/>
+                                <exclude reference="rLV-g7-AzQ"/>
+                                <exclude reference="2Cx-YX-1xd"/>
+                                <exclude reference="eiu-Na-beC"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="i8c-ey-obT" id="Frt-YJ-ge1"/>
+                        <outlet property="editProfileButton" destination="vP9-6K-3DR" id="jAA-aj-3bY"/>
+                        <outlet property="logOutButton" destination="kIb-iS-wjG" id="kSl-L2-ODG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4xw-3q-SZB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="8j5-d4-9vg" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="A3D-Hr-YoE">
+                    <connections>
+                        <segue destination="8j5-d4-9vg" kind="unwind" unwindAction="cancelFromSettingsMenuToProfileViewController:" id="6aP-5i-Vyv"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="755" y="322"/>
         </scene>
     </scenes>
     <resources>
