@@ -29,7 +29,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RKL-Qp-DiU">
-                                <rect key="frame" x="0.0" y="45" width="600" height="605"/>
+                                <rect key="frame" x="0.0" y="50" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MailCell" rowHeight="80" id="wvb-F7-Xxt" customClass="MailCell" customModule="Snailtale" customModuleProvider="target">
@@ -81,18 +81,51 @@
                                     <outlet property="delegate" destination="FDW-3x-N4Y" id="8k1-Px-rqL"/>
                                 </connections>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7mS-85-LaA">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="h9v-hz-kvC"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="24"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Slowpost" id="LDX-aK-eT3">
+                                        <barButtonItem key="rightBarButtonItem" id="ZQa-rl-jmf">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="v9i-ZH-Ydg">
+                                                <rect key="frame" x="564" y="13" width="30" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="compose-white.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="composeMessage:" destination="FDW-3x-N4Y" eventType="touchUpInside" id="dDf-2s-r9j"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="7mS-85-LaA" firstAttribute="leading" secondItem="QUY-qP-gTk" secondAttribute="leading" id="1hE-dX-MU4"/>
+                            <constraint firstItem="RKL-Qp-DiU" firstAttribute="top" secondItem="7mS-85-LaA" secondAttribute="bottom" id="Ayi-Gq-LKO"/>
                             <constraint firstItem="RKL-Qp-DiU" firstAttribute="top" secondItem="QUY-qP-gTk" secondAttribute="top" constant="45" id="OcX-P7-hk7"/>
                             <constraint firstItem="9eH-L3-ARz" firstAttribute="top" secondItem="RKL-Qp-DiU" secondAttribute="bottom" constant="-50" id="eEw-y3-CLv"/>
+                            <constraint firstItem="7mS-85-LaA" firstAttribute="top" secondItem="QUY-qP-gTk" secondAttribute="top" id="h9P-NG-bj2"/>
                             <constraint firstAttribute="trailing" secondItem="RKL-Qp-DiU" secondAttribute="trailing" id="kZr-00-xMA"/>
                             <constraint firstItem="9eH-L3-ARz" firstAttribute="top" secondItem="RKL-Qp-DiU" secondAttribute="bottom" constant="-40" id="kti-H6-nfI"/>
+                            <constraint firstAttribute="trailing" secondItem="7mS-85-LaA" secondAttribute="trailing" id="kw4-9X-Jyc"/>
                             <constraint firstItem="9eH-L3-ARz" firstAttribute="top" secondItem="RKL-Qp-DiU" secondAttribute="bottom" id="sRI-8v-ndP"/>
                             <constraint firstItem="RKL-Qp-DiU" firstAttribute="leading" secondItem="QUY-qP-gTk" secondAttribute="leading" id="wBb-Tp-HHl"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="OcX-P7-hk7"/>
                                 <exclude reference="kti-H6-nfI"/>
                                 <exclude reference="sRI-8v-ndP"/>
                             </mask>
@@ -100,6 +133,7 @@
                     </view>
                     <connections>
                         <outlet property="mailTable" destination="RKL-Qp-DiU" id="9I4-yy-7Xl"/>
+                        <outlet property="navBar" destination="7mS-85-LaA" id="4Ld-O7-ePc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kQ3-h1-Y7j" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -188,6 +222,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="compose-white.png" width="512" height="512"/>
         <image name="ios7-close-empty-white.png" width="192" height="192"/>
     </resources>
 </document>

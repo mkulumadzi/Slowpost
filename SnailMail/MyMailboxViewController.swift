@@ -12,6 +12,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     
 
     @IBOutlet weak var mailTable: UITableView!
+    @IBOutlet weak var navBar: UINavigationBar!
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -24,6 +25,8 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         refreshMailbox()
         mailTable.reloadData()
+        
+        navBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Quicksand-Regular", size: 24)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
         
         mailTable.addSubview(self.refreshControl)
     }
@@ -92,6 +95,12 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+
+    @IBAction func composeMessage(sender: AnyObject) {
+        var storyboard = UIStoryboard(name: "compose", bundle: nil)
+        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
 //
 //    @IBAction func Compose(sender: AnyObject) {
 //        

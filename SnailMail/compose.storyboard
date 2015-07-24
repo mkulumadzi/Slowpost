@@ -10,7 +10,6 @@
         <mutableArray key="OpenSans-Light.ttf">
             <string>OpenSans-Light</string>
             <string>OpenSans-Light</string>
-            <string>OpenSans-Light</string>
         </mutableArray>
         <mutableArray key="OpenSans-LightItalic.ttf">
             <string>OpenSansLight-Italic</string>
@@ -21,9 +20,7 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
-        </mutableArray>
-        <mutableArray key="OpenSans-Semibold.ttf">
-            <string>OpenSans-Semibold</string>
+            <string>OpenSans</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -144,7 +141,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="6O2-wW-VYM"/>
                                 </constraints>
-                                <color key="barTintColor" red="0.10980392160000001" green="0.36078431370000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -154,9 +151,9 @@
                                     <navigationItem title="Card" id="WcS-p0-ZLg">
                                         <barButtonItem key="leftBarButtonItem" style="done" id="RrS-Dc-HZE">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ByF-kt-6uS">
-                                                <rect key="frame" x="16" y="-234" width="30" height="30"/>
+                                                <rect key="frame" x="16" y="11" width="12" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="arrow-left-c-white.png">
+                                                <state key="normal" image="ios7-arrow-left-white.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -166,9 +163,9 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="done" id="qDP-9t-pkT">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="F7Y-MO-bWM">
-                                                <rect key="frame" x="554" y="-234" width="30" height="30"/>
+                                                <rect key="frame" x="572" y="11" width="12" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="arrow-right-c-white.png">
+                                                <state key="normal" image="ios7-arrow-right-white.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -180,7 +177,7 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ra4-CK-oJ7" secondAttribute="trailing" id="0L4-db-wf5"/>
                             <constraint firstItem="Vbe-WO-Wvv" firstAttribute="leading" secondItem="KBQ-d2-vI0" secondAttribute="leading" id="86K-7r-T4W"/>
@@ -269,7 +266,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="uNZ-xr-kQF"/>
                                 </constraints>
-                                <color key="barTintColor" red="0.10980392160000001" green="0.36078431370000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -279,9 +276,9 @@
                                     <navigationItem title="Message" id="It6-6d-SBf">
                                         <barButtonItem key="leftBarButtonItem" style="done" id="efV-0W-55n">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DOk-No-4fY">
-                                                <rect key="frame" x="16" y="-234" width="30" height="30"/>
+                                                <rect key="frame" x="16" y="11" width="12" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="arrow-left-c-white.png">
+                                                <state key="normal" image="ios7-arrow-left-white.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -291,9 +288,10 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="done" id="3xI-7B-GUV">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="t3s-A8-v4h">
-                                                <rect key="frame" x="560" y="7" width="24" height="24"/>
+                                                <rect key="frame" x="544" y="14" width="60" height="24"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="checkmark-round-white.png">
+                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                                <state key="normal" title="Send">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -305,7 +303,7 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gNS-Nl-7MF" firstAttribute="top" secondItem="kiv-Wq-vjl" secondAttribute="bottom" constant="201" id="3Fe-Qp-BAj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KiO-xd-bKI" secondAttribute="trailing" constant="150" id="5Dx-3g-qPj"/>
@@ -339,79 +337,12 @@
                         <outlet property="doneButton" destination="t3s-A8-v4h" id="hGc-Nr-M0R"/>
                         <outlet property="imagePreview" destination="huH-mK-UMT" id="FrZ-wP-cSx"/>
                         <outlet property="toLabel" destination="KiO-xd-bKI" id="UbM-XW-CnN"/>
-                        <segue destination="xfs-yB-txn" kind="show" identifier="sendMail" id="pNN-yi-cjN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wwg-pC-olF" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="6mN-R4-H4K"/>
             </objects>
             <point key="canvasLocation" x="2412" y="974"/>
-        </scene>
-        <!--Mail Sent View Controller-->
-        <scene sceneID="MbD-Kh-aPK">
-            <objects>
-                <viewController id="xfs-yB-txn" customClass="MailSentViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="k3i-FL-VHg"/>
-                        <viewControllerLayoutGuide type="bottom" id="cZt-sG-5AD"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="gkz-Al-CNG">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UUS-fn-0zC">
-                                <rect key="frame" x="30" y="285" width="540" height="30"/>
-                                <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="kr3-kN-oKG"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                <state key="normal" title="Go back to my mailbox">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="backToMailbox:" destination="xfs-yB-txn" eventType="touchUpInside" id="wTj-sE-0Sa"/>
-                                </connections>
-                            </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SnailMail Postman Set" translatesAutoresizingMaskIntoConstraints="NO" id="dMI-hF-bde">
-                                <rect key="frame" x="250" y="419" width="100" height="181"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Snailtale has been sent, and will arrive in 2 to 3 days!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="F5G-V8-E7p">
-                                <rect key="frame" x="30" y="156" width="540" height="99"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="36"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="UUS-fn-0zC" firstAttribute="leading" secondItem="gkz-Al-CNG" secondAttribute="leading" constant="30" id="31x-4M-cMC"/>
-                            <constraint firstAttribute="centerX" secondItem="UUS-fn-0zC" secondAttribute="centerX" id="6B5-3d-QdA"/>
-                            <constraint firstAttribute="centerY" secondItem="UUS-fn-0zC" secondAttribute="centerY" id="HSy-JR-Vsr"/>
-                            <constraint firstItem="F5G-V8-E7p" firstAttribute="leading" secondItem="gkz-Al-CNG" secondAttribute="leading" constant="30" id="Idg-Zc-e6H"/>
-                            <constraint firstAttribute="trailing" secondItem="F5G-V8-E7p" secondAttribute="trailing" constant="30" id="QCb-vF-woU"/>
-                            <constraint firstItem="cZt-sG-5AD" firstAttribute="top" secondItem="dMI-hF-bde" secondAttribute="bottom" id="SAj-gy-j0p"/>
-                            <constraint firstAttribute="centerX" secondItem="dMI-hF-bde" secondAttribute="centerX" id="eD2-ve-3Cu"/>
-                            <constraint firstAttribute="trailing" secondItem="UUS-fn-0zC" secondAttribute="trailing" constant="30" id="wzy-KV-aNn"/>
-                            <constraint firstItem="UUS-fn-0zC" firstAttribute="top" secondItem="F5G-V8-E7p" secondAttribute="bottom" constant="30" id="xt6-nV-Tod"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="searchDisplayController" destination="ExW-Ya-iZ9" id="0ct-Gg-xij"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KBp-5r-LFJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="ExW-Ya-iZ9">
-                    <connections>
-                        <outlet property="delegate" destination="xfs-yB-txn" id="q7r-0B-mFy"/>
-                        <outlet property="searchContentsController" destination="xfs-yB-txn" id="dzc-ev-GuH"/>
-                        <outlet property="searchResultsDataSource" destination="xfs-yB-txn" id="RXp-Pz-xYA"/>
-                        <outlet property="searchResultsDelegate" destination="xfs-yB-txn" id="zQp-Ei-0II"/>
-                    </connections>
-                </searchDisplayController>
-            </objects>
-            <point key="canvasLocation" x="3119" y="974"/>
         </scene>
         <!--To View Controller-->
         <scene sceneID="fT4-r7-D5g">
@@ -469,12 +400,12 @@
                                     <outlet property="delegate" destination="56L-ux-Lnu" id="u3m-KZ-kBf"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" text="" placeholder="email" translatesAutoresizingMaskIntoConstraints="NO" id="FXR-ug-bxD">
+                            <searchBar contentMode="redraw" text="" placeholder="email" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXR-ug-bxD">
                                 <rect key="frame" x="0.0" y="72" width="600" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ssJ-fP-Am6"/>
                                 </constraints>
-                                <color key="barTintColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="56L-ux-Lnu" id="axs-Zf-QWV"/>
@@ -482,7 +413,7 @@
                             </searchBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zBk-j3-1iC" userLabel="warningLabel" customClass="WarningUILabel" customModule="Snailtale" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="48" width="600" height="24"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -492,7 +423,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="IBK-Cw-ziw"/>
                                 </constraints>
-                                <color key="barTintColor" red="0.10980392160000001" green="0.36078431370000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textAttributes key="titleTextAttributes">
                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -502,9 +433,9 @@
                                     <navigationItem title="Recipient" id="ZOb-ek-B4u">
                                         <barButtonItem key="leftBarButtonItem" style="done" id="Ngg-d4-tz8">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6Nz-W9-pWG">
-                                                <rect key="frame" x="16" y="-230" width="24" height="24"/>
+                                                <rect key="frame" x="16" y="14" width="20" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="close-round-white.png">
+                                                <state key="normal" image="ios7-close-empty-white.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -514,9 +445,9 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="done" id="cUA-ml-ZSf">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6ba-y5-t0Z">
-                                                <rect key="frame" x="554" y="8" width="30" height="30"/>
+                                                <rect key="frame" x="554" y="16" width="12" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="arrow-right-c-white.png">
+                                                <state key="normal" image="ios7-arrow-right-white.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
@@ -528,7 +459,7 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" red="0.59999999999999998" green="1" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="j7P-4p-ATv" firstAttribute="top" secondItem="FXR-ug-bxD" secondAttribute="bottom" id="5oO-fC-1vs"/>
                             <constraint firstAttribute="trailing" secondItem="zBk-j3-1iC" secondAttribute="trailing" id="9Nc-IG-JIg"/>
@@ -560,11 +491,9 @@
     </scenes>
     <resources>
         <image name="Default Card.png" width="2048" height="1536"/>
-        <image name="SnailMail Postman Set" width="100" height="181"/>
-        <image name="arrow-left-c-white.png" width="512" height="512"/>
-        <image name="arrow-right-c-white.png" width="512" height="512"/>
-        <image name="checkmark-round-white.png" width="512" height="512"/>
-        <image name="close-round-white.png" width="512" height="512"/>
+        <image name="ios7-arrow-left-white.png" width="192" height="320"/>
+        <image name="ios7-arrow-right-white.png" width="192" height="320"/>
         <image name="ios7-checkmark-not-checked.png" width="512" height="512"/>
+        <image name="ios7-close-empty-white.png" width="192" height="192"/>
     </resources>
 </document>
