@@ -101,7 +101,7 @@ class EditProfileViewController: UIViewController {
                 if let user = result as? Person {
                     loggedInUser = user
                     
-                    var storyboard = UIStoryboard(name: "profile", bundle: nil)
+                    var storyboard = UIStoryboard(name: "home", bundle: nil)
                     var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
                     self.presentViewController(controller, animated: true, completion: nil)
                     

@@ -96,29 +96,12 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
 
+    // Temporary (?) button since I can't get this to work from the tab bar
     @IBAction func composeMessage(sender: AnyObject) {
         var storyboard = UIStoryboard(name: "compose", bundle: nil)
         var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
         self.presentViewController(controller, animated: true, completion: nil)
     }
-//
-//    @IBAction func Compose(sender: AnyObject) {
-//        
-//        var storyboard = UIStoryboard(name: "compose", bundle: nil)
-//        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-//        
-//        self.presentViewController(controller, animated: true, completion: nil)
-//        
-//    }
-//    
-//    
-//    @IBAction func Profile(sender: AnyObject) {
-//        
-//        var storyboard = UIStoryboard(name: "profile", bundle: nil)
-//        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-//        
-//        self.presentViewController(controller, animated: false, completion: nil)
-//        
-//    }
+
 
 }

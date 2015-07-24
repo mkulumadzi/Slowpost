@@ -206,7 +206,7 @@
                                     <constraint firstAttribute="height" constant="30" id="8Ww-ay-6ji"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="qNd-F5-aPS" eventType="editingChanged" id="ODE-Kx-7cG"/>
                                 </connections>
@@ -228,7 +228,7 @@
                                     <constraint firstAttribute="height" constant="30" id="Ynu-5y-mCt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="qNd-F5-aPS" eventType="editingChanged" id="4nz-Y2-C3y"/>
                                 </connections>
@@ -250,7 +250,7 @@
                                     <constraint firstAttribute="height" constant="30" id="CGc-D6-Tgh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="qNd-F5-aPS" eventType="editingChanged" id="p9w-ST-OcR"/>
                                 </connections>
@@ -313,7 +313,7 @@
                                     <constraint firstAttribute="height" constant="30" id="5kW-RL-oto"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VBx-df-vma">
                                 <rect key="frame" x="30" y="88" width="540" height="30"/>
