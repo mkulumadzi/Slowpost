@@ -29,7 +29,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RKL-Qp-DiU">
-                                <rect key="frame" x="0.0" y="50" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="50" width="600" height="550"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MailCell" rowHeight="80" id="wvb-F7-Xxt" customClass="MailCell" customModule="Snailtale" customModuleProvider="target">
@@ -115,7 +115,7 @@
                             <constraint firstItem="7mS-85-LaA" firstAttribute="leading" secondItem="QUY-qP-gTk" secondAttribute="leading" id="1hE-dX-MU4"/>
                             <constraint firstItem="RKL-Qp-DiU" firstAttribute="top" secondItem="7mS-85-LaA" secondAttribute="bottom" id="Ayi-Gq-LKO"/>
                             <constraint firstItem="RKL-Qp-DiU" firstAttribute="top" secondItem="QUY-qP-gTk" secondAttribute="top" constant="45" id="OcX-P7-hk7"/>
-                            <constraint firstItem="9eH-L3-ARz" firstAttribute="top" secondItem="RKL-Qp-DiU" secondAttribute="bottom" constant="-50" id="eEw-y3-CLv"/>
+                            <constraint firstItem="9eH-L3-ARz" firstAttribute="top" secondItem="RKL-Qp-DiU" secondAttribute="bottom" id="eEw-y3-CLv"/>
                             <constraint firstItem="7mS-85-LaA" firstAttribute="top" secondItem="QUY-qP-gTk" secondAttribute="top" id="h9P-NG-bj2"/>
                             <constraint firstAttribute="trailing" secondItem="RKL-Qp-DiU" secondAttribute="trailing" id="kZr-00-xMA"/>
                             <constraint firstItem="9eH-L3-ARz" firstAttribute="top" secondItem="RKL-Qp-DiU" secondAttribute="bottom" constant="-40" id="kti-H6-nfI"/>

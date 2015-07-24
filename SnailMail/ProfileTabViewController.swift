@@ -1,14 +1,14 @@
 //
-//  ProfileTablViewController.swift
+//  ProfileTabViewController.swift
 //  Snailtale
 //
-//  Created by Evan Waters on 7/23/15.
+//  Created by Evan Waters on 7/24/15.
 //  Copyright (c) 2015 Evan Waters. All rights reserved.
 //
 
 import UIKit
 
-class ProfileTabViewController: UITabBarController {
+class ProfileTabPlaceholderViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +24,7 @@ class ProfileTabViewController: UITabBarController {
     }
     
     func showProfile() {
+        
         var storyboard = UIStoryboard(name: "profile", bundle: nil)
         var controller = storyboard.instantiateInitialViewController() as! UIViewController
         addChildViewController(controller)
@@ -31,7 +32,6 @@ class ProfileTabViewController: UITabBarController {
         controller.didMoveToParentViewController(self)
         
     }
-    
 
     /*
     // MARK: - Navigation

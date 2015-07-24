@@ -41,7 +41,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="550" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hQd-A0-PJc">
-                                <rect key="frame" x="0.0" y="50" width="600" height="620"/>
+                                <rect key="frame" x="0.0" y="50" width="600" height="570"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MailCell" rowHeight="550" id="OET-Qs-ejm" customClass="SentMailTableViewCell" customModule="Snailtale" customModuleProvider="target">
@@ -173,8 +173,14 @@
                             <constraint firstAttribute="trailing" secondItem="Px6-Ss-QJm" secondAttribute="trailing" id="GWE-cG-eYm"/>
                             <constraint firstAttribute="trailing" secondItem="hQd-A0-PJc" secondAttribute="trailing" id="OYv-x9-fbe"/>
                             <constraint firstItem="MA3-Gi-lBX" firstAttribute="top" secondItem="hQd-A0-PJc" secondAttribute="bottom" constant="-50" id="V1e-fH-G9g"/>
+                            <constraint firstAttribute="bottom" secondItem="hQd-A0-PJc" secondAttribute="bottom" id="euC-sE-vif"/>
                             <constraint firstItem="Px6-Ss-QJm" firstAttribute="top" secondItem="Bpi-cV-cz1" secondAttribute="top" id="nSF-rv-vTD"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="V1e-fH-G9g"/>
+                            </mask>
+                        </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="620"/>

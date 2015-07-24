@@ -1,19 +1,19 @@
 //
-//  ComposeTabViewController.swift
+//  MailboxTabPlaceholderViewController.swift
 //  Snailtale
 //
-//  Created by Evan Waters on 7/23/15.
+//  Created by Evan Waters on 7/24/15.
 //  Copyright (c) 2015 Evan Waters. All rights reserved.
 //
 
 import UIKit
 
-class ComposeTabViewController: UITabBarController {
+class MailboxTabPlaceholderViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        compose()
+        showMailbox()
 
         // Do any additional setup after loading the view.
     }
@@ -23,10 +23,14 @@ class ComposeTabViewController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-    func compose() {
-        var storyboard = UIStoryboard(name: "compose", bundle: nil)
-        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-        self.presentViewController(controller, animated: true, completion: nil)
+    func showMailbox() {
+        
+        var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
+        var controller = storyboard.instantiateInitialViewController() as! UIViewController
+        addChildViewController(controller)
+        view.addSubview(controller.view)
+        controller.didMoveToParentViewController(self)
+        
     }
     
 
