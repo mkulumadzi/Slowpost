@@ -13,15 +13,16 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     var outbox = [Mail]()
     
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var sentMailTable: UITableView!
+    @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var navBarTitle: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getOutbox()
         
-        nameLabel.text = loggedInUser.name
+        navBarTitle.title = loggedInUser.name
 
         // Do any additional setup after loading the view.
     }

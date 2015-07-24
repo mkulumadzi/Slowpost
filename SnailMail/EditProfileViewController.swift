@@ -11,14 +11,14 @@ import Alamofire
 
 class EditProfileViewController: UIViewController {
 
-    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var nameField: BottomBorderUITextField!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var phoneField: UITextField!
-    @IBOutlet weak var address1Field: UITextField!
-    @IBOutlet weak var cityField: UITextField!
-    @IBOutlet weak var stateField: UITextField!
-    @IBOutlet weak var zipField: UITextField!
+    @IBOutlet weak var phoneField: BottomBorderUITextField!
+    @IBOutlet weak var address1Field: BottomBorderUITextField!
+    @IBOutlet weak var cityField: BottomBorderUITextField!
+    @IBOutlet weak var stateField: BottomBorderUITextField!
+    @IBOutlet weak var zipField: BottomBorderUITextField!
     @IBOutlet weak var saveButton: SnailMailTextUIButton!
     
     override func viewDidLoad() {
@@ -32,6 +32,15 @@ class EditProfileViewController: UIViewController {
         cityField.text = loggedInUser.city
         stateField.text = loggedInUser.state
         zipField.text = loggedInUser.zip
+        
+        nameField.addBottomLayer()
+        phoneField.addBottomLayer()
+        address1Field.addBottomLayer()
+        cityField.addBottomLayer()
+        stateField.addBottomLayer()
+        zipField.addBottomLayer()
+        
+        saveButton.layer.cornerRadius = 5
         
         usernameField.enabled = false
         emailField.enabled = false

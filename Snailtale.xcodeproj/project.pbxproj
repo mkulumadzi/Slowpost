@@ -80,6 +80,7 @@
 		D25A9CA61B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C9B1B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf */; };
 		D25A9CAC1B225D3400ABBBA4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25A9CAB1B225D3400ABBBA4 /* RegisterViewController.swift */; };
 		D27DA3191B61B5D600DF32A1 /* ComposeTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DA3181B61B5D600DF32A1 /* ComposeTabViewController.swift */; };
+		D27DA31B1B61C8EE00DF32A1 /* settings-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D27DA31A1B61C8EE00DF32A1 /* settings-white.png */; };
 		D27E194E1B3B770C0052687F /* SnailMailModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D27E194C1B3B770C0052687F /* SnailMailModel.xcdatamodeld */; };
 		D2A361361B3CAC5D00811D14 /* SnailMailTextUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A361351B3CAC5D00811D14 /* SnailMailTextUIButton.swift */; };
 		D2A361381B3CB52B00811D14 /* WarningUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A361371B3CB52B00811D14 /* WarningUILabel.swift */; };
@@ -219,6 +220,7 @@
 		D25A9CAB1B225D3400ABBBA4 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D26B9F7FC8CA4A05A73C4557 /* Pods-Snailtale.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snailtale.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Snailtale/Pods-Snailtale.testing.xcconfig"; sourceTree = "<group>"; };
 		D27DA3181B61B5D600DF32A1 /* ComposeTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeTabViewController.swift; sourceTree = "<group>"; };
+		D27DA31A1B61C8EE00DF32A1 /* settings-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-white.png"; sourceTree = "<group>"; };
 		D27E194D1B3B770C0052687F /* SnailMailModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SnailMailModel.xcdatamodel; sourceTree = "<group>"; };
 		D2A361351B3CAC5D00811D14 /* SnailMailTextUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnailMailTextUIButton.swift; sourceTree = "<group>"; };
 		D2A361371B3CB52B00811D14 /* WarningUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarningUILabel.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				D21D79D61B5093490014510E /* ios7-checkmark.png */,
 				D2D866421B2F6FD500847051 /* ios7-contact-outline-light-yellow.png */,
 				D2D866401B2F6F7700847051 /* ios7-email-outline-light-yellow.png */,
+				D27DA31A1B61C8EE00DF32A1 /* settings-white.png */,
 				D2D8663C1B2F5F4A00847051 /* edit-grey.png */,
 				D2D866381B2F5DF900847051 /* log-out-white.png */,
 				D2D866361B2F5B8D00847051 /* log-out.png */,
@@ -719,6 +722,7 @@
 				D206FB511B618287008BB412 /* ios7-close-empty-white.png in Resources */,
 				D25A9C9D1B2259D300ABBBA4 /* OpenSans-Bold.ttf in Resources */,
 				D2D866351B2F5A7300847051 /* dancingBanana.gif in Resources */,
+				D27DA31B1B61C8EE00DF32A1 /* settings-white.png in Resources */,
 				D206FB431B615A3C008BB412 /* Quicksand-Italic.otf in Resources */,
 				D2E9565B1B30A8AC00CA8CC8 /* Fireworks.jpg in Resources */,
 				D20D8EDD1B2B384E00BBF6B5 /* edit.png in Resources */,
