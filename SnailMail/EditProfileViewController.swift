@@ -9,42 +9,56 @@
 import UIKit
 import Alamofire
 
-class EditProfileViewController: UIViewController {
+class EditProfileViewController: UITableViewController {
 
-    @IBOutlet weak var nameField: BottomBorderUITextField!
-    @IBOutlet weak var usernameField: UITextField!
-    @IBOutlet weak var emailField: UITextField!
-    @IBOutlet weak var phoneField: BottomBorderUITextField!
+//    @IBOutlet weak var nameField: BottomBorderUITextField!
+//    @IBOutlet weak var usernameField: UITextField!
+//    @IBOutlet weak var emailField: UITextField!
+//    @IBOutlet weak var phoneField: BottomBorderUITextField!
+//    @IBOutlet weak var address1Field: BottomBorderUITextField!
+//    @IBOutlet weak var cityField: BottomBorderUITextField!
+//    @IBOutlet weak var stateField: BottomBorderUITextField!
+//    @IBOutlet weak var zipField: BottomBorderUITextField!
+//    @IBOutlet weak var saveButton: SnailMailTextUIButton!
+
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var phoneField: UITextField!
     @IBOutlet weak var address1Field: BottomBorderUITextField!
     @IBOutlet weak var cityField: BottomBorderUITextField!
     @IBOutlet weak var stateField: BottomBorderUITextField!
-    @IBOutlet weak var zipField: BottomBorderUITextField!
-    @IBOutlet weak var saveButton: SnailMailTextUIButton!
+    @IBOutlet weak var zipField: UITextField!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet var profileTable: UITableView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navBar.frame.size = CGSize(width: navBar.frame.width, height: 50)
+        
         nameField.text = loggedInUser.name
-        usernameField.text = loggedInUser.username
-        emailField.text = loggedInUser.email
+        usernameLabel.text = loggedInUser.username
+        emailLabel.text = loggedInUser.email
         phoneField.text = loggedInUser.phone
         address1Field.text = loggedInUser.address1
         cityField.text = loggedInUser.city
         stateField.text = loggedInUser.state
         zipField.text = loggedInUser.zip
         
-        nameField.addBottomLayer()
-        phoneField.addBottomLayer()
         address1Field.addBottomLayer()
         cityField.addBottomLayer()
         stateField.addBottomLayer()
-        zipField.addBottomLayer()
         
-        saveButton.layer.cornerRadius = 5
+        var footerView = UIView(frame: CGRectZero)
+        profileTable.tableFooterView = footerView
+        profileTable.tableFooterView?.hidden = true
+        profileTable.backgroundColor = UIColor.whiteColor()
         
-        usernameField.enabled = false
-        emailField.enabled = false
-
+        
+        
         // Do any additional setup after loading the view.
     }
 
@@ -58,7 +72,7 @@ class EditProfileViewController: UIViewController {
     }
 
     @IBAction func saveEditedInfo(sender: AnyObject) {
-        saveButton.disable()
+        saveButton.enabled = false
         
         self.updatePerson( { (error, result) -> Void in
             if error != nil {
@@ -113,7 +127,7 @@ class EditProfileViewController: UIViewController {
     }
     
     @IBAction func editingChanged(sender: AnyObject) {
-        saveButton.enable()
+        saveButton.enabled = true
     }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {

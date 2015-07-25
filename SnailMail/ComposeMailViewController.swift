@@ -18,7 +18,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var imagePreview: UIImageView!
     @IBOutlet weak var composeText: UITextView!
-    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()

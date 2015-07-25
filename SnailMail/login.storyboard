@@ -45,7 +45,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="WLv-fW-fWb"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="5Lt-wu-z72" eventType="editingChanged" id="Vjf-60-bS5"/>
@@ -71,7 +71,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="U0h-Ue-2T7"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="5Lt-wu-z72" eventType="editingChanged" id="ugm-l4-h3A"/>
@@ -90,17 +90,11 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Slowpost" id="Km6-2i-74Z">
-                                        <barButtonItem key="leftBarButtonItem" id="vXO-51-B5L">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cWi-ax-j18">
-                                                <rect key="frame" x="16" y="-74" width="20" height="20"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="ios7-close-empty-white.png">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="cancel:" destination="5Lt-wu-z72" eventType="touchUpInside" id="fbJ-oE-yJe"/>
-                                                </connections>
-                                            </button>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="vXO-51-B5L">
+                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="cancel:" destination="5Lt-wu-z72" id="418-SM-XCD"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -303,7 +297,7 @@
                                     <constraint firstAttribute="height" constant="30" id="Sa5-ec-ezx"/>
                                 </constraints>
                                 <color key="textColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="Mvm-sb-IE6"/>
@@ -330,7 +324,7 @@
                                     <constraint firstAttribute="height" constant="30" id="dcm-H7-lcb"/>
                                 </constraints>
                                 <color key="textColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="QkX-L7-Q4L"/>
@@ -342,7 +336,7 @@
                                     <constraint firstAttribute="height" constant="30" id="Tco-OY-Y9H"/>
                                 </constraints>
                                 <color key="textColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="ssz-Wc-Wtv"/>
@@ -377,17 +371,11 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Slowpost" id="1cA-FW-AJV">
-                                        <barButtonItem key="leftBarButtonItem" style="done" id="Lta-SE-sv9">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="PTo-b4-bts">
-                                                <rect key="frame" x="16" y="16" width="20" height="20"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="ios7-close-empty-white.png">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="cancel:" destination="cqE-Qh-T2s" eventType="touchUpInside" id="eVA-bD-Fp5"/>
-                                                </connections>
-                                            </button>
+                                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="Lta-SE-sv9">
+                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="cancel:" destination="cqE-Qh-T2s" id="9Mu-Q8-3GO"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -398,7 +386,7 @@
                                     <constraint firstAttribute="height" constant="30" id="8Bh-bK-Y7I"/>
                                 </constraints>
                                 <color key="textColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="iJI-aC-uiu"/>
@@ -410,7 +398,7 @@
                                     <constraint firstAttribute="height" constant="30" id="ahi-kO-Ubb"/>
                                 </constraints>
                                 <color key="textColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="5kS-Sa-Hz4"/>
@@ -473,6 +461,5 @@
     </scenes>
     <resources>
         <image name="Slowpost Icon Set" width="150" height="95"/>
-        <image name="ios7-close-empty-white.png" width="192" height="192"/>
     </resources>
 </document>

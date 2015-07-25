@@ -20,7 +20,6 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
-            <string>OpenSans</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -286,18 +285,11 @@
                                                 </connections>
                                             </button>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="done" id="3xI-7B-GUV">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="t3s-A8-v4h">
-                                                <rect key="frame" x="544" y="14" width="60" height="24"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                                <state key="normal" title="Send">
-                                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="sendMail:" destination="uNW-RF-l3y" eventType="touchUpInside" id="AAH-Bo-FGp"/>
-                                                </connections>
-                                            </button>
+                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="3xI-7B-GUV">
+                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="sendMail:" destination="uNW-RF-l3y" id="GSU-xv-1iv"/>
+                                            </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -334,7 +326,7 @@
                     <navigationItem key="navigationItem" id="ZB5-Cb-qq3"/>
                     <connections>
                         <outlet property="composeText" destination="kiv-Wq-vjl" id="Gx8-pH-tKg"/>
-                        <outlet property="doneButton" destination="t3s-A8-v4h" id="hGc-Nr-M0R"/>
+                        <outlet property="doneButton" destination="3xI-7B-GUV" id="3d1-7W-qeb"/>
                         <outlet property="imagePreview" destination="huH-mK-UMT" id="FrZ-wP-cSx"/>
                         <outlet property="toLabel" destination="KiO-xd-bKI" id="UbM-XW-CnN"/>
                     </connections>
@@ -431,17 +423,11 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Recipient" id="ZOb-ek-B4u">
-                                        <barButtonItem key="leftBarButtonItem" style="done" id="Ngg-d4-tz8">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6Nz-W9-pWG">
-                                                <rect key="frame" x="16" y="14" width="20" height="20"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="ios7-close-empty-white.png">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="cancelButtonPressed:" destination="56L-ux-Lnu" eventType="touchUpInside" id="GAO-m3-Qry"/>
-                                                </connections>
-                                            </button>
+                                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="Ngg-d4-tz8">
+                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="cancelButtonPressed:" destination="56L-ux-Lnu" id="yPD-K5-p7T"/>
+                                            </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="done" id="cUA-ml-ZSf">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6ba-y5-t0Z">
@@ -494,6 +480,5 @@
         <image name="ios7-arrow-left-white.png" width="192" height="320"/>
         <image name="ios7-arrow-right-white.png" width="192" height="320"/>
         <image name="ios7-checkmark-not-checked.png" width="512" height="512"/>
-        <image name="ios7-close-empty-white.png" width="192" height="192"/>
     </resources>
 </document>
