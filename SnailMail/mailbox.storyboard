@@ -140,21 +140,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uqQ-le-jNV">
-                                <rect key="frame" x="0.0" y="48" width="600" height="448"/>
+                                <rect key="frame" x="0.0" y="60" width="600" height="448"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="uqQ-le-jNV" secondAttribute="height" multiplier="75:56" id="20O-CK-c7i"/>
                                 </constraints>
                             </imageView>
                             <textView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" indicatorStyle="black" editable="NO" text="Message content" translatesAutoresizingMaskIntoConstraints="NO" id="KhT-xO-PoX">
-                                <rect key="frame" x="0.0" y="496" width="600" height="104"/>
+                                <rect key="frame" x="0.0" y="508" width="600" height="92"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kaI-lE-wHl">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="48"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="48" id="DAq-ug-1Rm"/>
+                                    <constraint firstAttribute="height" constant="60" id="DAq-ug-1Rm"/>
                                 </constraints>
                                 <color key="barTintColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>

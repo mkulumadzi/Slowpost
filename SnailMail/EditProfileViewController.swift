@@ -120,7 +120,9 @@ class EditProfileViewController: UITableViewController {
         if segue.identifier == "updateSucceeded" {
             let viewProfileViewController = segue.destinationViewController as? ViewProfileViewController
             viewProfileViewController!.messageLabel.show("Profile updated")
-            viewProfileViewController!.navBarTitle.title = loggedInUser.name
+            
+            viewProfileViewController!.nameLabel.text = loggedInUser.name
+            viewProfileViewController!.phoneLabel.text = loggedInUser.phone
             
             // Delay the dismissal by 5 seconds
             let delay = 5.0 * Double(NSEC_PER_SEC)

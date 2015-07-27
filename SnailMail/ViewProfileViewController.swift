@@ -17,6 +17,16 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var navBarTitle: UINavigationItem!
     @IBOutlet weak var messageLabel: MessageUILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
+        
+        return refreshControl
+        }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +34,12 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         
         getOutbox()
         
-        navBarTitle.title = loggedInUser.name
+        navBarTitle.title = "@" + loggedInUser.username
+        nameLabel.text = loggedInUser.name
+        emailLabel.text = loggedInUser.email
+        phoneLabel.text = loggedInUser.phone
+        
+        sentMailTable.addSubview(self.refreshControl)
 
         // Do any additional setup after loading the view.
     }
@@ -51,6 +66,12 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         })
     }
     
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        getOutbox()
+        refreshControl.endRefreshing()
+    }
+    
     func configureTableView() {
         sentMailTable.rowHeight = UITableViewAutomaticDimension
         sentMailTable.estimatedRowHeight = 370
@@ -58,6 +79,10 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Sent mail"
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
