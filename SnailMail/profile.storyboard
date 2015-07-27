@@ -603,7 +603,7 @@
                                 <color key="textColor" red="0.49803921568627452" green="0.47843137254901963" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mypassword" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qhC-pq-8tB" userLabel="existingPaswordField" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mypassword" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qhC-pq-8tB" userLabel="existingPaswordField" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
                                 <rect key="frame" x="150" y="90" width="420" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="P7a-ep-2pV"/>
@@ -615,7 +615,7 @@
                                     <action selector="editingChanged:" destination="2wN-E9-xpW" eventType="editingChanged" id="7Rn-KQ-aKD"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mynewpassword" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ScW-2K-Gmx" userLabel="newPasswordField" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mynewpassword" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ScW-2K-Gmx" userLabel="newPasswordField" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
                                 <rect key="frame" x="150" y="150" width="420" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Sfe-uT-Llv"/>
@@ -633,7 +633,7 @@
                                     <action selector="editingChanged:" destination="2wN-E9-xpW" eventType="editingChanged" id="ZQB-Cz-uT2"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mynewpassword" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8eW-7Z-16t" userLabel="confirmPasswordField" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mynewpassword" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8eW-7Z-16t" userLabel="confirmPasswordField" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
                                 <rect key="frame" x="150" y="190" width="420" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="GN7-jF-k1M"/>
