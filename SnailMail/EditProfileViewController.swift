@@ -27,7 +27,7 @@ class EditProfileViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navBar.frame.size = CGSize(width: navBar.frame.width, height: 50)
+        navBar.frame.size = CGSize(width: navBar.frame.width, height: 60)
         
         nameField.text = loggedInUser.name
         usernameLabel.text = loggedInUser.username
