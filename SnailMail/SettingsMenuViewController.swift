@@ -13,6 +13,7 @@ class SettingsMenuViewController: UIViewController {
     
     @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var editProfileButton: UIButton!
+    @IBOutlet weak var editPasswordButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     
 
@@ -21,6 +22,7 @@ class SettingsMenuViewController: UIViewController {
         
         logOutButton.layer.cornerRadius = 5
         editProfileButton.layer.cornerRadius = 5
+        editPasswordButton.layer.cornerRadius = 5
         cancelButton.layer.cornerRadius = 5
         
 
@@ -64,12 +66,6 @@ class SettingsMenuViewController: UIViewController {
         }
         
     }
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-//        if segue.identifier == "editProfile" {
-//            self.dismissViewControllerAnimated(true, completion: {})
-//        }
-//    }
     
     /*
     // MARK: - Navigation

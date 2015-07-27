@@ -297,6 +297,35 @@ class DataManager {
         
     }
     
+    class func resetPassword(person: Person, parameters: [String: String], completion: (error: NSError?, result: AnyObject?) -> Void) {
+        
+        let resetPasswordURL = "\(PostOfficeURL)/person/id/\(person.id)/reset_password"
+        
+        Alamofire.request(.POST, resetPasswordURL, parameters: parameters, encoding: .JSON)
+            .response { (request, response, data, error) in
+                if let anError = error {
+                    println(error)
+                    completion(error: error, result: nil)
+                }
+                else if let response: AnyObject = response {
+                    if response.statusCode == 204 {
+                        completion(error: nil, result: "Success")
+                    }
+                }
+            }
+            .responseJSON { (_, _, JSON, error) in
+                if let response_body = JSON as? NSDictionary {
+                    if let error_message = response_body["message"] as? String {
+                        completion(error: nil, result: ["Failure", error_message])
+                    }
+                    else {
+                        println("No error message")
+                    }
+                }
+        }
+        
+    }
+    
     class func readMail(mail: Mail, completion: (error: NSError?, result: AnyObject?) -> Void) {
         
         let readMailURL = "\(PostOfficeURL)/mail/id/\(mail.id)/read"

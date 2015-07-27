@@ -11,16 +11,6 @@ import Alamofire
 
 class EditProfileViewController: UITableViewController {
 
-//    @IBOutlet weak var nameField: BottomBorderUITextField!
-//    @IBOutlet weak var usernameField: UITextField!
-//    @IBOutlet weak var emailField: UITextField!
-//    @IBOutlet weak var phoneField: BottomBorderUITextField!
-//    @IBOutlet weak var address1Field: BottomBorderUITextField!
-//    @IBOutlet weak var cityField: BottomBorderUITextField!
-//    @IBOutlet weak var stateField: BottomBorderUITextField!
-//    @IBOutlet weak var zipField: BottomBorderUITextField!
-//    @IBOutlet weak var saveButton: SnailMailTextUIButton!
-
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var nameField: UITextField!
@@ -65,10 +55,6 @@ class EditProfileViewController: UITableViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func Cancel(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: {})
     }
 
     @IBAction func saveEditedInfo(sender: AnyObject) {
