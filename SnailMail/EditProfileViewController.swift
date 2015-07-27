@@ -100,12 +100,7 @@ class EditProfileViewController: UITableViewController {
             if result != nil {
                 if let user = result as? Person {
                     loggedInUser = user
-                    
-                    var storyboard = UIStoryboard(name: "home", bundle: nil)
-                    var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-                    self.presentViewController(controller, animated: true, completion: nil)
-                    
-                    
+                    self.performSegueWithIdentifier("updateSucceeded", sender: nil)
                 }
             }
         })
@@ -119,5 +114,20 @@ class EditProfileViewController: UITableViewController {
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "updateSucceeded" {
+            let viewProfileViewController = segue.destinationViewController as? ViewProfileViewController
+            viewProfileViewController!.messageLabel.show("Profile updated")
+            viewProfileViewController!.navBarTitle.title = loggedInUser.name
+            
+            // Delay the dismissal by 5 seconds
+            let delay = 5.0 * Double(NSEC_PER_SEC)
+            var time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+            dispatch_after(time, dispatch_get_main_queue(), {
+                viewProfileViewController!.messageLabel.hide()
+            })
+        }
     }
 }

@@ -531,6 +531,7 @@
                         <outlet property="stateField" destination="VjS-Hh-x50" id="yuL-gE-fCg"/>
                         <outlet property="usernameLabel" destination="bSL-Ax-Cu3" id="qpD-CG-lux"/>
                         <outlet property="zipField" destination="NFJ-Uc-HPP" id="uhq-aX-UZo"/>
+                        <segue destination="y62-To-gbB" kind="unwind" identifier="updateSucceeded" unwindAction="completeEditingAndReturnToProfileViewController:" id="9IO-3g-Jyq"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="du7-xU-ecQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
