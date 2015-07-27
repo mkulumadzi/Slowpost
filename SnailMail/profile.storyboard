@@ -34,6 +34,7 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -180,17 +181,30 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="messageLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oO-24-LFG" customClass="MessageUILabel" customModule="Snailtale" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="590" width="600" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47058823529411764" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="CmI-bV-qek"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="1oO-24-LFG" firstAttribute="leading" secondItem="Bpi-cV-cz1" secondAttribute="leading" id="6Kf-Nn-RUH"/>
                             <constraint firstItem="hQd-A0-PJc" firstAttribute="leading" secondItem="Bpi-cV-cz1" secondAttribute="leading" id="6TU-m7-5gN"/>
                             <constraint firstItem="hQd-A0-PJc" firstAttribute="top" secondItem="Px6-Ss-QJm" secondAttribute="bottom" id="6Z8-Sc-e58"/>
+                            <constraint firstItem="MA3-Gi-lBX" firstAttribute="top" secondItem="1oO-24-LFG" secondAttribute="bottom" id="8KY-nc-e3h"/>
                             <constraint firstItem="Px6-Ss-QJm" firstAttribute="leading" secondItem="Bpi-cV-cz1" secondAttribute="leading" id="9cE-zW-Aot"/>
                             <constraint firstAttribute="trailing" secondItem="Px6-Ss-QJm" secondAttribute="trailing" id="GWE-cG-eYm"/>
                             <constraint firstAttribute="trailing" secondItem="hQd-A0-PJc" secondAttribute="trailing" id="OYv-x9-fbe"/>
                             <constraint firstItem="MA3-Gi-lBX" firstAttribute="top" secondItem="hQd-A0-PJc" secondAttribute="bottom" constant="-50" id="V1e-fH-G9g"/>
                             <constraint firstAttribute="bottom" secondItem="hQd-A0-PJc" secondAttribute="bottom" id="euC-sE-vif"/>
                             <constraint firstItem="Px6-Ss-QJm" firstAttribute="top" secondItem="Bpi-cV-cz1" secondAttribute="top" id="nSF-rv-vTD"/>
+                            <constraint firstAttribute="trailing" secondItem="1oO-24-LFG" secondAttribute="trailing" id="v9X-Xj-X9q"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -201,6 +215,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="620"/>
                     <connections>
+                        <outlet property="messageLabel" destination="1oO-24-LFG" id="YL0-pp-FaH"/>
                         <outlet property="navBar" destination="Px6-Ss-QJm" id="owt-kg-YL3"/>
                         <outlet property="navBarTitle" destination="mpB-Gv-GfZ" id="vdd-kP-4H5"/>
                         <outlet property="sentMailTable" destination="hQd-A0-PJc" id="xEu-V5-sfb"/>
@@ -587,7 +602,7 @@
                                 <color key="textColor" red="0.49803921568627452" green="0.47843137254901963" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qhC-pq-8tB" userLabel="existingPaswordField" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mypassword" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qhC-pq-8tB" userLabel="existingPaswordField" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
                                 <rect key="frame" x="150" y="90" width="420" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="P7a-ep-2pV"/>
@@ -599,7 +614,7 @@
                                     <action selector="editingChanged:" destination="2wN-E9-xpW" eventType="editingChanged" id="7Rn-KQ-aKD"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ScW-2K-Gmx" userLabel="newPasswordField" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mynewpassword" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ScW-2K-Gmx" userLabel="newPasswordField" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
                                 <rect key="frame" x="150" y="150" width="420" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Sfe-uT-Llv"/>
@@ -617,7 +632,7 @@
                                     <action selector="editingChanged:" destination="2wN-E9-xpW" eventType="editingChanged" id="ZQB-Cz-uT2"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8eW-7Z-16t" userLabel="confirmPasswordField" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mynewpassword" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8eW-7Z-16t" userLabel="confirmPasswordField" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
                                 <rect key="frame" x="150" y="190" width="420" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="GN7-jF-k1M"/>
@@ -698,6 +713,7 @@
                         <outlet property="newPasswordField" destination="ScW-2K-Gmx" id="d1O-Lf-FuB"/>
                         <outlet property="saveButton" destination="Ipt-Jg-bUa" id="lG6-sJ-Kym"/>
                         <outlet property="warningLabel" destination="vfE-Ha-GAR" id="SxR-FM-9JL"/>
+                        <segue destination="KxZ-u6-Wnh" kind="unwind" identifier="passwordChanged" unwindAction="completeEditingAndReturnToProfileViewController:" id="iTN-bg-96T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDC-Nt-hdU" userLabel="First Responder" sceneMemberID="firstResponder"/>

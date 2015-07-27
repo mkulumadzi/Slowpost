@@ -1,14 +1,14 @@
 //
-//  WarningUILabel.swift
-//  SnailMail
+//  MessageUILabel.swift
+//  Snailtale
 //
-//  Created by Evan Waters on 6/25/15.
+//  Created by Evan Waters on 7/27/15.
 //  Copyright (c) 2015 Evan Waters. All rights reserved.
 //
 
 import UIKit
 
-class WarningUILabel: UILabel {
+class MessageUILabel: UILabel {
 
     /*
     // Only override drawRect: if you perform custom drawing.
@@ -17,7 +17,7 @@ class WarningUILabel: UILabel {
         // Drawing code
     }
     */
-    
+
     func hide() {
         self.text = ""
         self.backgroundColor = UIColor.clearColor()
@@ -26,7 +26,6 @@ class WarningUILabel: UILabel {
     
     func show(message: String) {
         self.text = message
-        self.backgroundColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
+        self.backgroundColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
     }
-    
 }

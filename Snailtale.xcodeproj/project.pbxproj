@@ -66,6 +66,7 @@
 		D27DA3251B62C04E00DF32A1 /* ComposeTabPlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DA3241B62C04E00DF32A1 /* ComposeTabPlaceholderViewController.swift */; };
 		D27DA3291B62E7BC00DF32A1 /* SettingsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DA3281B62E7BC00DF32A1 /* SettingsMenuViewController.swift */; };
 		D27DA32B1B66B74800DF32A1 /* EditPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DA32A1B66B74800DF32A1 /* EditPasswordViewController.swift */; };
+		D27DA32D1B66C51900DF32A1 /* MessageUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DA32C1B66C51900DF32A1 /* MessageUILabel.swift */; };
 		D27E194E1B3B770C0052687F /* SnailMailModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D27E194C1B3B770C0052687F /* SnailMailModel.xcdatamodeld */; };
 		D2A361361B3CAC5D00811D14 /* SnailMailTextUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A361351B3CAC5D00811D14 /* SnailMailTextUIButton.swift */; };
 		D2A361381B3CB52B00811D14 /* WarningUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A361371B3CB52B00811D14 /* WarningUILabel.swift */; };
@@ -183,6 +184,7 @@
 		D27DA3241B62C04E00DF32A1 /* ComposeTabPlaceholderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeTabPlaceholderViewController.swift; sourceTree = "<group>"; };
 		D27DA3281B62E7BC00DF32A1 /* SettingsMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsMenuViewController.swift; sourceTree = "<group>"; };
 		D27DA32A1B66B74800DF32A1 /* EditPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPasswordViewController.swift; sourceTree = "<group>"; };
+		D27DA32C1B66C51900DF32A1 /* MessageUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageUILabel.swift; sourceTree = "<group>"; };
 		D27E194D1B3B770C0052687F /* SnailMailModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SnailMailModel.xcdatamodel; sourceTree = "<group>"; };
 		D2A361351B3CAC5D00811D14 /* SnailMailTextUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnailMailTextUIButton.swift; sourceTree = "<group>"; };
 		D2A361371B3CB52B00811D14 /* WarningUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarningUILabel.swift; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 				D2A361351B3CAC5D00811D14 /* SnailMailTextUIButton.swift */,
 				D2A361371B3CB52B00811D14 /* WarningUILabel.swift */,
 				D206FB4E1B617504008BB412 /* BottomBorderUITextField.swift */,
+				D27DA32C1B66C51900DF32A1 /* MessageUILabel.swift */,
 			);
 			name = Customizations;
 			sourceTree = "<group>";
@@ -745,6 +748,7 @@
 				CCCB1A751AB0D87F0067F100 /* Person.swift in Sources */,
 				CC96E4A01ABCCBF2001E6D27 /* LogInViewController.swift in Sources */,
 				D2A361381B3CB52B00811D14 /* WarningUILabel.swift in Sources */,
+				D27DA32D1B66C51900DF32A1 /* MessageUILabel.swift in Sources */,
 				D2E9564A1B309AA100CA8CC8 /* CardCollectionViewCell.swift in Sources */,
 				D20D8ED41B2A510700BBF6B5 /* ToViewController.swift in Sources */,
 				D27DA3291B62E7BC00DF32A1 /* SettingsMenuViewController.swift in Sources */,

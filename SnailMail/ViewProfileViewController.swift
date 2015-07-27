@@ -16,9 +16,11 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var sentMailTable: UITableView!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var navBarTitle: UINavigationItem!
+    @IBOutlet weak var messageLabel: MessageUILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        messageLabel.hide()
         
         getOutbox()
         
@@ -96,6 +98,9 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func cancelFromSettingsMenuToProfileViewController(segue:UIStoryboardSegue) {
+    }
+    
+    @IBAction func completeEditingAndReturnToProfileViewController(segue:UIStoryboardSegue) {
     }
 
 }
