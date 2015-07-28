@@ -15,7 +15,6 @@ class SettingsMenuViewController: UIViewController {
     @IBOutlet weak var editProfileButton: UIButton!
     @IBOutlet weak var editPasswordButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +24,6 @@ class SettingsMenuViewController: UIViewController {
         editPasswordButton.layer.cornerRadius = 5
         cancelButton.layer.cornerRadius = 5
         
-
         // Do any additional setup after loading the view.
     }
 

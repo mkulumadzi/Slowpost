@@ -16,7 +16,7 @@ class SentMailTableViewCell: UITableViewCell {
     @IBOutlet weak var cardImage: UIImageView!
     @IBOutlet weak var toName: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var mailContent: UILabel!
+//    @IBOutlet weak var mailContent: UILabel!
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -33,7 +33,7 @@ class SentMailTableViewCell: UITableViewCell {
         }
         
         statusLabel.text = "\(mail.status.capitalizedString) on \(updated)"
-        mailContent.text = mail.content
+//        mailContent.text = mail.content
     }
 
     override func awakeFromNib() {

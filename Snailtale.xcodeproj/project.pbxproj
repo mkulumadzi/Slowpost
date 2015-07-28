@@ -74,6 +74,7 @@
 		D2B651E31B38711E00134C23 /* SnailMail Closeup.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B651E21B38711E00134C23 /* SnailMail Closeup.png */; };
 		D2B651E51B38712900134C23 /* Default Card.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B651E41B38712900134C23 /* Default Card.png */; };
 		D2B651E71B38827100134C23 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B651E61B38827100134C23 /* Extensions.swift */; };
+		D2B7CEA01B66E87E007F8235 /* SentMailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7CE9F1B66E87E007F8235 /* SentMailDetailViewController.swift */; };
 		D2C071061B3A3E99000154E8 /* Configurations.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2C071051B3A3E99000154E8 /* Configurations.plist */; };
 		D2D866261B2F4AF800847051 /* ios7-person-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866251B2F4AF800847051 /* ios7-person-outline.png */; };
 		D2D8662A1B2F4B7F00847051 /* ios7-contact-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */; };
@@ -192,6 +193,7 @@
 		D2B651E21B38711E00134C23 /* SnailMail Closeup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnailMail Closeup.png"; sourceTree = "<group>"; };
 		D2B651E41B38712900134C23 /* Default Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default Card.png"; sourceTree = "<group>"; };
 		D2B651E61B38827100134C23 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D2B7CE9F1B66E87E007F8235 /* SentMailDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMailDetailViewController.swift; sourceTree = "<group>"; };
 		D2C071051B3A3E99000154E8 /* Configurations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configurations.plist; sourceTree = "<group>"; };
 		D2D866251B2F4AF800847051 /* ios7-person-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-person-outline.png"; sourceTree = "<group>"; };
 		D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-contact-outline.png"; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 				D2B651AC1B31411C00134C23 /* SentMailTableViewCell.swift */,
 				D27DA3281B62E7BC00DF32A1 /* SettingsMenuViewController.swift */,
 				D27DA32A1B66B74800DF32A1 /* EditPasswordViewController.swift */,
+				D2B7CE9F1B66E87E007F8235 /* SentMailDetailViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -761,6 +764,7 @@
 				D27E194E1B3B770C0052687F /* SnailMailModel.xcdatamodeld in Sources */,
 				CC96E49C1ABCC8EB001E6D27 /* InitialViewController.swift in Sources */,
 				CCCB1A531AB0D48A0067F100 /* AppDelegate.swift in Sources */,
+				D2B7CEA01B66E87E007F8235 /* SentMailDetailViewController.swift in Sources */,
 				CC96E4AF1AC0876D001E6D27 /* MailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

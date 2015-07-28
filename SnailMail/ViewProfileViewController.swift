@@ -24,7 +24,6 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
-        
         return refreshControl
         }()
     
@@ -61,7 +60,7 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
             else if let mailArray = result as? Array<Mail> {
                 self.outbox = mailArray.sorted { $0.updatedAt.compare($1.updatedAt) == NSComparisonResult.OrderedDescending }
                 self.sentMailTable.reloadData()
-                self.configureTableView()
+//                self.configureTableView()
             }
         })
     }
@@ -72,10 +71,10 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         refreshControl.endRefreshing()
     }
     
-    func configureTableView() {
-        sentMailTable.rowHeight = UITableViewAutomaticDimension
-        sentMailTable.estimatedRowHeight = 370
-    }
+//    func configureTableView() {
+//        sentMailTable.rowHeight = UITableViewAutomaticDimension
+//        sentMailTable.estimatedRowHeight = 370
+//    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -105,9 +104,9 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
+//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return UITableViewAutomaticDimension
+//    }
     
     func getImage(mail: Mail) -> UIImage {
         if mail.image != nil {
@@ -122,7 +121,16 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         self.performSegueWithIdentifier("showSettingsMenu", sender: nil)
     }
     
-    @IBAction func cancelFromSettingsMenuToProfileViewController(segue:UIStoryboardSegue) {
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "viewSentMail" {
+            let sentMailDetailViewController = segue.destinationViewController as? SentMailDetailViewController
+            if let mailCell = sender as? SentMailTableViewCell {
+                sentMailDetailViewController!.mail = mailCell.mail
+            }
+        }
+    }
+    
+    @IBAction func cancelToProfileViewController(segue:UIStoryboardSegue) {
     }
     
     @IBAction func completeEditingAndReturnToProfileViewController(segue:UIStoryboardSegue) {
