@@ -8,6 +8,7 @@
     <customFonts key="customFonts">
         <mutableArray key="OpenSans-LightItalic.ttf">
             <string>OpenSansLight-Italic</string>
+            <string>OpenSansLight-Italic</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
@@ -36,9 +37,9 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
-            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
@@ -206,13 +207,13 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="emailLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyV-zQ-seR">
                                 <rect key="frame" x="10" y="114" width="560" height="21"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="phoneLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mbf-1T-Jxk">
                                 <rect key="frame" x="10" y="135" width="560" height="21"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -918,13 +919,12 @@
                                     <color key="textColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </textAttributes>
                                 <items>
-                                    <navigationItem title="To Person" id="jpP-gk-NIf">
+                                    <navigationItem id="jpP-gk-NIf">
                                         <barButtonItem key="leftBarButtonItem" id="z7U-Tc-D6B">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ata-ZV-WpY">
-                                                <rect key="frame" x="16" y="23" width="50" height="30"/>
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ata-ZV-WpY">
+                                                <rect key="frame" x="16" y="-58" width="20" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                                <state key="normal" title="Close">
+                                                <state key="normal" image="ios7-close-empty-gray.png">
                                                     <color key="titleColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -946,25 +946,45 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mailContent" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1H-fV-Khy">
-                                        <rect key="frame" x="10" y="460" width="580" height="24"/>
-                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                        <rect key="frame" x="10" y="515" width="580" height="21"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                         <color key="textColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="toLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAO-1t-QKe">
+                                        <rect key="frame" x="10" y="460" width="580" height="24"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                                        <color key="textColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="statusLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RyX-Df-pMH">
+                                        <rect key="frame" x="10" y="484" width="580" height="21"/>
+                                        <fontDescription key="fontDescription" name="OpenSansLight-Italic" family="Open Sans" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Iif-34-G8s" firstAttribute="top" secondItem="Xds-JM-gfX" secondAttribute="top" id="7CD-5p-3iE"/>
                                     <constraint firstAttribute="bottom" secondItem="L1H-fV-Khy" secondAttribute="bottom" constant="10" id="9jt-UE-sWv"/>
+                                    <constraint firstItem="RyX-Df-pMH" firstAttribute="leading" secondItem="Xds-JM-gfX" secondAttribute="leading" constant="10" id="MNY-bc-y4W"/>
+                                    <constraint firstAttribute="trailing" secondItem="RyX-Df-pMH" secondAttribute="trailing" constant="10" id="VMF-Fp-vAh"/>
                                     <constraint firstAttribute="bottom" secondItem="Iif-34-G8s" secondAttribute="bottom" id="Ynv-wi-pNe"/>
+                                    <constraint firstItem="L1H-fV-Khy" firstAttribute="top" secondItem="RyX-Df-pMH" secondAttribute="bottom" constant="10" id="Yxz-jZ-Kkg"/>
                                     <constraint firstItem="L1H-fV-Khy" firstAttribute="leading" secondItem="Xds-JM-gfX" secondAttribute="leading" constant="10" id="a5q-yW-yLB"/>
+                                    <constraint firstItem="sAO-1t-QKe" firstAttribute="leading" secondItem="Xds-JM-gfX" secondAttribute="leading" constant="10" id="hbf-nG-gHc"/>
                                     <constraint firstAttribute="trailing" secondItem="L1H-fV-Khy" secondAttribute="trailing" constant="10" id="hhM-2j-iTC"/>
+                                    <constraint firstAttribute="trailing" secondItem="sAO-1t-QKe" secondAttribute="trailing" constant="10" id="i0B-8W-j2w"/>
+                                    <constraint firstItem="sAO-1t-QKe" firstAttribute="top" secondItem="Iif-34-G8s" secondAttribute="bottom" constant="10" id="oVQ-2B-iYe"/>
                                     <constraint firstAttribute="trailing" secondItem="Iif-34-G8s" secondAttribute="trailing" id="vCv-9Q-83J"/>
-                                    <constraint firstItem="L1H-fV-Khy" firstAttribute="top" secondItem="Iif-34-G8s" secondAttribute="bottom" constant="10" id="zAr-H1-Awk"/>
+                                    <constraint firstItem="RyX-Df-pMH" firstAttribute="top" secondItem="sAO-1t-QKe" secondAttribute="bottom" id="xv6-zt-4e5"/>
+                                    <constraint firstItem="L1H-fV-Khy" firstAttribute="top" secondItem="Iif-34-G8s" secondAttribute="bottom" constant="80" id="zAr-H1-Awk"/>
                                     <constraint firstItem="Iif-34-G8s" firstAttribute="leading" secondItem="Xds-JM-gfX" secondAttribute="leading" id="zsd-sd-1Bt"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="Ynv-wi-pNe"/>
+                                        <exclude reference="zAr-H1-Awk"/>
                                     </mask>
                                 </variation>
                             </scrollView>
@@ -994,6 +1014,8 @@
                         <outlet property="mailImage" destination="Iif-34-G8s" id="ja9-0A-0aa"/>
                         <outlet property="navBar" destination="Mwa-l9-odN" id="vK0-Jz-pyM"/>
                         <outlet property="navBarTitle" destination="jpP-gk-NIf" id="UcO-8y-G2C"/>
+                        <outlet property="statusLabel" destination="RyX-Df-pMH" id="HUI-hD-zjL"/>
+                        <outlet property="toLabel" destination="sAO-1t-QKe" id="50C-7a-eaa"/>
                         <segue destination="RQK-eD-DlE" kind="unwind" identifier="closeView" unwindAction="cancelToProfileViewController:" id="YYO-hi-A0K"/>
                     </connections>
                 </viewController>
@@ -1004,6 +1026,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ios7-close-empty-gray.png" width="192" height="192"/>
         <image name="settings-white.png" width="512" height="512"/>
     </resources>
 </document>

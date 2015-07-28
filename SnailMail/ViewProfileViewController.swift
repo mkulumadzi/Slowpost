@@ -60,7 +60,6 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
             else if let mailArray = result as? Array<Mail> {
                 self.outbox = mailArray.sorted { $0.updatedAt.compare($1.updatedAt) == NSComparisonResult.OrderedDescending }
                 self.sentMailTable.reloadData()
-//                self.configureTableView()
             }
         })
     }
@@ -70,11 +69,6 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         getOutbox()
         refreshControl.endRefreshing()
     }
-    
-//    func configureTableView() {
-//        sentMailTable.rowHeight = UITableViewAutomaticDimension
-//        sentMailTable.estimatedRowHeight = 370
-//    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -104,10 +98,6 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     
-//    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return UITableViewAutomaticDimension
-//    }
-    
     func getImage(mail: Mail) -> UIImage {
         if mail.image != nil {
             if let image = UIImage(named: mail.image) {
@@ -126,6 +116,7 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
             let sentMailDetailViewController = segue.destinationViewController as? SentMailDetailViewController
             if let mailCell = sender as? SentMailTableViewCell {
                 sentMailDetailViewController!.mail = mailCell.mail
+                sentMailDetailViewController!.toPerson = mailCell.person
             }
         }
     }

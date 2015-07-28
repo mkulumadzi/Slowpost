@@ -17,12 +17,17 @@ class SentMailDetailViewController: UIViewController {
     @IBOutlet weak var navBarTitle: UINavigationItem!
     @IBOutlet weak var mailContent: UILabel!
     @IBOutlet weak var mailImage: UIImageView!
+    @IBOutlet weak var toLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mailContent.text = mail.content
         mailImage.image = getImage()
+        mailContent.text = mail.content
+        toLabel.text = "To: " + toPerson.name
+        statusLabel.text = mail.status
+
 
         // Do any additional setup after loading the view.
     }
