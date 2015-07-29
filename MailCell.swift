@@ -10,14 +10,9 @@ import UIKit
 
 class MailCell: UITableViewCell {
 
-
-//    @IBOutlet weak var fromLabel: UILabel!
-//    @IBOutlet weak var mailImage: UIImageView!
-//    @IBOutlet weak var arrivalLabel: UILabel!
     @IBOutlet weak var fromLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var mailImage: UIImageView!
-    
     
     var mail:Mail!
     var from:Person!
@@ -50,10 +45,8 @@ class MailCell: UITableViewCell {
     func setStyleBasedOnMailStatus() {
         switch mail.status {
             case "DELIVERED":
-//                fromLabel.font = UIFont (name: "OpenSans-Semibold", size: 17)
                 fromLabel.textColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
             default:
-//                fromLabel.font = UIFont (name: "OpenSans-Light", size: 17)
                 fromLabel.textColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
         }
     }

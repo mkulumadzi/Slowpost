@@ -31,12 +31,6 @@ class SettingsMenuViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-//    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
-//        self.dismissViewControllerAnimated(true, completion: {})
-//        super.touchesBegan(touches, withEvent: event)
-//    }
-    
 
     @IBAction func logOut(sender: AnyObject) {
         deleteSession()

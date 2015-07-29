@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Alamofire
-
 
 class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
@@ -49,8 +47,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         excludePenpalsFromContactsList()
         
         if self.toSearchField.text.isEmpty == false {
-            
-//            toUsername = self.toSearchField.text
             
             var newPenpalArray:[Person] = penpalList.filter() {
                 self.listMatches(self.toSearchField.text, inString: $0.username).count >= 1 || self.listMatches(self.toSearchField.text, inString: $0.name).count >= 1

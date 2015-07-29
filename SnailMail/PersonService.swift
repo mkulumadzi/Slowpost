@@ -51,24 +51,6 @@ class PersonService {
         })
         
     }
-
-//    class func updatePerson(person: Person, parameters: [String: String], completion: (error: NSError?, result: AnyObject?) -> Void) {
-//        
-//        let updatePersonURL = "\(PostOfficeURL)/person/id/\(person.id)"
-//        
-//        Alamofire.request(.POST, updatePersonURL, parameters: parameters, encoding: .JSON)
-//            .response { (request, response, data, error) in
-//                if let anError = error {
-//                    println(error)
-//                    completion(error: error, result: nil)
-//                }
-//                else if let response: AnyObject = response {
-//                    if response.statusCode == 204 {
-//                        completion(error: nil, result: "Update succeeded")
-//                    }
-//                }
-//        }
-//    }
     
     class func getPeopleCollection(collectionURL: String, completion: (error: NSError?, result: AnyObject?) -> Void) {
         RestService.getRequest(collectionURL, completion: { (error, result) -> Void in

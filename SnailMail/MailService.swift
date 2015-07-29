@@ -71,39 +71,4 @@ class MailService {
         })
     }
     
-    class func readMail(mail: Mail, completion: (error: NSError?, result: AnyObject?) -> Void) {
-        
-        let readMailURL = "\(PostOfficeURL)/mail/id/\(mail.id)/read"
-        
-        Alamofire.request(.POST, readMailURL)
-            .response { (request, response, data, error) in
-                if let anError = error {
-                    println(error)
-                    completion(error: error, result: nil)
-                }
-                else if let response: AnyObject = response {
-                    if response.statusCode == 204 {
-                        completion(error: nil, result: "Mail read")
-                    }
-                }
-        }
-    }
-    
-    class func sendMailToPostoffice(parameters: [String: String], completion: (error: NSError?, result: AnyObject?) -> Void) {
-
-        let sendMailEndpoint = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mail/send"
-
-        Alamofire.request(.POST, sendMailEndpoint, parameters: parameters, encoding: .JSON)
-            .response { (request, response, data, error) in
-                if let anError = error {
-                    println(error)
-                    completion(error: error, result: nil)
-                }
-                else if let response: AnyObject = response {
-                    completion(error: nil, result: response)
-                }
-        }
-    }
-
-    
 }

@@ -14,7 +14,6 @@ class InitialViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,9 +23,7 @@ class InitialViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        
         checkLogin()
-        
     }
     
     func checkLogin() {

@@ -59,13 +59,11 @@ class EditPasswordViewController: UIViewController {
             
             RestService.postRequest(resetPasswordURL, parameters: parameters, completion: { (error, result) -> Void in
                 if let response = result as? [AnyObject] {
-                    if let status = response[0] as? Int {
-                        if status == 204 {
-                            self.passwordChanged()
-                        }
-                        else if let error_message = response[1] as? String {
-                            self.warningLabel.show(error_message)
-                        }
+                    if response[0] as? Int == 204 {
+                        self.passwordChanged()
+                    }
+                    else if let error_message = response[1] as? String {
+                        self.warningLabel.show(error_message)
                     }
                 }
             })

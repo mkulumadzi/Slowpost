@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 class ComposeMailViewController: UIViewController, UITextViewDelegate {
     
@@ -87,12 +86,17 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func sendMail(sender: AnyObject) {
         doneButton.enabled = false
-
-        MailService.sendMailToPostoffice(["to": "\(toPerson.username)", "content": "\(composeText.text)", "image": "\(imageName)"], completion: { (error, result) -> Void in
-            if result!.statusCode == 201 {
-                var storyboard = UIStoryboard(name: "home", bundle: nil)
-                var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-                self.presentViewController(controller, animated: true, completion: nil)
+        
+        let sendMailEndpoint = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mail/send"
+        let parameters = ["to": "\(toPerson.username)", "content": "\(composeText.text)", "image": "\(imageName)"]
+        
+        RestService.postRequest(sendMailEndpoint, parameters: parameters, completion: { (error, result) -> Void in
+            if let response = result as? [AnyObject] {
+                if response[0] as? Int == 201 {
+                    var storyboard = UIStoryboard(name: "home", bundle: nil)
+                    var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+                    self.presentViewController(controller, animated: true, completion: nil)
+                }
             }
         })
         

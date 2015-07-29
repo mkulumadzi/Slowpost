@@ -27,9 +27,6 @@ class SentMailDetailViewController: UIViewController {
         mailContent.text = mail.content
         toLabel.text = "To: " + toPerson.name
         statusLabel.text = mail.status
-
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

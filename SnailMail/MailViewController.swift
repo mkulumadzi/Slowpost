@@ -52,8 +52,9 @@ class MailViewController: UIViewController {
     }
     
     func readMail(mail:Mail) {
+        let readMailURL = "\(PostOfficeURL)/mail/id/\(mail.id)/read"
         
-        MailService.readMail(mail, completion: { (error, result) -> Void in
+        RestService.postRequest(readMailURL, parameters: nil, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }
