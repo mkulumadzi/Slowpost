@@ -18,3 +18,9 @@ extension NSDate {
         self.init(timeInterval:0, sinceDate:d!)
     }
 }
+
+extension Array {
+    var last: T {
+        return self[self.endIndex - 1]
+    }
+}

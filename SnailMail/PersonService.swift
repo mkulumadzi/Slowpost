@@ -35,55 +35,21 @@ class PersonService {
         return new_person
     }
     
-    class func getPerson(personURL:String, completion: (error: NSError?, result: AnyObject?) -> Void) {
-        
-        Alamofire.request(.GET, personURL)
-            .response { (request, response, data, error) in
-                if let anError = error {
-                    completion(error: error, result: nil)
-                }
-                else if let response: AnyObject = response {
-                    if response.statusCode == 404 {
-                        completion(error: error, result: response.statusCode)
-                    }
-                }
+    class func getPerson(personId: String, completion: (error: NSError?, result: AnyObject?) -> Void) {
+        let personURL = "\(PostOfficeURL)/person/id/\(personId)"
+        RestService.getRequest(personURL, completion: { (error, result) -> Void in
+            if error != nil {
+                completion(error: error, result: nil)
             }
-            .responseJSON { (_, _, JSON, error) in
-                if let response = JSON as? NSDictionary {
-                    var person:Person! = self.createPersonFromJson(response)
-                    completion(error: nil, result: person)
-                }
-        }
-        
-    }
-    
-    class func getPeople(parameters:String, completion: (error: NSError?, result: AnyObject?) -> Void) {
-        
-        let peopleURL = "\(PostOfficeURL)people?\(parameters)"
-        
-        Alamofire.request(.GET, peopleURL)
-            .response { (request, response, data, error) in
-                if let anError = error {
-                    completion(error: error, result: nil)
-                }
-                else if let response: AnyObject = response {
-                    if response.statusCode == 404 {
-                        completion(error: error, result: response.statusCode)
-                    }
-                }
+            else if let dict = result as? NSDictionary {
+                var person:Person = self.createPersonFromJson(dict)
+                completion(error: nil, result: person)
             }
-            .responseJSON { (_, _, JSON, error) in
-                if let jsonResult = JSON as? Array<NSDictionary> {
-                    var people_array = [Person]()
-                    for jsonEntry in jsonResult {
-                        people_array.append(self.createPersonFromJson(jsonEntry))
-                    }
-                    completion(error: nil, result: people_array)
-                }
-                else {
-                    println("Unexpected JSON result for \(peopleURL)")
-                }
-        }
+            else {
+                completion(error: nil, result: "Unexpected result while getting person")
+            }
+        })
+        
     }
     
     class func updatePerson(person: Person, parameters: [String: String], completion: (error: NSError?, result: AnyObject?) -> Void) {
@@ -218,6 +184,12 @@ class PersonService {
         }
         
         
+    }
+    
+    class func parsePersonURLForId(personURL:String) -> String {
+        var personURLSplit:[String] = split(personURL) {$0 == "/"}
+        var personId:String = personURLSplit.last
+        return personId
     }
     
 }

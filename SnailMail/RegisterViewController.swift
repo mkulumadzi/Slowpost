@@ -56,14 +56,20 @@ class RegisterViewController: UIViewController {
         LoginService.signUp(["name": "\(nameTextField.text)", "username": "\(usernameTextField.text)", "email": "\(emailTextField.text)", "phone": "\(phoneTextField.text)", "password": "\(passwordTextField.text)"], completion: { (error, result) -> Void in
             if let response = result as? [String] {
                 if response[0] == "Success" {
-                    personURL = response[1]
-                    PersonService.getPerson(personURL, completion: { (error, result) -> Void in
-                        if result != nil {
-                            if let user = result as? Person {
-                                loggedInUser = user
-                                LoginService.saveLoginToSession(loggedInUser.id)
-                                self.goToMailbox(self)
-                            }
+                    
+                    var personId:String = PersonService.parsePersonURLForId(response[1])
+                    
+                    PersonService.getPerson(personId, completion: { (error, result) -> Void in
+                        if error != nil {
+                            println(error)
+                        }
+                        else if let person = result as? Person {
+                            loggedInUser = person
+                            LoginService.saveLoginToSession(loggedInUser.id)
+                            self.goToMailbox(self)
+                        }
+                        else {
+                            println("Unexpected sign up result.")
                         }
                     })
                 }
@@ -73,9 +79,7 @@ class RegisterViewController: UIViewController {
                 }
             }
         })
-        
     }
-    
     
     @IBAction func editingChanged(sender: AnyObject) {
         validateSignUpButton()

@@ -10,14 +10,6 @@ import UIKit
 import CoreData
 import AddressBook
 
-//var deviceToken:String!
-//var loggedInUser:Person!
-//var mailbox = [Mail]()
-//var penpals = [Person]()
-//var registeredContacts = [Person]()
-//var coreDataPeople = [NSManagedObject]()
-//var coreDataMail = [NSManagedObject]()
-
 class InitialViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -72,32 +64,24 @@ class InitialViewController: UIViewController {
     
     func setLoggedInUserFromUserId(userId: String) {
         
-        PersonService.getPeople("id=\(userId)", completion: { (error, result) -> Void in
+        PersonService.getPerson(userId, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }
-            else if let personArray = result as? Array<Person> {
-                
-                //Assume if logged in user exists, person array will always have only 1 entry, since username is unique... but should do a better job of handling this...
-                if personArray.count > 0 {
-                    loggedInUser = personArray[0]
-                    AddressBookService.checkAuthorizationStatus(self)
-                    self.getRegisteredContactsIfAuthorized()
-                    self.getMailbox()
-                }
-                // If session is stored for a user that has been deleted, need to log in again
-                else {
-                    var storyboard = UIStoryboard(name: "login", bundle: nil)
-                    var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-                    
-                    self.presentViewController(controller, animated: true, completion: nil)
-                }
-                
+            else if let person = result as? Person {
+                loggedInUser = person
+                AddressBookService.checkAuthorizationStatus(self)
+                self.getRegisteredContactsIfAuthorized()
+                self.getMailbox()
+            }
+            else {
+                var storyboard = UIStoryboard(name: "login", bundle: nil)
+                var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+                self.presentViewController(controller, animated: true, completion: nil)
             }
         })
-        
     }
-        
+    
     func getMailbox() {
         
         //Initially populate mailbox by retrieving mail for the user

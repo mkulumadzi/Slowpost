@@ -91,20 +91,19 @@ class EditProfileViewController: UITableViewController {
         
     }
     
-    //To Do: Abstract this into the DataManager class
     func updateLoggedInUser() {
-        
-        let personURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)"
-        
-        PersonService.getPerson(personURL, completion: { (error, result) -> Void in
-            if result != nil {
-                if let user = result as? Person {
-                    loggedInUser = user
-                    self.performSegueWithIdentifier("updateSucceeded", sender: nil)
-                }
+        PersonService.getPerson(loggedInUser.id, completion: { (error, result) -> Void in
+            if error != nil {
+                println(error)
+            }
+            else if let person = result as? Person {
+                loggedInUser = person
+                self.performSegueWithIdentifier("updateSucceeded", sender: nil)
+            }
+            else {
+                println("Unexpected result while updating logged in user.")
             }
         })
-        
     }
     
     @IBAction func editingChanged(sender: AnyObject) {
