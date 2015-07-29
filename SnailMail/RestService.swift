@@ -28,7 +28,47 @@ class RestService {
                 if let response = JSON as? NSDictionary {
                     completion(error: nil, result: response)
                 }
+                else if let response = JSON as? Array<NSDictionary> {
+                    completion(error: nil, result: response)
+                }
         }
+    }
+    
+    class func postRequest(requestURL:String, parameters: [String: String], completion: (error: NSError?, result: AnyObject?) -> Void) {
+        Alamofire.request(.POST, requestURL, parameters: parameters, encoding: .JSON)
+            .responseJSON { (request, response, JSON, error) in
+                if let anError = error {
+                    println(error)
+                    completion(error: error, result: nil)
+                }
+                else if let response: AnyObject = response {
+                    if response.statusCode == 201 {
+                        completion(error: nil, result: [201, response.allHeaderFields["Location"] as! String])
+                    }
+                    else if response.statusCode == 204 {
+                        completion(error: nil, result: [204, ""])
+                    }
+                    else if let response_body = JSON as? NSDictionary {
+                        if let error_message = response_body["message"] as? String {
+                            completion(error: nil, result: [response.statusCode, error_message])
+                        }
+                    }
+                }
+                else {
+                    completion(error: nil, result: "Unexpected result")
+                }
+            }
+    }
+    
+    class func normalizeSearchTerm(term: String) -> String {
+        var searchString = ""
+        if term.rangeOfString(" ") != nil {
+            searchString = term.stringByReplacingOccurrencesOfString(" ", withString: "+")
+        }
+        else {
+            searchString = term
+        }
+        return searchString
     }
 
 }

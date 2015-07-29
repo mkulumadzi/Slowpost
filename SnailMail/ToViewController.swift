@@ -239,7 +239,10 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         var searchResults = [Person]()
     
-        PersonService.searchPeople(toSearchField.text, completion: { (error, result) -> Void in
+        var searchTerm = RestService.normalizeSearchTerm(toSearchField.text)
+        let searchPeopleURL = "\(PostOfficeURL)people/search?term=\(searchTerm)&limit=10"
+        
+        PersonService.getPeopleCollection(searchPeopleURL, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }
@@ -253,7 +256,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func reloadPenpals() {
         
         //Get all 'penpal' records whom the user has sent mail to or received mail from
-        PersonService.getPenpals(loggedInUser.id, completion: { (error, result) -> Void in
+        let contactsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"
+        PersonService.getPeopleCollection(contactsURL, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }

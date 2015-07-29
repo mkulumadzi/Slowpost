@@ -64,31 +64,30 @@ class EditProfileViewController: UITableViewController {
             if error != nil {
                 println(error)
             }
-            else {
+            else if result as! String == "Update succeeded" {
                 self.updateLoggedInUser()
+            }
+            else {
+                println("Update failed")
             }
         })
     }
     
-    //To Do: Abstract this into the DataManager class
     func updatePerson(completion: (error: NSError?, result: AnyObject?) -> Void) {
         
         let updatePersonURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)"
         let parameters = ["name": "\(nameField.text)", "phone": "\(phoneField.text)", "address1": "\(address1Field.text)", "city": "\(cityField.text)", "state": "\(stateField.text)", "zip": "\(zipField.text)"]
         
-        Alamofire.request(.POST, updatePersonURL, parameters: parameters, encoding: .JSON)
-            .response { (request, response, data, error) in
-                if let anError = error {
-                    println(error)
-                    completion(error: error, result: nil)
+        RestService.postRequest(updatePersonURL, parameters: parameters, completion: { (error, result) -> Void in
+            if error != nil {
+                println(error)
+            }
+            else if let response = result as? [AnyObject] {
+                if response[0] as? Int == 204 {
+                    completion(error: nil, result: "Update succeeded")
                 }
-                else if let response: AnyObject = response {
-                    if response.statusCode == 204 {
-                        completion(error: nil, result: "Update succeeded")
-                    }
-                }
-        }
-        
+            }
+        })
     }
     
     func updateLoggedInUser() {

@@ -52,29 +52,30 @@ class RegisterViewController: UIViewController {
         signUpButton.disable()
         
         var personURL:String!
-
-        LoginService.signUp(["name": "\(nameTextField.text)", "username": "\(usernameTextField.text)", "email": "\(emailTextField.text)", "phone": "\(phoneTextField.text)", "password": "\(passwordTextField.text)"], completion: { (error, result) -> Void in
-            if let response = result as? [String] {
-                if response[0] == "Success" {
-                    
-                    var personId:String = PersonService.parsePersonURLForId(response[1])
-                    
-                    PersonService.getPerson(personId, completion: { (error, result) -> Void in
-                        if error != nil {
-                            println(error)
-                        }
-                        else if let person = result as? Person {
-                            loggedInUser = person
-                            LoginService.saveLoginToSession(loggedInUser.id)
-                            self.goToMailbox(self)
-                        }
-                        else {
-                            println("Unexpected sign up result.")
-                        }
-                    })
+        let newPersonURL = "\(PostOfficeURL)person/new"
+        var parameters = ["name": "\(nameTextField.text)", "username": "\(usernameTextField.text)", "email": "\(emailTextField.text)", "phone": "\(phoneTextField.text)", "password": "\(passwordTextField.text)"]
+        
+        RestService.postRequest(newPersonURL, parameters: parameters, completion: { (error, result) -> Void in
+            if let response = result as? [AnyObject] {
+                if response[0] as? Int == 201 {
+                    if let location = response[1] as? String {
+                        var personId:String = PersonService.parsePersonURLForId(location)
+                        PersonService.getPerson(personId, completion: { (error, result) -> Void in
+                            if error != nil {
+                                println(error)
+                            }
+                            else if let person = result as? Person {
+                                loggedInUser = person
+                                LoginService.saveLoginToSession(loggedInUser.id)
+                                self.goToMailbox(self)
+                            }
+                            else {
+                                println("Unexpected sign up result.")
+                            }
+                        })
+                    }
                 }
-                else if response[0] == "Failure" {
-                    let error_message = response[1]
+                else if let error_message = response[1] as? String {
                     self.warningLabel.show(error_message)
                 }
             }

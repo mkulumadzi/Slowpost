@@ -36,62 +36,39 @@ class MailService {
         return new_mail
     }
     
-    class func getMyMailbox( completion: (error: NSError?, result: AnyObject?) -> Void) {
-        
-        let mailboxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/mailbox"
-        
-        Alamofire.request(.GET, mailboxURL)
-            .response { (request, response, data, error) in
-                if let anError = error {
-                    completion(error: error, result: nil)
-                }
-                else if let response: AnyObject = response {
-                    if response.statusCode == 404 {
-                        completion(error: error, result: response.statusCode)
-                    }
-                }
+    class func getMailById(id: String, completion: (error: NSError?, result: AnyObject?) -> Void) {
+        let mailURL = "\(PostOfficeURL)/mail/id/\(id)"
+        RestService.getRequest(mailURL, completion: { (error, result) -> Void in
+            if error != nil {
+                completion(error: error, result: nil)
             }
-            .responseJSON { (_, _, JSON, error) in
-                if let jsonResult = JSON as? Array<NSDictionary> {
-                    var mail_array = [Mail]()
-                    for jsonEntry in jsonResult {
-                        mail_array.append(self.createMailFromJson(jsonEntry))
-                    }
-                    completion(error: nil, result: mail_array)
-                }
-                else {
-                    println("Unexpected JSON result for \(mailboxURL)")
-                }
-        }
+            else if let dict = result as? NSDictionary {
+                var mail:Mail = self.createMailFromJson(dict)
+                completion(error: nil, result: mail)
+            }
+            else {
+                println("Unexpected JSON result for \(mailURL)")
+            }
+        })
+        
     }
     
-    class func getMyOutbox( completion: (error: NSError?, result: AnyObject?) -> Void) {
-        
-        let outboxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/outbox"
-        
-        Alamofire.request(.GET, outboxURL)
-            .response { (request, response, data, error) in
-                if let anError = error {
-                    completion(error: error, result: nil)
-                }
-                else if let response: AnyObject = response {
-                    if response.statusCode == 404 {
-                        completion(error: error, result: response.statusCode)
-                    }
-                }
+    class func getMailCollection(collectionURL: String, completion: (error: NSError?, result: AnyObject?) -> Void) {
+        RestService.getRequest(collectionURL, completion: { (error, result) -> Void in
+            if error != nil {
+                completion(error: error, result: nil)
             }
-            .responseJSON { (_, _, JSON, error) in
-                if let jsonResult = JSON as? Array<NSDictionary> {
-                    var mail_array = [Mail]()
-                    for jsonEntry in jsonResult {
-                        mail_array.append(self.createMailFromJson(jsonEntry))
-                    }
-                    completion(error: nil, result: mail_array)
+            else if let jsonResult = result as? Array<NSDictionary> {
+                var mail_array = [Mail]()
+                for jsonEntry in jsonResult {
+                    mail_array.append(self.createMailFromJson(jsonEntry))
                 }
-                else {
-                    println("Unexpected JSON result for \(outboxURL)")
-                }
-        }
+                completion(error: nil, result: mail_array)
+            }
+            else {
+                println("Unexpected JSON result")
+            }
+        })
     }
     
     class func readMail(mail: Mail, completion: (error: NSError?, result: AnyObject?) -> Void) {
@@ -108,33 +85,6 @@ class MailService {
                     if response.statusCode == 204 {
                         completion(error: nil, result: "Mail read")
                     }
-                }
-        }
-        
-    }
-    
-    class func getMailById(id: String, completion: (error: NSError?, result: AnyObject?) -> Void) {
-        
-        let mailURL = "\(PostOfficeURL)/mail/id/\(id)"
-        
-        Alamofire.request(.GET, mailURL)
-            .response { (request, response, data, error) in
-                if let anError = error {
-                    completion(error: error, result: nil)
-                }
-                else if let response: AnyObject = response {
-                    if response.statusCode == 404 {
-                        completion(error: error, result: response.statusCode)
-                    }
-                }
-            }
-            .responseJSON { (_, _, JSON, error) in
-                if let jsonResult = JSON as? NSDictionary {
-                    var mail = self.createMailFromJson(jsonResult)
-                    completion(error: nil, result: mail)
-                }
-                else {
-                    println("Unexpected JSON result for \(mailURL)")
                 }
         }
     }

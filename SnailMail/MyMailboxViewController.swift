@@ -66,7 +66,8 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     func refreshMailbox() {
         
         //Refresh mailbox by retrieving mail for the user
-        MailService.getMyMailbox( { (error, result) -> Void in
+        let myMailBoxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/mailbox"
+        MailService.getMailCollection(myMailBoxURL, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }

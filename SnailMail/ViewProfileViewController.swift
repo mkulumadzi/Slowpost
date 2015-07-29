@@ -53,7 +53,8 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func getOutbox() {
-        MailService.getMyOutbox( { (error, result) -> Void in
+        let myOutboxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/outbox"
+        MailService.getMailCollection(myOutboxURL, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }

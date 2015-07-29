@@ -85,7 +85,8 @@ class InitialViewController: UIViewController {
     func getMailbox() {
         
         //Initially populate mailbox by retrieving mail for the user
-        MailService.getMyMailbox( { (error, result) -> Void in
+        let myMailBoxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/mailbox"
+        MailService.getMailCollection(myMailBoxURL, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }
@@ -93,7 +94,8 @@ class InitialViewController: UIViewController {
                 mailbox = mailArray.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
                 
                 //Get all 'penpal' records whom the user has sent mail to or received mail from
-                PersonService.getPenpals(loggedInUser.id, completion: { (error, result) -> Void in
+                let contactsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"
+                PersonService.getPeopleCollection(contactsURL, completion: { (error, result) -> Void in
                     if error != nil {
                         println(error)
                     }
@@ -129,10 +131,10 @@ class InitialViewController: UIViewController {
     }
     
     func registerDeviceToken() {
-        let person = loggedInUser
         let parameters = ["device_token": deviceToken as String]
+        let updatePersonURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)"
         
-        PersonService.updatePerson(person, parameters: parameters, completion: { (error, result) -> Void in
+        RestService.postRequest(updatePersonURL, parameters: parameters, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }

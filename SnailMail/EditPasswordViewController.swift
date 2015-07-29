@@ -55,17 +55,17 @@ class EditPasswordViewController: UIViewController {
         if newPasswordField.text == confirmPasswordField.text {
         
             let parameters = ["old_password": existingPasswordField.text!, "new_password": newPasswordField.text!]
+            let resetPasswordURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/reset_password"
             
-            LoginService.resetPassword(loggedInUser, parameters: parameters, completion: { (error, result) -> Void in
-                if let response = result as? String {
-                    if response == "Success" {
-                        self.passwordChanged()
-                    }
-                }
-                if let response = result as? [String] {
-                    if response[0] == "Failure" {
-                        let error_message = response[1]
-                        self.warningLabel.show(error_message)
+            RestService.postRequest(resetPasswordURL, parameters: parameters, completion: { (error, result) -> Void in
+                if let response = result as? [AnyObject] {
+                    if let status = response[0] as? Int {
+                        if status == 204 {
+                            self.passwordChanged()
+                        }
+                        else if let error_message = response[1] as? String {
+                            self.warningLabel.show(error_message)
+                        }
                     }
                 }
             })
