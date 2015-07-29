@@ -96,7 +96,7 @@ class EditProfileViewController: UITableViewController {
         
         let personURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)"
         
-        DataManager.getPerson(personURL, completion: { (error, result) -> Void in
+        PersonService.getPerson(personURL, completion: { (error, result) -> Void in
             if result != nil {
                 if let user = result as? Person {
                     loggedInUser = user

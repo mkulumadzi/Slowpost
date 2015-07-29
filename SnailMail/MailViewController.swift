@@ -53,7 +53,7 @@ class MailViewController: UIViewController {
     
     func readMail(mail:Mail) {
         
-        DataManager.readMail(mail, completion: { (error, result) -> Void in
+        MailService.readMail(mail, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }
@@ -65,7 +65,7 @@ class MailViewController: UIViewController {
     
     func updateMail(mail:Mail) {
         
-        DataManager.getMailById(mail.id, completion: { (error, result) -> Void in
+        MailService.getMailById(mail.id, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }

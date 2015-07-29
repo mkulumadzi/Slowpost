@@ -53,7 +53,7 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func getOutbox() {
-        DataManager.getMyOutbox( { (error, result) -> Void in
+        MailService.getMyOutbox( { (error, result) -> Void in
             if error != nil {
                 println(error)
             }

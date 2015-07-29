@@ -66,7 +66,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     func refreshMailbox() {
         
         //Refresh mailbox by retrieving mail for the user
-        DataManager.getMyMailbox( { (error, result) -> Void in
+        MailService.getMyMailbox( { (error, result) -> Void in
             if error != nil {
                 println(error)
             }

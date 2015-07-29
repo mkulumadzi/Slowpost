@@ -39,7 +39,7 @@ class InitialViewController: UIViewController {
     
     func checkLogin() {
         if loggedInUser == nil {
-            let userId = DataManager.getUserIdFromSession()
+            let userId = LoginService.getUserIdFromSession()
             if userId != "" {
                 self.setLoggedInUserFromUserId(userId)
             }
@@ -72,7 +72,7 @@ class InitialViewController: UIViewController {
     
     func setLoggedInUserFromUserId(userId: String) {
         
-        DataManager.getPeople("id=\(userId)", completion: { (error, result) -> Void in
+        PersonService.getPeople("id=\(userId)", completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }
@@ -101,7 +101,7 @@ class InitialViewController: UIViewController {
     func getMailbox() {
         
         //Initially populate mailbox by retrieving mail for the user
-        DataManager.getMyMailbox( { (error, result) -> Void in
+        MailService.getMyMailbox( { (error, result) -> Void in
             if error != nil {
                 println(error)
             }
@@ -109,7 +109,7 @@ class InitialViewController: UIViewController {
                 mailbox = mailArray.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
                 
                 //Get all 'penpal' records whom the user has sent mail to or received mail from
-                DataManager.getPenpals(loggedInUser.id, completion: { (error, result) -> Void in
+                PersonService.getPenpals(loggedInUser.id, completion: { (error, result) -> Void in
                     if error != nil {
                         println(error)
                     }
@@ -130,7 +130,7 @@ class InitialViewController: UIViewController {
             
             var contacts:[NSDictionary] = AddressBookService.getContactsFromAddresssBook(addressBook)
             
-            DataManager.bulkPersonSearch(contacts, completion: { (error, result) -> Void in
+            PersonService.bulkPersonSearch(contacts, completion: { (error, result) -> Void in
                 if error != nil {
                     println(error)
                 }
@@ -148,7 +148,7 @@ class InitialViewController: UIViewController {
         let person = loggedInUser
         let parameters = ["device_token": deviceToken as String]
         
-        DataManager.updatePerson(person, parameters: parameters, completion: { (error, result) -> Void in
+        PersonService.updatePerson(person, parameters: parameters, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }

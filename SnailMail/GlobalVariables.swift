@@ -9,7 +9,7 @@
 import Foundation
 import AddressBook
 
-let PostOfficeURL = DataManager.getPostOfficeURL()
+let PostOfficeURL = ConfigurationService.getPostOfficeURL()
 var addressBook:ABAddressBook!
 var deviceToken:String!
 var loggedInUser:Person!

@@ -48,7 +48,7 @@ class LogInViewController: UIViewController {
             }
             else if let result: AnyObject = result {
                 if let person:Person = result as? Person {
-                    DataManager.saveLoginToSession(person.id)
+                    LoginService.saveLoginToSession(person.id)
                     loggedInUser = person
                     
                     var storyboard = UIStoryboard(name: "initial", bundle: nil)
@@ -82,7 +82,7 @@ class LogInViewController: UIViewController {
             }
             .responseJSON { (_, _, JSON, error) in
                 if let response = JSON as? NSDictionary {
-                    var person:Person! = DataManager.createPersonFromJson(response)
+                    var person:Person! = PersonService.createPersonFromJson(response)
                     completion(error: nil, result: person)
                 }
         }

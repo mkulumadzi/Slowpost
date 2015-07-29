@@ -239,7 +239,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         var searchResults = [Person]()
     
-        DataManager.searchPeople(toSearchField.text, completion: { (error, result) -> Void in
+        PersonService.searchPeople(toSearchField.text, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }
@@ -253,7 +253,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func reloadPenpals() {
         
         //Get all 'penpal' records whom the user has sent mail to or received mail from
-        DataManager.getPenpals(loggedInUser.id, completion: { (error, result) -> Void in
+        PersonService.getPenpals(loggedInUser.id, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }

@@ -53,15 +53,15 @@ class RegisterViewController: UIViewController {
         
         var personURL:String!
 
-        signUp( { (error, result) -> Void in
+        LoginService.signUp(["name": "\(nameTextField.text)", "username": "\(usernameTextField.text)", "email": "\(emailTextField.text)", "phone": "\(phoneTextField.text)", "password": "\(passwordTextField.text)"], completion: { (error, result) -> Void in
             if let response = result as? [String] {
                 if response[0] == "Success" {
                     personURL = response[1]
-                    DataManager.getPerson(personURL, completion: { (error, result) -> Void in
+                    PersonService.getPerson(personURL, completion: { (error, result) -> Void in
                         if result != nil {
                             if let user = result as? Person {
                                 loggedInUser = user
-                                DataManager.saveLoginToSession(loggedInUser.id)
+                                LoginService.saveLoginToSession(loggedInUser.id)
                                 self.goToMailbox(self)
                             }
                         }
@@ -76,34 +76,6 @@ class RegisterViewController: UIViewController {
         
     }
     
-    func signUp(completion: (error: NSError?, result: AnyObject?) -> Void) {
-        
-        let newPersonEndpoint = "\(PostOfficeURL)person/new"
-        let parameters = ["name": "\(nameTextField.text)", "username": "\(usernameTextField.text)", "email": "\(emailTextField.text)", "phone": "\(phoneTextField.text)", "password": "\(passwordTextField.text)"]
-        
-        Alamofire.request(.POST, newPersonEndpoint, parameters: parameters, encoding: .JSON)
-            .response { (request, response, data, error) in
-                if let anError = error {
-                    println(error)
-                    completion(error: error, result: nil)
-                }
-                else if let response: AnyObject = response {
-                    if response.statusCode == 201 {
-                        completion(error: nil, result: ["Success", response.allHeaderFields["Location"] as! String])
-                    }
-                }
-            }
-            .responseJSON { (_, _, JSON, error) in
-                if let response_body = JSON as? NSDictionary {
-                    if let error_message = response_body["message"] as? String {
-                        completion(error: nil, result: ["Failure", error_message])
-                    }
-                    else {
-                        println("No error message")
-                    }
-                }
-            }
-    }
     
     @IBAction func editingChanged(sender: AnyObject) {
         validateSignUpButton()

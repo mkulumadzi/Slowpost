@@ -10,7 +10,7 @@
 		CC23DE2A1AE54C0300AFEDE4 /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC23DE291AE54C0300AFEDE4 /* login.storyboard */; };
 		CC23DE2C1AE54C1A00AFEDE4 /* mailbox.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC23DE2B1AE54C1A00AFEDE4 /* mailbox.storyboard */; };
 		CC23DE2E1AE54C2B00AFEDE4 /* compose.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC23DE2D1AE54C2B00AFEDE4 /* compose.storyboard */; };
-		CC6105F51AC3941900D15150 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6105F41AC3941900D15150 /* DataManager.swift */; };
+		CC6105F51AC3941900D15150 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6105F41AC3941900D15150 /* LoginService.swift */; };
 		CC96E49C1ABCC8EB001E6D27 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E49B1ABCC8EB001E6D27 /* InitialViewController.swift */; };
 		CC96E4A01ABCCBF2001E6D27 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E49F1ABCCBF2001E6D27 /* LogInViewController.swift */; };
 		CC96E4A91ABCD91A001E6D27 /* Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E4A81ABCD91A001E6D27 /* Mail.swift */; };
@@ -78,6 +78,9 @@
 		D2B7CEA21B671149007F8235 /* ios7-close-empty-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B7CEA11B671149007F8235 /* ios7-close-empty-gray.png */; };
 		D2B7CEA41B694A27007F8235 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7CEA31B694A27007F8235 /* FileService.swift */; };
 		D2B7CEA61B694C14007F8235 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7CEA51B694C14007F8235 /* GlobalVariables.swift */; };
+		D2B7CEA81B694D95007F8235 /* PersonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7CEA71B694D95007F8235 /* PersonService.swift */; };
+		D2B7CEAA1B694E55007F8235 /* MailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7CEA91B694E55007F8235 /* MailService.swift */; };
+		D2B7CEAC1B6951CE007F8235 /* ConfigurationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7CEAB1B6951CE007F8235 /* ConfigurationService.swift */; };
 		D2C071061B3A3E99000154E8 /* Configurations.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2C071051B3A3E99000154E8 /* Configurations.plist */; };
 		D2D866261B2F4AF800847051 /* ios7-person-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866251B2F4AF800847051 /* ios7-person-outline.png */; };
 		D2D8662A1B2F4B7F00847051 /* ios7-contact-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */; };
@@ -126,7 +129,7 @@
 		CC23DE291AE54C0300AFEDE4 /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = login.storyboard; sourceTree = "<group>"; };
 		CC23DE2B1AE54C1A00AFEDE4 /* mailbox.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = mailbox.storyboard; sourceTree = "<group>"; };
 		CC23DE2D1AE54C2B00AFEDE4 /* compose.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = compose.storyboard; sourceTree = "<group>"; };
-		CC6105F41AC3941900D15150 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		CC6105F41AC3941900D15150 /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		CC96E49B1ABCC8EB001E6D27 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		CC96E49F1ABCCBF2001E6D27 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogInViewController.swift; path = ../LogInViewController.swift; sourceTree = "<group>"; };
 		CC96E4A81ABCD91A001E6D27 /* Mail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mail.swift; sourceTree = "<group>"; };
@@ -200,6 +203,9 @@
 		D2B7CEA11B671149007F8235 /* ios7-close-empty-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-close-empty-gray.png"; sourceTree = "<group>"; };
 		D2B7CEA31B694A27007F8235 /* FileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
 		D2B7CEA51B694C14007F8235 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		D2B7CEA71B694D95007F8235 /* PersonService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonService.swift; sourceTree = "<group>"; };
+		D2B7CEA91B694E55007F8235 /* MailService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailService.swift; sourceTree = "<group>"; };
+		D2B7CEAB1B6951CE007F8235 /* ConfigurationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationService.swift; sourceTree = "<group>"; };
 		D2C071051B3A3E99000154E8 /* Configurations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configurations.plist; sourceTree = "<group>"; };
 		D2D866251B2F4AF800847051 /* ios7-person-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-person-outline.png"; sourceTree = "<group>"; };
 		D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-contact-outline.png"; sourceTree = "<group>"; };
@@ -449,10 +455,13 @@
 		D2B651E01B37BC5900134C23 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				CC6105F41AC3941900D15150 /* DataManager.swift */,
+				CC6105F41AC3941900D15150 /* LoginService.swift */,
 				D21D79DC1B56ED540014510E /* AddressBookService.swift */,
 				D2B7CEA31B694A27007F8235 /* FileService.swift */,
 				D2B7CEA51B694C14007F8235 /* GlobalVariables.swift */,
+				D2B7CEA71B694D95007F8235 /* PersonService.swift */,
+				D2B7CEA91B694E55007F8235 /* MailService.swift */,
+				D2B7CEAB1B6951CE007F8235 /* ConfigurationService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -753,7 +762,7 @@
 				D2B7CEA41B694A27007F8235 /* FileService.swift in Sources */,
 				D206FB4B1B61688D008BB412 /* WelcomeScreenViewController.swift in Sources */,
 				D206FB4F1B617504008BB412 /* BottomBorderUITextField.swift in Sources */,
-				CC6105F51AC3941900D15150 /* DataManager.swift in Sources */,
+				CC6105F51AC3941900D15150 /* LoginService.swift in Sources */,
 				D2A361361B3CAC5D00811D14 /* SnailMailTextUIButton.swift in Sources */,
 				D20D8EE21B2E448100BBF6B5 /* PersonCell.swift in Sources */,
 				CCCB1A551AB0D48A0067F100 /* ViewController.swift in Sources */,
@@ -771,10 +780,13 @@
 				D2D866331B2F52EB00847051 /* ViewProfileViewController.swift in Sources */,
 				D2B651E71B38827100134C23 /* Extensions.swift in Sources */,
 				D27DA3231B62BECD00DF32A1 /* MailboxTabPlaceholderViewController.swift in Sources */,
+				D2B7CEA81B694D95007F8235 /* PersonService.swift in Sources */,
 				D27DA3251B62C04E00DF32A1 /* ComposeTabPlaceholderViewController.swift in Sources */,
 				D2B7CEA61B694C14007F8235 /* GlobalVariables.swift in Sources */,
 				D27E194E1B3B770C0052687F /* SnailMailModel.xcdatamodeld in Sources */,
 				CC96E49C1ABCC8EB001E6D27 /* InitialViewController.swift in Sources */,
+				D2B7CEAC1B6951CE007F8235 /* ConfigurationService.swift in Sources */,
+				D2B7CEAA1B694E55007F8235 /* MailService.swift in Sources */,
 				CCCB1A531AB0D48A0067F100 /* AppDelegate.swift in Sources */,
 				D2B7CEA01B66E87E007F8235 /* SentMailDetailViewController.swift in Sources */,
 				CC96E4AF1AC0876D001E6D27 /* MailViewController.swift in Sources */,

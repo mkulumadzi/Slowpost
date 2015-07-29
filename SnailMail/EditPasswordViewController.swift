@@ -56,7 +56,7 @@ class EditPasswordViewController: UIViewController {
         
             let parameters = ["old_password": existingPasswordField.text!, "new_password": newPasswordField.text!]
             
-            DataManager.resetPassword(loggedInUser, parameters: parameters, completion: { (error, result) -> Void in
+            LoginService.resetPassword(loggedInUser, parameters: parameters, completion: { (error, result) -> Void in
                 if let response = result as? String {
                     if response == "Success" {
                         self.passwordChanged()

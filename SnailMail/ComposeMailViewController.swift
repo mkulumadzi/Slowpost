@@ -88,7 +88,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     @IBAction func sendMail(sender: AnyObject) {
         doneButton.enabled = false
 
-        sendMailToPostoffice( { (error, result) -> Void in
+        MailService.sendMailToPostoffice(["to": "\(toPerson.username)", "content": "\(composeText.text)", "image": "\(imageName)"], completion: { (error, result) -> Void in
             if result!.statusCode == 201 {
                 var storyboard = UIStoryboard(name: "home", bundle: nil)
                 var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
@@ -96,23 +96,6 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
             }
         })
         
-    }
-    
-    func sendMailToPostoffice(completion: (error: NSError?, result: AnyObject?) -> Void) {
-        
-        let sendMailEndpoint = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mail/send"
-        let parameters = ["to": "\(toPerson.username)", "content": "\(composeText.text)", "image": "\(imageName)"]
-        
-        Alamofire.request(.POST, sendMailEndpoint, parameters: parameters, encoding: .JSON)
-            .response { (request, response, data, error) in
-                if let anError = error {
-                    println(error)
-                    completion(error: error, result: nil)
-                }
-                else if let response: AnyObject = response {
-                    completion(error: nil, result: response)
-                }
-        }
     }
     
     func textViewDidChange(textView: UITextView) {
