@@ -11,19 +11,7 @@ import Alamofire
 import CoreData
 import SwiftyJSON
 
-//URL for Heroku instance of PostOfice server
-let PostOfficeURL = DataManager.getPostOfficeURL()
-
 class DataManager {
-    
-    func getManagedContext() -> NSManagedObjectContext {
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-        let managedContext = appDelegate.managedObjectContext!
-        
-        return managedContext
-    }
 
     class func getCurrentConfiguration() -> String {
         var myDict: NSDictionary?
@@ -210,32 +198,6 @@ class DataManager {
         var new_mail = Mail(id: id, status: status, from: from, to: to, content: content, image: image, scheduledToArrive: scheduledToArrive, updatedAt: updatedAt, createdAt: createdAt)
         
         return new_mail
-    }
-    
-    func savePerson(person: Person) {
-        
-        let managedContext = getManagedContext()
-        
-        let entity = NSEntityDescription.entityForName("Person", inManagedObjectContext: managedContext)
-        
-        let tempPerson = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
-        
-        tempPerson.setValue(person.id, forKey: "id")
-        tempPerson.setValue(person.name, forKey: "name")
-        tempPerson.setValue(person.username, forKey: "username")
-        tempPerson.setValue(person.address1, forKey: "address1")
-        tempPerson.setValue(person.city, forKey: "city")
-        tempPerson.setValue(person.state, forKey: "state")
-        tempPerson.setValue(person.zip, forKey: "zip")
-        tempPerson.setValue(person.createdAt, forKey: "createdAt")
-        tempPerson.setValue(person.updatedAt, forKey: "updatedAt")
-        
-        var error: NSError?
-        if !managedContext.save(&error) {
-            println("Could not save \(error), \(error?.userInfo)")
-        }
-        
-        coreDataPeople.append(tempPerson)
     }
     
     class func saveLoginToSession(userId: String) {

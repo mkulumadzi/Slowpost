@@ -1,5 +1,5 @@
 //
-//  AddressBookHelper.swift
+//  AddressBookService.swift
 //  Snailtale
 //
 //  Created by Evan Waters on 7/15/15.
@@ -11,12 +11,12 @@ import Foundation
 import AddressBook
 import SwiftyJSON
 
-var addressBook:ABAddressBook!
+//var addressBook:ABAddressBook!
 
-class AddressBookHelper {
+class AddressBookService {
     
     class func checkAuthorizationStatus(sender: UIViewController) {
-        let addressBookHelper:AddressBookHelper = AddressBookHelper.init()
+        let addressBookService:AddressBookService = AddressBookService.init()
         let authorizationStatus = ABAddressBookGetAuthorizationStatus()
         switch authorizationStatus {
         case .Denied, .Restricted:
@@ -24,7 +24,7 @@ class AddressBookHelper {
         case .Authorized:
             addressBook =  ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
         case .NotDetermined:
-            addressBookHelper.promptForAddressBookAccess(sender)
+            addressBookService.promptForAddressBookAccess(sender)
         }
     }
     
@@ -126,13 +126,13 @@ class AddressBookHelper {
     }
     
     class func getContactsFromAddresssBook(addressBook: ABAddressBook) -> [NSDictionary] {
-        let addressBookHelper:AddressBookHelper = AddressBookHelper.init()
+        let addressBookService:AddressBookService = AddressBookService.init()
         
-        var addressBookContacts = addressBookHelper.getContacts(addressBook)
+        var addressBookContacts = addressBookService.getContacts(addressBook)
         var contacts = [NSDictionary]()
         
         for person in addressBookContacts {
-            contacts.append(addressBookHelper.createDictionaryWithContactInfo(person))
+            contacts.append(addressBookService.createDictionaryWithContactInfo(person))
         }
         
         return contacts

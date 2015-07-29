@@ -10,13 +10,13 @@ import UIKit
 import CoreData
 import AddressBook
 
-var deviceToken:String!
-var loggedInUser:Person!
-var mailbox = [Mail]()
-var penpals = [Person]()
-var registeredContacts = [Person]()
-var coreDataPeople = [NSManagedObject]()
-var coreDataMail = [NSManagedObject]()
+//var deviceToken:String!
+//var loggedInUser:Person!
+//var mailbox = [Mail]()
+//var penpals = [Person]()
+//var registeredContacts = [Person]()
+//var coreDataPeople = [NSManagedObject]()
+//var coreDataMail = [NSManagedObject]()
 
 class InitialViewController: UIViewController {
 
@@ -51,7 +51,7 @@ class InitialViewController: UIViewController {
             }
         }
         else {
-            AddressBookHelper.checkAuthorizationStatus(self)
+            AddressBookService.checkAuthorizationStatus(self)
             getRegisteredContactsIfAuthorized()
             getMailbox()
         }
@@ -81,7 +81,7 @@ class InitialViewController: UIViewController {
                 //Assume if logged in user exists, person array will always have only 1 entry, since username is unique... but should do a better job of handling this...
                 if personArray.count > 0 {
                     loggedInUser = personArray[0]
-                    AddressBookHelper.checkAuthorizationStatus(self)
+                    AddressBookService.checkAuthorizationStatus(self)
                     self.getRegisteredContactsIfAuthorized()
                     self.getMailbox()
                 }
@@ -128,7 +128,7 @@ class InitialViewController: UIViewController {
         switch authorizationStatus {
         case .Authorized:
             
-            var contacts:[NSDictionary] = AddressBookHelper.getContactsFromAddresssBook(addressBook)
+            var contacts:[NSDictionary] = AddressBookService.getContactsFromAddresssBook(addressBook)
             
             DataManager.bulkPersonSearch(contacts, completion: { (error, result) -> Void in
                 if error != nil {
