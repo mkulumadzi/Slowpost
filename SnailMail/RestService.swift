@@ -60,6 +60,30 @@ class RestService {
             }
     }
     
+    class func putRequest(requestURL:String, parameters: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
+        println(parameters)
+        Alamofire.request(.PUT, requestURL, parameters: parameters, encoding: .JSON)
+            .responseJSON { (request, response, JSON, error) in
+                if let anError = error {
+                    println(error)
+                    completion(error: error, result: nil)
+                }
+                else if let response: AnyObject = response {
+                    if response.statusCode == 200 || response.statusCode == 204 {
+                        completion(error: nil, result: [201, response.allHeaderFields["Location"] as! String])
+                    }
+                    else if let response_body = JSON as? NSDictionary {
+                        if let error_message = response_body["message"] as? String {
+                            completion(error: nil, result: [response.statusCode, error_message])
+                        }
+                    }
+                }
+                else {
+                    completion(error: nil, result: "Unexpected result")
+                }
+        }
+    }
+    
     class func normalizeSearchTerm(term: String) -> String {
         var searchString = ""
         if term.rangeOfString(" ") != nil {

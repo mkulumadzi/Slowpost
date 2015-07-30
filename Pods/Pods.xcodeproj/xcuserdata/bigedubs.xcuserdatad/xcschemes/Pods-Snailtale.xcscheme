@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1A257825315ED5BA8DD7F409"
+               BlueprintIdentifier = "2454E1E7CA8022E618FD24F8"
                BuildableName = "Pods_Snailtale.framework"
                BlueprintName = "Pods-Snailtale"
                ReferencedContainer = "container:Pods.xcodeproj">

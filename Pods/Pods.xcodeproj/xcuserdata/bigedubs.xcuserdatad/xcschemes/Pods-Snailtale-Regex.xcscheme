@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "797D2EA5FC18EFDC1FC3BE83"
+               BlueprintIdentifier = "69A40431A109BA756CBC7E43"
                BuildableName = "Regex.framework"
                BlueprintName = "Pods-Snailtale-Regex"
                ReferencedContainer = "container:Pods.xcodeproj">

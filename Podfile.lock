@@ -1,16 +1,26 @@
 PODS:
-  - Alamofire (1.2.3)
+  - Alamofire (1.3.0)
   - Regex (0.2.1)
-  - SwiftyJSON (2.2.0)
+  - SwiftyJSON (2.2.1)
 
 DEPENDENCIES:
-  - Alamofire (~> 1.1)
+  - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `master`)
   - Regex (~> 0.2.1)
   - SwiftyJSON (>= 2.2)
 
+EXTERNAL SOURCES:
+  Alamofire:
+    :branch: master
+    :git: https://github.com/Alamofire/Alamofire.git
+
+CHECKOUT OPTIONS:
+  Alamofire:
+    :commit: cbd7870367f27ab22b047175634c41974477dd66
+    :git: https://github.com/Alamofire/Alamofire.git
+
 SPEC CHECKSUMS:
-  Alamofire: 5550bf0b575ed1a4bf9be572f9463e1015cc169e
+  Alamofire: 220403a8d5840e0b4c946a6fbaf209dbca124282
   Regex: 14d9745c19442ccdf920234e50d463ba659f58c4
-  SwiftyJSON: 0b3e6c07af17ff745e77e8e9984097b55c956e5c
+  SwiftyJSON: ae2d0a3d68025d136602a33c4ee215091ced3e33
 
 COCOAPODS: 0.37.2

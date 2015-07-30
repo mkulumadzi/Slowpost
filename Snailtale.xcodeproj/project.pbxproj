@@ -68,6 +68,7 @@
 		D27DA32B1B66B74800DF32A1 /* EditPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DA32A1B66B74800DF32A1 /* EditPasswordViewController.swift */; };
 		D27DA32D1B66C51900DF32A1 /* MessageUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DA32C1B66C51900DF32A1 /* MessageUILabel.swift */; };
 		D27E194E1B3B770C0052687F /* SnailMailModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D27E194C1B3B770C0052687F /* SnailMailModel.xcdatamodeld */; };
+		D291B24C1B69AA5A00C72816 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291B24B1B69AA5A00C72816 /* FileService.swift */; };
 		D2A361361B3CAC5D00811D14 /* SnailMailTextUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A361351B3CAC5D00811D14 /* SnailMailTextUIButton.swift */; };
 		D2A361381B3CB52B00811D14 /* WarningUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A361371B3CB52B00811D14 /* WarningUILabel.swift */; };
 		D2B651AD1B31411C00134C23 /* SentMailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B651AC1B31411C00134C23 /* SentMailTableViewCell.swift */; };
@@ -76,7 +77,6 @@
 		D2B651E71B38827100134C23 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B651E61B38827100134C23 /* Extensions.swift */; };
 		D2B7CEA01B66E87E007F8235 /* SentMailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7CE9F1B66E87E007F8235 /* SentMailDetailViewController.swift */; };
 		D2B7CEA21B671149007F8235 /* ios7-close-empty-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B7CEA11B671149007F8235 /* ios7-close-empty-gray.png */; };
-		D2B7CEA41B694A27007F8235 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7CEA31B694A27007F8235 /* FileService.swift */; };
 		D2B7CEA61B694C14007F8235 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7CEA51B694C14007F8235 /* GlobalVariables.swift */; };
 		D2B7CEA81B694D95007F8235 /* PersonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7CEA71B694D95007F8235 /* PersonService.swift */; };
 		D2B7CEAA1B694E55007F8235 /* MailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7CEA91B694E55007F8235 /* MailService.swift */; };
@@ -123,8 +123,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		62F08564CDDFD93EAA1E21E5 /* Pods-SnailMail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnailMail.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SnailMail/Pods-SnailMail.debug.xcconfig"; sourceTree = "<group>"; };
-		6B594EB116F451FEF2FA49E1 /* Pods-SnailMail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnailMail.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnailMail/Pods-SnailMail.release.xcconfig"; sourceTree = "<group>"; };
 		A48D46F0C7DC76E3F2B153DC /* Pods_SnailMail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnailMail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7FE69CA51D0BBD005CCDDD3 /* Pods-Snailtale.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Snailtale.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Snailtale/Pods-Snailtale.debug.xcconfig"; sourceTree = "<group>"; };
 		CC23DE291AE54C0300AFEDE4 /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = login.storyboard; sourceTree = "<group>"; };
@@ -194,6 +192,7 @@
 		D27DA32A1B66B74800DF32A1 /* EditPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPasswordViewController.swift; sourceTree = "<group>"; };
 		D27DA32C1B66C51900DF32A1 /* MessageUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageUILabel.swift; sourceTree = "<group>"; };
 		D27E194D1B3B770C0052687F /* SnailMailModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SnailMailModel.xcdatamodel; sourceTree = "<group>"; };
+		D291B24B1B69AA5A00C72816 /* FileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
 		D2A361351B3CAC5D00811D14 /* SnailMailTextUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnailMailTextUIButton.swift; sourceTree = "<group>"; };
 		D2A361371B3CB52B00811D14 /* WarningUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarningUILabel.swift; sourceTree = "<group>"; };
 		D2B651AC1B31411C00134C23 /* SentMailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMailTableViewCell.swift; sourceTree = "<group>"; };
@@ -202,7 +201,6 @@
 		D2B651E61B38827100134C23 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D2B7CE9F1B66E87E007F8235 /* SentMailDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMailDetailViewController.swift; sourceTree = "<group>"; };
 		D2B7CEA11B671149007F8235 /* ios7-close-empty-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-close-empty-gray.png"; sourceTree = "<group>"; };
-		D2B7CEA31B694A27007F8235 /* FileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
 		D2B7CEA51B694C14007F8235 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		D2B7CEA71B694D95007F8235 /* PersonService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonService.swift; sourceTree = "<group>"; };
 		D2B7CEA91B694E55007F8235 /* MailService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailService.swift; sourceTree = "<group>"; };
@@ -459,12 +457,12 @@
 			children = (
 				CC6105F41AC3941900D15150 /* LoginService.swift */,
 				D21D79DC1B56ED540014510E /* AddressBookService.swift */,
-				D2B7CEA31B694A27007F8235 /* FileService.swift */,
 				D2B7CEA51B694C14007F8235 /* GlobalVariables.swift */,
 				D2B7CEA71B694D95007F8235 /* PersonService.swift */,
 				D2B7CEA91B694E55007F8235 /* MailService.swift */,
 				D2B7CEAB1B6951CE007F8235 /* ConfigurationService.swift */,
 				D2B7CEAD1B696DBC007F8235 /* RestService.swift */,
+				D291B24B1B69AA5A00C72816 /* FileService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -520,8 +518,6 @@
 		D5068536573A35C154CCA1CF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				62F08564CDDFD93EAA1E21E5 /* Pods-SnailMail.debug.xcconfig */,
-				6B594EB116F451FEF2FA49E1 /* Pods-SnailMail.release.xcconfig */,
 				A7FE69CA51D0BBD005CCDDD3 /* Pods-Snailtale.debug.xcconfig */,
 				E0C0EF4C88B0E40F68186A74 /* Pods-Snailtale.staging.xcconfig */,
 				D26B9F7FC8CA4A05A73C4557 /* Pods-Snailtale.testing.xcconfig */,
@@ -762,12 +758,12 @@
 				D2E956461B30952800CA8CC8 /* ChooseCardViewController.swift in Sources */,
 				D27DA32B1B66B74800DF32A1 /* EditPasswordViewController.swift in Sources */,
 				CC96E4C91AC0B334001E6D27 /* ComposeMailViewController.swift in Sources */,
-				D2B7CEA41B694A27007F8235 /* FileService.swift in Sources */,
 				D206FB4B1B61688D008BB412 /* WelcomeScreenViewController.swift in Sources */,
 				D206FB4F1B617504008BB412 /* BottomBorderUITextField.swift in Sources */,
 				CC6105F51AC3941900D15150 /* LoginService.swift in Sources */,
 				D2A361361B3CAC5D00811D14 /* SnailMailTextUIButton.swift in Sources */,
 				D20D8EE21B2E448100BBF6B5 /* PersonCell.swift in Sources */,
+				D291B24C1B69AA5A00C72816 /* FileService.swift in Sources */,
 				CCCB1A551AB0D48A0067F100 /* ViewController.swift in Sources */,
 				D2D8663F1B2F62B200847051 /* EditProfileViewController.swift in Sources */,
 				D25A9CAC1B225D3400ABBBA4 /* RegisterViewController.swift in Sources */,
