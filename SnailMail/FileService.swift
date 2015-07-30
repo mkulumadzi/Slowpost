@@ -23,15 +23,24 @@ class FileService {
         
         RestService.postRequest(uploadURL, parameters: parameters, completion: { (error, result) -> Void in
             if error != nil {
-                println(error)
+                completion(error: error, result: nil)
             }
             if let response = result as? [AnyObject] {
                 if let location = response[1] as? String {
-                    println(location)
+                    completion(error: nil, result: location)
                 }
             }
         })
     }
+
+//    //To Do: Test this out:
+//    class func actuallyUploadImage(imageName:String, ext:String, completion: (error: NSError?, result: AnyObject?) -> Void) {
+//        
+//        let uploadURL = "\(PostOfficeURL)upload"
+//        let fileURL = NSBundle.mainBundle().URLForResource(imageName, withExtension: ext)
+//        
+//        Alamofire.upload(.POST, uploadURL, file: fileURL!)
+//    }
 
     
 }
