@@ -10,8 +10,9 @@ import UIKit
 
 class ComposeMailViewController: UIViewController, UITextViewDelegate {
     
-    var imageName:String!
     var toPerson:Person!
+    var cardImage:UIImage!
+    var imageName:String!
     var keyboardShowing:Bool!
     
     @IBOutlet weak var toLabel: UILabel!
@@ -30,8 +31,12 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
 
         addTopBorderToTextView(composeText)
         
-        if let image = imageName {
-            imagePreview.image = UIImage(named: image)
+        if cardImage != nil {
+            imagePreview.image = cardImage
+        }
+        
+        if imageName == nil {
+            self.imageName = "image"
         }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow:", name: UIKeyboardWillShowNotification, object: nil)

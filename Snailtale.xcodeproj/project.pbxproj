@@ -83,6 +83,9 @@
 		D2B7CEAC1B6951CE007F8235 /* ConfigurationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7CEAB1B6951CE007F8235 /* ConfigurationService.swift */; };
 		D2B7CEAE1B696DBC007F8235 /* RestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7CEAD1B696DBC007F8235 /* RestService.swift */; };
 		D2C071061B3A3E99000154E8 /* Configurations.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2C071051B3A3E99000154E8 /* Configurations.plist */; };
+		D2CEC4641B6C1F4F002CFD25 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CEC4631B6C1F4F002CFD25 /* PhotoLibraryViewController.swift */; };
+		D2CEC4661B6C1F5C002CFD25 /* TakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CEC4651B6C1F5C002CFD25 /* TakePhotoViewController.swift */; };
+		D2CEC4681B6C1F6E002CFD25 /* CardGalleryUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CEC4671B6C1F6E002CFD25 /* CardGalleryUIViewController.swift */; };
 		D2D866261B2F4AF800847051 /* ios7-person-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866251B2F4AF800847051 /* ios7-person-outline.png */; };
 		D2D8662A1B2F4B7F00847051 /* ios7-contact-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */; };
 		D2D8662C1B2F50CC00847051 /* ios7-contact-outline-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D8662B1B2F50CC00847051 /* ios7-contact-outline-white.png */; };
@@ -93,7 +96,7 @@
 		D2D8663F1B2F62B200847051 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */; };
 		D2D866461B2F77BE00847051 /* SnailMail at the Beach.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866451B2F77BE00847051 /* SnailMail at the Beach.png */; };
 		D2E956401B2F8ECD00CA8CC8 /* Parachute.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E9563F1B2F8ECD00CA8CC8 /* Parachute.png */; };
-		D2E956461B30952800CA8CC8 /* ChooseCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E956451B30952800CA8CC8 /* ChooseCardViewController.swift */; };
+		D2E956461B30952800CA8CC8 /* ChooseImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E956451B30952800CA8CC8 /* ChooseImageViewController.swift */; };
 		D2E9564A1B309AA100CA8CC8 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */; };
 		D2E956581B30A8AC00CA8CC8 /* Sevilla.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E9564B1B30A8AC00CA8CC8 /* Sevilla.jpg */; };
 		D2E956591B30A8AC00CA8CC8 /* Dhow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E9564C1B30A8AC00CA8CC8 /* Dhow.jpg */; };
@@ -207,6 +210,9 @@
 		D2B7CEAB1B6951CE007F8235 /* ConfigurationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationService.swift; sourceTree = "<group>"; };
 		D2B7CEAD1B696DBC007F8235 /* RestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestService.swift; sourceTree = "<group>"; };
 		D2C071051B3A3E99000154E8 /* Configurations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configurations.plist; sourceTree = "<group>"; };
+		D2CEC4631B6C1F4F002CFD25 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
+		D2CEC4651B6C1F5C002CFD25 /* TakePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoViewController.swift; sourceTree = "<group>"; };
+		D2CEC4671B6C1F6E002CFD25 /* CardGalleryUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardGalleryUIViewController.swift; sourceTree = "<group>"; };
 		D2D866251B2F4AF800847051 /* ios7-person-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-person-outline.png"; sourceTree = "<group>"; };
 		D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-contact-outline.png"; sourceTree = "<group>"; };
 		D2D8662B1B2F50CC00847051 /* ios7-contact-outline-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-contact-outline-white.png"; sourceTree = "<group>"; };
@@ -217,7 +223,7 @@
 		D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		D2D866451B2F77BE00847051 /* SnailMail at the Beach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnailMail at the Beach.png"; sourceTree = "<group>"; };
 		D2E9563F1B2F8ECD00CA8CC8 /* Parachute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Parachute.png; sourceTree = "<group>"; };
-		D2E956451B30952800CA8CC8 /* ChooseCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCardViewController.swift; sourceTree = "<group>"; };
+		D2E956451B30952800CA8CC8 /* ChooseImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseImageViewController.swift; sourceTree = "<group>"; };
 		D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		D2E9564B1B30A8AC00CA8CC8 /* Sevilla.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sevilla.jpg; sourceTree = "<group>"; };
 		D2E9564C1B30A8AC00CA8CC8 /* Dhow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Dhow.jpg; sourceTree = "<group>"; };
@@ -300,7 +306,10 @@
 				CC96E4C81AC0B334001E6D27 /* ComposeMailViewController.swift */,
 				D20D8ED31B2A510700BBF6B5 /* ToViewController.swift */,
 				D20D8EE11B2E448100BBF6B5 /* PersonCell.swift */,
-				D2E956451B30952800CA8CC8 /* ChooseCardViewController.swift */,
+				D2E956451B30952800CA8CC8 /* ChooseImageViewController.swift */,
+				D2CEC4631B6C1F4F002CFD25 /* PhotoLibraryViewController.swift */,
+				D2CEC4651B6C1F5C002CFD25 /* TakePhotoViewController.swift */,
+				D2CEC4671B6C1F6E002CFD25 /* CardGalleryUIViewController.swift */,
 			);
 			name = Compose;
 			sourceTree = "<group>";
@@ -755,7 +764,7 @@
 				D206FB561B619AA5008BB412 /* HomeTabBarController.swift in Sources */,
 				D27DA3211B62BDA900DF32A1 /* ProfileTabViewController.swift in Sources */,
 				D2B651AD1B31411C00134C23 /* SentMailTableViewCell.swift in Sources */,
-				D2E956461B30952800CA8CC8 /* ChooseCardViewController.swift in Sources */,
+				D2E956461B30952800CA8CC8 /* ChooseImageViewController.swift in Sources */,
 				D27DA32B1B66B74800DF32A1 /* EditPasswordViewController.swift in Sources */,
 				CC96E4C91AC0B334001E6D27 /* ComposeMailViewController.swift in Sources */,
 				D206FB4B1B61688D008BB412 /* WelcomeScreenViewController.swift in Sources */,
@@ -768,6 +777,7 @@
 				D2D8663F1B2F62B200847051 /* EditProfileViewController.swift in Sources */,
 				D25A9CAC1B225D3400ABBBA4 /* RegisterViewController.swift in Sources */,
 				CCCB1A751AB0D87F0067F100 /* Person.swift in Sources */,
+				D2CEC4681B6C1F6E002CFD25 /* CardGalleryUIViewController.swift in Sources */,
 				CC96E4A01ABCCBF2001E6D27 /* LogInViewController.swift in Sources */,
 				D2B7CEAE1B696DBC007F8235 /* RestService.swift in Sources */,
 				D2A361381B3CB52B00811D14 /* WarningUILabel.swift in Sources */,
@@ -776,6 +786,7 @@
 				D20D8ED41B2A510700BBF6B5 /* ToViewController.swift in Sources */,
 				D27DA3291B62E7BC00DF32A1 /* SettingsMenuViewController.swift in Sources */,
 				D21D79DD1B56ED540014510E /* AddressBookService.swift in Sources */,
+				D2CEC4641B6C1F4F002CFD25 /* PhotoLibraryViewController.swift in Sources */,
 				CC96E4AD1ABCDEB5001E6D27 /* MailCell.swift in Sources */,
 				D2D866331B2F52EB00847051 /* ViewProfileViewController.swift in Sources */,
 				D2B651E71B38827100134C23 /* Extensions.swift in Sources */,
@@ -789,6 +800,7 @@
 				D2B7CEAA1B694E55007F8235 /* MailService.swift in Sources */,
 				CCCB1A531AB0D48A0067F100 /* AppDelegate.swift in Sources */,
 				D2B7CEA01B66E87E007F8235 /* SentMailDetailViewController.swift in Sources */,
+				D2CEC4661B6C1F5C002CFD25 /* TakePhotoViewController.swift in Sources */,
 				CC96E4AF1AC0876D001E6D27 /* MailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -226,8 +226,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "selectImage" {
-            let chooseCardViewController = segue.destinationViewController as? ChooseCardViewController
-            chooseCardViewController?.toPerson = toPerson
+            let chooseImageViewController = segue.destinationViewController as? ChooseImageViewController
+            chooseImageViewController?.toPerson = toPerson
         }
     }
     
