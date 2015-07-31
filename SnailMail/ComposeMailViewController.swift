@@ -87,14 +87,11 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     @IBAction func sendMail(sender: AnyObject) {
         doneButton.enabled = false
         
-        //Upload Image to AWS
-        let uploadURL = "\(PostOfficeURL)upload"
-        let parameters = ["file": "foo", "filename": "testiOSUpload.png"]
         let image = imagePreview.image!
         
         FileService.uploadImage(image, filename: imageName, completion: { (error, result) -> Void in
-            if let imageKey = result as? String {
-                self.sendMailToPostoffice(imageKey)
+            if let imageUid = result as? String {
+                self.sendMailToPostoffice(imageUid)
             }
             else {
                 println("Unexpected result")
@@ -102,10 +99,10 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         })
     }
     
-    func sendMailToPostoffice(imageKey: String) {
+    func sendMailToPostoffice(imageUid: String) {
     
         let sendMailEndpoint = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mail/send"
-        let parameters = ["to": "\(toPerson.username)", "content": "\(composeText.text)", "image": "\(imageKey)"]
+        let parameters = ["to": "\(toPerson.username)", "content": "\(composeText.text)", "image_uid": "\(imageUid)"]
         
         RestService.postRequest(sendMailEndpoint, parameters: parameters, completion: { (error, result) -> Void in
             if let response = result as? [AnyObject] {
@@ -118,18 +115,6 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         })
         
     }
-    
-//    func uploadImageToAWS() {
-//        let uploadURL = "\(PostOfficeURL)upload"
-//        let parameters = ["file": "foo", "filename": "testiOSUpload.png"]
-//        let image = imagePreview.image!
-//        
-//        FileService.uploadImage(image, filename: imageName, completion: { (error, result) -> Void in
-//            if let response = result as? String {
-//                println(response)
-//            }
-//        })
-//    }
     
     func textViewDidChange(textView: UITextView) {
         doneButton.enabled = true

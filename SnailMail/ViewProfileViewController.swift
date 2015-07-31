@@ -86,25 +86,15 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = tableView.dequeueReusableCellWithIdentifier("MailCell", forIndexPath: indexPath) as? SentMailTableViewCell
         
         let mail = outbox[indexPath.row] as Mail
+        cell?.mail = mail
         
         if let person = find(penpals.map({ $0.username }), mail.to) {
             cell?.person = penpals[person]
         }
         
-        cell?.mail = mail
-        cell?.cardImage.image = getImage(mail)
+        cell?.formatCell()
         
         return cell!
-        
-    }
-    
-    func getImage(mail: Mail) -> UIImage {
-        if mail.imageThumb != nil {
-            return mail.imageThumb
-        }
-        else {
-            return UIImage(named: "Default Card.png")!
-        }
     }
     
     @IBAction func showSettingsMenu(sender: AnyObject) {

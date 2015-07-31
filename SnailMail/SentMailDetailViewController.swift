@@ -23,7 +23,7 @@ class SentMailDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mailImage.image = getImage()
+        getImage()
         mailContent.text = mail.content
         toLabel.text = "To: " + toPerson.name
         statusLabel.text = mail.status
@@ -34,16 +34,21 @@ class SentMailDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //To Do: Abstract this function into a separate class.
-    func getImage() -> UIImage {
+    func getImage() {
         if mail.image != nil {
-            return mail.image
+            mailImage.image = mail.image
         }
         else {
-           return UIImage(named: "Default Card.png")!
+            MailService.getMailImage(mail, completion: { (error, result) -> Void in
+                if let image = result as? UIImage {
+                    self.mailImage.image = image
+                }
+                else {
+                    self.mailImage.image = UIImage(named: "Default Card.png")!
+                }
+            })
         }
     }
-    
     @IBAction func closeView(sender: AnyObject) {
         
         //Connecting this button to the unwind segue on Profile View wasn't working, so dismissing view manually
