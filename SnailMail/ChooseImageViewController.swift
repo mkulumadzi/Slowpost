@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import MobileCoreServices
 
-class ChooseImageViewController: UIViewController {
+class ChooseImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var cardImage:UIImage!
     var imageName:String!
     var toPerson:Person!
+    var newMedia: Bool?
 
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var imageSelected: UIImageView!
@@ -57,6 +59,73 @@ class ChooseImageViewController: UIViewController {
     @IBAction func backToSelectRecipient(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: {})
     }
+    
+    
+    @IBAction func selectPhotoFromLibrary(sender: AnyObject) {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) {
+            let imagePicker = UIImagePickerController()
+                
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            imagePicker.mediaTypes = [kUTTypeImage as NSString]
+            imagePicker.allowsEditing = false
+            self.presentViewController(imagePicker, animated: true, completion: nil)
+            newMedia = false
+        }
+    }
+    
+    @IBAction func takePhoto(sender: AnyObject) {
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+                
+                let imagePicker = UIImagePickerController()
+                
+                imagePicker.delegate = self
+                imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+                imagePicker.mediaTypes = [kUTTypeImage as NSString]
+                imagePicker.allowsEditing = false
+                
+                self.presentViewController(imagePicker, animated: true, completion: nil)
+                newMedia = true
+        }
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        
+        let mediaType = info[UIImagePickerControllerMediaType] as! String
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+        
+        if mediaType == (kUTTypeImage as! String) {
+            let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+            
+            imageSelected.image = image
+            cardImage = image
+            
+            if (newMedia == true) {
+                UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil)
+            } else if mediaType == (kUTTypeMovie as! String) {
+                // Code to support video here
+            }
+            
+        }
+    }
+    
+    func image(image: UIImage, didFinishSavingWithError error: NSErrorPointer, contextInfo:UnsafePointer<Void>) {
+        
+        if error != nil {
+            let alert = UIAlertController(title: "Save Failed", message: "Failed to save image", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+            
+            alert.addAction(cancelAction)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     
     @IBAction func cancelToChooseImage(segue:UIStoryboardSegue) {
     }
