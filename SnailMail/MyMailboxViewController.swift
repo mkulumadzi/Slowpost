@@ -9,7 +9,6 @@
 import UIKit
 
 class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
 
     @IBOutlet weak var mailTable: UITableView!
     @IBOutlet weak var navBar: UINavigationBar!

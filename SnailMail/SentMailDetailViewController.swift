@@ -37,11 +37,11 @@ class SentMailDetailViewController: UIViewController {
     //To Do: Abstract this function into a separate class.
     func getImage() -> UIImage {
         if mail.image != nil {
-            if let image = UIImage(named: mail.image) {
-                return image
-            }
+            return mail.image
         }
-        return UIImage(named: "Default Card.png")!
+        else {
+           return UIImage(named: "Default Card.png")!
+        }
     }
     
     @IBAction func closeView(sender: AnyObject) {

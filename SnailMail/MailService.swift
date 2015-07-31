@@ -19,7 +19,6 @@ class MailService {
         let from = jsonEntry.objectForKey("from") as! String
         let to = jsonEntry.objectForKey("to") as! String
         let content = jsonEntry.objectForKey("content") as! String
-        let image = jsonEntry.objectForKey("image") as? String
         
         let arrivalString = jsonEntry.objectForKey("scheduled_to_arrive") as? String
         let scheduledToArrive = NSDate(dateString: arrivalString!)
@@ -31,9 +30,9 @@ class MailService {
         let createdAt = NSDate(dateString: createdString)
         
         
-        var new_mail = Mail(id: id, status: status, from: from, to: to, content: content, image: image, scheduledToArrive: scheduledToArrive, updatedAt: updatedAt, createdAt: createdAt)
+        var mail = Mail(id: id, status: status, from: from, to: to, content: content, image: nil, imageThumb: nil, scheduledToArrive: scheduledToArrive, updatedAt: updatedAt, createdAt: createdAt)
         
-        return new_mail
+        return mail
     }
     
     class func getMailById(id: String, completion: (error: NSError?, result: AnyObject?) -> Void) {
@@ -52,6 +51,38 @@ class MailService {
         })
         
     }
+    
+    class func getMailImage(mail: Mail, completion: (error: NSError?, result: AnyObject?) -> Void) {
+        let mailImageURL = "\(PostOfficeURL)/mail/id/\(mail.id)/image"
+        
+        FileService.downloadImage(mailImageURL, completion: { (error, result) -> Void in
+            if let image = result as? UIImage {
+                mail.image = image
+                completion(error: nil, result: mail.image)
+            }
+            else {
+                mail.image = UIImage(named: "Default Card.png")!
+                completion(error: nil, result: mail.image)
+            }
+        })
+        
+    }
+
+    class func getMailThumbnailImage(mail: Mail, completion: (error: NSError?, result: AnyObject?) -> Void) {
+        let mailThumbnailImageURL = "\(PostOfficeURL)/mail/id/\(mail.id)/image?thumb=x69"
+        
+        FileService.downloadImage(mailThumbnailImageURL, completion: { (error, result) -> Void in
+            if let thumbnail = result as? UIImage {
+                mail.imageThumb = thumbnail
+                completion(error: nil, result: mail.imageThumb)
+            }
+            else {
+                mail.imageThumb = UIImage(named: "Default Card.png")!
+                completion(error: nil, result: mail.imageThumb)
+            }
+        })
+    }
+    
     
     class func getMailCollection(collectionURL: String, completion: (error: NSError?, result: AnyObject?) -> Void) {
         RestService.getRequest(collectionURL, completion: { (error, result) -> Void in

@@ -26,7 +26,7 @@ class MailCell: UITableViewCell {
     func formatCell() {
         getPerson(mail)
         setStyleBasedOnMailStatus()
-        mailImage.image = getImage(mail)
+        getImage(mail)
         setStatusLabel()
     }
     
@@ -51,13 +51,20 @@ class MailCell: UITableViewCell {
         }
     }
     
-    func getImage(mail: Mail) -> UIImage {
-        if mail.image != nil {
-            if let image = UIImage(named: mail.image) {
-                return image
-            }
+    func getImage(mail: Mail) {
+        if mail.imageThumb != nil {
+            mailImage.image = mail.imageThumb
         }
-        return UIImage(named: "Default Card.png")!
+        else {
+            MailService.getMailThumbnailImage(mail, completion: { (error, result) -> Void in
+                if let thumbnail = result as? UIImage {
+                    self.mailImage.image = thumbnail
+                }
+                else {
+                    self.mailImage.image = UIImage(named: "Default Card.png")!
+                }
+            })
+        }
     }
     
     func setStatusLabel() {

@@ -32,16 +32,49 @@ class FileService {
             }
         })
     }
+    
+    class func downloadImage(url: String, completion: (error: NSError?, result: AnyObject?) -> Void) {
 
-//    //To Do: Test this out:
-//    class func actuallyUploadImage(imageName:String, ext:String, completion: (error: NSError?, result: AnyObject?) -> Void) {
-//        
-//        let uploadURL = "\(PostOfficeURL)upload"
-//        let fileURL = NSBundle.mainBundle().URLForResource(imageName, withExtension: ext)
-//        
-//        Alamofire.upload(.POST, uploadURL, file: fileURL!)
-//    }
-
+        Alamofire.request(.GET, url)
+            .response { (request, response, data, error) in
+                if let anError = error {
+                    completion(error: error, result: nil)
+                }
+                else if let response: AnyObject = response {
+                    if response.statusCode == 403 || response.statusCode == 404 {
+                        completion(error: nil, result: nil)
+                    }
+                    else if let image = UIImage(data: data! as NSData) {
+                        completion(error: nil, result: image)
+                    }
+                    else {
+                        completion(error: nil, result: nil)
+                    }
+                }
+        }
+    }
+    
+    class func getRequest(requestURL:String, completion: (error: NSError?, result: AnyObject?) -> Void) {
+        Alamofire.request(.GET, requestURL)
+            .response { (request, response, data, error) in
+                if let anError = error {
+                    completion(error: error, result: nil)
+                }
+                else if let response: AnyObject = response {
+                    if response.statusCode != 200 {
+                        completion(error: error, result: response.statusCode)
+                    }
+                }
+            }
+            .responseJSON { (_, _, JSON, error) in
+                if let response = JSON as? NSDictionary {
+                    completion(error: nil, result: response)
+                }
+                else if let response = JSON as? Array<NSDictionary> {
+                    completion(error: nil, result: response)
+                }
+        }
+    }
     
 }
 

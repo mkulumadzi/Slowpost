@@ -99,12 +99,12 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func getImage(mail: Mail) -> UIImage {
-        if mail.image != nil {
-            if let image = UIImage(named: mail.image) {
-                return image
-            }
+        if mail.imageThumb != nil {
+            return mail.imageThumb
         }
-        return UIImage(named: "Default Card.png")!
+        else {
+            return UIImage(named: "Default Card.png")!
+        }
     }
     
     @IBAction func showSettingsMenu(sender: AnyObject) {

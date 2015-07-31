@@ -22,7 +22,7 @@ class MailViewController: UIViewController {
         super.viewDidLoad()
         
         mailText.text = generateMailText()
-        mailImage.image = getImage()
+        getImage()
         
         if mail.status == "DELIVERED" {
             readMail(mail)
@@ -41,14 +41,20 @@ class MailViewController: UIViewController {
         return mailText
     }
     
-    //To Do: Abstract this function into a separate class.
-    func getImage() -> UIImage {
+    func getImage() {
         if mail.image != nil {
-            if let image = UIImage(named: mail.image) {
-                return image
-            }
+            mailImage.image = mail.image
         }
-        return UIImage(named: "Default Card.png")!
+        else {
+            MailService.getMailImage(mail, completion: { (error, result) -> Void in
+                if let image = result as? UIImage {
+                    self.mailImage.image = image
+                }
+                else {
+                    self.mailImage.image = UIImage(named: "Default Card.png")!
+                }
+            })
+        }
     }
     
     func readMail(mail:Mail) {
