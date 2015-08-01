@@ -143,7 +143,7 @@
                                             <outlet property="cardImage" destination="RyX-x3-iLb" id="C5S-Ec-1bx"/>
                                             <outlet property="statusLabel" destination="w9o-yb-ojm" id="Uph-ni-msi"/>
                                             <outlet property="toName" destination="dZx-J1-6gk" id="Uaf-vA-ruw"/>
-                                            <segue destination="R15-RU-waU" kind="show" identifier="viewSentMail" id="5IK-wK-JyW"/>
+                                            <segue destination="R15-RU-waU" kind="presentation" identifier="viewSentMail" modalTransitionStyle="crossDissolve" id="5IK-wK-JyW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -905,7 +905,7 @@
                         <viewControllerLayoutGuide type="bottom" id="gTG-W8-UUy"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="qyF-yT-OB6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mwa-l9-odN">
@@ -937,7 +937,7 @@
                                 </items>
                             </navigationBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xds-JM-gfX">
-                                <rect key="frame" x="0.0" y="60" width="600" height="560"/>
+                                <rect key="frame" x="0.0" y="60" width="600" height="540"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="400" placeholderIntrinsicHeight="300" translatesAutoresizingMaskIntoConstraints="NO" id="Iif-34-G8s">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>

@@ -49,19 +49,13 @@ class SentMailDetailViewController: UIViewController {
             })
         }
     }
+    
     @IBAction func closeView(sender: AnyObject) {
         
         //Connecting this button to the unwind segue on Profile View wasn't working, so dismissing view manually
         self.dismissViewControllerAnimated(true, completion: {})
     }
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

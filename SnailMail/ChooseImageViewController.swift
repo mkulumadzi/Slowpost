@@ -11,7 +11,7 @@ import MobileCoreServices
 
 class ChooseImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    var cardImage:UIImage!
+//    var cardImage:UIImage!
     var imageName:String!
     var toPerson:Person!
     var newMedia: Bool?
@@ -32,9 +32,9 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         takePhotoButton.layer.cornerRadius = 5
         cardGalleryButton.layer.cornerRadius = 5
         
-        if cardImage != nil {
-            imageSelected.image = cardImage
-        }
+//        if cardImage != nil {
+//            imageSelected.image = cardImage
+//        }
 
     }
 
@@ -46,8 +46,8 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "composeMessage" {
             let composeMailViewController = segue.destinationViewController as? ComposeMailViewController
-            if cardImage != nil {
-                composeMailViewController?.cardImage = self.cardImage
+            if imageSelected.image != nil {
+                composeMailViewController?.cardImage = self.imageSelected.image
                 if imageName != nil {
                     composeMailViewController?.imageName = self.imageName
                 }
@@ -99,7 +99,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
             
             imageSelected.image = image
-            cardImage = image
+//            cardImage = image
             
             if (newMedia == true) {
                 UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil)
@@ -126,6 +126,10 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    
+    @IBAction func removePhoto(sender: AnyObject) {
+        
+    }
     
     @IBAction func cancelToChooseImage(segue:UIStoryboardSegue) {
     }

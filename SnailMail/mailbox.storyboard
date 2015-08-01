@@ -5,14 +5,16 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="OpenSans-Light.ttf">
-            <string>OpenSans-Light</string>
-        </mutableArray>
         <mutableArray key="OpenSans-LightItalic.ttf">
+            <string>OpenSansLight-Italic</string>
             <string>OpenSansLight-Italic</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
+            <string>OpenSans</string>
+        </mutableArray>
+        <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -72,7 +74,7 @@
                                             <outlet property="fromLabel" destination="5nX-Lh-btm" id="bxo-pm-eLt"/>
                                             <outlet property="mailImage" destination="4j1-dE-jdq" id="K4I-jw-Emg"/>
                                             <outlet property="statusLabel" destination="xxJ-qT-mV2" id="i3r-CJ-qpq"/>
-                                            <segue destination="gCE-4u-4GZ" kind="show" identifier="viewMail" id="vnD-Wl-POp"/>
+                                            <segue destination="ZYs-4H-cBk" kind="presentation" identifier="viewMail" modalTransitionStyle="crossDissolve" id="OKP-Fo-kHM"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -128,87 +130,131 @@
             <point key="canvasLocation" x="1365" y="167"/>
         </scene>
         <!--Mail View Controller-->
-        <scene sceneID="eOb-cY-wTl">
+        <scene sceneID="L4s-ZW-cfx">
             <objects>
-                <viewController id="gCE-4u-4GZ" customClass="MailViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZYs-4H-cBk" customClass="MailViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="A42-LV-768"/>
-                        <viewControllerLayoutGuide type="bottom" id="zMS-J6-SUC"/>
+                        <viewControllerLayoutGuide type="top" id="5oF-ej-XN0"/>
+                        <viewControllerLayoutGuide type="bottom" id="NqI-9o-xIc"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="LMP-UL-sSq">
+                    <view key="view" contentMode="scaleToFill" id="H9j-tZ-WCh">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uqQ-le-jNV">
-                                <rect key="frame" x="0.0" y="60" width="600" height="448"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="uqQ-le-jNV" secondAttribute="height" multiplier="75:56" id="20O-CK-c7i"/>
-                                </constraints>
-                            </imageView>
-                            <textView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" indicatorStyle="black" editable="NO" text="Message content" translatesAutoresizingMaskIntoConstraints="NO" id="KhT-xO-PoX">
-                                <rect key="frame" x="0.0" y="508" width="600" height="92"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kaI-lE-wHl">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WOI-aK-d18">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="DAq-ug-1Rm"/>
+                                    <constraint firstAttribute="height" constant="60" id="vct-o4-i6v"/>
                                 </constraints>
-                                <color key="barTintColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                                    <color key="textColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </textAttributes>
                                 <items>
-                                    <navigationItem id="2vU-c3-oxm">
-                                        <barButtonItem key="leftBarButtonItem" style="done" id="rSb-8J-uuc">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GJf-tk-Zg4" userLabel="cancelButton">
-                                                <rect key="frame" x="16" y="14" width="20" height="20"/>
+                                    <navigationItem id="qvc-hg-KLm">
+                                        <barButtonItem key="leftBarButtonItem" id="lPT-5X-NXH">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2Qv-3V-6RN">
+                                                <rect key="frame" x="16" y="-58" width="20" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="ios7-close-empty-white.png">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                <state key="normal" image="ios7-close-empty-gray.png">
+                                                    <color key="titleColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="closeMailView:" destination="gCE-4u-4GZ" eventType="touchUpInside" id="CeO-LY-gHa"/>
+                                                    <action selector="closeMailView:" destination="ZYs-4H-cBk" eventType="touchUpInside" id="wiS-ry-ds5"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F8a-i5-Crh">
+                                <rect key="frame" x="0.0" y="60" width="600" height="540"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="400" placeholderIntrinsicHeight="300" translatesAutoresizingMaskIntoConstraints="NO" id="dTo-D2-R8y">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="dTo-D2-R8y" secondAttribute="height" multiplier="4:3" id="JGU-30-tCW"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mailContent" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQL-gF-11g">
+                                        <rect key="frame" x="10" y="515" width="580" height="21"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <color key="textColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fromLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbh-jp-FMS">
+                                        <rect key="frame" x="10" y="460" width="580" height="24"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                                        <color key="textColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="statusLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaW-t9-BfJ">
+                                        <rect key="frame" x="10" y="484" width="580" height="21"/>
+                                        <fontDescription key="fontDescription" name="OpenSansLight-Italic" family="Open Sans" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="dTo-D2-R8y" secondAttribute="bottom" id="04x-QC-Iw2"/>
+                                    <constraint firstItem="dTo-D2-R8y" firstAttribute="top" secondItem="F8a-i5-Crh" secondAttribute="top" id="0Oi-hO-7NI"/>
+                                    <constraint firstAttribute="trailing" secondItem="Bbh-jp-FMS" secondAttribute="trailing" constant="10" id="DS1-k3-Wpm"/>
+                                    <constraint firstItem="Bbh-jp-FMS" firstAttribute="leading" secondItem="F8a-i5-Crh" secondAttribute="leading" constant="10" id="FqJ-oJ-xl7"/>
+                                    <constraint firstItem="jaW-t9-BfJ" firstAttribute="top" secondItem="Bbh-jp-FMS" secondAttribute="bottom" id="GtQ-T3-UJ3"/>
+                                    <constraint firstAttribute="trailing" secondItem="jaW-t9-BfJ" secondAttribute="trailing" constant="10" id="Iiq-hk-MoR"/>
+                                    <constraint firstItem="mQL-gF-11g" firstAttribute="top" secondItem="jaW-t9-BfJ" secondAttribute="bottom" constant="10" id="Kfc-os-AXF"/>
+                                    <constraint firstAttribute="trailing" secondItem="dTo-D2-R8y" secondAttribute="trailing" id="RAL-Lg-Xdr"/>
+                                    <constraint firstItem="jaW-t9-BfJ" firstAttribute="leading" secondItem="F8a-i5-Crh" secondAttribute="leading" constant="10" id="U79-WE-D5l"/>
+                                    <constraint firstAttribute="bottom" secondItem="mQL-gF-11g" secondAttribute="bottom" constant="10" id="Vj6-gI-tf2"/>
+                                    <constraint firstItem="dTo-D2-R8y" firstAttribute="leading" secondItem="F8a-i5-Crh" secondAttribute="leading" id="c1r-vu-ISe"/>
+                                    <constraint firstItem="Bbh-jp-FMS" firstAttribute="top" secondItem="dTo-D2-R8y" secondAttribute="bottom" constant="10" id="cGD-df-kIV"/>
+                                    <constraint firstItem="mQL-gF-11g" firstAttribute="leading" secondItem="F8a-i5-Crh" secondAttribute="leading" constant="10" id="mUJ-uF-MoT"/>
+                                    <constraint firstAttribute="trailing" secondItem="mQL-gF-11g" secondAttribute="trailing" constant="10" id="smk-Zm-sbS"/>
+                                    <constraint firstItem="mQL-gF-11g" firstAttribute="top" secondItem="dTo-D2-R8y" secondAttribute="bottom" constant="80" id="tKk-vb-EG2"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="04x-QC-Iw2"/>
+                                        <exclude reference="tKk-vb-EG2"/>
+                                    </mask>
+                                </variation>
+                            </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="uqQ-le-jNV" firstAttribute="top" secondItem="kaI-lE-wHl" secondAttribute="bottom" id="2v0-Z2-6AR"/>
-                            <constraint firstAttribute="trailing" secondItem="uqQ-le-jNV" secondAttribute="trailing" id="6Ui-7e-GCq"/>
-                            <constraint firstItem="KhT-xO-PoX" firstAttribute="top" secondItem="uqQ-le-jNV" secondAttribute="bottom" id="9oy-rl-7qz"/>
-                            <constraint firstItem="kaI-lE-wHl" firstAttribute="top" secondItem="LMP-UL-sSq" secondAttribute="top" id="Chl-pC-3CH"/>
-                            <constraint firstItem="KhT-xO-PoX" firstAttribute="leading" secondItem="LMP-UL-sSq" secondAttribute="leading" id="QPN-QA-eGr"/>
-                            <constraint firstItem="uqQ-le-jNV" firstAttribute="leading" secondItem="LMP-UL-sSq" secondAttribute="leading" id="T6K-AY-OZT"/>
-                            <constraint firstAttribute="bottom" secondItem="KhT-xO-PoX" secondAttribute="bottom" id="YoN-K2-kip"/>
-                            <constraint firstItem="kaI-lE-wHl" firstAttribute="leading" secondItem="LMP-UL-sSq" secondAttribute="leading" id="aQc-x1-LTB"/>
-                            <constraint firstAttribute="trailing" secondItem="KhT-xO-PoX" secondAttribute="trailing" id="e1x-il-g5u"/>
-                            <constraint firstAttribute="trailing" secondItem="kaI-lE-wHl" secondAttribute="trailing" id="glb-df-zv8"/>
-                            <constraint firstItem="KhT-xO-PoX" firstAttribute="bottom" secondItem="uqQ-le-jNV" secondAttribute="bottom" constant="339" id="hzm-BO-EyC"/>
-                            <constraint firstItem="KhT-xO-PoX" firstAttribute="top" secondItem="uqQ-le-jNV" secondAttribute="top" id="lsf-YN-cXs"/>
+                            <constraint firstItem="F8a-i5-Crh" firstAttribute="top" secondItem="WOI-aK-d18" secondAttribute="bottom" id="3Cu-xB-YLF"/>
+                            <constraint firstItem="WOI-aK-d18" firstAttribute="leading" secondItem="H9j-tZ-WCh" secondAttribute="leading" id="CBx-Vo-hMx"/>
+                            <constraint firstItem="WOI-aK-d18" firstAttribute="top" secondItem="H9j-tZ-WCh" secondAttribute="top" id="E13-iv-2Hn"/>
+                            <constraint firstAttribute="trailing" secondItem="WOI-aK-d18" secondAttribute="trailing" id="IBl-i9-Vnb"/>
+                            <constraint firstItem="F8a-i5-Crh" firstAttribute="leading" secondItem="H9j-tZ-WCh" secondAttribute="leading" id="Pel-EN-PQB"/>
+                            <constraint firstAttribute="width" secondItem="dTo-D2-R8y" secondAttribute="width" id="UqJ-5d-Y6F"/>
+                            <constraint firstAttribute="bottom" secondItem="F8a-i5-Crh" secondAttribute="bottom" id="gRi-dg-TFu"/>
+                            <constraint firstItem="WOI-aK-d18" firstAttribute="leading" secondItem="H9j-tZ-WCh" secondAttribute="leading" id="lcS-bz-bW8"/>
+                            <constraint firstAttribute="trailing" secondItem="F8a-i5-Crh" secondAttribute="trailing" id="rPc-ax-sld"/>
+                            <constraint firstAttribute="trailing" secondItem="WOI-aK-d18" secondAttribute="trailing" id="sHg-Rg-w9H"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="hzm-BO-EyC"/>
-                                <exclude reference="lsf-YN-cXs"/>
+                                <exclude reference="lcS-bz-bW8"/>
+                                <exclude reference="IBl-i9-Vnb"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="0gQ-Dh-bnm"/>
                     <connections>
-                        <outlet property="mailImage" destination="uqQ-le-jNV" id="bVt-Wd-RpG"/>
-                        <outlet property="mailText" destination="KhT-xO-PoX" id="spd-D7-bZk"/>
+                        <outlet property="fromLabel" destination="Bbh-jp-FMS" id="lbi-4G-OWm"/>
+                        <outlet property="mailContent" destination="mQL-gF-11g" id="76j-Ud-dbR"/>
+                        <outlet property="mailImage" destination="dTo-D2-R8y" id="87X-1U-gU5"/>
+                        <outlet property="statusLabel" destination="jaW-t9-BfJ" id="vQR-aD-iTR"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kdA-fe-Iyd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kd2-Kc-Pwm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2115" y="167"/>
+            <point key="canvasLocation" x="2067" y="167"/>
         </scene>
     </scenes>
     <resources>
-        <image name="ios7-close-empty-white.png" width="192" height="192"/>
+        <image name="ios7-close-empty-gray.png" width="192" height="192"/>
     </resources>
 </document>

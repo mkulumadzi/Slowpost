@@ -218,19 +218,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.presentViewController(controller, animated: true, completion: nil)
     }
     
-    
-    @IBAction func selectImage(sender: AnyObject) {
-        self.performSegueWithIdentifier("selectImage", sender: nil)
-    }
-
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "selectImage" {
-            let chooseImageViewController = segue.destinationViewController as? ChooseImageViewController
-            chooseImageViewController?.toPerson = toPerson
-        }
-    }
-    
     func searchPeople(term: String) {
         
         var searchResults = [Person]()
@@ -274,6 +261,18 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                     i += 1
                 }
             }
+        }
+    }
+    
+    @IBAction func selectImage(sender: AnyObject) {
+        self.performSegueWithIdentifier("selectImage", sender: nil)
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "selectImage" {
+            let chooseImageViewController = segue.destinationViewController as? ChooseImageViewController
+            chooseImageViewController?.toPerson = toPerson
         }
     }
     

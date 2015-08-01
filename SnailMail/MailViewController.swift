@@ -10,8 +10,12 @@ import UIKit
 
 class MailViewController: UIViewController {
     
-    @IBOutlet weak var mailText: UITextView!
+//    @IBOutlet weak var mailText: UITextView!
+//    @IBOutlet weak var mailImage: UIImageView!
     @IBOutlet weak var mailImage: UIImageView!
+    @IBOutlet weak var fromLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var mailContent: UILabel!
     
     var mail:Mail!
     var from:Person!
@@ -21,8 +25,10 @@ class MailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mailText.text = generateMailText()
         getImage()
+        mailContent.text = mail.content
+        fromLabel.text = "From: " + from.name
+        statusLabel.text = mail.status
         
         if mail.status == "DELIVERED" {
             readMail(mail)
