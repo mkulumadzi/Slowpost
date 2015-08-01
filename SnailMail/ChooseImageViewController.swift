@@ -11,7 +11,6 @@ import MobileCoreServices
 
 class ChooseImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-//    var cardImage:UIImage!
     var imageName:String!
     var toPerson:Person!
     var newMedia: Bool?
@@ -32,10 +31,19 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         takePhotoButton.layer.cornerRadius = 5
         cardGalleryButton.layer.cornerRadius = 5
         
-//        if cardImage != nil {
-//            imageSelected.image = cardImage
-//        }
+        if imageSelected.image == nil {
+            removePhotoButton.hidden = true
+        }
 
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if imageSelected.image == nil {
+            removePhotoButton.hidden = true
+        }
+        else {
+           removePhotoButton.hidden = false
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,11 +63,6 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
             composeMailViewController!.toPerson = toPerson
         }
     }
-    
-    @IBAction func backToSelectRecipient(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: {})
-    }
-    
     
     @IBAction func selectPhotoFromLibrary(sender: AnyObject) {
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) {
@@ -99,7 +102,6 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
             
             imageSelected.image = image
-//            cardImage = image
             
             if (newMedia == true) {
                 UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil)
@@ -126,9 +128,13 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    
     @IBAction func removePhoto(sender: AnyObject) {
-        
+        imageSelected.image = nil
+        removePhotoButton.hidden = true
+    }
+    
+    @IBAction func backToSelectRecipient(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
     }
     
     @IBAction func cancelToChooseImage(segue:UIStoryboardSegue) {

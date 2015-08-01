@@ -209,6 +209,9 @@
                                                 <state key="normal" image="ios7-arrow-left-white.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="backToSelectRecipient:" destination="2t1-x4-fi1" eventType="touchUpInside" id="Jo8-Ma-jDh"/>
+                                                </connections>
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="done" id="hfT-Ri-qV8">
@@ -255,7 +258,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cD-DR-bzv" customClass="SnailMailTextUIButton" customModule="Snailtale" customModuleProvider="target">
-                                <rect key="frame" x="30" y="568" width="540" height="40"/>
+                                <rect key="frame" x="30" y="618" width="540" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="7to-zn-YBG"/>
@@ -270,7 +273,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plQ-dw-tew" customClass="SnailMailTextUIButton" customModule="Snailtale" customModuleProvider="target">
-                                <rect key="frame" x="30" y="618" width="540" height="40"/>
+                                <rect key="frame" x="30" y="668" width="540" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="2Fv-Fd-IHA"/>
@@ -285,7 +288,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1v-Uj-6rd" customClass="SnailMailTextUIButton" customModule="Snailtale" customModuleProvider="target">
-                                <rect key="frame" x="30" y="668" width="540" height="40"/>
+                                <rect key="frame" x="30" y="718" width="540" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="eWx-Rk-CQX"/>
@@ -300,7 +303,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wnd-rs-lA3" customClass="SnailMailTextUIButton" customModule="Snailtale" customModuleProvider="target">
-                                <rect key="frame" x="30" y="718" width="540" height="40"/>
+                                <rect key="frame" x="30" y="568" width="540" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="1rp-nT-23N"/>
@@ -326,11 +329,12 @@
                             <constraint firstItem="v2Z-dH-fwH" firstAttribute="top" secondItem="Mkz-CG-fyW" secondAttribute="bottom" constant="14" id="B7Q-lM-jHV"/>
                             <constraint firstAttribute="trailing" secondItem="3cD-DR-bzv" secondAttribute="trailing" constant="30" id="D4q-pV-SQS"/>
                             <constraint firstAttribute="trailing" secondItem="EKY-VR-wL7" secondAttribute="trailing" id="EuB-LB-F4q"/>
+                            <constraint firstItem="3cD-DR-bzv" firstAttribute="top" secondItem="Wnd-rs-lA3" secondAttribute="bottom" constant="10" id="FEf-mG-ETZ"/>
                             <constraint firstItem="Wnd-rs-lA3" firstAttribute="leading" secondItem="UDU-e0-SvH" secondAttribute="leading" constant="30" id="JPX-r1-HSC"/>
                             <constraint firstAttribute="trailing" secondItem="A1v-Uj-6rd" secondAttribute="trailing" constant="30" id="Kvf-kn-INh"/>
                             <constraint firstItem="EKY-VR-wL7" firstAttribute="top" secondItem="rtl-YU-w3q" secondAttribute="bottom" constant="10" id="Lzd-U6-2xb"/>
                             <constraint firstAttribute="trailing" secondItem="Wnd-rs-lA3" secondAttribute="trailing" constant="30" id="MZh-b9-tB9"/>
-                            <constraint firstItem="3cD-DR-bzv" firstAttribute="top" secondItem="EKY-VR-wL7" secondAttribute="bottom" constant="10" id="OYN-s3-kzz"/>
+                            <constraint firstItem="3cD-DR-bzv" firstAttribute="top" secondItem="EKY-VR-wL7" secondAttribute="bottom" constant="50" id="OYN-s3-kzz"/>
                             <constraint firstAttribute="trailing" secondItem="Mkz-CG-fyW" secondAttribute="trailing" id="PGC-Wp-Ze1"/>
                             <constraint firstItem="A1v-Uj-6rd" firstAttribute="top" secondItem="plQ-dw-tew" secondAttribute="bottom" constant="10" id="RDw-Ns-0jQ"/>
                             <constraint firstItem="Mkz-CG-fyW" firstAttribute="top" secondItem="UDU-e0-SvH" secondAttribute="top" id="bIY-eg-HSS"/>
@@ -338,6 +342,7 @@
                             <constraint firstItem="A1v-Uj-6rd" firstAttribute="leading" secondItem="UDU-e0-SvH" secondAttribute="leading" constant="30" id="ijb-Gn-eV4"/>
                             <constraint firstAttribute="trailing" secondItem="plQ-dw-tew" secondAttribute="trailing" constant="30" id="kci-7G-HH8"/>
                             <constraint firstItem="rtl-YU-w3q" firstAttribute="leading" secondItem="v2Z-dH-fwH" secondAttribute="trailing" constant="2" id="mN4-6A-lPQ"/>
+                            <constraint firstItem="Wnd-rs-lA3" firstAttribute="top" secondItem="EKY-VR-wL7" secondAttribute="bottom" constant="10" id="qy7-c2-F7a"/>
                             <constraint firstItem="EKY-VR-wL7" firstAttribute="leading" secondItem="UDU-e0-SvH" secondAttribute="leading" id="tZp-RD-JCG"/>
                             <constraint firstItem="plQ-dw-tew" firstAttribute="top" secondItem="3cD-DR-bzv" secondAttribute="bottom" constant="10" id="tbA-AS-6eg"/>
                             <constraint firstItem="rtl-YU-w3q" firstAttribute="top" secondItem="Mkz-CG-fyW" secondAttribute="bottom" constant="14" id="wag-m2-Gwf"/>
@@ -345,6 +350,8 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="mN4-6A-lPQ"/>
+                                <exclude reference="7Q6-Bo-8xb"/>
+                                <exclude reference="OYN-s3-kzz"/>
                             </mask>
                         </variation>
                     </view>
