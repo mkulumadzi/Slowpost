@@ -28,7 +28,7 @@ class MailViewController: UIViewController {
         getImage()
         mailContent.text = mail.content
         fromLabel.text = "From: " + from.name
-        statusLabel.text = mail.status
+        setStatusLabel()
         
         if mail.status == "DELIVERED" {
             readMail(mail)
@@ -88,6 +88,12 @@ class MailViewController: UIViewController {
             }
         })
         
+    }
+    
+    func setStatusLabel() {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        statusLabel.text = "\(mail.status) on \(dateFormatter.stringFromDate(mail.updatedAt))"
     }
     
     @IBAction func closeMailView(sender: AnyObject) {

@@ -11,9 +11,9 @@
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
-            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
         </mutableArray>
     </customFonts>
@@ -30,45 +30,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RKL-Qp-DiU">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="511" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RKL-Qp-DiU">
                                 <rect key="frame" x="0.0" y="60" width="600" height="540"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MailCell" rowHeight="80" id="wvb-F7-Xxt" customClass="MailCell" customModule="Snailtale" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MailCell" id="wvb-F7-Xxt" customClass="MailCell" customModule="Snailtale" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wvb-F7-Xxt" id="mBP-Ah-o1k">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4j1-dE-jdq">
-                                                    <rect key="frame" x="5" y="5" width="92" height="69"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="4j1-dE-jdq">
+                                                    <rect key="frame" x="10" y="10" width="580" height="435"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="4j1-dE-jdq" secondAttribute="height" multiplier="4:3" id="lq8-Y4-iIJ"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FromLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nX-Lh-btm" userLabel="FromLabel">
-                                                    <rect key="frame" x="107" y="28" width="450" height="24"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fromLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5nX-Lh-btm" userLabel="FromLabel">
+                                                    <rect key="frame" x="10" y="455" width="580" height="24"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StatusLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxJ-qT-mV2" userLabel="StatusLabel">
-                                                    <rect key="frame" x="107" y="52" width="450" height="21"/>
+                                                    <rect key="frame" x="10" y="479" width="580" height="21"/>
                                                     <fontDescription key="fontDescription" name="OpenSansLight-Italic" family="Open Sans" pointSize="15"/>
                                                     <color key="textColor" red="0.49803921568627452" green="0.47843137254901963" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="xxJ-qT-mV2" secondAttribute="bottom" constant="10" id="21i-eP-LAI"/>
+                                                <constraint firstAttribute="trailing" secondItem="4j1-dE-jdq" secondAttribute="trailing" constant="10" id="2NZ-cc-OwX"/>
+                                                <constraint firstItem="xxJ-qT-mV2" firstAttribute="leading" secondItem="mBP-Ah-o1k" secondAttribute="leading" constant="10" id="3Sk-9u-Aj2"/>
                                                 <constraint firstItem="xxJ-qT-mV2" firstAttribute="top" secondItem="5nX-Lh-btm" secondAttribute="bottom" id="5qj-9R-ZFK"/>
                                                 <constraint firstAttribute="trailing" secondItem="5nX-Lh-btm" secondAttribute="trailing" constant="10" id="768-uH-Ea0"/>
+                                                <constraint firstItem="5nX-Lh-btm" firstAttribute="top" secondItem="4j1-dE-jdq" secondAttribute="bottom" constant="10" id="8CN-ga-Gio"/>
                                                 <constraint firstAttribute="trailing" secondItem="xxJ-qT-mV2" secondAttribute="trailing" constant="10" id="9zk-Sd-psF"/>
-                                                <constraint firstItem="4j1-dE-jdq" firstAttribute="leading" secondItem="mBP-Ah-o1k" secondAttribute="leading" constant="5" id="O6v-I0-qY3"/>
-                                                <constraint firstItem="xxJ-qT-mV2" firstAttribute="leading" secondItem="4j1-dE-jdq" secondAttribute="trailing" constant="10" id="QpW-I8-wLv"/>
-                                                <constraint firstAttribute="bottom" secondItem="4j1-dE-jdq" secondAttribute="bottom" constant="5" id="el1-68-1z9"/>
-                                                <constraint firstAttribute="centerY" secondItem="5nX-Lh-btm" secondAttribute="centerY" id="hYI-O4-fbK"/>
-                                                <constraint firstItem="5nX-Lh-btm" firstAttribute="leading" secondItem="4j1-dE-jdq" secondAttribute="trailing" constant="10" id="oWn-gr-w6F"/>
-                                                <constraint firstItem="4j1-dE-jdq" firstAttribute="top" secondItem="mBP-Ah-o1k" secondAttribute="top" constant="5" id="xsG-Oy-j9K"/>
+                                                <constraint firstItem="5nX-Lh-btm" firstAttribute="leading" secondItem="mBP-Ah-o1k" secondAttribute="leading" constant="10" id="Hge-Wm-hra"/>
+                                                <constraint firstItem="4j1-dE-jdq" firstAttribute="leading" secondItem="mBP-Ah-o1k" secondAttribute="leading" constant="10" id="O6v-I0-qY3"/>
+                                                <constraint firstAttribute="bottom" secondItem="xxJ-qT-mV2" secondAttribute="bottom" constant="10" id="RFt-he-09y"/>
+                                                <constraint firstAttribute="trailing" secondItem="4j1-dE-jdq" secondAttribute="trailing" constant="10" id="sl1-4J-cfi"/>
+                                                <constraint firstItem="4j1-dE-jdq" firstAttribute="top" secondItem="mBP-Ah-o1k" secondAttribute="top" constant="10" id="xsG-Oy-j9K"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="sl1-4J-cfi"/>
+                                                    <exclude reference="21i-eP-LAI"/>
+                                                    <exclude reference="RFt-he-09y"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="fromLabel" destination="5nX-Lh-btm" id="bxo-pm-eLt"/>
@@ -187,13 +197,13 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fromLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbh-jp-FMS">
                                         <rect key="frame" x="10" y="460" width="580" height="24"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
-                                        <color key="textColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.49803921568627452" green="0.47843137254901963" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="statusLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaW-t9-BfJ">
                                         <rect key="frame" x="10" y="484" width="580" height="21"/>
                                         <fontDescription key="fontDescription" name="OpenSansLight-Italic" family="Open Sans" pointSize="15"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.49803921568627452" green="0.47843137254901963" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>

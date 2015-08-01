@@ -28,6 +28,9 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         navBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Quicksand-Regular", size: 24)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
         
         mailTable.addSubview(self.refreshControl)
+        
+        // Calculating row height automatically; can't get it working with autolayout.
+        mailTable.rowHeight = 75 + (view.frame.width - 20) * 0.75
     }
     
     override func viewDidAppear(animated: Bool) {

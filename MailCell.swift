@@ -34,10 +34,10 @@ class MailCell: UITableViewCell {
         
         if let person = find(penpals.map({ $0.username }), mail.from) {
             self.from = penpals[person]
-            self.fromLabel.text = penpals[person].name
+            self.fromLabel.text = "From: \(penpals[person].name)"
         }
         else {
-            self.fromLabel.text = mail.from
+            self.fromLabel.text = "From: \(mail.from)"
         }
         
     }
@@ -52,13 +52,13 @@ class MailCell: UITableViewCell {
     }
     
     func getImage(mail: Mail) {
-        if mail.imageThumb != nil {
-            mailImage.image = mail.imageThumb
+        if mail.image != nil {
+            mailImage.image = mail.image
         }
         else {
-            MailService.getMailThumbnailImage(mail, completion: { (error, result) -> Void in
-                if let thumbnail = result as? UIImage {
-                    self.mailImage.image = thumbnail
+            MailService.getMailImage(mail, completion: { (error, result) -> Void in
+                if let image = result as? UIImage {
+                    self.mailImage.image = image
                 }
                 else {
                     self.mailImage.image = UIImage(named: "Default Card.png")!
@@ -70,13 +70,7 @@ class MailCell: UITableViewCell {
     func setStatusLabel() {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        if mail.status == "DELIVERED" {
-            statusLabel.text = "Arrived on \(dateFormatter.stringFromDate(mail.scheduledToArrive))"
-        }
-        else if mail.status == "READ" {
-            statusLabel.text = "Read on \(dateFormatter.stringFromDate(mail.updatedAt))"
-        }
+        statusLabel.text = "\(mail.status) on \(dateFormatter.stringFromDate(mail.updatedAt))"
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

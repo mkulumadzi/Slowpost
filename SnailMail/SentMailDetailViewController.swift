@@ -50,6 +50,12 @@ class SentMailDetailViewController: UIViewController {
         }
     }
     
+    func setStatusLabel() {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        statusLabel.text = "\(mail.status) on \(dateFormatter.stringFromDate(mail.updatedAt))"
+    }
+    
     @IBAction func closeView(sender: AnyObject) {
         
         //Connecting this button to the unwind segue on Profile View wasn't working, so dismissing view manually
