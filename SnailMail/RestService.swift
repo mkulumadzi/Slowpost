@@ -12,8 +12,8 @@ import SwiftyJSON
 
 class RestService {
 
-    class func getRequest(requestURL:String, completion: (error: NSError?, result: AnyObject?) -> Void) {
-        Alamofire.request(.GET, requestURL)
+    class func getRequest(requestURL:String, headers: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
+        Alamofire.request(.GET, requestURL, headers: headers)
             .response { (request, response, data, error) in
                 if let anError = error {
                     completion(error: error, result: nil)
@@ -60,30 +60,6 @@ class RestService {
             }
     }
     
-    class func putRequest(requestURL:String, parameters: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
-        println(parameters)
-        Alamofire.request(.PUT, requestURL, parameters: parameters, encoding: .JSON)
-            .responseJSON { (request, response, JSON, error) in
-                if let anError = error {
-                    println(error)
-                    completion(error: error, result: nil)
-                }
-                else if let response: AnyObject = response {
-                    if response.statusCode == 200 || response.statusCode == 204 {
-                        completion(error: nil, result: [201, response.allHeaderFields["Location"] as! String])
-                    }
-                    else if let response_body = JSON as? NSDictionary {
-                        if let error_message = response_body["message"] as? String {
-                            completion(error: nil, result: [response.statusCode, error_message])
-                        }
-                    }
-                }
-                else {
-                    completion(error: nil, result: "Unexpected result")
-                }
-        }
-    }
-    
     class func normalizeSearchTerm(term: String) -> String {
         var searchString = ""
         if term.rangeOfString(" ") != nil {
@@ -93,6 +69,23 @@ class RestService {
             searchString = term
         }
         return searchString
+    }
+    
+    class func sinceHeader(group: [AnyObject]) -> [String: String] {
+        var maxUpdatedAt = ""
+        
+        if let objects = group as? [Mail] {
+            maxUpdatedAt = maxElement(objects.map{$0.updatedAtString})
+        }
+        else if let objects = group as? [Person] {
+            maxUpdatedAt = maxElement(objects.map{$0.updatedAtString})
+        }
+        
+        let headers = ["SINCE": maxUpdatedAt]
+        
+        println(headers)
+        
+        return headers
     }
 
 }

@@ -42,6 +42,8 @@ class InitialViewController: UIViewController {
         else {
             AddressBookService.checkAuthorizationStatus(self)
             getRegisteredContactsIfAuthorized()
+            
+            println("Getting mailbox")
             getMailbox()
         }
     }
@@ -53,6 +55,8 @@ class InitialViewController: UIViewController {
             registerDeviceToken()
         }
         
+        getOutbox()
+        
         var storyboard = UIStoryboard(name: "home", bundle: nil)
         var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
         
@@ -61,7 +65,7 @@ class InitialViewController: UIViewController {
     
     func setLoggedInUserFromUserId(userId: String) {
         
-        PersonService.getPerson(userId, completion: { (error, result) -> Void in
+        PersonService.getPerson(userId, headers: nil, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }
@@ -69,6 +73,8 @@ class InitialViewController: UIViewController {
                 loggedInUser = person
                 AddressBookService.checkAuthorizationStatus(self)
                 self.getRegisteredContactsIfAuthorized()
+                
+                println("Getting mailbox")
                 self.getMailbox()
             }
             else {
@@ -83,7 +89,7 @@ class InitialViewController: UIViewController {
         
         //Initially populate mailbox by retrieving mail for the user
         let myMailBoxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/mailbox"
-        MailService.getMailCollection(myMailBoxURL, completion: { (error, result) -> Void in
+        MailService.getMailCollection(myMailBoxURL, headers: nil, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }
@@ -92,7 +98,7 @@ class InitialViewController: UIViewController {
                 
                 //Get all 'penpal' records whom the user has sent mail to or received mail from
                 let contactsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"
-                PersonService.getPeopleCollection(contactsURL, completion: { (error, result) -> Void in
+                PersonService.getPeopleCollection(contactsURL, headers: nil, completion: { (error, result) -> Void in
                     if error != nil {
                         println(error)
                     }
@@ -101,6 +107,18 @@ class InitialViewController: UIViewController {
                         self.goToHomeScreen()
                     }
                 })
+            }
+        })
+    }
+    
+    func getOutbox() {
+        let myOutboxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/outbox"
+        MailService.getMailCollection(myOutboxURL, headers: nil, completion: { (error, result) -> Void in
+            if error != nil {
+                println(error)
+            }
+            else if let mailArray = result as? Array<Mail> {
+                outbox = mailArray.sorted { $0.updatedAt.compare($1.updatedAt) == NSComparisonResult.OrderedDescending }
             }
         })
     }

@@ -23,7 +23,8 @@ class SentMailDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getImage()
+//        getImage()
+        mailImage.image = mail.image
         mailContent.text = mail.content
         toLabel.text = "To: " + toPerson.name
         statusLabel.text = mail.status
@@ -34,21 +35,21 @@ class SentMailDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func getImage() {
-        if mail.image != nil {
-            mailImage.image = mail.image
-        }
-        else {
-            MailService.getMailImage(mail, completion: { (error, result) -> Void in
-                if let image = result as? UIImage {
-                    self.mailImage.image = image
-                }
-                else {
-                    self.mailImage.image = UIImage(named: "Default Card.png")!
-                }
-            })
-        }
-    }
+//    func getImage() {
+//        if mail.image != nil {
+//            mailImage.image = mail.image
+//        }
+//        else {
+//            MailService.getMailImage(mail, completion: { (error, result) -> Void in
+//                if let image = result as? UIImage {
+//                    self.mailImage.image = image
+//                }
+//                else {
+//                    self.mailImage.image = UIImage(named: "Default Card.png")!
+//                }
+//            })
+//        }
+//    }
     
     func setStatusLabel() {
         let dateFormatter = NSDateFormatter()

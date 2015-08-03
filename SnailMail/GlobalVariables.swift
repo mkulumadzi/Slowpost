@@ -14,5 +14,6 @@ var addressBook:ABAddressBook!
 var deviceToken:String!
 var loggedInUser:Person!
 var mailbox = [Mail]()
+var outbox = [Mail]()
 var penpals = [Person]()
 var registeredContacts = [Person]()

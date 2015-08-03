@@ -21,9 +21,10 @@ class Person: NSObject {
     var state:String!
     var zip:String!
     var updatedAt:NSDate
+    var updatedAtString:String
     var createdAt:NSDate
     
-    init(id:String, username:String, email:String?, name:String?, phone:String?, address1:String?, city:String?, state:String?, zip:String?, updatedAt:NSDate, createdAt:NSDate) {
+    init(id:String, username:String, email:String?, name:String?, phone:String?, address1:String?, city:String?, state:String?, zip:String?, updatedAt:NSDate, updatedAtString:String, createdAt:NSDate) {
         self.id = id
         self.username = username
         self.email = email
@@ -34,6 +35,7 @@ class Person: NSObject {
         self.state = state
         self.zip = zip
         self.updatedAt = updatedAt
+        self.updatedAtString = updatedAtString
         self.createdAt = createdAt
         super.init()
     }

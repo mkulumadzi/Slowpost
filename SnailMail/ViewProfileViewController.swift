@@ -10,8 +10,6 @@ import UIKit
 
 class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var outbox = [Mail]()
-    
     @IBOutlet weak var sentMailTable: UITableView!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var navBarTitle: UINavigationItem!
@@ -30,7 +28,7 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         messageLabel.hide()
         
-        getOutbox()
+//        getOutbox()
         
         navBarTitle.title = "@" + loggedInUser.username
         nameLabel.text = loggedInUser.name
@@ -53,12 +51,17 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
 
     func getOutbox() {
         let myOutboxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/outbox"
-        MailService.getMailCollection(myOutboxURL, completion: { (error, result) -> Void in
+        
+        let headers = RestService.sinceHeader(outbox)
+        
+        MailService.getMailCollection(myOutboxURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }
             else if let mailArray = result as? Array<Mail> {
-                self.outbox = mailArray.sorted { $0.updatedAt.compare($1.updatedAt) == NSComparisonResult.OrderedDescending }
+                outbox = MailService.updateMailCollectionFromNewMail(outbox, newCollection: mailArray)
+                
+                outbox = outbox.sorted { $0.updatedAt.compare($1.updatedAt) == NSComparisonResult.OrderedDescending }
                 self.sentMailTable.reloadData()
             }
         })

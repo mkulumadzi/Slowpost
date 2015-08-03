@@ -60,7 +60,7 @@ class RegisterViewController: UIViewController {
                 if response[0] as? Int == 201 {
                     if let location = response[1] as? String {
                         var personId:String = PersonService.parsePersonURLForId(location)
-                        PersonService.getPerson(personId, completion: { (error, result) -> Void in
+                        PersonService.getPerson(personId, headers: nil, completion: { (error, result) -> Void in
                             if error != nil {
                                 println(error)
                             }

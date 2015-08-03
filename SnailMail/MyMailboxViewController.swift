@@ -22,7 +22,6 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        refreshMailbox()
         mailTable.reloadData()
         
         navBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Quicksand-Regular", size: 24)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
@@ -35,7 +34,6 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        refreshMailbox()
         mailTable.reloadData()
     }
 
@@ -69,12 +67,18 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         
         //Refresh mailbox by retrieving mail for the user
         let myMailBoxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/mailbox"
-        MailService.getMailCollection(myMailBoxURL, completion: { (error, result) -> Void in
+        
+        let headers = RestService.sinceHeader(mailbox)
+        
+        MailService.getMailCollection(myMailBoxURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }
             else if let mailArray = result as? Array<Mail> {
-                mailbox = mailArray.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
+                mailbox = MailService.updateMailCollectionFromNewMail(mailbox, newCollection: mailArray)
+                
+                mailbox = mailbox.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
+                
                 self.mailTable.reloadData()
             }
         })

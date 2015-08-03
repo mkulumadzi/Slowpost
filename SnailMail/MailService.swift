@@ -15,6 +15,9 @@ class MailService {
     class func createMailFromJson(jsonEntry: NSDictionary) -> Mail {
         
         let id = jsonEntry.objectForKey("_id")!.objectForKey("$oid") as! String
+        
+        println("Creating mail \(id)")
+        
         let status = jsonEntry.objectForKey("status") as! String
         let from = jsonEntry.objectForKey("from") as! String
         let to = jsonEntry.objectForKey("to") as! String
@@ -30,14 +33,27 @@ class MailService {
         let createdAt = NSDate(dateString: createdString)
         
         
-        var mail = Mail(id: id, status: status, from: from, to: to, content: content, image: nil, imageThumb: nil, scheduledToArrive: scheduledToArrive, updatedAt: updatedAt, createdAt: createdAt)
+        var mail = Mail(id: id, status: status, from: from, to: to, content: content, image: nil, imageThumb: nil, scheduledToArrive: scheduledToArrive, updatedAt: updatedAt, updatedAtString: updatedString, createdAt: createdAt)
+        
+
+        MailService.getMailImage(mail, completion: { (error, result) -> Void in
+            if let image = result as? UIImage {
+                mail.image = image
+            }
+        })
+        
+        MailService.getMailThumbnailImage(mail, completion: { (error, result) -> Void in
+            if let thumbnail = result as? UIImage {
+                mail.imageThumb = thumbnail
+            }
+        })
         
         return mail
     }
     
-    class func getMailById(id: String, completion: (error: NSError?, result: AnyObject?) -> Void) {
+    class func getMailById(id: String, headers: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
         let mailURL = "\(PostOfficeURL)/mail/id/\(id)"
-        RestService.getRequest(mailURL, completion: { (error, result) -> Void in
+        RestService.getRequest(mailURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {
                 completion(error: error, result: nil)
             }
@@ -84,8 +100,8 @@ class MailService {
     }
     
     
-    class func getMailCollection(collectionURL: String, completion: (error: NSError?, result: AnyObject?) -> Void) {
-        RestService.getRequest(collectionURL, completion: { (error, result) -> Void in
+    class func getMailCollection(collectionURL: String, headers: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
+        RestService.getRequest(collectionURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {
                 completion(error: error, result: nil)
             }
@@ -100,6 +116,28 @@ class MailService {
                 println("Unexpected JSON result")
             }
         })
+    }
+    
+    class func updateMailCollectionFromNewMail(existingCollection: [Mail], newCollection: [Mail]) -> [Mail] {
+        
+        //Creating a mutable collection of mail from the existing collection
+        var updatedCollection:[Mail] = existingCollection
+        
+        //Update existing mail
+        for mail in newCollection {
+            if updatedCollection.filter({$0.id == mail.id}).count > 0 {
+                var existingMail:Mail = updatedCollection.filter({$0.id == mail.id}).first!
+                var existingIndex:Int = find(updatedCollection, existingMail)!
+                updatedCollection[existingIndex] = mail
+            }
+                // Append new mail
+            else {
+                updatedCollection.append(mail)
+            }
+        }
+        
+        return updatedCollection
+        
     }
     
 }

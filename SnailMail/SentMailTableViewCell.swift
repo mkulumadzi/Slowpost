@@ -25,24 +25,25 @@ class SentMailTableViewCell: UITableViewCell {
     func formatCell() {
         setStatusLabel()
         formatName()
-        getImage(mail)
+        cardImage.image = mail.imageThumb
+//        getImage(mail)
     }
     
-    func getImage(mail: Mail) {
-        if mail.imageThumb != nil {
-            cardImage.image = mail.imageThumb
-        }
-        else {
-            MailService.getMailThumbnailImage(mail, completion: { (error, result) -> Void in
-                if let thumbnail = result as? UIImage {
-                    self.cardImage.image = thumbnail
-                }
-                else {
-                    self.cardImage.image = UIImage(named: "Default Card.png")!
-                }
-            })
-        }
-    }
+//    func getImage(mail: Mail) {
+//        if mail.imageThumb != nil {
+//            cardImage.image = mail.imageThumb
+//        }
+//        else {
+//            MailService.getMailThumbnailImage(mail, completion: { (error, result) -> Void in
+//                if let thumbnail = result as? UIImage {
+//                    self.cardImage.image = thumbnail
+//                }
+//                else {
+//                    self.cardImage.image = UIImage(named: "Default Card.png")!
+//                }
+//            })
+//        }
+//    }
     
     func formatName() {
         if let name = person?.name {

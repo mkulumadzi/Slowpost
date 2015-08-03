@@ -25,7 +25,8 @@ class MailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getImage()
+//        getImage()
+        mailImage.image = mail.image
         mailContent.text = mail.content
         fromLabel.text = "From: " + from.name
         setStatusLabel()
@@ -47,21 +48,21 @@ class MailViewController: UIViewController {
         return mailText
     }
     
-    func getImage() {
-        if mail.image != nil {
-            mailImage.image = mail.image
-        }
-        else {
-            MailService.getMailImage(mail, completion: { (error, result) -> Void in
-                if let image = result as? UIImage {
-                    self.mailImage.image = image
-                }
-                else {
-                    self.mailImage.image = UIImage(named: "Default Card.png")!
-                }
-            })
-        }
-    }
+//    func getImage() {
+//        if mail.image != nil {
+//            mailImage.image = mail.image
+//        }
+//        else {
+//            MailService.getMailImage(mail, completion: { (error, result) -> Void in
+//                if let image = result as? UIImage {
+//                    self.mailImage.image = image
+//                }
+//                else {
+//                    self.mailImage.image = UIImage(named: "Default Card.png")!
+//                }
+//            })
+//        }
+//    }
     
     func readMail(mail:Mail) {
         let readMailURL = "\(PostOfficeURL)/mail/id/\(mail.id)/read"
@@ -78,7 +79,7 @@ class MailViewController: UIViewController {
     
     func updateMail(mail:Mail) {
         
-        MailService.getMailById(mail.id, completion: { (error, result) -> Void in
+        MailService.getMailById(mail.id, headers: nil, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }

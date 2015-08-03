@@ -19,9 +19,10 @@ class Mail: NSObject {
     var imageThumb:UIImage!
     var scheduledToArrive:NSDate!
     var updatedAt:NSDate
+    var updatedAtString:String
     var createdAt:NSDate
     
-    init(id:String, status:String, from:String, to:String, content:String, image:UIImage?, imageThumb: UIImage?, scheduledToArrive:NSDate?, updatedAt:NSDate, createdAt:NSDate) {
+    init(id:String, status:String, from:String, to:String, content:String, image:UIImage?, imageThumb: UIImage?, scheduledToArrive:NSDate?, updatedAt:NSDate, updatedAtString:String, createdAt:NSDate) {
         self.id = id
         self.status = status
         self.from = from
@@ -31,6 +32,7 @@ class Mail: NSObject {
         self.imageThumb = imageThumb
         self.scheduledToArrive = scheduledToArrive
         self.updatedAt = updatedAt
+        self.updatedAtString = updatedAtString
         self.createdAt = createdAt
         super.init()
     }

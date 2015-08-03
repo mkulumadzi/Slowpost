@@ -90,7 +90,7 @@ class EditProfileViewController: UITableViewController {
     }
     
     func updateLoggedInUser() {
-        PersonService.getPerson(loggedInUser.id, completion: { (error, result) -> Void in
+        PersonService.getPerson(loggedInUser.id, headers: nil, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }

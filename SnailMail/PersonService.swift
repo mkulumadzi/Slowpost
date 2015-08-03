@@ -30,14 +30,14 @@ class PersonService {
         let createdString = jsonEntry.objectForKey("created_at") as! String
         let createdAt = NSDate(dateString: createdString)
         
-        var new_person = Person(id: id, username: username, email: email, name: name, phone: phone, address1: address1, city: city, state: state, zip: zip, updatedAt: updatedAt, createdAt: createdAt)
+        var new_person = Person(id: id, username: username, email: email, name: name, phone: phone, address1: address1, city: city, state: state, zip: zip, updatedAt: updatedAt, updatedAtString: updatedString, createdAt: createdAt)
         
         return new_person
     }
     
-    class func getPerson(personId: String, completion: (error: NSError?, result: AnyObject?) -> Void) {
+    class func getPerson(personId: String, headers: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
         let personURL = "\(PostOfficeURL)/person/id/\(personId)"
-        RestService.getRequest(personURL, completion: { (error, result) -> Void in
+        RestService.getRequest(personURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {
                 completion(error: error, result: nil)
             }
@@ -52,8 +52,8 @@ class PersonService {
         
     }
     
-    class func getPeopleCollection(collectionURL: String, completion: (error: NSError?, result: AnyObject?) -> Void) {
-        RestService.getRequest(collectionURL, completion: { (error, result) -> Void in
+    class func getPeopleCollection(collectionURL: String, headers: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
+        RestService.getRequest(collectionURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {
                 completion(error: error, result: nil)
             }

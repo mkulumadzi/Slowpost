@@ -35,6 +35,7 @@ class FileService {
     
     class func downloadImage(url: String, completion: (error: NSError?, result: AnyObject?) -> Void) {
 
+        println("Getting image at \(url)")
         Alamofire.request(.GET, url)
             .response { (request, response, data, error) in
                 if let anError = error {
