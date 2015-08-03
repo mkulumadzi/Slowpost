@@ -83,8 +83,6 @@ class RestService {
         
         let headers = ["SINCE": maxUpdatedAt]
         
-        println(headers)
-        
         return headers
     }
 
