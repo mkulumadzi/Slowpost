@@ -221,7 +221,6 @@
                         <constraints>
                             <constraint firstItem="1oO-24-LFG" firstAttribute="leading" secondItem="Bpi-cV-cz1" secondAttribute="leading" id="6Kf-Nn-RUH"/>
                             <constraint firstItem="hQd-A0-PJc" firstAttribute="leading" secondItem="Bpi-cV-cz1" secondAttribute="leading" id="6TU-m7-5gN"/>
-                            <constraint firstItem="hQd-A0-PJc" firstAttribute="top" secondItem="Px6-Ss-QJm" secondAttribute="bottom" constant="100" id="6Z8-Sc-e58"/>
                             <constraint firstAttribute="trailing" secondItem="waT-jS-ALJ" secondAttribute="trailing" constant="30" id="7kL-tr-lCH"/>
                             <constraint firstItem="MA3-Gi-lBX" firstAttribute="top" secondItem="1oO-24-LFG" secondAttribute="bottom" id="8KY-nc-e3h"/>
                             <constraint firstItem="Px6-Ss-QJm" firstAttribute="leading" secondItem="Bpi-cV-cz1" secondAttribute="leading" id="9cE-zW-Aot"/>
@@ -232,23 +231,14 @@
                             <constraint firstItem="eyV-zQ-seR" firstAttribute="leading" secondItem="Bpi-cV-cz1" secondAttribute="leading" constant="10" id="L1n-Pu-oFX"/>
                             <constraint firstAttribute="trailing" secondItem="hQd-A0-PJc" secondAttribute="trailing" id="OYv-x9-fbe"/>
                             <constraint firstItem="eyV-zQ-seR" firstAttribute="top" secondItem="waT-jS-ALJ" secondAttribute="bottom" id="QH2-qD-aGs"/>
-                            <constraint firstItem="MA3-Gi-lBX" firstAttribute="top" secondItem="hQd-A0-PJc" secondAttribute="bottom" constant="-50" id="V1e-fH-G9g"/>
                             <constraint firstAttribute="trailing" secondItem="Mbf-1T-Jxk" secondAttribute="trailing" constant="30" id="Zyh-iT-Zbx"/>
                             <constraint firstItem="hQd-A0-PJc" firstAttribute="top" secondItem="Mbf-1T-Jxk" secondAttribute="bottom" constant="10" id="ba9-5M-Mdb"/>
-                            <constraint firstItem="hQd-A0-PJc" firstAttribute="top" secondItem="waT-jS-ALJ" secondAttribute="bottom" constant="100" id="dSG-RK-OmH"/>
-                            <constraint firstAttribute="bottom" secondItem="hQd-A0-PJc" secondAttribute="bottom" id="euC-sE-vif"/>
+                            <constraint firstItem="MA3-Gi-lBX" firstAttribute="top" secondItem="hQd-A0-PJc" secondAttribute="bottom" id="be0-Fj-B7R"/>
                             <constraint firstItem="Mbf-1T-Jxk" firstAttribute="leading" secondItem="Bpi-cV-cz1" secondAttribute="leading" constant="10" id="mmk-jD-9NY"/>
                             <constraint firstItem="Px6-Ss-QJm" firstAttribute="top" secondItem="Bpi-cV-cz1" secondAttribute="top" id="nSF-rv-vTD"/>
                             <constraint firstAttribute="trailing" secondItem="1oO-24-LFG" secondAttribute="trailing" id="v9X-Xj-X9q"/>
                             <constraint firstItem="Mbf-1T-Jxk" firstAttribute="top" secondItem="eyV-zQ-seR" secondAttribute="bottom" id="y4m-yB-1Vm"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="6Z8-Sc-e58"/>
-                                <exclude reference="dSG-RK-OmH"/>
-                                <exclude reference="V1e-fH-G9g"/>
-                            </mask>
-                        </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="620"/>

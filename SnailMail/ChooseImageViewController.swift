@@ -39,6 +39,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidAppear(animated: Bool) {
         if imageSelected.image == nil {
+            
             removePhotoButton.hidden = true
         }
         else {
