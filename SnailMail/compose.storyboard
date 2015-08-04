@@ -201,23 +201,11 @@
                                 <rect key="frame" x="0.0" y="558" width="600" height="242"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qRX-9A-uKU">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" maximumZoomScale="10" translatesAutoresizingMaskIntoConstraints="NO" id="qRX-9A-uKU" userLabel="imageScrollView">
                                 <rect key="frame" x="0.0" y="108" width="600" height="450"/>
-                                <subviews>
-                                    <imageView multipleTouchEnabled="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EKY-VR-wL7">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
-                                        <color key="backgroundColor" red="0.70980392156862748" green="0.70980392156862748" blue="0.70980392156862748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="EKY-VR-wL7" secondAttribute="height" multiplier="4:3" id="2no-p6-z6w"/>
-                                        </constraints>
-                                    </imageView>
-                                </subviews>
+                                <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstItem="EKY-VR-wL7" firstAttribute="leading" secondItem="qRX-9A-uKU" secondAttribute="leading" id="74U-nW-Cec"/>
-                                    <constraint firstItem="EKY-VR-wL7" firstAttribute="height" secondItem="qRX-9A-uKU" secondAttribute="height" id="HU9-wt-ICJ"/>
-                                    <constraint firstAttribute="bottom" secondItem="EKY-VR-wL7" secondAttribute="bottom" id="KUg-kO-PzS"/>
-                                    <constraint firstItem="EKY-VR-wL7" firstAttribute="top" secondItem="qRX-9A-uKU" secondAttribute="top" id="fxI-AE-djV"/>
-                                    <constraint firstAttribute="trailing" secondItem="EKY-VR-wL7" secondAttribute="trailing" id="she-rh-Pz7"/>
+                                    <constraint firstAttribute="width" secondItem="qRX-9A-uKU" secondAttribute="height" multiplier="4:3" id="JK7-vt-xjS"/>
                                 </constraints>
                             </scrollView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mkz-CG-fyW">
@@ -354,7 +342,6 @@
                             <constraint firstItem="v2Z-dH-fwH" firstAttribute="top" secondItem="Mkz-CG-fyW" secondAttribute="bottom" constant="14" id="B7Q-lM-jHV"/>
                             <constraint firstAttribute="trailing" secondItem="3cD-DR-bzv" secondAttribute="trailing" constant="30" id="D4q-pV-SQS"/>
                             <constraint firstItem="3cD-DR-bzv" firstAttribute="top" secondItem="Wnd-rs-lA3" secondAttribute="bottom" constant="10" id="FEf-mG-ETZ"/>
-                            <constraint firstAttribute="width" secondItem="EKY-VR-wL7" secondAttribute="width" id="G8q-Lt-0EQ"/>
                             <constraint firstItem="Wnd-rs-lA3" firstAttribute="leading" secondItem="UDU-e0-SvH" secondAttribute="leading" constant="30" id="JPX-r1-HSC"/>
                             <constraint firstAttribute="trailing" secondItem="A1v-Uj-6rd" secondAttribute="trailing" constant="30" id="Kvf-kn-INh"/>
                             <constraint firstAttribute="trailing" secondItem="Wnd-rs-lA3" secondAttribute="trailing" constant="30" id="MZh-b9-tB9"/>
@@ -367,6 +354,7 @@
                             <constraint firstItem="Mkz-CG-fyW" firstAttribute="top" secondItem="UDU-e0-SvH" secondAttribute="top" id="bIY-eg-HSS"/>
                             <constraint firstItem="rtl-YU-w3q" firstAttribute="leading" secondItem="v2Z-dH-fwH" secondAttribute="trailing" constant="2" id="g0y-Xo-5df"/>
                             <constraint firstItem="VFK-kA-fsD" firstAttribute="leading" secondItem="UDU-e0-SvH" secondAttribute="leading" id="hgZ-q6-KEU"/>
+                            <constraint firstAttribute="width" secondItem="qRX-9A-uKU" secondAttribute="width" id="iJM-b3-Kah"/>
                             <constraint firstItem="A1v-Uj-6rd" firstAttribute="leading" secondItem="UDU-e0-SvH" secondAttribute="leading" constant="30" id="ijb-Gn-eV4"/>
                             <constraint firstItem="VFK-kA-fsD" firstAttribute="top" secondItem="qRX-9A-uKU" secondAttribute="bottom" id="kGk-Zd-c95"/>
                             <constraint firstAttribute="trailing" secondItem="plQ-dw-tew" secondAttribute="trailing" constant="30" id="kci-7G-HH8"/>
@@ -389,7 +377,7 @@
                     <connections>
                         <outlet property="cardGalleryButton" destination="A1v-Uj-6rd" id="vSN-oT-6Tk"/>
                         <outlet property="imageLibraryButton" destination="3cD-DR-bzv" id="u9f-uN-t9e"/>
-                        <outlet property="imageSelected" destination="EKY-VR-wL7" id="HBD-HV-IbM"/>
+                        <outlet property="imageScrollView" destination="qRX-9A-uKU" id="H6I-yb-0i2"/>
                         <outlet property="removePhotoButton" destination="Wnd-rs-lA3" id="8Dy-c2-LE3"/>
                         <outlet property="takePhotoButton" destination="plQ-dw-tew" id="ydQ-Ow-Kje"/>
                         <outlet property="toLabel" destination="rtl-YU-w3q" id="moD-fc-URB"/>

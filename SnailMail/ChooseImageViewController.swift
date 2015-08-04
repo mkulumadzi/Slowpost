@@ -9,18 +9,21 @@
 import UIKit
 import MobileCoreServices
 
-class ChooseImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ChooseImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
     
     var imageName:String!
     var toPerson:Person!
     var newMedia: Bool?
+    var imageSelected:UIImageView!
+    var imageSize = CGSizeMake(0,0)
 
     @IBOutlet weak var toLabel: UILabel!
-    @IBOutlet weak var imageSelected: UIImageView!
+//    @IBOutlet weak var imageSelected: UIImageView!
     @IBOutlet weak var imageLibraryButton: SnailMailTextUIButton!
     @IBOutlet weak var takePhotoButton: SnailMailTextUIButton!
     @IBOutlet weak var cardGalleryButton: SnailMailTextUIButton!
     @IBOutlet weak var removePhotoButton: SnailMailTextUIButton!
+    @IBOutlet weak var imageScrollView: UIScrollView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,38 +34,53 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         takePhotoButton.layer.cornerRadius = 5
         cardGalleryButton.layer.cornerRadius = 5
         
-        if imageSelected.image == nil {
-            removePhotoButton.hidden = true
-        }
+        imageScrollView.delegate = self
+        imageScrollView.showsHorizontalScrollIndicator = false
+        imageScrollView.showsVerticalScrollIndicator = false
+        
+        //Set up initial Subview
+//        imageSize = imageSelected.frame.size
+//        imageScrollView.addSubview(imageSelected)
 
     }
     
-    override func viewDidAppear(animated: Bool) {
-        if imageSelected.image == nil {
-            
-            removePhotoButton.hidden = true
+    func setupSubview(image: UIImage) {
+        let subViews = self.imageScrollView.subviews
+        for subview in subViews {
+            if subview is UIImageView {
+                println("Removing subview")
+                subview.removeFromSuperview()
+            }
         }
-        else {
-           removePhotoButton.hidden = false
-        }
+        
+        imageSelected = UIImageView(image: image)
+        imageSize = imageSelected.frame.size
+        imageScrollView.addSubview(imageSelected)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        println("The size of the image view is \(imageSize)")
+        
+        imageScrollView.maximumZoomScale = 5.0
+        imageScrollView.contentSize = imageSize
+        let widthScale = imageScrollView.bounds.size.width / imageSize.width
+        let heightScale = imageScrollView.bounds.size.height / imageSize.height
+        imageScrollView.minimumZoomScale = min(widthScale, heightScale)
+        imageScrollView.setZoomScale(max(widthScale, heightScale), animated: true )
+        
+        println("The widthScale is \(widthScale)")
+        println("The heightScale is \(heightScale)")
+        println("The imageScrollView content size is \(imageScrollView.contentSize)")
+        println("The minimum zoom scale is \(imageScrollView.minimumZoomScale)")
+    }
+    
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return imageSelected
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "composeMessage" {
-            let composeMailViewController = segue.destinationViewController as? ComposeMailViewController
-            if imageSelected.image != nil {
-                composeMailViewController?.cardImage = self.imageSelected.image
-                if imageName != nil {
-                    composeMailViewController?.imageName = self.imageName
-                }
-            }
-            composeMailViewController!.toPerson = toPerson
-        }
     }
     
     @IBAction func selectPhotoFromLibrary(sender: AnyObject) {
@@ -102,7 +120,9 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         if mediaType == (kUTTypeImage as! String) {
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
             
-            imageSelected.image = image
+            println("The size of the image chosen is \(image.size)")
+            println("The image orientation is \(image.imageOrientation.rawValue)")
+            self.setupSubview(image)
             
             if (newMedia == true) {
                 UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil)
@@ -125,6 +145,17 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         }
     }
     
+    func cropImage() -> UIImage {
+        var scale = 1 / imageScrollView.zoomScale
+        
+        var visibleRect = CGRectMake(imageScrollView.contentOffset.x * scale, imageScrollView.contentOffset.y*scale, imageScrollView.bounds.size.width*scale, imageScrollView.bounds.size.height*scale)
+        
+        var ref:CGImageRef = CGImageCreateWithImageInRect(imageSelected.image!.CGImage, visibleRect)
+        var croppedImage:UIImage = UIImage(CGImage: ref)!
+        
+        return croppedImage
+    }
+    
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -142,6 +173,20 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func imageSelected(segue:UIStoryboardSegue) {
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "composeMessage" {
+            let composeMailViewController = segue.destinationViewController as? ComposeMailViewController
+            if imageSelected.image != nil {
+                let croppedImage = self.cropImage()
+                composeMailViewController?.cardImage = croppedImage
+                if imageName != nil {
+                    composeMailViewController?.imageName = self.imageName
+                }
+            }
+            composeMailViewController!.toPerson = toPerson
+        }
     }
 
 }
