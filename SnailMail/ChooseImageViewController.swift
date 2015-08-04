@@ -18,7 +18,6 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     var imageSize = CGSizeMake(0,0)
 
     @IBOutlet weak var toLabel: UILabel!
-//    @IBOutlet weak var imageSelected: UIImageView!
     @IBOutlet weak var imageLibraryButton: SnailMailTextUIButton!
     @IBOutlet weak var takePhotoButton: SnailMailTextUIButton!
     @IBOutlet weak var cardGalleryButton: SnailMailTextUIButton!
@@ -37,10 +36,6 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         imageScrollView.delegate = self
         imageScrollView.showsHorizontalScrollIndicator = false
         imageScrollView.showsVerticalScrollIndicator = false
-        
-        //Set up initial Subview
-//        imageSize = imageSelected.frame.size
-//        imageScrollView.addSubview(imageSelected)
 
     }
     
@@ -59,7 +54,6 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     override func viewDidLayoutSubviews() {
-        println("The size of the image view is \(imageSize)")
         
         imageScrollView.maximumZoomScale = 5.0
         imageScrollView.contentSize = imageSize
@@ -68,10 +62,6 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         imageScrollView.minimumZoomScale = min(widthScale, heightScale)
         imageScrollView.setZoomScale(max(widthScale, heightScale), animated: true )
         
-        println("The widthScale is \(widthScale)")
-        println("The heightScale is \(heightScale)")
-        println("The imageScrollView content size is \(imageScrollView.contentSize)")
-        println("The minimum zoom scale is \(imageScrollView.minimumZoomScale)")
     }
     
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
@@ -120,8 +110,6 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         if mediaType == (kUTTypeImage as! String) {
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
             
-            println("The size of the image chosen is \(image.size)")
-            println("The image orientation is \(image.imageOrientation.rawValue)")
             self.setupSubview(image)
             
             if (newMedia == true) {
@@ -148,10 +136,46 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     func cropImage() -> UIImage {
         var scale = 1 / imageScrollView.zoomScale
         
-        var visibleRect = CGRectMake(imageScrollView.contentOffset.x * scale, imageScrollView.contentOffset.y*scale, imageScrollView.bounds.size.width*scale, imageScrollView.bounds.size.height*scale)
+        println("The scale is \(scale)")
         
-        var ref:CGImageRef = CGImageCreateWithImageInRect(imageSelected.image!.CGImage, visibleRect)
-        var croppedImage:UIImage = UIImage(CGImage: ref)!
+//        var contextImage:UIImage = imageSelected.image!
+        var contextImage:UIImage = UIImage(CGImage: imageSelected.image!.CGImage, scale: 1, orientation: imageSelected.image!.imageOrientation)!
+        
+        println("The size of the image is \(contextImage.size)")
+        println("The image orientation is \(contextImage.imageOrientation.hashValue)")
+        
+        var visibleRect:CGRect!
+        let xOffset = imageScrollView.contentOffset.x * scale
+        let yOffset = imageScrollView.contentOffset.y * scale
+        let rectWidth = imageScrollView.bounds.size.width * scale
+        let rectHeight = imageScrollView.bounds.size.height * scale
+        let totalWidth = contextImage.size.width
+        let totalHeight = contextImage.size.height
+
+        println("The total width is \(totalWidth)")
+        println("The total height is \(totalHeight)")
+        
+        switch contextImage.imageOrientation.hashValue {
+        case 0:
+            visibleRect = CGRectMake(xOffset, yOffset, rectWidth, rectHeight)
+        case 1:
+            visibleRect = CGRectMake(totalWidth - rectWidth - xOffset, totalHeight - rectHeight - yOffset, rectWidth, rectHeight)
+        case 2:
+            visibleRect = CGRectMake(totalHeight - rectHeight - yOffset, xOffset, rectHeight, rectWidth)
+        case 3:
+            visibleRect = CGRectMake(totalHeight - rectHeight - yOffset, xOffset, rectHeight, rectWidth)
+        default:
+            visibleRect = CGRectMake(imageScrollView.contentOffset.x * scale, imageScrollView.contentOffset.y*scale, imageScrollView.bounds.size.width*scale, imageScrollView.bounds.size.height*scale)
+        }
+        
+        println("The visible rectangle is \(visibleRect)")
+        
+        var ref:CGImageRef = CGImageCreateWithImageInRect(contextImage.CGImage, visibleRect)
+        
+        var croppedImage:UIImage = UIImage(CGImage: ref, scale: scale, orientation: contextImage.imageOrientation)!
+        
+        println("The cropped image size is \(croppedImage.size)")
+        println("The cropped image orientation is \(croppedImage.imageOrientation.hashValue)")
         
         return croppedImage
     }
