@@ -39,6 +39,10 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
 
     }
     
+    override func viewDidAppear(animated: Bool) {
+        println("View appeared")
+    }
+    
     func setupSubview(image: UIImage) {
         let subViews = self.imageScrollView.subviews
         for subview in subViews {
@@ -54,6 +58,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     override func viewDidLayoutSubviews() {
+        println("Laying out subviews")
         
         imageScrollView.maximumZoomScale = 5.0
         imageScrollView.contentSize = imageSize
