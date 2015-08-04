@@ -59,7 +59,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         imageScrollView.contentSize = imageSize
         let widthScale = imageScrollView.bounds.size.width / imageSize.width
         let heightScale = imageScrollView.bounds.size.height / imageSize.height
-        imageScrollView.minimumZoomScale = min(widthScale, heightScale)
+        imageScrollView.minimumZoomScale = widthScale
         imageScrollView.setZoomScale(max(widthScale, heightScale), animated: true )
         
     }
@@ -136,13 +136,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     func cropImage() -> UIImage {
         var scale = 1 / imageScrollView.zoomScale
         
-        println("The scale is \(scale)")
-        
-//        var contextImage:UIImage = imageSelected.image!
         var contextImage:UIImage = UIImage(CGImage: imageSelected.image!.CGImage, scale: 1, orientation: imageSelected.image!.imageOrientation)!
-        
-        println("The size of the image is \(contextImage.size)")
-        println("The image orientation is \(contextImage.imageOrientation.hashValue)")
         
         var visibleRect:CGRect!
         let xOffset = imageScrollView.contentOffset.x * scale
@@ -151,9 +145,6 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         let rectHeight = imageScrollView.bounds.size.height * scale
         let totalWidth = contextImage.size.width
         let totalHeight = contextImage.size.height
-
-        println("The total width is \(totalWidth)")
-        println("The total height is \(totalHeight)")
         
         switch contextImage.imageOrientation.hashValue {
         case 0:
@@ -168,14 +159,9 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
             visibleRect = CGRectMake(imageScrollView.contentOffset.x * scale, imageScrollView.contentOffset.y*scale, imageScrollView.bounds.size.width*scale, imageScrollView.bounds.size.height*scale)
         }
         
-        println("The visible rectangle is \(visibleRect)")
-        
         var ref:CGImageRef = CGImageCreateWithImageInRect(contextImage.CGImage, visibleRect)
         
         var croppedImage:UIImage = UIImage(CGImage: ref, scale: scale, orientation: contextImage.imageOrientation)!
-        
-        println("The cropped image size is \(croppedImage.size)")
-        println("The cropped image orientation is \(croppedImage.imageOrientation.hashValue)")
         
         return croppedImage
     }
