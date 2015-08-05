@@ -20,6 +20,7 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -29,47 +30,6 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Image Picker Menu View Controller-->
-        <scene sceneID="3eR-uS-Az0">
-            <objects>
-                <viewController id="9Ch-RZ-Ykh" customClass="ImagePickerMenuViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="lwT-yO-Q4P"/>
-                        <viewControllerLayoutGuide type="bottom" id="mOZ-oZ-QrB"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="4oi-4x-Tjf">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ITX-QD-ef2">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Dga-rx-XFN" appends="YES" id="NlH-SP-ZgM"/>
-                                </connections>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="ITX-QD-ef2" firstAttribute="top" secondItem="4oi-4x-Tjf" secondAttribute="top" id="6B0-zW-Yad"/>
-                            <constraint firstItem="ITX-QD-ef2" firstAttribute="leading" secondItem="4oi-4x-Tjf" secondAttribute="leading" id="Dnx-ob-aFD"/>
-                            <constraint firstAttribute="trailing" secondItem="ITX-QD-ef2" secondAttribute="trailing" id="GMy-AF-4QI"/>
-                            <constraint firstItem="mOZ-oZ-QrB" firstAttribute="top" secondItem="ITX-QD-ef2" secondAttribute="bottom" id="zLN-ck-oIR"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Be8-8n-d2U" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="c64-N1-Zq8" userLabel="Exit" sceneMemberID="exit"/>
-                <tapGestureRecognizer id="Dga-rx-XFN">
-                    <connections>
-                        <segue destination="c64-N1-Zq8" kind="unwind" unwindAction="cancelToChooseImage:" id="bRc-r2-hpH"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="1064" y="1770"/>
-        </scene>
         <!--Card GalleryUI View Controller-->
         <scene sceneID="bQQ-CI-qeJ">
             <objects>
@@ -211,7 +171,7 @@
                     </view>
                     <connections>
                         <outlet property="cardCollection" destination="ra4-CK-oJ7" id="ekh-wb-5sf"/>
-                        <segue destination="hLo-Nf-4Zf" kind="unwind" identifier="imageSelected" unwindAction="imageSelected:" id="coG-M3-V6h"/>
+                        <segue destination="hLo-Nf-4Zf" kind="unwind" identifier="imageSelected" unwindAction="cardGalleryImageSelected:" id="UYM-Kk-zWR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M80-pT-5by" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -299,59 +259,14 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cD-DR-bzv" customClass="SnailMailTextUIButton" customModule="Snailtale" customModuleProvider="target">
-                                <rect key="frame" x="30" y="618" width="540" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wnd-rs-lA3" customClass="SnailMailTextUIButton" customModule="Snailtale" customModuleProvider="target">
+                                <rect key="frame" x="30" y="598" width="540" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="7to-zn-YBG"/>
+                                    <constraint firstAttribute="height" constant="40" id="37p-Ky-ey2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                <state key="normal" title="Photo Library">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="selectPhotoFromLibrary:" destination="2t1-x4-fi1" eventType="touchUpInside" id="bfg-n4-Gag"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plQ-dw-tew" customClass="SnailMailTextUIButton" customModule="Snailtale" customModuleProvider="target">
-                                <rect key="frame" x="30" y="668" width="540" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="2Fv-Fd-IHA"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                <state key="normal" title="Take Photo">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="takePhoto:" destination="2t1-x4-fi1" eventType="touchUpInside" id="d4L-A8-Odj"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1v-Uj-6rd" customClass="SnailMailTextUIButton" customModule="Snailtale" customModuleProvider="target">
-                                <rect key="frame" x="30" y="718" width="540" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="eWx-Rk-CQX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                <state key="normal" title="Card Gallery">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="z1i-ko-pF7" kind="presentation" identifier="cardGallery" modalTransitionStyle="crossDissolve" id="AR5-BG-zNa"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wnd-rs-lA3" customClass="SnailMailTextUIButton" customModule="Snailtale" customModuleProvider="target">
-                                <rect key="frame" x="30" y="568" width="540" height="40"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="1rp-nT-23N"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                <state key="normal" title="Remove photo">
+                                <state key="normal" title="Remove Photo">
                                     <color key="titleColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
@@ -359,61 +274,141 @@
                                     <action selector="removePhoto:" destination="2t1-x4-fi1" eventType="touchUpInside" id="SBN-1J-aqZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82G-u1-Lan">
-                                <rect key="frame" x="30" y="762" width="540" height="30"/>
-                                <state key="normal" title="menu">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plQ-dw-tew" userLabel="takePhoto">
+                                <rect key="frame" x="270" y="588" width="60" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="RUW-8j-Vdf"/>
+                                    <constraint firstAttribute="width" constant="60" id="iaH-2e-Vnh"/>
+                                </constraints>
+                                <state key="normal" image="ios7-camera-green.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="takePhoto:" destination="2t1-x4-fi1" eventType="touchUpInside" id="d4L-A8-Odj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1v-Uj-6rd" userLabel="cardGallery">
+                                <rect key="frame" x="390" y="588" width="60" height="60"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="EhL-2B-1RO"/>
+                                    <constraint firstAttribute="width" constant="60" id="rWV-E7-SZb"/>
+                                </constraints>
+                                <state key="normal" image="grid-green.png">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="z1i-ko-pF7" kind="presentation" identifier="cardGallery" modalTransitionStyle="crossDissolve" id="AR5-BG-zNa"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Library" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tY-3U-3Qe">
+                                <rect key="frame" x="158" y="648" width="45" height="18"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oaw-FG-qkO">
+                                <rect key="frame" x="276" y="648" width="49" height="18"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gallery" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sV-7G-sp5">
+                                <rect key="frame" x="398" y="648" width="45" height="18"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="13"/>
+                                <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pan and zoom to crop photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="45T-A0-sak">
+                                <rect key="frame" x="200" y="558" width="200" height="21"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                <color key="textColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBl-Iz-blC">
+                                <rect key="frame" x="150" y="588" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="8ac-mQ-ajt"/>
+                                    <constraint firstAttribute="width" constant="60" id="fV5-Ow-z1m"/>
+                                </constraints>
+                                <state key="normal" image="photos_green.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="9Ch-RZ-Ykh" kind="presentation" identifier="imageMenu" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="PwB-gF-ECy"/>
+                                    <action selector="selectPhotoFromLibrary:" destination="2t1-x4-fi1" eventType="touchUpInside" id="988-RH-gtt"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Wnd-rs-lA3" secondAttribute="trailing" constant="30" id="0Nf-gb-Lst"/>
                             <constraint firstAttribute="trailing" secondItem="rtl-YU-w3q" secondAttribute="trailing" constant="30" id="25Q-Tn-tuU"/>
-                            <constraint firstItem="3cD-DR-bzv" firstAttribute="leading" secondItem="UDU-e0-SvH" secondAttribute="leading" constant="30" id="3FG-9f-Res"/>
+                            <constraint firstItem="3eO-yW-Opz" firstAttribute="top" secondItem="plQ-dw-tew" secondAttribute="bottom" constant="50" id="2hG-S8-I2O"/>
+                            <constraint firstItem="OBl-Iz-blC" firstAttribute="top" secondItem="qRX-9A-uKU" secondAttribute="bottom" constant="30" id="2sa-7Y-jtL"/>
                             <constraint firstItem="v2Z-dH-fwH" firstAttribute="leading" secondItem="UDU-e0-SvH" secondAttribute="leading" constant="10" id="6BK-1V-NNb"/>
-                            <constraint firstItem="Wnd-rs-lA3" firstAttribute="top" secondItem="A1v-Uj-6rd" secondAttribute="bottom" constant="10" id="7Q6-Bo-8xb"/>
+                            <constraint firstItem="A1v-Uj-6rd" firstAttribute="leading" secondItem="plQ-dw-tew" secondAttribute="trailing" constant="60" id="7hu-5R-MzP"/>
                             <constraint firstItem="Mkz-CG-fyW" firstAttribute="leading" secondItem="UDU-e0-SvH" secondAttribute="leading" id="8gk-Et-CZv"/>
+                            <constraint firstItem="8sV-7G-sp5" firstAttribute="centerX" secondItem="A1v-Uj-6rd" secondAttribute="centerX" constant="0.5" id="9W7-UE-7iF"/>
                             <constraint firstItem="plQ-dw-tew" firstAttribute="leading" secondItem="UDU-e0-SvH" secondAttribute="leading" constant="30" id="Aes-Aw-Z84"/>
                             <constraint firstItem="v2Z-dH-fwH" firstAttribute="top" secondItem="Mkz-CG-fyW" secondAttribute="bottom" constant="14" id="B7Q-lM-jHV"/>
-                            <constraint firstAttribute="trailing" secondItem="3cD-DR-bzv" secondAttribute="trailing" constant="30" id="D4q-pV-SQS"/>
-                            <constraint firstItem="3cD-DR-bzv" firstAttribute="top" secondItem="Wnd-rs-lA3" secondAttribute="bottom" constant="10" id="FEf-mG-ETZ"/>
-                            <constraint firstAttribute="trailing" secondItem="82G-u1-Lan" secondAttribute="trailing" constant="30" id="JNK-G6-pdL"/>
-                            <constraint firstItem="Wnd-rs-lA3" firstAttribute="leading" secondItem="UDU-e0-SvH" secondAttribute="leading" constant="30" id="JPX-r1-HSC"/>
+                            <constraint firstItem="Wnd-rs-lA3" firstAttribute="top" secondItem="qRX-9A-uKU" secondAttribute="bottom" constant="40" id="FQu-zi-BdN"/>
+                            <constraint firstItem="A1v-Uj-6rd" firstAttribute="top" secondItem="qRX-9A-uKU" secondAttribute="bottom" constant="30" id="Jj6-aR-ejA"/>
+                            <constraint firstItem="Wnd-rs-lA3" firstAttribute="top" secondItem="v2Z-dH-fwH" secondAttribute="bottom" constant="22" id="Kny-lv-juF"/>
                             <constraint firstAttribute="trailing" secondItem="A1v-Uj-6rd" secondAttribute="trailing" constant="30" id="Kvf-kn-INh"/>
-                            <constraint firstAttribute="trailing" secondItem="Wnd-rs-lA3" secondAttribute="trailing" constant="30" id="MZh-b9-tB9"/>
+                            <constraint firstItem="1tY-3U-3Qe" firstAttribute="top" secondItem="OBl-Iz-blC" secondAttribute="bottom" id="P8K-n7-e1D"/>
                             <constraint firstAttribute="trailing" secondItem="Mkz-CG-fyW" secondAttribute="trailing" id="PGC-Wp-Ze1"/>
+                            <constraint firstItem="45T-A0-sak" firstAttribute="top" secondItem="qRX-9A-uKU" secondAttribute="bottom" id="Ptw-bf-Gaf"/>
                             <constraint firstItem="A1v-Uj-6rd" firstAttribute="top" secondItem="plQ-dw-tew" secondAttribute="bottom" constant="10" id="RDw-Ns-0jQ"/>
+                            <constraint firstAttribute="centerX" secondItem="45T-A0-sak" secondAttribute="centerX" id="Rn5-gb-rUb"/>
+                            <constraint firstAttribute="centerX" secondItem="plQ-dw-tew" secondAttribute="centerX" id="TTv-1B-Yzj"/>
+                            <constraint firstItem="plQ-dw-tew" firstAttribute="leading" secondItem="OBl-Iz-blC" secondAttribute="trailing" constant="60" id="U1G-Xx-ZsP"/>
                             <constraint firstAttribute="trailing" secondItem="qRX-9A-uKU" secondAttribute="trailing" id="VY5-1b-qyE"/>
+                            <constraint firstItem="plQ-dw-tew" firstAttribute="top" secondItem="qRX-9A-uKU" secondAttribute="bottom" constant="30" id="W2O-0Z-yfy"/>
+                            <constraint firstItem="Wnd-rs-lA3" firstAttribute="leading" secondItem="UDU-e0-SvH" secondAttribute="leading" constant="10" id="a6q-xR-KPr"/>
                             <constraint firstItem="Mkz-CG-fyW" firstAttribute="top" secondItem="UDU-e0-SvH" secondAttribute="top" id="bIY-eg-HSS"/>
                             <constraint firstItem="rtl-YU-w3q" firstAttribute="leading" secondItem="v2Z-dH-fwH" secondAttribute="trailing" constant="2" id="g0y-Xo-5df"/>
-                            <constraint firstItem="82G-u1-Lan" firstAttribute="leading" secondItem="UDU-e0-SvH" secondAttribute="leading" constant="30" id="i1d-GM-uSm"/>
-                            <constraint firstItem="82G-u1-Lan" firstAttribute="top" secondItem="A1v-Uj-6rd" secondAttribute="bottom" constant="4" id="i9q-s5-dx3"/>
+                            <constraint firstItem="Wnd-rs-lA3" firstAttribute="leading" secondItem="UDU-e0-SvH" secondAttribute="leading" constant="30" id="gPn-Lx-x6t"/>
+                            <constraint firstItem="3eO-yW-Opz" firstAttribute="top" secondItem="A1v-Uj-6rd" secondAttribute="bottom" constant="50" id="h7P-jV-uyf"/>
+                            <constraint firstItem="8sV-7G-sp5" firstAttribute="top" secondItem="A1v-Uj-6rd" secondAttribute="bottom" id="hgr-en-6Ht"/>
                             <constraint firstAttribute="width" secondItem="qRX-9A-uKU" secondAttribute="width" id="iJM-b3-Kah"/>
                             <constraint firstItem="A1v-Uj-6rd" firstAttribute="leading" secondItem="UDU-e0-SvH" secondAttribute="leading" constant="30" id="ijb-Gn-eV4"/>
                             <constraint firstItem="qRX-9A-uKU" firstAttribute="top" secondItem="rtl-YU-w3q" secondAttribute="bottom" constant="10" id="kFB-ol-eXJ"/>
                             <constraint firstAttribute="trailing" secondItem="plQ-dw-tew" secondAttribute="trailing" constant="30" id="kci-7G-HH8"/>
                             <constraint firstItem="rtl-YU-w3q" firstAttribute="leading" secondItem="v2Z-dH-fwH" secondAttribute="trailing" constant="2" id="mN4-6A-lPQ"/>
-                            <constraint firstItem="Wnd-rs-lA3" firstAttribute="top" secondItem="qRX-9A-uKU" secondAttribute="bottom" constant="10" id="qi6-Kp-y2q"/>
+                            <constraint firstItem="1tY-3U-3Qe" firstAttribute="centerX" secondItem="OBl-Iz-blC" secondAttribute="centerX" constant="0.5" id="oxE-Ii-m83"/>
+                            <constraint firstItem="Oaw-FG-qkO" firstAttribute="top" secondItem="plQ-dw-tew" secondAttribute="bottom" id="poT-aY-y1w"/>
+                            <constraint firstItem="plQ-dw-tew" firstAttribute="centerX" secondItem="Oaw-FG-qkO" secondAttribute="centerX" constant="-0.5" id="rDB-LO-UmM"/>
                             <constraint firstItem="qRX-9A-uKU" firstAttribute="leading" secondItem="UDU-e0-SvH" secondAttribute="leading" id="rZg-tD-nY8"/>
-                            <constraint firstItem="plQ-dw-tew" firstAttribute="top" secondItem="3cD-DR-bzv" secondAttribute="bottom" constant="10" id="tbA-AS-6eg"/>
                             <constraint firstItem="rtl-YU-w3q" firstAttribute="top" secondItem="Mkz-CG-fyW" secondAttribute="bottom" constant="14" id="wag-m2-Gwf"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="mN4-6A-lPQ"/>
-                                <exclude reference="7Q6-Bo-8xb"/>
+                                <exclude reference="Kny-lv-juF"/>
+                                <exclude reference="a6q-xR-KPr"/>
+                                <exclude reference="Aes-Aw-Z84"/>
+                                <exclude reference="kci-7G-HH8"/>
+                                <exclude reference="Kvf-kn-INh"/>
+                                <exclude reference="RDw-Ns-0jQ"/>
+                                <exclude reference="ijb-Gn-eV4"/>
+                                <exclude reference="2hG-S8-I2O"/>
+                                <exclude reference="h7P-jV-uyf"/>
                             </mask>
                         </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
                     <connections>
+                        <outlet property="cameraLabel" destination="Oaw-FG-qkO" id="mSE-ex-nkF"/>
                         <outlet property="cardGalleryButton" destination="A1v-Uj-6rd" id="vSN-oT-6Tk"/>
-                        <outlet property="imageLibraryButton" destination="3cD-DR-bzv" id="u9f-uN-t9e"/>
+                        <outlet property="cropLabel" destination="45T-A0-sak" id="IAp-fe-dNJ"/>
+                        <outlet property="galleryLabel" destination="8sV-7G-sp5" id="6ug-RI-TwF"/>
+                        <outlet property="imageLibraryButton" destination="OBl-Iz-blC" id="xNx-51-lIr"/>
                         <outlet property="imageScrollView" destination="qRX-9A-uKU" id="H6I-yb-0i2"/>
+                        <outlet property="libraryLabel" destination="1tY-3U-3Qe" id="eZC-gc-eJy"/>
                         <outlet property="removePhotoButton" destination="Wnd-rs-lA3" id="8Dy-c2-LE3"/>
                         <outlet property="takePhotoButton" destination="plQ-dw-tew" id="ydQ-Ow-Kje"/>
                         <outlet property="toLabel" destination="rtl-YU-w3q" id="moD-fc-URB"/>
@@ -691,8 +686,11 @@
     </scenes>
     <resources>
         <image name="Default Card.png" width="2048" height="1536"/>
+        <image name="grid-green.png" width="512" height="512"/>
         <image name="ios7-arrow-left-white.png" width="192" height="320"/>
         <image name="ios7-arrow-right-white.png" width="192" height="320"/>
+        <image name="ios7-camera-green.png" width="512" height="512"/>
         <image name="ios7-checkmark-not-checked.png" width="512" height="512"/>
+        <image name="photos_green.png" width="512" height="512"/>
     </resources>
 </document>

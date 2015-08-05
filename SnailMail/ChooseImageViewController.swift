@@ -17,23 +17,24 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     var imageSelected:UIImageView!
     var imageSize = CGSizeMake(0,0)
 
+    @IBOutlet weak var cropLabel: UILabel!
     @IBOutlet weak var toLabel: UILabel!
-    @IBOutlet weak var imageLibraryButton: SnailMailTextUIButton!
-    @IBOutlet weak var takePhotoButton: SnailMailTextUIButton!
-    @IBOutlet weak var cardGalleryButton: SnailMailTextUIButton!
+    @IBOutlet weak var imageLibraryButton: UIButton!
+    @IBOutlet weak var takePhotoButton: UIButton!
+    @IBOutlet weak var cardGalleryButton: UIButton!
     @IBOutlet weak var removePhotoButton: SnailMailTextUIButton!
     @IBOutlet weak var imageScrollView: UIScrollView!
+    @IBOutlet weak var libraryLabel: UILabel!
+    @IBOutlet weak var cameraLabel: UILabel!
+    @IBOutlet weak var galleryLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         toLabel.text = toPerson.name
         
-        imageLibraryButton.layer.cornerRadius = 5
-        takePhotoButton.layer.cornerRadius = 5
-        cardGalleryButton.layer.cornerRadius = 5
-        
-        removePhotoButton.hidden = true
+        removePhotoButton.layer.cornerRadius = 5
+        validateButtons()
         
         imageScrollView.delegate = self
         imageScrollView.showsHorizontalScrollIndicator = false
@@ -43,12 +44,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     override func viewDidAppear(animated: Bool) {
-        if imageSelected != nil {
-            removePhotoButton.hidden = false
-        }
-        else {
-            removePhotoButton.hidden = true
-        }
+        validateButtons()
     }
     
     func setupSubview(image: UIImage) {
@@ -131,7 +127,6 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     func image(image: UIImage, didFinishSavingWithError error: NSErrorPointer, contextInfo:UnsafePointer<Void>) {
-        
         if error != nil {
             let alert = UIAlertController(title: "Save Failed", message: "Failed to save image", preferredStyle: UIAlertControllerStyle.Alert)
             
@@ -180,7 +175,6 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func removePhoto(sender: AnyObject) {
-//        imageSelected.image = nil
         let subViews = self.imageScrollView.subviews
         for subview in subViews {
             if subview is UIImageView {
@@ -188,6 +182,40 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
                 subview.removeFromSuperview()
             }
         }
+        imageSelected = nil
+        validateButtons()
+    }
+    
+    func validateButtons() {
+        if imageSelected != nil {
+            imageAdded()
+        }
+        else {
+            noImage()
+        }
+    }
+    
+    func imageAdded() {
+        imageLibraryButton.hidden = true
+        libraryLabel.hidden = true
+        takePhotoButton.hidden = true
+        cameraLabel.hidden = true
+        cardGalleryButton.hidden = true
+        galleryLabel.hidden = true
+        
+        cropLabel.hidden = false
+        removePhotoButton.hidden = false
+    }
+    
+    func noImage() {
+        imageLibraryButton.hidden = false
+        libraryLabel.hidden = false
+        takePhotoButton.hidden = false
+        cameraLabel.hidden = false
+        cardGalleryButton.hidden = false
+        galleryLabel.hidden = false
+        
+        cropLabel.hidden = true
         removePhotoButton.hidden = true
     }
     
@@ -198,7 +226,9 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     @IBAction func cancelToChooseImage(segue:UIStoryboardSegue) {
     }
     
-    @IBAction func imageSelected(segue:UIStoryboardSegue) {
+    @IBAction func cardGalleryImageSelected(segue:UIStoryboardSegue) {
+//        let cardGalleryUIViewController = segue.destinationViewController as? CardGalleryUIViewController
+//        setupSubview(cardGalleryUIViewController!.imageSelected)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

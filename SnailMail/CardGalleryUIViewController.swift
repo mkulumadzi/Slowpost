@@ -83,9 +83,7 @@ class CardGalleryUIViewController: UIViewController, UICollectionViewDataSource,
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "imageSelected" {
             let chooseImageViewController = segue.destinationViewController as? ChooseImageViewController
-//            chooseImageViewController?.cardImage = imageSelected
-            chooseImageViewController?.imageSelected.image = imageSelected
-            chooseImageViewController?.imageName = imageSelectedName
+            chooseImageViewController!.setupSubview(imageSelected)
         }
     }
     
