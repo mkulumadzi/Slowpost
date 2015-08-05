@@ -22,8 +22,10 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
@@ -502,10 +504,11 @@
                                                 </connections>
                                             </button>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="3xI-7B-GUV">
+                                        <barButtonItem key="rightBarButtonItem" title="Send" style="done" id="3xI-7B-GUV">
                                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="sendMail:" destination="uNW-RF-l3y" id="GSU-xv-1iv"/>
+                                                <segue destination="MtH-uW-ItT" kind="presentation" identifier="sendMail" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="ycP-6v-ayW"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -561,6 +564,62 @@
                 <tapGestureRecognizer id="6mN-R4-H4K"/>
             </objects>
             <point key="canvasLocation" x="2388" y="924"/>
+        </scene>
+        <!--Sending View Controller-->
+        <scene sceneID="cZ8-Uj-tT2">
+            <objects>
+                <viewController id="MtH-uW-ItT" customClass="SendingViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ytp-Vq-cbs"/>
+                        <viewControllerLayoutGuide type="bottom" id="kLD-Zm-28F"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DOg-cX-dq3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JVh-TN-TvG" userLabel="Background">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Slowpost Icon Set (green)" translatesAutoresizingMaskIntoConstraints="NO" id="2I9-8j-geo">
+                                <rect key="frame" x="225" y="252" width="150" height="96"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="2I9-8j-geo" secondAttribute="height" multiplier="151:96" id="6yo-Lz-1qH"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sending mail..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wlh-gW-3qS">
+                                <rect key="frame" x="30" y="358" width="540" height="24"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your mail will arrive 2 to 3 days after it is sent!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="52P-9L-Rij">
+                                <rect key="frame" x="30" y="382" width="540" height="21"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="2I9-8j-geo" secondAttribute="centerY" id="8WS-G3-m2d"/>
+                            <constraint firstItem="Wlh-gW-3qS" firstAttribute="top" secondItem="2I9-8j-geo" secondAttribute="bottom" constant="10" id="A2T-ZW-SxQ"/>
+                            <constraint firstItem="JVh-TN-TvG" firstAttribute="leading" secondItem="DOg-cX-dq3" secondAttribute="leading" id="Fk4-Es-7Nv"/>
+                            <constraint firstAttribute="trailing" secondItem="JVh-TN-TvG" secondAttribute="trailing" id="VdM-EZ-4sU"/>
+                            <constraint firstItem="Wlh-gW-3qS" firstAttribute="leading" secondItem="DOg-cX-dq3" secondAttribute="leading" constant="30" id="Vkd-I0-dUU"/>
+                            <constraint firstAttribute="trailing" secondItem="52P-9L-Rij" secondAttribute="trailing" constant="30" id="ccQ-eg-Aft"/>
+                            <constraint firstAttribute="centerX" secondItem="2I9-8j-geo" secondAttribute="centerX" id="jJG-0L-qYF"/>
+                            <constraint firstItem="kLD-Zm-28F" firstAttribute="top" secondItem="JVh-TN-TvG" secondAttribute="bottom" id="k26-RV-5ch"/>
+                            <constraint firstItem="52P-9L-Rij" firstAttribute="top" secondItem="Wlh-gW-3qS" secondAttribute="bottom" id="kyc-Rl-Jqd"/>
+                            <constraint firstAttribute="trailing" secondItem="Wlh-gW-3qS" secondAttribute="trailing" constant="30" id="mJJ-Uk-0Ef"/>
+                            <constraint firstItem="JVh-TN-TvG" firstAttribute="top" secondItem="DOg-cX-dq3" secondAttribute="top" id="uCQ-M4-nh8"/>
+                            <constraint firstItem="52P-9L-Rij" firstAttribute="leading" secondItem="DOg-cX-dq3" secondAttribute="leading" constant="30" id="zAR-vj-1bi"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HIU-N4-2SL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3084" y="924"/>
         </scene>
         <!--To View Controller-->
         <scene sceneID="fT4-r7-D5g">
@@ -623,7 +682,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="ssJ-fP-Am6"/>
                                 </constraints>
-                                <color key="barTintColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="56L-ux-Lnu" id="axs-Zf-QWV"/>
@@ -703,6 +762,7 @@
     </scenes>
     <resources>
         <image name="Default Card.png" width="2048" height="1536"/>
+        <image name="Slowpost Icon Set (green)" width="150" height="95"/>
         <image name="grid-green.png" width="512" height="512"/>
         <image name="ios7-arrow-left-white.png" width="192" height="320"/>
         <image name="ios7-arrow-right-white.png" width="192" height="320"/>

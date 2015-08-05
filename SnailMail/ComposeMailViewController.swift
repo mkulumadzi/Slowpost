@@ -95,37 +95,49 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         self.dismissViewControllerAnimated(true, completion: {})
     }
     
-    @IBAction func sendMail(sender: AnyObject) {
-        doneButton.enabled = false
-        
-        let image = imagePreview.image!
-        
-        FileService.uploadImage(image, filename: "image.jpg", completion: { (error, result) -> Void in
-            if let imageUid = result as? String {
-                self.sendMailToPostoffice(imageUid)
-            }
-            else {
-                println("Unexpected result")
-            }
-        })
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "sendMail" {
+            doneButton.enabled = false
+            
+            let sendingViewController = segue.destinationViewController as? SendingViewController
+            sendingViewController!.username = toPerson.username
+            sendingViewController!.image = imagePreview.image
+            sendingViewController!.content = composeText.text
+            
+        }
     }
     
-    func sendMailToPostoffice(imageUid: String) {
-    
-        let sendMailEndpoint = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mail/send"
-        let parameters = ["to": "\(toPerson.username)", "content": "\(composeText.text)", "image_uid": "\(imageUid)"]
-        
-        RestService.postRequest(sendMailEndpoint, parameters: parameters, completion: { (error, result) -> Void in
-            if let response = result as? [AnyObject] {
-                if response[0] as? Int == 201 {
-                    var storyboard = UIStoryboard(name: "home", bundle: nil)
-                    var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-                    self.presentViewController(controller, animated: true, completion: nil)
-                }
-            }
-        })
-        
-    }
+//    @IBAction func sendMail(sender: AnyObject) {
+//        doneButton.enabled = false
+//        
+//        let image = imagePreview.image!
+//        
+//        FileService.uploadImage(image, filename: "image.jpg", completion: { (error, result) -> Void in
+//            if let imageUid = result as? String {
+//                self.sendMailToPostoffice(imageUid)
+//            }
+//            else {
+//                println("Unexpected result")
+//            }
+//        })
+//    }
+//    
+//    func sendMailToPostoffice(imageUid: String) {
+//    
+//        let sendMailEndpoint = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mail/send"
+//        let parameters = ["to": "\(toPerson.username)", "content": "\(composeText.text)", "image_uid": "\(imageUid)"]
+//        
+//        RestService.postRequest(sendMailEndpoint, parameters: parameters, completion: { (error, result) -> Void in
+//            if let response = result as? [AnyObject] {
+//                if response[0] as? Int == 201 {
+//                    var storyboard = UIStoryboard(name: "home", bundle: nil)
+//                    var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+//                    self.presentViewController(controller, animated: true, completion: nil)
+//                }
+//            }
+//        })
+//        
+//    }
     
     func textViewDidChange(textView: UITextView) {
         validatePlaceholderLabel()

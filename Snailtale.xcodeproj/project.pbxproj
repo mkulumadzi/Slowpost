@@ -90,6 +90,7 @@
 		D2CEC46F1B7256E9002CFD25 /* ios7-camera-green.png in Resources */ = {isa = PBXBuildFile; fileRef = D2CEC46C1B7256E9002CFD25 /* ios7-camera-green.png */; };
 		D2CEC4701B7256E9002CFD25 /* photos_green.png in Resources */ = {isa = PBXBuildFile; fileRef = D2CEC46D1B7256E9002CFD25 /* photos_green.png */; };
 		D2CEC4721B725D0C002CFD25 /* ios7-minus-outline-white-center.png in Resources */ = {isa = PBXBuildFile; fileRef = D2CEC4711B725D0C002CFD25 /* ios7-minus-outline-white-center.png */; };
+		D2CEC4741B72ACBD002CFD25 /* SendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CEC4731B72ACBD002CFD25 /* SendingViewController.swift */; };
 		D2D866261B2F4AF800847051 /* ios7-person-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866251B2F4AF800847051 /* ios7-person-outline.png */; };
 		D2D8662A1B2F4B7F00847051 /* ios7-contact-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */; };
 		D2D8662C1B2F50CC00847051 /* ios7-contact-outline-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D8662B1B2F50CC00847051 /* ios7-contact-outline-white.png */; };
@@ -221,6 +222,7 @@
 		D2CEC46C1B7256E9002CFD25 /* ios7-camera-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-camera-green.png"; sourceTree = "<group>"; };
 		D2CEC46D1B7256E9002CFD25 /* photos_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photos_green.png; sourceTree = "<group>"; };
 		D2CEC4711B725D0C002CFD25 /* ios7-minus-outline-white-center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-minus-outline-white-center.png"; sourceTree = "<group>"; };
+		D2CEC4731B72ACBD002CFD25 /* SendingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendingViewController.swift; sourceTree = "<group>"; };
 		D2D866251B2F4AF800847051 /* ios7-person-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-person-outline.png"; sourceTree = "<group>"; };
 		D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-contact-outline.png"; sourceTree = "<group>"; };
 		D2D8662B1B2F50CC00847051 /* ios7-contact-outline-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-contact-outline-white.png"; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				CC23DE2D1AE54C2B00AFEDE4 /* compose.storyboard */,
+				D2CEC4731B72ACBD002CFD25 /* SendingViewController.swift */,
 				D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */,
 				CC96E4C81AC0B334001E6D27 /* ComposeMailViewController.swift */,
 				D20D8ED31B2A510700BBF6B5 /* ToViewController.swift */,
@@ -800,6 +803,7 @@
 				D27DA32D1B66C51900DF32A1 /* MessageUILabel.swift in Sources */,
 				D2E9564A1B309AA100CA8CC8 /* CardCollectionViewCell.swift in Sources */,
 				D20D8ED41B2A510700BBF6B5 /* ToViewController.swift in Sources */,
+				D2CEC4741B72ACBD002CFD25 /* SendingViewController.swift in Sources */,
 				D27DA3291B62E7BC00DF32A1 /* SettingsMenuViewController.swift in Sources */,
 				D21D79DD1B56ED540014510E /* AddressBookService.swift in Sources */,
 				D2CEC4641B6C1F4F002CFD25 /* PhotoLibraryViewController.swift in Sources */,
