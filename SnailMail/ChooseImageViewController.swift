@@ -26,6 +26,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var libraryLabel: UILabel!
     @IBOutlet weak var cameraLabel: UILabel!
     @IBOutlet weak var galleryLabel: UILabel!
+    @IBOutlet weak var nextButton: SnailMailTextUIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         toLabel.text = toPerson.name
         
         removePhotoButton.layer.cornerRadius = 5
+        nextButton.layer.cornerRadius = 5
         validateButtons()
         
         imageScrollView.delegate = self
@@ -177,7 +179,6 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         let subViews = self.imageScrollView.subviews
         for subview in subViews {
             if subview is UIImageView {
-                println("Removing subview")
                 subview.removeFromSuperview()
             }
         }
@@ -204,6 +205,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         
         cropLabel.hidden = false
         removePhotoButton.hidden = false
+        nextButton.hidden = false
     }
     
     func noImage() {
@@ -216,6 +218,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         
         cropLabel.hidden = true
         removePhotoButton.hidden = true
+        nextButton.hidden = true
     }
     
     @IBAction func backToSelectRecipient(sender: AnyObject) {
@@ -226,6 +229,10 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func cardGalleryImageSelected(segue:UIStoryboardSegue) {
+    }
+    
+    @IBAction func nextButtonPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("composeMessage", sender: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
