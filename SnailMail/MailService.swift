@@ -21,7 +21,7 @@ class MailService {
         let status = jsonEntry.objectForKey("status") as! String
         let from = jsonEntry.objectForKey("from") as! String
         let to = jsonEntry.objectForKey("to") as! String
-        let content = jsonEntry.objectForKey("content") as! String
+        let content = jsonEntry.objectForKey("content") as? String
         
         let arrivalString = jsonEntry.objectForKey("scheduled_to_arrive") as? String
         let scheduledToArrive = NSDate(dateString: arrivalString!)

@@ -10,8 +10,6 @@ import UIKit
 
 class MailViewController: UIViewController {
     
-//    @IBOutlet weak var mailText: UITextView!
-//    @IBOutlet weak var mailImage: UIImageView!
     @IBOutlet weak var mailImage: UIImageView!
     @IBOutlet weak var fromLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
@@ -25,9 +23,12 @@ class MailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        getImage()
         mailImage.image = mail.image
-        mailContent.text = mail.content
+        
+        if mail.content != nil {
+           mailContent.text = mail.content 
+        }
+        
         fromLabel.text = "From: " + from.name
         setStatusLabel()
         
@@ -35,7 +36,6 @@ class MailViewController: UIViewController {
             readMail(mail)
         }
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,22 +47,6 @@ class MailViewController: UIViewController {
         var mailText:String = "\(mail.content)"
         return mailText
     }
-    
-//    func getImage() {
-//        if mail.image != nil {
-//            mailImage.image = mail.image
-//        }
-//        else {
-//            MailService.getMailImage(mail, completion: { (error, result) -> Void in
-//                if let image = result as? UIImage {
-//                    self.mailImage.image = image
-//                }
-//                else {
-//                    self.mailImage.image = UIImage(named: "Default Card.png")!
-//                }
-//            })
-//        }
-//    }
     
     func readMail(mail:Mail) {
         let readMailURL = "\(PostOfficeURL)/mail/id/\(mail.id)/read"

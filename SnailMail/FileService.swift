@@ -11,26 +11,47 @@ import Alamofire
 import CoreData
 import SwiftyJSON
 
+let defaultImageSize:CGSize = CGSize(width: 768.0, height: 577.0)
+
 class FileService {
 
     class func uploadImage(image:UIImage, filename:String, completion: (error: NSError?, result: AnyObject?) -> Void) {
         let uploadURL = "\(PostOfficeURL)upload"
-        var imageData = UIImagePNGRepresentation(image)
         
-        let base64String = imageData.base64EncodedStringWithOptions(.allZeros)
-        
-        let parameters = ["file": base64String, "filename": filename]
-        
-        RestService.postRequest(uploadURL, parameters: parameters, completion: { (error, result) -> Void in
+        self.resizeImage(image, completion: { (error, result) -> Void in
             if error != nil {
-                completion(error: error, result: nil)
+                println(error)
             }
-            if let response = result as? [AnyObject] {
-                if let location = response[1] as? String {
-                    completion(error: nil, result: location)
-                }
+            else if let contextImage = result as? UIImage {
+                
+                let base64String = self.encodeImageAsBase64String(contextImage)
+                let parameters = ["file": base64String, "filename": filename]
+                
+                RestService.postRequest(uploadURL, parameters: parameters, completion: { (error, result) -> Void in
+                    if error != nil {
+                        completion(error: error, result: nil)
+                    }
+                    if let response = result as? [AnyObject] {
+                        if let location = response[1] as? String {
+                            completion(error: nil, result: location)
+                        }
+                    }
+                })
             }
         })
+    }
+
+    
+    class func resizeImage(image: UIImage, completion: (error: NSError?, result: AnyObject?) -> Void) {
+            image.resize(defaultImageSize, completionHandler: {(resizedImage, data) -> () in
+                completion(error: nil, result: resizedImage)
+            })
+    }
+    
+    class func encodeImageAsBase64String(image: UIImage) -> String {
+        var imageData = UIImageJPEGRepresentation(image, 0.8)
+        let base64String = imageData.base64EncodedStringWithOptions(.allZeros)
+        return base64String
     }
     
     class func downloadImage(url: String, completion: (error: NSError?, result: AnyObject?) -> Void) {

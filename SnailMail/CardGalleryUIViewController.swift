@@ -24,7 +24,6 @@ class CardGalleryUIViewController: UIViewController, UICollectionViewDataSource,
         
         populatePhotoArray()
 
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

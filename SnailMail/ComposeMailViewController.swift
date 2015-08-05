@@ -12,7 +12,6 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     
     var toPerson:Person!
     var cardImage:UIImage!
-    var imageName:String!
     var keyboardShowing:Bool!
     
     @IBOutlet weak var toLabel: UILabel!
@@ -33,10 +32,6 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         
         if cardImage != nil {
             imagePreview.image = cardImage
-        }
-        
-        if imageName == nil {
-            self.imageName = "image"
         }
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow:", name: UIKeyboardWillShowNotification, object: nil)
@@ -94,7 +89,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         
         let image = imagePreview.image!
         
-        FileService.uploadImage(image, filename: imageName, completion: { (error, result) -> Void in
+        FileService.uploadImage(image, filename: "image.jpg", completion: { (error, result) -> Void in
             if let imageUid = result as? String {
                 self.sendMailToPostoffice(imageUid)
             }

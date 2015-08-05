@@ -28,7 +28,7 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
         messageLabel.hide()
         
-//        getOutbox()
+        updateOutbox()
         
         navBarTitle.title = "@" + loggedInUser.username
         nameLabel.text = loggedInUser.name
@@ -36,8 +36,6 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         phoneLabel.text = loggedInUser.phone
         
         sentMailTable.addSubview(self.refreshControl)
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -49,7 +47,7 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         // Dispose of any resources that can be recreated.
     }
 
-    func getOutbox() {
+    func updateOutbox() {
         let myOutboxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/outbox"
         
         let headers = RestService.sinceHeader(outbox)
@@ -69,7 +67,7 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     
     func handleRefresh(refreshControl: UIRefreshControl) {
-        getOutbox()
+        updateOutbox()
         refreshControl.endRefreshing()
     }
     

@@ -70,39 +70,19 @@
                                                         </mask>
                                                     </variation>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ios7-checkmark-not-checked.png" translatesAutoresizingMaskIntoConstraints="NO" id="7Zh-b1-vVs">
-                                                    <rect key="frame" x="10" y="10" width="30" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="7Zh-b1-vVs" secondAttribute="height" multiplier="31:30" id="6RD-la-shp"/>
-                                                        <constraint firstAttribute="width" constant="30" id="DZi-6V-a5B"/>
-                                                        <constraint firstAttribute="height" constant="30" id="ktk-Sb-TDN"/>
-                                                        <constraint firstAttribute="width" constant="30" id="lyt-gF-0RY"/>
-                                                        <constraint firstAttribute="height" constant="30" id="y6v-xx-NyK"/>
-                                                    </constraints>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="6RD-la-shp"/>
-                                                            <exclude reference="ktk-Sb-TDN"/>
-                                                            <exclude reference="lyt-gF-0RY"/>
-                                                        </mask>
-                                                    </variation>
-                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="tnB-P3-OLy" firstAttribute="top" secondItem="Gnk-y3-ba1" secondAttribute="top" id="9vs-Vl-JLa"/>
                                             <constraint firstAttribute="trailing" secondItem="tnB-P3-OLy" secondAttribute="trailing" id="D2s-rU-OwZ"/>
-                                            <constraint firstItem="7Zh-b1-vVs" firstAttribute="top" secondItem="Gnk-y3-ba1" secondAttribute="top" constant="10" id="DK9-zU-ZBp"/>
                                             <constraint firstAttribute="trailing" secondItem="tnB-P3-OLy" secondAttribute="trailing" id="Dcd-aI-sAW"/>
-                                            <constraint firstItem="7Zh-b1-vVs" firstAttribute="leading" secondItem="Gnk-y3-ba1" secondAttribute="leading" constant="10" id="Jmy-Fu-j6g"/>
                                             <constraint firstAttribute="bottom" secondItem="tnB-P3-OLy" secondAttribute="bottom" constant="5" id="N7e-uW-x1U"/>
                                             <constraint firstItem="tnB-P3-OLy" firstAttribute="top" secondItem="Gnk-y3-ba1" secondAttribute="top" id="PHX-Yj-iRe"/>
                                             <constraint firstItem="tnB-P3-OLy" firstAttribute="top" secondItem="Gnk-y3-ba1" secondAttribute="top" id="R4c-CX-ZEX"/>
                                             <constraint firstAttribute="bottom" secondItem="tnB-P3-OLy" secondAttribute="bottom" id="XfK-S3-afk"/>
                                             <constraint firstAttribute="bottom" secondItem="tnB-P3-OLy" secondAttribute="bottom" id="o12-hC-4K8"/>
                                             <constraint firstItem="tnB-P3-OLy" firstAttribute="leading" secondItem="Gnk-y3-ba1" secondAttribute="leading" id="qaM-bZ-iWh"/>
-                                            <constraint firstItem="tnB-P3-OLy" firstAttribute="leading" secondItem="7Zh-b1-vVs" secondAttribute="trailing" constant="5" id="ub8-4v-dcN"/>
                                             <constraint firstAttribute="trailing" secondItem="tnB-P3-OLy" secondAttribute="trailing" id="ueY-PU-DeF"/>
                                         </constraints>
                                         <variation key="default">
@@ -113,12 +93,10 @@
                                                 <exclude reference="N7e-uW-x1U"/>
                                                 <exclude reference="PHX-Yj-iRe"/>
                                                 <exclude reference="o12-hC-4K8"/>
-                                                <exclude reference="ub8-4v-dcN"/>
                                             </mask>
                                         </variation>
                                         <connections>
                                             <outlet property="cardImage" destination="tnB-P3-OLy" id="luJ-u2-WUy"/>
-                                            <outlet property="checkMarkIcon" destination="7Zh-b1-vVs" id="2d1-Mj-4xw"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -690,7 +668,6 @@
         <image name="ios7-arrow-left-white.png" width="192" height="320"/>
         <image name="ios7-arrow-right-white.png" width="192" height="320"/>
         <image name="ios7-camera-green.png" width="512" height="512"/>
-        <image name="ios7-checkmark-not-checked.png" width="512" height="512"/>
         <image name="photos_green.png" width="512" height="512"/>
     </resources>
 </document>

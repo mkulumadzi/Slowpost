@@ -11,7 +11,6 @@ import MobileCoreServices
 
 class ChooseImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
     
-    var imageName:String!
     var toPerson:Person!
     var newMedia: Bool?
     var imageSelected:UIImageView!
@@ -227,8 +226,6 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func cardGalleryImageSelected(segue:UIStoryboardSegue) {
-//        let cardGalleryUIViewController = segue.destinationViewController as? CardGalleryUIViewController
-//        setupSubview(cardGalleryUIViewController!.imageSelected)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -237,9 +234,6 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
             if imageSelected.image != nil {
                 let croppedImage = self.cropImage()
                 composeMailViewController?.cardImage = croppedImage
-                if imageName != nil {
-                    composeMailViewController?.imageName = self.imageName
-                }
             }
             composeMailViewController!.toPerson = toPerson
         }
