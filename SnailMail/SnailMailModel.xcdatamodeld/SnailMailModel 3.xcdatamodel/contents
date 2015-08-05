@@ -5,8 +5,10 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="from" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="image" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="imageThumb" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="scheduledToArrive" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="to" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="updatedAtString" optional="YES" attributeType="String" syncable="YES"/>
@@ -15,10 +17,13 @@
         <attribute name="address1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="updatedAtString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -26,8 +31,8 @@
         <attribute name="loggedInUserId" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Mail" positionX="-36" positionY="72" width="128" height="180"/>
-        <element name="Person" positionX="-54" positionY="-9" width="128" height="180"/>
+        <element name="Mail" positionX="-36" positionY="72" width="128" height="210"/>
+        <element name="Person" positionX="-54" positionY="-9" width="128" height="225"/>
         <element name="Session" positionX="-45" positionY="90" width="128" height="60"/>
     </elements>
 </model>
