@@ -18,6 +18,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var imagePreview: UIImageView!
     @IBOutlet weak var composeText: UITextView!
     @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var placeholderTextLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         keyboardShowing = false
         toLabel.text = toPerson.name
         
+        validatePlaceholderLabel()
         composeText.textContainerInset.left = 10
         composeText.textContainerInset.right = 10
 
@@ -38,8 +40,15 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
         
         resignFirstResponder()
-
-        // Do any additional setup after loading the view.
+    }
+    
+    func validatePlaceholderLabel() {
+        if composeText.text != "" || self.keyboardShowing == true {
+            placeholderTextLabel.hidden = true
+        }
+        else {
+            placeholderTextLabel.hidden = false
+        }
     }
     
     func addTopBorderToTextView(textView: UITextView) {
@@ -61,6 +70,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     
     func keyboardShow(notification: NSNotification) {
         self.keyboardShowing = true
+        self.placeholderTextLabel.hidden = true
         
         let userInfo = notification.userInfo!
         var r = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
@@ -71,6 +81,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     
     func keyboardHide(notification:NSNotification) {
         self.keyboardShowing = false
+        self.validatePlaceholderLabel()
         self.composeText.contentInset = UIEdgeInsetsZero
         self.composeText.scrollIndicatorInsets = UIEdgeInsetsZero
     }
@@ -117,6 +128,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidChange(textView: UITextView) {
+        validatePlaceholderLabel()
         doneButton.enabled = true
     }
 

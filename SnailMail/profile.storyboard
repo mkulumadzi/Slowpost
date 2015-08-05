@@ -72,6 +72,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="751" verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="RyX-x3-iLb">
                                                     <rect key="frame" x="5" y="5" width="92" height="69"/>
+                                                    <color key="backgroundColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="282" id="Q7g-HG-ouP"/>
                                                         <constraint firstAttribute="width" constant="375" id="YxC-HO-SgI"/>
@@ -931,6 +932,7 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="400" placeholderIntrinsicHeight="300" translatesAutoresizingMaskIntoConstraints="NO" id="Iif-34-G8s">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
+                                        <color key="backgroundColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Iif-34-G8s" secondAttribute="height" multiplier="4:3" id="1aL-GQ-qOp"/>
                                         </constraints>
