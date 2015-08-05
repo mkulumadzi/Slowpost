@@ -86,6 +86,7 @@
 		D2CEC4641B6C1F4F002CFD25 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CEC4631B6C1F4F002CFD25 /* PhotoLibraryViewController.swift */; };
 		D2CEC4661B6C1F5C002CFD25 /* TakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CEC4651B6C1F5C002CFD25 /* TakePhotoViewController.swift */; };
 		D2CEC4681B6C1F6E002CFD25 /* CardGalleryUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CEC4671B6C1F6E002CFD25 /* CardGalleryUIViewController.swift */; };
+		D2CEC46A1B71647A002CFD25 /* ImagePickerMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CEC4691B71647A002CFD25 /* ImagePickerMenuViewController.swift */; };
 		D2D866261B2F4AF800847051 /* ios7-person-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866251B2F4AF800847051 /* ios7-person-outline.png */; };
 		D2D8662A1B2F4B7F00847051 /* ios7-contact-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */; };
 		D2D8662C1B2F50CC00847051 /* ios7-contact-outline-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D8662B1B2F50CC00847051 /* ios7-contact-outline-white.png */; };
@@ -213,6 +214,7 @@
 		D2CEC4631B6C1F4F002CFD25 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
 		D2CEC4651B6C1F5C002CFD25 /* TakePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoViewController.swift; sourceTree = "<group>"; };
 		D2CEC4671B6C1F6E002CFD25 /* CardGalleryUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardGalleryUIViewController.swift; sourceTree = "<group>"; };
+		D2CEC4691B71647A002CFD25 /* ImagePickerMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerMenuViewController.swift; sourceTree = "<group>"; };
 		D2D866251B2F4AF800847051 /* ios7-person-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-person-outline.png"; sourceTree = "<group>"; };
 		D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-contact-outline.png"; sourceTree = "<group>"; };
 		D2D8662B1B2F50CC00847051 /* ios7-contact-outline-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-contact-outline-white.png"; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 				D2CEC4631B6C1F4F002CFD25 /* PhotoLibraryViewController.swift */,
 				D2CEC4651B6C1F5C002CFD25 /* TakePhotoViewController.swift */,
 				D2CEC4671B6C1F6E002CFD25 /* CardGalleryUIViewController.swift */,
+				D2CEC4691B71647A002CFD25 /* ImagePickerMenuViewController.swift */,
 			);
 			name = Compose;
 			sourceTree = "<group>";
@@ -778,6 +781,7 @@
 				D25A9CAC1B225D3400ABBBA4 /* RegisterViewController.swift in Sources */,
 				CCCB1A751AB0D87F0067F100 /* Person.swift in Sources */,
 				D2CEC4681B6C1F6E002CFD25 /* CardGalleryUIViewController.swift in Sources */,
+				D2CEC46A1B71647A002CFD25 /* ImagePickerMenuViewController.swift in Sources */,
 				CC96E4A01ABCCBF2001E6D27 /* LogInViewController.swift in Sources */,
 				D2B7CEAE1B696DBC007F8235 /* RestService.swift in Sources */,
 				D2A361381B3CB52B00811D14 /* WarningUILabel.swift in Sources */,

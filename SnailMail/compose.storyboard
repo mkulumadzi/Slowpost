@@ -29,6 +29,47 @@
         </mutableArray>
     </customFonts>
     <scenes>
+        <!--Image Picker Menu View Controller-->
+        <scene sceneID="3eR-uS-Az0">
+            <objects>
+                <viewController id="9Ch-RZ-Ykh" customClass="ImagePickerMenuViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lwT-yO-Q4P"/>
+                        <viewControllerLayoutGuide type="bottom" id="mOZ-oZ-QrB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4oi-4x-Tjf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ITX-QD-ef2">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Dga-rx-XFN" appends="YES" id="NlH-SP-ZgM"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="ITX-QD-ef2" firstAttribute="top" secondItem="4oi-4x-Tjf" secondAttribute="top" id="6B0-zW-Yad"/>
+                            <constraint firstItem="ITX-QD-ef2" firstAttribute="leading" secondItem="4oi-4x-Tjf" secondAttribute="leading" id="Dnx-ob-aFD"/>
+                            <constraint firstAttribute="trailing" secondItem="ITX-QD-ef2" secondAttribute="trailing" id="GMy-AF-4QI"/>
+                            <constraint firstItem="mOZ-oZ-QrB" firstAttribute="top" secondItem="ITX-QD-ef2" secondAttribute="bottom" id="zLN-ck-oIR"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Be8-8n-d2U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="c64-N1-Zq8" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="Dga-rx-XFN">
+                    <connections>
+                        <segue destination="c64-N1-Zq8" kind="unwind" unwindAction="cancelToChooseImage:" id="bRc-r2-hpH"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1064" y="1770"/>
+        </scene>
         <!--Card GalleryUI View Controller-->
         <scene sceneID="bQQ-CI-qeJ">
             <objects>
@@ -318,6 +359,15 @@
                                     <action selector="removePhoto:" destination="2t1-x4-fi1" eventType="touchUpInside" id="SBN-1J-aqZ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="82G-u1-Lan">
+                                <rect key="frame" x="30" y="762" width="540" height="30"/>
+                                <state key="normal" title="menu">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="9Ch-RZ-Ykh" kind="presentation" identifier="imageMenu" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="PwB-gF-ECy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -330,6 +380,7 @@
                             <constraint firstItem="v2Z-dH-fwH" firstAttribute="top" secondItem="Mkz-CG-fyW" secondAttribute="bottom" constant="14" id="B7Q-lM-jHV"/>
                             <constraint firstAttribute="trailing" secondItem="3cD-DR-bzv" secondAttribute="trailing" constant="30" id="D4q-pV-SQS"/>
                             <constraint firstItem="3cD-DR-bzv" firstAttribute="top" secondItem="Wnd-rs-lA3" secondAttribute="bottom" constant="10" id="FEf-mG-ETZ"/>
+                            <constraint firstAttribute="trailing" secondItem="82G-u1-Lan" secondAttribute="trailing" constant="30" id="JNK-G6-pdL"/>
                             <constraint firstItem="Wnd-rs-lA3" firstAttribute="leading" secondItem="UDU-e0-SvH" secondAttribute="leading" constant="30" id="JPX-r1-HSC"/>
                             <constraint firstAttribute="trailing" secondItem="A1v-Uj-6rd" secondAttribute="trailing" constant="30" id="Kvf-kn-INh"/>
                             <constraint firstAttribute="trailing" secondItem="Wnd-rs-lA3" secondAttribute="trailing" constant="30" id="MZh-b9-tB9"/>
@@ -338,6 +389,8 @@
                             <constraint firstAttribute="trailing" secondItem="qRX-9A-uKU" secondAttribute="trailing" id="VY5-1b-qyE"/>
                             <constraint firstItem="Mkz-CG-fyW" firstAttribute="top" secondItem="UDU-e0-SvH" secondAttribute="top" id="bIY-eg-HSS"/>
                             <constraint firstItem="rtl-YU-w3q" firstAttribute="leading" secondItem="v2Z-dH-fwH" secondAttribute="trailing" constant="2" id="g0y-Xo-5df"/>
+                            <constraint firstItem="82G-u1-Lan" firstAttribute="leading" secondItem="UDU-e0-SvH" secondAttribute="leading" constant="30" id="i1d-GM-uSm"/>
+                            <constraint firstItem="82G-u1-Lan" firstAttribute="top" secondItem="A1v-Uj-6rd" secondAttribute="bottom" constant="4" id="i9q-s5-dx3"/>
                             <constraint firstAttribute="width" secondItem="qRX-9A-uKU" secondAttribute="width" id="iJM-b3-Kah"/>
                             <constraint firstItem="A1v-Uj-6rd" firstAttribute="leading" secondItem="UDU-e0-SvH" secondAttribute="leading" constant="30" id="ijb-Gn-eV4"/>
                             <constraint firstItem="qRX-9A-uKU" firstAttribute="top" secondItem="rtl-YU-w3q" secondAttribute="bottom" constant="10" id="kFB-ol-eXJ"/>

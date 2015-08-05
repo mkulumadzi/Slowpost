@@ -33,21 +33,28 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         takePhotoButton.layer.cornerRadius = 5
         cardGalleryButton.layer.cornerRadius = 5
         
+        removePhotoButton.hidden = true
+        
         imageScrollView.delegate = self
         imageScrollView.showsHorizontalScrollIndicator = false
         imageScrollView.showsVerticalScrollIndicator = false
+        
 
     }
     
     override func viewDidAppear(animated: Bool) {
-        println("View appeared")
+        if imageSelected != nil {
+            removePhotoButton.hidden = false
+        }
+        else {
+            removePhotoButton.hidden = true
+        }
     }
     
     func setupSubview(image: UIImage) {
         let subViews = self.imageScrollView.subviews
         for subview in subViews {
             if subview is UIImageView {
-                println("Removing subview")
                 subview.removeFromSuperview()
             }
         }
@@ -58,15 +65,12 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     override func viewDidLayoutSubviews() {
-        println("Laying out subviews")
-        
         imageScrollView.maximumZoomScale = 5.0
         imageScrollView.contentSize = imageSize
         let widthScale = imageScrollView.bounds.size.width / imageSize.width
         let heightScale = imageScrollView.bounds.size.height / imageSize.height
         imageScrollView.minimumZoomScale = widthScale
         imageScrollView.setZoomScale(max(widthScale, heightScale), animated: true )
-        
     }
     
     func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
@@ -176,7 +180,14 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func removePhoto(sender: AnyObject) {
-        imageSelected.image = nil
+//        imageSelected.image = nil
+        let subViews = self.imageScrollView.subviews
+        for subview in subViews {
+            if subview is UIImageView {
+                println("Removing subview")
+                subview.removeFromSuperview()
+            }
+        }
         removePhotoButton.hidden = true
     }
     
