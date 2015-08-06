@@ -128,13 +128,30 @@ class InitialViewController: UIViewController {
     }
     
     func getOutbox() {
+        
+        let predicate = NSPredicate(format: "from == %@", loggedInUser.username)
+        
+        let coreDataOutbox = MailService.populateMailArrayFromCoreData(predicate)
+        if coreDataOutbox != nil {
+            outbox = coreDataOutbox!
+        }
+        
+        var headers:[String: String]?
+        if outbox.count > 0 {
+            headers = RestService.sinceHeader(outbox)
+        }
+        
+        
         let myOutboxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/outbox"
-        MailService.getMailCollection(myOutboxURL, headers: nil, completion: { (error, result) -> Void in
+        MailService.getMailCollection(myOutboxURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }
             else if let mailArray = result as? Array<Mail> {
-                outbox = mailArray.sorted { $0.updatedAt.compare($1.updatedAt) == NSComparisonResult.OrderedDescending }
+                outbox = MailService.updateMailCollectionFromNewMail(outbox, newCollection: mailArray)
+                outbox = outbox.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
+                
+                MailService.appendMailArrayToCoreData(mailArray)
             }
         })
     }

@@ -58,8 +58,10 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
             }
             else if let mailArray = result as? Array<Mail> {
                 outbox = MailService.updateMailCollectionFromNewMail(outbox, newCollection: mailArray)
-                
                 outbox = outbox.sorted { $0.updatedAt.compare($1.updatedAt) == NSComparisonResult.OrderedDescending }
+                
+                MailService.appendMailArrayToCoreData(mailArray)
+                
                 self.sentMailTable.reloadData()
             }
         })
