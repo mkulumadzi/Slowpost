@@ -1218,7 +1218,7 @@
 				D2222A741B588695007E74BB /* SnailMailModel 2.xcdatamodel */,
 				D27E194D1B3B770C0052687F /* SnailMailModel.xcdatamodel */,
 			);
-			currentVersion = D2222A741B588695007E74BB /* SnailMailModel 2.xcdatamodel */;
+			currentVersion = D2CEC4751B72B786002CFD25 /* SnailMailModel 3.xcdatamodel */;
 			path = SnailMailModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
