@@ -55,8 +55,6 @@ class InitialViewController: UIViewController {
             registerDeviceToken()
         }
         
-        PersonService.getPersonFromCoreData()
-        
         getOutbox()
         
         var storyboard = UIStoryboard(name: "home", bundle: nil)
@@ -89,14 +87,28 @@ class InitialViewController: UIViewController {
     
     func getMailbox() {
         
-        //Initially populate mailbox by retrieving mail for the user
+        let coreDataMailbox = MailService.populateMailArrayFromCoreData("Mail")
+        if coreDataMailbox != nil {
+            mailbox = coreDataMailbox!
+        }
+        
+        var headers:[String: String]?
+        if mailbox.count > 0 {
+            headers = RestService.sinceHeader(mailbox)
+        }
+
         let myMailBoxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/mailbox"
-        MailService.getMailCollection(myMailBoxURL, headers: nil, completion: { (error, result) -> Void in
+        
+        MailService.getMailCollection(myMailBoxURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }
             else if let mailArray = result as? Array<Mail> {
-                mailbox = mailArray.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
+                
+                mailbox = MailService.updateMailCollectionFromNewMail(mailbox, newCollection: mailArray)
+                mailbox = mailbox.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
+                
+                MailService.appendMailArrayToCoreData(mailArray, entityName: "Mail")
                 
                 //Get all 'penpal' records whom the user has sent mail to or received mail from
                 let contactsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"

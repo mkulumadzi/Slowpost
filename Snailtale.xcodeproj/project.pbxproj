@@ -91,6 +91,7 @@
 		D2CEC4701B7256E9002CFD25 /* photos_green.png in Resources */ = {isa = PBXBuildFile; fileRef = D2CEC46D1B7256E9002CFD25 /* photos_green.png */; };
 		D2CEC4721B725D0C002CFD25 /* ios7-minus-outline-white-center.png in Resources */ = {isa = PBXBuildFile; fileRef = D2CEC4711B725D0C002CFD25 /* ios7-minus-outline-white-center.png */; };
 		D2CEC4741B72ACBD002CFD25 /* SendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CEC4731B72ACBD002CFD25 /* SendingViewController.swift */; };
+		D2CEC4781B73A45F002CFD25 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CEC4771B73A45F002CFD25 /* CoreDataService.swift */; };
 		D2D866261B2F4AF800847051 /* ios7-person-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866251B2F4AF800847051 /* ios7-person-outline.png */; };
 		D2D8662A1B2F4B7F00847051 /* ios7-contact-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */; };
 		D2D8662C1B2F50CC00847051 /* ios7-contact-outline-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D8662B1B2F50CC00847051 /* ios7-contact-outline-white.png */; };
@@ -225,6 +226,7 @@
 		D2CEC4731B72ACBD002CFD25 /* SendingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendingViewController.swift; sourceTree = "<group>"; };
 		D2CEC4751B72B786002CFD25 /* SnailMailModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SnailMailModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		D2CEC4761B72DD8D002CFD25 /* SnailMailModel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SnailMailModel 4.xcdatamodel"; sourceTree = "<group>"; };
+		D2CEC4771B73A45F002CFD25 /* CoreDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		D2D866251B2F4AF800847051 /* ios7-person-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-person-outline.png"; sourceTree = "<group>"; };
 		D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-contact-outline.png"; sourceTree = "<group>"; };
 		D2D8662B1B2F50CC00847051 /* ios7-contact-outline-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-contact-outline-white.png"; sourceTree = "<group>"; };
@@ -489,6 +491,7 @@
 				D2B7CEAB1B6951CE007F8235 /* ConfigurationService.swift */,
 				D2B7CEAD1B696DBC007F8235 /* RestService.swift */,
 				D291B24B1B69AA5A00C72816 /* FileService.swift */,
+				D2CEC4771B73A45F002CFD25 /* CoreDataService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -787,6 +790,7 @@
 				D2B651AD1B31411C00134C23 /* SentMailTableViewCell.swift in Sources */,
 				D2E956461B30952800CA8CC8 /* ChooseImageViewController.swift in Sources */,
 				D27DA32B1B66B74800DF32A1 /* EditPasswordViewController.swift in Sources */,
+				D2CEC4781B73A45F002CFD25 /* CoreDataService.swift in Sources */,
 				CC96E4C91AC0B334001E6D27 /* ComposeMailViewController.swift in Sources */,
 				D206FB4B1B61688D008BB412 /* WelcomeScreenViewController.swift in Sources */,
 				D206FB4F1B617504008BB412 /* BottomBorderUITextField.swift in Sources */,

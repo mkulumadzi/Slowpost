@@ -52,49 +52,18 @@ class MailService {
         return mail
     }
     
-    class func saveMailToCoreData(mail: Mail, entityName: String) {
+    class func populateMailArrayFromCoreData(entityName: String) -> [Mail]? {
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
+        let mailboxCoreData = CoreDataService.getObjectsFromCoreData(entityName)
+        var mailArray = [Mail]()
         
-        let entity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: managedContext)
-        let cdMail = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
-        
-        cdMail.setValue(mail.id, forKey: "id")
-        cdMail.setValue(mail.status, forKey: "status")
-        cdMail.setValue(mail.from, forKey: "from")
-        cdMail.setValue(mail.to, forKey: "to")
-        cdMail.setValue(mail.content, forKey: "content")
-        
-        cdMail.setValue(UIImagePNGRepresentation(mail.image), forKey: "image")
-        cdMail.setValue(UIImagePNGRepresentation(mail.imageThumb), forKey: "imageThumb")
-        
-        cdMail.setValue(mail.updatedAt, forKey: "updatedAt")
-        cdMail.setValue(mail.updatedAtString, forKey: "updatedAtString")
-        cdMail.setValue(mail.createdAt, forKey: "createdAt")
-        
-        var error: NSError?
-        if !managedContext.save(&error) {
-            println("Error saving person \(error), \(error?.userInfo)")
+        for nsManagedObject in mailboxCoreData {
+            mailArray.append(self.createMailFromCoreData(nsManagedObject))
         }
         
+        return mailArray
     }
     
-    class func getMailObjectsFromCoreData(entityName: String) -> [NSManagedObject] {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        
-        //This is the only part of this function that is unique... could generalize it
-        let fetchRequest = NSFetchRequest(entityName: entityName)
-        
-        var error: NSError?
-        
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
-        
-        return fetchedResults!
-    }
-
-   
     class func createMailFromCoreData(object: NSManagedObject) -> Mail {
         let id = object.valueForKey("id") as! String
         let status = object.valueForKey("status") as! String
@@ -102,17 +71,77 @@ class MailService {
         let to = object.valueForKey("to") as! String
         let content = object.valueForKey("content") as? String
         
-        let image = UIImage(data: (object.valueForKey("image") as? NSData)!)
-        let imageThumb = UIImage(data: (object.valueForKey("imageThumb") as? NSData)!)
+        var image:UIImage!
+        if let data = object.valueForKey("image") as? NSData {
+            image = UIImage(data: data)
+        }
+        
+        var imageThumb:UIImage!
+        if let data = object.valueForKey("imageThumb") as? NSData {
+            imageThumb = UIImage(data: data)
+        }
         
         let scheduledToArrive = object.valueForKey("scheduledToArrive") as? NSDate
         let updatedAt = object.valueForKey("updatedAt") as! NSDate
         let updatedAtString = object.valueForKey("updatedAtString") as! String
         let createdAt = object.valueForKey("createdAt") as! NSDate
         
-        var newMail = Mail(id: id, status: status, from: from, to: to, content: content, image: nil, imageThumb: nil, scheduledToArrive: scheduledToArrive, updatedAt: updatedAt, updatedAtString: updatedAtString, createdAt: createdAt)
+        var newMail = Mail(id: id, status: status, from: from, to: to, content: content, image: image, imageThumb: imageThumb, scheduledToArrive: scheduledToArrive, updatedAt: updatedAt, updatedAtString: updatedAtString, createdAt: createdAt)
         
         return newMail
+    }
+    
+    class func appendMailArrayToCoreData(mailArray: [Mail], entityName: String) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        for mail in mailArray {
+            let object = self.getMailEntityForIdOrReturnNewEntity(entityName, id: mail.id, managedContext: managedContext)
+            self.saveOrUpdateMailInCoreData(mail, object: object, managedContext: managedContext)
+        }
+        
+    }
+    
+    class func getMailEntityForIdOrReturnNewEntity(entityName: String, id: String, managedContext: NSManagedObjectContext) -> NSManagedObject {
+        
+        let fetchRequest = NSFetchRequest(entityName: entityName)
+        let predicate = NSPredicate(format: "id == %@", id)
+        fetchRequest.predicate = predicate
+        
+        let fetchResults = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [NSManagedObject]
+            
+        if fetchResults!.count > 0 {
+            //Assume there can only be one mail record per id...
+            return fetchResults![0]
+        }
+        else {
+            let entity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: managedContext)
+            let newMailObject = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
+            return newMailObject
+        }
+    }
+    
+    class func saveOrUpdateMailInCoreData(mail: Mail, object: NSManagedObject, managedContext: NSManagedObjectContext) {
+        
+        object.setValue(mail.id, forKey: "id")
+        object.setValue(mail.status, forKey: "status")
+        object.setValue(mail.from, forKey: "from")
+        object.setValue(mail.to, forKey: "to")
+        object.setValue(mail.content, forKey: "content")
+        
+        object.setValue(UIImagePNGRepresentation(mail.image), forKey: "image")
+        object.setValue(UIImagePNGRepresentation(mail.imageThumb), forKey: "imageThumb")
+        
+        object.setValue(mail.scheduledToArrive, forKey: "scheduledToArrive")
+        object.setValue(mail.updatedAt, forKey: "updatedAt")
+        object.setValue(mail.updatedAtString, forKey: "updatedAtString")
+        object.setValue(mail.createdAt, forKey: "createdAt")
+        
+        var error: NSError?
+        if !managedContext.save(&error) {
+            println("Error saving person \(error), \(error?.userInfo)")
+        }
+        
     }
     
     class func getMailById(id: String, headers: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
