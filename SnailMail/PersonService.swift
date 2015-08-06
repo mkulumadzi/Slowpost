@@ -33,8 +33,6 @@ class PersonService {
         
         var newPerson = Person(id: id, username: username, email: email, name: name, phone: phone, address1: address1, city: city, state: state, zip: zip, updatedAt: updatedAt, updatedAtString: updatedString, createdAt: createdAt)
         
-        self.savePersonToCoreData(newPerson)
-        
         return newPerson
     }
     
@@ -66,8 +64,7 @@ class PersonService {
         
     }
     
-    class func getPersonFromCoreData() {
-        
+    class func getPeopleObjectsFromCoreData() -> [NSManagedObject] {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
@@ -77,10 +74,27 @@ class PersonService {
         
         let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
         
-        for person in fetchedResults! {
-            println(person.valueForKey("id"))
-        }
+        return fetchedResults!
+    }
+
+    
+    class func createPersonFromCoreData(object: NSManagedObject) -> Person {
+        let id = object.valueForKey("id") as! String
+        let username = object.valueForKey("username") as! String
+        let name = object.valueForKey("name") as? String
+        let email = object.valueForKey("email") as? String
+        let phone = object.valueForKey("phone") as? String
+        let address1 = object.valueForKey("address1") as? String
+        let city = object.valueForKey("city") as? String
+        let state = object.valueForKey("state") as? String
+        let zip = object.valueForKey("zip") as? String
+        let updatedAt = object.valueForKey("updatedAt") as! NSDate
+        let updatedAtString = object.valueForKey("updatedAtString") as! String
+        let createdAt = object.valueForKey("createdAt") as! NSDate
         
+        var newPerson = Person(id: id, username: username, email: email, name: name, phone: phone, address1: address1, city: city, state: state, zip: zip, updatedAt: updatedAt, updatedAtString: updatedAtString, createdAt: createdAt)
+        
+        return newPerson
     }
     
     class func getPerson(personId: String, headers: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
