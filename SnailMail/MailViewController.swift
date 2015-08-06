@@ -70,6 +70,12 @@ class MailViewController: UIViewController {
             else {
                 self.updatedMail = result as! Mail
                 mailbox[self.row] = self.updatedMail
+                
+                //Ensure core data is also updated
+                var tempMailArray = [Mail]()
+                tempMailArray.append(self.updatedMail)
+                MailService.appendMailArrayToCoreData(tempMailArray, entityName: "Mail")
+                
             }
         })
         
