@@ -12,12 +12,14 @@ import UIKit
 
 class CoreDataService {
     
-    class func getObjectsFromCoreData(entityName: String) -> [NSManagedObject] {
+    class func getObjectsFromCoreData(entityName: String, predicate: NSPredicate) -> [NSManagedObject] {
+        
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
         //This is the only part of this function that is unique... could generalize it
         let fetchRequest = NSFetchRequest(entityName: entityName)
+        fetchRequest.predicate = predicate
         
         var error: NSError?
         

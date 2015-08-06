@@ -54,9 +54,9 @@ class MailService {
         return mail
     }
     
-    class func populateMailArrayFromCoreData(entityName: String) -> [Mail]? {
+    class func populateMailArrayFromCoreData(predicate: NSPredicate) -> [Mail]? {
         
-        let mailboxCoreData = CoreDataService.getObjectsFromCoreData(entityName)
+        let mailboxCoreData = CoreDataService.getObjectsFromCoreData("Mail", predicate: predicate)
         var mailArray = [Mail]()
         
         for nsManagedObject in mailboxCoreData {

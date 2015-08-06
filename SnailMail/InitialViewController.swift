@@ -87,7 +87,9 @@ class InitialViewController: UIViewController {
     
     func getMailbox() {
         
-        let coreDataMailbox = MailService.populateMailArrayFromCoreData("Mail")
+        let predicate = NSPredicate(format: "to == %@", loggedInUser.username)
+        
+        let coreDataMailbox = MailService.populateMailArrayFromCoreData(predicate)
         if coreDataMailbox != nil {
             mailbox = coreDataMailbox!
         }
