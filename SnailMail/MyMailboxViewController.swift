@@ -78,7 +78,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
                 mailbox = MailService.updateMailCollectionFromNewMail(mailbox, newCollection: mailArray)
                 mailbox = mailbox.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
                 
-                MailService.appendMailArrayToCoreData(mailArray, entityName: "Mail")
+                MailService.appendMailArrayToCoreData(mailArray)
                 
                 self.mailTable.reloadData()
             }

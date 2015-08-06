@@ -110,7 +110,7 @@ class InitialViewController: UIViewController {
                 mailbox = MailService.updateMailCollectionFromNewMail(mailbox, newCollection: mailArray)
                 mailbox = mailbox.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
                 
-                MailService.appendMailArrayToCoreData(mailArray, entityName: "Mail")
+                MailService.appendMailArrayToCoreData(mailArray)
                 
                 //Get all 'penpal' records whom the user has sent mail to or received mail from
                 let contactsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"

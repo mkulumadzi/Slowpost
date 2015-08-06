@@ -40,14 +40,14 @@ class MailService {
         MailService.getMailImage(mail, completion: { (error, result) -> Void in
             if let image = result as? UIImage {
                 mail.image = image
-                self.addImageToCoreDataMail("Mail", id: mail.id, image: image, key: "image")
+                self.addImageToCoreDataMail(mail.id, image: image, key: "image")
             }
         })
         
         MailService.getMailThumbnailImage(mail, completion: { (error, result) -> Void in
             if let thumbnail = result as? UIImage {
                 mail.imageThumb = thumbnail
-                self.addImageToCoreDataMail("Mail", id: mail.id, image: thumbnail, key: "imageThumb")
+                self.addImageToCoreDataMail(mail.id, image: thumbnail, key: "imageThumb")
             }
         })
         
@@ -93,20 +93,20 @@ class MailService {
         return newMail
     }
     
-    class func appendMailArrayToCoreData(mailArray: [Mail], entityName: String) {
+    class func appendMailArrayToCoreData(mailArray: [Mail]) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
         for mail in mailArray {
-            let object = self.getMailEntityForIdOrReturnNewEntity(entityName, id: mail.id, managedContext: managedContext)
+            let object = self.getMailEntityForIdOrReturnNewEntity(mail.id, managedContext: managedContext)
             self.saveOrUpdateMailInCoreData(mail, object: object, managedContext: managedContext)
         }
         
     }
     
-    class func getMailEntityForIdOrReturnNewEntity(entityName: String, id: String, managedContext: NSManagedObjectContext) -> NSManagedObject {
+    class func getMailEntityForIdOrReturnNewEntity(id: String, managedContext: NSManagedObjectContext) -> NSManagedObject {
         
-        let fetchRequest = NSFetchRequest(entityName: entityName)
+        let fetchRequest = NSFetchRequest(entityName: "Mail")
         let predicate = NSPredicate(format: "id == %@", id)
         fetchRequest.predicate = predicate
         
@@ -117,17 +117,17 @@ class MailService {
             return fetchResults![0]
         }
         else {
-            let entity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: managedContext)
+            let entity = NSEntityDescription.entityForName("Mail", inManagedObjectContext: managedContext)
             let newMailObject = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
             return newMailObject
         }
     }
     
-    class func addImageToCoreDataMail(entityName: String, id: String, image: UIImage, key: String) {
+    class func addImageToCoreDataMail(id: String, image: UIImage, key: String) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
-        let fetchRequest = NSFetchRequest(entityName: entityName)
+        let fetchRequest = NSFetchRequest(entityName: "Mail")
         let predicate = NSPredicate(format: "id == %@", id)
         fetchRequest.predicate = predicate
         

@@ -74,7 +74,7 @@ class MailViewController: UIViewController {
                 //Ensure core data is also updated
                 var tempMailArray = [Mail]()
                 tempMailArray.append(self.updatedMail)
-                MailService.appendMailArrayToCoreData(tempMailArray, entityName: "Mail")
+                MailService.appendMailArrayToCoreData(tempMailArray)
                 
             }
         })
