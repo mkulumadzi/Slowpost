@@ -40,12 +40,14 @@ class MailService {
         MailService.getMailImage(mail, completion: { (error, result) -> Void in
             if let image = result as? UIImage {
                 mail.image = image
+                self.addImageToCoreDataMail("Mail", id: mail.id, image: image, key: "image")
             }
         })
         
         MailService.getMailThumbnailImage(mail, completion: { (error, result) -> Void in
             if let thumbnail = result as? UIImage {
                 mail.imageThumb = thumbnail
+                self.addImageToCoreDataMail("Mail", id: mail.id, image: thumbnail, key: "imageThumb")
             }
         })
         
@@ -119,6 +121,27 @@ class MailService {
             let newMailObject = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
             return newMailObject
         }
+    }
+    
+    class func addImageToCoreDataMail(entityName: String, id: String, image: UIImage, key: String) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest = NSFetchRequest(entityName: entityName)
+        let predicate = NSPredicate(format: "id == %@", id)
+        fetchRequest.predicate = predicate
+        
+        let fetchResults = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [NSManagedObject]
+        
+        for object in fetchResults! {
+            object.setValue(UIImagePNGRepresentation(image), forKey: key)
+        }
+        
+        var error: NSError?
+        if !managedContext.save(&error) {
+            println("Error saving person \(error), \(error?.userInfo)")
+        }
+        
     }
     
     class func saveOrUpdateMailInCoreData(mail: Mail, object: NSManagedObject, managedContext: NSManagedObjectContext) {
