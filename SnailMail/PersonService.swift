@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import CoreData
 
 class PersonService {
     
@@ -30,9 +31,56 @@ class PersonService {
         let createdString = jsonEntry.objectForKey("created_at") as! String
         let createdAt = NSDate(dateString: createdString)
         
-        var new_person = Person(id: id, username: username, email: email, name: name, phone: phone, address1: address1, city: city, state: state, zip: zip, updatedAt: updatedAt, updatedAtString: updatedString, createdAt: createdAt)
+        var newPerson = Person(id: id, username: username, email: email, name: name, phone: phone, address1: address1, city: city, state: state, zip: zip, updatedAt: updatedAt, updatedAtString: updatedString, createdAt: createdAt)
         
-        return new_person
+        self.savePersonToCoreData(newPerson)
+        
+        return newPerson
+    }
+    
+    class func savePersonToCoreData(person: Person) {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let entity = NSEntityDescription.entityForName("Person", inManagedObjectContext: managedContext)
+        let cdPerson = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
+        
+        cdPerson.setValue(person.id, forKey: "id")
+        cdPerson.setValue(person.username, forKey: "username")
+        cdPerson.setValue(person.name, forKey: "name")
+        cdPerson.setValue(person.email, forKey: "email")
+        cdPerson.setValue(person.phone, forKey: "phone")
+        cdPerson.setValue(person.address1, forKey: "address1")
+        cdPerson.setValue(person.city, forKey: "city")
+        cdPerson.setValue(person.state, forKey: "state")
+        cdPerson.setValue(person.zip, forKey: "zip")
+        cdPerson.setValue(person.updatedAt, forKey: "updatedAt")
+        cdPerson.setValue(person.updatedAtString, forKey: "updatedAtString")
+        cdPerson.setValue(person.createdAt, forKey: "createdAt")
+        
+        var error: NSError?
+        if !managedContext.save(&error) {
+            println("Error saving person \(error), \(error?.userInfo)")
+        }
+        
+    }
+    
+    class func getPersonFromCoreData() {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest = NSFetchRequest(entityName: "Person")
+        
+        var error: NSError?
+        
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
+        
+        for person in fetchedResults! {
+            println(person.valueForKey("id"))
+        }
+        
     }
     
     class func getPerson(personId: String, headers: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {

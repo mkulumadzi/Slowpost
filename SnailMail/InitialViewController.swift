@@ -55,6 +55,8 @@ class InitialViewController: UIViewController {
             registerDeviceToken()
         }
         
+        PersonService.getPersonFromCoreData()
+        
         getOutbox()
         
         var storyboard = UIStoryboard(name: "home", bundle: nil)
