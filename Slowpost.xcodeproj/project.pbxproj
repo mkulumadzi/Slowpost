@@ -397,8 +397,7 @@
 				CCCB1A501AB0D48A0067F100 /* Supporting Files */,
 				D27E194C1B3B770C0052687F /* SlowpostModel.xcdatamodeld */,
 			);
-			name = Slowpost;
-			path = SnailMail;
+			path = Slowpost;
 			sourceTree = "<group>";
 		};
 		CCCB1A501AB0D48A0067F100 /* Supporting Files */ = {
@@ -903,6 +902,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Slowpost/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -939,6 +939,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Slowpost/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -954,7 +955,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = SnailMail/Info.plist;
+				INFOPLIST_FILE = Slowpost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Slowpost;
 				PROVISIONING_PROFILE = "";
@@ -973,7 +974,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = SnailMail/Info.plist;
+				INFOPLIST_FILE = Slowpost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Slowpost;
 				PROVISIONING_PROFILE = "";
@@ -995,7 +996,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = SnailMailTests/Info.plist;
+				INFOPLIST_FILE = SlowpostTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SlowpostTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snailtale.app/Snailtale";
@@ -1010,7 +1011,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = SnailMailTests/Info.plist;
+				INFOPLIST_FILE = SlowpostTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SlowpostTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snailtale.app/Snailtale";
@@ -1051,6 +1052,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Slowpost/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1067,7 +1069,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = SnailMail/Info.plist;
+				INFOPLIST_FILE = Slowpost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Slowpost;
 				PROVISIONING_PROFILE = "";
@@ -1090,7 +1092,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = SnailMailTests/Info.plist;
+				INFOPLIST_FILE = SlowpostTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SlowpostTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snailtale.app/Snailtale";
@@ -1131,6 +1133,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Slowpost/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1147,7 +1150,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = SnailMail/Info.plist;
+				INFOPLIST_FILE = Slowpost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Slowpost;
 				PROVISIONING_PROFILE = "";
@@ -1170,7 +1173,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = SnailMailTests/Info.plist;
+				INFOPLIST_FILE = SlowpostTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SlowpostTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snailtale.app/Snailtale";
