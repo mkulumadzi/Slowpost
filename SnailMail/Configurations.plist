@@ -5,17 +5,17 @@
 	<key>Testing</key>
 	<dict>
 		<key>PostOfficeURL</key>
-		<string>https://snailmail-testing.herokuapp.com/</string>
+		<string>https://postoffice-testing.herokuapp.com/</string>
 	</dict>
 	<key>Staging</key>
 	<dict>
 		<key>PostOfficeURL</key>
-		<string>https://snailmail-staging.herokuapp.com/</string>
+		<string>https://postoffice-staging.herokuapp.com/</string>
 	</dict>
 	<key>Release</key>
 	<dict>
 		<key>PostOfficeURL</key>
-		<string>https://snailmail-production.herokuapp.com/</string>
+		<string>https://postoffice-production.herokuapp.com/</string>
 	</dict>
 	<key>Debug</key>
 	<dict>

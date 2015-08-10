@@ -127,7 +127,7 @@ class PersonService {
                 completion(error: nil, result: person_array)
             }
             else {
-                println("Unexpected JSON result")
+                println("Unexpected JSON result while getting people")
             }
         })
     }

@@ -230,7 +230,7 @@ class MailService {
                 completion(error: nil, result: mail_array)
             }
             else {
-                println("Unexpected JSON result")
+                println("Unexpected JSON result while getting mailbox")
             }
         })
     }

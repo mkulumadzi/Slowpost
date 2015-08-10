@@ -114,6 +114,7 @@ class InitialViewController: UIViewController {
                 
                 //Get all 'penpal' records whom the user has sent mail to or received mail from
                 let contactsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"
+                
                 PersonService.getPeopleCollection(contactsURL, headers: nil, completion: { (error, result) -> Void in
                     if error != nil {
                         println(error)

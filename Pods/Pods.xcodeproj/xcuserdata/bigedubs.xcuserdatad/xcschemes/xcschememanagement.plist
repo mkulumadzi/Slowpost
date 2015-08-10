@@ -4,45 +4,53 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-Snailtale-Alamofire.xcscheme</key>
+		<key>Pods-Slowpost-Alamofire.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
-		<key>Pods-Snailtale-Regex.xcscheme</key>
+		<key>Pods-Slowpost-Regex.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>8</integer>
 		</dict>
-		<key>Pods-Snailtale-SwiftyJSON.xcscheme</key>
+		<key>Pods-Slowpost-SwiftyJSON.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>9</integer>
 		</dict>
-		<key>Pods-Snailtale.xcscheme</key>
+		<key>Pods-Slowpost.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
+			<key>orderHint</key>
+			<integer>6</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>06AA72BF45793C57334E4DF7</key>
+		<key>4280BB819E27A0451472997F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2454E1E7CA8022E618FD24F8</key>
+		<key>6296C63C966D466B8D5B30DA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>47A44C42EA9634F79EE748DB</key>
+		<key>6638FC8ECB01ED5C7EAA8D64</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>69A40431A109BA756CBC7E43</key>
+		<key>9E2BD6B1D4C9888177989C36</key>
 		<dict>
 			<key>primary</key>
 			<true/>
