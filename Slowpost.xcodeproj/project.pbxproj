@@ -140,9 +140,9 @@
 		CC23DE2D1AE54C2B00AFEDE4 /* compose.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = compose.storyboard; sourceTree = "<group>"; };
 		CC6105F41AC3941900D15150 /* LoginService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		CC96E49B1ABCC8EB001E6D27 /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
-		CC96E49F1ABCCBF2001E6D27 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogInViewController.swift; path = ../LogInViewController.swift; sourceTree = "<group>"; };
+		CC96E49F1ABCCBF2001E6D27 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		CC96E4A81ABCD91A001E6D27 /* Mail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mail.swift; sourceTree = "<group>"; };
-		CC96E4AC1ABCDEB5001E6D27 /* MailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MailCell.swift; path = ../MailCell.swift; sourceTree = "<group>"; };
+		CC96E4AC1ABCDEB5001E6D27 /* MailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailCell.swift; sourceTree = "<group>"; };
 		CC96E4AE1AC0876D001E6D27 /* MailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailViewController.swift; sourceTree = "<group>"; };
 		CC96E4C81AC0B334001E6D27 /* ComposeMailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeMailViewController.swift; sourceTree = "<group>"; };
 		CCCB1A4D1AB0D48A0067F100 /* Slowpost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slowpost.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,8 +153,8 @@
 		CCCB1A591AB0D48A0067F100 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CCCB1A5C1AB0D48A0067F100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CCCB1A621AB0D48A0067F100 /* SlowpostTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlowpostTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CCCB1A671AB0D48A0067F100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CCCB1A681AB0D48A0067F100 /* SlowpostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowpostTests.swift; sourceTree = "<group>"; };
+		CCCB1A671AB0D48A0067F100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = SlowpostTests/Info.plist; sourceTree = "<group>"; };
+		CCCB1A681AB0D48A0067F100 /* SlowpostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SlowpostTests.swift; path = SlowpostTests/SlowpostTests.swift; sourceTree = "<group>"; };
 		CCCB1A741AB0D87F0067F100 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		CCCB1A7A1AB0DE780067F100 /* MyMailboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMailboxViewController.swift; sourceTree = "<group>"; };
 		D206FB381B615A3C008BB412 /* Quicksand_Dash.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Quicksand_Dash.otf; sourceTree = "<group>"; };

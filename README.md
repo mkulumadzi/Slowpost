@@ -1,2 +1,2 @@
-# SnailMail
-iOS app for SnailMail
+# Slowpost
+iOS app for Slowpost
