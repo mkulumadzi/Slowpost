@@ -1,6 +1,6 @@
 //
 //  EditPasswordViewController.swift
-//  Snailtale
+//  Slowpost
 //
 //  Created by Evan Waters on 7/27/15.
 //  Copyright (c) 2015 Evan Waters. All rights reserved.
@@ -15,7 +15,7 @@ class EditPasswordViewController: UIViewController {
     @IBOutlet weak var existingPasswordField: BottomBorderUITextField!
     @IBOutlet weak var newPasswordField: BottomBorderUITextField!
     @IBOutlet weak var confirmPasswordField: BottomBorderUITextField!
-    @IBOutlet weak var saveButton: SnailMailTextUIButton!
+    @IBOutlet weak var saveButton: TextUIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,15 +90,5 @@ class EditPasswordViewController: UIViewController {
             })
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

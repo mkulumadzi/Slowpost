@@ -21,7 +21,7 @@
         <!--My Mailbox View Controller-->
         <scene sceneID="JpG-41-qr0">
             <objects>
-                <viewController storyboardIdentifier="InitialController" id="FDW-3x-N4Y" customClass="MyMailboxViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialController" id="FDW-3x-N4Y" customClass="MyMailboxViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hi5-28-vx8"/>
                         <viewControllerLayoutGuide type="bottom" id="9eH-L3-ARz"/>
@@ -34,7 +34,7 @@
                                 <rect key="frame" x="0.0" y="60" width="600" height="540"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MailCell" id="wvb-F7-Xxt" customClass="MailCell" customModule="Snailtale" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MailCell" id="wvb-F7-Xxt" customClass="MailCell" customModule="Slowpost" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wvb-F7-Xxt" id="mBP-Ah-o1k">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -143,7 +143,7 @@
         <!--Mail View Controller-->
         <scene sceneID="L4s-ZW-cfx">
             <objects>
-                <viewController id="ZYs-4H-cBk" customClass="MailViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZYs-4H-cBk" customClass="MailViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5oF-ej-XN0"/>
                         <viewControllerLayoutGuide type="bottom" id="NqI-9o-xIc"/>
@@ -249,8 +249,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="lcS-bz-bW8"/>
                                 <exclude reference="IBl-i9-Vnb"/>
+                                <exclude reference="lcS-bz-bW8"/>
                             </mask>
                         </variation>
                     </view>

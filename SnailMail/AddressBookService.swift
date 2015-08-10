@@ -1,6 +1,6 @@
 //
 //  AddressBookService.swift
-//  Snailtale
+//  Slowpost
 //
 //  Created by Evan Waters on 7/15/15.
 //  Copyright (c) 2015 Evan Waters. All rights reserved.
@@ -56,7 +56,7 @@ class AddressBookService {
     
     func displayUnauthorizedAddessBookAlert(sender: UIViewController) {
         let cantAccessAddressBookAlert = UIAlertController(title: "Are you sure?",
-            message: "SnailTale works best when you can send it to people you know!",
+            message: "Slowpost works best when you can send it to people you know!",
             preferredStyle: .Alert)
         cantAccessAddressBookAlert.addAction(UIAlertAction(title: "Change Settings",
             style: .Default,

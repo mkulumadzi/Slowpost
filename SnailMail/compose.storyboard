@@ -37,7 +37,7 @@
         <!--Card GalleryUI View Controller-->
         <scene sceneID="bQQ-CI-qeJ">
             <objects>
-                <viewController id="z1i-ko-pF7" customClass="CardGalleryUIViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="z1i-ko-pF7" customClass="CardGalleryUIViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Eej-wH-HxO"/>
                         <viewControllerLayoutGuide type="bottom" id="PjK-zz-hIw"/>
@@ -56,7 +56,7 @@
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="CardCell" id="Gnk-y3-ba1" customClass="CardCollectionViewCell" customModule="Snailtale" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="CardCell" id="Gnk-y3-ba1" customClass="CardCollectionViewCell" customModule="Slowpost" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -164,7 +164,7 @@
         <!--Choose Image View Controller-->
         <scene sceneID="REo-Uv-ZRU">
             <objects>
-                <viewController id="2t1-x4-fi1" customClass="ChooseImageViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2t1-x4-fi1" customClass="ChooseImageViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VIN-ge-E2H"/>
                         <viewControllerLayoutGuide type="bottom" id="3eO-yW-Opz"/>
@@ -241,7 +241,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYg-8X-1vb" customClass="SnailMailTextUIButton" customModule="Snailtale" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hYg-8X-1vb" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="598" width="540" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -256,7 +256,7 @@
                                     <action selector="nextButtonPressed:" destination="2t1-x4-fi1" eventType="touchUpInside" id="hMf-Tg-bjA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wnd-rs-lA3" customClass="SnailMailTextUIButton" customModule="Snailtale" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wnd-rs-lA3" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="638" width="540" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -395,11 +395,11 @@
                                 <exclude reference="mN4-6A-lPQ"/>
                                 <exclude reference="Ptw-bf-Gaf"/>
                                 <exclude reference="sza-sj-YdT"/>
-                                <exclude reference="Aes-Aw-Z84"/>
-                                <exclude reference="kci-7G-HH8"/>
                                 <exclude reference="FQu-zi-BdN"/>
                                 <exclude reference="Kny-lv-juF"/>
                                 <exclude reference="a6q-xR-KPr"/>
+                                <exclude reference="Aes-Aw-Z84"/>
+                                <exclude reference="kci-7G-HH8"/>
                                 <exclude reference="Kvf-kn-INh"/>
                                 <exclude reference="RDw-Ns-0jQ"/>
                                 <exclude reference="ijb-Gn-eV4"/>
@@ -431,7 +431,7 @@
         <!--Compose Mail View Controller-->
         <scene sceneID="BaF-2i-HAc">
             <objects>
-                <viewController id="uNW-RF-l3y" customClass="ComposeMailViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uNW-RF-l3y" customClass="ComposeMailViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kTe-CR-dcv"/>
                         <viewControllerLayoutGuide type="bottom" id="gNS-Nl-7MF"/>
@@ -568,7 +568,7 @@
         <!--Sending View Controller-->
         <scene sceneID="cZ8-Uj-tT2">
             <objects>
-                <viewController id="MtH-uW-ItT" customClass="SendingViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MtH-uW-ItT" customClass="SendingViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ytp-Vq-cbs"/>
                         <viewControllerLayoutGuide type="bottom" id="kLD-Zm-28F"/>
@@ -624,7 +624,7 @@
         <!--To View Controller-->
         <scene sceneID="fT4-r7-D5g">
             <objects>
-                <viewController storyboardIdentifier="InitialController" id="56L-ux-Lnu" customClass="ToViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialController" id="56L-ux-Lnu" customClass="ToViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DaV-in-3s9"/>
                         <viewControllerLayoutGuide type="bottom" id="z2b-dc-6Oc"/>
@@ -637,7 +637,7 @@
                                 <rect key="frame" x="0.0" y="128" width="600" height="472"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="personCell" id="cXn-kV-8jj" customClass="PersonCell" customModule="Snailtale" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="personCell" id="cXn-kV-8jj" customClass="PersonCell" customModule="Slowpost" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cXn-kV-8jj" id="wjn-aq-Tzt">
@@ -688,7 +688,7 @@
                                     <outlet property="delegate" destination="56L-ux-Lnu" id="axs-Zf-QWV"/>
                                 </connections>
                             </searchBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zBk-j3-1iC" userLabel="warningLabel" customClass="WarningUILabel" customModule="Snailtale" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zBk-j3-1iC" userLabel="warningLabel" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="60" width="600" height="24"/>
                                 <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>

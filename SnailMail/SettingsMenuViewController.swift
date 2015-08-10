@@ -1,6 +1,6 @@
 //
 //  SettingsMenuViewController.swift
-//  Snailtale
+//  Slowpost
 //
 //  Created by Evan Waters on 7/24/15.
 //  Copyright (c) 2015 Evan Waters. All rights reserved.

@@ -1,6 +1,6 @@
 //
-//  LogInViewController2.swift
-//  SnailMail
+//  RegisterViewController.swift
+//  Slowpost
 //
 //  Created by Evan Waters on 3/20/15.
 //  Copyright (c) 2015 Evan Waters. All rights reserved.
@@ -16,7 +16,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var emailTextField: BottomBorderUITextField!
     @IBOutlet weak var phoneTextField: BottomBorderUITextField!
     @IBOutlet weak var passwordTextField: BottomBorderUITextField!
-    @IBOutlet weak var signUpButton: SnailMailTextUIButton!
+    @IBOutlet weak var signUpButton: TextUIButton!
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var navBar: UINavigationBar!
     

@@ -1,6 +1,6 @@
 //
 //  LogInViewController2.swift
-//  SnailMail
+//  Slowpost
 //
 //  Created by Evan Waters on 3/20/15.
 //  Copyright (c) 2015 Evan Waters. All rights reserved.
@@ -13,7 +13,7 @@ class LogInViewController: UIViewController {
     
     @IBOutlet weak var UsernameTextField: BottomBorderUITextField!
     @IBOutlet weak var passwordTextField: BottomBorderUITextField!
-    @IBOutlet weak var logInButton: SnailMailTextUIButton!
+    @IBOutlet weak var logInButton: TextUIButton!
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var navBar: UINavigationBar!
     

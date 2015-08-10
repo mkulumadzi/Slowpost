@@ -1,6 +1,6 @@
 //
 //  SendingViewController.swift
-//  Snailtale
+//  Slowpost
 //
 //  Created by Evan Waters on 8/5/15.
 //  Copyright (c) 2015 Evan Waters. All rights reserved.

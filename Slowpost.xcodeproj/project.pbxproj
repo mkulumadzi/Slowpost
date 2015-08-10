@@ -23,7 +23,7 @@
 		CCCB1A581AB0D48A0067F100 /* initial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCCB1A561AB0D48A0067F100 /* initial.storyboard */; };
 		CCCB1A5A1AB0D48A0067F100 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCCB1A591AB0D48A0067F100 /* Images.xcassets */; };
 		CCCB1A5D1AB0D48A0067F100 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCCB1A5B1AB0D48A0067F100 /* LaunchScreen.xib */; };
-		CCCB1A691AB0D48A0067F100 /* SnailtaleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCB1A681AB0D48A0067F100 /* SnailtaleTests.swift */; };
+		CCCB1A691AB0D48A0067F100 /* SlowpostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCB1A681AB0D48A0067F100 /* SlowpostTests.swift */; };
 		CCCB1A751AB0D87F0067F100 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCB1A741AB0D87F0067F100 /* Person.swift */; };
 		CCCB1A7B1AB0DE780067F100 /* MyMailboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCB1A7A1AB0DE780067F100 /* MyMailboxViewController.swift */; };
 		D206FB401B615A3C008BB412 /* Quicksand_Dash.otf in Resources */ = {isa = PBXBuildFile; fileRef = D206FB381B615A3C008BB412 /* Quicksand_Dash.otf */; };
@@ -68,7 +68,7 @@
 		D27DA3291B62E7BC00DF32A1 /* SettingsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DA3281B62E7BC00DF32A1 /* SettingsMenuViewController.swift */; };
 		D27DA32B1B66B74800DF32A1 /* EditPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DA32A1B66B74800DF32A1 /* EditPasswordViewController.swift */; };
 		D27DA32D1B66C51900DF32A1 /* MessageUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DA32C1B66C51900DF32A1 /* MessageUILabel.swift */; };
-		D27E194E1B3B770C0052687F /* SnailMailModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D27E194C1B3B770C0052687F /* SnailMailModel.xcdatamodeld */; };
+		D27E194E1B3B770C0052687F /* SlowpostModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D27E194C1B3B770C0052687F /* SlowpostModel.xcdatamodeld */; };
 		D291B24C1B69AA5A00C72816 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291B24B1B69AA5A00C72816 /* FileService.swift */; };
 		D2A361361B3CAC5D00811D14 /* SnailMailTextUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A361351B3CAC5D00811D14 /* SnailMailTextUIButton.swift */; };
 		D2A361381B3CB52B00811D14 /* WarningUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A361371B3CB52B00811D14 /* WarningUILabel.swift */; };
@@ -154,7 +154,7 @@
 		CCCB1A5C1AB0D48A0067F100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CCCB1A621AB0D48A0067F100 /* SlowpostTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlowpostTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCCB1A671AB0D48A0067F100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CCCB1A681AB0D48A0067F100 /* SnailtaleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnailtaleTests.swift; sourceTree = "<group>"; };
+		CCCB1A681AB0D48A0067F100 /* SlowpostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlowpostTests.swift; sourceTree = "<group>"; };
 		CCCB1A741AB0D87F0067F100 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		CCCB1A7A1AB0DE780067F100 /* MyMailboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMailboxViewController.swift; sourceTree = "<group>"; };
 		D206FB381B615A3C008BB412 /* Quicksand_Dash.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Quicksand_Dash.otf; sourceTree = "<group>"; };
@@ -366,8 +366,8 @@
 		CCCB1A441AB0D48A0067F100 = {
 			isa = PBXGroup;
 			children = (
-				CCCB1A4F1AB0D48A0067F100 /* SnailMail */,
-				CCCB1A651AB0D48A0067F100 /* SnailMailTests */,
+				CCCB1A4F1AB0D48A0067F100 /* Slowpost */,
+				CCCB1A651AB0D48A0067F100 /* SlowpostTests */,
 				CCCB1A4E1AB0D48A0067F100 /* Products */,
 				D5068536573A35C154CCA1CF /* Pods */,
 				FF4B5779129C9081ABB67C03 /* Frameworks */,
@@ -383,7 +383,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CCCB1A4F1AB0D48A0067F100 /* SnailMail */ = {
+		CCCB1A4F1AB0D48A0067F100 /* Slowpost */ = {
 			isa = PBXGroup;
 			children = (
 				D2A361341B3CAC2500811D14 /* Customizations */,
@@ -395,8 +395,9 @@
 				CCCB1A591AB0D48A0067F100 /* Images.xcassets */,
 				CCCB1A5B1AB0D48A0067F100 /* LaunchScreen.xib */,
 				CCCB1A501AB0D48A0067F100 /* Supporting Files */,
-				D27E194C1B3B770C0052687F /* SnailMailModel.xcdatamodeld */,
+				D27E194C1B3B770C0052687F /* SlowpostModel.xcdatamodeld */,
 			);
+			name = Slowpost;
 			path = SnailMail;
 			sourceTree = "<group>";
 		};
@@ -412,12 +413,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CCCB1A651AB0D48A0067F100 /* SnailMailTests */ = {
+		CCCB1A651AB0D48A0067F100 /* SlowpostTests */ = {
 			isa = PBXGroup;
 			children = (
-				CCCB1A681AB0D48A0067F100 /* SnailtaleTests.swift */,
+				CCCB1A681AB0D48A0067F100 /* SlowpostTests.swift */,
 				CCCB1A661AB0D48A0067F100 /* Supporting Files */,
 			);
+			name = SlowpostTests;
 			path = SnailMailTests;
 			sourceTree = "<group>";
 		};
@@ -818,7 +820,7 @@
 				D2B7CEA81B694D95007F8235 /* PersonService.swift in Sources */,
 				D27DA3251B62C04E00DF32A1 /* ComposeTabPlaceholderViewController.swift in Sources */,
 				D2B7CEA61B694C14007F8235 /* GlobalVariables.swift in Sources */,
-				D27E194E1B3B770C0052687F /* SnailMailModel.xcdatamodeld in Sources */,
+				D27E194E1B3B770C0052687F /* SlowpostModel.xcdatamodeld in Sources */,
 				CC96E49C1ABCC8EB001E6D27 /* InitialViewController.swift in Sources */,
 				D2B7CEAC1B6951CE007F8235 /* ConfigurationService.swift in Sources */,
 				D2B7CEAA1B694E55007F8235 /* MailService.swift in Sources */,
@@ -833,7 +835,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCCB1A691AB0D48A0067F100 /* SnailtaleTests.swift in Sources */,
+				CCCB1A691AB0D48A0067F100 /* SlowpostTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1214,7 +1216,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		D27E194C1B3B770C0052687F /* SnailMailModel.xcdatamodeld */ = {
+		D27E194C1B3B770C0052687F /* SlowpostModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				D2CEC4761B72DD8D002CFD25 /* SnailMailModel 4.xcdatamodel */,
@@ -1223,7 +1225,7 @@
 				D27E194D1B3B770C0052687F /* SnailMailModel.xcdatamodel */,
 			);
 			currentVersion = D2CEC4761B72DD8D002CFD25 /* SnailMailModel 4.xcdatamodel */;
-			path = SnailMailModel.xcdatamodeld;
+			path = SlowpostModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

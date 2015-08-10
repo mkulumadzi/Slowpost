@@ -1,6 +1,6 @@
 //
 //  ChooseCardViewController.swift
-//  SnailMail
+//  Slowpost
 //
 //  Created by Evan Waters on 6/16/15.
 //  Copyright (c) 2015 Evan Waters. All rights reserved.
@@ -21,12 +21,12 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var imageLibraryButton: UIButton!
     @IBOutlet weak var takePhotoButton: UIButton!
     @IBOutlet weak var cardGalleryButton: UIButton!
-    @IBOutlet weak var removePhotoButton: SnailMailTextUIButton!
+    @IBOutlet weak var removePhotoButton: TextUIButton!
     @IBOutlet weak var imageScrollView: UIScrollView!
     @IBOutlet weak var libraryLabel: UILabel!
     @IBOutlet weak var cameraLabel: UILabel!
     @IBOutlet weak var galleryLabel: UILabel!
-    @IBOutlet weak var nextButton: SnailMailTextUIButton!
+    @IBOutlet weak var nextButton: TextUIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

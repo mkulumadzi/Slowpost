@@ -1,6 +1,6 @@
 //
 //  Mail.swift
-//  SnailMail
+//  Slowpost
 //
 //  Created by Evan Waters on 3/20/15.
 //  Copyright (c) 2015 Evan Waters. All rights reserved.

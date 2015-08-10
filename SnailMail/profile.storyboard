@@ -51,7 +51,7 @@
         <!--View Profile View Controller-->
         <scene sceneID="XoO-di-eAU">
             <objects>
-                <viewController storyboardIdentifier="InitialController" id="g8k-5t-a0b" customClass="ViewProfileViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialController" id="g8k-5t-a0b" customClass="ViewProfileViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nwd-qv-gcm"/>
                         <viewControllerLayoutGuide type="bottom" id="MA3-Gi-lBX"/>
@@ -64,7 +64,7 @@
                                 <rect key="frame" x="0.0" y="166" width="600" height="454"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MailCell" rowHeight="80" id="OET-Qs-ejm" customClass="SentMailTableViewCell" customModule="Snailtale" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MailCell" rowHeight="80" id="OET-Qs-ejm" customClass="SentMailTableViewCell" customModule="Slowpost" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OET-Qs-ejm" id="vjw-Ba-QIw">
@@ -181,7 +181,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="messageLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oO-24-LFG" customClass="MessageUILabel" customModule="Snailtale" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="messageLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oO-24-LFG" customClass="MessageUILabel" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="590" width="600" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.47058823529411764" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -261,7 +261,7 @@
         <!--Edit Profile View Controller-->
         <scene sceneID="6pp-6q-xNk">
             <objects>
-                <tableViewController id="dZy-hs-her" customClass="EditProfileViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="dZy-hs-her" customClass="EditProfileViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EaD-me-yZn">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -466,7 +466,7 @@
                                                     <color key="textColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1 2nd Street" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Ed-YX-1K4" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1 2nd Street" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Ed-YX-1K4" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
                                                     <rect key="frame" x="90" y="0.0" width="500" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="nor-Yp-jCV"/>
@@ -478,7 +478,7 @@
                                                         <action selector="editingChanged:" destination="dZy-hs-her" eventType="editingDidEnd" id="2Za-Aq-CRq"/>
                                                     </connections>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Springfield" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aHg-dE-l1P" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Springfield" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aHg-dE-l1P" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
                                                     <rect key="frame" x="90" y="40" width="500" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="QwA-e9-uVj"/>
@@ -502,7 +502,7 @@
                                                         <action selector="editingChanged:" destination="dZy-hs-her" eventType="editingDidEnd" id="SqR-f8-AJY"/>
                                                     </connections>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="MO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VjS-Hh-x50" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="MO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VjS-Hh-x50" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
                                                     <rect key="frame" x="90" y="80" width="500" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="zKv-YK-LlC"/>
@@ -575,7 +575,7 @@
         <!--Edit Password View Controller-->
         <scene sceneID="Tzq-2j-OTo">
             <objects>
-                <viewController id="2wN-E9-xpW" customClass="EditPasswordViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2wN-E9-xpW" customClass="EditPasswordViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="X0I-XU-l3Q"/>
                         <viewControllerLayoutGuide type="bottom" id="Maz-Jn-KZS"/>
@@ -635,7 +635,7 @@
                                 <color key="textColor" red="0.49803921568627452" green="0.47843137254901963" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mypassword" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qhC-pq-8tB" userLabel="existingPaswordField" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mypassword" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="qhC-pq-8tB" userLabel="existingPaswordField" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="150" y="90" width="420" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="P7a-ep-2pV"/>
@@ -647,7 +647,7 @@
                                     <action selector="editingChanged:" destination="2wN-E9-xpW" eventType="editingChanged" id="7Rn-KQ-aKD"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mynewpassword" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ScW-2K-Gmx" userLabel="newPasswordField" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mynewpassword" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ScW-2K-Gmx" userLabel="newPasswordField" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="150" y="150" width="420" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Sfe-uT-Llv"/>
@@ -665,7 +665,7 @@
                                     <action selector="editingChanged:" destination="2wN-E9-xpW" eventType="editingChanged" id="ZQB-Cz-uT2"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mynewpassword" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8eW-7Z-16t" userLabel="confirmPasswordField" customClass="BottomBorderUITextField" customModule="Snailtale" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="mynewpassword" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8eW-7Z-16t" userLabel="confirmPasswordField" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="150" y="190" width="420" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="GN7-jF-k1M"/>
@@ -677,7 +677,7 @@
                                     <action selector="editingChanged:" destination="2wN-E9-xpW" eventType="editingChanged" id="87a-3D-SFv"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipt-Jg-bUa" userLabel="saveButton" customClass="SnailMailTextUIButton" customModule="Snailtale" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ipt-Jg-bUa" userLabel="saveButton" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="250" width="540" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -691,7 +691,7 @@
                                     <action selector="resetPassword:" destination="2wN-E9-xpW" eventType="touchUpInside" id="BRE-Q5-ms6"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="warningLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfE-Ha-GAR" userLabel="warningLabel" customClass="WarningUILabel" customModule="Snailtale" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="warningLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfE-Ha-GAR" userLabel="warningLabel" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="60" width="600" height="30"/>
                                 <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -757,7 +757,7 @@
         <!--Settings Menu View Controller-->
         <scene sceneID="fId-qm-ciU">
             <objects>
-                <viewController storyboardIdentifier="SettingsMenu" id="cqg-F0-8cv" customClass="SettingsMenuViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsMenu" id="cqg-F0-8cv" customClass="SettingsMenuViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="p7J-3t-4nq"/>
                         <viewControllerLayoutGuide type="bottom" id="Seh-xi-4Fq"/>
@@ -774,7 +774,7 @@
                                     <outletCollection property="gestureRecognizers" destination="A3D-Hr-YoE" appends="YES" id="IIh-hV-ive"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEh-ia-Ww0">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEh-ia-Ww0" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="165" width="540" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -789,7 +789,7 @@
                                     <segue destination="2wN-E9-xpW" kind="show" identifier="editPassword" id="qV0-rs-TcR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kIb-iS-wjG">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kIb-iS-wjG" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="75" width="540" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -804,7 +804,7 @@
                                     <action selector="logOut:" destination="cqg-F0-8cv" eventType="touchUpInside" id="eMR-Mj-seq"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vP9-6K-3DR">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vP9-6K-3DR" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="120" width="540" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -819,7 +819,7 @@
                                     <segue destination="dZy-hs-her" kind="show" identifier="editProfile" id="gzD-aF-vKC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8c-ey-obT">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8c-ey-obT" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="225" width="540" height="40"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -890,7 +890,7 @@
         <!--Sent Mail Detail View Controller-->
         <scene sceneID="gy1-fW-W7J">
             <objects>
-                <viewController id="R15-RU-waU" customClass="SentMailDetailViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="R15-RU-waU" customClass="SentMailDetailViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dIj-od-2FA"/>
                         <viewControllerLayoutGuide type="bottom" id="gTG-W8-UUy"/>
