@@ -50,7 +50,10 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     func updateOutbox() {
         let myOutboxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/outbox"
         
-        let headers = RestService.sinceHeader(outbox)
+        var headers:[String: String]?
+        if outbox.count > 0 {
+            headers = RestService.sinceHeader(outbox)
+        }
         
         MailService.getMailCollection(myOutboxURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {

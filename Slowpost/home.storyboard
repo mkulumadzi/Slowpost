@@ -7,7 +7,7 @@
         <!--Profile-->
         <scene sceneID="ATV-2b-86y">
             <objects>
-                <viewController storyboardIdentifier="ProfileController" id="xIs-ox-2Jy" customClass="ProfileTabPlaceholderViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileController" id="xIs-ox-2Jy" customClass="ProfileTabPlaceholderViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KJh-5y-qGZ"/>
                         <viewControllerLayoutGuide type="bottom" id="THO-Xr-hue"/>
@@ -26,7 +26,7 @@
         <!--Compose-->
         <scene sceneID="6XD-R5-ayk">
             <objects>
-                <viewController id="xuH-H0-8NY" customClass="ComposeTabPlaceholderViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xuH-H0-8NY" customClass="ComposeTabPlaceholderViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lQc-8q-L8u"/>
                         <viewControllerLayoutGuide type="bottom" id="dlA-2c-157"/>
@@ -46,7 +46,7 @@
         <!--Mailbox Tab View Controller-->
         <scene sceneID="sJw-PD-NuB">
             <objects>
-                <viewController id="pAQ-5W-Mdz" userLabel="Mailbox Tab View Controller" customClass="MailboxTabPlaceholderViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pAQ-5W-Mdz" userLabel="Mailbox Tab View Controller" customClass="MailboxTabPlaceholderViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IOH-4U-V1M"/>
                         <viewControllerLayoutGuide type="bottom" id="iVm-gn-MYs"/>

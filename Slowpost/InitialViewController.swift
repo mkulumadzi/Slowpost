@@ -35,7 +35,6 @@ class InitialViewController: UIViewController {
             else {
                 var storyboard = UIStoryboard(name: "login", bundle: nil)
                 var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-                
                 self.presentViewController(controller, animated: true, completion: nil)
             }
         }

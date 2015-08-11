@@ -68,7 +68,10 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         //Refresh mailbox by retrieving mail for the user
         let myMailBoxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/mailbox"
         
-        let headers = RestService.sinceHeader(mailbox)
+        var headers:[String: String]?
+        if mailbox.count > 0 {
+            headers = RestService.sinceHeader(mailbox)
+        }
         
         MailService.getMailCollection(myMailBoxURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {

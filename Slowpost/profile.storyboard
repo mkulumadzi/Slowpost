@@ -57,11 +57,11 @@
                         <viewControllerLayoutGuide type="bottom" id="MA3-Gi-lBX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Bpi-cV-cz1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="620"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hQd-A0-PJc">
-                                <rect key="frame" x="0.0" y="166" width="600" height="454"/>
+                                <rect key="frame" x="0.0" y="166" width="600" height="434"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MailCell" rowHeight="80" id="OET-Qs-ejm" customClass="SentMailTableViewCell" customModule="Slowpost" customModuleProvider="target">
@@ -182,7 +182,7 @@
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="messageLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1oO-24-LFG" customClass="MessageUILabel" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="590" width="600" height="30"/>
+                                <rect key="frame" x="0.0" y="570" width="600" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.47058823529411764" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="CmI-bV-qek"/>
@@ -241,8 +241,6 @@
                             <constraint firstItem="Mbf-1T-Jxk" firstAttribute="top" secondItem="eyV-zQ-seR" secondAttribute="bottom" id="y4m-yB-1Vm"/>
                         </constraints>
                     </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="620"/>
                     <connections>
                         <outlet property="emailLabel" destination="eyV-zQ-seR" id="nbz-xt-dq8"/>
                         <outlet property="messageLabel" destination="1oO-24-LFG" id="YL0-pp-FaH"/>

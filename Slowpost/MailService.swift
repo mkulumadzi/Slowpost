@@ -225,6 +225,8 @@ class MailService {
             else if let jsonResult = result as? Array<NSDictionary> {
                 var mail_array = [Mail]()
                 for jsonEntry in jsonResult {
+                    
+                    // May be creating an issue here because I am calling self within the block - make a weak property, use that as the self within the block
                     mail_array.append(self.createMailFromJson(jsonEntry))
                 }
                 completion(error: nil, result: mail_array)

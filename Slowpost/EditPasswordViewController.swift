@@ -79,6 +79,7 @@ class EditPasswordViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "passwordChanged" {
+            
             let viewProfileViewController = segue.destinationViewController as? ViewProfileViewController
             viewProfileViewController!.messageLabel.show("Password changed successfully")
             

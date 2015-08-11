@@ -8,7 +8,7 @@
         <!--SnailMail-->
         <scene sceneID="cz6-31-KdU">
             <objects>
-                <viewController storyboardIdentifier="InitialController" id="vyY-w3-kfL" customClass="InitialViewController" customModule="Snailtale" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialController" id="vyY-w3-kfL" customClass="InitialViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fzF-Bo-auZ"/>
                         <viewControllerLayoutGuide type="bottom" id="wHu-jc-c8I"/>

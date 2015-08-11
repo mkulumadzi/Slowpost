@@ -107,7 +107,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         case 0:
             return "Your penpals"
         case 1:
-            return "Other contacts on Snailtale"
+            return "Other contacts on Slowpost"
         case 2:
             return "Other users"
         default:
