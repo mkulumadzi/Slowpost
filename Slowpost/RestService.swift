@@ -31,6 +31,12 @@ class RestService {
                 else if let response = JSON as? Array<NSDictionary> {
                     completion(error: nil, result: response)
                 }
+                else if let response = JSON as? Array<String> {
+                    completion(error: nil, result: response)
+                }
+                else {
+                    println("Unexpected JSON result for get request at \(requestURL)")
+                }
         }
     }
     

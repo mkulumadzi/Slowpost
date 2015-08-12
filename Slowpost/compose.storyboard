@@ -131,13 +131,20 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ocL-C9-no7">
+                                <rect key="frame" x="0.0" y="100" width="600" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ra4-CK-oJ7" secondAttribute="trailing" id="0L4-db-wf5"/>
                             <constraint firstItem="Vbe-WO-Wvv" firstAttribute="leading" secondItem="KBQ-d2-vI0" secondAttribute="leading" id="86K-7r-T4W"/>
+                            <constraint firstItem="ocL-C9-no7" firstAttribute="leading" secondItem="KBQ-d2-vI0" secondAttribute="leading" id="Jn5-HI-em2"/>
                             <constraint firstItem="ra4-CK-oJ7" firstAttribute="leading" secondItem="KBQ-d2-vI0" secondAttribute="leading" id="NCi-rz-g35"/>
+                            <constraint firstItem="ocL-C9-no7" firstAttribute="top" secondItem="Eej-wH-HxO" secondAttribute="bottom" constant="80" id="RCn-q6-NiY"/>
                             <constraint firstAttribute="bottom" secondItem="ra4-CK-oJ7" secondAttribute="bottom" id="W5c-vC-gO7"/>
+                            <constraint firstAttribute="trailing" secondItem="ocL-C9-no7" secondAttribute="trailing" id="Weu-Js-jej"/>
+                            <constraint firstItem="ocL-C9-no7" firstAttribute="top" secondItem="Vbe-WO-Wvv" secondAttribute="bottom" constant="40" id="Wfh-WE-O9F"/>
                             <constraint firstItem="ra4-CK-oJ7" firstAttribute="top" secondItem="Vbe-WO-Wvv" secondAttribute="bottom" id="eHI-cY-WtU"/>
                             <constraint firstAttribute="trailing" secondItem="ra4-CK-oJ7" secondAttribute="trailing" id="g2U-GY-YS5"/>
                             <constraint firstItem="ra4-CK-oJ7" firstAttribute="leading" secondItem="KBQ-d2-vI0" secondAttribute="leading" id="o8W-O4-IdF"/>
@@ -148,10 +155,12 @@
                             <mask key="constraints">
                                 <exclude reference="g2U-GY-YS5"/>
                                 <exclude reference="o8W-O4-IdF"/>
+                                <exclude reference="RCn-q6-NiY"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="ocL-C9-no7" id="Wbc-qC-eKM"/>
                         <outlet property="cardCollection" destination="ra4-CK-oJ7" id="ekh-wb-5sf"/>
                         <segue destination="hLo-Nf-4Zf" kind="unwind" identifier="imageSelected" unwindAction="cardGalleryImageSelected:" id="UYM-Kk-zWR"/>
                     </connections>

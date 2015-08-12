@@ -10,19 +10,20 @@ import UIKit
 
 class CardGalleryUIViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    //To Do: Make an image server and do away with this hard coding stuff
-    var photoNames = ["SnailMail at the Beach.png", "Sevilla.jpg", "Default Card.png", "Fig Arch.jpg", "SnailMail Closeup.png", "Fireworks.jpg", "Parachute.png", "Kili Sunrise.jpg", "Ooh.jpg", "Smiles.jpg", "Glacier.jpg", "Ice.jpg", "Prairie.jpg", "Reflection.jpg", "Salamander.jpg", "Signs.jpg"]
+    var cardNames:[String]!
     
     var photoArray = [UIImage]()
     var imageSelected:UIImage!
     var imageSelectedName:String!
     
     @IBOutlet weak var cardCollection: UICollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        populatePhotoArray()
+        activityIndicator.startAnimating()
+        getCards()
 
     }
 
@@ -36,10 +37,41 @@ class CardGalleryUIViewController: UIViewController, UICollectionViewDataSource,
     }
     
     
+    func getCards() {
+        let cardsURL = "\(PostOfficeURL)cards"
+        
+        RestService.getRequest(cardsURL, headers: nil, completion: { (error, result) -> Void in
+            if error != nil {
+                println(error)
+            }
+            else if let jsonResult = result as? Array<String> {
+                self.cardNames = jsonResult
+                self.populatePhotoArray()
+            }
+            else {
+                println("Unexpected JSON result getting cards")
+            }
+        })
+    }
+    
+    
     func populatePhotoArray() {
         
-        for name in photoNames {
-            self.photoArray.append(UIImage(named: name)!)
+        for card in cardNames {
+            let newCardName = card.stringByReplacingOccurrencesOfString(" ", withString: "%20")
+            let imageURL = "\(PostOfficeURL)/image/\(newCardName)"
+            FileService.downloadImage(imageURL, completion: { (error, result) -> Void in
+                if error != nil {
+                    println(error)
+                }
+                else if let image = result as? UIImage {
+                    if self.activityIndicator.isAnimating() {
+                        self.activityIndicator.stopAnimating()
+                    }
+                    self.photoArray.append(image)
+                    self.cardCollection.reloadData()
+                }
+            })
         }
         
     }
@@ -74,8 +106,7 @@ class CardGalleryUIViewController: UIViewController, UICollectionViewDataSource,
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        imageSelected = UIImage(named: photoNames[indexPath.row])
-        imageSelectedName = photoNames[indexPath.row]
+        imageSelected = photoArray[indexPath.row]
         self.performSegueWithIdentifier("imageSelected", sender: nil)
     }
     
