@@ -45,22 +45,6 @@ class SettingsMenuViewController: UIViewController {
         self.presentViewController(controller, animated: true, completion: nil)
     }
     
-//    func deleteSession() {
-//        
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let managedContext = appDelegate.managedObjectContext!
-//        
-//        let fetchRequest = NSFetchRequest(entityName: "Session")
-//        var error: NSError?
-//        
-//        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
-//        
-//        for session:NSManagedObject in fetchedResults! {
-//            managedContext.deleteObject(session)
-//        }
-//        
-//    }
-    
     func deleteCoreDataObjects(entityName: String) {
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

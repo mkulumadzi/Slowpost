@@ -88,7 +88,7 @@ class RegisterViewController: UIViewController {
     }
     
     func validateSignUpButton() {
-        if nameTextField.text != "" && usernameTextField.text != "" && emailTextField.text != "" && phoneTextField.text != "" && passwordTextField.text != "" {
+        if nameTextField.text != "" && usernameTextField.text != "" && emailTextField.text != "" && passwordTextField.text != "" {
             signUpButton.enable()
         }
         else {
