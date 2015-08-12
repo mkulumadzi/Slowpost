@@ -73,8 +73,6 @@
 		D2A361361B3CAC5D00811D14 /* SnailMailTextUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A361351B3CAC5D00811D14 /* SnailMailTextUIButton.swift */; };
 		D2A361381B3CB52B00811D14 /* WarningUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A361371B3CB52B00811D14 /* WarningUILabel.swift */; };
 		D2B651AD1B31411C00134C23 /* SentMailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B651AC1B31411C00134C23 /* SentMailTableViewCell.swift */; };
-		D2B651E31B38711E00134C23 /* SnailMail Closeup.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B651E21B38711E00134C23 /* SnailMail Closeup.png */; };
-		D2B651E51B38712900134C23 /* Default Card.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B651E41B38712900134C23 /* Default Card.png */; };
 		D2B651E71B38827100134C23 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B651E61B38827100134C23 /* Extensions.swift */; };
 		D2B7CEA01B66E87E007F8235 /* SentMailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7CE9F1B66E87E007F8235 /* SentMailDetailViewController.swift */; };
 		D2B7CEA21B671149007F8235 /* ios7-close-empty-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B7CEA11B671149007F8235 /* ios7-close-empty-gray.png */; };
@@ -101,24 +99,8 @@
 		D2D866371B2F5B8D00847051 /* log-out.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866361B2F5B8D00847051 /* log-out.png */; };
 		D2D866391B2F5DF900847051 /* log-out-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866381B2F5DF900847051 /* log-out-white.png */; };
 		D2D8663F1B2F62B200847051 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */; };
-		D2D866461B2F77BE00847051 /* SnailMail at the Beach.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866451B2F77BE00847051 /* SnailMail at the Beach.png */; };
-		D2E956401B2F8ECD00CA8CC8 /* Parachute.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E9563F1B2F8ECD00CA8CC8 /* Parachute.png */; };
 		D2E956461B30952800CA8CC8 /* ChooseImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E956451B30952800CA8CC8 /* ChooseImageViewController.swift */; };
 		D2E9564A1B309AA100CA8CC8 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */; };
-		D2E956581B30A8AC00CA8CC8 /* Sevilla.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E9564B1B30A8AC00CA8CC8 /* Sevilla.jpg */; };
-		D2E956591B30A8AC00CA8CC8 /* Dhow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E9564C1B30A8AC00CA8CC8 /* Dhow.jpg */; };
-		D2E9565A1B30A8AC00CA8CC8 /* Fig Arch.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E9564D1B30A8AC00CA8CC8 /* Fig Arch.jpg */; };
-		D2E9565B1B30A8AC00CA8CC8 /* Fireworks.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E9564E1B30A8AC00CA8CC8 /* Fireworks.jpg */; };
-		D2E9565C1B30A8AC00CA8CC8 /* Kili Sunrise.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E9564F1B30A8AC00CA8CC8 /* Kili Sunrise.jpg */; };
-		D2E9565D1B30A8AC00CA8CC8 /* Ooh.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E956501B30A8AC00CA8CC8 /* Ooh.jpg */; };
-		D2E9565E1B30A8AC00CA8CC8 /* Smiles.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E956511B30A8AC00CA8CC8 /* Smiles.jpg */; };
-		D2E9565F1B30A8AC00CA8CC8 /* Glacier.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E956521B30A8AC00CA8CC8 /* Glacier.jpg */; };
-		D2E956601B30A8AC00CA8CC8 /* Ice.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E956531B30A8AC00CA8CC8 /* Ice.jpg */; };
-		D2E956611B30A8AC00CA8CC8 /* Prairie.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E956541B30A8AC00CA8CC8 /* Prairie.jpg */; };
-		D2E956621B30A8AC00CA8CC8 /* Reflection.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E956551B30A8AC00CA8CC8 /* Reflection.jpg */; };
-		D2E956631B30A8AC00CA8CC8 /* Salamander.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E956561B30A8AC00CA8CC8 /* Salamander.jpg */; };
-		D2E956641B30A8AC00CA8CC8 /* Signs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E956571B30A8AC00CA8CC8 /* Signs.jpg */; };
-		D2F87CA41B389700003245E2 /* SnailMail Postman.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F87CA31B389700003245E2 /* SnailMail Postman.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -205,8 +187,6 @@
 		D2A361351B3CAC5D00811D14 /* SnailMailTextUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnailMailTextUIButton.swift; sourceTree = "<group>"; };
 		D2A361371B3CB52B00811D14 /* WarningUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarningUILabel.swift; sourceTree = "<group>"; };
 		D2B651AC1B31411C00134C23 /* SentMailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMailTableViewCell.swift; sourceTree = "<group>"; };
-		D2B651E21B38711E00134C23 /* SnailMail Closeup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnailMail Closeup.png"; sourceTree = "<group>"; };
-		D2B651E41B38712900134C23 /* Default Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default Card.png"; sourceTree = "<group>"; };
 		D2B651E61B38827100134C23 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D2B7CE9F1B66E87E007F8235 /* SentMailDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMailDetailViewController.swift; sourceTree = "<group>"; };
 		D2B7CEA11B671149007F8235 /* ios7-close-empty-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-close-empty-gray.png"; sourceTree = "<group>"; };
@@ -235,24 +215,8 @@
 		D2D866361B2F5B8D00847051 /* log-out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log-out.png"; sourceTree = "<group>"; };
 		D2D866381B2F5DF900847051 /* log-out-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log-out-white.png"; sourceTree = "<group>"; };
 		D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
-		D2D866451B2F77BE00847051 /* SnailMail at the Beach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnailMail at the Beach.png"; sourceTree = "<group>"; };
-		D2E9563F1B2F8ECD00CA8CC8 /* Parachute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Parachute.png; sourceTree = "<group>"; };
 		D2E956451B30952800CA8CC8 /* ChooseImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseImageViewController.swift; sourceTree = "<group>"; };
 		D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
-		D2E9564B1B30A8AC00CA8CC8 /* Sevilla.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sevilla.jpg; sourceTree = "<group>"; };
-		D2E9564C1B30A8AC00CA8CC8 /* Dhow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Dhow.jpg; sourceTree = "<group>"; };
-		D2E9564D1B30A8AC00CA8CC8 /* Fig Arch.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Fig Arch.jpg"; sourceTree = "<group>"; };
-		D2E9564E1B30A8AC00CA8CC8 /* Fireworks.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Fireworks.jpg; sourceTree = "<group>"; };
-		D2E9564F1B30A8AC00CA8CC8 /* Kili Sunrise.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Kili Sunrise.jpg"; sourceTree = "<group>"; };
-		D2E956501B30A8AC00CA8CC8 /* Ooh.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ooh.jpg; sourceTree = "<group>"; };
-		D2E956511B30A8AC00CA8CC8 /* Smiles.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Smiles.jpg; sourceTree = "<group>"; };
-		D2E956521B30A8AC00CA8CC8 /* Glacier.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Glacier.jpg; sourceTree = "<group>"; };
-		D2E956531B30A8AC00CA8CC8 /* Ice.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Ice.jpg; sourceTree = "<group>"; };
-		D2E956541B30A8AC00CA8CC8 /* Prairie.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Prairie.jpg; sourceTree = "<group>"; };
-		D2E956551B30A8AC00CA8CC8 /* Reflection.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Reflection.jpg; sourceTree = "<group>"; };
-		D2E956561B30A8AC00CA8CC8 /* Salamander.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Salamander.jpg; sourceTree = "<group>"; };
-		D2E956571B30A8AC00CA8CC8 /* Signs.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Signs.jpg; sourceTree = "<group>"; };
-		D2F87CA31B389700003245E2 /* SnailMail Postman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SnailMail Postman.png"; sourceTree = "<group>"; };
 		D58257AF9C03394AF69653DE /* Pods-Slowpost.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slowpost.staging.xcconfig"; path = "Pods/Target Support Files/Pods-Slowpost/Pods-Slowpost.staging.xcconfig"; sourceTree = "<group>"; };
 		FEA5B7AEBEF825400B64DF28 /* Pods-Slowpost.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slowpost.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Slowpost/Pods-Slowpost.testing.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -405,7 +369,6 @@
 			children = (
 				CC96E4A31ABCD5AB001E6D27 /* Images */,
 				D25A9C741B2256D400ABBBA4 /* Fonts */,
-				D2D866441B2F77B200847051 /* Postcards */,
 				CCCB1A511AB0D48A0067F100 /* Info.plist */,
 				D2C071051B3A3E99000154E8 /* Configurations.plist */,
 			);
@@ -519,31 +482,6 @@
 			name = Profile;
 			sourceTree = "<group>";
 		};
-		D2D866441B2F77B200847051 /* Postcards */ = {
-			isa = PBXGroup;
-			children = (
-				D2F87CA31B389700003245E2 /* SnailMail Postman.png */,
-				D2B651E21B38711E00134C23 /* SnailMail Closeup.png */,
-				D2B651E41B38712900134C23 /* Default Card.png */,
-				D2E9564B1B30A8AC00CA8CC8 /* Sevilla.jpg */,
-				D2E9564C1B30A8AC00CA8CC8 /* Dhow.jpg */,
-				D2E9564D1B30A8AC00CA8CC8 /* Fig Arch.jpg */,
-				D2E9564E1B30A8AC00CA8CC8 /* Fireworks.jpg */,
-				D2E9564F1B30A8AC00CA8CC8 /* Kili Sunrise.jpg */,
-				D2E956501B30A8AC00CA8CC8 /* Ooh.jpg */,
-				D2E956511B30A8AC00CA8CC8 /* Smiles.jpg */,
-				D2E956521B30A8AC00CA8CC8 /* Glacier.jpg */,
-				D2E956531B30A8AC00CA8CC8 /* Ice.jpg */,
-				D2E956541B30A8AC00CA8CC8 /* Prairie.jpg */,
-				D2E956551B30A8AC00CA8CC8 /* Reflection.jpg */,
-				D2E956561B30A8AC00CA8CC8 /* Salamander.jpg */,
-				D2E956571B30A8AC00CA8CC8 /* Signs.jpg */,
-				D2D866451B2F77BE00847051 /* SnailMail at the Beach.png */,
-				D2E9563F1B2F8ECD00CA8CC8 /* Parachute.png */,
-			);
-			name = Postcards;
-			sourceTree = "<group>";
-		};
 		D5068536573A35C154CCA1CF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -653,23 +591,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC23DE2A1AE54C0300AFEDE4 /* login.storyboard in Resources */,
-				D2E956591B30A8AC00CA8CC8 /* Dhow.jpg in Resources */,
 				D20D8EDF1B2B384E00BBF6B5 /* ios7-compose.png in Resources */,
 				D2D866311B2F52A600847051 /* profile.storyboard in Resources */,
 				D25A9CA01B2259D300ABBBA4 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				D25A9C9C1B2259D300ABBBA4 /* Apache License.txt in Resources */,
-				D2E956611B30A8AC00CA8CC8 /* Prairie.jpg in Resources */,
 				D25A9CA21B2259D300ABBBA4 /* OpenSans-Light.ttf in Resources */,
-				D2E9565E1B30A8AC00CA8CC8 /* Smiles.jpg in Resources */,
-				D2E956601B30A8AC00CA8CC8 /* Ice.jpg in Resources */,
 				D206FB471B615A3C008BB412 /* SIL Open Font License.txt in Resources */,
 				D20D8EDC1B2B384E00BBF6B5 /* compose.png in Resources */,
 				D206FB411B615A3C008BB412 /* Quicksand-Bold.otf in Resources */,
 				CCCB1A581AB0D48A0067F100 /* initial.storyboard in Resources */,
-				D2E9565A1B30A8AC00CA8CC8 /* Fig Arch.jpg in Resources */,
-				D2E956581B30A8AC00CA8CC8 /* Sevilla.jpg in Resources */,
 				D2CEC4701B7256E9002CFD25 /* photos_green.png in Resources */,
-				D2E956401B2F8ECD00CA8CC8 /* Parachute.png in Resources */,
 				CC23DE2C1AE54C1A00AFEDE4 /* mailbox.storyboard in Resources */,
 				CCCB1A5D1AB0D48A0067F100 /* LaunchScreen.xib in Resources */,
 				D2C071061B3A3E99000154E8 /* Configurations.plist in Resources */,
@@ -677,10 +608,8 @@
 				D206FB451B615A3C008BB412 /* Quicksand-LightItalic.otf in Resources */,
 				D25A9CA41B2259D300ABBBA4 /* OpenSans-Regular.ttf in Resources */,
 				D2CEC4721B725D0C002CFD25 /* ios7-minus-outline-white-center.png in Resources */,
-				D2E9565D1B30A8AC00CA8CC8 /* Ooh.jpg in Resources */,
 				D2CEC46F1B7256E9002CFD25 /* ios7-camera-green.png in Resources */,
 				D2B7CEA21B671149007F8235 /* ios7-close-empty-gray.png in Resources */,
-				D2B651E51B38712900134C23 /* Default Card.png in Resources */,
 				D206FB461B615A3C008BB412 /* Quicksand-Regular.otf in Resources */,
 				D21D79D51B5093430014510E /* ios7-checkmark-not-checked.png in Resources */,
 				D25A9CA11B2259D300ABBBA4 /* OpenSans-Italic.ttf in Resources */,
@@ -689,7 +618,6 @@
 				D27DA31E1B62ADB600DF32A1 /* ios7-arrow-left-white.png in Resources */,
 				D25A9CA51B2259D300ABBBA4 /* OpenSans-Semibold.ttf in Resources */,
 				D2D8662C1B2F50CC00847051 /* ios7-contact-outline-white.png in Resources */,
-				D2E9565C1B30A8AC00CA8CC8 /* Kili Sunrise.jpg in Resources */,
 				D25A9CA61B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				D206FB401B615A3C008BB412 /* Quicksand_Dash.otf in Resources */,
 				D206FB511B618287008BB412 /* ios7-close-empty-white.png in Resources */,
@@ -698,7 +626,6 @@
 				D27DA31F1B62ADB600DF32A1 /* ios7-arrow-right-white.png in Resources */,
 				D27DA31B1B61C8EE00DF32A1 /* settings-white.png in Resources */,
 				D206FB431B615A3C008BB412 /* Quicksand-Italic.otf in Resources */,
-				D2E9565B1B30A8AC00CA8CC8 /* Fireworks.jpg in Resources */,
 				D25A9C9E1B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf in Resources */,
 				CC23DE2E1AE54C2B00AFEDE4 /* compose.storyboard in Resources */,
 				D25A9CA31B2259D300ABBBA4 /* OpenSans-LightItalic.ttf in Resources */,
@@ -707,16 +634,9 @@
 				D25A9C9F1B2259D300ABBBA4 /* OpenSans-ExtraBold.ttf in Resources */,
 				D2D866261B2F4AF800847051 /* ios7-person-outline.png in Resources */,
 				D21D79D71B5093490014510E /* ios7-checkmark.png in Resources */,
-				D2E9565F1B30A8AC00CA8CC8 /* Glacier.jpg in Resources */,
 				D2D866371B2F5B8D00847051 /* log-out.png in Resources */,
-				D2D866461B2F77BE00847051 /* SnailMail at the Beach.png in Resources */,
-				D2F87CA41B389700003245E2 /* SnailMail Postman.png in Resources */,
-				D2E956641B30A8AC00CA8CC8 /* Signs.jpg in Resources */,
-				D2E956631B30A8AC00CA8CC8 /* Salamander.jpg in Resources */,
 				CCCB1A5A1AB0D48A0067F100 /* Images.xcassets in Resources */,
-				D2E956621B30A8AC00CA8CC8 /* Reflection.jpg in Resources */,
 				D2D8662A1B2F4B7F00847051 /* ios7-contact-outline.png in Resources */,
-				D2B651E31B38711E00134C23 /* SnailMail Closeup.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
