@@ -33,7 +33,9 @@ class SettingsMenuViewController: UIViewController {
     }
 
     @IBAction func logOut(sender: AnyObject) {
-        deleteSession()
+        deleteCoreDataObjects("Session")
+        deleteCoreDataObjects("Mail")
+        deleteCoreDataObjects("Person")
         
         loggedInUser = nil
         
@@ -43,30 +45,36 @@ class SettingsMenuViewController: UIViewController {
         self.presentViewController(controller, animated: true, completion: nil)
     }
     
-    func deleteSession() {
+//    func deleteSession() {
+//        
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let managedContext = appDelegate.managedObjectContext!
+//        
+//        let fetchRequest = NSFetchRequest(entityName: "Session")
+//        var error: NSError?
+//        
+//        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
+//        
+//        for session:NSManagedObject in fetchedResults! {
+//            managedContext.deleteObject(session)
+//        }
+//        
+//    }
+    
+    func deleteCoreDataObjects(entityName: String) {
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
-        let fetchRequest = NSFetchRequest(entityName: "Session")
+        let fetchRequest = NSFetchRequest(entityName: entityName)
         var error: NSError?
         
         let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
         
-        for session:NSManagedObject in fetchedResults! {
-            managedContext.deleteObject(session)
+        for object:NSManagedObject in fetchedResults! {
+            managedContext.deleteObject(object)
         }
         
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
