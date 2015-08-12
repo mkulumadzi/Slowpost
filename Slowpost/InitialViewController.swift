@@ -149,7 +149,7 @@ class InitialViewController: UIViewController {
             }
             else if let mailArray = result as? Array<Mail> {
                 outbox = MailService.updateMailCollectionFromNewMail(outbox, newCollection: mailArray)
-                outbox = outbox.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
+                outbox = outbox.sorted { $0.createdAt.compare($1.createdAt) == NSComparisonResult.OrderedDescending }
                 
                 MailService.appendMailArrayToCoreData(mailArray)
             }

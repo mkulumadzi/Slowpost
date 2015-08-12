@@ -61,7 +61,7 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
             }
             else if let mailArray = result as? Array<Mail> {
                 outbox = MailService.updateMailCollectionFromNewMail(outbox, newCollection: mailArray)
-                outbox = outbox.sorted { $0.updatedAt.compare($1.updatedAt) == NSComparisonResult.OrderedDescending }
+                outbox = outbox.sorted { $0.createdAt.compare($1.createdAt) == NSComparisonResult.OrderedDescending }
                 
                 MailService.appendMailArrayToCoreData(mailArray)
                 

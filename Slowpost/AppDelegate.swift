@@ -133,8 +133,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationWithError error: NSError) {
-        NSLog("Did fail to register for Remote Notifications")
-        NSLog("\(error), \(error.localizedDescription)")
+        println("We couldn't register for remote notifications...")
+        println("\(error), \(error.localizedDescription)")
     }
     
     
@@ -146,7 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if let type = userInfo["type"] as? NSString {
             if type == "New Mail" {
-                let storyboard = UIStoryboard(name: "mailbox", bundle: nil)
+                let storyboard = UIStoryboard(name: "home", bundle: nil)
                 let controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
                 self.window!.rootViewController = controller
             }
