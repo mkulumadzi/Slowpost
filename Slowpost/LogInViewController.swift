@@ -1,5 +1,5 @@
 //
-//  LogInViewController2.swift
+//  LogInViewController.swift
 //  Slowpost
 //
 //  Created by Evan Waters on 3/20/15.

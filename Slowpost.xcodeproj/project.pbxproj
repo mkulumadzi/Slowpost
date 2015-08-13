@@ -26,13 +26,6 @@
 		CCCB1A691AB0D48A0067F100 /* SlowpostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCB1A681AB0D48A0067F100 /* SlowpostTests.swift */; };
 		CCCB1A751AB0D87F0067F100 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCB1A741AB0D87F0067F100 /* Person.swift */; };
 		CCCB1A7B1AB0DE780067F100 /* MyMailboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCB1A7A1AB0DE780067F100 /* MyMailboxViewController.swift */; };
-		D206FB401B615A3C008BB412 /* Quicksand_Dash.otf in Resources */ = {isa = PBXBuildFile; fileRef = D206FB381B615A3C008BB412 /* Quicksand_Dash.otf */; };
-		D206FB411B615A3C008BB412 /* Quicksand-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D206FB391B615A3C008BB412 /* Quicksand-Bold.otf */; };
-		D206FB421B615A3C008BB412 /* Quicksand-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D206FB3A1B615A3C008BB412 /* Quicksand-BoldItalic.otf */; };
-		D206FB431B615A3C008BB412 /* Quicksand-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D206FB3B1B615A3C008BB412 /* Quicksand-Italic.otf */; };
-		D206FB441B615A3C008BB412 /* Quicksand-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D206FB3C1B615A3C008BB412 /* Quicksand-Light.otf */; };
-		D206FB451B615A3C008BB412 /* Quicksand-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D206FB3D1B615A3C008BB412 /* Quicksand-LightItalic.otf */; };
-		D206FB461B615A3C008BB412 /* Quicksand-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D206FB3E1B615A3C008BB412 /* Quicksand-Regular.otf */; };
 		D206FB471B615A3C008BB412 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = D206FB3F1B615A3C008BB412 /* SIL Open Font License.txt */; };
 		D206FB4B1B61688D008BB412 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D206FB4A1B61688D008BB412 /* WelcomeScreenViewController.swift */; };
 		D206FB4F1B617504008BB412 /* BottomBorderUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D206FB4E1B617504008BB412 /* BottomBorderUITextField.swift */; };
@@ -99,6 +92,15 @@
 		D2D866371B2F5B8D00847051 /* log-out.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866361B2F5B8D00847051 /* log-out.png */; };
 		D2D866391B2F5DF900847051 /* log-out-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866381B2F5DF900847051 /* log-out-white.png */; };
 		D2D8663F1B2F62B200847051 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */; };
+		D2E414961B7BFD78006C6C5F /* WelcomePageItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E414951B7BFD78006C6C5F /* WelcomePageItemViewController.swift */; };
+		D2E414981B7D10E4006C6C5F /* Default Card.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E414971B7D10E4006C6C5F /* Default Card.png */; };
+		D2E4EDCA1B7D135900D2A028 /* Quicksand_Dash.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDC31B7D11EA00D2A028 /* Quicksand_Dash.otf */; };
+		D2E4EDCB1B7D135C00D2A028 /* Quicksand-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDC41B7D11F300D2A028 /* Quicksand-Bold.otf */; };
+		D2E4EDCC1B7D135F00D2A028 /* Quicksand-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDC51B7D11F300D2A028 /* Quicksand-BoldItalic.otf */; };
+		D2E4EDCD1B7D136200D2A028 /* Quicksand-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDC61B7D11F300D2A028 /* Quicksand-Italic.otf */; };
+		D2E4EDCE1B7D136500D2A028 /* Quicksand-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDC71B7D11F300D2A028 /* Quicksand-Light.otf */; };
+		D2E4EDCF1B7D136700D2A028 /* Quicksand-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDC81B7D11F300D2A028 /* Quicksand-LightItalic.otf */; };
+		D2E4EDD01B7D136A00D2A028 /* Quicksand-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDC91B7D11F300D2A028 /* Quicksand-Regular.otf */; };
 		D2E956461B30952800CA8CC8 /* ChooseImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E956451B30952800CA8CC8 /* ChooseImageViewController.swift */; };
 		D2E9564A1B309AA100CA8CC8 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -139,13 +141,6 @@
 		CCCB1A681AB0D48A0067F100 /* SlowpostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SlowpostTests.swift; path = SlowpostTests/SlowpostTests.swift; sourceTree = "<group>"; };
 		CCCB1A741AB0D87F0067F100 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		CCCB1A7A1AB0DE780067F100 /* MyMailboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyMailboxViewController.swift; sourceTree = "<group>"; };
-		D206FB381B615A3C008BB412 /* Quicksand_Dash.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Quicksand_Dash.otf; sourceTree = "<group>"; };
-		D206FB391B615A3C008BB412 /* Quicksand-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.otf"; sourceTree = "<group>"; };
-		D206FB3A1B615A3C008BB412 /* Quicksand-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-BoldItalic.otf"; sourceTree = "<group>"; };
-		D206FB3B1B615A3C008BB412 /* Quicksand-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Italic.otf"; sourceTree = "<group>"; };
-		D206FB3C1B615A3C008BB412 /* Quicksand-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Light.otf"; sourceTree = "<group>"; };
-		D206FB3D1B615A3C008BB412 /* Quicksand-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-LightItalic.otf"; sourceTree = "<group>"; };
-		D206FB3E1B615A3C008BB412 /* Quicksand-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.otf"; sourceTree = "<group>"; };
 		D206FB3F1B615A3C008BB412 /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
 		D206FB4A1B61688D008BB412 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
 		D206FB4E1B617504008BB412 /* BottomBorderUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomBorderUITextField.swift; sourceTree = "<group>"; };
@@ -215,6 +210,15 @@
 		D2D866361B2F5B8D00847051 /* log-out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log-out.png"; sourceTree = "<group>"; };
 		D2D866381B2F5DF900847051 /* log-out-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log-out-white.png"; sourceTree = "<group>"; };
 		D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		D2E414951B7BFD78006C6C5F /* WelcomePageItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomePageItemViewController.swift; sourceTree = "<group>"; };
+		D2E414971B7D10E4006C6C5F /* Default Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default Card.png"; sourceTree = "<group>"; };
+		D2E4EDC31B7D11EA00D2A028 /* Quicksand_Dash.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Quicksand_Dash.otf; sourceTree = "<group>"; };
+		D2E4EDC41B7D11F300D2A028 /* Quicksand-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.otf"; sourceTree = "<group>"; };
+		D2E4EDC51B7D11F300D2A028 /* Quicksand-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-BoldItalic.otf"; sourceTree = "<group>"; };
+		D2E4EDC61B7D11F300D2A028 /* Quicksand-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Italic.otf"; sourceTree = "<group>"; };
+		D2E4EDC71B7D11F300D2A028 /* Quicksand-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Light.otf"; sourceTree = "<group>"; };
+		D2E4EDC81B7D11F300D2A028 /* Quicksand-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-LightItalic.otf"; sourceTree = "<group>"; };
+		D2E4EDC91B7D11F300D2A028 /* Quicksand-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.otf"; sourceTree = "<group>"; };
 		D2E956451B30952800CA8CC8 /* ChooseImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseImageViewController.swift; sourceTree = "<group>"; };
 		D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		D58257AF9C03394AF69653DE /* Pods-Slowpost.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slowpost.staging.xcconfig"; path = "Pods/Target Support Files/Pods-Slowpost/Pods-Slowpost.staging.xcconfig"; sourceTree = "<group>"; };
@@ -260,6 +264,7 @@
 				CC23DE291AE54C0300AFEDE4 /* login.storyboard */,
 				D25A9CAB1B225D3400ABBBA4 /* RegisterViewController.swift */,
 				D206FB4A1B61688D008BB412 /* WelcomeScreenViewController.swift */,
+				D2E414951B7BFD78006C6C5F /* WelcomePageItemViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -305,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				D2CEC46B1B7256E9002CFD25 /* grid-green.png */,
+				D2E414971B7D10E4006C6C5F /* Default Card.png */,
 				D2CEC46C1B7256E9002CFD25 /* ios7-camera-green.png */,
 				D2CEC46D1B7256E9002CFD25 /* photos_green.png */,
 				D2B7CEA11B671149007F8235 /* ios7-close-empty-gray.png */,
@@ -408,15 +414,15 @@
 		D25A9C741B2256D400ABBBA4 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				D206FB381B615A3C008BB412 /* Quicksand_Dash.otf */,
-				D206FB391B615A3C008BB412 /* Quicksand-Bold.otf */,
-				D206FB3A1B615A3C008BB412 /* Quicksand-BoldItalic.otf */,
-				D206FB3B1B615A3C008BB412 /* Quicksand-Italic.otf */,
-				D206FB3C1B615A3C008BB412 /* Quicksand-Light.otf */,
-				D206FB3D1B615A3C008BB412 /* Quicksand-LightItalic.otf */,
-				D206FB3E1B615A3C008BB412 /* Quicksand-Regular.otf */,
 				D206FB3F1B615A3C008BB412 /* SIL Open Font License.txt */,
 				D25A9C911B2259D300ABBBA4 /* Apache License.txt */,
+				D2E4EDC31B7D11EA00D2A028 /* Quicksand_Dash.otf */,
+				D2E4EDC41B7D11F300D2A028 /* Quicksand-Bold.otf */,
+				D2E4EDC51B7D11F300D2A028 /* Quicksand-BoldItalic.otf */,
+				D2E4EDC61B7D11F300D2A028 /* Quicksand-Italic.otf */,
+				D2E4EDC71B7D11F300D2A028 /* Quicksand-Light.otf */,
+				D2E4EDC81B7D11F300D2A028 /* Quicksand-LightItalic.otf */,
+				D2E4EDC91B7D11F300D2A028 /* Quicksand-Regular.otf */,
 				D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */,
 				D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */,
 				D25A9C941B2259D300ABBBA4 /* OpenSans-ExtraBold.ttf */,
@@ -592,51 +598,52 @@
 			files = (
 				CC23DE2A1AE54C0300AFEDE4 /* login.storyboard in Resources */,
 				D20D8EDF1B2B384E00BBF6B5 /* ios7-compose.png in Resources */,
+				D2E4EDCC1B7D135F00D2A028 /* Quicksand-BoldItalic.otf in Resources */,
 				D2D866311B2F52A600847051 /* profile.storyboard in Resources */,
 				D25A9CA01B2259D300ABBBA4 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				D25A9C9C1B2259D300ABBBA4 /* Apache License.txt in Resources */,
 				D25A9CA21B2259D300ABBBA4 /* OpenSans-Light.ttf in Resources */,
 				D206FB471B615A3C008BB412 /* SIL Open Font License.txt in Resources */,
+				D2E4EDCD1B7D136200D2A028 /* Quicksand-Italic.otf in Resources */,
 				D20D8EDC1B2B384E00BBF6B5 /* compose.png in Resources */,
-				D206FB411B615A3C008BB412 /* Quicksand-Bold.otf in Resources */,
 				CCCB1A581AB0D48A0067F100 /* initial.storyboard in Resources */,
 				D2CEC4701B7256E9002CFD25 /* photos_green.png in Resources */,
 				CC23DE2C1AE54C1A00AFEDE4 /* mailbox.storyboard in Resources */,
 				CCCB1A5D1AB0D48A0067F100 /* LaunchScreen.xib in Resources */,
 				D2C071061B3A3E99000154E8 /* Configurations.plist in Resources */,
-				D206FB441B615A3C008BB412 /* Quicksand-Light.otf in Resources */,
-				D206FB451B615A3C008BB412 /* Quicksand-LightItalic.otf in Resources */,
 				D25A9CA41B2259D300ABBBA4 /* OpenSans-Regular.ttf in Resources */,
 				D2CEC4721B725D0C002CFD25 /* ios7-minus-outline-white-center.png in Resources */,
 				D2CEC46F1B7256E9002CFD25 /* ios7-camera-green.png in Resources */,
 				D2B7CEA21B671149007F8235 /* ios7-close-empty-gray.png in Resources */,
-				D206FB461B615A3C008BB412 /* Quicksand-Regular.otf in Resources */,
 				D21D79D51B5093430014510E /* ios7-checkmark-not-checked.png in Resources */,
+				D2E4EDCE1B7D136500D2A028 /* Quicksand-Light.otf in Resources */,
 				D25A9CA11B2259D300ABBBA4 /* OpenSans-Italic.ttf in Resources */,
 				D206FB541B619A53008BB412 /* home.storyboard in Resources */,
 				D20D8EDB1B2B384E00BBF6B5 /* compose-white.png in Resources */,
+				D2E4EDCA1B7D135900D2A028 /* Quicksand_Dash.otf in Resources */,
 				D27DA31E1B62ADB600DF32A1 /* ios7-arrow-left-white.png in Resources */,
 				D25A9CA51B2259D300ABBBA4 /* OpenSans-Semibold.ttf in Resources */,
 				D2D8662C1B2F50CC00847051 /* ios7-contact-outline-white.png in Resources */,
 				D25A9CA61B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf in Resources */,
-				D206FB401B615A3C008BB412 /* Quicksand_Dash.otf in Resources */,
 				D206FB511B618287008BB412 /* ios7-close-empty-white.png in Resources */,
 				D25A9C9D1B2259D300ABBBA4 /* OpenSans-Bold.ttf in Resources */,
 				D2CEC46E1B7256E9002CFD25 /* grid-green.png in Resources */,
 				D27DA31F1B62ADB600DF32A1 /* ios7-arrow-right-white.png in Resources */,
+				D2E414981B7D10E4006C6C5F /* Default Card.png in Resources */,
 				D27DA31B1B61C8EE00DF32A1 /* settings-white.png in Resources */,
-				D206FB431B615A3C008BB412 /* Quicksand-Italic.otf in Resources */,
 				D25A9C9E1B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf in Resources */,
 				CC23DE2E1AE54C2B00AFEDE4 /* compose.storyboard in Resources */,
 				D25A9CA31B2259D300ABBBA4 /* OpenSans-LightItalic.ttf in Resources */,
-				D206FB421B615A3C008BB412 /* Quicksand-BoldItalic.otf in Resources */,
 				D2D866391B2F5DF900847051 /* log-out-white.png in Resources */,
 				D25A9C9F1B2259D300ABBBA4 /* OpenSans-ExtraBold.ttf in Resources */,
 				D2D866261B2F4AF800847051 /* ios7-person-outline.png in Resources */,
 				D21D79D71B5093490014510E /* ios7-checkmark.png in Resources */,
 				D2D866371B2F5B8D00847051 /* log-out.png in Resources */,
+				D2E4EDCF1B7D136700D2A028 /* Quicksand-LightItalic.otf in Resources */,
 				CCCB1A5A1AB0D48A0067F100 /* Images.xcassets in Resources */,
 				D2D8662A1B2F4B7F00847051 /* ios7-contact-outline.png in Resources */,
+				D2E4EDD01B7D136A00D2A028 /* Quicksand-Regular.otf in Resources */,
+				D2E4EDCB1B7D135C00D2A028 /* Quicksand-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -741,6 +748,7 @@
 				D2B7CEA61B694C14007F8235 /* GlobalVariables.swift in Sources */,
 				D27E194E1B3B770C0052687F /* SlowpostModel.xcdatamodeld in Sources */,
 				CC96E49C1ABCC8EB001E6D27 /* InitialViewController.swift in Sources */,
+				D2E414961B7BFD78006C6C5F /* WelcomePageItemViewController.swift in Sources */,
 				D2B7CEAC1B6951CE007F8235 /* ConfigurationService.swift in Sources */,
 				D2B7CEAA1B694E55007F8235 /* MailService.swift in Sources */,
 				CCCB1A531AB0D48A0067F100 /* AppDelegate.swift in Sources */,
