@@ -2,9 +2,20 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6az-Oz-1fo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="OpenSans-LightItalic.ttf">
+            <string>OpenSansLight-Italic</string>
+        </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
@@ -20,6 +31,9 @@
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
+        </mutableArray>
+        <mutableArray key="Quicksand-Regular.otf">
+            <string>Quicksand-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -210,18 +224,10 @@
             </objects>
             <point key="canvasLocation" x="96" y="-1046"/>
         </scene>
-        <!--Page View Controller-->
-        <scene sceneID="m87-0i-k73">
-            <objects>
-                <pageViewController storyboardIdentifier="pageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="7Sv-c7-sqC" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="J0g-4G-AqL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-549" y="-338"/>
-        </scene>
-        <!--Welcome Page Item View Controller-->
+        <!--View Controller-->
         <scene sceneID="5Ds-6f-QQS">
             <objects>
-                <viewController storyboardIdentifier="pageItemController" id="a9f-Ac-ZCv" customClass="WelcomePageItemViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="pageOne" storyboardIdentifier="pageOne" id="a9f-Ac-ZCv" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dMF-nz-jef"/>
                         <viewControllerLayoutGuide type="bottom" id="AFD-h1-9Qc"/>
@@ -231,19 +237,236 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Slowpost Icon Set" translatesAutoresizingMaskIntoConstraints="NO" id="cyp-Yi-AeK">
-                                <rect key="frame" x="225" y="253" width="150" height="95"/>
+                                <rect key="frame" x="225" y="495" width="150" height="95"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8ja-GC-cGh">
+                                <rect key="frame" x="245" y="235" width="111" height="28"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Slowpost" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YMF-v3-1t9">
+                                <rect key="frame" x="154" y="263" width="292" height="75"/>
+                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="64"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="cyp-Yi-AeK" secondAttribute="centerY" id="C1X-dH-pdH"/>
+                            <constraint firstAttribute="centerY" secondItem="YMF-v3-1t9" secondAttribute="centerY" id="DJw-GU-DcF"/>
+                            <constraint firstItem="YMF-v3-1t9" firstAttribute="top" secondItem="8ja-GC-cGh" secondAttribute="bottom" id="HAG-e4-9zP"/>
+                            <constraint firstItem="8ja-GC-cGh" firstAttribute="top" secondItem="dMF-nz-jef" secondAttribute="bottom" constant="50" id="LUp-9o-OUd"/>
+                            <constraint firstItem="AFD-h1-9Qc" firstAttribute="top" secondItem="cyp-Yi-AeK" secondAttribute="bottom" constant="10" id="Pn6-cx-qL7"/>
+                            <constraint firstItem="8ja-GC-cGh" firstAttribute="top" secondItem="tu8-GK-Ur4" secondAttribute="top" constant="50" id="RCf-kJ-t4p"/>
+                            <constraint firstAttribute="centerX" secondItem="YMF-v3-1t9" secondAttribute="centerX" id="cvk-PP-LzF"/>
                             <constraint firstAttribute="centerX" secondItem="cyp-Yi-AeK" secondAttribute="centerX" id="dM6-Ow-KlS"/>
+                            <constraint firstAttribute="centerX" secondItem="8ja-GC-cGh" secondAttribute="centerX" id="ve3-gc-u89"/>
+                            <constraint firstItem="YMF-v3-1t9" firstAttribute="top" secondItem="8ja-GC-cGh" secondAttribute="bottom" id="xMM-T5-ely"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="HAG-e4-9zP"/>
+                                <exclude reference="LUp-9o-OUd"/>
+                                <exclude reference="RCf-kJ-t4p"/>
+                                <exclude reference="C1X-dH-pdH"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4SC-va-dxS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="96" y="-338"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wWu-dr-2aA">
+            <objects>
+                <viewController restorationIdentifier="pageTwo" storyboardIdentifier="pageTwo" id="Rnc-im-q8q" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WeE-KQ-aiA"/>
+                        <viewControllerLayoutGuide type="bottom" id="HEE-OB-D5D"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="he6-vR-GnM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a photo and compose a message to a friend or family member." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="Q0L-Nx-1kw">
+                                <rect key="frame" x="10" y="50" width="580" height="24"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhg-61-Xj8">
+                                <rect key="frame" x="0.0" y="84" width="600" height="716"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="example_card.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="YB6-vP-l6D">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="YB6-vP-l6D" secondAttribute="height" multiplier="4:3" id="lqS-bg-yVB"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To: Neal Waters" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICn-xH-enn">
+                                        <rect key="frame" x="10" y="460" width="124" height="24"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                        <color key="textColor" red="0.49803921568627452" green="0.47843137254901963" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SENT on June 24th, 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cun-9y-qCd">
+                                        <rect key="frame" x="10" y="484" width="158" height="21"/>
+                                        <fontDescription key="fontDescription" name="OpenSansLight-Italic" family="Open Sans" pointSize="15"/>
+                                        <color key="textColor" red="0.043137254901960784" green="0.043137254901960784" blue="0.043137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cT-RB-bol">
+                                        <rect key="frame" x="10" y="515" width="580" height="201"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <string key="text">Dear Neal,
+
+Thanks for paying us a visit! It was a lot of fun getting to explore our new neighborhood with you. Who knew there were so many sites worth seeing so close by? Hope your trip back home went smoothly - we're looking forward to seeing you again in a few weeks!
+
+Evan</string>
+                                        <color key="textColor" red="0.043137254899999998" green="0.043137254899999998" blue="0.043137254899999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="2cT-RB-bol" firstAttribute="top" secondItem="Cun-9y-qCd" secondAttribute="bottom" constant="10" id="0Ao-hu-ip2"/>
+                                    <constraint firstItem="Cun-9y-qCd" firstAttribute="leading" secondItem="qhg-61-Xj8" secondAttribute="leading" constant="10" id="1Mx-qX-AQF"/>
+                                    <constraint firstAttribute="bottom" secondItem="2cT-RB-bol" secondAttribute="bottom" id="4EO-GK-DIF"/>
+                                    <constraint firstItem="ICn-xH-enn" firstAttribute="top" secondItem="YB6-vP-l6D" secondAttribute="bottom" constant="10" id="5Ze-ld-BBW"/>
+                                    <constraint firstItem="2cT-RB-bol" firstAttribute="leading" secondItem="qhg-61-Xj8" secondAttribute="leading" constant="10" id="Be9-WN-BS6"/>
+                                    <constraint firstItem="Cun-9y-qCd" firstAttribute="top" secondItem="ICn-xH-enn" secondAttribute="bottom" id="TBY-GY-fwl"/>
+                                    <constraint firstAttribute="trailing" secondItem="2cT-RB-bol" secondAttribute="trailing" constant="10" id="bZd-OS-3iz"/>
+                                    <constraint firstAttribute="bottom" secondItem="2cT-RB-bol" secondAttribute="bottom" constant="10" id="fgu-pX-wl9"/>
+                                    <constraint firstAttribute="trailing" secondItem="YB6-vP-l6D" secondAttribute="trailing" id="kAR-AA-FUj"/>
+                                    <constraint firstItem="YB6-vP-l6D" firstAttribute="leading" secondItem="qhg-61-Xj8" secondAttribute="leading" id="kRV-NQ-z0F"/>
+                                    <constraint firstItem="YB6-vP-l6D" firstAttribute="top" secondItem="qhg-61-Xj8" secondAttribute="top" id="nbU-pL-aTI"/>
+                                    <constraint firstItem="ICn-xH-enn" firstAttribute="leading" secondItem="qhg-61-Xj8" secondAttribute="leading" constant="10" id="xDH-TW-YqL"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="fgu-pX-wl9"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Q0L-Nx-1kw" secondAttribute="centerX" id="0am-pU-8PT"/>
+                            <constraint firstItem="HEE-OB-D5D" firstAttribute="top" secondItem="qhg-61-Xj8" secondAttribute="bottom" id="9eF-zh-dOB"/>
+                            <constraint firstAttribute="trailing" secondItem="Q0L-Nx-1kw" secondAttribute="trailing" constant="10" id="GUU-xj-s3s"/>
+                            <constraint firstItem="qhg-61-Xj8" firstAttribute="top" secondItem="Q0L-Nx-1kw" secondAttribute="bottom" constant="10" id="OOf-CQ-vX9"/>
+                            <constraint firstItem="qhg-61-Xj8" firstAttribute="leading" secondItem="he6-vR-GnM" secondAttribute="leading" id="R2O-q6-oye"/>
+                            <constraint firstItem="Q0L-Nx-1kw" firstAttribute="leading" secondItem="he6-vR-GnM" secondAttribute="leading" constant="10" id="e8R-c9-pmV"/>
+                            <constraint firstItem="Q0L-Nx-1kw" firstAttribute="top" secondItem="WeE-KQ-aiA" secondAttribute="bottom" constant="50" id="eFt-eb-3bv"/>
+                            <constraint firstAttribute="trailing" secondItem="qhg-61-Xj8" secondAttribute="trailing" id="lIN-0q-AFu"/>
+                            <constraint firstItem="HEE-OB-D5D" firstAttribute="top" secondItem="qhg-61-Xj8" secondAttribute="bottom" id="vx3-4A-6Ys"/>
+                            <constraint firstItem="Q0L-Nx-1kw" firstAttribute="top" secondItem="he6-vR-GnM" secondAttribute="top" constant="50" id="xb9-bb-t7T"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="eFt-eb-3bv"/>
+                                <exclude reference="vx3-4A-6Ys"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="800"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fc3-gJ-CJE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="96" y="426"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="9P3-xE-KtC">
+            <objects>
+                <viewController restorationIdentifier="pageThree" storyboardIdentifier="pageThree" id="kNi-CV-aCr" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GgE-TR-gH9"/>
+                        <viewControllerLayoutGuide type="bottom" id="kR5-al-d4i"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="StL-QG-wga">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="With a nod to classic mail, Slowposts are delivered after a time delay, creating surprising, thoughtful moments." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEs-NT-j1O">
+                                <rect key="frame" x="26" y="50" width="548" height="47"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="example_photo.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="oyT-1Y-PgK">
+                                <rect key="frame" x="0.0" y="107" width="600" height="800"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="oyT-1Y-PgK" secondAttribute="height" multiplier="3:4" id="x1E-qL-4id"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="AEs-NT-j1O" firstAttribute="top" secondItem="GgE-TR-gH9" secondAttribute="bottom" constant="50" id="2Fu-yt-jcC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AEs-NT-j1O" secondAttribute="trailing" constant="10" id="Ck7-xU-UyU"/>
+                            <constraint firstItem="oyT-1Y-PgK" firstAttribute="leading" secondItem="StL-QG-wga" secondAttribute="leading" id="IxT-x0-lGi"/>
+                            <constraint firstItem="oyT-1Y-PgK" firstAttribute="top" secondItem="AEs-NT-j1O" secondAttribute="bottom" constant="10" id="Lhw-JQ-hwG"/>
+                            <constraint firstAttribute="trailing" secondItem="oyT-1Y-PgK" secondAttribute="trailing" id="XWi-N2-zkp"/>
+                            <constraint firstItem="AEs-NT-j1O" firstAttribute="top" secondItem="StL-QG-wga" secondAttribute="top" constant="50" id="bfh-15-A1t"/>
+                            <constraint firstItem="AEs-NT-j1O" firstAttribute="leading" secondItem="StL-QG-wga" secondAttribute="leadingMargin" constant="10" id="hTu-nz-4Rm"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="2Fu-yt-jcC"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gxV-C2-pn1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="96" y="1207"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ljP-Wa-DEE">
+            <objects>
+                <viewController restorationIdentifier="pageFour" storyboardIdentifier="pageFour" id="6Yw-f5-BRV" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b8m-0y-7BZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="aUy-qR-Sc2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ukF-M8-GLN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enjoy the deeper form of communication that happens when people stop chatting and start saying something meaningful." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2i-YZ-JeQ">
+                                <rect key="frame" x="10" y="273" width="580" height="55"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Slowpost Icon Set (green)" translatesAutoresizingMaskIntoConstraints="NO" id="RV3-5A-hVZ">
+                                <rect key="frame" x="225" y="495" width="150" height="95"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="x2i-YZ-JeQ" firstAttribute="leading" secondItem="ukF-M8-GLN" secondAttribute="leading" constant="10" id="ALY-iQ-04h"/>
+                            <constraint firstAttribute="centerX" secondItem="RV3-5A-hVZ" secondAttribute="centerX" id="fOr-bb-qXo"/>
+                            <constraint firstItem="aUy-qR-Sc2" firstAttribute="top" secondItem="RV3-5A-hVZ" secondAttribute="bottom" constant="10" id="kOp-Os-5F0"/>
+                            <constraint firstAttribute="trailing" secondItem="x2i-YZ-JeQ" secondAttribute="trailing" constant="10" id="lEc-bJ-IL4"/>
+                            <constraint firstItem="x2i-YZ-JeQ" firstAttribute="top" secondItem="b8m-0y-7BZ" secondAttribute="bottom" constant="50" id="oml-y5-mQb"/>
+                            <constraint firstAttribute="centerY" secondItem="x2i-YZ-JeQ" secondAttribute="centerY" id="ynb-x4-mTz"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="oml-y5-mQb"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QN4-FI-OSN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="96" y="1898"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="FC7-Kj-SAs">
@@ -427,5 +650,8 @@
     </scenes>
     <resources>
         <image name="Slowpost Icon Set" width="150" height="95"/>
+        <image name="Slowpost Icon Set (green)" width="150" height="95"/>
+        <image name="example_card.jpg" width="1024" height="768"/>
+        <image name="example_photo.jpg" width="720" height="960"/>
     </resources>
 </document>

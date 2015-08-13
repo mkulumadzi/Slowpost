@@ -16,11 +16,21 @@ class WelcomeScreenViewController: UIViewController, UIPageViewControllerDataSou
     @IBOutlet weak var signUpButton: UIButton!
     
     private var pageViewController: UIPageViewController?
-    var pageIndex:Int = 0
-    private let titleArray = ["One", "Two", "Three", "Four"]
+    
+    var pageOne:UIViewController!
+    var pageTwo:UIViewController!
+    var pageThree:UIViewController!
+    var pageFour:UIViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        signUpButton.hidden = true
+        
+        pageOne = self.storyboard!.instantiateViewControllerWithIdentifier("pageOne") as! UIViewController
+        pageTwo = self.storyboard!.instantiateViewControllerWithIdentifier("pageTwo") as! UIViewController
+        pageThree = self.storyboard!.instantiateViewControllerWithIdentifier("pageThree") as! UIViewController
+        pageFour = self.storyboard!.instantiateViewControllerWithIdentifier("pageFour") as! UIViewController
 
         createPageViewController()
         setupPageControl()
@@ -36,15 +46,10 @@ class WelcomeScreenViewController: UIViewController, UIPageViewControllerDataSou
         
         let pageController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
         pageController.dataSource = self
-//        let pageController = self.storyboard!.instantiateViewControllerWithIdentifier("pageViewController") as! UIPageViewController
-//        pageController.dataSource = self
         pageController.delegate = self
         
-        if titleArray.count > 0 {
-            let firstController = getItemController(0)!
-            let startingViewControllers: NSArray = [firstController]
-            pageController.setViewControllers(startingViewControllers as! [WelcomePageItemViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
-        }
+        let startingViewControllers: NSArray = [pageOne]
+        pageController.setViewControllers(startingViewControllers as! [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
         
         pageViewController = pageController
         addChildViewController(pageViewController!)
@@ -57,52 +62,59 @@ class WelcomeScreenViewController: UIViewController, UIPageViewControllerDataSou
     
     private func setupPageControl() {
         let appearance = UIPageControl.appearance()
-//        appearance.pageIndicatorTintColor = UIColor.grayColor()
-//        appearance.currentPageIndicatorTintColor = UIColor.whiteColor()
         appearance.backgroundColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
+    }
+    
+    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
+        
+        if let previousController = previousViewControllers[0] as? UIViewController {
+            if previousController.restorationIdentifier! == "pageThree" {
+                signUpButton.hidden = false
+            }
+            else {
+                signUpButton.hidden = true
+            }
+        }
     }
     
     // MARK: - UIPageViewControllerDataSource
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         
-        let itemController = viewController as! WelcomePageItemViewController
-        
-        if itemController.itemIndex > 0 {
-            return getItemController(itemController.itemIndex-1)
+        if viewController.restorationIdentifier == "pageOne" {
+            return nil
+        } else if viewController.restorationIdentifier == "pageTwo" {
+            return pageOne
+        } else if viewController.restorationIdentifier == "pageThree" {
+            return pageTwo
+        } else if viewController.restorationIdentifier == "pageFour" {
+            return pageThree
+        } else {
+            return nil
         }
-        
-        return nil
+
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
         
-        let itemController = viewController as! WelcomePageItemViewController
-        
-        if itemController.itemIndex+1 < titleArray.count {
-            return getItemController(itemController.itemIndex+1)
+        if viewController.restorationIdentifier == "pageOne" {
+            return pageTwo
+        } else if viewController.restorationIdentifier == "pageTwo" {
+            return pageThree
+        } else if viewController.restorationIdentifier == "pageThree" {
+            return pageFour
+        } else if viewController.restorationIdentifier == "pageFour" {
+            return nil
+        } else {
+            return nil
         }
         
-        return nil
-    }
-    
-    private func getItemController(itemIndex: Int) -> WelcomePageItemViewController? {
-        
-        if itemIndex < titleArray.count {
-//            let welcomePageItemViewController = WelcomePageItemViewController.new()
-            let welcomePageItemViewController = self.storyboard!.instantiateViewControllerWithIdentifier("pageItemController") as! WelcomePageItemViewController
-            welcomePageItemViewController.itemIndex = itemIndex
-            welcomePageItemViewController.labelValue = titleArray[itemIndex]
-            return welcomePageItemViewController
-        }
-        
-        return nil
     }
     
     // MARK: - Page Indicator
     
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return titleArray.count
+        return 4
     }
     
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {

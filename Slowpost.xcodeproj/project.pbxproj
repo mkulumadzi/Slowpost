@@ -92,7 +92,6 @@
 		D2D866371B2F5B8D00847051 /* log-out.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866361B2F5B8D00847051 /* log-out.png */; };
 		D2D866391B2F5DF900847051 /* log-out-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866381B2F5DF900847051 /* log-out-white.png */; };
 		D2D8663F1B2F62B200847051 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */; };
-		D2E414961B7BFD78006C6C5F /* WelcomePageItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E414951B7BFD78006C6C5F /* WelcomePageItemViewController.swift */; };
 		D2E414981B7D10E4006C6C5F /* Default Card.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E414971B7D10E4006C6C5F /* Default Card.png */; };
 		D2E4EDCA1B7D135900D2A028 /* Quicksand_Dash.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDC31B7D11EA00D2A028 /* Quicksand_Dash.otf */; };
 		D2E4EDCB1B7D135C00D2A028 /* Quicksand-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDC41B7D11F300D2A028 /* Quicksand-Bold.otf */; };
@@ -101,6 +100,8 @@
 		D2E4EDCE1B7D136500D2A028 /* Quicksand-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDC71B7D11F300D2A028 /* Quicksand-Light.otf */; };
 		D2E4EDCF1B7D136700D2A028 /* Quicksand-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDC81B7D11F300D2A028 /* Quicksand-LightItalic.otf */; };
 		D2E4EDD01B7D136A00D2A028 /* Quicksand-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDC91B7D11F300D2A028 /* Quicksand-Regular.otf */; };
+		D2E4EDD21B7D1EC000D2A028 /* example_card.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDD11B7D1EC000D2A028 /* example_card.jpg */; };
+		D2E4EDD41B7D307E00D2A028 /* example_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDD31B7D307E00D2A028 /* example_photo.jpg */; };
 		D2E956461B30952800CA8CC8 /* ChooseImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E956451B30952800CA8CC8 /* ChooseImageViewController.swift */; };
 		D2E9564A1B309AA100CA8CC8 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -210,7 +211,6 @@
 		D2D866361B2F5B8D00847051 /* log-out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log-out.png"; sourceTree = "<group>"; };
 		D2D866381B2F5DF900847051 /* log-out-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log-out-white.png"; sourceTree = "<group>"; };
 		D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
-		D2E414951B7BFD78006C6C5F /* WelcomePageItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomePageItemViewController.swift; sourceTree = "<group>"; };
 		D2E414971B7D10E4006C6C5F /* Default Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default Card.png"; sourceTree = "<group>"; };
 		D2E4EDC31B7D11EA00D2A028 /* Quicksand_Dash.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Quicksand_Dash.otf; sourceTree = "<group>"; };
 		D2E4EDC41B7D11F300D2A028 /* Quicksand-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.otf"; sourceTree = "<group>"; };
@@ -219,6 +219,8 @@
 		D2E4EDC71B7D11F300D2A028 /* Quicksand-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Light.otf"; sourceTree = "<group>"; };
 		D2E4EDC81B7D11F300D2A028 /* Quicksand-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-LightItalic.otf"; sourceTree = "<group>"; };
 		D2E4EDC91B7D11F300D2A028 /* Quicksand-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.otf"; sourceTree = "<group>"; };
+		D2E4EDD11B7D1EC000D2A028 /* example_card.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = example_card.jpg; sourceTree = "<group>"; };
+		D2E4EDD31B7D307E00D2A028 /* example_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = example_photo.jpg; sourceTree = "<group>"; };
 		D2E956451B30952800CA8CC8 /* ChooseImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseImageViewController.swift; sourceTree = "<group>"; };
 		D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		D58257AF9C03394AF69653DE /* Pods-Slowpost.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slowpost.staging.xcconfig"; path = "Pods/Target Support Files/Pods-Slowpost/Pods-Slowpost.staging.xcconfig"; sourceTree = "<group>"; };
@@ -264,7 +266,6 @@
 				CC23DE291AE54C0300AFEDE4 /* login.storyboard */,
 				D25A9CAB1B225D3400ABBBA4 /* RegisterViewController.swift */,
 				D206FB4A1B61688D008BB412 /* WelcomeScreenViewController.swift */,
-				D2E414951B7BFD78006C6C5F /* WelcomePageItemViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -309,6 +310,8 @@
 		CC96E4A31ABCD5AB001E6D27 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D2E4EDD11B7D1EC000D2A028 /* example_card.jpg */,
+				D2E4EDD31B7D307E00D2A028 /* example_photo.jpg */,
 				D2CEC46B1B7256E9002CFD25 /* grid-green.png */,
 				D2E414971B7D10E4006C6C5F /* Default Card.png */,
 				D2CEC46C1B7256E9002CFD25 /* ios7-camera-green.png */,
@@ -601,6 +604,7 @@
 				D2E4EDCC1B7D135F00D2A028 /* Quicksand-BoldItalic.otf in Resources */,
 				D2D866311B2F52A600847051 /* profile.storyboard in Resources */,
 				D25A9CA01B2259D300ABBBA4 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				D2E4EDD21B7D1EC000D2A028 /* example_card.jpg in Resources */,
 				D25A9C9C1B2259D300ABBBA4 /* Apache License.txt in Resources */,
 				D25A9CA21B2259D300ABBBA4 /* OpenSans-Light.ttf in Resources */,
 				D206FB471B615A3C008BB412 /* SIL Open Font License.txt in Resources */,
@@ -618,6 +622,7 @@
 				D21D79D51B5093430014510E /* ios7-checkmark-not-checked.png in Resources */,
 				D2E4EDCE1B7D136500D2A028 /* Quicksand-Light.otf in Resources */,
 				D25A9CA11B2259D300ABBBA4 /* OpenSans-Italic.ttf in Resources */,
+				D2E4EDD41B7D307E00D2A028 /* example_photo.jpg in Resources */,
 				D206FB541B619A53008BB412 /* home.storyboard in Resources */,
 				D20D8EDB1B2B384E00BBF6B5 /* compose-white.png in Resources */,
 				D2E4EDCA1B7D135900D2A028 /* Quicksand_Dash.otf in Resources */,
@@ -748,7 +753,6 @@
 				D2B7CEA61B694C14007F8235 /* GlobalVariables.swift in Sources */,
 				D27E194E1B3B770C0052687F /* SlowpostModel.xcdatamodeld in Sources */,
 				CC96E49C1ABCC8EB001E6D27 /* InitialViewController.swift in Sources */,
-				D2E414961B7BFD78006C6C5F /* WelcomePageItemViewController.swift in Sources */,
 				D2B7CEAC1B6951CE007F8235 /* ConfigurationService.swift in Sources */,
 				D2B7CEAA1B694E55007F8235 /* MailService.swift in Sources */,
 				CCCB1A531AB0D48A0067F100 /* AppDelegate.swift in Sources */,
