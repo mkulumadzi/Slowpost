@@ -25,6 +25,8 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -471,7 +473,7 @@ Evan</string>
         <!--Register View Controller-->
         <scene sceneID="FC7-Kj-SAs">
             <objects>
-                <viewController storyboardIdentifier="RegisterView" id="cqE-Qh-T2s" customClass="RegisterViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cqE-Qh-T2s" customClass="RegisterViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5ay-1r-pEx"/>
                         <viewControllerLayoutGuide type="bottom" id="ZQI-81-jr8"/>
@@ -492,23 +494,8 @@ Evan</string>
                                     <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="Mvm-sb-IE6"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTt-uY-DQ5" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="296" width="540" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="0rb-A5-0UC"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                <state key="normal" title="Sign up">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="signUpPressed:" destination="cqE-Qh-T2s" eventType="touchUpInside" id="o2a-OR-vYs"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Nfc-Fc-WhF" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="256" width="540" height="30"/>
+                                <rect key="frame" x="30" y="216" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="dcm-H7-lcb"/>
                                 </constraints>
@@ -566,21 +553,21 @@ Evan</string>
                                                 <action selector="cancel:" destination="cqE-Qh-T2s" id="9Mu-Q8-3GO"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="done" id="9in-VZ-rYf">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="d3T-mn-vnX" userLabel="Next">
+                                                <rect key="frame" x="572" y="-122" width="12" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="ios7-arrow-right-white.png">
+                                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="NmY-mY-Z9m" kind="show" identifier="enterPhone" id="AYu-Qz-Xtr"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ac9-aQ-31f" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="216" width="540" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="8Bh-bK-Y7I"/>
-                                </constraints>
-                                <color key="textColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
-                                <connections>
-                                    <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="iJI-aC-uiu"/>
-                                </connections>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pYC-iI-xKM" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="136" width="540" height="30"/>
                                 <constraints>
@@ -597,8 +584,6 @@ Evan</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="P5I-cq-lFh" firstAttribute="top" secondItem="VGQ-6a-6wA" secondAttribute="bottom" constant="10" id="393-Pl-oue"/>
-                            <constraint firstItem="vTt-uY-DQ5" firstAttribute="top" secondItem="Nfc-Fc-WhF" secondAttribute="bottom" constant="10" id="73V-il-2BE"/>
-                            <constraint firstItem="ac9-aQ-31f" firstAttribute="top" secondItem="P5I-cq-lFh" secondAttribute="bottom" constant="10" id="8D7-WV-UUM"/>
                             <constraint firstAttribute="trailing" secondItem="P5I-cq-lFh" secondAttribute="trailing" constant="30" id="96y-53-c3a"/>
                             <constraint firstAttribute="trailing" secondItem="VGQ-6a-6wA" secondAttribute="trailing" constant="30" id="9vy-EU-yZv"/>
                             <constraint firstItem="P5I-cq-lFh" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="B8V-qf-Rx7"/>
@@ -606,11 +591,9 @@ Evan</string>
                             <constraint firstItem="tZF-2h-GJP" firstAttribute="top" secondItem="YL5-63-9jW" secondAttribute="top" id="Hxx-1L-wBk"/>
                             <constraint firstItem="VGQ-6a-6wA" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="I9B-8l-kjq"/>
                             <constraint firstItem="Nfc-Fc-WhF" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="IdK-M9-ICB"/>
-                            <constraint firstItem="ac9-aQ-31f" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="K7Y-d0-6Xm"/>
-                            <constraint firstItem="Nfc-Fc-WhF" firstAttribute="top" secondItem="ac9-aQ-31f" secondAttribute="bottom" constant="10" id="Kfg-k5-zIS"/>
                             <constraint firstAttribute="trailing" secondItem="8aQ-qm-rHK" secondAttribute="trailing" id="UCx-Bs-3nE"/>
-                            <constraint firstAttribute="trailing" secondItem="vTt-uY-DQ5" secondAttribute="trailing" constant="30" id="UGI-es-xUO"/>
                             <constraint firstItem="Nfc-Fc-WhF" firstAttribute="top" secondItem="P5I-cq-lFh" secondAttribute="bottom" constant="10" id="WU0-e3-L6c"/>
+                            <constraint firstItem="Nfc-Fc-WhF" firstAttribute="top" secondItem="P5I-cq-lFh" secondAttribute="bottom" constant="10" id="Wfd-GJ-HAN"/>
                             <constraint firstItem="8aQ-qm-rHK" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" id="XJQ-hw-mBd"/>
                             <constraint firstItem="8aQ-qm-rHK" firstAttribute="top" secondItem="tZF-2h-GJP" secondAttribute="bottom" id="bBF-6v-Yk3"/>
                             <constraint firstAttribute="trailing" secondItem="tZF-2h-GJP" secondAttribute="trailing" id="bod-1e-Iad"/>
@@ -618,8 +601,6 @@ Evan</string>
                             <constraint firstItem="P5I-cq-lFh" firstAttribute="top" secondItem="pYC-iI-xKM" secondAttribute="bottom" constant="10" id="mDd-eT-Qbf"/>
                             <constraint firstAttribute="trailing" secondItem="Nfc-Fc-WhF" secondAttribute="trailing" constant="30" id="o26-Fx-U6V"/>
                             <constraint firstItem="pYC-iI-xKM" firstAttribute="top" secondItem="VGQ-6a-6wA" secondAttribute="bottom" constant="10" id="onX-8i-cJL"/>
-                            <constraint firstAttribute="trailing" secondItem="ac9-aQ-31f" secondAttribute="trailing" constant="30" id="pO2-Zc-EcL"/>
-                            <constraint firstItem="vTt-uY-DQ5" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="qHx-J0-XXf"/>
                             <constraint firstAttribute="trailing" secondItem="pYC-iI-xKM" secondAttribute="trailing" constant="30" id="uYc-aR-0bj"/>
                             <constraint firstItem="tZF-2h-GJP" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" id="v8n-2r-Ex8"/>
                         </constraints>
@@ -636,9 +617,8 @@ Evan</string>
                         <outlet property="emailTextField" destination="P5I-cq-lFh" id="9zA-yl-P3b"/>
                         <outlet property="nameTextField" destination="VGQ-6a-6wA" id="fdE-Zf-mlF"/>
                         <outlet property="navBar" destination="tZF-2h-GJP" id="F2Y-9S-K3c"/>
+                        <outlet property="nextButton" destination="d3T-mn-vnX" id="sug-nB-EWr"/>
                         <outlet property="passwordTextField" destination="Nfc-Fc-WhF" id="GB7-l5-llc"/>
-                        <outlet property="phoneTextField" destination="ac9-aQ-31f" id="Iro-v1-kzw"/>
-                        <outlet property="signUpButton" destination="vTt-uY-DQ5" id="M1o-eM-R41"/>
                         <outlet property="usernameTextField" destination="pYC-iI-xKM" id="6Ns-fC-e4v"/>
                         <outlet property="warningLabel" destination="8aQ-qm-rHK" id="LAo-un-FAk"/>
                     </connections>
@@ -647,11 +627,177 @@ Evan</string>
             </objects>
             <point key="canvasLocation" x="839" y="-1306"/>
         </scene>
+        <!--Phone Entry View Controller-->
+        <scene sceneID="Gjs-Ks-Qrf">
+            <objects>
+                <viewController id="NmY-mY-Z9m" customClass="PhoneEntryViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="J4y-sO-Zlx"/>
+                        <viewControllerLayoutGuide type="bottom" id="CCx-An-mUc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Bsa-Dz-qWU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AzT-bW-tCU" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="60" width="600" height="30"/>
+                                <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="IBe-tH-7pd"/>
+                                    <constraint firstAttribute="height" constant="30" id="X5P-Sg-jac"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="X5P-Sg-jac"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2oZ-Dt-Pwj">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="sAe-DO-G3b"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="24"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Slowpost" id="IaF-0m-rcD">
+                                        <barButtonItem key="leftBarButtonItem" style="done" id="1St-9P-f4x">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2Ii-kA-rOF">
+                                                <rect key="frame" x="16" y="-122" width="12" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="ios7-arrow-left-white.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1Mw-MZ-Xs7" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="100" width="540" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6cX-u9-lxW"/>
+                                </constraints>
+                                <color key="textColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="och-Jp-fp1" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="280" width="540" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Nli-W2-KEt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Sign up">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="signUpPressed:" destination="NmY-mY-Z9m" eventType="touchUpInside" id="zWW-b9-q3h"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="och-Jp-fp1" firstAttribute="leading" secondItem="Bsa-Dz-qWU" secondAttribute="leading" constant="30" id="1a2-DL-51G"/>
+                            <constraint firstAttribute="trailing" secondItem="2oZ-Dt-Pwj" secondAttribute="trailing" id="3IN-dV-GvY"/>
+                            <constraint firstItem="2oZ-Dt-Pwj" firstAttribute="leading" secondItem="Bsa-Dz-qWU" secondAttribute="leading" id="Jek-Q8-LCa"/>
+                            <constraint firstAttribute="trailing" secondItem="AzT-bW-tCU" secondAttribute="trailing" id="R9Z-wk-QV8"/>
+                            <constraint firstItem="1Mw-MZ-Xs7" firstAttribute="top" secondItem="J4y-sO-Zlx" secondAttribute="bottom" constant="80" id="Zxc-js-LAW"/>
+                            <constraint firstItem="AzT-bW-tCU" firstAttribute="top" secondItem="2oZ-Dt-Pwj" secondAttribute="bottom" id="ctz-kL-0sW"/>
+                            <constraint firstItem="2oZ-Dt-Pwj" firstAttribute="top" secondItem="Bsa-Dz-qWU" secondAttribute="top" id="eAo-Vz-kpB"/>
+                            <constraint firstItem="AzT-bW-tCU" firstAttribute="leading" secondItem="Bsa-Dz-qWU" secondAttribute="leading" id="fz5-IB-3jt"/>
+                            <constraint firstItem="1Mw-MZ-Xs7" firstAttribute="leading" secondItem="Bsa-Dz-qWU" secondAttribute="leading" constant="30" id="gG3-YQ-vOC"/>
+                            <constraint firstAttribute="trailing" secondItem="och-Jp-fp1" secondAttribute="trailing" constant="30" id="gyU-VG-RIp"/>
+                            <constraint firstAttribute="trailing" secondItem="1Mw-MZ-Xs7" secondAttribute="trailing" constant="30" id="qtu-mS-O5Z"/>
+                            <constraint firstAttribute="centerY" secondItem="och-Jp-fp1" secondAttribute="centerY" id="qua-qi-TX5"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="navBar" destination="2oZ-Dt-Pwj" id="6GI-pe-A3e"/>
+                        <outlet property="phoneTextField" destination="1Mw-MZ-Xs7" id="0zk-qa-LHS"/>
+                        <outlet property="signUpButton" destination="och-Jp-fp1" id="xDU-fd-RvD"/>
+                        <outlet property="warningLabel" destination="AzT-bW-tCU" id="M9k-aI-vsp"/>
+                        <segue destination="w8n-Sy-2a1" kind="show" identifier="signUpComplete" id="4ea-Ld-oxM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cwo-3D-PBP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1502" y="-1306"/>
+        </scene>
+        <!--Sign Up Complete View Controller-->
+        <scene sceneID="b0k-vm-4Cb">
+            <objects>
+                <viewController id="w8n-Sy-2a1" customClass="SignUpCompleteViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4IF-iz-Hs8"/>
+                        <viewControllerLayoutGuide type="bottom" id="PLy-K3-DJn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xgB-Ws-1Bv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ul4-3K-flw">
+                                <rect key="frame" x="30" y="70" width="540" height="139"/>
+                                <string key="text">Would you like us to find your contacts who have already registered with Slowpost? If so, please give Slowpost access to your address book when we ask on the next screen!
+
+We won't save your address book on our servers, but we will search for matches with registered users when you compose a message.</string>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w4s-zz-Gj1">
+                                <rect key="frame" x="46" y="239" width="508" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="I6z-iY-HDa"/>
+                                </constraints>
+                                <state key="normal" title="Ok, got it.">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goToMailbox:" destination="w8n-Sy-2a1" eventType="touchUpInside" id="By6-TJ-QyN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ul4-3K-flw" firstAttribute="top" secondItem="4IF-iz-Hs8" secondAttribute="bottom" constant="50" id="9Tr-gx-Dho"/>
+                            <constraint firstAttribute="trailing" secondItem="Ul4-3K-flw" secondAttribute="trailing" constant="30" id="HY8-IN-4Sh"/>
+                            <constraint firstItem="w4s-zz-Gj1" firstAttribute="leading" secondItem="xgB-Ws-1Bv" secondAttribute="leadingMargin" constant="30" id="Wyb-pH-i5V"/>
+                            <constraint firstItem="w4s-zz-Gj1" firstAttribute="top" secondItem="Ul4-3K-flw" secondAttribute="bottom" constant="30" id="X4U-iw-kBI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="w4s-zz-Gj1" secondAttribute="trailing" constant="30" id="gau-zI-WRl"/>
+                            <constraint firstItem="Ul4-3K-flw" firstAttribute="leading" secondItem="xgB-Ws-1Bv" secondAttribute="leading" constant="30" id="mFw-Ty-3CA"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="gotItButton" destination="w4s-zz-Gj1" id="waz-LG-Dtx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kkx-io-WIk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2183" y="-1306"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Slowpost Icon Set" width="150" height="95"/>
         <image name="Slowpost Icon Set (green)" width="150" height="95"/>
         <image name="example_card.jpg" width="1024" height="768"/>
         <image name="example_photo.jpg" width="720" height="960"/>
+        <image name="ios7-arrow-left-white.png" width="192" height="320"/>
+        <image name="ios7-arrow-right-white.png" width="192" height="320"/>
     </resources>
 </document>

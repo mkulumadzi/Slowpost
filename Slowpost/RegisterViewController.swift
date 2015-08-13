@@ -14,11 +14,10 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var nameTextField: BottomBorderUITextField!
     @IBOutlet weak var usernameTextField: BottomBorderUITextField!
     @IBOutlet weak var emailTextField: BottomBorderUITextField!
-    @IBOutlet weak var phoneTextField: BottomBorderUITextField!
     @IBOutlet weak var passwordTextField: BottomBorderUITextField!
-    @IBOutlet weak var signUpButton: TextUIButton!
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var nextButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +27,11 @@ class RegisterViewController: UIViewController {
         nameTextField.addBottomLayer()
         usernameTextField.addBottomLayer()
         emailTextField.addBottomLayer()
-        phoneTextField.addBottomLayer()
         passwordTextField.addBottomLayer()
         
-        signUpButton.layer.cornerRadius = 5
-        validateSignUpButton()
-        
         warningLabel.hide()
+        
+        validateNextButton()
         
     }
     
@@ -48,62 +45,32 @@ class RegisterViewController: UIViewController {
         super.touchesBegan(touches, withEvent: event)
     }
     
-    @IBAction func signUpPressed(sender: AnyObject) {
-        signUpButton.disable()
-        
-        var personURL:String!
-        let newPersonURL = "\(PostOfficeURL)person/new"
-        var parameters = ["name": "\(nameTextField.text)", "username": "\(usernameTextField.text)", "email": "\(emailTextField.text)", "phone": "\(phoneTextField.text)", "password": "\(passwordTextField.text)"]
-        
-        RestService.postRequest(newPersonURL, parameters: parameters, completion: { (error, result) -> Void in
-            if let response = result as? [AnyObject] {
-                if response[0] as? Int == 201 {
-                    if let location = response[1] as? String {
-                        var personId:String = PersonService.parsePersonURLForId(location)
-                        PersonService.getPerson(personId, headers: nil, completion: { (error, result) -> Void in
-                            if error != nil {
-                                println(error)
-                            }
-                            else if let person = result as? Person {
-                                loggedInUser = person
-                                LoginService.saveLoginToSession(loggedInUser.id)
-                                self.goToMailbox(self)
-                            }
-                            else {
-                                println("Unexpected sign up result.")
-                            }
-                        })
-                    }
-                }
-                else if let error_message = response[1] as? String {
-                    self.warningLabel.show(error_message)
-                }
-            }
-        })
-    }
-    
     @IBAction func editingChanged(sender: AnyObject) {
-        validateSignUpButton()
+        validateNextButton()
         warningLabel.hide()
     }
     
-    func validateSignUpButton() {
+    func validateNextButton() {
         if nameTextField.text != "" && usernameTextField.text != "" && emailTextField.text != "" && passwordTextField.text != "" {
-            signUpButton.enable()
+            nextButton.enabled = true
         }
         else {
-            signUpButton.disable()
+            nextButton.enabled = false
         }
-    }
-    
-    func goToMailbox(sender: AnyObject) {
-        var storyboard = UIStoryboard(name: "initial", bundle: nil)
-        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-        self.presentViewController(controller, animated: true, completion: nil)
     }
     
     @IBAction func cancel(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: {})
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "enterPhone" {
+            let destinationViewController = segue.destinationViewController as? PhoneEntryViewController
+            destinationViewController!.name = nameTextField.text
+            destinationViewController!.username = usernameTextField.text
+            destinationViewController!.email = emailTextField.text
+            destinationViewController!.password = passwordTextField.text
+        }
     }
     
 }
