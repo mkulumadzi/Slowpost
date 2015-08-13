@@ -51,9 +51,10 @@
 		D25A9CA41B2259D300ABBBA4 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C991B2259D300ABBBA4 /* OpenSans-Regular.ttf */; };
 		D25A9CA51B2259D300ABBBA4 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C9A1B2259D300ABBBA4 /* OpenSans-Semibold.ttf */; };
 		D25A9CA61B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C9B1B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf */; };
-		D25A9CAC1B225D3400ABBBA4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25A9CAB1B225D3400ABBBA4 /* RegisterViewController.swift */; };
+		D25A9CAC1B225D3400ABBBA4 /* PersonalDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25A9CAB1B225D3400ABBBA4 /* PersonalDetailsViewController.swift */; };
 		D267262C1B7D3E1D00FE651F /* PhoneEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D267262B1B7D3E1D00FE651F /* PhoneEntryViewController.swift */; };
 		D267262E1B7D3E3700FE651F /* SignUpCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D267262D1B7D3E3700FE651F /* SignUpCompleteViewController.swift */; };
+		D26726301B7D524100FE651F /* UsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D267262F1B7D524100FE651F /* UsernameViewController.swift */; };
 		D27DA31B1B61C8EE00DF32A1 /* settings-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D27DA31A1B61C8EE00DF32A1 /* settings-white.png */; };
 		D27DA31E1B62ADB600DF32A1 /* ios7-arrow-left-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D27DA31C1B62ADB600DF32A1 /* ios7-arrow-left-white.png */; };
 		D27DA31F1B62ADB600DF32A1 /* ios7-arrow-right-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D27DA31D1B62ADB600DF32A1 /* ios7-arrow-right-white.png */; };
@@ -170,9 +171,10 @@
 		D25A9C991B2259D300ABBBA4 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		D25A9C9A1B2259D300ABBBA4 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		D25A9C9B1B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
-		D25A9CAB1B225D3400ABBBA4 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		D25A9CAB1B225D3400ABBBA4 /* PersonalDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalDetailsViewController.swift; sourceTree = "<group>"; };
 		D267262B1B7D3E1D00FE651F /* PhoneEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneEntryViewController.swift; sourceTree = "<group>"; };
 		D267262D1B7D3E3700FE651F /* SignUpCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpCompleteViewController.swift; sourceTree = "<group>"; };
+		D267262F1B7D524100FE651F /* UsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsernameViewController.swift; sourceTree = "<group>"; };
 		D27DA31A1B61C8EE00DF32A1 /* settings-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-white.png"; sourceTree = "<group>"; };
 		D27DA31C1B62ADB600DF32A1 /* ios7-arrow-left-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-arrow-left-white.png"; sourceTree = "<group>"; };
 		D27DA31D1B62ADB600DF32A1 /* ios7-arrow-right-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-arrow-right-white.png"; sourceTree = "<group>"; };
@@ -268,10 +270,11 @@
 			children = (
 				CC96E49F1ABCCBF2001E6D27 /* LogInViewController.swift */,
 				CC23DE291AE54C0300AFEDE4 /* login.storyboard */,
-				D25A9CAB1B225D3400ABBBA4 /* RegisterViewController.swift */,
+				D25A9CAB1B225D3400ABBBA4 /* PersonalDetailsViewController.swift */,
 				D206FB4A1B61688D008BB412 /* WelcomeScreenViewController.swift */,
 				D267262B1B7D3E1D00FE651F /* PhoneEntryViewController.swift */,
 				D267262D1B7D3E3700FE651F /* SignUpCompleteViewController.swift */,
+				D267262F1B7D524100FE651F /* UsernameViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -737,11 +740,12 @@
 				D291B24C1B69AA5A00C72816 /* FileService.swift in Sources */,
 				CCCB1A551AB0D48A0067F100 /* ViewController.swift in Sources */,
 				D2D8663F1B2F62B200847051 /* EditProfileViewController.swift in Sources */,
-				D25A9CAC1B225D3400ABBBA4 /* RegisterViewController.swift in Sources */,
+				D25A9CAC1B225D3400ABBBA4 /* PersonalDetailsViewController.swift in Sources */,
 				D267262C1B7D3E1D00FE651F /* PhoneEntryViewController.swift in Sources */,
 				CCCB1A751AB0D87F0067F100 /* Person.swift in Sources */,
 				D2CEC4681B6C1F6E002CFD25 /* CardGalleryUIViewController.swift in Sources */,
 				CC96E4A01ABCCBF2001E6D27 /* LogInViewController.swift in Sources */,
+				D26726301B7D524100FE651F /* UsernameViewController.swift in Sources */,
 				D2B7CEAE1B696DBC007F8235 /* RestService.swift in Sources */,
 				D2A361381B3CB52B00811D14 /* WarningUILabel.swift in Sources */,
 				D27DA32D1B66C51900DF32A1 /* MessageUILabel.swift in Sources */,

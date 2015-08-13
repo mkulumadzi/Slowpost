@@ -1,5 +1,5 @@
 //
-//  RegisterViewController.swift
+//  PersonalDetailsViewController.swift
 //  Slowpost
 //
 //  Created by Evan Waters on 3/20/15.
@@ -9,12 +9,10 @@
 import UIKit
 import Alamofire
 
-class RegisterViewController: UIViewController {
+class PersonalDetailsViewController: UIViewController {
     
     @IBOutlet weak var nameTextField: BottomBorderUITextField!
-    @IBOutlet weak var usernameTextField: BottomBorderUITextField!
     @IBOutlet weak var emailTextField: BottomBorderUITextField!
-    @IBOutlet weak var passwordTextField: BottomBorderUITextField!
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var nextButton: UIButton!
@@ -25,9 +23,7 @@ class RegisterViewController: UIViewController {
         navBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Quicksand-Regular", size: 24)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
         
         nameTextField.addBottomLayer()
-        usernameTextField.addBottomLayer()
         emailTextField.addBottomLayer()
-        passwordTextField.addBottomLayer()
         
         warningLabel.hide()
         
@@ -51,7 +47,7 @@ class RegisterViewController: UIViewController {
     }
     
     func validateNextButton() {
-        if nameTextField.text != "" && usernameTextField.text != "" && emailTextField.text != "" && passwordTextField.text != "" {
+        if nameTextField.text != "" && emailTextField.text != "" {
             nextButton.enabled = true
         }
         else {
@@ -64,12 +60,10 @@ class RegisterViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "enterPhone" {
-            let destinationViewController = segue.destinationViewController as? PhoneEntryViewController
+        if segue.identifier == "enterUsername" {
+            let destinationViewController = segue.destinationViewController as? UsernameViewController
             destinationViewController!.name = nameTextField.text
-            destinationViewController!.username = usernameTextField.text
             destinationViewController!.email = emailTextField.text
-            destinationViewController!.password = passwordTextField.text
         }
     }
     

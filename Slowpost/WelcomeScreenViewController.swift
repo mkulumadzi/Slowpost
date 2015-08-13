@@ -25,8 +25,6 @@ class WelcomeScreenViewController: UIViewController, UIPageViewControllerDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        signUpButton.hidden = true
-        
         pageOne = self.storyboard!.instantiateViewControllerWithIdentifier("pageOne") as! UIViewController
         pageTwo = self.storyboard!.instantiateViewControllerWithIdentifier("pageTwo") as! UIViewController
         pageThree = self.storyboard!.instantiateViewControllerWithIdentifier("pageThree") as! UIViewController
@@ -63,18 +61,6 @@ class WelcomeScreenViewController: UIViewController, UIPageViewControllerDataSou
     private func setupPageControl() {
         let appearance = UIPageControl.appearance()
         appearance.backgroundColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
-    }
-    
-    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
-        
-        if let previousController = previousViewControllers[0] as? UIViewController {
-            if previousController.restorationIdentifier! == "pageThree" {
-                signUpButton.hidden = false
-            }
-            else {
-                signUpButton.hidden = true
-            }
-        }
     }
     
     // MARK: - UIPageViewControllerDataSource

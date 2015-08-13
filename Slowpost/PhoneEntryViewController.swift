@@ -17,8 +17,8 @@ class PhoneEntryViewController: UIViewController {
     @IBOutlet weak var warningLabel: WarningUILabel!
     
     var name:String!
-    var username:String!
     var email:String!
+    var username:String!
     var password:String!
 
     override func viewDidLoad() {
