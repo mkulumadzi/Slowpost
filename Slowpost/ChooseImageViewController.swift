@@ -238,9 +238,12 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "composeMessage" {
             let composeMailViewController = segue.destinationViewController as? ComposeMailViewController
-            if imageSelected.image != nil {
+            if imageSelected != nil {
                 let croppedImage = self.cropImage()
                 composeMailViewController?.cardImage = croppedImage
+            }
+            else {
+                composeMailViewController?.cardImage = UIImage(named: "Default Card.png")
             }
             composeMailViewController!.toPerson = toPerson
         }
