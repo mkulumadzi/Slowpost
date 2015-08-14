@@ -63,6 +63,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             contactsList = newContactsArray
             
             if penpalList.count == 0 {
+                noResultsLabel.hidden = true
                 self.searchPeople(self.toSearchField.text)
             }
             
@@ -153,7 +154,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
         
     }
-    
     
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
@@ -264,6 +264,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 self.otherUsersList = peopleArray
                 self.excludeContactsFromOtherList()
                 self.toPersonList.reloadData()
+                self.validateNoResultsLabel()
             }
         })
     }
