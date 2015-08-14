@@ -27,6 +27,8 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         
         navBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Quicksand-Regular", size: 24)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
         
+        self.mailTable.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: self.mailTable.bounds.size.width, height: 0.01))
+        
         mailTable.addSubview(self.refreshControl)
         
         // Calculating row height automatically; can't get it working with autolayout.
