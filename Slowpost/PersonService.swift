@@ -132,6 +132,25 @@ class PersonService {
         })
     }
     
+    class func checkFieldAvailability(params: [String: String], completion: (error: NSError?, result: AnyObject?) -> Void) {
+        var key:String = Array(params.keys)[0]
+        var value:String = params[key]!
+        
+        let availableURL = "\(PostOfficeURL)/available?\(key)=\(value)"
+        
+        RestService.getRequest(availableURL, headers: nil, completion: { (error, result) -> Void in
+            if error != nil {
+                completion(error: error, result: nil)
+            }
+            else if let jsonResult = result as? NSDictionary {
+                completion(error: nil, result: jsonResult)
+            }
+            else {
+                println("Unexpected JSON result getting \(availableURL)")
+            }
+        })
+    }
+    
     
     //Bulk search of people based on a users' contact info
     class func bulkPersonSearch(parameters: [NSDictionary], completion: (error: NSError?, result: AnyObject?) -> Void) {

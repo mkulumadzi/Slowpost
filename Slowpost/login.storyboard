@@ -542,7 +542,7 @@ Evan</string>
                                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="65F-qu-B8L" kind="show" identifier="enterUsername" id="68E-Zd-i1t"/>
+                                                    <action selector="checkEmailAvailability:" destination="cqE-Qh-T2s" eventType="touchUpInside" id="4yv-UH-nh5"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -603,6 +603,7 @@ Evan</string>
                         <outlet property="navBar" destination="tZF-2h-GJP" id="F2Y-9S-K3c"/>
                         <outlet property="nextButton" destination="d3T-mn-vnX" id="sug-nB-EWr"/>
                         <outlet property="warningLabel" destination="8aQ-qm-rHK" id="LAo-un-FAk"/>
+                        <segue destination="65F-qu-B8L" kind="show" identifier="enterUsername" id="Zhl-b4-CX5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Zp-98-wzK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -657,6 +658,9 @@ Evan</string>
                                                 <state key="normal" image="ios7-arrow-left-white.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="back:" destination="NmY-mY-Z9m" eventType="touchUpInside" id="KXa-dc-Bif"/>
+                                                </connections>
                                             </button>
                                         </barButtonItem>
                                     </navigationItem>
@@ -670,6 +674,9 @@ Evan</string>
                                 <color key="textColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                <connections>
+                                    <action selector="editingChanged:" destination="NmY-mY-Z9m" eventType="editingChanged" id="oSu-0i-Vea"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="och-Jp-fp1" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="280" width="540" height="40"/>
@@ -683,7 +690,7 @@ Evan</string>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="signUpPressed:" destination="NmY-mY-Z9m" eventType="touchUpInside" id="zWW-b9-q3h"/>
+                                    <action selector="signUpPressed:" destination="NmY-mY-Z9m" eventType="touchUpInside" id="mdq-3J-KzV"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Optionally, enter your phone number. We'll use this to help your friends find you on Slowpost." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sL0-kO-S2J">
@@ -849,6 +856,9 @@ We won't save your address book on our servers, but we will search for matches w
                                                 <state key="normal" image="ios7-arrow-left-white.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="back:" destination="65F-qu-B8L" eventType="touchUpInside" id="Idm-eK-QJD"/>
+                                                </connections>
                                             </button>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" style="done" id="hTX-hJ-aI8">
@@ -859,7 +869,7 @@ We won't save your address book on our servers, but we will search for matches w
                                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="NmY-mY-Z9m" kind="show" identifier="enterPhone" id="gAa-Wk-dv9"/>
+                                                    <action selector="checkUsernameAvailability:" destination="65F-qu-B8L" eventType="touchUpInside" id="Q9z-3h-BmJ"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
@@ -912,6 +922,7 @@ We won't save your address book on our servers, but we will search for matches w
                         <outlet property="passwordTextField" destination="ikw-33-dC8" id="4b2-Cw-oRX"/>
                         <outlet property="usernameTextField" destination="fyz-vB-IcF" id="kl5-dr-2sO"/>
                         <outlet property="warningLabel" destination="8DA-LN-k4L" id="Aiq-7M-8DE"/>
+                        <segue destination="NmY-mY-Z9m" kind="show" identifier="enterPhone" id="tDf-YJ-f9T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="coA-1v-Wbb" userLabel="First Responder" sceneMemberID="firstResponder"/>

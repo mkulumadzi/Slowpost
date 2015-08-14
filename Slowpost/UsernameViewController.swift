@@ -32,6 +32,10 @@ class UsernameViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        validateNextButton()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -56,8 +60,30 @@ class UsernameViewController: UIViewController {
         }
     }
     
-    @IBAction func cancel(sender: AnyObject) {
+    @IBAction func back(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: {})
+    }
+    
+    @IBAction func checkUsernameAvailability(sender: AnyObject) {
+        nextButton.enabled = false
+        let params = ["username": usernameTextField.text!]
+        
+        PersonService.checkFieldAvailability(params, completion: { (error, result) -> Void in
+            if error != nil {
+                println(error)
+            }
+            else if let availability = result!.valueForKey("username") as? String {
+                if availability == "available" {
+                    self.performSegueWithIdentifier("enterPhone", sender: nil)
+                }
+                else {
+                    self.warningLabel.show("An account with that username already exists.")
+                }
+            }
+            else {
+                println("Unexpected result when checking field availability")
+            }
+        })
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

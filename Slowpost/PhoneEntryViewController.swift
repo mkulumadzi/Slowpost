@@ -36,10 +36,51 @@ class PhoneEntryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
+    
+    @IBAction func editingChanged(sender: AnyObject) {
+        signUpButton.enable()
+        warningLabel.hide()
+    }
+    
+    @IBAction func back(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
+    
     @IBAction func signUpPressed(sender: AnyObject) {
         signUpButton.disable()
         
-        var personURL:String!
+        if phoneTextField.text == "" {
+            self.signUp()
+        }
+        else {
+            let params = ["phone": phoneTextField.text!]
+            
+            PersonService.checkFieldAvailability(params, completion: { (error, result) -> Void in
+                if error != nil {
+                    println(error)
+                }
+                else if let availability = result!.valueForKey("phone") as? String {
+                    if availability == "available" {
+                        self.signUp()
+                    }
+                    else {
+                        self.warningLabel.show("An account with that phone number already exists.")
+                    }
+                }
+                else {
+                    println("Unexpected result when checking field availability")
+                }
+            })
+        }
+
+    }
+    
+    func signUp() {
+        
         let newPersonURL = "\(PostOfficeURL)person/new"
         var parameters = ["name": "\(name)", "username": "\(username)", "email": "\(email)", "phone": "\(phoneTextField.text)", "password": "\(password)"]
         
