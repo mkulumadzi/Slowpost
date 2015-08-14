@@ -17,6 +17,7 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var noResultsLabel: UILabel!
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -27,8 +28,11 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         messageLabel.hide()
+        noResultsLabel.hidden = true
         
         updateOutbox()
+        
+        self.sentMailTable.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: self.sentMailTable.bounds.size.width, height: 0.01))
         
         navBarTitle.title = "@" + loggedInUser.username
         nameLabel.text = loggedInUser.name
@@ -65,6 +69,7 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
                 
                 MailService.appendMailArrayToCoreData(mailArray)
                 
+                self.validateNoResultsLabel()
                 self.sentMailTable.reloadData()
             }
         })
@@ -76,17 +81,46 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         refreshControl.endRefreshing()
     }
     
+    func validateNoResultsLabel() {
+        if outbox.count == 0 {
+            noResultsLabel.hidden = false
+        }
+        else {
+            noResultsLabel.hidden = true
+        }
+    }
+    
+    //MARK: Configure sections
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Sent mail"
+        if outbox.count > 0 {
+            return "Sent mail"
+        }
+        else {
+            return nil
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return outbox.count
     }
+    
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel.textColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
+        header.textLabel.font = UIFont(name: "OpenSans-Semibold", size: 15)
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 34.0
+    }
+    
+    
+    //MARK: Configure rows
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MailCell", forIndexPath: indexPath) as? SentMailTableViewCell
