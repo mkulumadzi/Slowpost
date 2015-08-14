@@ -30,7 +30,7 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         messageLabel.hide()
         noResultsLabel.hidden = true
         
-        updateOutbox()
+        refreshPenpals()
         
         self.sentMailTable.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: self.sentMailTable.bounds.size.width, height: 0.01))
         
@@ -49,6 +49,19 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func refreshPenpals() {
+        let contactsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"
+        PersonService.getPeopleCollection(contactsURL, headers: nil, completion: { (error, result) -> Void in
+            if error != nil {
+                println(error)
+            }
+            else if let peopleArray = result as? Array<Person> {
+                penpals = peopleArray
+                self.updateOutbox()
+            }
+        })
     }
 
     func updateOutbox() {
@@ -77,7 +90,7 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     
     func handleRefresh(refreshControl: UIRefreshControl) {
-        updateOutbox()
+        refreshPenpals()
         refreshControl.endRefreshing()
     }
     

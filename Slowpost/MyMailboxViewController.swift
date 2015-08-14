@@ -22,7 +22,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        refreshMailbox()
+        refreshPenpals()
         mailTable.reloadData()
         
         navBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Quicksand-Regular", size: 24)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
@@ -66,6 +66,19 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
     
+    func refreshPenpals() {
+        let contactsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"
+        PersonService.getPeopleCollection(contactsURL, headers: nil, completion: { (error, result) -> Void in
+            if error != nil {
+                println(error)
+            }
+            else if let peopleArray = result as? Array<Person> {
+                penpals = peopleArray
+                self.refreshMailbox()
+            }
+        })
+    }
+    
     func refreshMailbox() {
         
         //Refresh mailbox by retrieving mail for the user
@@ -93,7 +106,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     
     
     func handleRefresh(refreshControl: UIRefreshControl) {
-        refreshMailbox()
+        refreshPenpals()
         refreshControl.endRefreshing()
     }
     
