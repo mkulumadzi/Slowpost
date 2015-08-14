@@ -19,6 +19,10 @@ class UsernameViewController: UIViewController {
     var name:String!
     var email:String!
     
+    @IBOutlet weak var verticalSpaceToTitle: NSLayoutConstraint!
+    @IBOutlet weak var verticalSpaceToUsername: NSLayoutConstraint!
+    @IBOutlet weak var verticalSpaceToPassword: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +33,21 @@ class UsernameViewController: UIViewController {
         
         warningLabel.hide()
         validateNextButton()
+        
+        if deviceType == "iPhone 4S" {
+            self.formatForiPhone4S()
+        }
+        
+    }
+    
+    func formatForiPhone4S() {
+        
+        verticalSpaceToTitle.constant = 30
+        verticalSpaceToUsername.constant = 10
+        verticalSpaceToPassword.constant = 10
+        
+        usernameTextField.font = usernameTextField.font.fontWithSize(15.0)
+        passwordTextField.font = passwordTextField.font.fontWithSize(15.0)
         
     }
     

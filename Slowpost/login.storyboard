@@ -115,7 +115,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkc-KO-jnT" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="zkc-KO-jnT" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="60" width="600" height="30"/>
                                 <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -503,7 +503,7 @@ Evan</string>
                                     <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="ssz-Wc-Wtv"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8aQ-qm-rHK" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="8aQ-qm-rHK" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="60" width="600" height="30"/>
                                 <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -553,7 +553,7 @@ Evan</string>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us about yourself." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EJb-Ir-fa9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us about yourself." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="EJb-Ir-fa9">
                                 <rect key="frame" x="30" y="110" width="540" height="24"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -606,6 +606,9 @@ Evan</string>
                         <outlet property="nameTextField" destination="VGQ-6a-6wA" id="fdE-Zf-mlF"/>
                         <outlet property="navBar" destination="tZF-2h-GJP" id="F2Y-9S-K3c"/>
                         <outlet property="nextButton" destination="d3T-mn-vnX" id="sug-nB-EWr"/>
+                        <outlet property="verticalSpaceToEmail" destination="MCo-Fw-Poj" id="m0b-hj-nVW"/>
+                        <outlet property="verticalSpaceToName" destination="1I8-Zk-R8Z" id="gl0-IE-cDe"/>
+                        <outlet property="verticalSpaceToTitle" destination="m7n-cF-Omb" id="Qel-6R-W6g"/>
                         <outlet property="warningLabel" destination="8aQ-qm-rHK" id="LAo-un-FAk"/>
                         <segue destination="65F-qu-B8L" kind="show" identifier="enterUsername" id="Zhl-b4-CX5"/>
                     </connections>
@@ -626,7 +629,7 @@ Evan</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AzT-bW-tCU" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="AzT-bW-tCU" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="60" width="600" height="30"/>
                                 <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -683,7 +686,7 @@ Evan</string>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="och-Jp-fp1" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="280" width="540" height="40"/>
+                                <rect key="frame" x="30" y="247" width="540" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Nli-W2-KEt"/>
@@ -697,8 +700,11 @@ Evan</string>
                                     <action selector="signUpPressed:" destination="NmY-mY-Z9m" eventType="touchUpInside" id="mdq-3J-KzV"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Optionally, enter your phone number. We'll use this to help your friends find you on Slowpost." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sL0-kO-S2J">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Optionally, enter your phone number. We'll use this to help your friends find you on Slowpost." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="sL0-kO-S2J">
                                 <rect key="frame" x="30" y="110" width="540" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="pWS-w8-RZ7"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -722,19 +728,24 @@ Evan</string>
                             <constraint firstAttribute="centerY" secondItem="och-Jp-fp1" secondAttribute="centerY" id="qua-qi-TX5"/>
                             <constraint firstItem="sL0-kO-S2J" firstAttribute="top" secondItem="2oZ-Dt-Pwj" secondAttribute="bottom" constant="50" id="shm-wC-8Hg"/>
                             <constraint firstItem="1Mw-MZ-Xs7" firstAttribute="top" secondItem="sL0-kO-S2J" secondAttribute="bottom" constant="30" id="vTK-Qf-pdf"/>
+                            <constraint firstItem="och-Jp-fp1" firstAttribute="top" secondItem="1Mw-MZ-Xs7" secondAttribute="bottom" constant="30" id="zoz-8h-TB4"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Zxc-js-LAW"/>
+                                <exclude reference="qua-qi-TX5"/>
                             </mask>
                         </variation>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="buttonHeight" destination="Nli-W2-KEt" id="NBl-wB-LTI"/>
                         <outlet property="navBar" destination="2oZ-Dt-Pwj" id="6GI-pe-A3e"/>
                         <outlet property="phoneTextField" destination="1Mw-MZ-Xs7" id="0zk-qa-LHS"/>
                         <outlet property="signUpButton" destination="och-Jp-fp1" id="xDU-fd-RvD"/>
+                        <outlet property="verticalSpaceToPhone" destination="vTK-Qf-pdf" id="LUq-il-cXM"/>
+                        <outlet property="verticalSpaceToTitle" destination="shm-wC-8Hg" id="GGl-73-r8h"/>
                         <outlet property="warningLabel" destination="AzT-bW-tCU" id="M9k-aI-vsp"/>
                         <segue destination="w8n-Sy-2a1" kind="show" identifier="signUpComplete" id="4ea-Ld-oxM"/>
                     </connections>
@@ -765,7 +776,7 @@ We won't save your address book on our servers, but we will search for matches w
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w4s-zz-Gj1">
-                                <rect key="frame" x="46" y="239" width="508" height="40"/>
+                                <rect key="frame" x="30" y="239" width="540" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="I6z-iY-HDa"/>
@@ -786,13 +797,22 @@ We won't save your address book on our servers, but we will search for matches w
                             <constraint firstAttribute="trailing" secondItem="Ul4-3K-flw" secondAttribute="trailing" constant="30" id="HY8-IN-4Sh"/>
                             <constraint firstItem="w4s-zz-Gj1" firstAttribute="leading" secondItem="xgB-Ws-1Bv" secondAttribute="leadingMargin" constant="30" id="Wyb-pH-i5V"/>
                             <constraint firstItem="w4s-zz-Gj1" firstAttribute="top" secondItem="Ul4-3K-flw" secondAttribute="bottom" constant="30" id="X4U-iw-kBI"/>
+                            <constraint firstAttribute="trailing" secondItem="w4s-zz-Gj1" secondAttribute="trailing" constant="30" id="XWp-F3-yBI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="w4s-zz-Gj1" secondAttribute="trailing" constant="30" id="gau-zI-WRl"/>
                             <constraint firstItem="Ul4-3K-flw" firstAttribute="leading" secondItem="xgB-Ws-1Bv" secondAttribute="leading" constant="30" id="mFw-Ty-3CA"/>
+                            <constraint firstItem="w4s-zz-Gj1" firstAttribute="leading" secondItem="xgB-Ws-1Bv" secondAttribute="leading" constant="30" id="zdi-dj-ARS"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Wyb-pH-i5V"/>
+                                <exclude reference="gau-zI-WRl"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="buttonHeight" destination="I6z-iY-HDa" id="4Na-pa-C21"/>
                         <outlet property="gotItButton" destination="w4s-zz-Gj1" id="waz-LG-Dtx"/>
                     </connections>
                 </viewController>
@@ -824,7 +844,7 @@ We won't save your address book on our servers, but we will search for matches w
                                     <action selector="editingChanged:" destination="65F-qu-B8L" eventType="editingChanged" id="MiU-tH-aF8"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8DA-LN-k4L" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="8DA-LN-k4L" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="60" width="600" height="30"/>
                                 <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -892,7 +912,7 @@ We won't save your address book on our servers, but we will search for matches w
                                     <action selector="editingChanged:" destination="65F-qu-B8L" eventType="editingChanged" id="TjN-oK-yiq"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a unique username and a secure password." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y0R-1X-YfO">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a unique username and a secure password." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="y0R-1X-YfO">
                                 <rect key="frame" x="30" y="110" width="540" height="24"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -925,6 +945,9 @@ We won't save your address book on our servers, but we will search for matches w
                         <outlet property="nextButton" destination="7wz-Mq-x3h" id="3F9-RV-KA7"/>
                         <outlet property="passwordTextField" destination="ikw-33-dC8" id="4b2-Cw-oRX"/>
                         <outlet property="usernameTextField" destination="fyz-vB-IcF" id="kl5-dr-2sO"/>
+                        <outlet property="verticalSpaceToPassword" destination="Eou-RT-0xT" id="hQ3-Ug-qWl"/>
+                        <outlet property="verticalSpaceToTitle" destination="WVs-Z9-fIP" id="sU6-x7-rH9"/>
+                        <outlet property="verticalSpaceToUsername" destination="lZu-bV-hjI" id="0rp-p0-cli"/>
                         <outlet property="warningLabel" destination="8DA-LN-k4L" id="Aiq-7M-8DE"/>
                         <segue destination="NmY-mY-Z9m" kind="show" identifier="enterPhone" id="tDf-YJ-f9T"/>
                     </connections>

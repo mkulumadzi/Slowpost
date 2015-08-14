@@ -17,6 +17,11 @@ class PersonalDetailsViewController: UIViewController {
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var nextButton: UIButton!
     
+    
+    @IBOutlet weak var verticalSpaceToTitle: NSLayoutConstraint!
+    @IBOutlet weak var verticalSpaceToName: NSLayoutConstraint!
+    @IBOutlet weak var verticalSpaceToEmail: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +33,21 @@ class PersonalDetailsViewController: UIViewController {
         warningLabel.hide()
         
         validateNextButton()
+        
+        if deviceType == "iPhone 4S" {
+            self.formatForiPhone4S()
+        }
+        
+    }
+    
+    func formatForiPhone4S() {
+    
+        verticalSpaceToTitle.constant = 30
+        verticalSpaceToName.constant = 10
+        verticalSpaceToEmail.constant = 10
+        
+        nameTextField.font = nameTextField.font.fontWithSize(15.0)
+        emailTextField.font = emailTextField.font.fontWithSize(15.0)
         
     }
     

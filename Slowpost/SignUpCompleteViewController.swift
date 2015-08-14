@@ -13,12 +13,23 @@ class SignUpCompleteViewController: UIViewController {
     
     @IBOutlet weak var gotItButton: UIButton!
 
+    @IBOutlet weak var buttonHeight: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         gotItButton.layer.cornerRadius = 5
 
-        // Do any additional setup after loading the view.
+        if deviceType == "iPhone 4S" {
+            self.formatForiPhone4S()
+        }
+        
+    }
+    
+    func formatForiPhone4S() {
+        
+        buttonHeight.constant = 30
+        
     }
 
     override func didReceiveMemoryWarning() {

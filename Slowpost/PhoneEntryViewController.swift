@@ -20,6 +20,10 @@ class PhoneEntryViewController: UIViewController {
     var email:String!
     var username:String!
     var password:String!
+    
+    @IBOutlet weak var verticalSpaceToTitle: NSLayoutConstraint!
+    @IBOutlet weak var verticalSpaceToPhone: NSLayoutConstraint!
+    @IBOutlet weak var buttonHeight: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +32,20 @@ class PhoneEntryViewController: UIViewController {
         signUpButton.layer.cornerRadius = 5
         warningLabel.hide()
 
-        // Do any additional setup after loading the view.
+        if deviceType == "iPhone 4S" {
+            self.formatForiPhone4S()
+        }
+        
+    }
+    
+    func formatForiPhone4S() {
+        
+        verticalSpaceToTitle.constant = 30
+        verticalSpaceToPhone.constant = 10
+        buttonHeight.constant = 30
+        
+        phoneTextField.font = phoneTextField.font.fontWithSize(15.0)
+        
     }
 
     override func didReceiveMemoryWarning() {

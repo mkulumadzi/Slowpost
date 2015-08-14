@@ -47,7 +47,7 @@ class LogInViewController: UIViewController {
     func formatForiPhone4S() {
         verticalSpaceToUsername.constant = 50
         verticalSpaceToPassword.constant = 10
-        verticalSpaceToLogIn.constant = 10
+        verticalSpaceToLogIn.constant = 30
         logInButtonHeight.constant = 30
         
         UsernameTextField.font = UsernameTextField.font.fontWithSize(15.0)
