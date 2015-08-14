@@ -55,6 +55,10 @@ class EditProfileViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
 
     @IBAction func saveEditedInfo(sender: AnyObject) {
         saveButton.enabled = false

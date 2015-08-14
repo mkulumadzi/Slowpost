@@ -17,6 +17,12 @@ class EditPasswordViewController: UIViewController {
     @IBOutlet weak var confirmPasswordField: BottomBorderUITextField!
     @IBOutlet weak var saveButton: TextUIButton!
 
+    @IBOutlet weak var verticalSpaceToNewPasswordLabel1: NSLayoutConstraint!
+    @IBOutlet weak var verticalSpaceToNewPasswordField1: NSLayoutConstraint!
+    
+    
+    @IBOutlet weak var saveButtonHeight: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +34,17 @@ class EditPasswordViewController: UIViewController {
         
         warningLabel.hide()
         validateSaveButton()
+        
+        if deviceType == "iPhone 4S" {
+            formatForiPhone4S()
+        }
+        
+    }
+    
+    func formatForiPhone4S() {
+        verticalSpaceToNewPasswordLabel1.constant = 10
+        verticalSpaceToNewPasswordField1.constant = 10
+        saveButtonHeight.constant = 30
     }
 
     override func didReceiveMemoryWarning() {
@@ -90,6 +107,11 @@ class EditPasswordViewController: UIViewController {
                 viewProfileViewController!.messageLabel.hide()
             })
         }
+    }
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
     }
 
 }

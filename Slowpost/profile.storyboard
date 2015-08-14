@@ -712,6 +712,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="qhC-pq-8tB" firstAttribute="leading" secondItem="wlD-xL-Cph" secondAttribute="trailing" id="1Fc-CH-bCn"/>
                             <constraint firstItem="6Qe-ih-GqZ" firstAttribute="leading" secondItem="Lqg-In-Acd" secondAttribute="leading" constant="30" id="2qU-Fw-rL7"/>
@@ -748,18 +749,25 @@
                                 <exclude reference="zZT-om-07L"/>
                             </mask>
                         </variation>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="MDZ-Qt-wZx" appends="YES" id="B1A-AE-iZ0"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="confirmPasswordField" destination="8eW-7Z-16t" id="u1g-Ad-qm0"/>
                         <outlet property="existingPasswordField" destination="qhC-pq-8tB" id="0A5-eo-GfX"/>
                         <outlet property="newPasswordField" destination="ScW-2K-Gmx" id="d1O-Lf-FuB"/>
                         <outlet property="saveButton" destination="Ipt-Jg-bUa" id="lG6-sJ-Kym"/>
+                        <outlet property="saveButtonHeight" destination="d4e-xi-M8h" id="o1h-ye-8Dt"/>
+                        <outlet property="verticalSpaceToNewPasswordField1" destination="ciF-eO-M6t" id="LXY-PV-Mqd"/>
+                        <outlet property="verticalSpaceToNewPasswordLabel1" destination="7Xc-ur-cC1" id="fzO-JK-ay1"/>
                         <outlet property="warningLabel" destination="vfE-Ha-GAR" id="SxR-FM-9JL"/>
                         <segue destination="KxZ-u6-Wnh" kind="unwind" identifier="passwordChanged" unwindAction="completeEditingAndReturnToProfileViewController:" id="iTN-bg-96T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RDC-Nt-hdU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="KxZ-u6-Wnh" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="MDZ-Qt-wZx"/>
             </objects>
             <point key="canvasLocation" x="1461" y="-346"/>
         </scene>
