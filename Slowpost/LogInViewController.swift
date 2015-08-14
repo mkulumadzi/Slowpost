@@ -17,6 +17,12 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var navBar: UINavigationBar!
     
+    
+    @IBOutlet weak var verticalSpaceToUsername: NSLayoutConstraint!
+    @IBOutlet weak var verticalSpaceToPassword: NSLayoutConstraint!
+    @IBOutlet weak var verticalSpaceToLogIn: NSLayoutConstraint!
+    @IBOutlet weak var logInButtonHeight: NSLayoutConstraint!
+    
     var person:Person!
     
     override func viewDidLoad() {
@@ -31,6 +37,21 @@ class LogInViewController: UIViewController {
         
         validateLogInButton()
         warningLabel.hide()
+        
+        if deviceType == "iPhone 4S" {
+            formatForiPhone4S()
+        }
+        
+    }
+    
+    func formatForiPhone4S() {
+        verticalSpaceToUsername.constant = 50
+        verticalSpaceToPassword.constant = 10
+        verticalSpaceToLogIn.constant = 10
+        logInButtonHeight.constant = 30
+        
+        UsernameTextField.font = UsernameTextField.font.fontWithSize(15.0)
+        passwordTextField.font = passwordTextField.font.fontWithSize(15.0)
         
     }
     

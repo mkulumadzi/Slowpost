@@ -160,8 +160,12 @@
                     <connections>
                         <outlet property="UsernameTextField" destination="1Cx-Sp-3Un" id="Skl-Ic-wfx"/>
                         <outlet property="logInButton" destination="Hez-ky-lsM" id="Ouv-QK-GZV"/>
+                        <outlet property="logInButtonHeight" destination="YGF-2J-gq8" id="Pvi-Cu-Hf8"/>
                         <outlet property="navBar" destination="fZK-Xx-981" id="5gR-t5-Ggh"/>
                         <outlet property="passwordTextField" destination="Y1L-HG-f5a" id="Zei-ZG-VCf"/>
+                        <outlet property="verticalSpaceToLogIn" destination="t7E-sP-gIy" id="MKG-po-hZ2"/>
+                        <outlet property="verticalSpaceToPassword" destination="urM-Kt-db7" id="2re-aJ-Nsm"/>
+                        <outlet property="verticalSpaceToUsername" destination="rhZ-mO-VFI" id="5x7-Ob-qlW"/>
                         <outlet property="warningLabel" destination="zkc-KO-jnT" id="gvs-yx-OMN"/>
                     </connections>
                 </viewController>
