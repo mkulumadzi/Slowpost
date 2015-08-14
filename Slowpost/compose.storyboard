@@ -23,6 +23,7 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -633,7 +634,7 @@
         <!--To View Controller-->
         <scene sceneID="fT4-r7-D5g">
             <objects>
-                <viewController storyboardIdentifier="InitialController" id="56L-ux-Lnu" customClass="ToViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InitialController" automaticallyAdjustsScrollViewInsets="NO" id="56L-ux-Lnu" customClass="ToViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DaV-in-3s9"/>
                         <viewControllerLayoutGuide type="bottom" id="z2b-dc-6Oc"/>
@@ -642,9 +643,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="j7P-4p-ATv">
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myB-PP-UUO">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="IBK-Cw-ziw"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Recipient" id="ZOb-ek-B4u">
+                                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="Ngg-d4-tz8">
+                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="cancelButtonPressed:" destination="56L-ux-Lnu" id="yPD-K5-p7T"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="done" id="cUA-ml-ZSf">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6ba-y5-t0Z">
+                                                <rect key="frame" x="554" y="16" width="12" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="ios7-arrow-right-white.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="selectImage:" destination="56L-ux-Lnu" eventType="touchUpInside" id="2KF-Cs-ddu"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <searchBar contentMode="redraw" text="" placeholder="Name or username" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXR-ug-bxD">
+                                <rect key="frame" x="0.0" y="84" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="ssJ-fP-Am6"/>
+                                </constraints>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="56L-ux-Lnu" id="axs-Zf-QWV"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="2" sectionFooterHeight="2" translatesAutoresizingMaskIntoConstraints="NO" id="j7P-4p-ATv">
                                 <rect key="frame" x="0.0" y="128" width="600" height="472"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <gestureRecognizers/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="personCell" id="cXn-kV-8jj" customClass="PersonCell" customModule="Slowpost" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -686,17 +733,6 @@
                                     <outlet property="delegate" destination="56L-ux-Lnu" id="u3m-KZ-kBf"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" text="" placeholder="Name or username" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXR-ug-bxD">
-                                <rect key="frame" x="0.0" y="84" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="ssJ-fP-Am6"/>
-                                </constraints>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="56L-ux-Lnu" id="axs-Zf-QWV"/>
-                                </connections>
-                            </searchBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zBk-j3-1iC" userLabel="warningLabel" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="60" width="600" height="24"/>
                                 <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -704,42 +740,15 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myB-PP-UUO">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="IBK-Cw-ziw"/>
-                                </constraints>
-                                <color key="barTintColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Recipient" id="ZOb-ek-B4u">
-                                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="Ngg-d4-tz8">
-                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <connections>
-                                                <action selector="cancelButtonPressed:" destination="56L-ux-Lnu" id="yPD-K5-p7T"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="done" id="cUA-ml-ZSf">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6ba-y5-t0Z">
-                                                <rect key="frame" x="554" y="16" width="12" height="20"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="ios7-arrow-right-white.png">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="selectImage:" destination="56L-ux-Lnu" eventType="touchUpInside" id="2KF-Cs-ddu"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdm-d4-YAc">
+                                <rect key="frame" x="253" y="288" width="95" height="24"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="0.49803921568627452" green="0.47843137254901963" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="j7P-4p-ATv" firstAttribute="top" secondItem="FXR-ug-bxD" secondAttribute="bottom" id="5oO-fC-1vs"/>
                             <constraint firstAttribute="trailing" secondItem="zBk-j3-1iC" secondAttribute="trailing" id="9Nc-IG-JIg"/>
@@ -747,6 +756,8 @@
                             <constraint firstAttribute="trailing" secondItem="myB-PP-UUO" secondAttribute="trailing" id="BwI-I5-dkj"/>
                             <constraint firstItem="zBk-j3-1iC" firstAttribute="leading" secondItem="8rF-TK-R8E" secondAttribute="leading" id="CQH-h1-3XB"/>
                             <constraint firstAttribute="trailing" secondItem="FXR-ug-bxD" secondAttribute="trailing" id="KM1-g0-2uT"/>
+                            <constraint firstAttribute="centerY" secondItem="hdm-d4-YAc" secondAttribute="centerY" id="aOb-5E-D7b"/>
+                            <constraint firstAttribute="centerX" secondItem="hdm-d4-YAc" secondAttribute="centerX" id="bWt-GS-Svo"/>
                             <constraint firstAttribute="bottom" secondItem="j7P-4p-ATv" secondAttribute="bottom" id="cPk-Bh-nPH"/>
                             <constraint firstItem="myB-PP-UUO" firstAttribute="top" secondItem="8rF-TK-R8E" secondAttribute="top" id="cyg-AV-UUa"/>
                             <constraint firstItem="zBk-j3-1iC" firstAttribute="top" secondItem="myB-PP-UUO" secondAttribute="bottom" id="gbU-Gy-WqH"/>
@@ -756,8 +767,10 @@
                             <constraint firstItem="myB-PP-UUO" firstAttribute="leading" secondItem="8rF-TK-R8E" secondAttribute="leading" id="vV3-JE-uIl"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
                         <outlet property="nextButton" destination="6ba-y5-t0Z" id="gyl-Ln-QHc"/>
+                        <outlet property="noResultsLabel" destination="hdm-d4-YAc" id="Fd8-nV-szO"/>
                         <outlet property="toPersonList" destination="j7P-4p-ATv" id="I3m-NF-aKn"/>
                         <outlet property="toSearchField" destination="FXR-ug-bxD" id="YVg-pm-du0"/>
                         <outlet property="warningLabel" destination="zBk-j3-1iC" id="5WO-lm-7cq"/>

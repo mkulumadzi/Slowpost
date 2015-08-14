@@ -19,6 +19,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     @IBOutlet weak var toPersonList: UITableView!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var warningLabel: WarningUILabel!
+    @IBOutlet weak var noResultsLabel: UILabel!
 
     
     override func viewDidLoad() {
@@ -27,8 +28,11 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         reloadPenpals()
 
         warningLabel.hide()
+        noResultsLabel.hidden = true
         
         validateNextButton()
+        
+        self.toPersonList.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: self.toPersonList.bounds.size.width, height: 0.01))
         
         penpalList = penpals.filter({$0.username != loggedInUser.username})
         contactsList = registeredContacts.filter({$0.username != loggedInUser.username})
@@ -69,6 +73,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
         
         validateNextButton()
+        validateNoResultsLabel()
         warningLabel.hide()
         self.toPersonList.reloadData()
     }
@@ -93,50 +98,91 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if penpalList.count > 0 || contactsList.count > 0 {
-            return 2
+    func validateNoResultsLabel() {
+        if toSearchField.text == "" {
+            noResultsLabel.hidden = true
+        }
+        else if penpalList.count == 0 && contactsList.count == 0 && otherUsersList.count == 0 {
+            noResultsLabel.hidden = false
         }
         else {
-            return 3
+            noResultsLabel.hidden = true
         }
+    }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        toSearchField.resignFirstResponder()
+    }
+    
+    // MARK: Section Configuration
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 3
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Your penpals"
-        case 1:
-            return "Other contacts on Slowpost"
-        case 2:
-            return "Other users"
-        default:
-            return nil
-        }
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
             if penpalList.count > 0 {
-                return penpalList.count
-            }
-            else {
-                return 1
+                return "Penpals"
             }
         case 1:
             if contactsList.count > 0 {
-                return contactsList.count
+                return "Your address book"
             }
-            else {
-                return 1
+        case 2:
+            if otherUsersList.count > 0 {
+                return "People on Slowpost"
             }
+        default:
+            return nil
+        }
+        return nil
+    }
+ 
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return penpalList.count
+        case 1:
+            return contactsList.count
         case 2:
             return otherUsersList.count
         default:
             return 0
         }
+        
     }
+    
+    
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel.textColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
+        header.textLabel.font = UIFont(name: "OpenSans-Semibold", size: 15)
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            if penpalList.count == 0 {
+                return 0.0
+            }
+        case 1:
+            if contactsList.count == 0 {
+                return 0.0
+            }
+        case 2:
+            if otherUsersList.count == 0 {
+                return 0.0
+            }
+        default:
+            return 34.0
+        }
+        return 34.0
+
+    }
+
+    // MARK: Row configuration
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("personCell", forIndexPath: indexPath) as? PersonCell
@@ -148,19 +194,11 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 cell?.personNameLabel.text = person.name
                 cell?.usernameLabel.text = "@" + person.username
             }
-            else {
-                cell?.personNameLabel.text = ""
-                cell?.usernameLabel.text = "No results"
-            }
         case 1:
             if contactsList.count > 0 {
                 let person = contactsList[indexPath.row] as Person
                 cell?.personNameLabel.text = person.name
                 cell?.usernameLabel.text = "@" + person.username
-            }
-            else {
-                cell?.personNameLabel.text = ""
-                cell?.usernameLabel.text = "No results"
             }
         case 2:
             let person = otherUsersList[indexPath.row] as Person
@@ -204,13 +242,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
     }
     
-    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
-        header.contentView.backgroundColor = UIColor.lightGrayColor()
-        header.textLabel.textColor = UIColor.blackColor()
-        header.textLabel.font = UIFont(name: "OpenSans-Semibold", size: 15)
-    }
-    
     @IBAction func cancelButtonPressed(sender: AnyObject) {
         var storyboard = UIStoryboard(name: "home", bundle: nil)
         var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
@@ -231,6 +262,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             }
             else if let peopleArray = result as? Array<Person> {
                 self.otherUsersList = peopleArray
+                self.excludeContactsFromOtherList()
                 self.toPersonList.reloadData()
             }
         })
@@ -256,6 +288,20 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             for contact in contactsList {
                 if penpal.username == contact.username {
                     contactsList.removeAtIndex(i)
+                }
+                else {
+                    i += 1
+                }
+            }
+        }
+    }
+    
+    func excludeContactsFromOtherList() {
+        for contact in contactsList {
+            var i = 0
+            for other in otherUsersList {
+                if contact.username == other.username {
+                    otherUsersList.removeAtIndex(i)
                 }
                 else {
                     i += 1
