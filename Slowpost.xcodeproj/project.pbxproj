@@ -68,6 +68,9 @@
 		D291B24C1B69AA5A00C72816 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291B24B1B69AA5A00C72816 /* FileService.swift */; };
 		D2A361361B3CAC5D00811D14 /* SnailMailTextUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A361351B3CAC5D00811D14 /* SnailMailTextUIButton.swift */; };
 		D2A361381B3CB52B00811D14 /* WarningUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A361371B3CB52B00811D14 /* WarningUILabel.swift */; };
+		D2B2BB961B7EB7D4007377DD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B2BB951B7EB7D4007377DD /* SystemConfiguration.framework */; };
+		D2B2BB991B7EB97D007377DD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B2BB981B7EB97D007377DD /* Security.framework */; };
+		D2B2BB9F1B7EBB37007377DD /* libFlurry_6.7.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B2BB9E1B7EBB37007377DD /* libFlurry_6.7.0.a */; };
 		D2B651AD1B31411C00134C23 /* SentMailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B651AC1B31411C00134C23 /* SentMailTableViewCell.swift */; };
 		D2B651E71B38827100134C23 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B651E61B38827100134C23 /* Extensions.swift */; };
 		D2B7CEA01B66E87E007F8235 /* SentMailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7CE9F1B66E87E007F8235 /* SentMailDetailViewController.swift */; };
@@ -188,6 +191,10 @@
 		D291B24B1B69AA5A00C72816 /* FileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
 		D2A361351B3CAC5D00811D14 /* SnailMailTextUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnailMailTextUIButton.swift; sourceTree = "<group>"; };
 		D2A361371B3CB52B00811D14 /* WarningUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarningUILabel.swift; sourceTree = "<group>"; };
+		D2B2BB951B7EB7D4007377DD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D2B2BB981B7EB97D007377DD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		D2B2BB9D1B7EBB2E007377DD /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		D2B2BB9E1B7EBB37007377DD /* libFlurry_6.7.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_6.7.0.a; sourceTree = "<group>"; };
 		D2B651AC1B31411C00134C23 /* SentMailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMailTableViewCell.swift; sourceTree = "<group>"; };
 		D2B651E61B38827100134C23 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D2B7CE9F1B66E87E007F8235 /* SentMailDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMailDetailViewController.swift; sourceTree = "<group>"; };
@@ -229,6 +236,7 @@
 		D2E4EDD31B7D307E00D2A028 /* example_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = example_photo.jpg; sourceTree = "<group>"; };
 		D2E956451B30952800CA8CC8 /* ChooseImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseImageViewController.swift; sourceTree = "<group>"; };
 		D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		D2FC675D1B7EBD0700F475CB /* Slowpost-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Slowpost-Bridging-Header.h"; sourceTree = "<group>"; };
 		D58257AF9C03394AF69653DE /* Pods-Slowpost.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slowpost.staging.xcconfig"; path = "Pods/Target Support Files/Pods-Slowpost/Pods-Slowpost.staging.xcconfig"; sourceTree = "<group>"; };
 		FEA5B7AEBEF825400B64DF28 /* Pods-Slowpost.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slowpost.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Slowpost/Pods-Slowpost.testing.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -238,7 +246,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2B2BB991B7EB97D007377DD /* Security.framework in Frameworks */,
+				D2B2BB961B7EB7D4007377DD /* SystemConfiguration.framework in Frameworks */,
 				27038759A0C565D4D7B412D3 /* Pods_Slowpost.framework in Frameworks */,
+				D2B2BB9F1B7EBB37007377DD /* libFlurry_6.7.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +359,7 @@
 		CCCB1A441AB0D48A0067F100 = {
 			isa = PBXGroup;
 			children = (
+				D2FC675D1B7EBD0700F475CB /* Slowpost-Bridging-Header.h */,
 				CCCB1A4F1AB0D48A0067F100 /* Slowpost */,
 				CCCB1A651AB0D48A0067F100 /* SlowpostTests */,
 				CCCB1A4E1AB0D48A0067F100 /* Products */,
@@ -373,6 +385,8 @@
 				CC23DE2F1AE54C4900AFEDE4 /* Models */,
 				CC23DE241AE54BB100AFEDE4 /* Features */,
 				CCCB1A521AB0D48A0067F100 /* AppDelegate.swift */,
+				D2B2BB9D1B7EBB2E007377DD /* Flurry.h */,
+				D2B2BB9E1B7EBB37007377DD /* libFlurry_6.7.0.a */,
 				CCCB1A541AB0D48A0067F100 /* ViewController.swift */,
 				CCCB1A591AB0D48A0067F100 /* Images.xcassets */,
 				CCCB1A5B1AB0D48A0067F100 /* LaunchScreen.xib */,
@@ -514,6 +528,8 @@
 		FF4B5779129C9081ABB67C03 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D2B2BB981B7EB97D007377DD /* Security.framework */,
+				D2B2BB951B7EB7D4007377DD /* SystemConfiguration.framework */,
 				5AB7FA0FAA7496DEC4F3B5C4 /* Pods_Slowpost.framework */,
 			);
 			name = Frameworks;
@@ -851,6 +867,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Slowpost-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -887,6 +904,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Slowpost-Bridging-Header.h";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -901,9 +919,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Slowpost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Slowpost",
+				);
 				PRODUCT_NAME = Slowpost;
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Slowpost-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -920,9 +942,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Slowpost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Slowpost",
+				);
 				PRODUCT_NAME = Slowpost;
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Slowpost-Bridging-Header.h";
 				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1001,6 +1027,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Slowpost-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Staging;
@@ -1015,9 +1042,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Slowpost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Slowpost",
+				);
 				PRODUCT_NAME = Slowpost;
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Slowpost-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1082,6 +1113,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Slowpost-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Testing;
@@ -1096,9 +1128,13 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Slowpost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Slowpost",
+				);
 				PRODUCT_NAME = Slowpost;
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Slowpost-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
 				TARGETED_DEVICE_FAMILY = 1;
