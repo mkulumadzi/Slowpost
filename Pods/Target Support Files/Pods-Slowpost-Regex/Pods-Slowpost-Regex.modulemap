@@ -1,6 +1,0 @@
-framework module Regex {
-  umbrella header "Pods-Slowpost-Regex-umbrella.h"
-
-  export *
-  module * { export * }
-}
