@@ -22,6 +22,8 @@ class CardGalleryUIViewController: UIViewController, UICollectionViewDataSource,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Flurry.logEvent("Opened_Card_Gallery")
+        
         activityIndicator.startAnimating()
         getCards()
 
@@ -112,6 +114,7 @@ class CardGalleryUIViewController: UIViewController, UICollectionViewDataSource,
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "imageSelected" {
+            Flurry.logEvent("Chose_Image_From_Gallery")
             let chooseImageViewController = segue.destinationViewController as? ChooseImageViewController
             chooseImageViewController!.setupSubview(imageSelected)
         }

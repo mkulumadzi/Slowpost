@@ -25,6 +25,8 @@ class WelcomeScreenViewController: UIViewController, UIPageViewControllerDataSou
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Flurry.logEvent("Welcome_Screen_Displayed")
+        
         pageOne = self.storyboard!.instantiateViewControllerWithIdentifier("pageOne") as! UIViewController
         pageTwo = self.storyboard!.instantiateViewControllerWithIdentifier("pageTwo") as! UIViewController
         pageThree = self.storyboard!.instantiateViewControllerWithIdentifier("pageThree") as! UIViewController
@@ -64,6 +66,10 @@ class WelcomeScreenViewController: UIViewController, UIPageViewControllerDataSou
     }
     
     // MARK: - UIPageViewControllerDataSource
+    
+    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
+        Flurry.logEvent("Page_View_Finished_Animating")
+    }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         

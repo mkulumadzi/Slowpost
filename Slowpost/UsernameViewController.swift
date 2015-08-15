@@ -26,6 +26,8 @@ class UsernameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Flurry.logEvent("Username_View_Opened")
+        
         navBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Quicksand-Regular", size: 24)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
         
         usernameTextField.addBottomLayer()

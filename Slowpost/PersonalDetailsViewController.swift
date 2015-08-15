@@ -25,6 +25,8 @@ class PersonalDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Flurry.logEvent("Personal_Details_View_Opened")
+        
         navBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Quicksand-Regular", size: 24)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
         
         nameTextField.addBottomLayer()
@@ -80,6 +82,7 @@ class PersonalDetailsViewController: UIViewController {
     }
     
     @IBAction func cancel(sender: AnyObject) {
+        Flurry.logEvent("Signup_Cancelled")
         self.dismissViewControllerAnimated(true, completion: {})
     }
     

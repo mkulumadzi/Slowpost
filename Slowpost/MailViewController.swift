@@ -23,6 +23,8 @@ class MailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Flurry.logEvent("Mail_Opened_From_Inbox")
+        
         mailImage.image = mail.image
         
         if mail.content != nil {

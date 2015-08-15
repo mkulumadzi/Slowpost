@@ -33,6 +33,8 @@ class SettingsMenuViewController: UIViewController {
     }
 
     @IBAction func logOut(sender: AnyObject) {
+        Flurry.logEvent("Logged_Out")
+        
         deleteCoreDataObjects("Session")
         deleteCoreDataObjects("Mail")
         deleteCoreDataObjects("Person")

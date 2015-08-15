@@ -18,6 +18,8 @@ class SignUpCompleteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Flurry.logEvent("Signup_View_Opened")
+        
         gotItButton.layer.cornerRadius = 5
 
         if deviceType == "iPhone 4S" {

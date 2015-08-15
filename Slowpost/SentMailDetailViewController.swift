@@ -23,6 +23,8 @@ class SentMailDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Flurry.logEvent("Opened_Sent_Mail_Detail")
+        
         mailImage.image = mail.image
         
         if mail.content != nil {

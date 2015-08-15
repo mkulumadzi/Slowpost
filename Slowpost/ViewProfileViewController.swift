@@ -26,6 +26,8 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         }()
     
     override func viewDidLoad() {
+        Flurry.logEvent("Opened_Profile_View")
+        
         super.viewDidLoad()
         messageLabel.hide()
         noResultsLabel.hidden = true
@@ -151,6 +153,7 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func showSettingsMenu(sender: AnyObject) {
+        Flurry.logEvent("Opened_Settings_Menu")
         self.performSegueWithIdentifier("showSettingsMenu", sender: nil)
     }
     
@@ -165,6 +168,7 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func cancelToProfileViewController(segue:UIStoryboardSegue) {
+        Flurry.logEvent("Cancelled_Back_To_Profile_View")
     }
     
     @IBAction func completeEditingAndReturnToProfileViewController(segue:UIStoryboardSegue) {

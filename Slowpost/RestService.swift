@@ -13,6 +13,9 @@ import SwiftyJSON
 class RestService {
 
     class func getRequest(requestURL:String, headers: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
+        
+        Flurry.logEvent("GET_Request", withParameters: ["URL": "\(requestURL)", "Headers": "\(headers)"])
+        
         Alamofire.request(.GET, requestURL, headers: headers)
             .response { (request, response, data, error) in
                 if let anError = error {

@@ -28,6 +28,8 @@ class PhoneEntryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Flurry.logEvent("Phone_View_Opened")
+        
         phoneTextField.addBottomLayer()
         signUpButton.layer.cornerRadius = 5
         warningLabel.hide()

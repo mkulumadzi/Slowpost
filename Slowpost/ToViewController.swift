@@ -25,6 +25,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Flurry.logEvent("Compose_Message_Workflow_Began")
+        
         reloadPenpals()
 
         warningLabel.hide()
@@ -217,6 +219,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         switch indexPath.section {
         case 0:
             if penpalList.count > 0 {
+                Flurry.logEvent("Penpal_Selected")
                 let person = penpalList[indexPath.row] as Person
                 toSearchField.text = person.username
                 toPerson = person
@@ -224,12 +227,14 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             }
         case 1:
             if contactsList.count > 0 {
+                Flurry.logEvent("Contact_Selected")
                 let person = contactsList[indexPath.row] as Person
                 toSearchField.text = person.username
                 toPerson = person
                 self.performSegueWithIdentifier("selectImage", sender: nil)
             }
         case 2:
+            Flurry.logEvent("Other_User_Selected")
             let person = otherUsersList[indexPath.row] as Person
             toSearchField.text = person.username
             toPerson = person
@@ -243,6 +248,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
+        Flurry.logEvent("Compose_Cancelled")
+        
         var storyboard = UIStoryboard(name: "home", bundle: nil)
         var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
         

@@ -15,6 +15,8 @@ class InitialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Flurry.logEvent("Initial_View_Loaded")
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,15 +33,18 @@ class InitialViewController: UIViewController {
         if loggedInUser == nil {
             let userId = LoginService.getUserIdFromSession()
             if userId != "" {
+                Flurry.logEvent("User_Logged_In_From_Session")
                 self.setLoggedInUserFromUserId(userId)
             }
             else {
+                Flurry.logEvent("Sending_User_To_Login_Screen")
                 var storyboard = UIStoryboard(name: "login", bundle: nil)
                 var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
                 self.presentViewController(controller, animated: true, completion: nil)
             }
         }
         else {
+            Flurry.logEvent("User_Logged_In")
             AddressBookService.checkAuthorizationStatus(self)
             getRegisteredContactsIfAuthorized()
             

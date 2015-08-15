@@ -26,6 +26,8 @@ class EditProfileViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Flurry.logEvent("Began_Editing_Profile")
+        
         navBar.frame.size = CGSize(width: navBar.frame.width, height: 60)
         
         nameField.text = loggedInUser.name
@@ -119,6 +121,8 @@ class EditProfileViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "updateSucceeded" {
+            Flurry.logEvent("Updated_Profile")
+            
             let viewProfileViewController = segue.destinationViewController as? ViewProfileViewController
             viewProfileViewController!.messageLabel.show("Profile updated")
             

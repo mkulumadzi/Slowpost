@@ -28,6 +28,8 @@ class LogInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Flurry.logEvent("Login_Screen_Opened")
+        
         navBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Quicksand-Regular", size: 24)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
         
         UsernameTextField.addBottomLayer()
@@ -130,6 +132,7 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func cancel(sender: AnyObject) {
+        Flurry.logEvent("Login_Cancelled_By_User")
         self.dismissViewControllerAnimated(true, completion: {})
     }
     

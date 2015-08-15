@@ -23,6 +23,8 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Flurry.logEvent("Opened_Compose_View")
+        
         keyboardShowing = false
         toLabel.text = toPerson.name
         

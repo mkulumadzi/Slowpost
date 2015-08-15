@@ -17,6 +17,8 @@ class SendingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        Flurry.logEvent("Began_Sending_Mail")
+        
         sendMail()
 
         // Do any additional setup after loading the view.
@@ -47,6 +49,7 @@ class SendingViewController: UIViewController {
         RestService.postRequest(sendMailEndpoint, parameters: parameters, completion: { (error, result) -> Void in
             if let response = result as? [AnyObject] {
                 if response[0] as? Int == 201 {
+                    Flurry.logEvent("Finished_Sending_Mail")
                     var storyboard = UIStoryboard(name: "home", bundle: nil)
                     var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
                     self.presentViewController(controller, animated: true, completion: nil)

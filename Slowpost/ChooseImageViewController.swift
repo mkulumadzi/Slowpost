@@ -29,6 +29,8 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var nextButton: TextUIButton!
     
     override func viewDidLoad() {
+        Flurry.logEvent("Choose_Image_View_Opened")
+        
         super.viewDidLoad()
         
         toLabel.text = toPerson.name
@@ -80,6 +82,8 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func selectPhotoFromLibrary(sender: AnyObject) {
+        Flurry.logEvent("Chose_To_Select_Photo_From_Library")
+        
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) {
             let imagePicker = UIImagePickerController()
                 
@@ -93,6 +97,8 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func takePhoto(sender: AnyObject) {
+        Flurry.logEvent("Chose_To_Take_Picture")
+        
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
                 
                 let imagePicker = UIImagePickerController()
@@ -116,6 +122,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         if mediaType == (kUTTypeImage as! String) {
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
             
+            Flurry.logEvent("Got_Image_From_Library_Or_Camera")
             self.setupSubview(image)
             
             if (newMedia == true) {
@@ -226,6 +233,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func cancelToChooseImage(segue:UIStoryboardSegue) {
+        Flurry.logEvent("Canceled_And_Back_to_Choose_Image")
     }
     
     @IBAction func cardGalleryImageSelected(segue:UIStoryboardSegue) {

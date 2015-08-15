@@ -25,6 +25,8 @@ class EditPasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Flurry.logEvent("Began_Editing_Password")
 
         existingPasswordField.addBottomLayer()
         newPasswordField.addBottomLayer()
@@ -91,6 +93,7 @@ class EditPasswordViewController: UIViewController {
     }
     
     func passwordChanged() {
+        Flurry.logEvent("Changed_Password")
         self.performSegueWithIdentifier("passwordChanged", sender: nil)
     }
     
