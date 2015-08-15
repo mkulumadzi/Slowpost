@@ -18,8 +18,6 @@ class SignUpCompleteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Flurry.logEvent("Signup_View_Opened")
-        
         gotItButton.layer.cornerRadius = 5
 
         if deviceType == "iPhone 4S" {
@@ -40,6 +38,7 @@ class SignUpCompleteViewController: UIViewController {
     }
     
     @IBAction func goToMailbox(sender: AnyObject) {
+        Flurry.logEvent("Registration_Completed")
         var storyboard = UIStoryboard(name: "initial", bundle: nil)
         var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
         self.presentViewController(controller, animated: true, completion: nil)

@@ -44,7 +44,6 @@ class InitialViewController: UIViewController {
             }
         }
         else {
-            Flurry.logEvent("User_Logged_In")
             AddressBookService.checkAuthorizationStatus(self)
             getRegisteredContactsIfAuthorized()
             

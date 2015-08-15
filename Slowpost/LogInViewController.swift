@@ -71,6 +71,8 @@ class LogInViewController: UIViewController {
             }
             else if let result: AnyObject = result {
                 if let person:Person = result as? Person {
+                    
+                    
                     LoginService.saveLoginToSession(person.id)
                     loggedInUser = person
                     
