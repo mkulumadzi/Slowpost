@@ -109,12 +109,14 @@ class CardGalleryUIViewController: UIViewController, UICollectionViewDataSource,
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         imageSelected = photoArray[indexPath.row]
+        let parameters:[String: String] = ["Name": cardNames[indexPath.row]]
+        Flurry.logEvent("Chose_Image_From_Gallery", withParameters: parameters)
         self.performSegueWithIdentifier("imageSelected", sender: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "imageSelected" {
-            Flurry.logEvent("Chose_Image_From_Gallery")
+//            Flurry.logEvent("Chose_Image_From_Gallery")
             let chooseImageViewController = segue.destinationViewController as? ChooseImageViewController
             chooseImageViewController!.setupSubview(imageSelected)
         }
