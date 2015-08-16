@@ -699,7 +699,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Slowpost/Pods-Slowpost-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Slowpost/Pods-Slowpost-frameworks.sh\"";
 			showEnvVarsInLog = 0;
 		};
 		1797408795249C9975BFDA8B /* Check Pods Manifest.lock */ = {
