@@ -25,7 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Do some additional configuration if needed here
         BITHockeyManager.sharedHockeyManager().startManager()
         BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation()
-        BITHockeyManager.sharedHockeyManager().testIdentifier()
         
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
         

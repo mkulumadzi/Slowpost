@@ -247,7 +247,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Slowpost Icon Set Yellow Shell" translatesAutoresizingMaskIntoConstraints="NO" id="cyp-Yi-AeK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Slowpost Icon Set" translatesAutoresizingMaskIntoConstraints="NO" id="cyp-Yi-AeK">
                                 <rect key="frame" x="225" y="495" width="150" height="95"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8ja-GC-cGh">
@@ -958,8 +958,8 @@ We won't save your address book on our servers, but we will search for matches w
         </scene>
     </scenes>
     <resources>
+        <image name="Slowpost Icon Set" width="150" height="95"/>
         <image name="Slowpost Icon Set (green)" width="150" height="95"/>
-        <image name="Slowpost Icon Set Yellow Shell" width="150" height="95"/>
         <image name="example_card.jpg" width="1024" height="768"/>
         <image name="example_photo.jpg" width="720" height="960"/>
         <image name="ios7-arrow-left-white.png" width="192" height="320"/>
