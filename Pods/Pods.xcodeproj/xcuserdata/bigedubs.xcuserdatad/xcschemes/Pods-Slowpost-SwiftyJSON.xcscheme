@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6296C63C966D466B8D5B30DA"
-               BuildableName = "Pods_Slowpost.framework"
-               BlueprintName = "Pods-Slowpost"
+               BlueprintIdentifier = "4280BB819E27A0451472997F"
+               BuildableName = "SwiftyJSON.framework"
+               BlueprintName = "Pods-Slowpost-SwiftyJSON"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>

@@ -19,19 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        Flurry.startSession("FT74F5GW8XVG66BQBXW8")
-        
-        BITHockeyManager.sharedHockeyManager().configureWithIdentifier("e0eb5854ba5ef9f17041a7ed288cfbe4")
-        // Do some additional configuration if needed here
-        BITHockeyManager.sharedHockeyManager().startManager()
-        BITHockeyManager.sharedHockeyManager().authenticator.authenticateInstallation()
-        
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge, categories: nil))
         
         application.registerForRemoteNotifications()
         
         //Manually set font for nav bar header (couldn't set in storyboard)
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName : UIFont(name: "OpenSans-Semibold", size: 17)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
+        
+        Flurry.startSession("FT74F5GW8XVG66BQBXW8")
         
         return true
     }

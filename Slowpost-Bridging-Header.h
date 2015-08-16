@@ -10,6 +10,5 @@
 #define Slowpost_Slowpost_Bridging_Header_h
 
 #import "Flurry.h"
-#import <HockeySDK/HockeySDK.h>
 
 #endif
