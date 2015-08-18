@@ -194,6 +194,7 @@
 		D29D3DBF1B83D28A00B3E0DA /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		D2A361351B3CAC5D00811D14 /* SnailMailTextUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnailMailTextUIButton.swift; sourceTree = "<group>"; };
 		D2A361371B3CB52B00811D14 /* WarningUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarningUILabel.swift; sourceTree = "<group>"; };
+		D2AA56E81B83FDBA007D8AAC /* SlowpostModel 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SlowpostModel 5.xcdatamodel"; sourceTree = "<group>"; };
 		D2B2BB951B7EB7D4007377DD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D2B2BB981B7EB97D007377DD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D2B2BB9D1B7EBB2E007377DD /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
@@ -1208,12 +1209,13 @@
 		D27E194C1B3B770C0052687F /* SlowpostModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D2AA56E81B83FDBA007D8AAC /* SlowpostModel 5.xcdatamodel */,
 				D2CEC4761B72DD8D002CFD25 /* SnailMailModel 4.xcdatamodel */,
 				D2CEC4751B72B786002CFD25 /* SnailMailModel 3.xcdatamodel */,
 				D2222A741B588695007E74BB /* SnailMailModel 2.xcdatamodel */,
 				D27E194D1B3B770C0052687F /* SnailMailModel.xcdatamodel */,
 			);
-			currentVersion = D2CEC4761B72DD8D002CFD25 /* SnailMailModel 4.xcdatamodel */;
+			currentVersion = D2AA56E81B83FDBA007D8AAC /* SlowpostModel 5.xcdatamodel */;
 			path = SlowpostModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
