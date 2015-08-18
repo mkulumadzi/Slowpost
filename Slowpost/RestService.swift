@@ -16,7 +16,9 @@ class RestService {
         
         Flurry.logEvent("GET_Request", withParameters: ["URL": "\(requestURL)", "Headers": "\(headers)"])
         
-        Alamofire.request(.GET, requestURL, headers: headers)
+        var request_headers:[String: String] = self.addAuthHeader(headers)
+        
+        Alamofire.request(.GET, requestURL, headers: request_headers)
             .response { (request, response, data, error) in
                 if let anError = error {
                     completion(error: error, result: nil)
@@ -43,8 +45,11 @@ class RestService {
         }
     }
     
-    class func postRequest(requestURL:String, parameters: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
-        Alamofire.request(.POST, requestURL, parameters: parameters, encoding: .JSON)
+    class func postRequest(requestURL:String, parameters: [String: String]?, headers: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
+        
+        var request_headers:[String: String] = self.addAuthHeader(headers)
+        
+        Alamofire.request(.POST, requestURL, parameters: parameters, headers: request_headers, encoding: .JSON)
             .responseJSON { (request, response, JSON, error) in
                 if let anError = error {
                     println(error)
@@ -93,6 +98,22 @@ class RestService {
         let headers = ["SINCE": maxUpdatedAt]
         
         return headers
+    }
+    
+    class func addAuthHeader(headers: [String: String]?) -> [String: String] {
+        var request_headers:[String: String]!
+        
+        if headers != nil {
+            request_headers = headers!
+            if request_headers["Authorization"] == nil {
+                request_headers["Authorization"] = "Bearer \(userToken)"
+            }
+        }
+        else {
+            request_headers = ["Authorization": "Bearer \(userToken)"]
+        }
+        
+        return request_headers
     }
 
 }

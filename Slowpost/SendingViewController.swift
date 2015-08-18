@@ -46,7 +46,7 @@ class SendingViewController: UIViewController {
         let sendMailEndpoint = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mail/send"
         let parameters = ["to": "\(username)", "content": "\(content)", "image_uid": "\(imageUid)"]
         
-        RestService.postRequest(sendMailEndpoint, parameters: parameters, completion: { (error, result) -> Void in
+        RestService.postRequest(sendMailEndpoint, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
             if let response = result as? [AnyObject] {
                 if response[0] as? Int == 201 {
                     Flurry.logEvent("Finished_Sending_Mail")

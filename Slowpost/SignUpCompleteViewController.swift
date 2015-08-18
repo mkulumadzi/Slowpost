@@ -16,7 +16,7 @@ class SignUpCompleteViewController: UIViewController {
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad() 
         
         gotItButton.layer.cornerRadius = 5
 

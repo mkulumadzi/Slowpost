@@ -83,7 +83,7 @@ class EditProfileViewController: UITableViewController {
         let updatePersonURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)"
         let parameters = ["name": "\(nameField.text)", "phone": "\(phoneField.text)", "address1": "\(address1Field.text)", "city": "\(cityField.text)", "state": "\(stateField.text)", "zip": "\(zipField.text)"]
         
-        RestService.postRequest(updatePersonURL, parameters: parameters, completion: { (error, result) -> Void in
+        RestService.postRequest(updatePersonURL, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }

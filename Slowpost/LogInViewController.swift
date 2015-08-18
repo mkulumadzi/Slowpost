@@ -107,7 +107,8 @@ class LogInViewController: UIViewController {
             }
             .responseJSON { (_, _, JSON, error) in
                 if let response = JSON as? NSDictionary {
-                    var person:Person! = PersonService.createPersonFromJson(response)
+                    userToken = response.valueForKey("access_token") as! String
+                    var person:Person! = PersonService.createPersonFromJson(response.valueForKey("person") as! NSDictionary)
                     completion(error: nil, result: person)
                 }
         }

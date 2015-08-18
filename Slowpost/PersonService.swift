@@ -160,6 +160,7 @@ class PersonService {
         let request = NSMutableURLRequest(URL: bulkPersonSearchURL!)
         request.HTTPMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer \(userToken)", forHTTPHeaderField: "Authorization")
         
         var error: NSError?
         request.HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: nil, error: &error)

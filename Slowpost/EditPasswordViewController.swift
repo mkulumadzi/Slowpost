@@ -76,7 +76,7 @@ class EditPasswordViewController: UIViewController {
             let parameters = ["old_password": existingPasswordField.text!, "new_password": newPasswordField.text!]
             let resetPasswordURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/reset_password"
             
-            RestService.postRequest(resetPasswordURL, parameters: parameters, completion: { (error, result) -> Void in
+            RestService.postRequest(resetPasswordURL, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
                 if let response = result as? [AnyObject] {
                     if response[0] as? Int == 204 {
                         self.passwordChanged()

@@ -187,7 +187,7 @@ class InitialViewController: UIViewController {
         let parameters = ["device_token": deviceToken as String]
         let updatePersonURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)"
         
-        RestService.postRequest(updatePersonURL, parameters: parameters, completion: { (error, result) -> Void in
+        RestService.postRequest(updatePersonURL, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }

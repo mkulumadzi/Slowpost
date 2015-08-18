@@ -27,7 +27,7 @@ class FileService {
                 let base64String = self.encodeImageAsBase64String(contextImage)
                 let parameters = ["file": base64String, "filename": filename]
                 
-                RestService.postRequest(uploadURL, parameters: parameters, completion: { (error, result) -> Void in
+                RestService.postRequest(uploadURL, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
                     if error != nil {
                         completion(error: error, result: nil)
                     }
@@ -55,9 +55,11 @@ class FileService {
     }
     
     class func downloadImage(url: String, completion: (error: NSError?, result: AnyObject?) -> Void) {
+        
+        let headers:[String: String] = ["Authorization": "Bearer \(userToken)"]
 
         println("Getting image at \(url)")
-        Alamofire.request(.GET, url)
+        Alamofire.request(.GET, url, headers: headers)
             .response { (request, response, data, error) in
                 if let anError = error {
                     completion(error: error, result: nil)
