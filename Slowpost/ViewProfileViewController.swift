@@ -173,5 +173,10 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func completeEditingAndReturnToProfileViewController(segue:UIStoryboardSegue) {
     }
+    
+    @IBAction func choseToLogOut(segue:UIStoryboardSegue) {
+        LoginService.logOut()
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
 
 }

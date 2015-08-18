@@ -28,4 +28,20 @@ class CoreDataService {
         return fetchedResults!
     }
     
+    class func deleteCoreDataObjects(entityName: String) {
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest = NSFetchRequest(entityName: entityName)
+        var error: NSError?
+        
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
+        
+        for object:NSManagedObject in fetchedResults! {
+            managedContext.deleteObject(object)
+        }
+        
+    }
+    
 }

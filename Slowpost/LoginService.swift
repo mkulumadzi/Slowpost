@@ -11,46 +11,56 @@ import Alamofire
 import CoreData
 import SwiftyJSON
 
+let MyKeychainWrapper = KeychainWrapper()
+
 class LoginService {
     
-    class func saveLoginToSession(userId: String) {
+    class func saveLoginToUserDefaults(userToken: String) {
+        MyKeychainWrapper.mySetObject(userToken, forKey:kSecValueData)
+        MyKeychainWrapper.mySetObject("postoffice", forKey:kSecAttrService)
+        MyKeychainWrapper.writeToKeychain()
+    }
+    
+    class func logIn(parameters: [String: String], completion: (error: NSError?, result: AnyObject?) -> Void) {
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        
-        let entity = NSEntityDescription.entityForName("Session", inManagedObjectContext: managedContext)
-        
-        let session = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
-        
-        session.setValue(userId, forKey: "loggedInUserId")
-        
-        var error: NSError?
-        if !managedContext.save(&error) {
-            println("Error saving session \(error), \(error?.userInfo)")
+        Alamofire.request(.POST, "\(PostOfficeURL)login", parameters: parameters, encoding: .JSON)
+            .response { (request, response, data, error) in
+                if let anError = error {
+                    completion(error: error, result: nil)
+                }
+                else if let response: AnyObject = response {
+                    if response.statusCode == 401 {
+                        completion(error: nil, result: response.statusCode)
+                    }
+                }
+            }
+            .responseJSON { (_, _, JSON, error) in
+                if let response = JSON as? NSDictionary {
+                    userToken = response.valueForKey("access_token") as! String
+                    self.saveLoginToUserDefaults(userToken)
+                    var person:Person! = PersonService.createPersonFromJson(response.valueForKey("person") as! NSDictionary)
+                    loggedInUser = person
+                    
+                    completion(error: nil, result: "Success")
+                }
         }
         
     }
     
-    class func getUserIdFromSession() -> String {
+    class func logOut() {
+        Flurry.logEvent("Logged_Out")
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
+        // Clear the keychain
+        MyKeychainWrapper.mySetObject("", forKey:kSecValueData)
+        MyKeychainWrapper.mySetObject("", forKey:kSecAttrService)
+        MyKeychainWrapper.writeToKeychain()
         
-        let fetchRequest = NSFetchRequest(entityName: "Session")
+        // Delete cached objects from Core Data
+        CoreDataService.deleteCoreDataObjects("Mail")
+        CoreDataService.deleteCoreDataObjects("Person")
         
-        var error: NSError?
+        loggedInUser = nil
         
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
-        
-        if let session = fetchedResults {
-            if session.count > 0 {
-                if let id = session[0].valueForKey("loggedInUserId") as? String {
-                    return id
-                }
-            }
-        }
-        
-        return ""
     }
 
 }

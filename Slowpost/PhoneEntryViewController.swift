@@ -109,18 +109,15 @@ class PhoneEntryViewController: UIViewController {
             if let response = result as? [AnyObject] {
                 if response[0] as? Int == 201 {
                     if let location = response[1] as? String {
-                        var personId:String = PersonService.parsePersonURLForId(location)
-                        PersonService.getPerson(personId, headers: nil, completion: { (error, result) -> Void in
+                        
+                        let parameters = ["username": "\(self.username)", "password": "\(self.password)"]
+                        
+                        LoginService.logIn(parameters, completion: { (error, result) -> Void in
                             if error != nil {
                                 println(error)
                             }
-                            else if let person = result as? Person {
-                                loggedInUser = person
-                                LoginService.saveLoginToSession(loggedInUser.id)
+                            else if result as? String == "Success" {
                                 self.performSegueWithIdentifier("signUpComplete", sender: nil)
-                            }
-                            else {
-                                println("Unexpected sign up result.")
                             }
                         })
                     }

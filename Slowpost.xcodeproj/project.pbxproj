@@ -66,6 +66,7 @@
 		D27DA32D1B66C51900DF32A1 /* MessageUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DA32C1B66C51900DF32A1 /* MessageUILabel.swift */; };
 		D27E194E1B3B770C0052687F /* SlowpostModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D27E194C1B3B770C0052687F /* SlowpostModel.xcdatamodeld */; };
 		D291B24C1B69AA5A00C72816 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291B24B1B69AA5A00C72816 /* FileService.swift */; };
+		D29D3DC01B83D28A00B3E0DA /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D29D3DBF1B83D28A00B3E0DA /* KeychainWrapper.m */; };
 		D2A361361B3CAC5D00811D14 /* SnailMailTextUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A361351B3CAC5D00811D14 /* SnailMailTextUIButton.swift */; };
 		D2A361381B3CB52B00811D14 /* WarningUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A361371B3CB52B00811D14 /* WarningUILabel.swift */; };
 		D2B2BB961B7EB7D4007377DD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B2BB951B7EB7D4007377DD /* SystemConfiguration.framework */; };
@@ -189,6 +190,8 @@
 		D27DA32C1B66C51900DF32A1 /* MessageUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageUILabel.swift; sourceTree = "<group>"; };
 		D27E194D1B3B770C0052687F /* SnailMailModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SnailMailModel.xcdatamodel; sourceTree = "<group>"; };
 		D291B24B1B69AA5A00C72816 /* FileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
+		D29D3DBE1B83D28200B3E0DA /* KeychainWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
+		D29D3DBF1B83D28A00B3E0DA /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		D2A361351B3CAC5D00811D14 /* SnailMailTextUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnailMailTextUIButton.swift; sourceTree = "<group>"; };
 		D2A361371B3CB52B00811D14 /* WarningUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarningUILabel.swift; sourceTree = "<group>"; };
 		D2B2BB951B7EB7D4007377DD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -386,6 +389,8 @@
 				CC23DE241AE54BB100AFEDE4 /* Features */,
 				CCCB1A521AB0D48A0067F100 /* AppDelegate.swift */,
 				D2B2BB9D1B7EBB2E007377DD /* Flurry.h */,
+				D29D3DBE1B83D28200B3E0DA /* KeychainWrapper.h */,
+				D29D3DBF1B83D28A00B3E0DA /* KeychainWrapper.m */,
 				D2B2BB9E1B7EBB37007377DD /* libFlurry_6.7.0.a */,
 				CCCB1A541AB0D48A0067F100 /* ViewController.swift */,
 				CCCB1A591AB0D48A0067F100 /* Images.xcassets */,
@@ -750,6 +755,7 @@
 				CC96E4C91AC0B334001E6D27 /* ComposeMailViewController.swift in Sources */,
 				D206FB4B1B61688D008BB412 /* WelcomeScreenViewController.swift in Sources */,
 				D206FB4F1B617504008BB412 /* BottomBorderUITextField.swift in Sources */,
+				D29D3DC01B83D28A00B3E0DA /* KeychainWrapper.m in Sources */,
 				CC6105F51AC3941900D15150 /* LoginService.swift in Sources */,
 				D2A361361B3CAC5D00811D14 /* SnailMailTextUIButton.swift in Sources */,
 				D20D8EE21B2E448100BBF6B5 /* PersonCell.swift in Sources */,

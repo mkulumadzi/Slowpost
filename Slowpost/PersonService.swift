@@ -137,8 +137,9 @@ class PersonService {
         var value:String = params[key]!
         
         let availableURL = "\(PostOfficeURL)/available?\(key)=\(value)"
+        let headers = ["Authorization": "Bearer \(appToken)"]
         
-        RestService.getRequest(availableURL, headers: nil, completion: { (error, result) -> Void in
+        RestService.getRequest(availableURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {
                 completion(error: error, result: nil)
             }

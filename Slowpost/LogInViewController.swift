@@ -63,55 +63,25 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func LogIn(sender: AnyObject) {
+        
         logInButton.disable()
+        let parameters = ["username": "\(UsernameTextField.text)", "password": "\(passwordTextField.text)"]
 
-        attemptLogIn( { (error, result) -> Void in
+        LoginService.logIn(parameters, completion: { (error, result) -> Void in
             if  error != nil {
                 println(error)
             }
             else if let result: AnyObject = result {
-                if let person:Person = result as? Person {
-                    
-                    
-                    LoginService.saveLoginToSession(person.id)
-                    loggedInUser = person
-                    
+                if result as? String == "Success" {
                     var storyboard = UIStoryboard(name: "initial", bundle: nil)
                     var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
                     self.presentViewController(controller, animated: true, completion: nil)
-                    
                 }
                 else {
                     self.warningLabel.show("Invalid login")
                 }
             }
         })
-        
-    }
-    
-    func attemptLogIn(completion: (error: NSError?, result: AnyObject?) -> Void) {
-        
-        //Sending field as 'username'; postoffice server checks for username and email match
-        let parameters = ["username": "\(UsernameTextField.text)", "password": "\(passwordTextField.text)"]
-        
-        Alamofire.request(.POST, "\(PostOfficeURL)login", parameters: parameters, encoding: .JSON)
-            .response { (request, response, data, error) in
-                if let anError = error {
-                    completion(error: error, result: nil)
-                }
-                else if let response: AnyObject = response {
-                    if response.statusCode == 401 {
-                        completion(error: nil, result: response.statusCode)
-                    }
-                }
-            }
-            .responseJSON { (_, _, JSON, error) in
-                if let response = JSON as? NSDictionary {
-                    userToken = response.valueForKey("access_token") as! String
-                    var person:Person! = PersonService.createPersonFromJson(response.valueForKey("person") as! NSDictionary)
-                    completion(error: nil, result: person)
-                }
-        }
         
     }
     

@@ -31,36 +31,29 @@ class SettingsMenuViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    @IBAction func logOut(sender: AnyObject) {
-        Flurry.logEvent("Logged_Out")
-        
-        deleteCoreDataObjects("Session")
-        deleteCoreDataObjects("Mail")
-        deleteCoreDataObjects("Person")
-        
-        loggedInUser = nil
-        
-        var storyboard = UIStoryboard(name: "initial", bundle: nil)
-        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-        
-        self.presentViewController(controller, animated: true, completion: nil)
-    }
     
-    func deleteCoreDataObjects(entityName: String) {
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        
-        let fetchRequest = NSFetchRequest(entityName: entityName)
-        var error: NSError?
-        
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
-        
-        for object:NSManagedObject in fetchedResults! {
-            managedContext.deleteObject(object)
-        }
-        
-    }
+    
+
+//    @IBAction func logOut(sender: AnyObject) {
+//        Flurry.logEvent("Logged_Out")
+//        
+//        // Clear the keychain
+//        MyKeychainWrapper.mySetObject("", forKey:kSecValueData)
+//        MyKeychainWrapper.mySetObject("", forKey:kSecAttrService)
+//        MyKeychainWrapper.writeToKeychain()
+//        
+//        // Delete cached objects from Core Data
+//        deleteCoreDataObjects("Mail")
+//        deleteCoreDataObjects("Person")
+//        
+//        loggedInUser = nil
+//        
+//        var service2 = MyKeychainWrapper.myObjectForKey(kSecAttrService) as! NSString
+//        var token2 = MyKeychainWrapper.myObjectForKey("v_Data") as! NSString
+//        
+//        var storyboard = UIStoryboard(name: "initial", bundle: nil)
+//        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+//        self.presentViewController(controller, animated: true, completion: nil)
+//    }
 
 }

@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import AddressBook
+import JWTDecode
 
 class InitialViewController: UIViewController {
 
@@ -30,11 +31,13 @@ class InitialViewController: UIViewController {
     }
     
     func checkLogin() {
-        if loggedInUser == nil {
-            let userId = LoginService.getUserIdFromSession()
-            if userId != "" {
-                Flurry.logEvent("User_Logged_In_From_Session")
-                self.setLoggedInUserFromUserId(userId)
+        if loggedInUser == nil || userToken == nil {
+            if MyKeychainWrapper.myObjectForKey(kSecAttrService) as? String == "postoffice" {
+                if let token = MyKeychainWrapper.myObjectForKey("v_Data") as? String {
+                    if JWTDecode.expired(jwt: token) == false {
+                        self.setLoggedInUserFromToken(token)
+                    }
+                }
             }
             else {
                 Flurry.logEvent("Sending_User_To_Login_Screen")
@@ -46,8 +49,6 @@ class InitialViewController: UIViewController {
         else {
             AddressBookService.checkAuthorizationStatus(self)
             getRegisteredContactsIfAuthorized()
-            
-            println("Getting mailbox")
             getMailbox()
         }
     }
@@ -67,26 +68,40 @@ class InitialViewController: UIViewController {
         self.presentViewController(controller, animated: true, completion: nil)
     }
     
-    func setLoggedInUserFromUserId(userId: String) {
+    func setLoggedInUserFromToken(token: String) {
         
-        PersonService.getPerson(userId, headers: nil, completion: { (error, result) -> Void in
-            if error != nil {
-                println(error)
-            }
-            else if let person = result as? Person {
-                loggedInUser = person
-                AddressBookService.checkAuthorizationStatus(self)
-                self.getRegisteredContactsIfAuthorized()
-                
-                println("Getting mailbox")
-                self.getMailbox()
-            }
-            else {
-                var storyboard = UIStoryboard(name: "login", bundle: nil)
-                var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-                self.presentViewController(controller, animated: true, completion: nil)
-            }
-        })
+        //Set user token for API requests
+        userToken = token
+        
+        let payload = JWTDecode.payload(jwt: token)
+        if let userId = payload!["id"] as? String {
+
+            PersonService.getPerson(userId, headers: nil, completion: { (error, result) -> Void in
+                if error != nil {
+                    println(error)
+                }
+                else if let person = result as? Person {
+                    Flurry.logEvent("User_Logged_In_From_Session")
+                    loggedInUser = person
+                    AddressBookService.checkAuthorizationStatus(self)
+                    self.getRegisteredContactsIfAuthorized()
+                    self.getMailbox()
+                }
+                else {
+                    var storyboard = UIStoryboard(name: "login", bundle: nil)
+                    var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+                    self.presentViewController(controller, animated: true, completion: nil)
+                }
+            })
+            
+        }
+        else {
+            println("Token did not contain User ID")
+            var storyboard = UIStoryboard(name: "login", bundle: nil)
+            var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
+        
     }
     
     func getMailbox() {
@@ -145,7 +160,6 @@ class InitialViewController: UIViewController {
         if outbox.count > 0 {
             headers = RestService.sinceHeader(outbox)
         }
-        
         
         let myOutboxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/outbox"
         MailService.getMailCollection(myOutboxURL, headers: headers, completion: { (error, result) -> Void in
