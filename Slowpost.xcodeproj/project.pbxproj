@@ -23,7 +23,6 @@
 		CCCB1A581AB0D48A0067F100 /* initial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCCB1A561AB0D48A0067F100 /* initial.storyboard */; };
 		CCCB1A5A1AB0D48A0067F100 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCCB1A591AB0D48A0067F100 /* Images.xcassets */; };
 		CCCB1A5D1AB0D48A0067F100 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCCB1A5B1AB0D48A0067F100 /* LaunchScreen.xib */; };
-		CCCB1A691AB0D48A0067F100 /* SlowpostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCB1A681AB0D48A0067F100 /* SlowpostTests.swift */; };
 		CCCB1A751AB0D87F0067F100 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCB1A741AB0D87F0067F100 /* Person.swift */; };
 		CCCB1A7B1AB0DE780067F100 /* MyMailboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCB1A7A1AB0DE780067F100 /* MyMailboxViewController.swift */; };
 		D206FB471B615A3C008BB412 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = D206FB3F1B615A3C008BB412 /* SIL Open Font License.txt */; };
@@ -801,7 +800,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCCB1A691AB0D48A0067F100 /* SlowpostTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -976,7 +974,7 @@
 				INFOPLIST_FILE = SlowpostTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SlowpostTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snailtale.app/Snailtale";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slowpost.app/Slowpost";
 			};
 			name = Debug;
 		};
@@ -991,7 +989,7 @@
 				INFOPLIST_FILE = SlowpostTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SlowpostTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snailtale.app/Snailtale";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slowpost.app/Slowpost";
 			};
 			name = Release;
 		};
@@ -1077,7 +1075,7 @@
 				INFOPLIST_FILE = SlowpostTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SlowpostTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snailtale.app/Snailtale";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slowpost.app/Slowpost";
 			};
 			name = Staging;
 		};
@@ -1163,7 +1161,7 @@
 				INFOPLIST_FILE = SlowpostTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SlowpostTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snailtale.app/Snailtale";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slowpost.app/Slowpost";
 			};
 			name = Testing;
 		};

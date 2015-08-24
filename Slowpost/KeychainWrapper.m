@@ -8,6 +8,9 @@
 
 #import "KeychainWrapper.h"
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wunused-variable"
+
 //Unique string used to identify the keychain item:
 static const UInt8 kKeychainItemIdentifier[]    = "com.apple.dts.KeychainUI\0";
 
@@ -250,5 +253,6 @@ static const UInt8 kKeychainItemIdentifier[]    = "com.apple.dts.KeychainUI\0";
     
 }
 
-
 @end
+
+#pragma clang diagnostic pop

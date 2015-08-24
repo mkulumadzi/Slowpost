@@ -15,7 +15,7 @@
 	<key>Release</key>
 	<dict>
 		<key>PostOfficeURL</key>
-		<string>https://postoffice-production.herokuapp.com/</string>
+		<string>https://production.slowpost.me/</string>
 	</dict>
 	<key>Debug</key>
 	<dict>
