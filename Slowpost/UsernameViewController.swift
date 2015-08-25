@@ -8,33 +8,36 @@
 
 import UIKit
 
-class UsernameViewController: UIViewController {
+class UsernameViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var usernameTextField: BottomBorderUITextField!
     @IBOutlet weak var passwordTextField: BottomBorderUITextField!
     @IBOutlet weak var warningLabel: WarningUILabel!
-    @IBOutlet weak var navBar: UINavigationBar!
-    @IBOutlet weak var nextButton: UIButton!
-    
+    @IBOutlet weak var nextButton: TextUIButton!
+  
     var name:String!
     var email:String!
-    
+
     @IBOutlet weak var verticalSpaceToTitle: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToUsername: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToPassword: NSLayoutConstraint!
+    @IBOutlet weak var verticalSpaceToNext: NSLayoutConstraint!
+    @IBOutlet weak var buttonHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         Flurry.logEvent("Username_View_Opened")
         
-        navBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Quicksand-Regular", size: 24)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
+        passwordTextField.delegate = self
         
         usernameTextField.addBottomLayer()
         passwordTextField.addBottomLayer()
         
         warningLabel.hide()
         validateNextButton()
+        
+        nextButton.layer.cornerRadius = 5
         
         if deviceType == "iPhone 4S" {
             self.formatForiPhone4S()
@@ -44,9 +47,11 @@ class UsernameViewController: UIViewController {
     
     func formatForiPhone4S() {
         
-        verticalSpaceToTitle.constant = 30
+        verticalSpaceToTitle.constant = 10
         verticalSpaceToUsername.constant = 10
         verticalSpaceToPassword.constant = 10
+        verticalSpaceToNext.constant = 10
+        buttonHeight.constant = 30
         
         usernameTextField.font = usernameTextField.font.fontWithSize(15.0)
         passwordTextField.font = passwordTextField.font.fontWithSize(15.0)
@@ -74,19 +79,20 @@ class UsernameViewController: UIViewController {
     
     func validateNextButton() {
         if usernameTextField.text != "" && passwordTextField.text != "" {
-            nextButton.enabled = true
+            nextButton.enable()
         }
         else {
-            nextButton.enabled = false
+            nextButton.enable()
         }
     }
     
-    @IBAction func back(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: {})
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        checkUsernameAvailability(self)
+        return true
     }
     
     @IBAction func checkUsernameAvailability(sender: AnyObject) {
-        nextButton.enabled = false
+        nextButton.disable()
         let params = ["username": usernameTextField.text!]
         
         PersonService.checkFieldAvailability(params, completion: { (error, result) -> Void in

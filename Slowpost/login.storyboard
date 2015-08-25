@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6az-Oz-1fo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6az-Oz-1fo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -33,6 +33,8 @@
             <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
@@ -213,7 +215,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="cqE-Qh-T2s" kind="show" id="uhx-7q-7qr"/>
+                                    <segue destination="x1t-f9-P3i" kind="show" id="e9A-yb-83a"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -479,10 +481,33 @@ Evan</string>
             </objects>
             <point key="canvasLocation" x="96" y="1898"/>
         </scene>
-        <!--Personal Details View Controller-->
+        <!--Slowpost-->
+        <scene sceneID="hcN-in-cT2">
+            <objects>
+                <navigationController title="Slowpost" id="x1t-f9-P3i" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YpK-4J-WdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="24"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="cqE-Qh-T2s" kind="relationship" relationship="rootViewController" id="FWQ-dW-A3w"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hpw-V3-jLi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="839" y="-1300"/>
+        </scene>
+        <!--Name-->
         <scene sceneID="FC7-Kj-SAs">
             <objects>
-                <viewController id="cqE-Qh-T2s" customClass="PersonalDetailsViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cqE-Qh-T2s" userLabel="Name" customClass="PersonalDetailsViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="5ay-1r-pEx"/>
                         <viewControllerLayoutGuide type="bottom" id="ZQI-81-jr8"/>
@@ -491,18 +516,6 @@ Evan</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="P5I-cq-lFh" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="224" width="540" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Tco-OY-Y9H"/>
-                                </constraints>
-                                <color key="textColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
-                                <connections>
-                                    <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="ssz-Wc-Wtv"/>
-                                </connections>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="8aQ-qm-rHK" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="60" width="600" height="30"/>
                                 <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -519,40 +532,6 @@ Evan</string>
                                     </mask>
                                 </variation>
                             </label>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tZF-2h-GJP">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="yH7-Ei-xxh"/>
-                                </constraints>
-                                <color key="barTintColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="24"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Slowpost" id="1cA-FW-AJV">
-                                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="Lta-SE-sv9">
-                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <connections>
-                                                <action selector="cancel:" destination="cqE-Qh-T2s" id="9Mu-Q8-3GO"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="done" id="9in-VZ-rYf">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="d3T-mn-vnX" userLabel="Next">
-                                                <rect key="frame" x="572" y="-122" width="12" height="20"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="ios7-arrow-right-white.png">
-                                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="checkEmailAvailability:" destination="cqE-Qh-T2s" eventType="touchUpInside" id="4yv-UH-nh5"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us about yourself." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="EJb-Ir-fa9">
                                 <rect key="frame" x="30" y="110" width="540" height="24"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
@@ -571,53 +550,88 @@ Evan</string>
                                     <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="Mvm-sb-IE6"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOu-Ii-hWQ" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="284" width="540" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="IsH-bf-IGC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkEmailAvailability:" destination="cqE-Qh-T2s" eventType="touchUpInside" id="gHr-BB-97y"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="P5I-cq-lFh" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="224" width="540" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Tco-OY-Y9H"/>
+                                </constraints>
+                                <color key="textColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="ssz-Wc-Wtv"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="VGQ-6a-6wA" firstAttribute="top" secondItem="EJb-Ir-fa9" secondAttribute="bottom" constant="30" id="1I8-Zk-R8Z"/>
                             <constraint firstItem="P5I-cq-lFh" firstAttribute="top" secondItem="VGQ-6a-6wA" secondAttribute="bottom" constant="10" id="393-Pl-oue"/>
+                            <constraint firstItem="8aQ-qm-rHK" firstAttribute="top" secondItem="5ay-1r-pEx" secondAttribute="bottom" constant="-4" id="44v-0b-9Z4"/>
                             <constraint firstItem="EJb-Ir-fa9" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="8Vt-E9-yMj"/>
                             <constraint firstAttribute="trailing" secondItem="P5I-cq-lFh" secondAttribute="trailing" constant="30" id="96y-53-c3a"/>
                             <constraint firstAttribute="trailing" secondItem="VGQ-6a-6wA" secondAttribute="trailing" constant="30" id="9vy-EU-yZv"/>
                             <constraint firstItem="P5I-cq-lFh" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="B8V-qf-Rx7"/>
                             <constraint firstAttribute="trailing" secondItem="EJb-Ir-fa9" secondAttribute="trailing" constant="30" id="Gxb-XP-rdg"/>
-                            <constraint firstItem="tZF-2h-GJP" firstAttribute="top" secondItem="YL5-63-9jW" secondAttribute="top" id="Hxx-1L-wBk"/>
                             <constraint firstItem="VGQ-6a-6wA" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="I9B-8l-kjq"/>
                             <constraint firstItem="P5I-cq-lFh" firstAttribute="top" secondItem="VGQ-6a-6wA" secondAttribute="bottom" constant="30" id="MCo-Fw-Poj"/>
                             <constraint firstAttribute="trailing" secondItem="8aQ-qm-rHK" secondAttribute="trailing" id="UCx-Bs-3nE"/>
                             <constraint firstItem="8aQ-qm-rHK" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" id="XJQ-hw-mBd"/>
-                            <constraint firstItem="8aQ-qm-rHK" firstAttribute="top" secondItem="tZF-2h-GJP" secondAttribute="bottom" id="bBF-6v-Yk3"/>
-                            <constraint firstAttribute="trailing" secondItem="tZF-2h-GJP" secondAttribute="trailing" id="bod-1e-Iad"/>
-                            <constraint firstItem="VGQ-6a-6wA" firstAttribute="top" secondItem="tZF-2h-GJP" secondAttribute="bottom" constant="36" id="hLz-gw-qLE"/>
-                            <constraint firstItem="EJb-Ir-fa9" firstAttribute="top" secondItem="tZF-2h-GJP" secondAttribute="bottom" constant="50" id="m7n-cF-Omb"/>
-                            <constraint firstItem="tZF-2h-GJP" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" id="v8n-2r-Ex8"/>
+                            <constraint firstItem="VOu-Ii-hWQ" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="aHq-dx-1N4"/>
+                            <constraint firstItem="EJb-Ir-fa9" firstAttribute="top" secondItem="5ay-1r-pEx" secondAttribute="bottom" constant="46" id="c7W-KK-wsb"/>
+                            <constraint firstAttribute="trailing" secondItem="VOu-Ii-hWQ" secondAttribute="trailing" constant="30" id="eyq-GC-f9l"/>
+                            <constraint firstItem="VOu-Ii-hWQ" firstAttribute="top" secondItem="P5I-cq-lFh" secondAttribute="bottom" constant="30" id="jJc-a7-f2S"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="hLz-gw-qLE"/>
                                 <exclude reference="393-Pl-oue"/>
                             </mask>
                         </variation>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Name" id="HAR-GI-gwi" userLabel="Nav bar">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="dvh-52-NFX">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancel:" destination="cqE-Qh-T2s" id="H9X-Ep-1wT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="buttonHeight" destination="IsH-bf-IGC" id="RPc-P6-YS0"/>
                         <outlet property="emailTextField" destination="P5I-cq-lFh" id="9zA-yl-P3b"/>
                         <outlet property="nameTextField" destination="VGQ-6a-6wA" id="fdE-Zf-mlF"/>
-                        <outlet property="navBar" destination="tZF-2h-GJP" id="F2Y-9S-K3c"/>
-                        <outlet property="nextButton" destination="d3T-mn-vnX" id="sug-nB-EWr"/>
+                        <outlet property="navBar" destination="HAR-GI-gwi" id="Mhc-2x-JcR"/>
+                        <outlet property="nextButton" destination="VOu-Ii-hWQ" id="kc2-Tq-Fjz"/>
                         <outlet property="verticalSpaceToEmail" destination="MCo-Fw-Poj" id="m0b-hj-nVW"/>
                         <outlet property="verticalSpaceToName" destination="1I8-Zk-R8Z" id="gl0-IE-cDe"/>
-                        <outlet property="verticalSpaceToTitle" destination="m7n-cF-Omb" id="Qel-6R-W6g"/>
+                        <outlet property="verticalSpaceToNext" destination="jJc-a7-f2S" id="7cU-45-dGY"/>
+                        <outlet property="verticalSpaceToTitle" destination="c7W-KK-wsb" id="1vD-19-Nxj"/>
                         <outlet property="warningLabel" destination="8aQ-qm-rHK" id="LAo-un-FAk"/>
-                        <segue destination="65F-qu-B8L" kind="show" identifier="enterUsername" id="Zhl-b4-CX5"/>
+                        <segue destination="65F-qu-B8L" kind="show" identifier="enterUsername" id="Hnp-JZ-vCr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Zp-98-wzK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="839" y="-1306"/>
+            <point key="canvasLocation" x="1501" y="-1300"/>
         </scene>
-        <!--Phone Entry View Controller-->
+        <!--Phone-->
         <scene sceneID="Gjs-Ks-Qrf">
             <objects>
                 <viewController id="NmY-mY-Z9m" customClass="PhoneEntryViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
@@ -645,34 +659,6 @@ Evan</string>
                                     </mask>
                                 </variation>
                             </label>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2oZ-Dt-Pwj">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="sAe-DO-G3b"/>
-                                </constraints>
-                                <color key="barTintColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="24"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Slowpost" id="IaF-0m-rcD">
-                                        <barButtonItem key="leftBarButtonItem" style="done" id="1St-9P-f4x">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2Ii-kA-rOF">
-                                                <rect key="frame" x="16" y="-122" width="12" height="20"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="ios7-arrow-left-white.png">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="back:" destination="NmY-mY-Z9m" eventType="touchUpInside" id="KXa-dc-Bif"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1Mw-MZ-Xs7" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="187" width="540" height="30"/>
                                 <constraints>
@@ -713,21 +699,18 @@ Evan</string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="och-Jp-fp1" firstAttribute="leading" secondItem="Bsa-Dz-qWU" secondAttribute="leading" constant="30" id="1a2-DL-51G"/>
-                            <constraint firstAttribute="trailing" secondItem="2oZ-Dt-Pwj" secondAttribute="trailing" id="3IN-dV-GvY"/>
+                            <constraint firstItem="AzT-bW-tCU" firstAttribute="top" secondItem="J4y-sO-Zlx" secondAttribute="bottom" constant="-4" id="8fU-VG-0ra"/>
                             <constraint firstAttribute="trailing" secondItem="sL0-kO-S2J" secondAttribute="trailing" constant="30" id="9Z6-cp-Vbh"/>
                             <constraint firstItem="sL0-kO-S2J" firstAttribute="leading" secondItem="Bsa-Dz-qWU" secondAttribute="leading" constant="30" id="IeH-1G-9lX"/>
-                            <constraint firstItem="2oZ-Dt-Pwj" firstAttribute="leading" secondItem="Bsa-Dz-qWU" secondAttribute="leading" id="Jek-Q8-LCa"/>
                             <constraint firstAttribute="trailing" secondItem="AzT-bW-tCU" secondAttribute="trailing" id="R9Z-wk-QV8"/>
                             <constraint firstItem="1Mw-MZ-Xs7" firstAttribute="top" secondItem="J4y-sO-Zlx" secondAttribute="bottom" constant="80" id="Zxc-js-LAW"/>
-                            <constraint firstItem="AzT-bW-tCU" firstAttribute="top" secondItem="2oZ-Dt-Pwj" secondAttribute="bottom" id="ctz-kL-0sW"/>
-                            <constraint firstItem="2oZ-Dt-Pwj" firstAttribute="top" secondItem="Bsa-Dz-qWU" secondAttribute="top" id="eAo-Vz-kpB"/>
                             <constraint firstItem="AzT-bW-tCU" firstAttribute="leading" secondItem="Bsa-Dz-qWU" secondAttribute="leading" id="fz5-IB-3jt"/>
                             <constraint firstItem="1Mw-MZ-Xs7" firstAttribute="leading" secondItem="Bsa-Dz-qWU" secondAttribute="leading" constant="30" id="gG3-YQ-vOC"/>
                             <constraint firstAttribute="trailing" secondItem="och-Jp-fp1" secondAttribute="trailing" constant="30" id="gyU-VG-RIp"/>
                             <constraint firstAttribute="trailing" secondItem="1Mw-MZ-Xs7" secondAttribute="trailing" constant="30" id="qtu-mS-O5Z"/>
                             <constraint firstAttribute="centerY" secondItem="och-Jp-fp1" secondAttribute="centerY" id="qua-qi-TX5"/>
-                            <constraint firstItem="sL0-kO-S2J" firstAttribute="top" secondItem="2oZ-Dt-Pwj" secondAttribute="bottom" constant="50" id="shm-wC-8Hg"/>
                             <constraint firstItem="1Mw-MZ-Xs7" firstAttribute="top" secondItem="sL0-kO-S2J" secondAttribute="bottom" constant="30" id="vTK-Qf-pdf"/>
+                            <constraint firstItem="sL0-kO-S2J" firstAttribute="top" secondItem="J4y-sO-Zlx" secondAttribute="bottom" constant="46" id="xb7-MM-ArM"/>
                             <constraint firstItem="och-Jp-fp1" firstAttribute="top" secondItem="1Mw-MZ-Xs7" secondAttribute="bottom" constant="30" id="zoz-8h-TB4"/>
                         </constraints>
                         <variation key="default">
@@ -738,21 +721,21 @@ Evan</string>
                         </variation>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Phone" id="OXE-r0-J2M" userLabel="Phone"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="buttonHeight" destination="Nli-W2-KEt" id="NBl-wB-LTI"/>
-                        <outlet property="navBar" destination="2oZ-Dt-Pwj" id="6GI-pe-A3e"/>
                         <outlet property="phoneTextField" destination="1Mw-MZ-Xs7" id="0zk-qa-LHS"/>
                         <outlet property="signUpButton" destination="och-Jp-fp1" id="xDU-fd-RvD"/>
                         <outlet property="verticalSpaceToPhone" destination="vTK-Qf-pdf" id="LUq-il-cXM"/>
-                        <outlet property="verticalSpaceToTitle" destination="shm-wC-8Hg" id="GGl-73-r8h"/>
+                        <outlet property="verticalSpaceToTitle" destination="xb7-MM-ArM" id="Vh3-UJ-2gS"/>
                         <outlet property="warningLabel" destination="AzT-bW-tCU" id="M9k-aI-vsp"/>
-                        <segue destination="w8n-Sy-2a1" kind="show" identifier="signUpComplete" id="4ea-Ld-oxM"/>
+                        <segue destination="w8n-Sy-2a1" kind="presentation" identifier="signUpComplete" id="fzz-ge-ACf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cwo-3D-PBP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2238" y="-1306"/>
+            <point key="canvasLocation" x="2900" y="-1300"/>
         </scene>
         <!--Sign Up Complete View Controller-->
         <scene sceneID="b0k-vm-4Cb">
@@ -787,7 +770,7 @@ We won't save your address book on our servers, but we will search for matches w
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="goToMailbox:" destination="w8n-Sy-2a1" eventType="touchUpInside" id="By6-TJ-QyN"/>
+                                    <segue destination="UMc-SG-qDW" kind="unwind" unwindAction="signUpOrLogInCompleted:" id="Miv-qy-Lhn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -817,13 +800,14 @@ We won't save your address book on our servers, but we will search for matches w
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kkx-io-WIk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="UMc-SG-qDW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2919" y="-1306"/>
+            <point key="canvasLocation" x="3581" y="-1300"/>
         </scene>
-        <!--Username View Controller-->
+        <!--Username-->
         <scene sceneID="PaQ-Zj-z4W">
             <objects>
-                <viewController id="65F-qu-B8L" customClass="UsernameViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="65F-qu-B8L" userLabel="Username" customClass="UsernameViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ony-8R-FTy"/>
                         <viewControllerLayoutGuide type="bottom" id="79J-hY-al2"/>
@@ -839,7 +823,7 @@ We won't save your address book on our servers, but we will search for matches w
                                 </constraints>
                                 <color key="textColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="65F-qu-B8L" eventType="editingChanged" id="MiU-tH-aF8"/>
                                 </connections>
@@ -860,46 +844,6 @@ We won't save your address book on our servers, but we will search for matches w
                                     </mask>
                                 </variation>
                             </label>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TzH-f3-tRp">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="XHy-uz-dTC"/>
-                                </constraints>
-                                <color key="barTintColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="24"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Slowpost" id="oas-B8-1EK">
-                                        <barButtonItem key="leftBarButtonItem" style="done" id="Itk-mO-krx">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZDD-oH-AHt">
-                                                <rect key="frame" x="16" y="-122" width="12" height="20"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="ios7-arrow-left-white.png">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="back:" destination="65F-qu-B8L" eventType="touchUpInside" id="Idm-eK-QJD"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="done" id="hTX-hJ-aI8">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7wz-Mq-x3h" userLabel="Next">
-                                                <rect key="frame" x="572" y="-122" width="12" height="20"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="ios7-arrow-right-white.png">
-                                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="checkUsernameAvailability:" destination="65F-qu-B8L" eventType="touchUpInside" id="Q9z-3h-BmJ"/>
-                                                </connections>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fyz-vB-IcF" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="164" width="540" height="30"/>
                                 <constraints>
@@ -918,6 +862,21 @@ We won't save your address book on our servers, but we will search for matches w
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qoT-XQ-G2Z" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="284" width="540" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9Jt-1d-rNd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkUsernameAvailability:" destination="65F-qu-B8L" eventType="touchUpInside" id="NUI-jo-053"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -925,28 +884,30 @@ We won't save your address book on our servers, but we will search for matches w
                             <constraint firstAttribute="trailing" secondItem="8DA-LN-k4L" secondAttribute="trailing" id="DnQ-iU-jgh"/>
                             <constraint firstItem="ikw-33-dC8" firstAttribute="top" secondItem="fyz-vB-IcF" secondAttribute="bottom" constant="30" id="Eou-RT-0xT"/>
                             <constraint firstItem="fyz-vB-IcF" firstAttribute="leading" secondItem="reT-Hu-5gT" secondAttribute="leading" constant="30" id="IzP-os-mQ2"/>
-                            <constraint firstAttribute="trailing" secondItem="TzH-f3-tRp" secondAttribute="trailing" id="NK8-Zx-Bg3"/>
-                            <constraint firstItem="8DA-LN-k4L" firstAttribute="top" secondItem="TzH-f3-tRp" secondAttribute="bottom" id="WLU-er-KdJ"/>
-                            <constraint firstItem="y0R-1X-YfO" firstAttribute="top" secondItem="TzH-f3-tRp" secondAttribute="bottom" constant="50" id="WVs-Z9-fIP"/>
-                            <constraint firstItem="TzH-f3-tRp" firstAttribute="leading" secondItem="reT-Hu-5gT" secondAttribute="leading" id="XLI-qw-GRF"/>
                             <constraint firstItem="y0R-1X-YfO" firstAttribute="leading" secondItem="reT-Hu-5gT" secondAttribute="leading" constant="30" id="XOr-kF-Omz"/>
-                            <constraint firstItem="TzH-f3-tRp" firstAttribute="top" secondItem="reT-Hu-5gT" secondAttribute="top" id="lRO-Ok-zud"/>
+                            <constraint firstAttribute="trailing" secondItem="qoT-XQ-G2Z" secondAttribute="trailing" constant="30" id="a8h-DE-P1l"/>
+                            <constraint firstItem="8DA-LN-k4L" firstAttribute="top" secondItem="ony-8R-FTy" secondAttribute="bottom" constant="-4" id="dbu-ZZ-ut3"/>
                             <constraint firstItem="fyz-vB-IcF" firstAttribute="top" secondItem="y0R-1X-YfO" secondAttribute="bottom" constant="30" id="lZu-bV-hjI"/>
                             <constraint firstAttribute="trailing" secondItem="y0R-1X-YfO" secondAttribute="trailing" constant="30" id="p6S-7Q-pw2"/>
                             <constraint firstItem="8DA-LN-k4L" firstAttribute="leading" secondItem="reT-Hu-5gT" secondAttribute="leading" id="pBo-IX-dR7"/>
                             <constraint firstItem="ikw-33-dC8" firstAttribute="leading" secondItem="reT-Hu-5gT" secondAttribute="leading" constant="30" id="riA-0Z-7Yn"/>
+                            <constraint firstItem="y0R-1X-YfO" firstAttribute="top" secondItem="ony-8R-FTy" secondAttribute="bottom" constant="46" id="soI-pA-5xf"/>
+                            <constraint firstItem="qoT-XQ-G2Z" firstAttribute="top" secondItem="ikw-33-dC8" secondAttribute="bottom" constant="30" id="tCN-34-CGI"/>
+                            <constraint firstItem="qoT-XQ-G2Z" firstAttribute="leading" secondItem="reT-Hu-5gT" secondAttribute="leading" constant="30" id="wQi-g0-rCg"/>
                             <constraint firstAttribute="trailing" secondItem="fyz-vB-IcF" secondAttribute="trailing" constant="30" id="xTm-PQ-LBm"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Username" id="QyS-et-90t" userLabel="Username"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="navBar" destination="TzH-f3-tRp" id="Uo7-3K-Oiw"/>
-                        <outlet property="nextButton" destination="7wz-Mq-x3h" id="3F9-RV-KA7"/>
+                        <outlet property="buttonHeight" destination="9Jt-1d-rNd" id="57n-Xo-VFX"/>
+                        <outlet property="nextButton" destination="qoT-XQ-G2Z" id="Uso-bY-5PR"/>
                         <outlet property="passwordTextField" destination="ikw-33-dC8" id="4b2-Cw-oRX"/>
                         <outlet property="usernameTextField" destination="fyz-vB-IcF" id="kl5-dr-2sO"/>
+                        <outlet property="verticalSpaceToNext" destination="tCN-34-CGI" id="dgd-jw-xno"/>
                         <outlet property="verticalSpaceToPassword" destination="Eou-RT-0xT" id="hQ3-Ug-qWl"/>
-                        <outlet property="verticalSpaceToTitle" destination="WVs-Z9-fIP" id="sU6-x7-rH9"/>
+                        <outlet property="verticalSpaceToTitle" destination="soI-pA-5xf" id="8dT-fY-wzS"/>
                         <outlet property="verticalSpaceToUsername" destination="lZu-bV-hjI" id="0rp-p0-cli"/>
                         <outlet property="warningLabel" destination="8DA-LN-k4L" id="Aiq-7M-8DE"/>
                         <segue destination="NmY-mY-Z9m" kind="show" identifier="enterPhone" id="tDf-YJ-f9T"/>
@@ -954,7 +915,7 @@ We won't save your address book on our servers, but we will search for matches w
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="coA-1v-Wbb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1551" y="-1306"/>
+            <point key="canvasLocation" x="2213" y="-1300"/>
         </scene>
     </scenes>
     <resources>
@@ -962,7 +923,5 @@ We won't save your address book on our servers, but we will search for matches w
         <image name="Slowpost Icon Set (green)" width="150" height="95"/>
         <image name="example_card.jpg" width="1024" height="768"/>
         <image name="example_photo.jpg" width="720" height="960"/>
-        <image name="ios7-arrow-left-white.png" width="192" height="320"/>
-        <image name="ios7-arrow-right-white.png" width="192" height="320"/>
     </resources>
 </document>

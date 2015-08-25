@@ -31,29 +31,5 @@ class SettingsMenuViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-
-//    @IBAction func logOut(sender: AnyObject) {
-//        Flurry.logEvent("Logged_Out")
-//        
-//        // Clear the keychain
-//        MyKeychainWrapper.mySetObject("", forKey:kSecValueData)
-//        MyKeychainWrapper.mySetObject("", forKey:kSecAttrService)
-//        MyKeychainWrapper.writeToKeychain()
-//        
-//        // Delete cached objects from Core Data
-//        deleteCoreDataObjects("Mail")
-//        deleteCoreDataObjects("Person")
-//        
-//        loggedInUser = nil
-//        
-//        var service2 = MyKeychainWrapper.myObjectForKey(kSecAttrService) as! NSString
-//        var token2 = MyKeychainWrapper.myObjectForKey("v_Data") as! NSString
-//        
-//        var storyboard = UIStoryboard(name: "initial", bundle: nil)
-//        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-//        self.presentViewController(controller, animated: true, completion: nil)
-//    }
 
 }

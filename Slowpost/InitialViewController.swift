@@ -126,10 +126,7 @@ class InitialViewController: UIViewController {
             }
             else if let mailArray = result as? Array<Mail> {
                 
-                mailbox = MailService.updateMailCollectionFromNewMail(mailbox, newCollection: mailArray)
-                mailbox = mailbox.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
-                
-                MailService.appendMailArrayToCoreData(mailArray)
+                MailService.updateMailboxAndAppendMailToCache(mailArray)
                 
                 //Get all 'penpal' records whom the user has sent mail to or received mail from
                 let contactsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"
@@ -167,10 +164,7 @@ class InitialViewController: UIViewController {
                 println(error)
             }
             else if let mailArray = result as? Array<Mail> {
-                outbox = MailService.updateMailCollectionFromNewMail(outbox, newCollection: mailArray)
-                outbox = outbox.sorted { $0.createdAt.compare($1.createdAt) == NSComparisonResult.OrderedDescending }
-                
-                MailService.appendMailArrayToCoreData(mailArray)
+                MailService.updateOutboxAndAppendMailToCache(mailArray)
             }
         })
     }
@@ -206,6 +200,9 @@ class InitialViewController: UIViewController {
                 println(error)
             }
         })
+    }
+    
+    @IBAction func signUpOrLogInCompleted(segue: UIStoryboardSegue) {
     }
 
 }

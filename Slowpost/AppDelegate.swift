@@ -29,6 +29,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Flurry.setCrashReportingEnabled(true)
         Flurry.startSession("FT74F5GW8XVG66BQBXW8")
         
+        if let remoteNotification = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? NSDictionary {
+            // there is a notification...do stuff...
+//            self.application(application, didReceiveRemoteNotification: remoteNotification as [NSObject : AnyObject], fetchCompletionHandler: (UIBackgroundFetchResult))
+            
+            
+        
+            Flurry.logEvent("Opened_App_From_Notification")
+            println("Got a remote notification")
+            
+        }
+        
         return true
     }
 
@@ -150,8 +161,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void ) {
         
+        Flurry.logEvent("Received remote notification")
+        
         if let type = userInfo["type"] as? NSString {
             if type == "New Mail" {
+                
+                var headers:[String: String]?
+                if mailbox.count > 0 {
+                    headers = RestService.sinceHeader(mailbox)
+                }
+                
+                let myMailBoxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/mailbox"
+                
+                MailService.getMailCollection(myMailBoxURL, headers: headers, completion: { (error, result) -> Void in
+                    if error != nil {
+                        println(error)
+                    }
+                    else if let mailArray = result as? Array<Mail> {
+                        MailService.updateMailboxAndAppendMailToCache(mailArray)
+                    }
+                })
+                
                 let storyboard = UIStoryboard(name: "home", bundle: nil)
                 let controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
                 self.window!.rootViewController = controller
@@ -161,10 +191,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         completionHandler(UIBackgroundFetchResult.NewData)
         
     }
+    
+    
   
 //    The app calls this method when the user taps an action button in an alert displayed in response to a remote notification. Remote notifications that include a category key in their payload display buttons for the actions in the corresponding category. If the user taps one of those buttons, the system wakes up the app (launching it if needed) and calls this method in the background. Your implementation of this method should perform the action associated with the specified identifier and execute the block in the completionHandler parameter as soon as you are done. Failure to execute the completion handler block at the end of your implementation will cause your app to be terminated.
 //    
 //    To configure the actions for a given category, create a UIUserNotificationActionSettings object and register it with the app when you call the registerUserNotificationSettings: method.
+    
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject: AnyObject], comletionHandler completionHandler: () -> Void ) {
         
     }

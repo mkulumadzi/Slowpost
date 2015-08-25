@@ -9,28 +9,33 @@
 import UIKit
 import Alamofire
 
-class PersonalDetailsViewController: UIViewController {
+class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var nameTextField: BottomBorderUITextField!
     @IBOutlet weak var emailTextField: BottomBorderUITextField!
     @IBOutlet weak var warningLabel: WarningUILabel!
-    @IBOutlet weak var navBar: UINavigationBar!
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var navBar: UINavigationItem!
+    @IBOutlet weak var nextButton: TextUIButton!
     
     
+
     @IBOutlet weak var verticalSpaceToTitle: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToName: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToEmail: NSLayoutConstraint!
+    @IBOutlet weak var verticalSpaceToNext: NSLayoutConstraint!
+    @IBOutlet weak var buttonHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         Flurry.logEvent("Personal_Details_View_Opened")
         
-        navBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Quicksand-Regular", size: 24)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
+        emailTextField.delegate = self
         
         nameTextField.addBottomLayer()
         emailTextField.addBottomLayer()
+        
+        nextButton.layer.cornerRadius = 5
         
         warningLabel.hide()
         
@@ -44,9 +49,11 @@ class PersonalDetailsViewController: UIViewController {
     
     func formatForiPhone4S() {
     
-        verticalSpaceToTitle.constant = 30
+        verticalSpaceToTitle.constant = 10
         verticalSpaceToName.constant = 10
         verticalSpaceToEmail.constant = 10
+        verticalSpaceToNext.constant = 10
+        buttonHeight.constant = 30
         
         nameTextField.font = nameTextField.font.fontWithSize(15.0)
         emailTextField.font = emailTextField.font.fontWithSize(15.0)
@@ -74,10 +81,10 @@ class PersonalDetailsViewController: UIViewController {
     
     func validateNextButton() {
         if nameTextField.text != "" && emailTextField.text != "" {
-            nextButton.enabled = true
+            nextButton.enable()
         }
         else {
-            nextButton.enabled = false
+            nextButton.enable()
         }
     }
     
@@ -86,8 +93,13 @@ class PersonalDetailsViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: {})
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        checkEmailAvailability(self)
+        return true
+    }
+    
     @IBAction func checkEmailAvailability(sender: AnyObject) {
-        nextButton.enabled = false
+        nextButton.disable()
         let params = ["email": emailTextField.text!]
         
         PersonService.checkFieldAvailability(params, completion: { (error, result) -> Void in

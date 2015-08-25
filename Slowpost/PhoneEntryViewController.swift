@@ -12,7 +12,6 @@ class PhoneEntryViewController: UIViewController {
     
     
     @IBOutlet weak var phoneTextField: BottomBorderUITextField!
-    @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var signUpButton: TextUIButton!
     @IBOutlet weak var warningLabel: WarningUILabel!
     
@@ -20,7 +19,7 @@ class PhoneEntryViewController: UIViewController {
     var email:String!
     var username:String!
     var password:String!
-    
+
     @IBOutlet weak var verticalSpaceToTitle: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToPhone: NSLayoutConstraint!
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!
@@ -42,7 +41,7 @@ class PhoneEntryViewController: UIViewController {
     
     func formatForiPhone4S() {
         
-        verticalSpaceToTitle.constant = 30
+        verticalSpaceToTitle.constant = 10
         verticalSpaceToPhone.constant = 10
         buttonHeight.constant = 30
         

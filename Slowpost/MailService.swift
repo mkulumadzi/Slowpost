@@ -263,4 +263,18 @@ class MailService {
         
     }
     
+    class func updateMailboxAndAppendMailToCache(mailArray: [Mail]) {
+        mailbox = MailService.updateMailCollectionFromNewMail(mailbox, newCollection: mailArray)
+        mailbox = mailbox.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
+        
+        MailService.appendMailArrayToCoreData(mailArray)
+    }
+    
+    class func updateOutboxAndAppendMailToCache(mailArray: [Mail]) {
+        outbox = MailService.updateMailCollectionFromNewMail(outbox, newCollection: mailArray)
+        outbox = outbox.sorted { $0.createdAt.compare($1.createdAt) == NSComparisonResult.OrderedDescending }
+        
+        MailService.appendMailArrayToCoreData(mailArray)
+    }
+    
 }

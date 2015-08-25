@@ -12,7 +12,6 @@ class SignUpCompleteViewController: UIViewController {
     
     
     @IBOutlet weak var gotItButton: UIButton!
-
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
@@ -27,21 +26,12 @@ class SignUpCompleteViewController: UIViewController {
     }
     
     func formatForiPhone4S() {
-        
         buttonHeight.constant = 30
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func goToMailbox(sender: AnyObject) {
-        Flurry.logEvent("Registration_Completed")
-        var storyboard = UIStoryboard(name: "initial", bundle: nil)
-        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-        self.presentViewController(controller, animated: true, completion: nil)
     }
 
 }
