@@ -9,14 +9,12 @@
 import UIKit
 import Alamofire
 
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var UsernameTextField: BottomBorderUITextField!
     @IBOutlet weak var passwordTextField: BottomBorderUITextField!
     @IBOutlet weak var logInButton: TextUIButton!
     @IBOutlet weak var warningLabel: WarningUILabel!
-    @IBOutlet weak var navBar: UINavigationBar!
-    
     
     @IBOutlet weak var verticalSpaceToUsername: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToPassword: NSLayoutConstraint!
@@ -30,10 +28,10 @@ class LogInViewController: UIViewController {
         
         Flurry.logEvent("Login_Screen_Opened")
         
-        navBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Quicksand-Regular", size: 24)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
-        
         UsernameTextField.addBottomLayer()
         passwordTextField.addBottomLayer()
+        
+        passwordTextField.delegate = self
         
         logInButton.layer.cornerRadius = 5
         
@@ -62,6 +60,11 @@ class LogInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        LogIn(self)
+        return true
+    }
+    
     @IBAction func LogIn(sender: AnyObject) {
         
         logInButton.disable()
@@ -73,9 +76,7 @@ class LogInViewController: UIViewController {
             }
             else if let result: AnyObject = result {
                 if result as? String == "Success" {
-                    var storyboard = UIStoryboard(name: "initial", bundle: nil)
-                    var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-                    self.presentViewController(controller, animated: true, completion: nil)
+                    self.performSegueWithIdentifier("loginCompleted", sender: nil)
                 }
                 else {
                     self.warningLabel.show("Invalid login")

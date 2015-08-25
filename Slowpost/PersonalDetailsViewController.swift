@@ -14,10 +14,7 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var nameTextField: BottomBorderUITextField!
     @IBOutlet weak var emailTextField: BottomBorderUITextField!
     @IBOutlet weak var warningLabel: WarningUILabel!
-    @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var nextButton: TextUIButton!
-    
-    
 
     @IBOutlet weak var verticalSpaceToTitle: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToName: NSLayoutConstraint!

@@ -20,6 +20,7 @@ class PhoneEntryViewController: UIViewController {
     var username:String!
     var password:String!
 
+
     @IBOutlet weak var verticalSpaceToTitle: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToPhone: NSLayoutConstraint!
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!

@@ -46,6 +46,28 @@
         </mutableArray>
     </customFonts>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="lRb-OR-fHs">
+            <objects>
+                <navigationController id="Ad4-oR-7aV" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="e4J-qg-cDF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="5Lt-wu-z72" kind="relationship" relationship="rootViewController" id="FuU-jl-xnP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k5c-Hl-6yC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="839" y="-607"/>
+        </scene>
         <!--Log In View Controller-->
         <scene sceneID="68U-Yf-3Uf">
             <objects>
@@ -90,33 +112,11 @@
                                     <constraint firstAttribute="height" constant="30" id="U0h-Ue-2T7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="5Lt-wu-z72" eventType="editingChanged" id="ugm-l4-h3A"/>
                                 </connections>
                             </textField>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fZK-Xx-981">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="cFV-wb-Heu"/>
-                                </constraints>
-                                <color key="barTintColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="24"/>
-                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="Slowpost" id="Km6-2i-74Z">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="vXO-51-B5L">
-                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <connections>
-                                                <action selector="cancel:" destination="5Lt-wu-z72" id="418-SM-XCD"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="zkc-KO-jnT" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="60" width="600" height="30"/>
                                 <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -130,51 +130,54 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="1Cx-Sp-3Un" firstAttribute="top" secondItem="CYa-XF-MvS" secondAttribute="bottom" constant="112" id="0K0-Fj-v2S"/>
                             <constraint firstItem="zkc-KO-jnT" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" id="5BT-vi-BiZ"/>
-                            <constraint firstItem="1Cx-Sp-3Un" firstAttribute="top" secondItem="fZK-Xx-981" secondAttribute="top" constant="249" id="8C9-ID-39g"/>
                             <constraint firstAttribute="trailing" secondItem="Hez-ky-lsM" secondAttribute="trailing" constant="30" id="EZw-aT-q09"/>
                             <constraint firstItem="Y1L-HG-f5a" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" constant="30" id="MVg-aG-XpJ"/>
                             <constraint firstItem="1Cx-Sp-3Un" firstAttribute="top" secondItem="zkc-KO-jnT" secondAttribute="bottom" constant="36" id="Q6F-bW-tdJ"/>
                             <constraint firstAttribute="trailing" secondItem="1Cx-Sp-3Un" secondAttribute="trailing" constant="30" id="T26-Dd-pWw"/>
                             <constraint firstItem="zkc-KO-jnT" firstAttribute="top" secondItem="55F-o5-Mq3" secondAttribute="top" id="Ut2-yo-Fgc"/>
                             <constraint firstItem="1Cx-Sp-3Un" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" constant="30" id="VwY-xU-UiE"/>
-                            <constraint firstItem="fZK-Xx-981" firstAttribute="top" secondItem="55F-o5-Mq3" secondAttribute="top" id="eaD-yG-8RV"/>
+                            <constraint firstItem="zkc-KO-jnT" firstAttribute="top" secondItem="CYa-XF-MvS" secondAttribute="bottom" constant="-4" id="eLF-7T-DdU"/>
                             <constraint firstAttribute="trailing" secondItem="Y1L-HG-f5a" secondAttribute="trailing" constant="30" id="gjP-hW-WVv"/>
-                            <constraint firstItem="zkc-KO-jnT" firstAttribute="top" secondItem="fZK-Xx-981" secondAttribute="bottom" id="hwE-LV-gQo"/>
-                            <constraint firstAttribute="trailing" secondItem="fZK-Xx-981" secondAttribute="trailing" id="knO-rV-Rml"/>
-                            <constraint firstItem="1Cx-Sp-3Un" firstAttribute="top" secondItem="fZK-Xx-981" secondAttribute="bottom" constant="116" id="rhZ-mO-VFI"/>
                             <constraint firstItem="Hez-ky-lsM" firstAttribute="top" secondItem="Y1L-HG-f5a" secondAttribute="bottom" constant="30" id="t7E-sP-gIy"/>
                             <constraint firstItem="Hez-ky-lsM" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" constant="30" id="t9o-c3-9dW"/>
                             <constraint firstItem="Y1L-HG-f5a" firstAttribute="top" secondItem="1Cx-Sp-3Un" secondAttribute="bottom" constant="30" id="urM-Kt-db7"/>
-                            <constraint firstItem="fZK-Xx-981" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" id="vrM-6Y-ugb"/>
                             <constraint firstAttribute="trailing" secondItem="zkc-KO-jnT" secondAttribute="trailing" id="wEJ-uF-FH4"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Ut2-yo-Fgc"/>
-                                <exclude reference="8C9-ID-39g"/>
                                 <exclude reference="Q6F-bW-tdJ"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="M2x-xn-zow"/>
+                    <navigationItem key="navigationItem" id="M2x-xn-zow">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="8If-Lq-ajW">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancel:" destination="5Lt-wu-z72" id="yR2-Z2-7b3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
                         <outlet property="UsernameTextField" destination="1Cx-Sp-3Un" id="Skl-Ic-wfx"/>
                         <outlet property="logInButton" destination="Hez-ky-lsM" id="Ouv-QK-GZV"/>
                         <outlet property="logInButtonHeight" destination="YGF-2J-gq8" id="Pvi-Cu-Hf8"/>
-                        <outlet property="navBar" destination="fZK-Xx-981" id="5gR-t5-Ggh"/>
                         <outlet property="passwordTextField" destination="Y1L-HG-f5a" id="Zei-ZG-VCf"/>
                         <outlet property="verticalSpaceToLogIn" destination="t7E-sP-gIy" id="MKG-po-hZ2"/>
                         <outlet property="verticalSpaceToPassword" destination="urM-Kt-db7" id="2re-aJ-Nsm"/>
-                        <outlet property="verticalSpaceToUsername" destination="rhZ-mO-VFI" id="5x7-Ob-qlW"/>
+                        <outlet property="verticalSpaceToUsername" destination="0K0-Fj-v2S" id="Epi-Nb-yJO"/>
                         <outlet property="warningLabel" destination="zkc-KO-jnT" id="gvs-yx-OMN"/>
+                        <segue destination="nb6-T8-URq" kind="unwind" identifier="loginCompleted" unwindAction="signUpOrLogInCompleted:" id="Eyt-DZ-v1T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x4O-nt-Oii" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="nb6-T8-URq" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="ruy-vO-V81"/>
             </objects>
-            <point key="canvasLocation" x="839" y="-618"/>
+            <point key="canvasLocation" x="1501" y="-607"/>
         </scene>
         <!--Welcome Screen View Controller-->
         <scene sceneID="blT-42-FqB">
@@ -200,7 +203,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="5Lt-wu-z72" kind="show" id="EgN-13-H25"/>
+                                    <segue destination="Ad4-oR-7aV" kind="show" id="av2-j3-cgU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTS-NF-cJa">
@@ -491,7 +494,7 @@ Evan</string>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="24"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </textAttributes>
@@ -604,7 +607,7 @@ Evan</string>
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Name" id="HAR-GI-gwi" userLabel="Nav bar">
+                    <navigationItem key="navigationItem" title="Name" id="HAR-GI-gwi" userLabel="Navigation Item">
                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="dvh-52-NFX">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -728,7 +731,7 @@ Evan</string>
                         <outlet property="phoneTextField" destination="1Mw-MZ-Xs7" id="0zk-qa-LHS"/>
                         <outlet property="signUpButton" destination="och-Jp-fp1" id="xDU-fd-RvD"/>
                         <outlet property="verticalSpaceToPhone" destination="vTK-Qf-pdf" id="LUq-il-cXM"/>
-                        <outlet property="verticalSpaceToTitle" destination="xb7-MM-ArM" id="Vh3-UJ-2gS"/>
+                        <outlet property="verticalSpaceToTitle" destination="xb7-MM-ArM" id="kt1-rv-DvM"/>
                         <outlet property="warningLabel" destination="AzT-bW-tCU" id="M9k-aI-vsp"/>
                         <segue destination="w8n-Sy-2a1" kind="presentation" identifier="signUpComplete" id="fzz-ge-ACf"/>
                     </connections>
