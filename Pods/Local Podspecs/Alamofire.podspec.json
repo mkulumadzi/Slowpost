@@ -1,16 +1,16 @@
 {
   "name": "Alamofire",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "license": "MIT",
   "summary": "Elegant HTTP Networking in Swift",
   "homepage": "https://github.com/Alamofire/Alamofire",
   "social_media_url": "http://twitter.com/AlamofireSF",
   "authors": {
-    "Mattt Thompson": "m@mattt.me"
+    "Alamofire Software Foundation": "info@alamofire.org"
   },
   "source": {
     "git": "https://github.com/Alamofire/Alamofire.git",
-    "tag": "1.3.0"
+    "tag": "1.3.1"
   },
   "platforms": {
     "ios": "8.0",

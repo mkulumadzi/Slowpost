@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Manually set font for nav bar header (couldn't set in storyboard)
         UINavigationBar.appearance().titleTextAttributes = [NSFontAttributeName : UIFont(name: "OpenSans-Semibold", size: 17)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
         
+        Flurry.setCrashReportingEnabled(true)
         Flurry.startSession("FT74F5GW8XVG66BQBXW8")
         
         return true
