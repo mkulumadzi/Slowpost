@@ -39,10 +39,11 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         nextButton.layer.cornerRadius = 5
         validateButtons()
         
+        self.automaticallyAdjustsScrollViewInsets = false
+        
         imageScrollView.delegate = self
         imageScrollView.showsHorizontalScrollIndicator = false
         imageScrollView.showsVerticalScrollIndicator = false
-        
 
     }
     

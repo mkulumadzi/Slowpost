@@ -17,7 +17,8 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var imagePreview: UIImageView!
     @IBOutlet weak var composeText: UITextView!
-    @IBOutlet weak var doneButton: UIBarButtonItem!
+    @IBOutlet weak var doneButton: UIButton!
+    
     @IBOutlet weak var placeholderTextLabel: UILabel!
 
     override func viewDidLoad() {
@@ -27,6 +28,8 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         
         keyboardShowing = false
         toLabel.text = toPerson.name
+        
+        self.automaticallyAdjustsScrollViewInsets = false
         
         validatePlaceholderLabel()
         composeText.textContainerInset.left = 10
@@ -112,6 +115,11 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     func textViewDidChange(textView: UITextView) {
         validatePlaceholderLabel()
         doneButton.enabled = true
+    }
+    
+    @IBAction func dismissSendingModalView(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        self.performSegueWithIdentifier("mailSent", sender: nil)
+        self.navigationController?.dismissViewControllerAnimated(true, completion: {})
     }
 
 }

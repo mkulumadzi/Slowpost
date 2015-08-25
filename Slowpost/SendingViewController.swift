@@ -49,10 +49,11 @@ class SendingViewController: UIViewController {
         RestService.postRequest(sendMailEndpoint, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
             if let response = result as? [AnyObject] {
                 if response[0] as? Int == 201 {
-                    Flurry.logEvent("Finished_Sending_Mail")
                     var storyboard = UIStoryboard(name: "home", bundle: nil)
-                    var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-                    self.presentViewController(controller, animated: true, completion: nil)
+                    let controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+                    self.presentViewController(controller, animated: true, completion: {})
+                    Flurry.logEvent("Finished_Sending_Mail")
+                    
                 }
             }
         })

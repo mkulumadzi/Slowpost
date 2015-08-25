@@ -17,7 +17,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     @IBOutlet weak var toSearchField: UISearchBar!
     @IBOutlet weak var toPersonList: UITableView!
-    @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var noResultsLabel: UILabel!
 
@@ -32,7 +31,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         warningLabel.hide()
         noResultsLabel.hidden = true
         
-        validateNextButton()
+//        validateNextButton()
         
         self.toPersonList.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: self.toPersonList.bounds.size.width, height: 0.01))
         
@@ -75,7 +74,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             otherUsersList = []
         }
         
-        validateNextButton()
+//        validateNextButton()
         validateNoResultsLabel()
         warningLabel.hide()
         self.toPersonList.reloadData()
@@ -92,14 +91,14 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
-    func validateNextButton() {
-        if toPerson == nil {
-            nextButton.enabled = false
-        }
-        else {
-            nextButton.enabled = true
-        }
-    }
+//    func validateButton() {
+//        if toPerson == nil {
+//            nextButton.enabled = false
+//        }
+//        else {
+//            nextButton.enabled = true
+//        }
+//    }
     
     func validateNoResultsLabel() {
         if toSearchField.text == "" {
@@ -243,17 +242,15 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             toPerson = nil
         }
         
-        validateNextButton()
+//        validateNextButton()
         
     }
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
         Flurry.logEvent("Compose_Cancelled")
-        
         var storyboard = UIStoryboard(name: "home", bundle: nil)
-        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-        
-        self.presentViewController(controller, animated: true, completion: nil)
+        let controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+        self.presentViewController(controller, animated: true, completion: {})
     }
     
     func searchPeople(term: String) {
@@ -318,16 +315,18 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
-    @IBAction func selectImage(sender: AnyObject) {
-        self.performSegueWithIdentifier("selectImage", sender: nil)
-    }
-    
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "selectImage" {
             let chooseImageViewController = segue.destinationViewController as? ChooseImageViewController
             chooseImageViewController?.toPerson = toPerson
         }
+    }
+    
+    @IBAction func mailSentSuccessfully(segue: UIStoryboardSegue) {
+        println("Well, got here...")
+//        self.navigationController?.popViewControllerAnimated(true)
+//        self.dismissViewControllerAnimated(true, completion: {})
+        self.navigationController?.dismissViewControllerAnimated(true, completion: {})
     }
     
 }

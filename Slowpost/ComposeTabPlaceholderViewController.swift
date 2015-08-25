@@ -34,6 +34,14 @@ class ComposeTabPlaceholderViewController: UIViewController {
         
     }
     
+    @IBAction func unwindCompose(segue: UIStoryboardSegue) {
+        println("This happened")
+        for view in self.view.subviews {
+            view.removeFromSuperview()
+        }
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
+    
 
     /*
     // MARK: - Navigation
