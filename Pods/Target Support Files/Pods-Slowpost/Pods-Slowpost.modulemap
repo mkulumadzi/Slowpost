@@ -1,6 +1,0 @@
-framework module Pods_Slowpost {
-  umbrella header "Pods-Slowpost-umbrella.h"
-
-  export *
-  module * { export * }
-}
