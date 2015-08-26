@@ -318,11 +318,4 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
-    @IBAction func mailSentSuccessfully(segue: UIStoryboardSegue) {
-        println("Well, got here...")
-//        self.navigationController?.popViewControllerAnimated(true)
-//        self.dismissViewControllerAnimated(true, completion: {})
-        self.navigationController?.dismissViewControllerAnimated(true, completion: {})
-    }
-    
 }

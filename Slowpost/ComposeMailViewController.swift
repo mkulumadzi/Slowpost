@@ -116,10 +116,5 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         validatePlaceholderLabel()
         doneButton.enabled = true
     }
-    
-    @IBAction func dismissSendingModalView(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        self.performSegueWithIdentifier("mailSent", sender: nil)
-        self.navigationController?.dismissViewControllerAnimated(true, completion: {})
-    }
 
 }
