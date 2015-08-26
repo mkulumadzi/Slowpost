@@ -103,11 +103,12 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
                 
                 let imagePicker = UIImagePickerController()
-                
+
                 imagePicker.delegate = self
                 imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
                 imagePicker.mediaTypes = [kUTTypeImage as NSString]
                 imagePicker.allowsEditing = false
+                imagePicker.navigationBar.backgroundColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
                 
                 self.presentViewController(imagePicker, animated: true, completion: nil)
                 newMedia = true

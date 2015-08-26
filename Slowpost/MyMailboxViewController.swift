@@ -33,6 +33,11 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         
         // Calculating row height automatically; can't get it working with autolayout.
         mailTable.rowHeight = 75 + (view.frame.width - 20) * 0.75
+
+        NSNotificationCenter.defaultCenter().addObserverForName("imageDownloaded:", object: nil, queue: nil, usingBlock: { (notification) -> Void in
+            self.mailTable.reloadData()
+        })
+        
     }
     
     override func viewDidAppear(animated: Bool) {

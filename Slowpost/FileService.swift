@@ -69,6 +69,7 @@ class FileService {
                         completion(error: nil, result: nil)
                     }
                     else if let image = UIImage(data: data! as NSData) {
+                        self.postImageDownloadNotification()
                         completion(error: nil, result: image)
                     }
                     else {
@@ -76,6 +77,11 @@ class FileService {
                     }
                 }
         }
+    }
+    
+    class func postImageDownloadNotification() {
+        var notification = NSNotification(name: "imageDownloaded:", object: nil)
+        NSNotificationCenter.defaultCenter().postNotification(notification)
     }
     
 }

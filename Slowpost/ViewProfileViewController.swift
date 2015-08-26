@@ -41,6 +41,10 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         emailLabel.text = loggedInUser.email
         phoneLabel.text = loggedInUser.phone
         
+        NSNotificationCenter.defaultCenter().addObserverForName("imageDownloaded:", object: nil, queue: nil, usingBlock: { (notification) -> Void in
+            self.sentMailTable.reloadData()
+        })
+        
         sentMailTable.addSubview(self.refreshControl)
     }
     
