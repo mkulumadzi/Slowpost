@@ -92,6 +92,10 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
             imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
             imagePicker.mediaTypes = [kUTTypeImage as NSString]
             imagePicker.allowsEditing = false
+            
+            imagePicker.navigationBar.tintColor = UIColor.whiteColor()
+            imagePicker.navigationBar.barTintColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
+            
             self.presentViewController(imagePicker, animated: true, completion: nil)
             newMedia = false
         }
@@ -108,7 +112,6 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
                 imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
                 imagePicker.mediaTypes = [kUTTypeImage as NSString]
                 imagePicker.allowsEditing = false
-                imagePicker.navigationBar.backgroundColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
                 
                 self.presentViewController(imagePicker, animated: true, completion: nil)
                 newMedia = true
