@@ -8,15 +8,17 @@
 
 import UIKit
 
-class ComposeTabPlaceholderViewController: UIViewController {
+class ComposeTabPlaceholderViewController: UIViewController, UITabBarDelegate {
+    
+    
+    @IBOutlet weak var composeTabBarItem: UITabBarItem!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.tabBarController?.tabBar.hidden = true
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         composeMessage()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,32 +27,11 @@ class ComposeTabPlaceholderViewController: UIViewController {
     }
     
     func composeMessage() {
-        
         var storyboard = UIStoryboard(name: "compose", bundle: nil)
         var controller = storyboard.instantiateInitialViewController() as! UIViewController
-        addChildViewController(controller)
-        view.addSubview(controller.view)
-        controller.didMoveToParentViewController(self)
-        
+        self.presentViewController(controller, animated: true, completion: { () -> Void in
+            self.tabBarController!.selectedIndex = 0
+        })
     }
-    
-    @IBAction func unwindCompose(segue: UIStoryboardSegue) {
-        println("This happened")
-        for view in self.view.subviews {
-            view.removeFromSuperview()
-        }
-        self.dismissViewControllerAnimated(true, completion: {})
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

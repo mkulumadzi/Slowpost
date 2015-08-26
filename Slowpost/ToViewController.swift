@@ -242,15 +242,11 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             toPerson = nil
         }
         
-//        validateNextButton()
-        
     }
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
         Flurry.logEvent("Compose_Cancelled")
-        var storyboard = UIStoryboard(name: "home", bundle: nil)
-        let controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-        self.presentViewController(controller, animated: true, completion: {})
+        self.dismissViewControllerAnimated(true, completion: {})
     }
     
     func searchPeople(term: String) {

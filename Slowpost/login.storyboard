@@ -218,7 +218,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="x1t-f9-P3i" kind="show" id="e9A-yb-83a"/>
+                                    <segue destination="x1t-f9-P3i" kind="show" id="Tgy-8e-yQt"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -620,7 +620,6 @@ Evan</string>
                         <outlet property="buttonHeight" destination="IsH-bf-IGC" id="RPc-P6-YS0"/>
                         <outlet property="emailTextField" destination="P5I-cq-lFh" id="9zA-yl-P3b"/>
                         <outlet property="nameTextField" destination="VGQ-6a-6wA" id="fdE-Zf-mlF"/>
-                        <outlet property="navBar" destination="HAR-GI-gwi" id="Mhc-2x-JcR"/>
                         <outlet property="nextButton" destination="VOu-Ii-hWQ" id="kc2-Tq-Fjz"/>
                         <outlet property="verticalSpaceToEmail" destination="MCo-Fw-Poj" id="m0b-hj-nVW"/>
                         <outlet property="verticalSpaceToName" destination="1I8-Zk-R8Z" id="gl0-IE-cDe"/>

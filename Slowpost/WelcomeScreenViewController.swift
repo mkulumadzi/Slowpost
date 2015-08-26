@@ -112,7 +112,5 @@ class WelcomeScreenViewController: UIViewController, UIPageViewControllerDataSou
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
         return 0
     }
-    
-    // MARK: Segues
 
 }
