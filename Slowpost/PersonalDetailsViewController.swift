@@ -99,7 +99,7 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
         nextButton.disable()
         let params = ["email": emailTextField.text!]
         
-        PersonService.checkFieldAvailability(params, completion: { (error, result) -> Void in
+        LoginService.checkFieldAvailability(params, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }

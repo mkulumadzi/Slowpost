@@ -36,47 +36,17 @@ class PersonService {
         return newPerson
     }
     
-    class func savePersonToCoreData(person: Person) {
+    class func populatePersonArrayFromCoreData(predicate: NSPredicate, entityName: String) -> [Person]? {
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
+        let personCoreData = CoreDataService.getObjectsFromCoreData(entityName, predicate: predicate)
+        var personArray = [Person]()
         
-        let entity = NSEntityDescription.entityForName("Person", inManagedObjectContext: managedContext)
-        let cdPerson = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
-        
-        cdPerson.setValue(person.id, forKey: "id")
-        cdPerson.setValue(person.username, forKey: "username")
-        cdPerson.setValue(person.name, forKey: "name")
-        cdPerson.setValue(person.email, forKey: "email")
-        cdPerson.setValue(person.phone, forKey: "phone")
-        cdPerson.setValue(person.address1, forKey: "address1")
-        cdPerson.setValue(person.city, forKey: "city")
-        cdPerson.setValue(person.state, forKey: "state")
-        cdPerson.setValue(person.zip, forKey: "zip")
-        cdPerson.setValue(person.updatedAt, forKey: "updatedAt")
-        cdPerson.setValue(person.updatedAtString, forKey: "updatedAtString")
-        cdPerson.setValue(person.createdAt, forKey: "createdAt")
-        
-        var error: NSError?
-        if !managedContext.save(&error) {
-            println("Error saving person \(error), \(error?.userInfo)")
+        for nsManagedObject in personCoreData {
+            personArray.append(self.createPersonFromCoreData(nsManagedObject))
         }
         
+        return personArray
     }
-    
-    class func getPeopleObjectsFromCoreData() -> [NSManagedObject] {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        
-        let fetchRequest = NSFetchRequest(entityName: "Person")
-        
-        var error: NSError?
-        
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
-        
-        return fetchedResults!
-    }
-
     
     class func createPersonFromCoreData(object: NSManagedObject) -> Person {
         let id = object.valueForKey("id") as! String
@@ -97,15 +67,74 @@ class PersonService {
         return newPerson
     }
     
+    class func appendPeopleArrayToCoreData(personArray: [Person]) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        for person in personArray {
+            let object = CoreDataService.getEntityForIdOrReturnNewEntity(person.id, entityName: "Person", managedContext: managedContext)
+            self.saveOrUpdatePersonInCoreData(person, object: object, managedContext: managedContext)
+        }
+    }
+    
+    class func saveOrUpdatePersonInCoreData(person: Person, object: NSManagedObject, managedContext: NSManagedObjectContext) {
+        
+        object.setValue(person.id, forKey: "id")
+        object.setValue(person.username, forKey: "username")
+        object.setValue(person.name, forKey: "name")
+        object.setValue(person.email, forKey: "email")
+        object.setValue(person.phone, forKey: "phone")
+        object.setValue(person.address1, forKey: "address1")
+        object.setValue(person.city, forKey: "city")
+        object.setValue(person.state, forKey: "state")
+        object.setValue(person.zip, forKey: "zip")
+        object.setValue(person.updatedAt, forKey: "updatedAt")
+        object.setValue(person.updatedAtString, forKey: "updatedAtString")
+        object.setValue(person.createdAt, forKey: "createdAt")
+        
+        var error: NSError?
+        if !managedContext.save(&error) {
+            println("Error saving person \(error), \(error?.userInfo)")
+        }
+        
+    }
+    
+    class func updateLoggedInUserInCoreData(person: Person) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let object = CoreDataService.getEntityForIdOrReturnNewEntity(person.id, entityName: "LoggedInUser", managedContext: managedContext)
+        self.saveOrUpdatePersonInCoreData(person, object: object, managedContext: managedContext)
+    }
+    
+    class func getPeopleObjectsFromCoreData() -> [NSManagedObject] {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest = NSFetchRequest(entityName: "Person")
+        
+        var error: NSError?
+        
+        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
+        
+        return fetchedResults!
+    }
+    
     class func getPerson(personId: String, headers: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
         let personURL = "\(PostOfficeURL)/person/id/\(personId)"
         RestService.getRequest(personURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {
+                println(error)
                 completion(error: error, result: nil)
             }
             else if let dict = result as? NSDictionary {
                 var person:Person = self.createPersonFromJson(dict)
                 completion(error: nil, result: person)
+            }
+            else if let status = result as? Int {
+                if status == 304 {
+                    completion(error: nil, result: status)
+                }
             }
             else {
                 completion(error: nil, result: "Unexpected result while getting person")
@@ -117,6 +146,7 @@ class PersonService {
     class func getPeopleCollection(collectionURL: String, headers: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
         RestService.getRequest(collectionURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {
+                println(error)
                 completion(error: error, result: nil)
             }
             else if let jsonResult = result as? Array<NSDictionary> {
@@ -132,24 +162,31 @@ class PersonService {
         })
     }
     
-    class func checkFieldAvailability(params: [String: String], completion: (error: NSError?, result: AnyObject?) -> Void) {
-        var key:String = Array(params.keys)[0]
-        var value:String = params[key]!
+    class func updatePeopleCollectionFromNewPeople(existingCollection: [Person], newCollection: [Person]) -> [Person] {
         
-        let availableURL = "\(PostOfficeURL)/available?\(key)=\(value)"
-        let headers = ["Authorization": "Bearer \(appToken)"]
+        //Creating a mutable collection of people from the existing collection
+        var updatedCollection:[Person] = existingCollection
         
-        RestService.getRequest(availableURL, headers: headers, completion: { (error, result) -> Void in
-            if error != nil {
-                completion(error: error, result: nil)
+        //Update existing people
+        for person in newCollection {
+            if updatedCollection.filter({$0.id == person.id}).count > 0 {
+                var existingPerson:Person = updatedCollection.filter({$0.id == person.id}).first!
+                var existingIndex:Int = find(updatedCollection, existingPerson)!
+                updatedCollection[existingIndex] = person
             }
-            else if let jsonResult = result as? NSDictionary {
-                completion(error: nil, result: jsonResult)
-            }
+                // Append new people
             else {
-                println("Unexpected JSON result getting \(availableURL)")
+                updatedCollection.append(person)
             }
-        })
+        }
+        
+        return updatedCollection
+        
+    }
+    
+    class func updateContactsAndAppendPeopleToCache(peopleArray: [Person]) {
+        penpals = self.updatePeopleCollectionFromNewPeople(penpals, newCollection: peopleArray)
+        self.appendPeopleArrayToCoreData(peopleArray)
     }
     
     
@@ -169,6 +206,7 @@ class PersonService {
         Alamofire.request(request)
             .response { (request, response, data, error) in
                 if let anError = error {
+                    println(error)
                     completion(error: error, result: nil)
                 }
                 else if let response: AnyObject = response {

@@ -78,7 +78,7 @@ class PhoneEntryViewController: UIViewController {
         else {
             let params = ["phone": phoneTextField.text!]
             
-            PersonService.checkFieldAvailability(params, completion: { (error, result) -> Void in
+            LoginService.checkFieldAvailability(params, completion: { (error, result) -> Void in
                 if error != nil {
                     println(error)
                 }
@@ -95,7 +95,6 @@ class PhoneEntryViewController: UIViewController {
                 }
             })
         }
-
     }
     
     func signUp() {

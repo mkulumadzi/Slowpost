@@ -95,7 +95,7 @@ class RestService {
             maxUpdatedAt = maxElement(objects.map{$0.updatedAtString})
         }
         
-        let headers = ["SINCE": maxUpdatedAt]
+        let headers = ["IF-MODIFIED-SINCE": maxUpdatedAt]
         
         return headers
     }

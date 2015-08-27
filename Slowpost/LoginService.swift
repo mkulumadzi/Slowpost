@@ -40,8 +40,7 @@ class LoginService {
                     self.saveLoginToUserDefaults(userToken)
                     var person:Person! = PersonService.createPersonFromJson(response.valueForKey("person") as! NSDictionary)
                     loggedInUser = person
-                    PersonService.savePersonToCoreData(person)
-                    
+                    PersonService.updateLoggedInUserInCoreData(person)
                     completion(error: nil, result: "Success")
                 }
         }
@@ -59,9 +58,30 @@ class LoginService {
         // Delete cached objects from Core Data
         CoreDataService.deleteCoreDataObjects("Mail")
         CoreDataService.deleteCoreDataObjects("Person")
+        CoreDataService.deleteCoreDataObjects("LoggedInUser")
         
         loggedInUser = nil
         
+    }
+    
+    class func checkFieldAvailability(params: [String: String], completion: (error: NSError?, result: AnyObject?) -> Void) {
+        var key:String = Array(params.keys)[0]
+        var value:String = params[key]!
+        
+        let availableURL = "\(PostOfficeURL)/available?\(key)=\(value)"
+        let headers = ["Authorization": "Bearer \(appToken)"]
+        
+        RestService.getRequest(availableURL, headers: headers, completion: { (error, result) -> Void in
+            if error != nil {
+                completion(error: error, result: nil)
+            }
+            else if let jsonResult = result as? NSDictionary {
+                completion(error: nil, result: jsonResult)
+            }
+            else {
+                println("Unexpected JSON result getting \(availableURL)")
+            }
+        })
     }
 
 }

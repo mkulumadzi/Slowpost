@@ -95,48 +95,8 @@ class MailService {
         let managedContext = appDelegate.managedObjectContext!
         
         for mail in mailArray {
-            let object = self.getMailEntityForIdOrReturnNewEntity(mail.id, managedContext: managedContext)
+            let object = CoreDataService.getEntityForIdOrReturnNewEntity(mail.id, entityName: "Mail", managedContext: managedContext)
             self.saveOrUpdateMailInCoreData(mail, object: object, managedContext: managedContext)
-        }
-        
-    }
-    
-    class func getMailEntityForIdOrReturnNewEntity(id: String, managedContext: NSManagedObjectContext) -> NSManagedObject {
-        
-        let fetchRequest = NSFetchRequest(entityName: "Mail")
-        let predicate = NSPredicate(format: "id == %@", id)
-        fetchRequest.predicate = predicate
-        
-        let fetchResults = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [NSManagedObject]
-            
-        if fetchResults!.count > 0 {
-            //Assume there can only be one mail record per id...
-            return fetchResults![0]
-        }
-        else {
-            let entity = NSEntityDescription.entityForName("Mail", inManagedObjectContext: managedContext)
-            let newMailObject = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
-            return newMailObject
-        }
-    }
-    
-    class func addImageToCoreDataMail(id: String, image: UIImage, key: String) {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        
-        let fetchRequest = NSFetchRequest(entityName: "Mail")
-        let predicate = NSPredicate(format: "id == %@", id)
-        fetchRequest.predicate = predicate
-        
-        let fetchResults = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [NSManagedObject]
-        
-        for object in fetchResults! {
-            object.setValue(UIImagePNGRepresentation(image), forKey: key)
-        }
-        
-        var error: NSError?
-        if !managedContext.save(&error) {
-            println("Error saving person \(error), \(error?.userInfo)")
         }
         
     }
@@ -165,10 +125,32 @@ class MailService {
         
     }
     
+    class func addImageToCoreDataMail(id: String, image: UIImage, key: String) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
+        
+        let fetchRequest = NSFetchRequest(entityName: "Mail")
+        let predicate = NSPredicate(format: "id == %@", id)
+        fetchRequest.predicate = predicate
+        
+        let fetchResults = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [NSManagedObject]
+        
+        for object in fetchResults! {
+            object.setValue(UIImagePNGRepresentation(image), forKey: key)
+        }
+        
+        var error: NSError?
+        if !managedContext.save(&error) {
+            println("Error saving person \(error), \(error?.userInfo)")
+        }
+        
+    }
+    
     class func getMailById(id: String, headers: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
         let mailURL = "\(PostOfficeURL)/mail/id/\(id)"
         RestService.getRequest(mailURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {
+                println(error)
                 completion(error: error, result: nil)
             }
             else if let dict = result as? NSDictionary {
@@ -216,10 +198,10 @@ class MailService {
 
     }
     
-    
     class func getMailCollection(collectionURL: String, headers: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
         RestService.getRequest(collectionURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {
+                println(error)
                 completion(error: error, result: nil)
             }
             else if let jsonResult = result as? Array<NSDictionary> {
@@ -260,17 +242,15 @@ class MailService {
     }
     
     class func updateMailboxAndAppendMailToCache(mailArray: [Mail]) {
-        mailbox = MailService.updateMailCollectionFromNewMail(mailbox, newCollection: mailArray)
+        mailbox = self.updateMailCollectionFromNewMail(mailbox, newCollection: mailArray)
         mailbox = mailbox.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
-        
-        MailService.appendMailArrayToCoreData(mailArray)
+        self.appendMailArrayToCoreData(mailArray)
     }
     
     class func updateOutboxAndAppendMailToCache(mailArray: [Mail]) {
-        outbox = MailService.updateMailCollectionFromNewMail(outbox, newCollection: mailArray)
+        outbox = self.updateMailCollectionFromNewMail(outbox, newCollection: mailArray)
         outbox = outbox.sorted { $0.createdAt.compare($1.createdAt) == NSComparisonResult.OrderedDescending }
-        
-        MailService.appendMailArrayToCoreData(mailArray)
+        self.appendMailArrayToCoreData(mailArray)
     }
     
 }

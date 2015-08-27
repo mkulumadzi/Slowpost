@@ -95,7 +95,7 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
         nextButton.disable()
         let params = ["username": usernameTextField.text!]
         
-        PersonService.checkFieldAvailability(params, completion: { (error, result) -> Void in
+        LoginService.checkFieldAvailability(params, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }

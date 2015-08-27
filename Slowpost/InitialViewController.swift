@@ -51,32 +51,46 @@ class InitialViewController: UIViewController {
     func setLoggedInUserFromToken(token: String) {
         println("Found token, trying to set logged in user at \(NSDate())")
         
-        //Set user token for API requests
         userToken = token
         let payload = JWTDecode.payload(jwt: token)
-        
         if let userId = payload!["id"] as? String {
             
+            // Trying to get LoggedInUser from core data to avoid downloading from server
+            let predicate = NSPredicate(format: "id == %@", userId)
+            let loggedInRecordFromCoreData = PersonService.populatePersonArrayFromCoreData(predicate, entityName: "LoggedInUser")
+            
+            var headers:[String: String]?
+            if loggedInRecordFromCoreData != nil {
+                loggedInUser = loggedInRecordFromCoreData![0]
+                headers! = ["IF-MODIFIED-SINCE": loggedInUser.updatedAtString]
+            }
+            
             println("Getting person record from token id at \(NSDate())")
-            PersonService.getPerson(userId, headers: nil, completion: { (error, result) -> Void in
-                if error != nil {
-                    println(error)
-                }
-                else if let person = result as? Person {
+            PersonService.getPerson(userId, headers: headers, completion: { (error, result) -> Void in
+                if let person = result as? Person {
                     Flurry.logEvent("User_Logged_In_From_Session")
                     loggedInUser = person
                     self.beginLoadingInitialData()
+                }
+                else if let status = result as? Int {
+                    if status == 304 {
+                        // User already has the latest record, no need to update
+                        Flurry.logEvent("User_Logged_In_From_Session")
+                        self.beginLoadingInitialData()
+                    }
+                    else {
+                        // Handles cases such as a 404 status, where the ID is not found on the server
+                        self.goToLoginScreen()
+                    }
                 }
                 else {
                     self.goToLoginScreen()
                 }
             })
-            
         }
         else {
             goToLoginScreen()
         }
-        
     }
     
     func goToLoginScreen() {
@@ -106,10 +120,7 @@ class InitialViewController: UIViewController {
         let contactsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"
         
         PersonService.getPeopleCollection(contactsURL, headers: nil, completion: { (error, result) -> Void in
-            if error != nil {
-                println(error)
-            }
-            else if let peopleArray = result as? Array<Person> {
+            if let peopleArray = result as? Array<Person> {
                 penpals = peopleArray
             }
         })
@@ -132,10 +143,7 @@ class InitialViewController: UIViewController {
 
         let myMailBoxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/mailbox"
         MailService.getMailCollection(myMailBoxURL, headers: headers, completion: { (error, result) -> Void in
-            if error != nil {
-                println(error)
-            }
-            else if let mailArray = result as? Array<Mail> {
+            if let mailArray = result as? Array<Mail> {
                 MailService.updateMailboxAndAppendMailToCache(mailArray)
             }
         })
@@ -158,10 +166,7 @@ class InitialViewController: UIViewController {
         
         let myOutboxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/outbox"
         MailService.getMailCollection(myOutboxURL, headers: headers, completion: { (error, result) -> Void in
-            if error != nil {
-                println(error)
-            }
-            else if let mailArray = result as? Array<Mail> {
+            if let mailArray = result as? Array<Mail> {
                 MailService.updateOutboxAndAppendMailToCache(mailArray)
             }
         })
@@ -177,10 +182,7 @@ class InitialViewController: UIViewController {
             var contacts:[NSDictionary] = AddressBookService.getContactsFromAddresssBook(addressBook)
             
             PersonService.bulkPersonSearch(contacts, completion: { (error, result) -> Void in
-                if error != nil {
-                    println(error)
-                }
-                else if let peopleArray = result as? Array<Person> {
+                if let peopleArray = result as? Array<Person> {
                     registeredContacts = peopleArray
                 }
             })
