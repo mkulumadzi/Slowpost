@@ -38,6 +38,10 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
             self.mailTable.reloadData()
         })
         
+        NSNotificationCenter.defaultCenter().addObserverForName("appBecameActive:", object: nil, queue: nil, usingBlock: { (notification) -> Void in
+            self.refreshMailbox()
+        })
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -72,10 +76,10 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         else if mail.imageUid == nil {
             mail.image = UIImage(named: "Default Card.png")!
+            MailService.addImageToCoreDataMail(mail.id, image: mail.image, key: "image")
             mail.imageThumb = UIImage(named: "Default Card.png")!
+            MailService.addImageToCoreDataMail(mail.id, image: mail.imageThumb, key: "image")
         }
-        
-        println("Cell loaded for mail id \(mail.id)")
         
         return cell!
         

@@ -156,7 +156,9 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         }
         else if mail.imageUid == nil {
             mail.image = UIImage(named: "Default Card.png")!
+            MailService.addImageToCoreDataMail(mail.id, image: mail.image, key: "image")
             mail.imageThumb = UIImage(named: "Default Card.png")!
+            MailService.addImageToCoreDataMail(mail.id, image: mail.imageThumb, key: "image")
         }
         
         cell?.formatCell()

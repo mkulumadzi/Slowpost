@@ -98,7 +98,6 @@
 		D2D866371B2F5B8D00847051 /* log-out.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866361B2F5B8D00847051 /* log-out.png */; };
 		D2D866391B2F5DF900847051 /* log-out-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866381B2F5DF900847051 /* log-out-white.png */; };
 		D2D8663F1B2F62B200847051 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */; };
-		D2E414981B7D10E4006C6C5F /* Default Card.png in Resources */ = {isa = PBXBuildFile; fileRef = D2E414971B7D10E4006C6C5F /* Default Card.png */; };
 		D2E4EDCA1B7D135900D2A028 /* Quicksand_Dash.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDC31B7D11EA00D2A028 /* Quicksand_Dash.otf */; };
 		D2E4EDCB1B7D135C00D2A028 /* Quicksand-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDC41B7D11F300D2A028 /* Quicksand-Bold.otf */; };
 		D2E4EDCC1B7D135F00D2A028 /* Quicksand-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDC51B7D11F300D2A028 /* Quicksand-BoldItalic.otf */; };
@@ -110,6 +109,7 @@
 		D2E4EDD41B7D307E00D2A028 /* example_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDD31B7D307E00D2A028 /* example_photo.jpg */; };
 		D2E956461B30952800CA8CC8 /* ChooseImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E956451B30952800CA8CC8 /* ChooseImageViewController.swift */; };
 		D2E9564A1B309AA100CA8CC8 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */; };
+		D2F5CAC21B8F91D900551435 /* Default Card.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F5CAC11B8F91D900551435 /* Default Card.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,7 +227,6 @@
 		D2D866361B2F5B8D00847051 /* log-out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log-out.png"; sourceTree = "<group>"; };
 		D2D866381B2F5DF900847051 /* log-out-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log-out-white.png"; sourceTree = "<group>"; };
 		D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
-		D2E414971B7D10E4006C6C5F /* Default Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default Card.png"; sourceTree = "<group>"; };
 		D2E4EDC31B7D11EA00D2A028 /* Quicksand_Dash.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Quicksand_Dash.otf; sourceTree = "<group>"; };
 		D2E4EDC41B7D11F300D2A028 /* Quicksand-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.otf"; sourceTree = "<group>"; };
 		D2E4EDC51B7D11F300D2A028 /* Quicksand-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-BoldItalic.otf"; sourceTree = "<group>"; };
@@ -240,6 +239,7 @@
 		D2E956451B30952800CA8CC8 /* ChooseImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseImageViewController.swift; sourceTree = "<group>"; };
 		D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		D2F5CAC01B8F79B800551435 /* SlowpostModel 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SlowpostModel 6.xcdatamodel"; sourceTree = "<group>"; };
+		D2F5CAC11B8F91D900551435 /* Default Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default Card.png"; sourceTree = "<group>"; };
 		D2FC675D1B7EBD0700F475CB /* Slowpost-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Slowpost-Bridging-Header.h"; sourceTree = "<group>"; };
 		D58257AF9C03394AF69653DE /* Pods-Slowpost.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slowpost.staging.xcconfig"; path = "Pods/Target Support Files/Pods-Slowpost/Pods-Slowpost.staging.xcconfig"; sourceTree = "<group>"; };
 		FEA5B7AEBEF825400B64DF28 /* Pods-Slowpost.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slowpost.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Slowpost/Pods-Slowpost.testing.xcconfig"; sourceTree = "<group>"; };
@@ -335,9 +335,9 @@
 			isa = PBXGroup;
 			children = (
 				D2E4EDD11B7D1EC000D2A028 /* example_card.jpg */,
+				D2F5CAC11B8F91D900551435 /* Default Card.png */,
 				D2E4EDD31B7D307E00D2A028 /* example_photo.jpg */,
 				D2CEC46B1B7256E9002CFD25 /* grid-green.png */,
-				D2E414971B7D10E4006C6C5F /* Default Card.png */,
 				D2CEC46C1B7256E9002CFD25 /* ios7-camera-green.png */,
 				D2CEC46D1B7256E9002CFD25 /* photos_green.png */,
 				D2B7CEA11B671149007F8235 /* ios7-close-empty-gray.png */,
@@ -658,6 +658,7 @@
 				D20D8EDB1B2B384E00BBF6B5 /* compose-white.png in Resources */,
 				D2E4EDCA1B7D135900D2A028 /* Quicksand_Dash.otf in Resources */,
 				D27DA31E1B62ADB600DF32A1 /* ios7-arrow-left-white.png in Resources */,
+				D2F5CAC21B8F91D900551435 /* Default Card.png in Resources */,
 				D25A9CA51B2259D300ABBBA4 /* OpenSans-Semibold.ttf in Resources */,
 				D2D8662C1B2F50CC00847051 /* ios7-contact-outline-white.png in Resources */,
 				D25A9CA61B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf in Resources */,
@@ -665,7 +666,6 @@
 				D25A9C9D1B2259D300ABBBA4 /* OpenSans-Bold.ttf in Resources */,
 				D2CEC46E1B7256E9002CFD25 /* grid-green.png in Resources */,
 				D27DA31F1B62ADB600DF32A1 /* ios7-arrow-right-white.png in Resources */,
-				D2E414981B7D10E4006C6C5F /* Default Card.png in Resources */,
 				D27DA31B1B61C8EE00DF32A1 /* settings-white.png in Resources */,
 				D25A9C9E1B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf in Resources */,
 				CC23DE2E1AE54C2B00AFEDE4 /* compose.storyboard in Resources */,
