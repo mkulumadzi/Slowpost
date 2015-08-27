@@ -25,6 +25,13 @@ class MailService {
         let content = jsonEntry.objectForKey("content") as? String
         let imageUid = jsonEntry.objectForKey("image_uid") as? String
         
+        var image:UIImage?
+        var imageThumb:UIImage?
+        if imageUid == nil {
+            image = UIImage(named: "Default Card.png")!
+            imageThumb = UIImage(named: "Default Card.png")!
+        }
+        
         let arrivalString = jsonEntry.objectForKey("scheduled_to_arrive") as? String
         
         var scheduledToArrive:NSDate!
@@ -38,7 +45,7 @@ class MailService {
         let createdString = jsonEntry.objectForKey("created_at") as! String
         let createdAt = NSDate(dateString: createdString)
         
-        var mail = Mail(id: id, status: status, from: from, to: to, content: content, imageUid: imageUid, currentlyDownloadingImage: false, image: nil, imageThumb: nil, scheduledToArrive: scheduledToArrive, updatedAt: updatedAt, updatedAtString: updatedString, createdAt: createdAt)
+        var mail = Mail(id: id, status: status, from: from, to: to, content: content, imageUid: imageUid, currentlyDownloadingImage: false, image: image, imageThumb: imageThumb, scheduledToArrive: scheduledToArrive, updatedAt: updatedAt, updatedAtString: updatedString, createdAt: createdAt)
         
         return mail
     }
