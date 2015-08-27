@@ -15,9 +15,8 @@ class InitialViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        println("Initial view loaded at \(NSDate())")
         Flurry.logEvent("Initial_View_Loaded")
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,6 +30,7 @@ class InitialViewController: UIViewController {
     }
     
     func checkLogin() {
+        println("Checking login at \(NSDate())")
         if loggedInUser == nil || userToken == nil {
             if MyKeychainWrapper.myObjectForKey(kSecAttrService) as? String == "postoffice" {
                 if let token = MyKeychainWrapper.myObjectForKey("v_Data") as? String {
@@ -40,41 +40,24 @@ class InitialViewController: UIViewController {
                 }
             }
             else {
-                Flurry.logEvent("Sending_User_To_Login_Screen")
-                var storyboard = UIStoryboard(name: "login", bundle: nil)
-                var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-                self.presentViewController(controller, animated: true, completion: nil)
+                goToLoginScreen()
             }
         }
         else {
-            AddressBookService.checkAuthorizationStatus(self)
-            getRegisteredContactsIfAuthorized()
-            getMailbox()
+            beginLoadingInitialData()
         }
-    }
-    
-    func goToHomeScreen() {
-        
-        if deviceToken != nil {
-            //Sending the device token to the PostOffice server
-            registerDeviceToken()
-        }
-        
-        getOutbox()
-        
-        var storyboard = UIStoryboard(name: "home", bundle: nil)
-        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-        self.presentViewController(controller, animated: true, completion: nil)
     }
     
     func setLoggedInUserFromToken(token: String) {
+        println("Found token, trying to set logged in user at \(NSDate())")
         
         //Set user token for API requests
         userToken = token
         
         let payload = JWTDecode.payload(jwt: token)
         if let userId = payload!["id"] as? String {
-
+            
+            println("Getting person record from token id at \(NSDate())")
             PersonService.getPerson(userId, headers: nil, completion: { (error, result) -> Void in
                 if error != nil {
                     println(error)
@@ -82,29 +65,59 @@ class InitialViewController: UIViewController {
                 else if let person = result as? Person {
                     Flurry.logEvent("User_Logged_In_From_Session")
                     loggedInUser = person
-                    AddressBookService.checkAuthorizationStatus(self)
-                    self.getRegisteredContactsIfAuthorized()
-                    self.getMailbox()
+                    self.beginLoadingInitialData()
                 }
                 else {
-                    var storyboard = UIStoryboard(name: "login", bundle: nil)
-                    var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-                    self.presentViewController(controller, animated: true, completion: nil)
+                    self.goToLoginScreen()
                 }
             })
             
         }
         else {
-            println("Token did not contain User ID")
-            var storyboard = UIStoryboard(name: "login", bundle: nil)
-            var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-            self.presentViewController(controller, animated: true, completion: nil)
+            goToLoginScreen()
         }
         
     }
     
+    func goToLoginScreen() {
+        Flurry.logEvent("Sending_User_To_Login_Screen")
+        var storyboard = UIStoryboard(name: "login", bundle: nil)
+        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+        self.presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    func beginLoadingInitialData() {
+        println("Beginning to load initial data at \(NSDate())")
+        Flurry.logEvent("Initial_Data_Loading_Began", timed: true)
+        AddressBookService.checkAuthorizationStatus(self)
+        
+        //This will load penpals, which will then load mailbox, which will then load outbox, which will then load contacts
+        getPenpals()
+        getMailbox()
+        getOutbox()
+        getRegisteredContactsIfAuthorized()
+        
+        goToHomeScreen()
+    }
+    
+    func getPenpals() {
+        println("Getting all penpals at \(NSDate())")
+        //Get all 'penpal' records whom the user has sent mail to or received mail from
+        let contactsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"
+        
+        PersonService.getPeopleCollection(contactsURL, headers: nil, completion: { (error, result) -> Void in
+            if error != nil {
+                println(error)
+            }
+            else if let peopleArray = result as? Array<Person> {
+                penpals = peopleArray
+            }
+        })
+    }
+    
     func getMailbox() {
         
+        println("Getting mailbox at \(NSDate())")
         let predicate = NSPredicate(format: "to == %@", loggedInUser.username)
         
         let coreDataMailbox = MailService.populateMailArrayFromCoreData(predicate)
@@ -118,32 +131,18 @@ class InitialViewController: UIViewController {
         }
 
         let myMailBoxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/mailbox"
-        
         MailService.getMailCollection(myMailBoxURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }
             else if let mailArray = result as? Array<Mail> {
-                
                 MailService.updateMailboxAndAppendMailToCache(mailArray)
-                
-                //Get all 'penpal' records whom the user has sent mail to or received mail from
-                let contactsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"
-                
-                PersonService.getPeopleCollection(contactsURL, headers: nil, completion: { (error, result) -> Void in
-                    if error != nil {
-                        println(error)
-                    }
-                    else if let peopleArray = result as? Array<Person> {
-                        penpals = peopleArray
-                        self.goToHomeScreen()
-                    }
-                })
             }
         })
     }
     
     func getOutbox() {
+        println("Getting outbox at \(NSDate())")
         
         let predicate = NSPredicate(format: "from == %@", loggedInUser.username)
         
@@ -169,6 +168,7 @@ class InitialViewController: UIViewController {
     }
     
     func getRegisteredContactsIfAuthorized() {
+        println("Getting registered contacts at \(NSDate())")
         
         let authorizationStatus = ABAddressBookGetAuthorizationStatus()
         switch authorizationStatus {
@@ -188,6 +188,18 @@ class InitialViewController: UIViewController {
         default:
             println("Not authorized")
         }
+    }
+    
+    func goToHomeScreen() {
+        
+        if deviceToken != nil {
+            registerDeviceToken()
+        }
+        
+        Flurry.endTimedEvent("Initial_Data_Loading_Began", withParameters: nil)
+        var storyboard = UIStoryboard(name: "home", bundle: nil)
+        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+        self.presentViewController(controller, animated: true, completion: nil)
     }
     
     func registerDeviceToken() {

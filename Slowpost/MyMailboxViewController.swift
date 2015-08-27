@@ -67,8 +67,44 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         
         cell!.formatCell()
         
+        if mail.imageUid != nil && mail.image == nil && mail.currentlyDownloadingImage == false {
+            downloadMailImages(mail)
+        }
+        else if mail.imageUid == nil {
+            mail.image = UIImage(named: "Default Card.png")!
+            mail.imageThumb = UIImage(named: "Default Card.png")!
+        }
+        
+        println("Cell loaded for mail id \(mail.id)")
+        
         return cell!
         
+    }
+    
+    func downloadMailImages(mail: Mail) {
+        mail.currentlyDownloadingImage = true
+        downloadMailThumbnail(mail)
+    }
+    
+    func downloadMailThumbnail(mail: Mail) {
+        
+        MailService.getMailThumbnailImage(mail, completion: { (error, result) -> Void in
+            if let thumbnail = result as? UIImage {
+                mail.imageThumb = thumbnail
+                MailService.addImageToCoreDataMail(mail.id, image: thumbnail, key: "imageThumb")
+                self.downloadMailImage(mail)
+            }
+        })
+    }
+    
+    func downloadMailImage(mail: Mail) {
+        MailService.getMailImage(mail, completion: { (error, result) -> Void in
+            if let image = result as? UIImage {
+                mail.image = image
+                MailService.addImageToCoreDataMail(mail.id, image: image, key: "image")
+                mail.currentlyDownloadingImage = false
+            }
+        })
     }
     
     func refreshPenpals() {

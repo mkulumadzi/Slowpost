@@ -23,6 +23,7 @@ class MailService {
         let from = jsonEntry.objectForKey("from") as! String
         let to = jsonEntry.objectForKey("to") as! String
         let content = jsonEntry.objectForKey("content") as? String
+        let imageUid = jsonEntry.objectForKey("image_uid") as? String
         
         let arrivalString = jsonEntry.objectForKey("scheduled_to_arrive") as? String
         
@@ -37,23 +38,7 @@ class MailService {
         let createdString = jsonEntry.objectForKey("created_at") as! String
         let createdAt = NSDate(dateString: createdString)
         
-        
-        var mail = Mail(id: id, status: status, from: from, to: to, content: content, image: nil, imageThumb: nil, scheduledToArrive: scheduledToArrive, updatedAt: updatedAt, updatedAtString: updatedString, createdAt: createdAt)
-        
-
-        MailService.getMailImage(mail, completion: { (error, result) -> Void in
-            if let image = result as? UIImage {
-                mail.image = image
-                self.addImageToCoreDataMail(mail.id, image: image, key: "image")
-            }
-        })
-        
-        MailService.getMailThumbnailImage(mail, completion: { (error, result) -> Void in
-            if let thumbnail = result as? UIImage {
-                mail.imageThumb = thumbnail
-                self.addImageToCoreDataMail(mail.id, image: thumbnail, key: "imageThumb")
-            }
-        })
+        var mail = Mail(id: id, status: status, from: from, to: to, content: content, imageUid: imageUid, currentlyDownloadingImage: false, image: nil, imageThumb: nil, scheduledToArrive: scheduledToArrive, updatedAt: updatedAt, updatedAtString: updatedString, createdAt: createdAt)
         
         return mail
     }
@@ -76,6 +61,7 @@ class MailService {
         let from = object.valueForKey("from") as! String
         let to = object.valueForKey("to") as! String
         let content = object.valueForKey("content") as? String
+        let imageUid = object.valueForKey("imageUid") as? String
         
         var image:UIImage!
         if let data = object.valueForKey("image") as? NSData {
@@ -92,7 +78,7 @@ class MailService {
         let updatedAtString = object.valueForKey("updatedAtString") as! String
         let createdAt = object.valueForKey("createdAt") as! NSDate
         
-        var newMail = Mail(id: id, status: status, from: from, to: to, content: content, image: image, imageThumb: imageThumb, scheduledToArrive: scheduledToArrive, updatedAt: updatedAt, updatedAtString: updatedAtString, createdAt: createdAt)
+        var newMail = Mail(id: id, status: status, from: from, to: to, content: content, imageUid: imageUid, currentlyDownloadingImage: false, image: image, imageThumb: imageThumb, scheduledToArrive: scheduledToArrive, updatedAt: updatedAt, updatedAtString: updatedAtString, createdAt: createdAt)
         
         return newMail
     }
@@ -155,6 +141,7 @@ class MailService {
         object.setValue(mail.from, forKey: "from")
         object.setValue(mail.to, forKey: "to")
         object.setValue(mail.content, forKey: "content")
+        object.setValue(mail.imageUid, forKey: "imageUid")
         
         object.setValue(UIImagePNGRepresentation(mail.image), forKey: "image")
         object.setValue(UIImagePNGRepresentation(mail.imageThumb), forKey: "imageThumb")
@@ -189,6 +176,7 @@ class MailService {
     }
     
     class func getMailImage(mail: Mail, completion: (error: NSError?, result: AnyObject?) -> Void) {
+        
         var thumbSize:String = String(Int(screenWidth)) + "x"
         let mailImageURL = "\(PostOfficeURL)/mail/id/\(mail.id)/image?thumb=\(thumbSize)"
         
@@ -198,14 +186,14 @@ class MailService {
                 completion(error: nil, result: mail.image)
             }
             else {
-                mail.image = UIImage(named: "Default Card.png")!
-                completion(error: nil, result: mail.image)
+                Flurry.logEvent("Failed_To_Download_Image")
+                println("Failed to download image")
             }
         })
-        
     }
 
     class func getMailThumbnailImage(mail: Mail, completion: (error: NSError?, result: AnyObject?) -> Void) {
+        
         let mailThumbnailImageURL = "\(PostOfficeURL)/mail/id/\(mail.id)/image?thumb=x69"
         
         FileService.downloadImage(mailThumbnailImageURL, completion: { (error, result) -> Void in
@@ -214,10 +202,11 @@ class MailService {
                 completion(error: nil, result: mail.imageThumb)
             }
             else {
-                mail.imageThumb = UIImage(named: "Default Card.png")!
-                completion(error: nil, result: mail.imageThumb)
+                Flurry.logEvent("Failed_To_Download_Image")
+                println("Failed to download image")
             }
         })
+
     }
     
     
