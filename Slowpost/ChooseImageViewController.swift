@@ -28,6 +28,8 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var galleryLabel: UILabel!
     @IBOutlet weak var nextButton: TextUIButton!
     
+    @IBOutlet weak var removeImageButtonHeight: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         Flurry.logEvent("Choose_Image_View_Opened")
         
@@ -45,6 +47,14 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         imageScrollView.showsHorizontalScrollIndicator = false
         imageScrollView.showsVerticalScrollIndicator = false
 
+        if deviceType == "iPhone 4S" {
+            formatForiPhone4S()
+        }
+        
+    }
+    
+    func formatForiPhone4S() {
+        removeImageButtonHeight.constant = 30
     }
     
     override func viewDidAppear(animated: Bool) {

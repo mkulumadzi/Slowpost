@@ -49,7 +49,7 @@ class RestService {
         
         var request_headers:[String: String] = self.addAuthHeader(headers)
         
-        Alamofire.request(.POST, requestURL, parameters: parameters, headers: request_headers, encoding: .JSON)
+        lastPostRequest = Alamofire.request(.POST, requestURL, parameters: parameters, headers: request_headers, encoding: .JSON)
             .responseJSON { (request, response, JSON, error) in
                 if let anError = error {
                     println(error)
@@ -114,6 +114,19 @@ class RestService {
         }
         
         return request_headers
+    }
+    
+    class func endpointForLastPostRequest() -> String? {
+        if lastPostRequest != nil {
+            let descriptionArray = split(lastPostRequest.description) {$0 == " "}
+            let url = descriptionArray[1]
+            let urlArray = split(url) {$0 == "/"}
+            var endpoint:String? = urlArray.last
+            return endpoint
+        }
+        else {
+            return nil
+        }
     }
 
 }

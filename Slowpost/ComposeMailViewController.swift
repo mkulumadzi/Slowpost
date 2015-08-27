@@ -110,6 +110,9 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
             sendingViewController!.content = composeText.text
             
         }
+        
+        // Re-enabling to ensure user can send again if they cancel the original sending
+        doneButton.enabled = true
     }
     
     func textViewDidChange(textView: UITextView) {

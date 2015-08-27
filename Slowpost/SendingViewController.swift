@@ -7,21 +7,37 @@
 //
 
 import UIKit
+import Alamofire
 
 class SendingViewController: UIViewController {
     
     var image:UIImage!
     var username:String!
     var content:String!
-
+    
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var cancelButtonHeight: NSLayoutConstraint!
+    
+    var imageRequest: Alamofire.Request?
+    var sendRequest: Alamofire.Request?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         Flurry.logEvent("Began_Sending_Mail")
         
+        cancelButton.layer.cornerRadius = 5
+        
         sendMail()
 
-        // Do any additional setup after loading the view.
+        if deviceType == "iPhone 4S" {
+            formatForiPhone4S()
+        }
+        
+    }
+    
+    func formatForiPhone4S() {
+        cancelButtonHeight.constant = 30
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,5 +75,16 @@ class SendingViewController: UIViewController {
         })
         
     }
+    
+    @IBAction func cancelButtonPressed(sender: AnyObject) {
+        var lastRequestEndpoint:String? = RestService.endpointForLastPostRequest()
+        if lastRequestEndpoint != nil {
+            if lastRequestEndpoint! == "send" || lastRequestEndpoint! == "upload" {
+                lastPostRequest.cancel()
+                self.dismissViewControllerAnimated(true, completion: {})
+            }
+        }
+    }
+    
 
 }
