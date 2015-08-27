@@ -62,7 +62,7 @@ class InitialViewController: UIViewController {
             var headers:[String: String]?
             if loggedInRecordFromCoreData != nil {
                 loggedInUser = loggedInRecordFromCoreData![0]
-                headers! = ["IF-MODIFIED-SINCE": loggedInUser.updatedAtString]
+                headers! = ["IF_MODIFIED_SINCE": loggedInUser.updatedAtString]
             }
             
             println("Getting person record from token id at \(NSDate())")
