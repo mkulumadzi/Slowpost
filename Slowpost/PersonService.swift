@@ -36,10 +36,11 @@ class PersonService {
         return newPerson
     }
     
-    class func populatePersonArrayFromCoreData(predicate: NSPredicate, entityName: String) -> [Person]? {
+    class func populatePersonArrayFromCoreData(predicate: NSPredicate, entityName: String) -> [Person] {
+        
+        var personArray = [Person]()
         
         let personCoreData = CoreDataService.getObjectsFromCoreData(entityName, predicate: predicate)
-        var personArray = [Person]()
         
         for nsManagedObject in personCoreData {
             personArray.append(self.createPersonFromCoreData(nsManagedObject))

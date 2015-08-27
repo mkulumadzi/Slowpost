@@ -60,8 +60,8 @@ class InitialViewController: UIViewController {
             let loggedInRecordFromCoreData = PersonService.populatePersonArrayFromCoreData(predicate, entityName: "LoggedInUser")
             
             var headers:[String: String]?
-            if loggedInRecordFromCoreData != nil {
-                loggedInUser = loggedInRecordFromCoreData![0]
+            if loggedInRecordFromCoreData.count > 0 {
+                loggedInUser = loggedInRecordFromCoreData[0]
                 headers! = ["IF_MODIFIED_SINCE": loggedInUser.updatedAtString]
             }
             
