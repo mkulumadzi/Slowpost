@@ -53,8 +53,8 @@ class InitialViewController: UIViewController {
         
         //Set user token for API requests
         userToken = token
-        
         let payload = JWTDecode.payload(jwt: token)
+        
         if let userId = payload!["id"] as? String {
             
             println("Getting person record from token id at \(NSDate())")

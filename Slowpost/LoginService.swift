@@ -40,6 +40,7 @@ class LoginService {
                     self.saveLoginToUserDefaults(userToken)
                     var person:Person! = PersonService.createPersonFromJson(response.valueForKey("person") as! NSDictionary)
                     loggedInUser = person
+                    PersonService.savePersonToCoreData(person)
                     
                     completion(error: nil, result: "Success")
                 }

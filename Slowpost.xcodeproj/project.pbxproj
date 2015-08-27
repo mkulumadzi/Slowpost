@@ -240,6 +240,7 @@
 		D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		D2F5CAC01B8F79B800551435 /* SlowpostModel 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SlowpostModel 6.xcdatamodel"; sourceTree = "<group>"; };
 		D2F5CAC11B8F91D900551435 /* Default Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default Card.png"; sourceTree = "<group>"; };
+		D2F5CAC31B8FAA1A00551435 /* SlowpostModel 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SlowpostModel 7.xcdatamodel"; sourceTree = "<group>"; };
 		D2FC675D1B7EBD0700F475CB /* Slowpost-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Slowpost-Bridging-Header.h"; sourceTree = "<group>"; };
 		D58257AF9C03394AF69653DE /* Pods-Slowpost.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slowpost.staging.xcconfig"; path = "Pods/Target Support Files/Pods-Slowpost/Pods-Slowpost.staging.xcconfig"; sourceTree = "<group>"; };
 		FEA5B7AEBEF825400B64DF28 /* Pods-Slowpost.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slowpost.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Slowpost/Pods-Slowpost.testing.xcconfig"; sourceTree = "<group>"; };
@@ -1208,6 +1209,7 @@
 		D27E194C1B3B770C0052687F /* SlowpostModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D2F5CAC31B8FAA1A00551435 /* SlowpostModel 7.xcdatamodel */,
 				D2F5CAC01B8F79B800551435 /* SlowpostModel 6.xcdatamodel */,
 				D2AA56E81B83FDBA007D8AAC /* SlowpostModel 5.xcdatamodel */,
 				D2CEC4761B72DD8D002CFD25 /* SnailMailModel 4.xcdatamodel */,
@@ -1215,7 +1217,7 @@
 				D2222A741B588695007E74BB /* SnailMailModel 2.xcdatamodel */,
 				D27E194D1B3B770C0052687F /* SnailMailModel.xcdatamodel */,
 			);
-			currentVersion = D2F5CAC01B8F79B800551435 /* SlowpostModel 6.xcdatamodel */;
+			currentVersion = D2F5CAC31B8FAA1A00551435 /* SlowpostModel 7.xcdatamodel */;
 			path = SlowpostModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
