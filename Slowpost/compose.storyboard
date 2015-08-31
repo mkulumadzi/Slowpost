@@ -11,6 +11,7 @@
             <string>OpenSans-Light</string>
             <string>OpenSans-Light</string>
             <string>OpenSans-Light</string>
+            <string>OpenSans-Light</string>
         </mutableArray>
         <mutableArray key="OpenSans-LightItalic.ttf">
             <string>OpenSansLight-Italic</string>
@@ -24,8 +25,14 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
@@ -493,12 +500,12 @@
                                 <rect key="frame" x="524" y="7" width="50" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Send">
+                                <state key="normal" title="Next">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="MtH-uW-ItT" kind="presentation" identifier="sendMail" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="tTM-CX-xtG"/>
+                                    <segue destination="FyT-yD-Bbu" kind="show" identifier="chooseDelivery" id="zbc-zb-Fih"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -515,6 +522,149 @@
                 <tapGestureRecognizer id="6mN-R4-H4K"/>
             </objects>
             <point key="canvasLocation" x="2388" y="924"/>
+        </scene>
+        <!--Delivery-->
+        <scene sceneID="8yP-rX-UdV">
+            <objects>
+                <viewController id="FyT-yD-Bbu" customClass="ChooseDeliveryOptionsViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EPo-xN-8yt"/>
+                        <viewControllerLayoutGuide type="bottom" id="aGy-fK-D4U"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3OS-i5-PJr">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BkJ-a3-SzY">
+                                <rect key="frame" x="10" y="74" width="28" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="28" id="1bX-2g-Jz5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Default Card.png" translatesAutoresizingMaskIntoConstraints="NO" id="q3J-fe-vji">
+                                <rect key="frame" x="483" y="70" width="107" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="oGL-6a-Y9p"/>
+                                    <constraint firstAttribute="width" secondItem="q3J-fe-vji" secondAttribute="height" multiplier="4:3" id="pzg-qd-wGn"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="personName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9cP-Ke-qXM" userLabel="personName">
+                                <rect key="frame" x="40" y="74" width="433" height="24"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhm-0k-4pj" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="441" width="540" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="TsL-no-8b7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Standard (1 to 2 days)">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="standardDeliveryChosen:" destination="FyT-yD-Bbu" eventType="touchUpInside" id="pEP-Ys-fdR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFT-Rb-cNu" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="541" width="540" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="NZN-MQ-cwe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Custom">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="customDeliveryChosen:" destination="FyT-yD-Bbu" eventType="touchUpInside" id="WH7-oo-12z"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose delivery method:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4A0-Za-BgN">
+                                <rect key="frame" x="30" y="410" width="540" height="21"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="raB-AL-x7a" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="491" width="540" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="pOA-gb-oy2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Express (10 to 20 minutes)">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="expressDeliveryChosen:" destination="FyT-yD-Bbu" eventType="touchUpInside" id="cgx-8o-FNy"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Message Content" translatesAutoresizingMaskIntoConstraints="NO" id="SKA-wX-glD">
+                                <rect key="frame" x="10" y="160" width="580" height="240"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4A0-Za-BgN" secondAttribute="trailing" constant="30" id="0BH-1t-G3X"/>
+                            <constraint firstItem="SKA-wX-glD" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" constant="10" id="34z-tr-iNK"/>
+                            <constraint firstAttribute="trailing" secondItem="q3J-fe-vji" secondAttribute="trailing" constant="10" id="FT7-Tq-g89"/>
+                            <constraint firstItem="BkJ-a3-SzY" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" constant="10" id="GBF-FL-7KD"/>
+                            <constraint firstItem="raB-AL-x7a" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" constant="30" id="I3e-0h-I3j"/>
+                            <constraint firstItem="q3J-fe-vji" firstAttribute="leading" secondItem="9cP-Ke-qXM" secondAttribute="trailing" constant="2" id="P92-kh-pnG"/>
+                            <constraint firstAttribute="trailing" secondItem="SKA-wX-glD" secondAttribute="trailing" constant="10" id="PhZ-X1-q5q"/>
+                            <constraint firstItem="fhm-0k-4pj" firstAttribute="top" secondItem="4A0-Za-BgN" secondAttribute="bottom" constant="10" id="Suz-Mf-sea"/>
+                            <constraint firstAttribute="trailing" secondItem="raB-AL-x7a" secondAttribute="trailing" constant="30" id="TFr-CT-LQJ"/>
+                            <constraint firstItem="9cP-Ke-qXM" firstAttribute="top" secondItem="EPo-xN-8yt" secondAttribute="bottom" constant="10" id="Uat-9z-CV4"/>
+                            <constraint firstItem="SKA-wX-glD" firstAttribute="top" secondItem="q3J-fe-vji" secondAttribute="bottom" constant="10" id="UlP-EF-tbN"/>
+                            <constraint firstItem="BkJ-a3-SzY" firstAttribute="top" secondItem="EPo-xN-8yt" secondAttribute="bottom" constant="10" id="XyY-5Q-uCR"/>
+                            <constraint firstItem="q3J-fe-vji" firstAttribute="width" secondItem="q3J-fe-vji" secondAttribute="height" multiplier="4:3" id="YBm-jO-C7a"/>
+                            <constraint firstItem="4A0-Za-BgN" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" constant="30" id="atX-hu-m9C"/>
+                            <constraint firstItem="4A0-Za-BgN" firstAttribute="top" secondItem="SKA-wX-glD" secondAttribute="bottom" constant="10" id="cUN-yu-L6i"/>
+                            <constraint firstAttribute="trailing" secondItem="fhm-0k-4pj" secondAttribute="trailing" constant="30" id="h3g-co-L4c"/>
+                            <constraint firstItem="q3J-fe-vji" firstAttribute="leading" secondItem="9cP-Ke-qXM" secondAttribute="trailing" constant="10" id="hJz-KN-uPn"/>
+                            <constraint firstItem="oFT-Rb-cNu" firstAttribute="top" secondItem="raB-AL-x7a" secondAttribute="bottom" constant="10" id="hY5-4u-iJt"/>
+                            <constraint firstItem="raB-AL-x7a" firstAttribute="top" secondItem="fhm-0k-4pj" secondAttribute="bottom" constant="10" id="lPP-vj-e6H"/>
+                            <constraint firstItem="q3J-fe-vji" firstAttribute="top" secondItem="EPo-xN-8yt" secondAttribute="bottom" constant="6" id="s3y-qU-49E"/>
+                            <constraint firstItem="oFT-Rb-cNu" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" constant="30" id="tBL-dB-oXn"/>
+                            <constraint firstItem="SKA-wX-glD" firstAttribute="height" secondItem="3OS-i5-PJr" secondAttribute="height" multiplier="0.3" id="txg-sf-dix"/>
+                            <constraint firstItem="fhm-0k-4pj" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" constant="30" id="vfB-fl-v3t"/>
+                            <constraint firstItem="9cP-Ke-qXM" firstAttribute="leading" secondItem="BkJ-a3-SzY" secondAttribute="trailing" constant="2" id="whB-jx-6zA"/>
+                            <constraint firstAttribute="trailing" secondItem="oFT-Rb-cNu" secondAttribute="trailing" constant="30" id="zEW-kq-qdR"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="P92-kh-pnG"/>
+                                <exclude reference="YBm-jO-C7a"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Delivery" id="6aV-fH-Z8k"/>
+                    <connections>
+                        <outlet property="buttonHeight" destination="NZN-MQ-cwe" id="nbo-nv-f9H"/>
+                        <outlet property="composeText" destination="SKA-wX-glD" id="kLd-af-IVr"/>
+                        <outlet property="customButton" destination="oFT-Rb-cNu" id="qTp-N4-RzT"/>
+                        <outlet property="expressButton" destination="raB-AL-x7a" id="qTr-rS-QsL"/>
+                        <outlet property="imagePreview" destination="q3J-fe-vji" id="35s-gM-ivT"/>
+                        <outlet property="standardButton" destination="fhm-0k-4pj" id="Xn2-47-ina"/>
+                        <outlet property="toLabel" destination="9cP-Ke-qXM" id="As6-IJ-Kde"/>
+                        <segue destination="MtH-uW-ItT" kind="presentation" identifier="sendMail" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="fof-2k-i0C"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hTd-Zp-4RV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3069" y="924"/>
         </scene>
         <!--Sending View Controller-->
         <scene sceneID="cZ8-Uj-tT2">
@@ -599,7 +749,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HIU-N4-2SL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="hsk-st-IZq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3084" y="924"/>
+            <point key="canvasLocation" x="3778" y="924"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RDR-ED-QzE">
@@ -744,7 +894,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Default Card.png" width="2048" height="1536"/>
+        <image name="Default Card.png" width="768" height="576"/>
         <image name="Slowpost Icon Set (green)" width="150" height="95"/>
         <image name="grid-green.png" width="512" height="512"/>
         <image name="ios7-camera-green.png" width="512" height="512"/>

@@ -43,6 +43,31 @@ extension UIImage {
     }
 }
 
+extension UITextView {
+    public func addTopBorder() {
+        let border = CALayer()
+        let thickness = CGFloat(1.0)
+        border.borderColor = UIColor(red: 181/255, green: 181/255, blue: 181/255, alpha: 1.0).CGColor
+        border.frame = CGRect(x: 0, y: 0, width:  self.frame.size.width, height: thickness)
+        
+        border.borderWidth = thickness
+        self.layer.addSublayer(border)
+        self.layer.masksToBounds = true
+    }
+    
+    public func addBottomBorder() {
+        let border = CALayer()
+        let thickness = CGFloat(1.0)
+        border.borderColor = UIColor(red: 181/255, green: 181/255, blue: 181/255, alpha: 1.0).CGColor
+        border.frame = CGRect(x: 0, y: self.frame.size.height, width:  self.frame.size.width, height: thickness)
+        
+        border.borderWidth = thickness
+        self.layer.addSublayer(border)
+        self.layer.masksToBounds = true
+    }
+    
+}
+
 import UIKit
 
 private let DeviceList = [

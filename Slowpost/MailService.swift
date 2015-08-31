@@ -167,7 +167,7 @@ class MailService {
     class func getMailImage(mail: Mail, completion: (error: NSError?, result: AnyObject?) -> Void) {
         
         var thumbSize:String = String(Int(screenWidth)) + "x"
-        let mailImageURL = "\(PostOfficeURL)/mail/id/\(mail.id)/image?thumb=\(thumbSize)"
+        let mailImageURL = "\(PostOfficeURL)/mail/id/\(mail.id)/image"
         
         FileService.downloadImage(mailImageURL, completion: { (error, result) -> Void in
             if let image = result as? UIImage {
@@ -183,7 +183,7 @@ class MailService {
 
     class func getMailThumbnailImage(mail: Mail, completion: (error: NSError?, result: AnyObject?) -> Void) {
         
-        let mailThumbnailImageURL = "\(PostOfficeURL)/mail/id/\(mail.id)/image?thumb=x69"
+        let mailThumbnailImageURL = "\(PostOfficeURL)/mail/id/\(mail.id)/thumbnail"
         
         FileService.downloadImage(mailThumbnailImageURL, completion: { (error, result) -> Void in
             if let thumbnail = result as? UIImage {

@@ -35,7 +35,8 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         composeText.textContainerInset.left = 10
         composeText.textContainerInset.right = 10
 
-        addTopBorderToTextView(composeText)
+//        addTopBorderToTextView(composeText)
+        composeText.addTopBorder()
         
         if cardImage != nil {
             imagePreview.image = cardImage
@@ -56,17 +57,17 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    func addTopBorderToTextView(textView: UITextView) {
-        
-        let border = CALayer()
-        let thickness = CGFloat(1.0)
-        border.borderColor = UIColor(red: 181/255, green: 181/255, blue: 181/255, alpha: 1.0).CGColor
-        border.frame = CGRect(x: 0, y: 0, width:  textView.frame.size.width, height: thickness)
-        
-        border.borderWidth = thickness
-        textView.layer.addSublayer(border)
-        textView.layer.masksToBounds = true
-    }
+//    func addTopBorderToTextView(textView: UITextView) {
+//        
+//        let border = CALayer()
+//        let thickness = CGFloat(1.0)
+//        border.borderColor = UIColor(red: 181/255, green: 181/255, blue: 181/255, alpha: 1.0).CGColor
+//        border.frame = CGRect(x: 0, y: 0, width:  textView.frame.size.width, height: thickness)
+//        
+//        border.borderWidth = thickness
+//        textView.layer.addSublayer(border)
+//        textView.layer.masksToBounds = true
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -101,18 +102,12 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "sendMail" {
-            doneButton.enabled = false
-            
-            let sendingViewController = segue.destinationViewController as? SendingViewController
-            sendingViewController!.username = toPerson.username
-            sendingViewController!.image = imagePreview.image
-            sendingViewController!.content = composeText.text
-            
+        if segue.identifier == "chooseDelivery" {
+            let chooseDeliveryOptionsViewController = segue.destinationViewController as? ChooseDeliveryOptionsViewController
+            chooseDeliveryOptionsViewController!.toPerson = toPerson
+            chooseDeliveryOptionsViewController!.cardImage = cardImage
+            chooseDeliveryOptionsViewController!.content = composeText.text
         }
-        
-        // Re-enabling to ensure user can send again if they cancel the original sending
-        doneButton.enabled = true
     }
     
     func textViewDidChange(textView: UITextView) {

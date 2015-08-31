@@ -59,10 +59,10 @@ class InitialViewController: UIViewController {
             let predicate = NSPredicate(format: "id == %@", userId)
             let loggedInRecordFromCoreData = PersonService.populatePersonArrayFromCoreData(predicate, entityName: "LoggedInUser")
             
-            var headers:[String: String]?
+            var headers:[String: String]!
             if loggedInRecordFromCoreData.count > 0 {
                 loggedInUser = loggedInRecordFromCoreData[0]
-                headers! = ["IF_MODIFIED_SINCE": loggedInUser.updatedAtString]
+                headers = ["IF_MODIFIED_SINCE": loggedInUser.updatedAtString]
             }
             
             println("Getting person record from token id at \(NSDate())")
@@ -103,6 +103,7 @@ class InitialViewController: UIViewController {
     func beginLoadingInitialData() {
         println("Beginning to load initial data at \(NSDate())")
         Flurry.logEvent("Initial_Data_Loading_Began", timed: true)
+        
         AddressBookService.checkAuthorizationStatus(self)
         
         //This will load penpals, which will then load mailbox, which will then load outbox, which will then load contacts

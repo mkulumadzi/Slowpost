@@ -31,8 +31,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         warningLabel.hide()
         noResultsLabel.hidden = true
         
-//        validateNextButton()
-        
         self.toPersonList.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: self.toPersonList.bounds.size.width, height: 0.01))
         
         penpalList = penpals.filter({$0.username != loggedInUser.username})
@@ -74,7 +72,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             otherUsersList = []
         }
         
-//        validateNextButton()
         validateNoResultsLabel()
         warningLabel.hide()
         self.toPersonList.reloadData()
@@ -90,15 +87,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             return (string as NSString).substringWithRange(range)
         }
     }
-    
-//    func validateButton() {
-//        if toPerson == nil {
-//            nextButton.enabled = false
-//        }
-//        else {
-//            nextButton.enabled = true
-//        }
-//    }
     
     func validateNoResultsLabel() {
         if toSearchField.text == "" {
