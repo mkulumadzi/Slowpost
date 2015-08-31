@@ -14,10 +14,7 @@ class ChooseDeliveryOptionsViewController: UIViewController {
     var cardImage:UIImage!
     var content:String!
     var scheduledToArrive:NSDate?
-    
-    @IBOutlet weak var toLabel: UILabel!
-    @IBOutlet weak var imagePreview: UIImageView!
-    @IBOutlet weak var composeText: UITextView!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBOutlet weak var standardButton: TextUIButton!
     @IBOutlet weak var expressButton: TextUIButton!
@@ -27,19 +24,6 @@ class ChooseDeliveryOptionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        toLabel.text = toPerson.name
-        
-        if cardImage != nil {
-            imagePreview.image = cardImage
-        }
-        
-        if content != nil {
-            composeText.text = content
-        }
-        
-        composeText.addTopBorder()
-        composeText.font = UIFont(name: "Opensans-Regular", size: 17)
         
         standardButton.layer.cornerRadius = 5
         expressButton.layer.cornerRadius = 5
@@ -72,14 +56,23 @@ class ChooseDeliveryOptionsViewController: UIViewController {
     }
     
     @IBAction func customDeliveryChosen(sender: AnyObject) {
+        let currentDateTime = NSDate()
+        if datePicker.date.isGreaterThanDate(currentDateTime) {
+            scheduledToArrive = datePicker.date
+            self.performSegueWithIdentifier("sendMail", sender: nil)
+        }
+        else {
+            println("Date cannot be in the past")
+        }
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "sendMail" {
             let sendingViewController = segue.destinationViewController as? SendingViewController
             sendingViewController!.username = toPerson.username
-            sendingViewController!.image = imagePreview.image
-            sendingViewController!.content = composeText.text
+            sendingViewController!.image = cardImage
+            sendingViewController!.content = content
             
             if scheduledToArrive != nil {
                 sendingViewController!.scheduledToArrive = scheduledToArrive!
