@@ -14,6 +14,7 @@ class SendingViewController: UIViewController {
     var image:UIImage!
     var username:String!
     var content:String!
+    var scheduledToArrive:NSDate?
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var cancelButtonHeight: NSLayoutConstraint!
@@ -60,7 +61,17 @@ class SendingViewController: UIViewController {
     func sendMailToPostoffice(imageUid: String) {
         
         let sendMailEndpoint = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mail/send"
-        let parameters = ["to": "\(username)", "content": "\(content)", "image_uid": "\(imageUid)"]
+        var parameters:[String: String] = ["to": "\(username)", "content": "\(content)", "image_uid": "\(imageUid)"]
+        
+        if scheduledToArrive != nil {
+            var dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+            dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
+            dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+            var scheduledToArriveString = dateFormatter.stringFromDate(scheduledToArrive!)
+            println(scheduledToArriveString)
+            parameters["scheduled_to_arrive"] = scheduledToArriveString
+        }
         
         RestService.postRequest(sendMailEndpoint, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
             if let response = result as? [AnyObject] {

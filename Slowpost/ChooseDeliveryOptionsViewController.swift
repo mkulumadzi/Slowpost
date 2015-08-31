@@ -13,6 +13,7 @@ class ChooseDeliveryOptionsViewController: UIViewController {
     var toPerson:Person!
     var cardImage:UIImage!
     var content:String!
+    var scheduledToArrive:NSDate?
     
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var imagePreview: UIImageView!
@@ -39,9 +40,6 @@ class ChooseDeliveryOptionsViewController: UIViewController {
         
         composeText.addTopBorder()
         composeText.font = UIFont(name: "Opensans-Regular", size: 17)
-        println("The compose text frame size is \(composeText.frame.size)")
-        println("The compose text font is \(composeText.font)")
-        println("Is the TextView selectable? \(composeText.selectable)")
         
         standardButton.layer.cornerRadius = 5
         expressButton.layer.cornerRadius = 5
@@ -67,6 +65,10 @@ class ChooseDeliveryOptionsViewController: UIViewController {
     }
     
     @IBAction func expressDeliveryChosen(sender: AnyObject) {
+        let calendar = NSCalendar.currentCalendar()
+        let date = calendar.dateByAddingUnit(.CalendarUnitMinute, value: 10, toDate: NSDate(), options: nil)
+        scheduledToArrive = date!
+        self.performSegueWithIdentifier("sendMail", sender: nil)
     }
     
     @IBAction func customDeliveryChosen(sender: AnyObject) {
@@ -78,6 +80,10 @@ class ChooseDeliveryOptionsViewController: UIViewController {
             sendingViewController!.username = toPerson.username
             sendingViewController!.image = imagePreview.image
             sendingViewController!.content = composeText.text
+            
+            if scheduledToArrive != nil {
+                sendingViewController!.scheduledToArrive = scheduledToArrive!
+            }
         }
         
     }
