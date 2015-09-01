@@ -73,7 +73,8 @@ class PersonService {
         let managedContext = appDelegate.managedObjectContext!
         
         for person in personArray {
-            let object = CoreDataService.getEntityForIdOrReturnNewEntity(person.id, entityName: "Person", managedContext: managedContext)
+            let predicate = NSPredicate(format: "id == %@", person.id)
+            let object = CoreDataService.getExistingEntityOrReturnNewEntity("Person", managedContext: managedContext, predicate: predicate)
             self.saveOrUpdatePersonInCoreData(person, object: object, managedContext: managedContext)
         }
     }
@@ -104,7 +105,9 @@ class PersonService {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
-        let object = CoreDataService.getEntityForIdOrReturnNewEntity(person.id, entityName: "LoggedInUser", managedContext: managedContext)
+        let predicate = NSPredicate(format: "id == %@", person.id)
+        
+        let object = CoreDataService.getExistingEntityOrReturnNewEntity("LoggedInUser", managedContext: managedContext, predicate: predicate)
         self.saveOrUpdatePersonInCoreData(person, object: object, managedContext: managedContext)
     }
     

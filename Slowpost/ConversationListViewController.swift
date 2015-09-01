@@ -12,7 +12,6 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     
     var penpalList: [Person] = []
     
-//    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var conversationList: UITableView!
 //    @IBOutlet weak var noResultsLabel: UILabel!
     @IBOutlet weak var messageLabel: MessageUILabel!
@@ -31,19 +30,15 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         super.viewDidLoad()
         
         Flurry.logEvent("Conversation_View_Opened")
-        
         messageLabel.hide()
-        
         conversationList.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: conversationList.bounds.size.width, height: 0.01))
-        
         reloadPenpals()
-        
         conversationList.addSubview(self.refreshControl)
-        
         addSearchBar()
         
 //        noResultsLabel.hidden = true
         
+        println(conversationMetadataArray)
         penpalList = penpals.filter({$0.username != loggedInUser.username})
     }
     

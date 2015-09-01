@@ -18,6 +18,7 @@ var loggedInUser:Person!
 var mailbox = [Mail]()
 var outbox = [Mail]()
 var penpals = [Person]()
+var conversationMetadataArray = [ConversationMetadata]()
 var registeredContacts = [Person]()
 var lastPostRequest:Alamofire.Request!
 

@@ -47,6 +47,8 @@
 		D2389E751B95159700CB19BB /* ConversationMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E741B95159700CB19BB /* ConversationMailViewController.swift */; };
 		D2389E771B9515D300CB19BB /* ConversationMailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E761B9515D300CB19BB /* ConversationMailCell.swift */; };
 		D2389E7B1B96162200CB19BB /* ComposeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E7A1B96162200CB19BB /* ComposeNavigationController.swift */; };
+		D2389E7D1B962B7000CB19BB /* ConversationMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E7C1B962B7000CB19BB /* ConversationMetadata.swift */; };
+		D2389E7F1B962D1F00CB19BB /* ConversationMetadataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E7E1B962D1F00CB19BB /* ConversationMetadataService.swift */; };
 		D25A9C9C1B2259D300ABBBA4 /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C911B2259D300ABBBA4 /* Apache License.txt */; };
 		D25A9C9D1B2259D300ABBBA4 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */; };
 		D25A9C9E1B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */; };
@@ -175,6 +177,9 @@
 		D2389E741B95159700CB19BB /* ConversationMailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationMailViewController.swift; sourceTree = "<group>"; };
 		D2389E761B9515D300CB19BB /* ConversationMailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationMailCell.swift; sourceTree = "<group>"; };
 		D2389E7A1B96162200CB19BB /* ComposeNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeNavigationController.swift; sourceTree = "<group>"; };
+		D2389E7C1B962B7000CB19BB /* ConversationMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationMetadata.swift; sourceTree = "<group>"; };
+		D2389E7E1B962D1F00CB19BB /* ConversationMetadataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationMetadataService.swift; sourceTree = "<group>"; };
+		D2389E801B964A0F00CB19BB /* SlowpostModel 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SlowpostModel 8.xcdatamodel"; sourceTree = "<group>"; };
 		D25A9C911B2259D300ABBBA4 /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apache License.txt"; sourceTree = "<group>"; };
 		D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -338,6 +343,7 @@
 			children = (
 				CCCB1A741AB0D87F0067F100 /* Person.swift */,
 				CC96E4A81ABCD91A001E6D27 /* Mail.swift */,
+				D2389E7C1B962B7000CB19BB /* ConversationMetadata.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -520,6 +526,7 @@
 				D2B7CEAD1B696DBC007F8235 /* RestService.swift */,
 				D291B24B1B69AA5A00C72816 /* FileService.swift */,
 				D2CEC4771B73A45F002CFD25 /* CoreDataService.swift */,
+				D2389E7E1B962D1F00CB19BB /* ConversationMetadataService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -788,6 +795,7 @@
 				D27DA32D1B66C51900DF32A1 /* MessageUILabel.swift in Sources */,
 				D2E9564A1B309AA100CA8CC8 /* CardCollectionViewCell.swift in Sources */,
 				D20D8ED41B2A510700BBF6B5 /* ToViewController.swift in Sources */,
+				D2389E7D1B962B7000CB19BB /* ConversationMetadata.swift in Sources */,
 				D2CEC4741B72ACBD002CFD25 /* SendingViewController.swift in Sources */,
 				D27DA3291B62E7BC00DF32A1 /* SettingsMenuViewController.swift in Sources */,
 				D21D79DD1B56ED540014510E /* AddressBookService.swift in Sources */,
@@ -804,6 +812,7 @@
 				D2B7CEA61B694C14007F8235 /* GlobalVariables.swift in Sources */,
 				D27E194E1B3B770C0052687F /* SlowpostModel.xcdatamodeld in Sources */,
 				CC96E49C1ABCC8EB001E6D27 /* InitialViewController.swift in Sources */,
+				D2389E7F1B962D1F00CB19BB /* ConversationMetadataService.swift in Sources */,
 				D2389E6D1B9511E100CB19BB /* ConversationListViewController.swift in Sources */,
 				D2B7CEAC1B6951CE007F8235 /* ConfigurationService.swift in Sources */,
 				D2B7CEAA1B694E55007F8235 /* MailService.swift in Sources */,
@@ -1225,6 +1234,7 @@
 		D27E194C1B3B770C0052687F /* SlowpostModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D2389E801B964A0F00CB19BB /* SlowpostModel 8.xcdatamodel */,
 				D2F5CAC31B8FAA1A00551435 /* SlowpostModel 7.xcdatamodel */,
 				D2F5CAC01B8F79B800551435 /* SlowpostModel 6.xcdatamodel */,
 				D2AA56E81B83FDBA007D8AAC /* SlowpostModel 5.xcdatamodel */,
@@ -1233,7 +1243,7 @@
 				D2222A741B588695007E74BB /* SnailMailModel 2.xcdatamodel */,
 				D27E194D1B3B770C0052687F /* SnailMailModel.xcdatamodel */,
 			);
-			currentVersion = D2F5CAC31B8FAA1A00551435 /* SlowpostModel 7.xcdatamodel */;
+			currentVersion = D2389E801B964A0F00CB19BB /* SlowpostModel 8.xcdatamodel */;
 			path = SlowpostModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

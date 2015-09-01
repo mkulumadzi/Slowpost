@@ -94,6 +94,9 @@ class RestService {
         else if let objects = group as? [Person] {
             maxUpdatedAt = maxElement(objects.map{$0.updatedAtString})
         }
+        else if let objects = group as? [ConversationMetadata] {
+            maxUpdatedAt = maxElement(objects.map{$0.updatedAtString})
+        }
         
         let headers = ["IF_MODIFIED_SINCE": maxUpdatedAt]
         

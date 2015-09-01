@@ -95,7 +95,8 @@ class MailService {
         let managedContext = appDelegate.managedObjectContext!
         
         for mail in mailArray {
-            let object = CoreDataService.getEntityForIdOrReturnNewEntity(mail.id, entityName: "Mail", managedContext: managedContext)
+            let predicate = NSPredicate(format: "id == %@", mail.id)
+            let object = CoreDataService.getExistingEntityOrReturnNewEntity("Mail", managedContext: managedContext, predicate: predicate)
             self.saveOrUpdateMailInCoreData(mail, object: object, managedContext: managedContext)
         }
         
@@ -120,7 +121,7 @@ class MailService {
         
         var error: NSError?
         if !managedContext.save(&error) {
-            println("Error saving person \(error), \(error?.userInfo)")
+            println("Error saving mail \(error), \(error?.userInfo)")
         }
         
     }

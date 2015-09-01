@@ -12,14 +12,16 @@ import UIKit
 
 class CoreDataService {
     
-    class func getObjectsFromCoreData(entityName: String, predicate: NSPredicate) -> [NSManagedObject] {
+    class func getObjectsFromCoreData(entityName: String, predicate: NSPredicate?) -> [NSManagedObject] {
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
-        //This is the only part of this function that is unique... could generalize it
         let fetchRequest = NSFetchRequest(entityName: entityName)
-        fetchRequest.predicate = predicate
+        
+        if predicate != nil {
+            fetchRequest.predicate = predicate!
+        }
         
         var error: NSError?
         
@@ -44,10 +46,9 @@ class CoreDataService {
         
     }
     
-    class func getEntityForIdOrReturnNewEntity(id: String, entityName: String, managedContext: NSManagedObjectContext) -> NSManagedObject {
+    class func getExistingEntityOrReturnNewEntity(entityName: String, managedContext: NSManagedObjectContext, predicate: NSPredicate) -> NSManagedObject {
         
         let fetchRequest = NSFetchRequest(entityName: entityName)
-        let predicate = NSPredicate(format: "id == %@", id)
         fetchRequest.predicate = predicate
         
         let fetchResults = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [NSManagedObject]
@@ -61,5 +62,23 @@ class CoreDataService {
             return newObject
         }
     }
+    
+//    class func getEntityForIdOrReturnNewEntity(id: String, entityName: String, managedContext: NSManagedObjectContext) -> NSManagedObject {
+//        
+//        let fetchRequest = NSFetchRequest(entityName: entityName)
+//        let predicate = NSPredicate(format: "id == %@", id)
+//        fetchRequest.predicate = predicate
+//        
+//        let fetchResults = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [NSManagedObject]
+//        
+//        if fetchResults!.count > 0 {
+//            return fetchResults![0]
+//        }
+//        else {
+//            let entity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: managedContext)
+//            let newObject = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
+//            return newObject
+//        }
+//    }
     
 }

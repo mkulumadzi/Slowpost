@@ -113,6 +113,7 @@ class InitialViewController: UIViewController {
         
         //This will load penpals, which will then load mailbox, which will then load outbox, which will then load contacts
         getPenpals()
+        getConversationMetadata()
         getMailbox()
         getOutbox()
         getRegisteredContactsIfAuthorized()
@@ -132,6 +133,25 @@ class InitialViewController: UIViewController {
         })
     }
     
+    func getConversationMetadata() {
+        println("Getting the conversation metadata at \(NSDate())")
+        let coreDataConversationMetadata = ConversationMetadataService.populateConversationMetadataArrayFromCoreData()
+        if coreDataConversationMetadata != nil {
+            conversationMetadataArray = coreDataConversationMetadata!
+        }
+        
+        var headers:[String: String]?
+        if conversationMetadataArray.count > 0 {
+            headers = RestService.sinceHeader(conversationMetadataArray)
+        }
+        
+        ConversationMetadataService.getConversationMetadataCollection(headers, completion: { (error, result) -> Void in
+            if let newArray = result as? Array<ConversationMetadata> {
+                ConversationMetadataService.updateConversationMetadataAndAppendArrayToCache(newArray)
+            }
+        })
+    }
+
     func getMailbox() {
         
         println("Getting mailbox at \(NSDate())")
