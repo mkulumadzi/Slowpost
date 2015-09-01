@@ -12,7 +12,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     
     var penpalList: [Person] = []
     
-    @IBOutlet weak var conversationSearchField: UISearchBar!
+//    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var conversationList: UITableView!
 //    @IBOutlet weak var noResultsLabel: UILabel!
     @IBOutlet weak var messageLabel: MessageUILabel!
@@ -23,6 +23,8 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         
         return refreshControl
         }()
+    
+    lazy var searchBar:UISearchBar = UISearchBar(frame: CGRectMake(0, 0, 240, 20))
     
     
     override func viewDidLoad() {
@@ -38,9 +40,26 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         
         conversationList.addSubview(self.refreshControl)
         
+        addSearchBar()
+        
 //        noResultsLabel.hidden = true
         
         penpalList = penpals.filter({$0.username != loggedInUser.username})
+    }
+    
+    func addSearchBar() {
+        searchBar.placeholder = "Name"
+        searchBar.tintColor = UIColor.lightGrayColor()
+        
+        var leftNavBarButton = UIBarButtonItem(customView:searchBar)
+        self.navigationItem.leftBarButtonItem = leftNavBarButton
+        
+        searchBar.delegate = self
+        
+        ////Can't get this to work...
+        //        let horizontalConstraint = NSLayoutConstraint(item: self.navigationItem.leftBarButtonItem!, attribute: .TrailingMargin, relatedBy: .Equal, toItem: searchBar, attribute: .Left, multiplier: 1.0, constant: 10)
+        //
+        //        view.addConstraint(horizontalConstraint)
     }
     
     func handleRefresh(refreshControl: UIRefreshControl) {
@@ -57,10 +76,10 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         
         penpalList = penpals.filter({$0.username != loggedInUser.username})
         
-        if self.conversationSearchField.text.isEmpty == false {
+        if self.searchBar.text.isEmpty == false {
             
             var newPenpalArray:[Person] = penpalList.filter() {
-                self.listMatches(self.conversationSearchField.text, inString: $0.username).count >= 1 || self.listMatches(self.conversationSearchField.text, inString: $0.name).count >= 1
+                self.listMatches(self.searchBar.text, inString: $0.username).count >= 1 || self.listMatches(self.searchBar.text, inString: $0.name).count >= 1
             }
             penpalList = newPenpalArray
             
@@ -82,7 +101,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     }
     
 //    func validateNoResultsLabel() {
-//        if conversationSearchField.text == "" {
+//        if searchBar.text == "" {
 //            noResultsLabel.hidden = true
 //        }
 //        else if penpalList.count == 0 {
@@ -94,7 +113,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
 //    }
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        conversationSearchField.resignFirstResponder()
+        searchBar.resignFirstResponder()
     }
     
     // MARK: Section Configuration

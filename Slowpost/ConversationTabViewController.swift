@@ -1,5 +1,5 @@
 //
-//  ProfileTabViewController.swift
+//  ConversationTabViewController.swift
 //  Slowpost
 //
 //  Created by Evan Waters on 7/24/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileTabPlaceholderViewController: UIViewController {
+class ConversationTabPlaceholderViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

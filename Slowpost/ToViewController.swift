@@ -15,11 +15,13 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var contactsList: [Person] = []
     var otherUsersList: [Person] = []
     
-    @IBOutlet weak var toSearchField: UISearchBar!
+    @IBOutlet weak var cancelBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var toPersonList: UITableView!
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var noResultsLabel: UILabel!
-
+    
+    lazy var searchBar:UISearchBar = UISearchBar(frame: CGRectMake(0, 0, 240, 20))
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
 
         warningLabel.hide()
         noResultsLabel.hidden = true
+        
+        addSearchBar()
         
         self.toPersonList.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: self.toPersonList.bounds.size.width, height: 0.01))
         
@@ -43,27 +47,42 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         // Dispose of any resources that can be recreated.
     }
     
+    func addSearchBar() {
+        searchBar.placeholder = "To: Name or Username"
+        searchBar.tintColor = UIColor.lightGrayColor()
+        
+        var rightNavBarButton = UIBarButtonItem(customView:searchBar)
+        self.navigationItem.rightBarButtonItem = rightNavBarButton
+        
+        searchBar.delegate = self
+        
+        ////Can't get this to work...
+//        let horizontalConstraint = NSLayoutConstraint(item: self.navigationItem.leftBarButtonItem!, attribute: .TrailingMargin, relatedBy: .Equal, toItem: searchBar, attribute: .Left, multiplier: 1.0, constant: 10)
+//        
+//        view.addConstraint(horizontalConstraint)
+    }
+    
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
         penpalList = penpals.filter({$0.username != loggedInUser.username})
         contactsList = registeredContacts.filter({$0.username != loggedInUser.username})
         excludePenpalsFromContactsList()
         
-        if self.toSearchField.text.isEmpty == false {
+        if self.searchBar.text.isEmpty == false {
             
             var newPenpalArray:[Person] = penpalList.filter() {
-                self.listMatches(self.toSearchField.text, inString: $0.username).count >= 1 || self.listMatches(self.toSearchField.text, inString: $0.name).count >= 1
+                self.listMatches(self.searchBar.text, inString: $0.username).count >= 1 || self.listMatches(searchBar.text, inString: $0.name).count >= 1
             }
             penpalList = newPenpalArray
             
             var newContactsArray:[Person] = contactsList.filter() {
-                self.listMatches(self.toSearchField.text, inString: $0.username).count >= 1 || self.listMatches(self.toSearchField.text, inString: $0.name).count >= 1
+                self.listMatches(self.searchBar.text, inString: $0.username).count >= 1 || self.listMatches(searchBar.text, inString: $0.name).count >= 1
             }
             contactsList = newContactsArray
             
             if penpalList.count == 0 {
                 noResultsLabel.hidden = true
-                self.searchPeople(self.toSearchField.text)
+                self.searchPeople(self.searchBar.text)
             }
             
         }
@@ -89,7 +108,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func validateNoResultsLabel() {
-        if toSearchField.text == "" {
+        if searchBar.text == "" {
             noResultsLabel.hidden = true
         }
         else if penpalList.count == 0 && contactsList.count == 0 && otherUsersList.count == 0 {
@@ -101,7 +120,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        toSearchField.resignFirstResponder()
+        searchBar.resignFirstResponder()
     }
     
     // MARK: Section Configuration
@@ -208,7 +227,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             if penpalList.count > 0 {
                 Flurry.logEvent("Penpal_Selected")
                 let person = penpalList[indexPath.row] as Person
-                toSearchField.text = person.username
+                searchBar.text = person.username
                 toPerson = person
                 self.performSegueWithIdentifier("selectImage", sender: nil)
             }
@@ -216,14 +235,14 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             if contactsList.count > 0 {
                 Flurry.logEvent("Contact_Selected")
                 let person = contactsList[indexPath.row] as Person
-                toSearchField.text = person.username
+                searchBar.text = person.username
                 toPerson = person
                 self.performSegueWithIdentifier("selectImage", sender: nil)
             }
         case 2:
             Flurry.logEvent("Other_User_Selected")
             let person = otherUsersList[indexPath.row] as Person
-            toSearchField.text = person.username
+            searchBar.text = person.username
             toPerson = person
             self.performSegueWithIdentifier("selectImage", sender: nil)
         default:
@@ -241,7 +260,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         var searchResults = [Person]()
     
-        var searchTerm = RestService.normalizeSearchTerm(toSearchField.text)
+        var searchTerm = RestService.normalizeSearchTerm(searchBar.text)
         let searchPeopleURL = "\(PostOfficeURL)people/search?term=\(searchTerm)&limit=10"
         
         PersonService.getPeopleCollection(searchPeopleURL, headers: nil, completion: { (error, result) -> Void in

@@ -46,10 +46,10 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Conversations-->
+        <!--Conversation List View Controller-->
         <scene sceneID="PJV-Qc-5Ir">
             <objects>
-                <viewController id="auR-xQ-yYd" customClass="ConversationListViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="auR-xQ-yYd" customClass="ConversationListViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hVh-79-c6L"/>
                         <viewControllerLayoutGuide type="bottom" id="0gS-nt-Hk5"/>
@@ -58,15 +58,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Name" translatesAutoresizingMaskIntoConstraints="NO" id="bab-dK-jj5">
-                                <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="auR-xQ-yYd" id="L2D-EM-eru"/>
-                                </connections>
-                            </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="NiG-s1-hET">
-                                <rect key="frame" x="0.0" y="108" width="600" height="492"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="NiG-s1-hET">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="conversationCell" rowHeight="65" id="gbm-9X-jsY" customClass="ConversationCell" customModule="Slowpost" customModuleProvider="target">
@@ -114,17 +107,15 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="eKr-1q-00m" secondAttribute="trailing" id="158-JR-IiP"/>
                             <constraint firstAttribute="trailing" secondItem="NiG-s1-hET" secondAttribute="trailing" id="6oK-Ev-xXl"/>
-                            <constraint firstItem="bab-dK-jj5" firstAttribute="top" secondItem="hVh-79-c6L" secondAttribute="bottom" id="HUr-28-faV"/>
+                            <constraint firstItem="NiG-s1-hET" firstAttribute="top" secondItem="hVh-79-c6L" secondAttribute="bottom" id="KZU-Rt-9tK"/>
                             <constraint firstItem="0gS-nt-Hk5" firstAttribute="top" secondItem="NiG-s1-hET" secondAttribute="bottom" id="Oyy-Rk-5sa"/>
                             <constraint firstItem="eKr-1q-00m" firstAttribute="leading" secondItem="7Cu-4W-t0n" secondAttribute="leading" id="WRx-Sa-pw0"/>
                             <constraint firstItem="0gS-nt-Hk5" firstAttribute="top" secondItem="eKr-1q-00m" secondAttribute="bottom" id="Yuu-oc-UZW"/>
-                            <constraint firstAttribute="trailing" secondItem="bab-dK-jj5" secondAttribute="trailing" id="YvX-UR-1EA"/>
                             <constraint firstItem="NiG-s1-hET" firstAttribute="leading" secondItem="7Cu-4W-t0n" secondAttribute="leading" id="Z44-mM-Nrq"/>
-                            <constraint firstItem="bab-dK-jj5" firstAttribute="leading" secondItem="7Cu-4W-t0n" secondAttribute="leading" id="ch2-ZO-2vw"/>
-                            <constraint firstItem="NiG-s1-hET" firstAttribute="top" secondItem="bab-dK-jj5" secondAttribute="bottom" id="hF6-YF-ElD"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Conversations" id="0a7-jc-KbE">
+                    <navigationItem key="navigationItem" id="0a7-jc-KbE">
+                        <barButtonItem key="backBarButtonItem" title="Conversations" id="jCu-bC-E4t"/>
                         <barButtonItem key="rightBarButtonItem" id="olK-a2-aSh">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Met-Uj-onw">
                                 <rect key="frame" x="554" y="-234" width="30" height="30"/>
@@ -140,7 +131,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="conversationList" destination="NiG-s1-hET" id="OIO-3x-Au5"/>
-                        <outlet property="conversationSearchField" destination="bab-dK-jj5" id="8hO-Vi-Rbi"/>
                         <outlet property="messageLabel" destination="eKr-1q-00m" id="YB2-2k-FHB"/>
                         <outlet property="searchDisplayController" destination="J2l-PT-51R" id="WNz-qg-98I"/>
                         <segue destination="waF-C4-z8h" kind="presentation" identifier="editPassword" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="DFi-94-Xne"/>

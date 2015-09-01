@@ -740,7 +740,7 @@
             </objects>
             <point key="canvasLocation" x="303" y="924"/>
         </scene>
-        <!--To-->
+        <!--To View Controller-->
         <scene sceneID="fT4-r7-D5g">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="56L-ux-Lnu" customClass="ToViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
@@ -752,19 +752,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" text="" placeholder="Name or username" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FXR-ug-bxD">
-                                <rect key="frame" x="0.0" y="24" width="600" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="ssJ-fP-Am6"/>
-                                </constraints>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
-                                <connections>
-                                    <outlet property="delegate" destination="56L-ux-Lnu" id="axs-Zf-QWV"/>
-                                </connections>
-                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="50" sectionHeaderHeight="2" sectionFooterHeight="2" translatesAutoresizingMaskIntoConstraints="NO" id="j7P-4p-ATv">
-                                <rect key="frame" x="0.0" y="68" width="600" height="468"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
                                 <prototypes>
@@ -825,22 +814,20 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="j7P-4p-ATv" firstAttribute="top" secondItem="FXR-ug-bxD" secondAttribute="bottom" id="5oO-fC-1vs"/>
                             <constraint firstAttribute="trailing" secondItem="zBk-j3-1iC" secondAttribute="trailing" id="9Nc-IG-JIg"/>
                             <constraint firstAttribute="trailing" secondItem="j7P-4p-ATv" secondAttribute="trailing" id="B8p-DB-vk5"/>
                             <constraint firstItem="zBk-j3-1iC" firstAttribute="leading" secondItem="8rF-TK-R8E" secondAttribute="leading" id="CQH-h1-3XB"/>
-                            <constraint firstAttribute="trailing" secondItem="FXR-ug-bxD" secondAttribute="trailing" id="KM1-g0-2uT"/>
+                            <constraint firstItem="j7P-4p-ATv" firstAttribute="top" secondItem="DaV-in-3s9" secondAttribute="bottom" id="IwL-r6-Ewj"/>
                             <constraint firstItem="zBk-j3-1iC" firstAttribute="top" secondItem="DaV-in-3s9" secondAttribute="bottom" id="Lfg-OD-Pti"/>
                             <constraint firstAttribute="centerY" secondItem="hdm-d4-YAc" secondAttribute="centerY" id="aOb-5E-D7b"/>
                             <constraint firstAttribute="centerX" secondItem="hdm-d4-YAc" secondAttribute="centerX" id="bWt-GS-Svo"/>
                             <constraint firstAttribute="bottom" secondItem="j7P-4p-ATv" secondAttribute="bottom" id="cPk-Bh-nPH"/>
-                            <constraint firstItem="FXR-ug-bxD" firstAttribute="leading" secondItem="8rF-TK-R8E" secondAttribute="leading" id="jzv-dc-k3r"/>
-                            <constraint firstItem="FXR-ug-bxD" firstAttribute="top" secondItem="zBk-j3-1iC" secondAttribute="bottom" id="qp4-jb-PdG"/>
                             <constraint firstItem="j7P-4p-ATv" firstAttribute="leading" secondItem="8rF-TK-R8E" secondAttribute="leading" id="rao-k6-Mm5"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="To" id="Ibi-X6-7cy">
+                    <navigationItem key="navigationItem" id="Ibi-X6-7cy">
+                        <barButtonItem key="backBarButtonItem" title="To" id="DUh-A0-SWj"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="xpp-RY-Stw">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -849,9 +836,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelBarButtonItem" destination="xpp-RY-Stw" id="PdO-Rj-3o7"/>
                         <outlet property="noResultsLabel" destination="hdm-d4-YAc" id="Fd8-nV-szO"/>
                         <outlet property="toPersonList" destination="j7P-4p-ATv" id="I3m-NF-aKn"/>
-                        <outlet property="toSearchField" destination="FXR-ug-bxD" id="YVg-pm-du0"/>
                         <outlet property="warningLabel" destination="zBk-j3-1iC" id="5WO-lm-7cq"/>
                         <segue destination="2t1-x4-fi1" kind="show" identifier="selectImage" id="4mr-Nl-MT5"/>
                     </connections>

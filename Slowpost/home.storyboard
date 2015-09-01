@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
-        <!--Profile-->
+        <!--Conversations-->
         <scene sceneID="ATV-2b-86y">
             <objects>
-                <viewController storyboardIdentifier="ProfileController" id="xIs-ox-2Jy" customClass="ProfileTabPlaceholderViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileController" id="xIs-ox-2Jy" customClass="ConversationTabPlaceholderViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="KJh-5y-qGZ"/>
                         <viewControllerLayoutGuide type="bottom" id="THO-Xr-hue"/>
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="Profile Tab Bar Item (grey)" id="IHI-SR-3ez"/>
+                    <tabBarItem key="tabBarItem" title="Conversations" image="Conversation Tab Bar Item (grey)" id="IHI-SR-3ez"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Df7-us-o1z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -95,7 +95,7 @@
     </scenes>
     <resources>
         <image name="Compose Tab Bar Item (grey)" width="50" height="48"/>
+        <image name="Conversation Tab Bar Item (grey)" width="50" height="50"/>
         <image name="Mail Tab Bar Item (grey)" width="50" height="34"/>
-        <image name="Profile Tab Bar Item (grey)" width="50" height="50"/>
     </resources>
 </document>

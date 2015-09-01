@@ -64,7 +64,7 @@
 		D27DA31B1B61C8EE00DF32A1 /* settings-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D27DA31A1B61C8EE00DF32A1 /* settings-white.png */; };
 		D27DA31E1B62ADB600DF32A1 /* ios7-arrow-left-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D27DA31C1B62ADB600DF32A1 /* ios7-arrow-left-white.png */; };
 		D27DA31F1B62ADB600DF32A1 /* ios7-arrow-right-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D27DA31D1B62ADB600DF32A1 /* ios7-arrow-right-white.png */; };
-		D27DA3211B62BDA900DF32A1 /* ProfileTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DA3201B62BDA900DF32A1 /* ProfileTabViewController.swift */; };
+		D27DA3211B62BDA900DF32A1 /* ConversationTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DA3201B62BDA900DF32A1 /* ConversationTabViewController.swift */; };
 		D27DA3231B62BECD00DF32A1 /* MailboxTabPlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DA3221B62BECD00DF32A1 /* MailboxTabPlaceholderViewController.swift */; };
 		D27DA3251B62C04E00DF32A1 /* ComposeTabPlaceholderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DA3241B62C04E00DF32A1 /* ComposeTabPlaceholderViewController.swift */; };
 		D27DA3291B62E7BC00DF32A1 /* SettingsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DA3281B62E7BC00DF32A1 /* SettingsMenuViewController.swift */; };
@@ -78,9 +78,7 @@
 		D2B2BB961B7EB7D4007377DD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B2BB951B7EB7D4007377DD /* SystemConfiguration.framework */; };
 		D2B2BB991B7EB97D007377DD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B2BB981B7EB97D007377DD /* Security.framework */; };
 		D2B2BB9F1B7EBB37007377DD /* libFlurry_6.7.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B2BB9E1B7EBB37007377DD /* libFlurry_6.7.0.a */; };
-		D2B651AD1B31411C00134C23 /* SentMailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B651AC1B31411C00134C23 /* SentMailTableViewCell.swift */; };
 		D2B651E71B38827100134C23 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B651E61B38827100134C23 /* Extensions.swift */; };
-		D2B7CEA01B66E87E007F8235 /* SentMailDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7CE9F1B66E87E007F8235 /* SentMailDetailViewController.swift */; };
 		D2B7CEA21B671149007F8235 /* ios7-close-empty-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B7CEA11B671149007F8235 /* ios7-close-empty-gray.png */; };
 		D2B7CEA61B694C14007F8235 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7CEA51B694C14007F8235 /* GlobalVariables.swift */; };
 		D2B7CEA81B694D95007F8235 /* PersonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7CEA71B694D95007F8235 /* PersonService.swift */; };
@@ -100,8 +98,6 @@
 		D2D866261B2F4AF800847051 /* ios7-person-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866251B2F4AF800847051 /* ios7-person-outline.png */; };
 		D2D8662A1B2F4B7F00847051 /* ios7-contact-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */; };
 		D2D8662C1B2F50CC00847051 /* ios7-contact-outline-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D8662B1B2F50CC00847051 /* ios7-contact-outline-white.png */; };
-		D2D866311B2F52A600847051 /* profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2D866301B2F52A600847051 /* profile.storyboard */; };
-		D2D866331B2F52EB00847051 /* ViewProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D866321B2F52EB00847051 /* ViewProfileViewController.swift */; };
 		D2D866371B2F5B8D00847051 /* log-out.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866361B2F5B8D00847051 /* log-out.png */; };
 		D2D866391B2F5DF900847051 /* log-out-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866381B2F5DF900847051 /* log-out-white.png */; };
 		D2D8663F1B2F62B200847051 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */; };
@@ -195,7 +191,7 @@
 		D27DA31A1B61C8EE00DF32A1 /* settings-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-white.png"; sourceTree = "<group>"; };
 		D27DA31C1B62ADB600DF32A1 /* ios7-arrow-left-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-arrow-left-white.png"; sourceTree = "<group>"; };
 		D27DA31D1B62ADB600DF32A1 /* ios7-arrow-right-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-arrow-right-white.png"; sourceTree = "<group>"; };
-		D27DA3201B62BDA900DF32A1 /* ProfileTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTabViewController.swift; sourceTree = "<group>"; };
+		D27DA3201B62BDA900DF32A1 /* ConversationTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationTabViewController.swift; sourceTree = "<group>"; };
 		D27DA3221B62BECD00DF32A1 /* MailboxTabPlaceholderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailboxTabPlaceholderViewController.swift; sourceTree = "<group>"; };
 		D27DA3241B62C04E00DF32A1 /* ComposeTabPlaceholderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeTabPlaceholderViewController.swift; sourceTree = "<group>"; };
 		D27DA3281B62E7BC00DF32A1 /* SettingsMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsMenuViewController.swift; sourceTree = "<group>"; };
@@ -212,9 +208,7 @@
 		D2B2BB981B7EB97D007377DD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D2B2BB9D1B7EBB2E007377DD /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		D2B2BB9E1B7EBB37007377DD /* libFlurry_6.7.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_6.7.0.a; sourceTree = "<group>"; };
-		D2B651AC1B31411C00134C23 /* SentMailTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMailTableViewCell.swift; sourceTree = "<group>"; };
 		D2B651E61B38827100134C23 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		D2B7CE9F1B66E87E007F8235 /* SentMailDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SentMailDetailViewController.swift; sourceTree = "<group>"; };
 		D2B7CEA11B671149007F8235 /* ios7-close-empty-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-close-empty-gray.png"; sourceTree = "<group>"; };
 		D2B7CEA51B694C14007F8235 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		D2B7CEA71B694D95007F8235 /* PersonService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonService.swift; sourceTree = "<group>"; };
@@ -236,8 +230,6 @@
 		D2D866251B2F4AF800847051 /* ios7-person-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-person-outline.png"; sourceTree = "<group>"; };
 		D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-contact-outline.png"; sourceTree = "<group>"; };
 		D2D8662B1B2F50CC00847051 /* ios7-contact-outline-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-contact-outline-white.png"; sourceTree = "<group>"; };
-		D2D866301B2F52A600847051 /* profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = profile.storyboard; sourceTree = "<group>"; };
-		D2D866321B2F52EB00847051 /* ViewProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProfileViewController.swift; sourceTree = "<group>"; };
 		D2D866361B2F5B8D00847051 /* log-out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log-out.png"; sourceTree = "<group>"; };
 		D2D866381B2F5DF900847051 /* log-out-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log-out-white.png"; sourceTree = "<group>"; };
 		D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -288,7 +280,6 @@
 				D2389E691B950BF200CB19BB /* Conversations */,
 				D206FB521B619A3D008BB412 /* Home */,
 				D2B651E11B37BC7500134C23 /* Initial */,
-				D2D8662F1B2F528C00847051 /* Profile */,
 				CC23DE281AE54BD100AFEDE4 /* Compose */,
 				CC23DE271AE54BC700AFEDE4 /* Mailbox */,
 				CC23DE251AE54BB800AFEDE4 /* Login */,
@@ -453,7 +444,7 @@
 			children = (
 				D206FB531B619A53008BB412 /* home.storyboard */,
 				D206FB551B619AA5008BB412 /* HomeTabBarController.swift */,
-				D27DA3201B62BDA900DF32A1 /* ProfileTabViewController.swift */,
+				D27DA3201B62BDA900DF32A1 /* ConversationTabViewController.swift */,
 				D27DA3221B62BECD00DF32A1 /* MailboxTabPlaceholderViewController.swift */,
 				D27DA3241B62C04E00DF32A1 /* ComposeTabPlaceholderViewController.swift */,
 			);
@@ -537,17 +528,6 @@
 				CC96E49B1ABCC8EB001E6D27 /* InitialViewController.swift */,
 			);
 			name = Initial;
-			sourceTree = "<group>";
-		};
-		D2D8662F1B2F528C00847051 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				D2D866301B2F52A600847051 /* profile.storyboard */,
-				D2D866321B2F52EB00847051 /* ViewProfileViewController.swift */,
-				D2B651AC1B31411C00134C23 /* SentMailTableViewCell.swift */,
-				D2B7CE9F1B66E87E007F8235 /* SentMailDetailViewController.swift */,
-			);
-			name = Profile;
 			sourceTree = "<group>";
 		};
 		D5068536573A35C154CCA1CF /* Pods */ = {
@@ -663,7 +643,6 @@
 				CC23DE2A1AE54C0300AFEDE4 /* login.storyboard in Resources */,
 				D20D8EDF1B2B384E00BBF6B5 /* ios7-compose.png in Resources */,
 				D2E4EDCC1B7D135F00D2A028 /* Quicksand-BoldItalic.otf in Resources */,
-				D2D866311B2F52A600847051 /* profile.storyboard in Resources */,
 				D25A9CA01B2259D300ABBBA4 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				D2E4EDD21B7D1EC000D2A028 /* example_card.jpg in Resources */,
 				D25A9C9C1B2259D300ABBBA4 /* Apache License.txt in Resources */,
@@ -780,8 +759,7 @@
 				CC96E4A91ABCD91A001E6D27 /* Mail.swift in Sources */,
 				CCCB1A7B1AB0DE780067F100 /* MyMailboxViewController.swift in Sources */,
 				D206FB561B619AA5008BB412 /* HomeTabBarController.swift in Sources */,
-				D27DA3211B62BDA900DF32A1 /* ProfileTabViewController.swift in Sources */,
-				D2B651AD1B31411C00134C23 /* SentMailTableViewCell.swift in Sources */,
+				D27DA3211B62BDA900DF32A1 /* ConversationTabViewController.swift in Sources */,
 				D2E956461B30952800CA8CC8 /* ChooseImageViewController.swift in Sources */,
 				D27DA32B1B66B74800DF32A1 /* EditPasswordViewController.swift in Sources */,
 				D2CEC4781B73A45F002CFD25 /* CoreDataService.swift in Sources */,
@@ -813,7 +791,6 @@
 				D2CEC4641B6C1F4F002CFD25 /* PhotoLibraryViewController.swift in Sources */,
 				D267262E1B7D3E3700FE651F /* SignUpCompleteViewController.swift in Sources */,
 				CC96E4AD1ABCDEB5001E6D27 /* MailCell.swift in Sources */,
-				D2D866331B2F52EB00847051 /* ViewProfileViewController.swift in Sources */,
 				D2389E731B95157700CB19BB /* ConversationViewController.swift in Sources */,
 				D2389E681B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift in Sources */,
 				D2B651E71B38827100134C23 /* Extensions.swift in Sources */,
@@ -827,7 +804,6 @@
 				D2B7CEAC1B6951CE007F8235 /* ConfigurationService.swift in Sources */,
 				D2B7CEAA1B694E55007F8235 /* MailService.swift in Sources */,
 				CCCB1A531AB0D48A0067F100 /* AppDelegate.swift in Sources */,
-				D2B7CEA01B66E87E007F8235 /* SentMailDetailViewController.swift in Sources */,
 				D2389E771B9515D300CB19BB /* ConversationMailCell.swift in Sources */,
 				D2CEC4661B6C1F5C002CFD25 /* TakePhotoViewController.swift in Sources */,
 				CC96E4AF1AC0876D001E6D27 /* MailViewController.swift in Sources */,
