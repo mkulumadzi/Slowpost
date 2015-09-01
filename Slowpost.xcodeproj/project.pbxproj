@@ -40,6 +40,12 @@
 		D21D79D71B5093490014510E /* ios7-checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = D21D79D61B5093490014510E /* ios7-checkmark.png */; };
 		D21D79DD1B56ED540014510E /* AddressBookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D79DC1B56ED540014510E /* AddressBookService.swift */; };
 		D2389E681B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E671B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift */; };
+		D2389E6B1B950C0300CB19BB /* conversations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2389E6A1B950C0300CB19BB /* conversations.storyboard */; };
+		D2389E6D1B9511E100CB19BB /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E6C1B9511E100CB19BB /* ConversationListViewController.swift */; };
+		D2389E6F1B95136B00CB19BB /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E6E1B95136B00CB19BB /* ConversationCell.swift */; };
+		D2389E731B95157700CB19BB /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E721B95157700CB19BB /* ConversationViewController.swift */; };
+		D2389E751B95159700CB19BB /* ConversationMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E741B95159700CB19BB /* ConversationMailViewController.swift */; };
+		D2389E771B9515D300CB19BB /* ConversationMailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E761B9515D300CB19BB /* ConversationMailCell.swift */; };
 		D25A9C9C1B2259D300ABBBA4 /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C911B2259D300ABBBA4 /* Apache License.txt */; };
 		D25A9C9D1B2259D300ABBBA4 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */; };
 		D25A9C9E1B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */; };
@@ -165,6 +171,12 @@
 		D21D79DC1B56ED540014510E /* AddressBookService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookService.swift; sourceTree = "<group>"; };
 		D2222A741B588695007E74BB /* SnailMailModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SnailMailModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		D2389E671B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseDeliveryOptionsViewController.swift; sourceTree = "<group>"; };
+		D2389E6A1B950C0300CB19BB /* conversations.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = conversations.storyboard; sourceTree = "<group>"; };
+		D2389E6C1B9511E100CB19BB /* ConversationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
+		D2389E6E1B95136B00CB19BB /* ConversationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
+		D2389E721B95157700CB19BB /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		D2389E741B95159700CB19BB /* ConversationMailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationMailViewController.swift; sourceTree = "<group>"; };
+		D2389E761B9515D300CB19BB /* ConversationMailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationMailCell.swift; sourceTree = "<group>"; };
 		D25A9C911B2259D300ABBBA4 /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apache License.txt"; sourceTree = "<group>"; };
 		D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -273,6 +285,7 @@
 		CC23DE241AE54BB100AFEDE4 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D2389E691B950BF200CB19BB /* Conversations */,
 				D206FB521B619A3D008BB412 /* Home */,
 				D2B651E11B37BC7500134C23 /* Initial */,
 				D2D8662F1B2F528C00847051 /* Profile */,
@@ -445,6 +458,19 @@
 				D27DA3241B62C04E00DF32A1 /* ComposeTabPlaceholderViewController.swift */,
 			);
 			name = Home;
+			sourceTree = "<group>";
+		};
+		D2389E691B950BF200CB19BB /* Conversations */ = {
+			isa = PBXGroup;
+			children = (
+				D2389E6A1B950C0300CB19BB /* conversations.storyboard */,
+				D2389E6C1B9511E100CB19BB /* ConversationListViewController.swift */,
+				D2389E6E1B95136B00CB19BB /* ConversationCell.swift */,
+				D2389E721B95157700CB19BB /* ConversationViewController.swift */,
+				D2389E741B95159700CB19BB /* ConversationMailViewController.swift */,
+				D2389E761B9515D300CB19BB /* ConversationMailCell.swift */,
+			);
+			name = Conversations;
 			sourceTree = "<group>";
 		};
 		D25A9C741B2256D400ABBBA4 /* Fonts */ = {
@@ -656,6 +682,7 @@
 				D2B7CEA21B671149007F8235 /* ios7-close-empty-gray.png in Resources */,
 				D21D79D51B5093430014510E /* ios7-checkmark-not-checked.png in Resources */,
 				D2E4EDCE1B7D136500D2A028 /* Quicksand-Light.otf in Resources */,
+				D2389E6B1B950C0300CB19BB /* conversations.storyboard in Resources */,
 				D25A9CA11B2259D300ABBBA4 /* OpenSans-Italic.ttf in Resources */,
 				D2E4EDD41B7D307E00D2A028 /* example_photo.jpg in Resources */,
 				D206FB541B619A53008BB412 /* home.storyboard in Resources */,
@@ -749,6 +776,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2389E751B95159700CB19BB /* ConversationMailViewController.swift in Sources */,
 				CC96E4A91ABCD91A001E6D27 /* Mail.swift in Sources */,
 				CCCB1A7B1AB0DE780067F100 /* MyMailboxViewController.swift in Sources */,
 				D206FB561B619AA5008BB412 /* HomeTabBarController.swift in Sources */,
@@ -757,6 +785,7 @@
 				D2E956461B30952800CA8CC8 /* ChooseImageViewController.swift in Sources */,
 				D27DA32B1B66B74800DF32A1 /* EditPasswordViewController.swift in Sources */,
 				D2CEC4781B73A45F002CFD25 /* CoreDataService.swift in Sources */,
+				D2389E6F1B95136B00CB19BB /* ConversationCell.swift in Sources */,
 				CC96E4C91AC0B334001E6D27 /* ComposeMailViewController.swift in Sources */,
 				D206FB4B1B61688D008BB412 /* WelcomeScreenViewController.swift in Sources */,
 				D206FB4F1B617504008BB412 /* BottomBorderUITextField.swift in Sources */,
@@ -785,6 +814,7 @@
 				D267262E1B7D3E3700FE651F /* SignUpCompleteViewController.swift in Sources */,
 				CC96E4AD1ABCDEB5001E6D27 /* MailCell.swift in Sources */,
 				D2D866331B2F52EB00847051 /* ViewProfileViewController.swift in Sources */,
+				D2389E731B95157700CB19BB /* ConversationViewController.swift in Sources */,
 				D2389E681B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift in Sources */,
 				D2B651E71B38827100134C23 /* Extensions.swift in Sources */,
 				D27DA3231B62BECD00DF32A1 /* MailboxTabPlaceholderViewController.swift in Sources */,
@@ -793,10 +823,12 @@
 				D2B7CEA61B694C14007F8235 /* GlobalVariables.swift in Sources */,
 				D27E194E1B3B770C0052687F /* SlowpostModel.xcdatamodeld in Sources */,
 				CC96E49C1ABCC8EB001E6D27 /* InitialViewController.swift in Sources */,
+				D2389E6D1B9511E100CB19BB /* ConversationListViewController.swift in Sources */,
 				D2B7CEAC1B6951CE007F8235 /* ConfigurationService.swift in Sources */,
 				D2B7CEAA1B694E55007F8235 /* MailService.swift in Sources */,
 				CCCB1A531AB0D48A0067F100 /* AppDelegate.swift in Sources */,
 				D2B7CEA01B66E87E007F8235 /* SentMailDetailViewController.swift in Sources */,
+				D2389E771B9515D300CB19BB /* ConversationMailCell.swift in Sources */,
 				D2CEC4661B6C1F5C002CFD25 /* TakePhotoViewController.swift in Sources */,
 				CC96E4AF1AC0876D001E6D27 /* MailViewController.swift in Sources */,
 			);

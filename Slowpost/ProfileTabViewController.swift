@@ -25,7 +25,7 @@ class ProfileTabPlaceholderViewController: UIViewController {
     
     func showProfile() {
         
-        var storyboard = UIStoryboard(name: "profile", bundle: nil)
+        var storyboard = UIStoryboard(name: "conversations", bundle: nil)
         var controller = storyboard.instantiateInitialViewController() as! UIViewController
         addChildViewController(controller)
         view.addSubview(controller.view)

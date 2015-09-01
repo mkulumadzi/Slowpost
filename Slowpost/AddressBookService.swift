@@ -67,6 +67,8 @@ class AddressBookService {
         sender.presentViewController(cantAccessAddressBookAlert, animated: true, completion: nil)
     }
     
+    // MARK: Processing address book
+    
     func getNameFromContact(person: ABRecord) -> NSString {
         if let name = ABRecordCopyCompositeName(person)?.takeRetainedValue() as? NSString {
             return name
