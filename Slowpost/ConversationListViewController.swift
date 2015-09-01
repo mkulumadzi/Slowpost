@@ -15,6 +15,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     @IBOutlet weak var conversationSearchField: UISearchBar!
     @IBOutlet weak var conversationList: UITableView!
 //    @IBOutlet weak var noResultsLabel: UILabel!
+    @IBOutlet weak var messageLabel: MessageUILabel!
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -28,6 +29,8 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         super.viewDidLoad()
         
         Flurry.logEvent("Conversation_View_Opened")
+        
+        messageLabel.hide()
         
         conversationList.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: conversationList.bounds.size.width, height: 0.01))
         
@@ -147,5 +150,26 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
             }
         }
     }
-        
+    
+    @IBAction func cancelToConversationViewController(segue:UIStoryboardSegue) {
+        Flurry.logEvent("Cancelled_Back_To_Conversation_View")
+        dismissSourceViewController(segue)
+    }
+    
+    @IBAction func completeEditingAndReturnToConversationViewController(segue:UIStoryboardSegue) {
+        dismissSourceViewController(segue)
+    }
+    
+    @IBAction func choseToLogOut(segue:UIStoryboardSegue) {
+        dismissSourceViewController(segue)
+        LoginService.logOut()
+        self.dismissViewControllerAnimated(true, completion: {})
+    }
+    
+    func dismissSourceViewController(segue: UIStoryboardSegue) {
+        if !segue.sourceViewController.isBeingDismissed() {
+            segue.sourceViewController.dismissViewControllerAnimated(true, completion: nil)
+        }
+    }
+    
 }

@@ -201,16 +201,16 @@ class ViewProfileViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    @IBAction func cancelToProfileViewController(segue:UIStoryboardSegue) {
-        Flurry.logEvent("Cancelled_Back_To_Profile_View")
-    }
-    
-    @IBAction func completeEditingAndReturnToProfileViewController(segue:UIStoryboardSegue) {
-    }
-    
-    @IBAction func choseToLogOut(segue:UIStoryboardSegue) {
-        LoginService.logOut()
-        self.dismissViewControllerAnimated(true, completion: {})
-    }
+//    @IBAction func cancelToProfileViewController(segue:UIStoryboardSegue) {
+//        Flurry.logEvent("Cancelled_Back_To_Profile_View")
+//    }
+//    
+//    @IBAction func completeEditingAndReturnToProfileViewController(segue:UIStoryboardSegue) {
+//    }
+//    
+//    @IBAction func choseToLogOut(segue:UIStoryboardSegue) {
+//        LoginService.logOut()
+//        self.dismissViewControllerAnimated(true, completion: {})
+//    }
 
 }

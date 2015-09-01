@@ -123,17 +123,16 @@ class EditProfileViewController: UITableViewController {
         if segue.identifier == "updateSucceeded" {
             Flurry.logEvent("Updated_Profile")
             
-            let viewProfileViewController = segue.destinationViewController as? ViewProfileViewController
-            viewProfileViewController!.messageLabel.show("Profile updated")
+            let conversationListViewController = segue.destinationViewController as? ConversationListViewController
+        
+            conversationListViewController!.messageLabel.show("Profile updated")
             
-            viewProfileViewController!.nameLabel.text = loggedInUser.name
-            viewProfileViewController!.phoneLabel.text = loggedInUser.phone
             
             // Delay the dismissal by 5 seconds
             let delay = 5.0 * Double(NSEC_PER_SEC)
             var time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
             dispatch_after(time, dispatch_get_main_queue(), {
-                viewProfileViewController!.messageLabel.hide()
+                conversationListViewController!.messageLabel.hide()
             })
         }
     }
