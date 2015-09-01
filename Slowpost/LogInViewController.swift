@@ -23,6 +23,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     var person:Person!
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -20,6 +20,10 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var doneButton: UIButton!
     
     @IBOutlet weak var placeholderTextLabel: UILabel!
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

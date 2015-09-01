@@ -14,6 +14,10 @@ class SignUpCompleteViewController: UIViewController {
     @IBOutlet weak var gotItButton: UIButton!
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad() 
         

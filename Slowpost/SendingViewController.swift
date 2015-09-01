@@ -22,6 +22,10 @@ class SendingViewController: UIViewController {
     var imageRequest: Alamofire.Request?
     var sendRequest: Alamofire.Request?
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

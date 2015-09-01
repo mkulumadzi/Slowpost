@@ -21,6 +21,10 @@ class ChooseDeliveryOptionsViewController: UIViewController {
     @IBOutlet weak var customButton: TextUIButton!
     
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

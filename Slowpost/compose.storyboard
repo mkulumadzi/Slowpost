@@ -719,10 +719,10 @@
             </objects>
             <point key="canvasLocation" x="3778" y="924"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Compose Navigation Controller-->
         <scene sceneID="RDR-ED-QzE">
             <objects>
-                <navigationController storyboardIdentifier="InitialController" id="wl4-oX-yWn" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="InitialController" id="wl4-oX-yWn" customClass="ComposeNavigationController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="wAB-xa-Uep">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -30,6 +30,10 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBOutlet weak var removeImageButtonHeight: NSLayoutConstraint!
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     override func viewDidLoad() {
         Flurry.logEvent("Choose_Image_View_Opened")
         

@@ -20,6 +20,10 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         return refreshControl
         }()
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshPenpals()

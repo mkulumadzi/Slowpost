@@ -13,10 +13,15 @@ import JWTDecode
 
 class InitialViewController: UIViewController {
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         println("Initial view loaded at \(NSDate())")
         Flurry.logEvent("Initial_View_Loaded")
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
 
     override func didReceiveMemoryWarning() {

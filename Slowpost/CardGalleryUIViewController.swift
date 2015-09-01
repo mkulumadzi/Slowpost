@@ -18,6 +18,10 @@ class CardGalleryUIViewController: UIViewController, UICollectionViewDataSource,
     
     @IBOutlet weak var cardCollection: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

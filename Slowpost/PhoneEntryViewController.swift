@@ -24,6 +24,10 @@ class PhoneEntryViewController: UIViewController {
     @IBOutlet weak var verticalSpaceToTitle: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToPhone: NSLayoutConstraint!
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
