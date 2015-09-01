@@ -124,9 +124,7 @@ class EditProfileViewController: UITableViewController {
             Flurry.logEvent("Updated_Profile")
             
             let conversationListViewController = segue.destinationViewController as? ConversationListViewController
-        
             conversationListViewController!.messageLabel.show("Profile updated")
-            
             
             // Delay the dismissal by 5 seconds
             let delay = 5.0 * Double(NSEC_PER_SEC)

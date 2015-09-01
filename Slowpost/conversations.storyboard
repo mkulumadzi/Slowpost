@@ -143,6 +143,8 @@
                         <outlet property="conversationSearchField" destination="bab-dK-jj5" id="8hO-Vi-Rbi"/>
                         <outlet property="messageLabel" destination="eKr-1q-00m" id="YB2-2k-FHB"/>
                         <outlet property="searchDisplayController" destination="J2l-PT-51R" id="WNz-qg-98I"/>
+                        <segue destination="waF-C4-z8h" kind="presentation" identifier="editPassword" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="DFi-94-Xne"/>
+                        <segue destination="z52-1Q-RH9" kind="presentation" identifier="editProfile" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="Z2s-tZ-DGD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YOE-cG-608" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -276,7 +278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hBd-bL-bUI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1005" y="314"/>
+            <point key="canvasLocation" x="1055" y="314"/>
         </scene>
         <!--Conversation Mail View Controller-->
         <scene sceneID="yrf-U3-nz1">
@@ -401,7 +403,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mVo-mI-944" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1692" y="314"/>
+            <point key="canvasLocation" x="1742" y="314"/>
         </scene>
         <!--Edit Profile View Controller-->
         <scene sceneID="aAE-Zw-enB">
@@ -715,7 +717,7 @@
                 <exit id="YxR-qC-lKw" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="qaw-qo-SK5"/>
             </objects>
-            <point key="canvasLocation" x="1711" y="-360"/>
+            <point key="canvasLocation" x="1055" y="-1694"/>
         </scene>
         <!--Edit Password View Controller-->
         <scene sceneID="Ft5-VD-h71">
@@ -905,7 +907,7 @@
                 <exit id="MpX-SE-Ibw" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="Ztb-rp-8HL"/>
             </objects>
-            <point key="canvasLocation" x="1711" y="-1028"/>
+            <point key="canvasLocation" x="1055" y="-1028"/>
         </scene>
         <!--Settings Menu View Controller-->
         <scene sceneID="IbC-AO-w3s">
@@ -939,7 +941,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="waF-C4-z8h" kind="show" identifier="editPassword" id="duO-V4-v4B"/>
+                                    <segue destination="Fvo-5T-PJk" kind="unwind" identifier="editPasswordSelected" unwindAction="settingsMenuItemSelected:" id="gpa-tl-KbJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="em6-fX-Evr" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
@@ -969,7 +971,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="z52-1Q-RH9" kind="show" identifier="editProfile" id="DPA-9R-ouk"/>
+                                    <segue destination="Fvo-5T-PJk" kind="unwind" identifier="editProfileSelected" unwindAction="settingsMenuItemSelected:" id="IzD-Ib-WI2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTh-kj-pmC" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
@@ -1038,7 +1040,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1005" y="-360"/>
+            <point key="canvasLocation" x="1055" y="-362"/>
         </scene>
     </scenes>
     <resources>

@@ -151,9 +151,19 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
     
-    @IBAction func cancelToConversationViewController(segue:UIStoryboardSegue) {
-        Flurry.logEvent("Cancelled_Back_To_Conversation_View")
+    @IBAction func settingsMenuItemSelected(segue:UIStoryboardSegue) {
         dismissSourceViewController(segue)
+        if segue.identifier == "editPasswordSelected" {
+            self.performSegueWithIdentifier("editPassword", sender: nil)
+        }
+        else if segue.identifier == "editProfileSelected" {
+            self.performSegueWithIdentifier("editProfile", sender: nil)
+        }
+    }
+    
+    @IBAction func cancelToConversationViewController(segue:UIStoryboardSegue) {
+        dismissSourceViewController(segue)
+        Flurry.logEvent("Cancelled_Back_To_Conversation_View")
     }
     
     @IBAction func completeEditingAndReturnToConversationViewController(segue:UIStoryboardSegue) {
