@@ -145,6 +145,10 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         cell?.conversationMetadata = conversationMetadata
         cell?.personNameLabel.text = conversationMetadata.name
         
+        if cell?.conversationMetadata.numUnread > 0 {
+            cell?.cellLabel.backgroundColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
+        }
+        
         return cell!
     }
     
