@@ -29,8 +29,8 @@ class ConversationCell: UITableViewCell {
     }
     
     func addConversationCellLabel() -> UIView {
-        cellLabel = UIView(frame: CGRect(x: 10.0, y: 13.5, width: 14, height: 14))
-        cellLabel.layer.cornerRadius = 7
+        cellLabel = UIView(frame: CGRect(x: 10, y: 16, width: 12, height: 12))
+        cellLabel.layer.cornerRadius = 6
         cellLabel.backgroundColor = UIColor.clearColor()
         return cellLabel
     }
