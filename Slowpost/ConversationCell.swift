@@ -10,7 +10,7 @@ import UIKit
 
 class ConversationCell: UITableViewCell {
     
-    var person:Person!
+    var conversationMetadata:ConversationMetadata!
     @IBOutlet weak var personNameLabel: UILabel!
 
     override func awakeFromNib() {

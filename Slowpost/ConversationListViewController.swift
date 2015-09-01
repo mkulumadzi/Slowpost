@@ -10,7 +10,7 @@ import UIKit
 
 class ConversationListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
-    var penpalList: [Person] = []
+    var conversationMetadataList:[ConversationMetadata]!
     
     @IBOutlet weak var conversationList: UITableView!
 //    @IBOutlet weak var noResultsLabel: UILabel!
@@ -25,21 +25,23 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     
     lazy var searchBar:UISearchBar = UISearchBar(frame: CGRectMake(0, 0, 240, 20))
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         Flurry.logEvent("Conversation_View_Opened")
+        conversationMetadataList = conversationMetadataArray
+        println("The list is: \(conversationMetadataList)")
+        
         messageLabel.hide()
         conversationList.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: conversationList.bounds.size.width, height: 0.01))
-        reloadPenpals()
+        reloadConversationMetadata()
         conversationList.addSubview(self.refreshControl)
         addSearchBar()
         
 //        noResultsLabel.hidden = true
-        
-        println(conversationMetadataArray)
-        penpalList = penpals.filter({$0.username != loggedInUser.username})
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        reloadConversationMetadata()
     }
     
     func addSearchBar() {
@@ -67,7 +69,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func handleRefresh(refreshControl: UIRefreshControl) {
-        reloadPenpals()
+        reloadConversationMetadata()
         refreshControl.endRefreshing()
     }
     
@@ -78,15 +80,14 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
-        penpalList = penpals.filter({$0.username != loggedInUser.username})
+        conversationMetadataList = conversationMetadataArray
         
         if self.searchBar.text.isEmpty == false {
             
-            var newPenpalArray:[Person] = penpalList.filter() {
+            var newMetadataArray:[ConversationMetadata] = conversationMetadataList.filter() {
                 self.listMatches(self.searchBar.text, inString: $0.username).count >= 1 || self.listMatches(self.searchBar.text, inString: $0.name).count >= 1
             }
-            penpalList = newPenpalArray
-            
+            conversationMetadataList = newMetadataArray
         }
         
 //        validateNoResultsLabel()
@@ -97,7 +98,6 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         let regex = NSRegularExpression(pattern: pattern, options: .allZeros, error: nil)
         let range = NSMakeRange(0, count(string))
         let matches = regex?.matchesInString(string, options: .allZeros, range: range) as! [NSTextCheckingResult]
-        
         return matches.map {
             let range = $0.range
             return (string as NSString).substringWithRange(range)
@@ -131,7 +131,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return penpalList.count
+        return conversationMetadataList.count
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -141,9 +141,9 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("conversationCell", forIndexPath: indexPath) as? ConversationCell
         
-        let person = penpalList[indexPath.row] as Person
-        cell?.person = person
-        cell?.personNameLabel.text = person.name
+        let conversationMetadata = conversationMetadataList[indexPath.row] as ConversationMetadata
+        cell?.conversationMetadata = conversationMetadata
+        cell?.personNameLabel.text = conversationMetadata.name
         
         return cell!
     }
@@ -152,15 +152,22 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         Flurry.logEvent("Conversation_Opened")
     }
     
-    func reloadPenpals() {
+    func reloadConversationMetadata() {
         
-        let contactsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"
-        PersonService.getPeopleCollection(contactsURL, headers: nil, completion: { (error, result) -> Void in
-            if error != nil {
-                println(error)
-            }
-            else if let peopleArray = result as? Array<Person> {
-                penpals = peopleArray
+        var headers:[String: String]?
+        if conversationMetadataArray.count > 0 {
+            headers = RestService.sinceHeader(conversationMetadataArray)
+        }
+        
+        println("Reloading conversation metadata with headers \(headers)")
+
+        ConversationMetadataService.getConversationMetadataCollection(headers, completion: { (error, result) -> Void in
+            if let metadataArray = result as? Array<ConversationMetadata> {
+                conversationMetadataArray = ConversationMetadataService.updateConversationMetadataCollectionFromArray(conversationMetadataArray, newCollection: metadataArray)
+                conversationMetadataArray = conversationMetadataArray.sorted { $0.updatedAt.compare($1.updatedAt) == NSComparisonResult.OrderedDescending }
+                ConversationMetadataService.appendConversationMetadataArrayToCoreData(metadataArray)
+                self.conversationMetadataList = conversationMetadataArray
+                self.conversationList.reloadData()
             }
         })
     }
@@ -169,9 +176,14 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         if segue.identifier == "viewConversation" {
             if let conversationCell = sender as? ConversationCell {
                 let conversationViewController = segue.destinationViewController as? ConversationViewController
-                conversationViewController!.person = conversationCell.person
+                conversationViewController!.person = getPersonForCell(conversationCell)
             }
         }
+    }
+    
+    func getPersonForCell(conversationCell: ConversationCell) -> Person {
+        let person = penpals.filter({$0.username == conversationCell.conversationMetadata.username})[0]
+        return person
     }
     
     @IBAction func settingsMenuItemSelected(segue:UIStoryboardSegue) {
