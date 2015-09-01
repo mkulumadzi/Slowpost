@@ -51,8 +51,17 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func addSearchBar() {
-        searchBar.placeholder = "To: Name or Username"
-        searchBar.tintColor = UIColor.lightGrayColor()
+        var textField = searchBar.valueForKey("searchField") as! UITextField
+        textField.backgroundColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
+        textField.textColor = UIColor.whiteColor()
+        var attributedString = NSAttributedString(string: "To: Name or Username", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
+        
+        //Get the glass icon
+        var iconView:UIImageView = textField.leftView as! UIImageView
+        iconView.image = iconView.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        iconView.tintColor = UIColor.whiteColor()
+        
+        textField.attributedPlaceholder = attributedString
         
         var rightNavBarButton = UIBarButtonItem(customView:searchBar)
         self.navigationItem.rightBarButtonItem = rightNavBarButton

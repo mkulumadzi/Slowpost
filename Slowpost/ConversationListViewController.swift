@@ -48,13 +48,22 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func addSearchBar() {
-        searchBar.placeholder = "Name"
-        searchBar.tintColor = UIColor.lightGrayColor()
+        var textField = searchBar.valueForKey("searchField") as! UITextField
+        textField.backgroundColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
+        textField.textColor = UIColor.whiteColor()
+        var attributedString = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
+        
+        //Get the glass icon
+        var iconView:UIImageView = textField.leftView as! UIImageView
+        iconView.image = iconView.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        iconView.tintColor = UIColor.whiteColor()
+        
+        textField.attributedPlaceholder = attributedString
+        
+        searchBar.delegate = self
         
         var leftNavBarButton = UIBarButtonItem(customView:searchBar)
         self.navigationItem.leftBarButtonItem = leftNavBarButton
-        
-        searchBar.delegate = self
         
         ////Can't get this to work...
         //        let horizontalConstraint = NSLayoutConstraint(item: self.navigationItem.leftBarButtonItem!, attribute: .TrailingMargin, relatedBy: .Equal, toItem: searchBar, attribute: .Left, multiplier: 1.0, constant: 10)
