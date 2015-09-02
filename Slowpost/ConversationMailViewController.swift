@@ -19,7 +19,6 @@ class ConversationMailViewController: UIViewController {
     var person:Person!
     var updatedMail:Mail!
     var row:Int!
-    var personLabelValue:String!
     var statusLabelValue:String!
     
     override func viewDidLoad() {
@@ -28,14 +27,20 @@ class ConversationMailViewController: UIViewController {
         Flurry.logEvent("Mail_Opened_From_Conversation")
         
         mailImage.image = mail.image
-        personLabel.text = personLabelValue
         statusLabel.text = statusLabelValue
+        
+        if mail.from == person.username {
+            personLabel.text = "From \(person.name)"
+        }
+        else {
+            personLabel.text = "To \(person.name)"
+        }
         
         if mail.content != nil {
             mailContent.text = mail.content
         }
         
-        if mail.status == "DELIVERED" {
+        if mail.status == "DELIVERED" && mail.from == person.username {
             readMail(mail)
         }
         

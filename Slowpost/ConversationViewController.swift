@@ -172,19 +172,17 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         refreshControl.endRefreshing()
     }
     
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "viewMail" {
-//            let conversationMailViewController = segue.destinationViewController as? ConversationMailViewController
-//            if let mailCell = sender as? ConversationMailCell {
-//                conversationMailViewController?.mail = mailCell.mail
-//                conversationMailViewController?.person = mailCell.person
-//                conversationMailViewController?.row = mailCell.row
-//                conversationMailViewController?.personLabelValue = mailCell.personLabel.text
-//                conversationMailViewController?.statusLabelValue = mailCell.statusLabel.text
-//                
-//            }
-//        }
-//    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "viewMail" {
+            let conversationMailViewController = segue.destinationViewController as? ConversationMailViewController
+            if let mailCell = sender as? ConversationMailCell {
+                conversationMailViewController?.mail = mailCell.mail
+                conversationMailViewController?.person = mailCell.person
+                conversationMailViewController?.row = mailCell.row
+                conversationMailViewController?.statusLabelValue = mailCell.statusLabel.text
+            }
+        }
+    }
     
 
 }
