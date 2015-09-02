@@ -12,6 +12,9 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     
     var person:Person!
     var conversation:[Mail]!
+    var undeliveredMail:[Mail]!
+    var deliveredMail:[Mail]!
+    
     @IBOutlet weak var mailTable: UITableView!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var navBarItem: UINavigationItem!
@@ -27,7 +30,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         populateConversation()
         refreshConversation()
-        mailTable.reloadData()
+//        mailTable.reloadData()
         
         mailTable.addSubview(self.refreshControl)
         
@@ -50,7 +53,8 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        mailTable.reloadData()
+        refreshConversation()
+//        mailTable.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -58,49 +62,112 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: Section Configuration
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            if undeliveredMail.count > 0 {
+                return "Undelivered mail"
+            }
+        case 1:
+            if deliveredMail.count > 0 {
+                return "Delivered mail"
+            }
+        default:
+            return nil
+        }
+        return nil
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return conversation.count
+        switch section {
+        case 0:
+            return undeliveredMail.count
+        case 1:
+            return deliveredMail.count
+        default:
+            return 0
+        }
+        
     }
     
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel.textColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
+        header.textLabel.font = UIFont(name: "OpenSans-Semibold", size: 13)
+        header.textLabel.textAlignment = NSTextAlignment.Center
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch section {
+        case 0:
+            if undeliveredMail.count == 0 {
+                return 0.0
+            }
+        case 1:
+            if deliveredMail.count == 0 {
+                return 0.0
+            }
+        default:
+            return 34.0
+        }
+        return 34.0
+    }
+    
+    // MARK: Row configuration
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let mail = conversation[indexPath.row] as Mail
+//        let mail = conversation[indexPath.row] as Mail
         let cell = tableView.dequeueReusableCellWithIdentifier("mailCell", forIndexPath: indexPath) as? ConversationMailCell
-        cell!.mail = mail
-        cell!.person = person
-        cell!.row = indexPath.row
-        cell!.statusLabel.text = "\(mail.status) on \(formatUpdatedDate(mail.updatedAt))"
         
-        cell!.mailImageView.image = mail.image
+        switch indexPath.section {
+        case 0:
+            cell!.mail = undeliveredMail[indexPath.row]
+            cell!.row = indexPath.row
+            formatCell(cell!)
+        case 1:
+            cell!.mail = deliveredMail[indexPath.row]
+            cell!.row = indexPath.row
+            formatCell(cell!)
+        default:
+            cell!.row = 0
+        }
+        return cell!
+    }
+    
+    func formatCell(cell: ConversationMailCell) {
+        cell.person = person
+        cell.statusLabel.text = "\(cell.mail.status) on \(formatUpdatedDate(cell.mail.updatedAt))"
         
-        if mail.to == person.username {
-            cell!.leadingSpaceToFromView.priority = 251
-            cell!.trailingSpaceFromFromView.priority = 999
+        cell.mailImageView.image = cell.mail.image
+        
+        if cell.mail.to == person.username {
+            cell.leadingSpaceToFromView.priority = 251
+            cell.trailingSpaceFromFromView.priority = 999
             
-            cell!.leadingSpaceToCardView.priority = 251
-            cell!.trailingSpaceFromCardView.priority = 999
+            cell.leadingSpaceToCardView.priority = 251
+            cell.trailingSpaceFromCardView.priority = 999
             
-            cell!.initialsLabel.text = loggedInUser.initials()
+            cell.initialsLabel.text = loggedInUser.initials()
         }
         else {
-            cell!.leadingSpaceToFromView.priority = 999
-            cell!.trailingSpaceFromFromView.priority = 251
+            cell.leadingSpaceToFromView.priority = 999
+            cell.trailingSpaceFromFromView.priority = 251
             
-            cell!.leadingSpaceToCardView.priority = 999
-            cell!.trailingSpaceFromCardView.priority = 251
+            cell.leadingSpaceToCardView.priority = 999
+            cell.trailingSpaceFromCardView.priority = 251
             
-            cell!.initialsLabel.text = person.initials()
-        }
-    
-        if mail.imageUid != nil && mail.image == nil && mail.currentlyDownloadingImage == false {
-            downloadMailImages(mail)
+            cell.initialsLabel.text = person.initials()
         }
         
-        return cell!
-        
+        if cell.mail.imageUid != nil && cell.mail.image == nil && cell.mail.currentlyDownloadingImage == false {
+            downloadMailImages(cell.mail)
+        }
     }
     
     func formatUpdatedDate(date: NSDate) -> String {
@@ -115,7 +182,6 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func downloadMailThumbnail(mail: Mail) {
-        
         MailService.getMailThumbnailImage(mail, completion: { (error, result) -> Void in
             if let thumbnail = result as? UIImage {
                 mail.imageThumb = thumbnail
@@ -137,7 +203,14 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     
     func populateConversation() {
         conversation = mailbox.filter({$0.from == self.person.username}) + outbox.filter({$0.to == self.person.username})
-        conversation = conversation.sorted { $0.createdAt.compare($1.createdAt) == NSComparisonResult.OrderedDescending }
+        conversation = conversation.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
+        populateSections()
+
+    }
+    
+    func populateSections() {
+        undeliveredMail = conversation.filter({$0.status == "SENT"})
+        deliveredMail = conversation.filter({$0.status != "SENT"})
     }
     
     
@@ -157,7 +230,8 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
             }
             else if let mailArray = result as? Array<Mail> {
                 self.conversation = MailService.updateMailCollectionFromNewMail(self.conversation, newCollection: mailArray)
-                self.conversation = self.conversation.sorted { $0.updatedAt.compare($1.updatedAt) == NSComparisonResult.OrderedDescending }
+                self.conversation = self.conversation.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
+                self.populateSections()
                 
                 MailService.appendMailArrayToCoreData(mailArray)
                 

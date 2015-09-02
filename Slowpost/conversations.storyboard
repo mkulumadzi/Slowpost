@@ -293,18 +293,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zYv-kH-TTR" firstAttribute="top" secondItem="vfo-YF-pGE" secondAttribute="bottom" id="1Ga-rn-czK"/>
-                            <constraint firstItem="zYv-kH-TTR" firstAttribute="top" secondItem="wXT-CW-qqg" secondAttribute="top" id="2kq-D6-Iqg"/>
-                            <constraint firstAttribute="bottom" secondItem="zYv-kH-TTR" secondAttribute="bottom" id="2mH-vo-ReD"/>
-                            <constraint firstItem="zYv-kH-TTR" firstAttribute="top" secondItem="vfo-YF-pGE" secondAttribute="bottom" id="F79-Qx-I0h"/>
+                            <constraint firstItem="04f-r6-oaY" firstAttribute="top" secondItem="zYv-kH-TTR" secondAttribute="bottom" id="J3Q-ue-kpo"/>
                             <constraint firstItem="zYv-kH-TTR" firstAttribute="leading" secondItem="wXT-CW-qqg" secondAttribute="leading" id="jkJ-fM-FB3"/>
                             <constraint firstAttribute="trailing" secondItem="zYv-kH-TTR" secondAttribute="trailing" id="mmw-HD-kkI"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="2kq-D6-Iqg"/>
-                                <exclude reference="F79-Qx-I0h"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="sNH-IW-jcD"/>
                     <connections>
