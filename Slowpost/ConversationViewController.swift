@@ -146,6 +146,8 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         
         cell.mailImageView.image = cell.mail.image
         
+        formatMailStatusLabel(cell)
+        
         if cell.mail.to == person.username {
             cell.leadingSpaceToFromView.priority = 251
             cell.trailingSpaceFromFromView.priority = 999
@@ -168,6 +170,31 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         if cell.mail.imageUid != nil && cell.mail.image == nil && cell.mail.currentlyDownloadingImage == false {
             downloadMailImages(cell.mail)
         }
+    }
+    
+    func formatMailStatusLabel(cell: ConversationMailCell) {
+        if cell.mail.to == loggedInUser.username {
+            if cell.mail.status == "DELIVERED" {
+                cell.mailStatusLabel.backgroundColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
+            }
+            else {
+                cell.mailStatusLabel.backgroundColor = UIColor.whiteColor()
+                cell.mailStatusLabel.layer.borderColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0).CGColor
+                cell.mailStatusLabel.layer.borderWidth = 1.0
+            }
+        }
+        else {
+            if cell.mail.status == "SENT" {
+                cell.mailStatusLabel.backgroundColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
+            }
+            else {
+                cell.mailStatusLabel.backgroundColor = UIColor.whiteColor()
+                cell.mailStatusLabel.layer.borderColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0).CGColor
+                cell.mailStatusLabel.layer.borderWidth = 1.0
+            }
+        }
+
+
     }
     
     func formatUpdatedDate(date: NSDate) -> String {

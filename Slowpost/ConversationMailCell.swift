@@ -15,6 +15,7 @@ class ConversationMailCell: UITableViewCell {
     @IBOutlet weak var fromView: UIView!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var initialsLabel: UILabel!
+    @IBOutlet weak var mailStatusLabel: UIView!
     
     @IBOutlet weak var leadingSpaceToFromView: NSLayoutConstraint!
     @IBOutlet weak var trailingSpaceFromFromView: NSLayoutConstraint!
@@ -31,6 +32,7 @@ class ConversationMailCell: UITableViewCell {
         
         fromView.layer.cornerRadius = 15
         cardView.layer.cornerRadius = 5
+        mailStatusLabel.layer.cornerRadius = 6
         
     }
     
