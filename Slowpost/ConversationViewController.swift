@@ -14,6 +14,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     var conversation:[Mail]!
     @IBOutlet weak var mailTable: UITableView!
     @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var navBarItem: UINavigationItem!
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -33,6 +34,9 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         // Calculating row height automatically; can't get it working with autolayout.
         mailTable.rowHeight = 75 + (view.frame.width - 20) * 0.75
         
+        mailTable.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: mailTable.bounds.size.width, height: 0.01))
+        
+        navBarItem.title = person.name
         NSNotificationCenter.defaultCenter().addObserverForName("imageDownloaded:", object: nil, queue: nil, usingBlock: { (notification) -> Void in
             self.mailTable.reloadData()
         })

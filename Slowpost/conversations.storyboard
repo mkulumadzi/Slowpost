@@ -115,7 +115,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="0a7-jc-KbE">
-                        <barButtonItem key="backBarButtonItem" title="Conversations" id="jCu-bC-E4t"/>
+                        <barButtonItem key="backBarButtonItem" title=" " id="kh6-zd-XEA"/>
                         <barButtonItem key="rightBarButtonItem" id="olK-a2-aSh">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Met-Uj-onw">
                                 <rect key="frame" x="554" y="-234" width="30" height="30"/>
@@ -184,7 +184,7 @@
         <!--Conversation View Controller-->
         <scene sceneID="t84-I7-T6w">
             <objects>
-                <viewController id="RtH-v3-aUb" customClass="ConversationViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="RtH-v3-aUb" customClass="ConversationViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vfo-YF-pGE"/>
                         <viewControllerLayoutGuide type="bottom" id="04f-r6-oaY"/>
@@ -193,9 +193,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="518" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="zYv-kH-TTR">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="zYv-kH-TTR">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mailCell" rowHeight="518" id="f6U-nW-diS" customClass="ConversationMailCell" customModule="Slowpost" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -250,6 +250,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="zYv-kH-TTR" firstAttribute="top" secondItem="vfo-YF-pGE" secondAttribute="bottom" id="1Ga-rn-czK"/>
                             <constraint firstItem="zYv-kH-TTR" firstAttribute="top" secondItem="wXT-CW-qqg" secondAttribute="top" id="2kq-D6-Iqg"/>
                             <constraint firstAttribute="bottom" secondItem="zYv-kH-TTR" secondAttribute="bottom" id="2mH-vo-ReD"/>
                             <constraint firstItem="zYv-kH-TTR" firstAttribute="top" secondItem="vfo-YF-pGE" secondAttribute="bottom" id="F79-Qx-I0h"/>
@@ -258,12 +259,15 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="2kq-D6-Iqg"/>
                                 <exclude reference="F79-Qx-I0h"/>
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="sNH-IW-jcD"/>
                     <connections>
                         <outlet property="mailTable" destination="zYv-kH-TTR" id="mGF-EW-1aB"/>
+                        <outlet property="navBarItem" destination="sNH-IW-jcD" id="Oeg-KH-8zF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hBd-bL-bUI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -379,8 +383,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="Xyc-nv-DOE"/>
                                 <exclude reference="3IX-q0-dbo"/>
+                                <exclude reference="Xyc-nv-DOE"/>
                             </mask>
                         </variation>
                     </view>
@@ -872,9 +876,9 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="pDb-c6-qgt"/>
-                                <exclude reference="hjl-G4-Iqg"/>
                                 <exclude reference="W9Q-jQ-ixK"/>
+                                <exclude reference="hjl-G4-Iqg"/>
+                                <exclude reference="pDb-c6-qgt"/>
                             </mask>
                         </variation>
                         <connections>

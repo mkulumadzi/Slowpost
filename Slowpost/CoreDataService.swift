@@ -63,22 +63,4 @@ class CoreDataService {
         }
     }
     
-//    class func getEntityForIdOrReturnNewEntity(id: String, entityName: String, managedContext: NSManagedObjectContext) -> NSManagedObject {
-//        
-//        let fetchRequest = NSFetchRequest(entityName: entityName)
-//        let predicate = NSPredicate(format: "id == %@", id)
-//        fetchRequest.predicate = predicate
-//        
-//        let fetchResults = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [NSManagedObject]
-//        
-//        if fetchResults!.count > 0 {
-//            return fetchResults![0]
-//        }
-//        else {
-//            let entity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: managedContext)
-//            let newObject = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
-//            return newObject
-//        }
-//    }
-    
 }
