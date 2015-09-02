@@ -40,7 +40,13 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
 //        noResultsLabel.hidden = true
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        conversationList.reloadData()
+    }
+    
     override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
         reloadConversationMetadata()
     }
     
@@ -145,11 +151,24 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         cell?.conversationMetadata = conversationMetadata
         cell?.personNameLabel.text = conversationMetadata.name
         
-        if cell?.conversationMetadata.numUnread > 0 {
-            cell?.cellLabel.backgroundColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
-        }
+        formatConversationCellLabel(cell!)
         
         return cell!
+    }
+    
+    func formatConversationCellLabel(cell: ConversationCell) {
+        println(cell.subviews)
+        
+        for view in cell.subviews {
+            if let cellLabel = view as? CellLabelUIView {
+                if cell.conversationMetadata.numUnread == 0 {
+                    cellLabel.backgroundColor = UIColor.whiteColor()
+                }
+                else {
+                    cellLabel.backgroundColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
+                }
+            }
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -172,6 +191,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
                 ConversationMetadataService.appendConversationMetadataArrayToCoreData(metadataArray)
                 self.conversationMetadataList = conversationMetadataArray
                 self.conversationList.reloadData()
+                self.viewWillAppear(true)
             }
         })
     }

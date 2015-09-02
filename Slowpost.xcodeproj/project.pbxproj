@@ -49,6 +49,7 @@
 		D2389E7B1B96162200CB19BB /* ComposeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E7A1B96162200CB19BB /* ComposeNavigationController.swift */; };
 		D2389E7D1B962B7000CB19BB /* ConversationMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E7C1B962B7000CB19BB /* ConversationMetadata.swift */; };
 		D2389E7F1B962D1F00CB19BB /* ConversationMetadataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E7E1B962D1F00CB19BB /* ConversationMetadataService.swift */; };
+		D2389E821B9674AB00CB19BB /* CellLabelUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E811B9674AB00CB19BB /* CellLabelUIView.swift */; };
 		D25A9C9C1B2259D300ABBBA4 /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C911B2259D300ABBBA4 /* Apache License.txt */; };
 		D25A9C9D1B2259D300ABBBA4 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */; };
 		D25A9C9E1B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */; };
@@ -180,6 +181,7 @@
 		D2389E7C1B962B7000CB19BB /* ConversationMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationMetadata.swift; sourceTree = "<group>"; };
 		D2389E7E1B962D1F00CB19BB /* ConversationMetadataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationMetadataService.swift; sourceTree = "<group>"; };
 		D2389E801B964A0F00CB19BB /* SlowpostModel 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SlowpostModel 8.xcdatamodel"; sourceTree = "<group>"; };
+		D2389E811B9674AB00CB19BB /* CellLabelUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellLabelUIView.swift; sourceTree = "<group>"; };
 		D25A9C911B2259D300ABBBA4 /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apache License.txt"; sourceTree = "<group>"; };
 		D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -510,6 +512,7 @@
 				D2A361371B3CB52B00811D14 /* WarningUILabel.swift */,
 				D206FB4E1B617504008BB412 /* BottomBorderUITextField.swift */,
 				D27DA32C1B66C51900DF32A1 /* MessageUILabel.swift */,
+				D2389E811B9674AB00CB19BB /* CellLabelUIView.swift */,
 			);
 			name = Customizations;
 			sourceTree = "<group>";
@@ -814,6 +817,7 @@
 				CC96E49C1ABCC8EB001E6D27 /* InitialViewController.swift in Sources */,
 				D2389E7F1B962D1F00CB19BB /* ConversationMetadataService.swift in Sources */,
 				D2389E6D1B9511E100CB19BB /* ConversationListViewController.swift in Sources */,
+				D2389E821B9674AB00CB19BB /* CellLabelUIView.swift in Sources */,
 				D2B7CEAC1B6951CE007F8235 /* ConfigurationService.swift in Sources */,
 				D2B7CEAA1B694E55007F8235 /* MailService.swift in Sources */,
 				CCCB1A531AB0D48A0067F100 /* AppDelegate.swift in Sources */,

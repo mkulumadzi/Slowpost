@@ -36,6 +36,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         warningLabel.hide()
         noResultsLabel.hidden = true
         
+        
         addSearchBar()
         
         self.toPersonList.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: self.toPersonList.bounds.size.width, height: 0.01))
@@ -44,6 +45,11 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         contactsList = registeredContacts.filter({$0.username != loggedInUser.username})
         excludePenpalsFromContactsList()
     }
+    
+//    I normally call [self needsUpdateLayoutConstraints] within viewDidLoad
+//    
+//    dan [2:57 PM]
+//    Then I override the method -(void)updateViewConstraints; and within it call [super updateViewConstraints] after writing out my constraints
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -68,10 +74,13 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         searchBar.delegate = self
         
-        ////Can't get this to work...
+//        view.needsUpdateConstraints()
+//        
 //        let horizontalConstraint = NSLayoutConstraint(item: self.navigationItem.leftBarButtonItem!, attribute: .TrailingMargin, relatedBy: .Equal, toItem: searchBar, attribute: .Left, multiplier: 1.0, constant: 10)
 //        
 //        view.addConstraint(horizontalConstraint)
+//        
+//        view.updateConstraints()
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {

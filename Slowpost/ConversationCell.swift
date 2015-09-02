@@ -11,7 +11,6 @@ import UIKit
 class ConversationCell: UITableViewCell {
     
     var conversationMetadata:ConversationMetadata!
-    var cellLabel:UIView!
     @IBOutlet weak var personNameLabel: UILabel!
 
     override func awakeFromNib() {
@@ -28,8 +27,8 @@ class ConversationCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func addConversationCellLabel() -> UIView {
-        cellLabel = UIView(frame: CGRect(x: 10, y: 16, width: 12, height: 12))
+    func addConversationCellLabel() -> CellLabelUIView {
+        var cellLabel:CellLabelUIView = CellLabelUIView(frame: CGRect(x: 10, y: 16, width: 12, height: 12))
         cellLabel.layer.cornerRadius = 6
         cellLabel.backgroundColor = UIColor.clearColor()
         return cellLabel

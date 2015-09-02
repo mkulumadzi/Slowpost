@@ -59,6 +59,7 @@ class LoginService {
         CoreDataService.deleteCoreDataObjects("Mail")
         CoreDataService.deleteCoreDataObjects("Person")
         CoreDataService.deleteCoreDataObjects("LoggedInUser")
+        CoreDataService.deleteCoreDataObjects("ConversationMetadata")
         
         loggedInUser = nil
         
