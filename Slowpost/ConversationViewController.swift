@@ -32,9 +32,10 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         mailTable.addSubview(self.refreshControl)
         
 //         Calculating row height automatically; can't get it working with autolayout.
-        mailTable.rowHeight = 40 + view.frame.width / 2
+        mailTable.rowHeight = 45 + view.frame.width / 2
         
         mailTable.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: mailTable.bounds.size.width, height: 0.01))
+        mailTable.separatorStyle = UITableViewCellSeparatorStyle.None
         
         navBarItem.title = person.name
         NSNotificationCenter.defaultCenter().addObserverForName("imageDownloaded:", object: nil, queue: nil, usingBlock: { (notification) -> Void in
@@ -81,6 +82,8 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
             
             cell!.leadingSpaceToCardView.priority = 251
             cell!.trailingSpaceFromCardView.priority = 999
+            
+            cell!.initialsLabel.text = loggedInUser.initials()
         }
         else {
             cell!.leadingSpaceToFromView.priority = 999
@@ -88,6 +91,8 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
             
             cell!.leadingSpaceToCardView.priority = 999
             cell!.trailingSpaceFromCardView.priority = 251
+            
+            cell!.initialsLabel.text = person.initials()
         }
     
         if mail.imageUid != nil && mail.image == nil && mail.currentlyDownloadingImage == false {

@@ -14,7 +14,7 @@ class ConversationMailCell: UITableViewCell {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var fromView: UIView!
     @IBOutlet weak var cardView: UIView!
-    
+    @IBOutlet weak var initialsLabel: UILabel!
     
     @IBOutlet weak var leadingSpaceToFromView: NSLayoutConstraint!
     @IBOutlet weak var trailingSpaceFromFromView: NSLayoutConstraint!
