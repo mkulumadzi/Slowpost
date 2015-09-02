@@ -4,9 +4,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="OpenSans-LightItalic.ttf">
+            <string>OpenSansLight-Italic</string>
             <string>OpenSansLight-Italic</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
@@ -191,18 +193,81 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="zYv-kH-TTR">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="421" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="zYv-kH-TTR">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mailCell" rowHeight="80" id="f6U-nW-diS" customClass="ConversationMailCell" customModule="Slowpost" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mailCell" rowHeight="421" id="f6U-nW-diS" customClass="ConversationMailCell" customModule="Slowpost" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f6U-nW-diS" id="mCm-3J-s8Q">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHY-jw-XOD" userLabel="containerView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="420"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3M-pw-Hy9" userLabel="cardView">
+                                                    <rect key="frame" x="40" y="10" width="400" height="326"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D7j-KP-h8S">
+                                                            <rect key="frame" x="10" y="295" width="390" height="21"/>
+                                                            <fontDescription key="fontDescription" name="OpenSansLight-Italic" family="Open Sans" pointSize="15"/>
+                                                            <color key="textColor" red="0.49803921568627452" green="0.47843137254901957" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ocE-2n-L3D">
+                                                            <rect key="frame" x="10" y="10" width="380" height="285"/>
+                                                            <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="ocE-2n-L3D" secondAttribute="height" multiplier="4:3" id="LZb-Dp-RjD"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="D7j-KP-h8S" firstAttribute="top" secondItem="ocE-2n-L3D" secondAttribute="bottom" id="1PX-oZ-PPb"/>
+                                                        <constraint firstItem="ocE-2n-L3D" firstAttribute="top" secondItem="F3M-pw-Hy9" secondAttribute="top" constant="10" id="5Fc-lQ-ige"/>
+                                                        <constraint firstAttribute="bottom" secondItem="D7j-KP-h8S" secondAttribute="bottom" constant="10" id="7C4-gu-WPu"/>
+                                                        <constraint firstItem="D7j-KP-h8S" firstAttribute="leading" secondItem="F3M-pw-Hy9" secondAttribute="leading" constant="10" id="D0d-NW-A0d"/>
+                                                        <constraint firstItem="ocE-2n-L3D" firstAttribute="leading" secondItem="F3M-pw-Hy9" secondAttribute="leading" constant="10" id="M2P-q3-z11"/>
+                                                        <constraint firstAttribute="trailing" secondItem="D7j-KP-h8S" secondAttribute="trailing" id="xWI-W4-59w"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ocE-2n-L3D" secondAttribute="trailing" constant="10" id="xyP-0K-jKM"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TSB-Yk-Qjj" userLabel="fromView">
+                                                    <rect key="frame" x="5" y="306" width="30" height="30"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="9TG-JQ-YgZ"/>
+                                                        <constraint firstAttribute="height" constant="30" id="ui2-49-OtL"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="eHY-jw-XOD" secondAttribute="bottom" id="7Te-C4-FPy"/>
+                                                <constraint firstAttribute="trailing" secondItem="F3M-pw-Hy9" secondAttribute="trailing" priority="251" constant="40" id="CRn-5O-Mav"/>
+                                                <constraint firstItem="F3M-pw-Hy9" firstAttribute="width" secondItem="eHY-jw-XOD" secondAttribute="width" multiplier="2 / 3" id="Caz-8e-5fJ"/>
+                                                <constraint firstItem="eHY-jw-XOD" firstAttribute="leading" secondItem="mCm-3J-s8Q" secondAttribute="leading" id="Cfj-VV-k7G"/>
+                                                <constraint firstItem="F3M-pw-Hy9" firstAttribute="leading" secondItem="mCm-3J-s8Q" secondAttribute="leading" priority="999" constant="40" id="FGY-nc-01W"/>
+                                                <constraint firstItem="F3M-pw-Hy9" firstAttribute="top" secondItem="mCm-3J-s8Q" secondAttribute="top" constant="10" id="Ovo-ga-eUb"/>
+                                                <constraint firstAttribute="trailing" secondItem="TSB-Yk-Qjj" secondAttribute="trailing" priority="251" constant="5" id="Ui4-e7-Apa"/>
+                                                <constraint firstAttribute="trailing" secondItem="eHY-jw-XOD" secondAttribute="trailing" id="foS-da-AGf"/>
+                                                <constraint firstItem="eHY-jw-XOD" firstAttribute="top" secondItem="mCm-3J-s8Q" secondAttribute="top" id="ndQ-KD-c1J"/>
+                                                <constraint firstItem="TSB-Yk-Qjj" firstAttribute="leading" secondItem="mCm-3J-s8Q" secondAttribute="leading" priority="999" constant="5" id="oyc-8z-Qio"/>
+                                                <constraint firstItem="TSB-Yk-Qjj" firstAttribute="bottom" secondItem="F3M-pw-Hy9" secondAttribute="bottom" id="tKi-6N-zzU"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="cardView" destination="F3M-pw-Hy9" id="6XY-r5-sad"/>
+                                            <outlet property="fromView" destination="TSB-Yk-Qjj" id="IS0-UT-iOQ"/>
+                                            <outlet property="leadingSpaceToCardView" destination="FGY-nc-01W" id="gsh-sk-AsF"/>
+                                            <outlet property="leadingSpaceToFromView" destination="oyc-8z-Qio" id="4BS-Mv-yrQ"/>
+                                            <outlet property="mailImageView" destination="ocE-2n-L3D" id="5x7-st-NbC"/>
+                                            <outlet property="statusLabel" destination="D7j-KP-h8S" id="1SJ-DE-76A"/>
+                                            <outlet property="trailingSpaceFromCardView" destination="CRn-5O-Mav" id="xXk-qe-Vf7"/>
+                                            <outlet property="trailingSpaceFromFromView" destination="Ui4-e7-Apa" id="WaW-be-dUR"/>
                                             <segue destination="TQu-iG-9e8" kind="presentation" identifier="viewMail" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="wHI-Sp-rp5"/>
                                         </connections>
                                     </tableViewCell>
