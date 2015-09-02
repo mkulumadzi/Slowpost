@@ -176,6 +176,8 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         if cell.mail.to == loggedInUser.username {
             if cell.mail.status == "DELIVERED" {
                 cell.mailStatusLabel.backgroundColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
+                cell.statusLabel.font = UIFont(name: "OpenSans-SemiboldItalic", size: 15.0)
+                cell.statusLabel.textColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
             }
             else {
                 cell.mailStatusLabel.backgroundColor = UIColor.whiteColor()
