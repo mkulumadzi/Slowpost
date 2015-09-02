@@ -29,7 +29,6 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         super.viewDidLoad()
         Flurry.logEvent("Conversation_View_Opened")
         conversationMetadataList = conversationMetadataArray
-        println("The list is: \(conversationMetadataList)")
         
         messageLabel.hide()
         conversationList.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: conversationList.bounds.size.width, height: 0.01))
@@ -38,11 +37,6 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         addSearchBar()
         
 //        noResultsLabel.hidden = true
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        conversationList.reloadData()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -157,7 +151,6 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func formatConversationCellLabel(cell: ConversationCell) {
-        println(cell.subviews)
         
         for view in cell.subviews {
             if let cellLabel = view as? CellLabelUIView {
@@ -191,7 +184,6 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
                 ConversationMetadataService.appendConversationMetadataArrayToCoreData(metadataArray)
                 self.conversationMetadataList = conversationMetadataArray
                 self.conversationList.reloadData()
-                self.viewWillAppear(true)
             }
         })
     }
