@@ -31,8 +31,8 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         
         mailTable.addSubview(self.refreshControl)
         
-        // Calculating row height automatically; can't get it working with autolayout.
-        mailTable.rowHeight = 75 + (view.frame.width - 20) * 0.75
+//         Calculating row height automatically; can't get it working with autolayout.
+        mailTable.rowHeight = 40 + view.frame.width / 2
         
         mailTable.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: mailTable.bounds.size.width, height: 0.01))
         
@@ -66,15 +66,23 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("mailCell", forIndexPath: indexPath) as? ConversationMailCell
         let mail = conversation[indexPath.row] as Mail
-        
+        let cell = tableView.dequeueReusableCellWithIdentifier("mailCell", forIndexPath: indexPath) as? ConversationMailCell
         cell!.mail = mail
         cell!.person = person
         cell!.row = indexPath.row
         
-        cell!.formatCell()
+        cell!.addMailViewToContainer(mail)
         
+//        addSubviewToCellContainerView(cell!)
+        
+//        if mail.from == person.username {
+//            cell!.addSubview(getViewForMailFromPerson(mail))
+//        }
+//        if mail.to == person.username {
+//            cell!.addSubview(getViewForMailToPerson(mail))
+//        }
+//        
         if mail.imageUid != nil && mail.image == nil && mail.currentlyDownloadingImage == false {
             downloadMailImages(mail)
         }
@@ -82,6 +90,73 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         return cell!
         
     }
+    
+//    func addSubviewToCellContainerView(cell: ConversationMailCell) {
+//        
+//        for view in cell.subviews {
+//            if var containerView = view as? CustomContainerView {
+//                if cell.mail.to == loggedInUser.username {
+//                    containerView = getViewForMailFromPerson(cell.mail)
+//                }
+//                else if cell.mail.from == loggedInUser.username {
+//                    containerView = getViewForMailToPerson(cell.mail)
+//                }
+//            }
+//        }
+//    }
+    
+//    func getViewForMailToPerson(mail: Mail) -> UIView {
+//        let customView = UIView(frame: CGRect(x: 10, y: 10, width: self.view.frame.width - 10, height: self.view.frame.height - 10))
+////        let customView = CustomContainerView(frame: CGRect(x: 10, y: 10, width: self.view.frame.width - 10, height: self.view.frame.height - 10))
+//        customView.backgroundColor = UIColor.clearColor()
+//        
+//        // Layout out sizes
+//        let cardWidth = self.view.frame.width * 2 / 3
+//        let imageHeight = self.view.frame.width / 2
+//        let labelHeight:CGFloat = 20
+//        let cardHeight = imageHeight + labelHeight
+//        
+//        let mailCardView = UIView(frame: CGRect(x: self.view.frame.width - cardWidth - 35, y: 0, width: cardWidth, height: cardHeight))
+//        mailCardView.backgroundColor = UIColor.whiteColor()
+//        
+//        let mailImage = UIImageView()
+//        mailImage.image = mail.image
+//        mailImage.frame = CGRect(x: 0, y: 0, width: cardWidth, height: imageHeight)
+//        
+//        let statusLabel = UILabel()
+//        statusLabel.text = "\(mail.status) on \(formatUpdatedDate(mail.updatedAt))"
+//        statusLabel.frame = CGRect(x: 0, y: imageHeight, width: cardWidth, height: 20)
+//        statusLabel.font = UIFont(name: "OpenSans-Light", size: 13.0)
+//        statusLabel.textColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
+//        
+//        mailCardView.addSubview(mailImage)
+//        mailCardView.addSubview(statusLabel)
+//        
+//        customView.addSubview(mailCardView)
+//        
+//        return customView
+//        
+//    }
+    
+//    func formatUpdatedDate(date: NSDate) -> String {
+//        let dateFormatter = NSDateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        return dateFormatter.stringFromDate(date)
+//    }
+    
+//    func getViewForMailFromPerson(mail: Mail) -> CustomContainerView {
+//        let customView = CustomContainerView()
+//        var backgroundView = UIView(frame: CGRect(x: 5, y:5, width: self.frame.width - 60, height: self.frame.height - 10))
+//        backgroundView.backgroundColor = UIColor.whiteColor()
+//        self.addSubview(backgroundView)
+//    }
+//    
+//    func formatMailFromPerson() {
+//        var backgroundView = UIView(frame: CGRect(x: 5, y:5, width: self.frame.width - 60, height: self.frame.height - 10))
+//        backgroundView.backgroundColor = UIColor.whiteColor()
+//        self.addSubview(backgroundView)
+//    }
+//    
     
     func downloadMailImages(mail: Mail) {
         mail.currentlyDownloadingImage = true
@@ -146,19 +221,19 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         refreshControl.endRefreshing()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "viewMail" {
-            let conversationMailViewController = segue.destinationViewController as? ConversationMailViewController
-            if let mailCell = sender as? ConversationMailCell {
-                conversationMailViewController?.mail = mailCell.mail
-                conversationMailViewController?.person = mailCell.person
-                conversationMailViewController?.row = mailCell.row
-                conversationMailViewController?.personLabelValue = mailCell.personLabel.text
-                conversationMailViewController?.statusLabelValue = mailCell.statusLabel.text
-                
-            }
-        }
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "viewMail" {
+//            let conversationMailViewController = segue.destinationViewController as? ConversationMailViewController
+//            if let mailCell = sender as? ConversationMailCell {
+//                conversationMailViewController?.mail = mailCell.mail
+//                conversationMailViewController?.person = mailCell.person
+//                conversationMailViewController?.row = mailCell.row
+//                conversationMailViewController?.personLabelValue = mailCell.personLabel.text
+//                conversationMailViewController?.statusLabelValue = mailCell.statusLabel.text
+//                
+//            }
+//        }
+//    }
     
 
 }
