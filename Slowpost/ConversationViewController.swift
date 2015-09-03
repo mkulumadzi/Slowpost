@@ -18,6 +18,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var mailTable: UITableView!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var navBarItem: UINavigationItem!
+    @IBOutlet weak var composeButton: UIButton!
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -290,6 +291,14 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
             mailViewController.runOnClose = {self.refreshConversation()}
             self.presentViewController(mailViewController, animated: true, completion: {})
         }
+    }
+    
+    
+    @IBAction func composeMessage(sender: AnyObject) {
+        var storyboard = UIStoryboard(name: "compose", bundle: nil)
+        var controller = storyboard.instantiateInitialViewController() as! ComposeNavigationController
+        controller.toUsername = person.username
+        self.presentViewController(controller, animated: true, completion: {})
     }
     
 

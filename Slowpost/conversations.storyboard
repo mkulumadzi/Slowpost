@@ -312,8 +312,22 @@
                             <constraint firstAttribute="trailing" secondItem="zYv-kH-TTR" secondAttribute="trailing" id="mmw-HD-kkI"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="sNH-IW-jcD"/>
+                    <navigationItem key="navigationItem" id="sNH-IW-jcD">
+                        <barButtonItem key="rightBarButtonItem" style="done" id="c59-0f-QRe" userLabel="Compose Bar Button Item">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JyA-XS-Wru" userLabel="Compose">
+                                <rect key="frame" x="554" y="-234" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="compose-white.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="composeMessage:" destination="RtH-v3-aUb" eventType="touchUpInside" id="7pq-tf-1Et"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="composeButton" destination="JyA-XS-Wru" id="XDG-sV-sD0"/>
                         <outlet property="mailTable" destination="zYv-kH-TTR" id="mGF-EW-1aB"/>
                         <outlet property="navBarItem" destination="sNH-IW-jcD" id="Oeg-KH-8zF"/>
                     </connections>
@@ -961,6 +975,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="compose-white.png" width="512" height="512"/>
         <image name="settings-white.png" width="512" height="512"/>
     </resources>
 </document>
