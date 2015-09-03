@@ -19,11 +19,15 @@ class ConversationMetadataService {
         let username = jsonEntry.objectForKey("username") as! String
         let name = jsonEntry.objectForKey("name") as! String
         let numUnread = jsonEntry.objectForKey("num_unread") as! Int
+        let numUndelivered = jsonEntry.objectForKey("num_undelivered") as! Int
         
         let updatedAtString = jsonEntry.objectForKey("updated_at") as! String
         let updatedAt = NSDate(dateString: updatedAtString)
         
-        var conversationMetadata = ConversationMetadata(username: username, name: name, numUnread: numUnread, updatedAt: updatedAt, updatedAtString: updatedAtString)
+        let mostRecentStatus = jsonEntry.objectForKey("most_recent_status") as! String
+        let mostRecentSender = jsonEntry.objectForKey("most_recent_sender") as! String
+        
+        var conversationMetadata = ConversationMetadata(username: username, name: name, numUnread: numUnread, numUndelivered: numUndelivered, updatedAt: updatedAt, updatedAtString: updatedAtString, mostRecentStatus: mostRecentStatus, mostRecentSender: mostRecentSender)
         
         return conversationMetadata
     }
@@ -47,10 +51,13 @@ class ConversationMetadataService {
         let username = object.valueForKey("username") as! String
         let name = object.valueForKey("name") as! String
         let numUnread = object.valueForKey("numUnread") as! Int
+        let numUndelivered = object.valueForKey("numUndelivered") as! Int
         let updatedAt = object.valueForKey("updatedAt") as? NSDate
         let updatedAtString = object.valueForKey("updatedAtString") as! String
+        let mostRecentStatus = object.valueForKey("mostRecentStatus") as! String
+        let mostRecentSender = object.valueForKey("mostRecentSender") as! String
     
-        var newConversationMetadata = ConversationMetadata(username: username, name: name, numUnread: numUnread, updatedAt: updatedAt!, updatedAtString: updatedAtString)
+        var newConversationMetadata = ConversationMetadata(username: username, name: name, numUnread: numUnread, numUndelivered: numUndelivered, updatedAt: updatedAt!, updatedAtString: updatedAtString, mostRecentStatus: mostRecentStatus, mostRecentSender: mostRecentSender)
         
         return newConversationMetadata
     }
@@ -76,8 +83,11 @@ class ConversationMetadataService {
         object.setValue(conversationMetadata.username, forKey: "username")
         object.setValue(conversationMetadata.name, forKey: "name")
         object.setValue(conversationMetadata.numUnread, forKey: "numUnread")
+        object.setValue(conversationMetadata.numUndelivered, forKey: "numUndelivered")
         object.setValue(conversationMetadata.updatedAt, forKey: "updatedAt")
         object.setValue(conversationMetadata.updatedAtString, forKey: "updatedAtString")
+        object.setValue(conversationMetadata.mostRecentStatus, forKey: "mostRecentStatus")
+        object.setValue(conversationMetadata.mostRecentSender, forKey: "mostRecentSender")
         
         var error: NSError?
         if !managedContext.save(&error) {
@@ -85,7 +95,6 @@ class ConversationMetadataService {
         }
         
     }
-    
     
     class func getConversationMetadataCollection(headers: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
         let conversationMetadataURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/conversations"

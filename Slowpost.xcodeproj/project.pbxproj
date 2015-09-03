@@ -51,6 +51,7 @@
 		D2389E7F1B962D1F00CB19BB /* ConversationMetadataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E7E1B962D1F00CB19BB /* ConversationMetadataService.swift */; };
 		D2389E821B9674AB00CB19BB /* CellLabelUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E811B9674AB00CB19BB /* CellLabelUIView.swift */; };
 		D24BC0F51B96994D000405F7 /* CustomContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24BC0F41B96994D000405F7 /* CustomContainerView.swift */; };
+		D24BC0F71B97C2D5000405F7 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D24BC0F61B97C2D5000405F7 /* OpenSans-LightItalic.ttf */; };
 		D25A9C9C1B2259D300ABBBA4 /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C911B2259D300ABBBA4 /* Apache License.txt */; };
 		D25A9C9D1B2259D300ABBBA4 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */; };
 		D25A9C9E1B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */; };
@@ -58,7 +59,6 @@
 		D25A9CA01B2259D300ABBBA4 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C951B2259D300ABBBA4 /* OpenSans-ExtraBoldItalic.ttf */; };
 		D25A9CA11B2259D300ABBBA4 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C961B2259D300ABBBA4 /* OpenSans-Italic.ttf */; };
 		D25A9CA21B2259D300ABBBA4 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C971B2259D300ABBBA4 /* OpenSans-Light.ttf */; };
-		D25A9CA31B2259D300ABBBA4 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C981B2259D300ABBBA4 /* OpenSans-LightItalic.ttf */; };
 		D25A9CA41B2259D300ABBBA4 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C991B2259D300ABBBA4 /* OpenSans-Regular.ttf */; };
 		D25A9CA51B2259D300ABBBA4 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C9A1B2259D300ABBBA4 /* OpenSans-Semibold.ttf */; };
 		D25A9CA61B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C9B1B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf */; };
@@ -184,6 +184,7 @@
 		D2389E801B964A0F00CB19BB /* SlowpostModel 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SlowpostModel 8.xcdatamodel"; sourceTree = "<group>"; };
 		D2389E811B9674AB00CB19BB /* CellLabelUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellLabelUIView.swift; sourceTree = "<group>"; };
 		D24BC0F41B96994D000405F7 /* CustomContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomContainerView.swift; sourceTree = "<group>"; };
+		D24BC0F61B97C2D5000405F7 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
 		D25A9C911B2259D300ABBBA4 /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apache License.txt"; sourceTree = "<group>"; };
 		D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -191,7 +192,6 @@
 		D25A9C951B2259D300ABBBA4 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		D25A9C961B2259D300ABBBA4 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
 		D25A9C971B2259D300ABBBA4 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
-		D25A9C981B2259D300ABBBA4 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
 		D25A9C991B2259D300ABBBA4 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		D25A9C9A1B2259D300ABBBA4 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		D25A9C9B1B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
@@ -496,9 +496,9 @@
 				D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */,
 				D25A9C941B2259D300ABBBA4 /* OpenSans-ExtraBold.ttf */,
 				D25A9C951B2259D300ABBBA4 /* OpenSans-ExtraBoldItalic.ttf */,
+				D24BC0F61B97C2D5000405F7 /* OpenSans-LightItalic.ttf */,
 				D25A9C961B2259D300ABBBA4 /* OpenSans-Italic.ttf */,
 				D25A9C971B2259D300ABBBA4 /* OpenSans-Light.ttf */,
-				D25A9C981B2259D300ABBBA4 /* OpenSans-LightItalic.ttf */,
 				D25A9C991B2259D300ABBBA4 /* OpenSans-Regular.ttf */,
 				D25A9C9A1B2259D300ABBBA4 /* OpenSans-Semibold.ttf */,
 				D25A9C9B1B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf */,
@@ -695,12 +695,12 @@
 				D27DA31B1B61C8EE00DF32A1 /* settings-white.png in Resources */,
 				D25A9C9E1B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf in Resources */,
 				CC23DE2E1AE54C2B00AFEDE4 /* compose.storyboard in Resources */,
-				D25A9CA31B2259D300ABBBA4 /* OpenSans-LightItalic.ttf in Resources */,
 				D2D866391B2F5DF900847051 /* log-out-white.png in Resources */,
 				D25A9C9F1B2259D300ABBBA4 /* OpenSans-ExtraBold.ttf in Resources */,
 				D2D866261B2F4AF800847051 /* ios7-person-outline.png in Resources */,
 				D21D79D71B5093490014510E /* ios7-checkmark.png in Resources */,
 				D2D866371B2F5B8D00847051 /* log-out.png in Resources */,
+				D24BC0F71B97C2D5000405F7 /* OpenSans-LightItalic.ttf in Resources */,
 				D2E4EDCF1B7D136700D2A028 /* Quicksand-LightItalic.otf in Resources */,
 				CCCB1A5A1AB0D48A0067F100 /* Images.xcassets in Resources */,
 				D2D8662A1B2F4B7F00847051 /* ios7-contact-outline.png in Resources */,

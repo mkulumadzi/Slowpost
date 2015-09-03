@@ -444,9 +444,11 @@
                         <outlet property="mailImage" destination="8Po-t7-U0B" id="qaG-kU-cec"/>
                         <outlet property="personLabel" destination="gZq-Ju-bkE" id="HH8-UW-Dkh"/>
                         <outlet property="statusLabel" destination="ARR-qJ-2gx" id="kNF-4i-sXD"/>
+                        <segue destination="KxB-U6-ksY" kind="unwind" identifier="mailClosed" unwindAction="conversationMailClosed:" id="gnn-uz-VDy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mVo-mI-944" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="KxB-U6-ksY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1742" y="314"/>
         </scene>

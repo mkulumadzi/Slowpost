@@ -26,6 +26,9 @@ class ConversationMailViewController: UIViewController {
         
         Flurry.logEvent("Mail_Opened_From_Conversation")
         
+        println(self.presentingViewController)
+        println(self.parentViewController)
+        
         mailImage.image = mail.image
         statusLabel.text = statusLabelValue
         
@@ -58,38 +61,15 @@ class ConversationMailViewController: UIViewController {
     
     func readMail(mail:Mail) {
         let readMailURL = "\(PostOfficeURL)/mail/id/\(mail.id)/read"
-        
         RestService.postRequest(readMailURL, parameters: nil, headers: nil, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
             }
-            else {
-                self.updateMail(mail)
-            }
         })
-    }
-    
-    func updateMail(mail:Mail) {
-        
-        MailService.getMailById(mail.id, headers: nil, completion: { (error, result) -> Void in
-            if error != nil {
-                println(error)
-            }
-            else {
-                self.updatedMail = result as! Mail
-                mailbox[self.row] = self.updatedMail
-                
-                //Ensure core data is also updated
-                var tempMailArray = [Mail]()
-                tempMailArray.append(self.updatedMail)
-                MailService.appendMailArrayToCoreData(tempMailArray)
-                
-            }
-        })
-        
     }
     
     @IBAction func closeMailView(sender: AnyObject) {
+        performSegueWithIdentifier("mailClosed", sender: nil)
         self.dismissViewControllerAnimated(true, completion: {})
     }
 }

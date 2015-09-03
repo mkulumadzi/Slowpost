@@ -52,6 +52,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     override func viewDidAppear(animated: Bool) {
+        println("View appeared")
         super.viewDidAppear(true)
         refreshConversation()
 //        mailTable.reloadData()
@@ -176,18 +177,20 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         if cell.mail.to == loggedInUser.username {
             if cell.mail.status == "DELIVERED" {
                 cell.mailStatusLabel.backgroundColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
-                cell.statusLabel.font = UIFont(name: "OpenSans-SemiboldItalic", size: 15.0)
                 cell.statusLabel.textColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
+                cell.mailStatusLabel.layer.borderWidth = 0.0
             }
             else {
                 cell.mailStatusLabel.backgroundColor = UIColor.whiteColor()
                 cell.mailStatusLabel.layer.borderColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0).CGColor
+                cell.statusLabel.textColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
                 cell.mailStatusLabel.layer.borderWidth = 1.0
             }
         }
         else {
             if cell.mail.status == "SENT" {
                 cell.mailStatusLabel.backgroundColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
+                cell.mailStatusLabel.layer.borderWidth = 0.0
             }
             else {
                 cell.mailStatusLabel.backgroundColor = UIColor.whiteColor()
@@ -195,7 +198,6 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
                 cell.mailStatusLabel.layer.borderWidth = 1.0
             }
         }
-
 
     }
     
@@ -285,6 +287,10 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
                 conversationMailViewController?.statusLabelValue = mailCell.statusLabel.text
             }
         }
+    }
+    
+    @IBAction func conversationMailClosed(segue: UIStoryboardSegue) {
+        refreshConversation()
     }
     
 

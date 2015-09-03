@@ -154,11 +154,24 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         
         for view in cell.subviews {
             if let cellLabel = view as? CellLabelUIView {
-                if cell.conversationMetadata.numUnread == 0 {
+                println("\(cell.conversationMetadata.username) \(cell.conversationMetadata.numUndelivered)")
+                if cell.conversationMetadata.numUnread > 0 {
+                    cellLabel.backgroundColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
+                    cellLabel.layer.borderWidth = 0.0
+                }
+                else if cell.conversationMetadata.numUndelivered > 0 {
+                    cellLabel.backgroundColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
+                    cellLabel.layer.borderWidth = 0.0
+                }
+                else if cell.conversationMetadata.mostRecentSender == loggedInUser.username {
                     cellLabel.backgroundColor = UIColor.whiteColor()
+                    cellLabel.layer.borderColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0).CGColor
+                    cellLabel.layer.borderWidth = 1.0
                 }
                 else {
-                    cellLabel.backgroundColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
+                    cellLabel.backgroundColor = UIColor.whiteColor()
+                    cellLabel.layer.borderColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0).CGColor
+                    cellLabel.layer.borderWidth = 1.0
                 }
             }
         }

@@ -14,15 +14,21 @@ class ConversationMetadata: NSObject {
     var username:String
     var name:String!
     var numUnread:Int
+    var numUndelivered:Int
     var updatedAt:NSDate
     var updatedAtString:String
+    var mostRecentStatus:String
+    var mostRecentSender:String
     
-    init(username:String, name:String?, numUnread:Int, updatedAt:NSDate, updatedAtString:String) {
+    init(username:String, name:String?, numUnread:Int, numUndelivered:Int, updatedAt:NSDate, updatedAtString:String, mostRecentStatus:String, mostRecentSender:String) {
         self.username = username
         self.name = name
         self.numUnread = numUnread
+        self.numUndelivered = numUndelivered
         self.updatedAt = updatedAt
         self.updatedAtString = updatedAtString
+        self.mostRecentStatus = mostRecentStatus
+        self.mostRecentSender = mostRecentSender
         super.init()
     }
 }
