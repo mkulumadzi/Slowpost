@@ -10,6 +10,9 @@ import UIKit
 
 class ComposeNavigationController: UINavigationController {
     
+    //Optional value that can be passed in for a reply
+    var toUsername:String!
+    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }

@@ -64,6 +64,9 @@
                                                 <state key="normal" image="reply-gray.png">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="replyToMail:" destination="1sI-R9-6ng" eventType="touchUpInside" id="GVE-3R-htT"/>
+                                                </connections>
                                             </button>
                                         </barButtonItem>
                                     </navigationItem>

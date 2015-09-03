@@ -17,7 +17,7 @@ class ConversationTabPlaceholderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        showProfile()
+        showConversations()
 
         // Do any additional setup after loading the view.
     }
@@ -27,7 +27,7 @@ class ConversationTabPlaceholderViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func showProfile() {
+    func showConversations() {
         
         var storyboard = UIStoryboard(name: "conversations", bundle: nil)
         var controller = storyboard.instantiateInitialViewController() as! UIViewController

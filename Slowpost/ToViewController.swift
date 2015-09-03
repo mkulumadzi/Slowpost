@@ -38,6 +38,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         
         addSearchBar()
+        optionallyPopulateSearchBar()
         
         self.toPersonList.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: self.toPersonList.bounds.size.width, height: 0.01))
         
@@ -45,11 +46,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         contactsList = registeredContacts.filter({$0.username != loggedInUser.username})
         excludePenpalsFromContactsList()
     }
-    
-//    I normally call [self needsUpdateLayoutConstraints] within viewDidLoad
-//    
-//    dan [2:57 PM]
-//    Then I override the method -(void)updateViewConstraints; and within it call [super updateViewConstraints] after writing out my constraints
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -81,6 +77,18 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
 //        view.addConstraint(horizontalConstraint)
 //        
 //        view.updateConstraints()
+    }
+    
+    func optionallyPopulateSearchBar() {
+        if let navController = self.navigationController as? ComposeNavigationController {
+            if let toUsername:String = navController.toUsername {
+                searchBar.text = toUsername
+                if penpals.filter({$0.username == toUsername}).count == 1 {
+                    toPerson = penpals.filter({$0.username == toUsername})[0]
+                    self.performSegueWithIdentifier("selectImage", sender: nil)
+                }
+            }
+        }
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {

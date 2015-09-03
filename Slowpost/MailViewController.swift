@@ -37,6 +37,7 @@ class MailViewController: UIViewController {
     var runOnClose: (() -> ())?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         Flurry.logEvent("Mail_Opened")
         
@@ -88,6 +89,14 @@ class MailViewController: UIViewController {
             }
         })
     }
+    
+    @IBAction func replyToMail(sender: AnyObject) {
+        var storyboard = UIStoryboard(name: "compose", bundle: nil)
+        var controller = storyboard.instantiateInitialViewController() as! ComposeNavigationController
+        controller.toUsername = fromPerson.username
+        self.presentViewController(controller, animated: true, completion: {})
+    }
+    
     
     @IBAction func closeMailView(sender: AnyObject) {
         if runOnClose != nil { runOnClose!() }
