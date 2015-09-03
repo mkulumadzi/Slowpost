@@ -16,6 +16,9 @@ class HomeTabBarController: UITabBarController, UITabBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        self.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
 
         // Do any additional setup after loading the view.
     }

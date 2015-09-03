@@ -30,8 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Flurry.startSession("FT74F5GW8XVG66BQBXW8")
         
         if let remoteNotification = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? NSDictionary {
-            // there is a notification...do stuff...
-//            self.application(application, didReceiveRemoteNotification: remoteNotification as [NSObject : AnyObject], fetchCompletionHandler: (UIBackgroundFetchResult))
         
             Flurry.logEvent("Opened_App_From_Notification")
             println("Got a remote notification")

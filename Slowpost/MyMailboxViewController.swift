@@ -26,6 +26,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         refreshPenpals()
         mailTable.reloadData()
         

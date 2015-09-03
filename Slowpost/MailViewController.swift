@@ -37,8 +37,11 @@ class MailViewController: UIViewController {
     var runOnClose: (() -> ())?
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        
+        self.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        self.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        
         Flurry.logEvent("Mail_Opened")
         
         fromPerson = PersonService.getPersonFromUsername(mail.from)
