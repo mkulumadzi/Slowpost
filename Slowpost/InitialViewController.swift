@@ -112,25 +112,13 @@ class InitialViewController: UIViewController {
         AddressBookService.checkAuthorizationStatus(self)
         
         //This will load penpals, which will then load mailbox, which will then load outbox, which will then load contacts
-        getPenpals()
+        PersonService.loadPenpals()
         getConversationMetadata()
         getMailbox()
         getOutbox()
         getRegisteredContactsIfAuthorized()
         
         goToHomeScreen()
-    }
-    
-    func getPenpals() {
-        println("Getting all penpals at \(NSDate())")
-        //Get all 'penpal' records whom the user has sent mail to or received mail from
-        let contactsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"
-        
-        PersonService.getPeopleCollection(contactsURL, headers: nil, completion: { (error, result) -> Void in
-            if let peopleArray = result as? Array<Person> {
-                penpals = peopleArray
-            }
-        })
     }
     
     func getConversationMetadata() {

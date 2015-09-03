@@ -241,4 +241,16 @@ class PersonService {
         return personId
     }
     
+    class func loadPenpals() {
+        println("Getting all penpals at \(NSDate())")
+        //Get all 'penpal' records whom the user has sent mail to or received mail from
+        let contactsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"
+        
+        PersonService.getPeopleCollection(contactsURL, headers: nil, completion: { (error, result) -> Void in
+            if let peopleArray = result as? Array<Person> {
+                penpals = peopleArray
+            }
+        })
+    }
+    
 }
