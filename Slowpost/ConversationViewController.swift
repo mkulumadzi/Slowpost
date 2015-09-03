@@ -272,20 +272,24 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         refreshControl.endRefreshing()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "viewMail" {
-            let conversationMailViewController = segue.destinationViewController as? ConversationMailViewController
-            if let mailCell = sender as? ConversationMailCell {
-                conversationMailViewController?.mail = mailCell.mail
-                conversationMailViewController?.person = mailCell.person
-                conversationMailViewController?.row = mailCell.row
-                conversationMailViewController?.statusLabelValue = mailCell.statusLabel.text
-            }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var mail:Mail!
+        switch indexPath.section {
+        case 0:
+            mail = undeliveredMail[indexPath.row]
+        case 1:
+            mail = deliveredMail[indexPath.row]
+        default:
+            println("No mail at seleted row")
         }
-    }
-    
-    @IBAction func conversationMailClosed(segue: UIStoryboardSegue) {
-        refreshConversation()
+        
+        if mail != nil {
+            var storyboard = UIStoryboard(name: "mail", bundle: nil)
+            var mailViewController = storyboard.instantiateInitialViewController() as! MailViewController
+            mailViewController.mail = mail
+            mailViewController.runOnClose = {self.refreshConversation()}
+            self.presentViewController(mailViewController, animated: true, completion: {})
+        }
     }
     
 

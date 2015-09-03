@@ -43,7 +43,6 @@
 		D2389E6D1B9511E100CB19BB /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E6C1B9511E100CB19BB /* ConversationListViewController.swift */; };
 		D2389E6F1B95136B00CB19BB /* ConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E6E1B95136B00CB19BB /* ConversationCell.swift */; };
 		D2389E731B95157700CB19BB /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E721B95157700CB19BB /* ConversationViewController.swift */; };
-		D2389E751B95159700CB19BB /* ConversationMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E741B95159700CB19BB /* ConversationMailViewController.swift */; };
 		D2389E771B9515D300CB19BB /* ConversationMailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E761B9515D300CB19BB /* ConversationMailCell.swift */; };
 		D2389E7B1B96162200CB19BB /* ComposeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E7A1B96162200CB19BB /* ComposeNavigationController.swift */; };
 		D2389E7D1B962B7000CB19BB /* ConversationMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E7C1B962B7000CB19BB /* ConversationMetadata.swift */; };
@@ -176,7 +175,6 @@
 		D2389E6C1B9511E100CB19BB /* ConversationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
 		D2389E6E1B95136B00CB19BB /* ConversationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationCell.swift; sourceTree = "<group>"; };
 		D2389E721B95157700CB19BB /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
-		D2389E741B95159700CB19BB /* ConversationMailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationMailViewController.swift; sourceTree = "<group>"; };
 		D2389E761B9515D300CB19BB /* ConversationMailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationMailCell.swift; sourceTree = "<group>"; };
 		D2389E7A1B96162200CB19BB /* ComposeNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeNavigationController.swift; sourceTree = "<group>"; };
 		D2389E7C1B962B7000CB19BB /* ConversationMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationMetadata.swift; sourceTree = "<group>"; };
@@ -473,7 +471,6 @@
 				D2389E6C1B9511E100CB19BB /* ConversationListViewController.swift */,
 				D2389E6E1B95136B00CB19BB /* ConversationCell.swift */,
 				D2389E721B95157700CB19BB /* ConversationViewController.swift */,
-				D2389E741B95159700CB19BB /* ConversationMailViewController.swift */,
 				D2389E761B9515D300CB19BB /* ConversationMailCell.swift */,
 				D27DA3281B62E7BC00DF32A1 /* SettingsMenuViewController.swift */,
 				D27DA32A1B66B74800DF32A1 /* EditPasswordViewController.swift */,
@@ -783,7 +780,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2389E751B95159700CB19BB /* ConversationMailViewController.swift in Sources */,
 				D24BC0F51B96994D000405F7 /* CustomContainerView.swift in Sources */,
 				CC96E4A91ABCD91A001E6D27 /* Mail.swift in Sources */,
 				CCCB1A7B1AB0DE780067F100 /* MyMailboxViewController.swift in Sources */,
