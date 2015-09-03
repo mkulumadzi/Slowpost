@@ -101,7 +101,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             }
             contactsList = newContactsArray
             
-            if penpalList.count == 0 {
+            if count(self.searchBar.text) > 1 {
                 noResultsLabel.hidden = true
                 self.searchPeople(self.searchBar.text)
             }
