@@ -16,7 +16,6 @@
 		CC96E4A01ABCCBF2001E6D27 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E49F1ABCCBF2001E6D27 /* LogInViewController.swift */; };
 		CC96E4A91ABCD91A001E6D27 /* Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E4A81ABCD91A001E6D27 /* Mail.swift */; };
 		CC96E4AD1ABCDEB5001E6D27 /* MailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E4AC1ABCDEB5001E6D27 /* MailCell.swift */; };
-		CC96E4AF1AC0876D001E6D27 /* MailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E4AE1AC0876D001E6D27 /* MailViewController.swift */; };
 		CC96E4C91AC0B334001E6D27 /* ComposeMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E4C81AC0B334001E6D27 /* ComposeMailViewController.swift */; };
 		CCCB1A531AB0D48A0067F100 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCB1A521AB0D48A0067F100 /* AppDelegate.swift */; };
 		CCCB1A551AB0D48A0067F100 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCB1A541AB0D48A0067F100 /* ViewController.swift */; };
@@ -52,6 +51,8 @@
 		D2389E821B9674AB00CB19BB /* CellLabelUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E811B9674AB00CB19BB /* CellLabelUIView.swift */; };
 		D24BC0F51B96994D000405F7 /* CustomContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24BC0F41B96994D000405F7 /* CustomContainerView.swift */; };
 		D24BC0F71B97C2D5000405F7 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D24BC0F61B97C2D5000405F7 /* OpenSans-LightItalic.ttf */; };
+		D24BC0FA1B98E249000405F7 /* mail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D24BC0F91B98E249000405F7 /* mail.storyboard */; };
+		D24BC0FC1B98E317000405F7 /* MailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24BC0FB1B98E317000405F7 /* MailViewController.swift */; };
 		D25A9C9C1B2259D300ABBBA4 /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C911B2259D300ABBBA4 /* Apache License.txt */; };
 		D25A9C9D1B2259D300ABBBA4 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */; };
 		D25A9C9E1B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */; };
@@ -142,7 +143,6 @@
 		CC96E49F1ABCCBF2001E6D27 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		CC96E4A81ABCD91A001E6D27 /* Mail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mail.swift; sourceTree = "<group>"; };
 		CC96E4AC1ABCDEB5001E6D27 /* MailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailCell.swift; sourceTree = "<group>"; };
-		CC96E4AE1AC0876D001E6D27 /* MailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailViewController.swift; sourceTree = "<group>"; };
 		CC96E4C81AC0B334001E6D27 /* ComposeMailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeMailViewController.swift; sourceTree = "<group>"; };
 		CCCB1A4D1AB0D48A0067F100 /* Slowpost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slowpost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCCB1A511AB0D48A0067F100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -185,6 +185,8 @@
 		D2389E811B9674AB00CB19BB /* CellLabelUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellLabelUIView.swift; sourceTree = "<group>"; };
 		D24BC0F41B96994D000405F7 /* CustomContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomContainerView.swift; sourceTree = "<group>"; };
 		D24BC0F61B97C2D5000405F7 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		D24BC0F91B98E249000405F7 /* mail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = mail.storyboard; sourceTree = "<group>"; };
+		D24BC0FB1B98E317000405F7 /* MailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailViewController.swift; sourceTree = "<group>"; };
 		D25A9C911B2259D300ABBBA4 /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apache License.txt"; sourceTree = "<group>"; };
 		D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 		CC23DE241AE54BB100AFEDE4 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				D24BC0F81B98E237000405F7 /* Mail */,
 				D2389E691B950BF200CB19BB /* Conversations */,
 				D206FB521B619A3D008BB412 /* Home */,
 				D2B651E11B37BC7500134C23 /* Initial */,
@@ -318,7 +321,6 @@
 				CC23DE2B1AE54C1A00AFEDE4 /* mailbox.storyboard */,
 				CC96E4AC1ABCDEB5001E6D27 /* MailCell.swift */,
 				CCCB1A7A1AB0DE780067F100 /* MyMailboxViewController.swift */,
-				CC96E4AE1AC0876D001E6D27 /* MailViewController.swift */,
 			);
 			name = Mailbox;
 			sourceTree = "<group>";
@@ -478,6 +480,15 @@
 				D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */,
 			);
 			name = Conversations;
+			sourceTree = "<group>";
+		};
+		D24BC0F81B98E237000405F7 /* Mail */ = {
+			isa = PBXGroup;
+			children = (
+				D24BC0F91B98E249000405F7 /* mail.storyboard */,
+				D24BC0FB1B98E317000405F7 /* MailViewController.swift */,
+			);
+			name = Mail;
 			sourceTree = "<group>";
 		};
 		D25A9C741B2256D400ABBBA4 /* Fonts */ = {
@@ -679,6 +690,7 @@
 				D2E4EDCE1B7D136500D2A028 /* Quicksand-Light.otf in Resources */,
 				D2389E6B1B950C0300CB19BB /* conversations.storyboard in Resources */,
 				D25A9CA11B2259D300ABBBA4 /* OpenSans-Italic.ttf in Resources */,
+				D24BC0FA1B98E249000405F7 /* mail.storyboard in Resources */,
 				D2E4EDD41B7D307E00D2A028 /* example_photo.jpg in Resources */,
 				D206FB541B619A53008BB412 /* home.storyboard in Resources */,
 				D20D8EDB1B2B384E00BBF6B5 /* compose-white.png in Resources */,
@@ -808,6 +820,7 @@
 				D21D79DD1B56ED540014510E /* AddressBookService.swift in Sources */,
 				D2CEC4641B6C1F4F002CFD25 /* PhotoLibraryViewController.swift in Sources */,
 				D267262E1B7D3E3700FE651F /* SignUpCompleteViewController.swift in Sources */,
+				D24BC0FC1B98E317000405F7 /* MailViewController.swift in Sources */,
 				CC96E4AD1ABCDEB5001E6D27 /* MailCell.swift in Sources */,
 				D2389E731B95157700CB19BB /* ConversationViewController.swift in Sources */,
 				D2389E681B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift in Sources */,
@@ -827,7 +840,6 @@
 				CCCB1A531AB0D48A0067F100 /* AppDelegate.swift in Sources */,
 				D2389E771B9515D300CB19BB /* ConversationMailCell.swift in Sources */,
 				D2CEC4661B6C1F5C002CFD25 /* TakePhotoViewController.swift in Sources */,
-				CC96E4AF1AC0876D001E6D27 /* MailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

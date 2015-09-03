@@ -143,7 +143,8 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     
     func formatCell(cell: ConversationMailCell) {
         cell.person = person
-        cell.statusLabel.text = "\(cell.mail.status) on \(formatUpdatedDate(cell.mail.updatedAt))"
+        let updatedDateString = cell.mail.updatedAt.formattedAsString("yyyy-MM-dd")
+        cell.statusLabel.text = "\(cell.mail.status) on \(updatedDateString)"
         
         cell.mailImageView.image = cell.mail.image
         
@@ -199,12 +200,6 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
             }
         }
 
-    }
-    
-    func formatUpdatedDate(date: NSDate) -> String {
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        return dateFormatter.stringFromDate(date)
     }
     
     func downloadMailImages(mail: Mail) {

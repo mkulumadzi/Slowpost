@@ -253,4 +253,16 @@ class PersonService {
         })
     }
     
+    class func getPersonFromUsername(username: String) -> Person? {
+        if username == loggedInUser.username {
+            return loggedInUser
+        }
+        else if penpals.filter({$0.username == username}).count == 1 {
+            return penpals.filter({$0.username == username})[0]
+        }
+        else {
+            return nil
+        }
+    }
+    
 }

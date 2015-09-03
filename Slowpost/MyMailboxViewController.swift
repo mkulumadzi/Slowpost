@@ -147,22 +147,19 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         })
     }
     
-    
     func handleRefresh(refreshControl: UIRefreshControl) {
         refreshPenpals()
         refreshControl.endRefreshing()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "viewMail" {
-            let mailViewController = segue.destinationViewController as? MailViewController
-            if let mailCell = sender as? MailCell {
-                mailViewController?.mail = mailCell.mail
-                mailViewController?.from = mailCell.from
-                mailViewController?.row = mailCell.row
-                
-            }
-        }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let mail = mailbox[indexPath.row]
+        var storyboard = UIStoryboard(name: "mail", bundle: nil)
+        var mailViewController = storyboard.instantiateInitialViewController() as! MailViewController
+        mailViewController.mail = mail
+        mailViewController.runOnClose = {self.refreshMailbox()}
+        
+        self.presentViewController(mailViewController, animated: true, completion: {})
     }
 
 

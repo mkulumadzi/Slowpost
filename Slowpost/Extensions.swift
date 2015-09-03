@@ -46,6 +46,12 @@ extension NSDate {
         var dateWithHoursAdded : NSDate = self.dateByAddingTimeInterval(secondsInHours)
         return dateWithHoursAdded
     }
+    
+    func formattedAsString(format: String) -> String {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.stringFromDate(self)
+    }
 }
 
 extension Array {
