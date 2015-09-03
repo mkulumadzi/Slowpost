@@ -215,7 +215,7 @@ class InitialViewController: UIViewController {
         Flurry.endTimedEvent("Initial_Data_Loading_Began", withParameters: nil)
         var storyboard = UIStoryboard(name: "home", bundle: nil)
         var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-        self.presentViewController(controller, animated: true, completion: nil)
+        self.presentViewController(controller, animated: false, completion: nil)
     }
     
     func registerDeviceToken() {
