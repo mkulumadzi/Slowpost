@@ -52,6 +52,7 @@
 		D24BC0F71B97C2D5000405F7 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D24BC0F61B97C2D5000405F7 /* OpenSans-LightItalic.ttf */; };
 		D24BC0FA1B98E249000405F7 /* mail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D24BC0F91B98E249000405F7 /* mail.storyboard */; };
 		D24BC0FC1B98E317000405F7 /* MailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24BC0FB1B98E317000405F7 /* MailViewController.swift */; };
+		D24BC0FE1B98F898000405F7 /* reply-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = D24BC0FD1B98F898000405F7 /* reply-gray.png */; };
 		D25A9C9C1B2259D300ABBBA4 /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C911B2259D300ABBBA4 /* Apache License.txt */; };
 		D25A9C9D1B2259D300ABBBA4 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */; };
 		D25A9C9E1B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */; };
@@ -185,6 +186,7 @@
 		D24BC0F61B97C2D5000405F7 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
 		D24BC0F91B98E249000405F7 /* mail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = mail.storyboard; sourceTree = "<group>"; };
 		D24BC0FB1B98E317000405F7 /* MailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailViewController.swift; sourceTree = "<group>"; };
+		D24BC0FD1B98F898000405F7 /* reply-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply-gray.png"; sourceTree = "<group>"; };
 		D25A9C911B2259D300ABBBA4 /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apache License.txt"; sourceTree = "<group>"; };
 		D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 		CC96E4A31ABCD5AB001E6D27 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D24BC0FD1B98F898000405F7 /* reply-gray.png */,
 				D2E4EDD11B7D1EC000D2A028 /* example_card.jpg */,
 				D2F5CAC11B8F91D900551435 /* Default Card.png */,
 				D2E4EDD31B7D307E00D2A028 /* example_photo.jpg */,
@@ -709,6 +712,7 @@
 				D2D866261B2F4AF800847051 /* ios7-person-outline.png in Resources */,
 				D21D79D71B5093490014510E /* ios7-checkmark.png in Resources */,
 				D2D866371B2F5B8D00847051 /* log-out.png in Resources */,
+				D24BC0FE1B98F898000405F7 /* reply-gray.png in Resources */,
 				D24BC0F71B97C2D5000405F7 /* OpenSans-LightItalic.ttf in Resources */,
 				D2E4EDCF1B7D136700D2A028 /* Quicksand-LightItalic.otf in Resources */,
 				CCCB1A5A1AB0D48A0067F100 /* Images.xcassets in Resources */,

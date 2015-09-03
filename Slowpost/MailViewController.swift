@@ -18,6 +18,7 @@ import UIKit
 
 class MailViewController: UIViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mailImage: UIImageView!
     @IBOutlet weak var fromView: UIView!
     @IBOutlet weak var fromViewInitials: UILabel!
@@ -26,6 +27,8 @@ class MailViewController: UIViewController {
     @IBOutlet weak var sentLabel: UILabel!
     @IBOutlet weak var deliveredLabel: UILabel!
     @IBOutlet weak var mailContent: UILabel!
+    @IBOutlet weak var replyButton: UIButton!
+    @IBOutlet weak var navItem: UINavigationItem!
     
     var mail:Mail!
     var fromPerson:Person!
@@ -64,6 +67,10 @@ class MailViewController: UIViewController {
         
         if mail.status == "DELIVERED" && mail.to == loggedInUser.username {
             readMail(mail)
+        }
+        
+        if fromPerson.username == loggedInUser.username {
+            navItem.rightBarButtonItem = nil
         }
         
     }

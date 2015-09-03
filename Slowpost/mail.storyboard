@@ -44,9 +44,9 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem id="fPP-Wb-RzX">
-                                        <barButtonItem key="leftBarButtonItem" id="d5S-oK-Sir">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zb3-Sp-Wmm">
-                                                <rect key="frame" x="16" y="-58" width="20" height="20"/>
+                                        <barButtonItem key="leftBarButtonItem" id="d5S-oK-Sir" userLabel="Close Bar Button Item">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zb3-Sp-Wmm" userLabel="Close">
+                                                <rect key="frame" x="16" y="30" width="20" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" image="ios7-close-empty-gray.png">
                                                     <color key="titleColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -55,6 +55,15 @@
                                                 <connections>
                                                     <action selector="closeMailView:" destination="1sI-R9-6ng" eventType="touchUpInside" id="AH5-Nv-1YA"/>
                                                 </connections>
+                                            </button>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" id="82w-Rw-FsS" userLabel="Reply Bar Button Item">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DO7-eu-gG4" userLabel="Reply">
+                                                <rect key="frame" x="550" y="23" width="34" height="34"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="reply-gray.png">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
                                             </button>
                                         </barButtonItem>
                                     </navigationItem>
@@ -206,6 +215,9 @@
                         <outlet property="fromViewInitials" destination="Po6-5o-kGa" id="yrc-sX-ZZf"/>
                         <outlet property="mailContent" destination="3rD-Uv-DUz" id="FcV-4t-qAF"/>
                         <outlet property="mailImage" destination="Z0g-6G-Jyb" id="TVr-Zo-45V"/>
+                        <outlet property="navItem" destination="fPP-Wb-RzX" id="T9t-6d-74x"/>
+                        <outlet property="replyButton" destination="DO7-eu-gG4" id="bAb-ax-Jdh"/>
+                        <outlet property="scrollView" destination="gDw-dV-fIF" id="U6o-25-g6b"/>
                         <outlet property="sentLabel" destination="cP1-Ty-omr" id="T1P-qi-2BP"/>
                         <outlet property="toLabel" destination="pf6-MY-tqg" id="PGh-ca-gJa"/>
                     </connections>
@@ -217,5 +229,6 @@
     </scenes>
     <resources>
         <image name="ios7-close-empty-gray.png" width="192" height="192"/>
+        <image name="reply-gray.png" width="512" height="512"/>
     </resources>
 </document>
