@@ -25,7 +25,6 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
-            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -646,7 +645,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JVh-TN-TvG" userLabel="Background">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JVh-TN-TvG" userLabel="Background">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XlB-rG-Tsl">
@@ -684,12 +683,6 @@
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your mail will arrive in just a couple of days!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="52P-9L-Rij">
-                                <rect key="frame" x="30" y="382" width="540" height="21"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -698,13 +691,10 @@
                             <constraint firstItem="JVh-TN-TvG" firstAttribute="leading" secondItem="DOg-cX-dq3" secondAttribute="leading" id="Fk4-Es-7Nv"/>
                             <constraint firstAttribute="trailing" secondItem="JVh-TN-TvG" secondAttribute="trailing" id="VdM-EZ-4sU"/>
                             <constraint firstItem="Wlh-gW-3qS" firstAttribute="leading" secondItem="DOg-cX-dq3" secondAttribute="leading" constant="30" id="Vkd-I0-dUU"/>
-                            <constraint firstAttribute="trailing" secondItem="52P-9L-Rij" secondAttribute="trailing" constant="30" id="ccQ-eg-Aft"/>
                             <constraint firstAttribute="centerX" secondItem="2I9-8j-geo" secondAttribute="centerX" id="jJG-0L-qYF"/>
                             <constraint firstItem="kLD-Zm-28F" firstAttribute="top" secondItem="JVh-TN-TvG" secondAttribute="bottom" id="k26-RV-5ch"/>
-                            <constraint firstItem="52P-9L-Rij" firstAttribute="top" secondItem="Wlh-gW-3qS" secondAttribute="bottom" id="kyc-Rl-Jqd"/>
                             <constraint firstAttribute="trailing" secondItem="Wlh-gW-3qS" secondAttribute="trailing" constant="30" id="mJJ-Uk-0Ef"/>
                             <constraint firstItem="JVh-TN-TvG" firstAttribute="top" secondItem="DOg-cX-dq3" secondAttribute="top" id="uCQ-M4-nh8"/>
-                            <constraint firstItem="52P-9L-Rij" firstAttribute="leading" secondItem="DOg-cX-dq3" secondAttribute="leading" constant="30" id="zAR-vj-1bi"/>
                         </constraints>
                     </view>
                     <connections>
