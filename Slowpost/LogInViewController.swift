@@ -30,6 +30,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        self.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        
         Flurry.logEvent("Login_Screen_Opened")
         
         UsernameTextField.addBottomLayer()

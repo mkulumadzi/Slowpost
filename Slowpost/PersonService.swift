@@ -139,6 +139,9 @@ class PersonService {
                 if status == 304 {
                     completion(error: nil, result: status)
                 }
+                else {
+                    completion(error: nil, result: "Unexpected result while getting person") 
+                }
             }
             else {
                 completion(error: nil, result: "Unexpected result while getting person")

@@ -203,7 +203,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Ad4-oR-7aV" kind="show" id="av2-j3-cgU"/>
+                                    <segue destination="Ad4-oR-7aV" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="av2-j3-cgU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTS-NF-cJa">
@@ -218,7 +218,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="x1t-f9-P3i" kind="show" id="Tgy-8e-yQt"/>
+                                    <segue destination="x1t-f9-P3i" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="Tgy-8e-yQt"/>
                                 </connections>
                             </button>
                         </subviews>
