@@ -201,10 +201,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f6U-nW-diS" id="mCm-3J-s8Q">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHY-jw-XOD" userLabel="containerView">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="420"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3M-pw-Hy9" userLabel="cardView">
                                                     <rect key="frame" x="40" y="10" width="400" height="326"/>
                                                     <subviews>
@@ -267,6 +263,10 @@
                                                         <constraint firstAttribute="centerX" secondItem="3hK-Ok-aoI" secondAttribute="centerX" id="kz2-m9-UZJ"/>
                                                         <constraint firstAttribute="height" constant="30" id="ui2-49-OtL"/>
                                                     </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eHY-jw-XOD" userLabel="containerView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="420"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
                                             <constraints>

@@ -32,12 +32,13 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         
         navBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Quicksand-Regular", size: 24)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
         
-        self.mailTable.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: self.mailTable.bounds.size.width, height: 0.01))
+        mailTable.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: self.mailTable.bounds.size.width, height: 0.01))
+        mailTable.separatorStyle = UITableViewCellSeparatorStyle.None
         
         mailTable.addSubview(self.refreshControl)
         
         // Calculating row height automatically; can't get it working with autolayout.
-        mailTable.rowHeight = 75 + (view.frame.width - 20) * 0.75
+        mailTable.rowHeight = 85 + (view.frame.width - 20) * 0.75
 
         NSNotificationCenter.defaultCenter().addObserverForName("imageDownloaded:", object: nil, queue: nil, usingBlock: { (notification) -> Void in
             self.mailTable.reloadData()
@@ -68,20 +69,49 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MailCell", forIndexPath: indexPath) as? MailCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("MailCell", forIndexPath: indexPath) as! MailCell
         let mail = mailbox[indexPath.row] as Mail
         
-        cell!.mail = mail
-        cell!.row = indexPath.row
+        cell.mail = mail
         
-        cell!.formatCell()
+        println(penpals)
+        
+        let person = PersonService.getPersonFromUsername(mail.from)
+        
+        if person != nil {
+            cell.from = person!
+            cell.fromViewInitials.text = person!.initials()
+            cell.fromLabel.text = cell.from.name
+        }
+        
+        cell.mailImage.image = mail.image
+        
+        let deliveredDateString = mail.createdAt.formattedAsString("yyyy-MM-dd")
+        cell.deliveredLabel.text = "Delivered on \(deliveredDateString)"
+        
+        formatMailCellBasedOnMailStatus(cell, mail: mail)
         
         if mail.imageUid != nil && mail.image == nil && mail.currentlyDownloadingImage == false {
             downloadMailImages(mail)
         }
         
-        return cell!
+        return cell
         
+    }
+    
+    func formatMailCellBasedOnMailStatus(cell: MailCell, mail: Mail) {
+        if mail.status == "DELIVERED" {
+            cell.fromLabel.font = UIFont(name: "OpenSans-Semibold", size: 17.0)
+            cell.statusIndicator.backgroundColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
+            cell.statusIndicator.layer.borderWidth = 0.0
+        }
+        else {
+            cell.fromLabel.font = UIFont(name: "OpenSans-Regular", size: 17.0)
+            cell.statusIndicator.backgroundColor = UIColor.whiteColor()
+            cell.statusIndicator.layer.borderColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0).CGColor
+            cell.statusIndicator.layer.borderWidth = 1.0
+            
+        }
     }
     
     func downloadMailImages(mail: Mail) {
