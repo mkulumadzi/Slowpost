@@ -144,8 +144,8 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     
     func formatCell(cell: ConversationMailCell) {
         cell.person = person
-        let updatedDateString = cell.mail.updatedAt.formattedAsString("yyyy-MM-dd")
-        cell.statusLabel.text = "\(cell.mail.status) on \(updatedDateString)"
+        
+        generateStatusLabel(cell, mail: cell.mail)
         
         cell.mailImageView.image = cell.mail.image
         
@@ -172,6 +172,17 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         
         if cell.mail.imageUid != nil && cell.mail.image == nil && cell.mail.currentlyDownloadingImage == false {
             downloadMailImages(cell.mail)
+        }
+    }
+    
+    func generateStatusLabel(cell: ConversationMailCell, mail: Mail) {
+        if mail.status == "SENT" {
+            let dateValue = mail.createdAt.formattedAsString("yyyy-MM-dd")
+            cell.statusLabel.text = "Sent on \(dateValue)"
+        }
+        else {
+            let dateValue = mail.scheduledToArrive.formattedAsString("yyyy-MM-dd")
+            cell.statusLabel.text = "Delivered on \(dateValue)"
         }
     }
     
