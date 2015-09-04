@@ -163,30 +163,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Flurry.logEvent("Received remote notification")
         
-        if let type = userInfo["type"] as? NSString {
-            if type == "New Mail" {
-                
-                var headers:[String: String]?
-                if mailbox.count > 0 {
-                    headers = RestService.sinceHeader(mailbox)
-                }
-                
-                let myMailBoxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/mailbox"
-                
-                MailService.getMailCollection(myMailBoxURL, headers: headers, completion: { (error, result) -> Void in
-                    if error != nil {
-                        println(error)
-                    }
-                    else if let mailArray = result as? Array<Mail> {
-                        MailService.updateMailboxAndAppendMailToCache(mailArray)
-                    }
-                })
-                
-                let storyboard = UIStoryboard(name: "home", bundle: nil)
-                let controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
-                self.window!.rootViewController = controller
-            }
-        }
+//        if let type = userInfo["type"] as? NSString {
+//            if type == "New Mail" {
+//            }
+//        }
         
         completionHandler(UIBackgroundFetchResult.NewData)
         
