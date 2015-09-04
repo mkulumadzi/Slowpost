@@ -197,8 +197,6 @@ class PersonService {
     //Bulk search of people based on a users' contact info
     class func bulkPersonSearch(parameters: [NSDictionary], completion: (error: NSError?, result: AnyObject?) -> Void) {
         
-        println(parameters)
-        
         let bulkPersonSearchURL = NSURL.init(string: "\(PostOfficeURL)/people/bulk_search")
         
         let request = NSMutableURLRequest(URL: bulkPersonSearchURL!)

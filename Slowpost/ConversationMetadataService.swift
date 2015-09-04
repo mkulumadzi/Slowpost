@@ -14,7 +14,6 @@ import CoreData
 class ConversationMetadataService {
     
     class func createConversationMetadataFromJson(jsonEntry: NSDictionary) -> ConversationMetadata {
-        println("creating CM from json")
         
         let username = jsonEntry.objectForKey("username") as! String
         let name = jsonEntry.objectForKey("name") as! String
@@ -33,7 +32,6 @@ class ConversationMetadataService {
     }
     
     class func populateConversationMetadataArrayFromCoreData() -> [ConversationMetadata]? {
-        println("populating from core data")
         
         let conversationMetadataCoreData = CoreDataService.getObjectsFromCoreData("ConversationMetadata", predicate: nil)
         var conversationMetadataArray = [ConversationMetadata]()
@@ -46,7 +44,6 @@ class ConversationMetadataService {
     }
     
     class func createConversationMetadataFromCoreData(object: NSManagedObject) -> ConversationMetadata {
-        println("creating from core data")
         
         let username = object.valueForKey("username") as! String
         let name = object.valueForKey("name") as! String
@@ -63,7 +60,6 @@ class ConversationMetadataService {
     }
     
     class func appendConversationMetadataArrayToCoreData(conversationMetadataArray: [ConversationMetadata]) {
-        println("appending array to core data")
         
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
@@ -78,7 +74,6 @@ class ConversationMetadataService {
     }
     
     class func saveOrUpdateConversationMetadataInCoreData(conversationMetadata: ConversationMetadata, object: NSManagedObject, managedContext: NSManagedObjectContext) {
-        println("saving or updating core data")
         
         object.setValue(conversationMetadata.username, forKey: "username")
         object.setValue(conversationMetadata.name, forKey: "name")
@@ -99,8 +94,6 @@ class ConversationMetadataService {
     class func getConversationMetadataCollection(headers: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
         let conversationMetadataURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/conversations"
         
-        println("getting CM from postoffice")
-        
         RestService.getRequest(conversationMetadataURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {
                 println(error)
@@ -120,8 +113,6 @@ class ConversationMetadataService {
     }
     
     class func updateConversationMetadataCollectionFromArray(existingCollection: [ConversationMetadata], newCollection: [ConversationMetadata]) -> [ConversationMetadata] {
-        
-        println("updating metadata from array")
         
         //Creating a mutable collection of conversation metadata from the existing collection
         var updatedCollection:[ConversationMetadata] = existingCollection
@@ -144,7 +135,6 @@ class ConversationMetadataService {
     }
     
     class func updateConversationMetadataAndAppendArrayToCache(newArray: [ConversationMetadata]) {
-        println("updating and appending to cache")
         
         conversationMetadataArray = self.updateConversationMetadataCollectionFromArray(conversationMetadataArray, newCollection: newArray)
         conversationMetadataArray = conversationMetadataArray.sorted { $0.updatedAt.compare($1.updatedAt) == NSComparisonResult.OrderedDescending }

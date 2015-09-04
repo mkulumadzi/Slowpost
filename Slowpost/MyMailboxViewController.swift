@@ -74,8 +74,6 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         
         cell.mail = mail
         
-        println(penpals)
-        
         let person = PersonService.getPersonFromUsername(mail.from)
         
         if person != nil {
