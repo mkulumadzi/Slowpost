@@ -13,25 +13,25 @@ import CoreData
 
 class PersonService {
     
-    class func createPersonFromJson(jsonEntry: NSDictionary) -> Person {
+    class func createPersonFromJson(jsonEntry: JSON) -> Person {
         
-        let id = jsonEntry.objectForKey("_id")!.objectForKey("$oid") as! String
-        let username:String = jsonEntry.objectForKey("username") as! String
-        let email = jsonEntry.objectForKey("email") as? String
-        let name = jsonEntry.objectForKey("name") as? String
-        let phone = jsonEntry.objectForKey("phone") as? String
-        let address1 = jsonEntry.objectForKey("address1") as? String
-        let city = jsonEntry.objectForKey("city") as? String
-        let state = jsonEntry.objectForKey("state") as? String
-        let zip = jsonEntry.objectForKey("zip") as? String
+        let id = jsonEntry["_id"]["$oid"].stringValue
+        let username = jsonEntry["username"].stringValue
+        let email = jsonEntry["email"].stringValue
+        let name = jsonEntry["name"].stringValue
+        let phone = jsonEntry["phone"].stringValue
+        let address1 = jsonEntry["address1"].stringValue
+        let city = jsonEntry["city"].stringValue
+        let state = jsonEntry["state"].stringValue
+        let zip = jsonEntry["zip"].stringValue
         
-        let updatedString = jsonEntry.objectForKey("updated_at") as! String
+        let updatedString = jsonEntry["updated_at"].stringValue
         let updatedAt = NSDate(dateString: updatedString)
         
-        let createdString = jsonEntry.objectForKey("created_at") as! String
+        let createdString = jsonEntry["created_at"].stringValue
         let createdAt = NSDate(dateString: createdString)
         
-        var newPerson = Person(id: id, username: username, email: email, name: name, phone: phone, address1: address1, city: city, state: state, zip: zip, updatedAt: updatedAt, updatedAtString: updatedString, createdAt: createdAt)
+        let newPerson = Person(id: id, username: username, email: email, name: name, phone: phone, address1: address1, city: city, state: state, zip: zip, updatedAt: updatedAt, updatedAtString: updatedString, createdAt: createdAt)
         
         return newPerson
     }
@@ -63,7 +63,7 @@ class PersonService {
         let updatedAtString = object.valueForKey("updatedAtString") as! String
         let createdAt = object.valueForKey("createdAt") as! NSDate
         
-        var newPerson = Person(id: id, username: username, email: email, name: name, phone: phone, address1: address1, city: city, state: state, zip: zip, updatedAt: updatedAt, updatedAtString: updatedAtString, createdAt: createdAt)
+        let newPerson = Person(id: id, username: username, email: email, name: name, phone: phone, address1: address1, city: city, state: state, zip: zip, updatedAt: updatedAt, updatedAtString: updatedAtString, createdAt: createdAt)
         
         return newPerson
     }
@@ -95,8 +95,11 @@ class PersonService {
         object.setValue(person.createdAt, forKey: "createdAt")
         
         var error: NSError?
-        if !managedContext.save(&error) {
-            println("Error saving person \(error), \(error?.userInfo)")
+        do {
+            try managedContext.save()
+        } catch let error1 as NSError {
+            error = error1
+            print("Error saving person \(error), \(error?.userInfo)")
         }
         
     }
@@ -115,56 +118,57 @@ class PersonService {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext!
         
-        let fetchRequest = NSFetchRequest(entityName: "Person")
-        
-        var error: NSError?
-        
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
+        var fetchedResults:[NSManagedObject]?
+        do {
+            let fetchRequest = NSFetchRequest(entityName: "Person")
+            try fetchedResults = managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+        }
+        catch {
+            print("Error getting fetc results")
+        }
         
         return fetchedResults!
     }
     
-    class func getPerson(personId: String, headers: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
+    class func getPerson(personId: String, headers: [String: String]?, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
         let personURL = "\(PostOfficeURL)/person/id/\(personId)"
         RestService.getRequest(personURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {
-                println(error)
+                print(error)
                 completion(error: error, result: nil)
             }
-            else if let dict = result as? NSDictionary {
-                var person:Person = self.createPersonFromJson(dict)
-                completion(error: nil, result: person)
-            }
-            else if let status = result as? Int {
-                if status == 304 {
+            else {
+                if let status = result as? Int {
                     completion(error: nil, result: status)
                 }
                 else {
-                    completion(error: nil, result: "Unexpected result while getting person") 
+                    let json = JSON(result!)
+                    let person:Person = self.createPersonFromJson(json)
+                    completion(error: nil, result: person)
                 }
-            }
-            else {
-                completion(error: nil, result: "Unexpected result while getting person")
             }
         })
         
     }
     
-    class func getPeopleCollection(collectionURL: String, headers: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
+    class func getPeopleCollection(collectionURL: String, headers: [String: String]?, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
         RestService.getRequest(collectionURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {
-                println(error)
+                print(error)
                 completion(error: error, result: nil)
             }
-            else if let jsonResult = result as? Array<NSDictionary> {
-                var person_array = [Person]()
-                for jsonEntry in jsonResult {
-                    person_array.append(self.createPersonFromJson(jsonEntry))
-                }
-                completion(error: nil, result: person_array)
-            }
             else {
-                println("Unexpected JSON result while getting people")
+                if let jsonArray = result as? [AnyObject] {
+                    var person_array = [Person]()
+                    for jsonEntry in jsonArray {
+                        let json = JSON(jsonEntry)
+                        person_array.append(self.createPersonFromJson(json))
+                    }
+                    completion(error: nil, result: person_array)
+                }
+                else {
+                    completion(error: nil, result: "Unexpected result when getting people collection")
+                }
             }
         })
     }
@@ -177,8 +181,8 @@ class PersonService {
         //Update existing people
         for person in newCollection {
             if updatedCollection.filter({$0.id == person.id}).count > 0 {
-                var existingPerson:Person = updatedCollection.filter({$0.id == person.id}).first!
-                var existingIndex:Int = find(updatedCollection, existingPerson)!
+                let existingPerson:Person = updatedCollection.filter({$0.id == person.id}).first!
+                let existingIndex:Int = updatedCollection.indexOf(existingPerson)!
                 updatedCollection[existingIndex] = person
             }
                 // Append new people
@@ -198,7 +202,7 @@ class PersonService {
     
     
     //Bulk search of people based on a users' contact info
-    class func bulkPersonSearch(parameters: [NSDictionary], completion: (error: NSError?, result: AnyObject?) -> Void) {
+    class func bulkPersonSearch(parameters: [NSDictionary], completion: (error: ErrorType?, result: AnyObject?) -> Void) {
         
         let bulkPersonSearchURL = NSURL.init(string: "\(PostOfficeURL)/people/bulk_search")
         
@@ -208,42 +212,47 @@ class PersonService {
         request.setValue("Bearer \(userToken)", forHTTPHeaderField: "Authorization")
         
         var error: NSError?
-        request.HTTPBody = NSJSONSerialization.dataWithJSONObject(parameters, options: nil, error: &error)
+        do {
+            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(parameters, options: [])
+        } catch let error1 as NSError {
+            error = error1
+            request.HTTPBody = nil
+        }
         
         Alamofire.request(request)
-            .response { (request, response, data, error) in
-                if let anError = error {
-                    println(error)
-                    completion(error: error, result: nil)
-                }
-                else if let response: AnyObject = response {
-                    if response.statusCode == 404 {
-                        completion(error: error, result: response.statusCode)
-                    }
-                }
-            }
-            .responseJSON { (_, _, JSON, error) in
-                if let jsonResult = JSON as? Array<NSDictionary> {
-                    var people_array = [Person]()
-                    for jsonEntry in jsonResult {
-                        people_array.append(self.createPersonFromJson(jsonEntry))
-                    }
-                    completion(error: nil, result: people_array)
+            .responseJSON { (_, response, result) in
+            switch result {
+            case .Success (let data):
+                if response!.statusCode == 404 {
+                    completion(error: error, result: response!.statusCode)
                 }
                 else {
-                    println("Unexpected JSON result for \(bulkPersonSearchURL)")
+                    if let jsonArray = data as? [AnyObject] {
+                        var people_array = [Person]()
+                        for jsonEntry in jsonArray {
+                            let json = JSON(jsonEntry)
+                            people_array.append(self.createPersonFromJson(json))
+                        }
+                        completion(error: nil, result: people_array)
+                    }
+                    else {
+                        completion(error: nil, result: "Unexpected result when doing bulk search")
+                    }
                 }
+            case .Failure(_, let error):
+                print("Request failed with error: \(error)")
+            }
         }
     }
     
     class func parsePersonURLForId(personURL:String) -> String {
-        var personURLSplit:[String] = split(personURL) {$0 == "/"}
-        var personId:String = personURLSplit.last
+        let personURLSplit:[String] = personURL.characters.split {$0 == "/"}.map { String($0) }
+        let personId:String = personURLSplit.last
         return personId
     }
     
     class func loadPenpals() {
-        println("Getting all penpals at \(NSDate())")
+        print("Getting all penpals at \(NSDate())")
         //Get all 'penpal' records whom the user has sent mail to or received mail from
         let contactsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"
         

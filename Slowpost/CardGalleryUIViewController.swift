@@ -48,14 +48,16 @@ class CardGalleryUIViewController: UIViewController, UICollectionViewDataSource,
         
         RestService.getRequest(cardsURL, headers: nil, completion: { (error, result) -> Void in
             if error != nil {
-                println(error)
-            }
-            else if let jsonResult = result as? Array<String> {
-                self.cardNames = jsonResult
-                self.populatePhotoArray()
+                print(error)
             }
             else {
-                println("Unexpected JSON result getting cards")
+                if let cardArray = result as? [String] {
+                    self.cardNames = cardArray
+                    self.populatePhotoArray()
+                }
+                else {
+                    print("Unexpected JSON result getting cards")
+                }
             }
         })
     }
@@ -68,7 +70,7 @@ class CardGalleryUIViewController: UIViewController, UICollectionViewDataSource,
             let imageURL = "\(PostOfficeURL)/image/\(newCardName)"
             FileService.downloadImage(imageURL, completion: { (error, result) -> Void in
                 if error != nil {
-                    println(error)
+                    print(error)
                 }
                 else if let image = result as? UIImage {
                     if self.activityIndicator.isAnimating() {
@@ -88,10 +90,10 @@ class CardGalleryUIViewController: UIViewController, UICollectionViewDataSource,
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize {
         
-        var width:CGFloat = self.cardCollection.frame.width - 20
-        var height:CGFloat = width * 3 / 4
+        let width:CGFloat = self.cardCollection.frame.width - 20
+        let height:CGFloat = width * 3 / 4
         
-        var cardSize = CGSize.init(width: width, height: height)
+        let cardSize = CGSize.init(width: width, height: height)
         
         return cardSize
         

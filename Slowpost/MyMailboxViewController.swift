@@ -90,7 +90,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         formatMailCellBasedOnMailStatus(cell, mail: mail)
         
         if mail.imageUid != nil && mail.image == nil && mail.currentlyDownloadingImage == false {
-            downloadMailImages(mail)
+            downloadMailImage(mail)
         }
         
         return cell
@@ -112,22 +112,6 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    func downloadMailImages(mail: Mail) {
-        mail.currentlyDownloadingImage = true
-        downloadMailThumbnail(mail)
-    }
-    
-    func downloadMailThumbnail(mail: Mail) {
-        
-        MailService.getMailThumbnailImage(mail, completion: { (error, result) -> Void in
-            if let thumbnail = result as? UIImage {
-                mail.imageThumb = thumbnail
-                MailService.addImageToCoreDataMail(mail.id, image: thumbnail, key: "imageThumb")
-                self.downloadMailImage(mail)
-            }
-        })
-    }
-    
     func downloadMailImage(mail: Mail) {
         MailService.getMailImage(mail, completion: { (error, result) -> Void in
             if let image = result as? UIImage {
@@ -142,7 +126,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         let contactsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"
         PersonService.getPeopleCollection(contactsURL, headers: nil, completion: { (error, result) -> Void in
             if error != nil {
-                println(error)
+                print(error)
             }
             else if let peopleArray = result as? Array<Person> {
                 penpals = peopleArray
@@ -163,11 +147,11 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         
         MailService.getMailCollection(myMailBoxURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {
-                println(error)
+                print(error)
             }
             else if let mailArray = result as? Array<Mail> {
                 mailbox = MailService.updateMailCollectionFromNewMail(mailbox, newCollection: mailArray)
-                mailbox = mailbox.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
+                mailbox = mailbox.sort { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
                 
                 MailService.appendMailArrayToCoreData(mailArray)
                 
@@ -183,8 +167,8 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let mail = mailbox[indexPath.row]
-        var storyboard = UIStoryboard(name: "mail", bundle: nil)
-        var mailViewController = storyboard.instantiateInitialViewController() as! MailViewController
+        let storyboard = UIStoryboard(name: "mail", bundle: nil)
+        let mailViewController = storyboard.instantiateInitialViewController() as! MailViewController
         mailViewController.mail = mail
         mailViewController.runOnClose = {self.refreshMailbox()}
         

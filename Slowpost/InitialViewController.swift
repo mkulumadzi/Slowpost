@@ -10,13 +10,14 @@ import UIKit
 import CoreData
 import AddressBook
 import JWTDecode
+import SwiftyJSON
 
 class InitialViewController: UIViewController {
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("Initial view loaded at \(NSDate())")
+        print("Initial view loaded at \(NSDate())")
         Flurry.logEvent("Initial_View_Loaded")
     }
     
@@ -35,12 +36,17 @@ class InitialViewController: UIViewController {
     }
     
     func checkLogin() {
-        println("Checking login at \(NSDate())")
+        print("Checking login at \(NSDate())")
         if loggedInUser == nil || userToken == nil {
             if MyKeychainWrapper.myObjectForKey(kSecAttrService) as? String == "postoffice" {
                 if let token = MyKeychainWrapper.myObjectForKey("v_Data") as? String {
-                    if JWTDecode.expired(jwt: token) == false {
-                        self.setLoggedInUserFromToken(token)
+                    do {
+                        let jwt = try decode(token)
+                        if jwt.expired == false {
+                            self.setLoggedInUserFromToken(token)
+                        }
+                    } catch _ {
+                        print("Could not decode token")
                     }
                 }
             }
@@ -54,10 +60,20 @@ class InitialViewController: UIViewController {
     }
     
     func setLoggedInUserFromToken(token: String) {
-        println("Found token, trying to set logged in user at \(NSDate())")
+        print("Found token, trying to set logged in user at \(NSDate())")
+        print("The token is \(token)")
         
         userToken = token
-        let payload = JWTDecode.payload(jwt: token)
+        var payload:[String : AnyObject]!
+        do {
+            let jwt = try decode(token)
+            payload = jwt.body
+        } catch _ {
+            print("Could not decode token")
+        }
+        
+        print(payload)
+    
         if let userId = payload!["id"] as? String {
             
             // Trying to get LoggedInUser from core data to avoid downloading from server
@@ -70,8 +86,10 @@ class InitialViewController: UIViewController {
                 headers = ["IF_MODIFIED_SINCE": loggedInUser.updatedAtString]
             }
             
-            println("Getting person record from token id at \(NSDate())")
+            print("Getting person record from token id at \(NSDate())")
+            print(headers)
             PersonService.getPerson(userId, headers: headers, completion: { (error, result) -> Void in
+                print("The result is \(result)")
                 if let person = result as? Person {
                     Flurry.logEvent("User_Logged_In_From_Session")
                     loggedInUser = person
@@ -100,13 +118,13 @@ class InitialViewController: UIViewController {
     
     func goToLoginScreen() {
         Flurry.logEvent("Sending_User_To_Login_Screen")
-        var storyboard = UIStoryboard(name: "login", bundle: nil)
-        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+        let storyboard = UIStoryboard(name: "login", bundle: nil)
+        let controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") 
         self.presentViewController(controller, animated: true, completion: nil)
     }
     
     func beginLoadingInitialData() {
-        println("Beginning to load initial data at \(NSDate())")
+        print("Beginning to load initial data at \(NSDate())")
         Flurry.logEvent("Initial_Data_Loading_Began", timed: true)
         
         AddressBookService.checkAuthorizationStatus(self)
@@ -122,7 +140,7 @@ class InitialViewController: UIViewController {
     }
     
     func getConversationMetadata() {
-        println("Getting the conversation metadata at \(NSDate())")
+        print("Getting the conversation metadata at \(NSDate())")
         let coreDataConversationMetadata = ConversationMetadataService.populateConversationMetadataArrayFromCoreData()
         if coreDataConversationMetadata != nil {
             conversationMetadataArray = coreDataConversationMetadata!
@@ -142,7 +160,7 @@ class InitialViewController: UIViewController {
 
     func getMailbox() {
         
-        println("Getting mailbox at \(NSDate())")
+        print("Getting mailbox at \(NSDate())")
         let predicate = NSPredicate(format: "to == %@", loggedInUser.username)
         
         let coreDataMailbox = MailService.populateMailArrayFromCoreData(predicate)
@@ -164,7 +182,7 @@ class InitialViewController: UIViewController {
     }
     
     func getOutbox() {
-        println("Getting outbox at \(NSDate())")
+        print("Getting outbox at \(NSDate())")
         
         let predicate = NSPredicate(format: "from == %@", loggedInUser.username)
         
@@ -187,13 +205,13 @@ class InitialViewController: UIViewController {
     }
     
     func getRegisteredContactsIfAuthorized() {
-        println("Getting registered contacts at \(NSDate())")
+        print("Getting registered contacts at \(NSDate())")
         
         let authorizationStatus = ABAddressBookGetAuthorizationStatus()
         switch authorizationStatus {
         case .Authorized:
             
-            var contacts:[NSDictionary] = AddressBookService.getContactsFromAddresssBook(addressBook)
+            let contacts:[NSDictionary] = AddressBookService.getContactsFromAddresssBook(addressBook)
             
             PersonService.bulkPersonSearch(contacts, completion: { (error, result) -> Void in
                 if let peopleArray = result as? Array<Person> {
@@ -202,7 +220,7 @@ class InitialViewController: UIViewController {
             })
             
         default:
-            println("Not authorized")
+            print("Not authorized")
         }
     }
     
@@ -213,8 +231,8 @@ class InitialViewController: UIViewController {
         }
         
         Flurry.endTimedEvent("Initial_Data_Loading_Began", withParameters: nil)
-        var storyboard = UIStoryboard(name: "home", bundle: nil)
-        var controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") as! UIViewController
+        let storyboard = UIStoryboard(name: "home", bundle: nil)
+        let controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") 
         self.presentViewController(controller, animated: false, completion: nil)
     }
     
@@ -224,7 +242,7 @@ class InitialViewController: UIViewController {
         
         RestService.postRequest(updatePersonURL, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
             if error != nil {
-                println(error)
+                print(error)
             }
         })
     }

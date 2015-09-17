@@ -21,31 +21,68 @@ class LoginService {
         MyKeychainWrapper.writeToKeychain()
     }
     
-    class func logIn(parameters: [String: String], completion: (error: NSError?, result: AnyObject?) -> Void) {
+    class func logIn(parameters: [String: String], completion: (error: ErrorType?, result: AnyObject?) -> Void) {
+        
+        print(parameters)
         
         Alamofire.request(.POST, "\(PostOfficeURL)login", parameters: parameters, encoding: .JSON)
-            .response { (request, response, data, error) in
-                if let anError = error {
-                    completion(error: error, result: nil)
+            .responseJSON { (_, response, result) in
+                print(response)
+                print(result)
+            switch result {
+            case .Success (let result):
+                if response!.statusCode != 200 {
+                    completion(error: nil, result: response!.statusCode)
                 }
-                else if let response: AnyObject = response {
-                    if response.statusCode == 401 {
-                        completion(error: nil, result: response.statusCode)
-                    }
-                }
-            }
-            .responseJSON { (_, _, JSON, error) in
-                if let response = JSON as? NSDictionary {
-                    userToken = response.valueForKey("access_token") as! String
+                else {
+                    print("\(result)")
+                    let json = JSON(result)
+                    print(json)
+                    userToken = json["access_token"].stringValue
                     self.saveLoginToUserDefaults(userToken)
-                    var person:Person! = PersonService.createPersonFromJson(response.valueForKey("person") as! NSDictionary)
+                    let person:Person! = PersonService.createPersonFromJson(json["person"])
                     loggedInUser = person
                     PersonService.updateLoggedInUserInCoreData(person)
                     completion(error: nil, result: "Success")
                 }
+            case .Failure(_, let error):
+                print("Request failed with error: \(error)")
+            }
         }
         
     }
+    
+//    class func logIn(parameters: [String: String], completion: (error: ErrorType?, result: AnyObject?) -> Void) {
+//        
+//        print(parameters)
+//        
+//        Alamofire.request(.POST, "\(PostOfficeURL)login", parameters: parameters, encoding: .JSON)
+//            .response { (request, response, data, error) in
+//                if error != nil {
+//                    completion(error: error, result: nil)
+//                }
+//                else if let response: AnyObject = response {
+//                    if response.statusCode == 401 {
+//                        completion(error: nil, result: response.statusCode)
+//                    }
+//                }
+//            }
+//            .responseJSON { (_, response, result) in
+//                print(response)
+//                print(result)
+//                
+//                
+//                let json = JSON(response!)
+//                print(json)
+//                userToken = json["access_token"].stringValue
+//                self.saveLoginToUserDefaults(userToken)
+//                let person:Person! = PersonService.createPersonFromJson(json["person"])
+//                loggedInUser = person
+//                PersonService.updateLoggedInUserInCoreData(person)
+//                completion(error: nil, result: "Success")
+//        }
+//        
+//    }
     
     class func logOut() {
         Flurry.logEvent("Logged_Out")
@@ -65,9 +102,9 @@ class LoginService {
         
     }
     
-    class func checkFieldAvailability(params: [String: String], completion: (error: NSError?, result: AnyObject?) -> Void) {
-        var key:String = Array(params.keys)[0]
-        var value:String = params[key]!
+    class func checkFieldAvailability(params: [String: String], completion: (error: ErrorType?, result: JSON?) -> Void) {
+        let key:String = Array(params.keys)[0]
+        let value:String = params[key]!
         
         let availableURL = "\(PostOfficeURL)/available?\(key)=\(value)"
         let headers = ["Authorization": "Bearer \(appToken)"]
@@ -76,11 +113,9 @@ class LoginService {
             if error != nil {
                 completion(error: error, result: nil)
             }
-            else if let jsonResult = result as? NSDictionary {
-                completion(error: nil, result: jsonResult)
-            }
             else {
-                println("Unexpected JSON result getting \(availableURL)")
+                let json = JSON(result!)
+                completion(error: nil, result: json)
             }
         })
     }

@@ -4,9 +4,9 @@ use_frameworks!
 
 target 'Slowpost' do
   pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :branch => 'master'
-  pod 'SwiftyJSON', '>= 2.2'
+  pod 'SwiftyJSON', '>= 2.2.1'
   pod 'Regex', '~> 0.2.1'
-  pod 'JWTDecode', '~> 0.3'
+  pod 'JWTDecode', '~> 1.0'
 end
 
 target 'SlowpostTests' do

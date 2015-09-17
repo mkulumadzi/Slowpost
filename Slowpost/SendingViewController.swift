@@ -57,7 +57,7 @@ class SendingViewController: UIViewController {
                 self.sendMailToPostoffice(imageUid)
             }
             else {
-                println("Unexpected result")
+                print("Unexpected result")
             }
         })
     }
@@ -68,12 +68,12 @@ class SendingViewController: UIViewController {
         var parameters:[String: String] = ["to": "\(username)", "content": "\(content)", "image_uid": "\(imageUid)"]
         
         if scheduledToArrive != nil {
-            var dateFormatter = NSDateFormatter()
+            let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
             dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
             dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-            var scheduledToArriveString = dateFormatter.stringFromDate(scheduledToArrive!)
-            println(scheduledToArriveString)
+            let scheduledToArriveString = dateFormatter.stringFromDate(scheduledToArrive!)
+            print(scheduledToArriveString)
             parameters["scheduled_to_arrive"] = scheduledToArriveString
         }
         
@@ -93,7 +93,7 @@ class SendingViewController: UIViewController {
     }
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
-        var lastRequestEndpoint:String? = RestService.endpointForLastPostRequest()
+        let lastRequestEndpoint:String? = RestService.endpointForLastPostRequest()
         if lastRequestEndpoint != nil {
             if lastRequestEndpoint! == "send" || lastRequestEndpoint! == "upload" {
                 lastPostRequest.cancel()

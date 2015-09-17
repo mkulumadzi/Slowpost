@@ -83,7 +83,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         self.composeText.scrollIndicatorInsets = UIEdgeInsetsZero
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
     }

@@ -41,16 +41,16 @@ class Person: NSObject {
     }
     
     func initials() -> String {
-        let splitName = split(name) {$0 == " "}
+        let splitName = name.characters.split {$0 == " "}.map { String($0) }
         if splitName.count > 1 {
-            let firstNameCharacters = Array(splitName[0])
+            let firstNameCharacters = Array(splitName[0].characters)
             let firstInitial = firstNameCharacters[0]
-            let lastNameCharacters = Array(splitName[splitName.count - 1])
+            let lastNameCharacters = Array(splitName[splitName.count - 1].characters)
             let lastInitial = lastNameCharacters[0]
             return "\(firstInitial)\(lastInitial)"
         }
         else {
-            let nameCharacters = Array(name)
+            let nameCharacters = Array(name.characters)
             if nameCharacters.count > 1 {
                 return "\(nameCharacters[0])\(nameCharacters[1])"
             }

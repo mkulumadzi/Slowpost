@@ -13,20 +13,20 @@ import CoreData
 
 class ConversationMetadataService {
     
-    class func createConversationMetadataFromJson(jsonEntry: NSDictionary) -> ConversationMetadata {
+    class func createConversationMetadataFromJson(json: JSON) -> ConversationMetadata {
         
-        let username = jsonEntry.objectForKey("username") as! String
-        let name = jsonEntry.objectForKey("name") as! String
-        let numUnread = jsonEntry.objectForKey("num_unread") as! Int
-        let numUndelivered = jsonEntry.objectForKey("num_undelivered") as! Int
+        let username = json["username"].stringValue
+        let name = json["name"].stringValue
+        let numUnread = json["num_unread"].intValue
+        let numUndelivered = json["num_undelivered"].intValue
         
-        let updatedAtString = jsonEntry.objectForKey("updated_at") as! String
+        let updatedAtString = json["updated_at"].stringValue
         let updatedAt = NSDate(dateString: updatedAtString)
         
-        let mostRecentStatus = jsonEntry.objectForKey("most_recent_status") as! String
-        let mostRecentSender = jsonEntry.objectForKey("most_recent_sender") as! String
+        let mostRecentStatus = json["most_recent_status"].stringValue
+        let mostRecentSender = json["most_recent_sender"].stringValue
         
-        var conversationMetadata = ConversationMetadata(username: username, name: name, numUnread: numUnread, numUndelivered: numUndelivered, updatedAt: updatedAt, updatedAtString: updatedAtString, mostRecentStatus: mostRecentStatus, mostRecentSender: mostRecentSender)
+        let conversationMetadata = ConversationMetadata(username: username, name: name, numUnread: numUnread, numUndelivered: numUndelivered, updatedAt: updatedAt, updatedAtString: updatedAtString, mostRecentStatus: mostRecentStatus, mostRecentSender: mostRecentSender)
         
         return conversationMetadata
     }
@@ -54,7 +54,7 @@ class ConversationMetadataService {
         let mostRecentStatus = object.valueForKey("mostRecentStatus") as! String
         let mostRecentSender = object.valueForKey("mostRecentSender") as! String
     
-        var newConversationMetadata = ConversationMetadata(username: username, name: name, numUnread: numUnread, numUndelivered: numUndelivered, updatedAt: updatedAt!, updatedAtString: updatedAtString, mostRecentStatus: mostRecentStatus, mostRecentSender: mostRecentSender)
+        let newConversationMetadata = ConversationMetadata(username: username, name: name, numUnread: numUnread, numUndelivered: numUndelivered, updatedAt: updatedAt!, updatedAtString: updatedAtString, mostRecentStatus: mostRecentStatus, mostRecentSender: mostRecentSender)
         
         return newConversationMetadata
     }
@@ -85,29 +85,34 @@ class ConversationMetadataService {
         object.setValue(conversationMetadata.mostRecentSender, forKey: "mostRecentSender")
         
         var error: NSError?
-        if !managedContext.save(&error) {
-            println("Error saving conversation metadata \(error), \(error?.userInfo)")
+        do {
+            try managedContext.save()
+        } catch let error1 as NSError {
+            error = error1
+            print("Error saving conversation metadata \(error), \(error?.userInfo)")
         }
         
     }
     
-    class func getConversationMetadataCollection(headers: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
+    class func getConversationMetadataCollection(headers: [String: String]?, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
         let conversationMetadataURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/conversations"
         
         RestService.getRequest(conversationMetadataURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {
-                println(error)
+                print(error)
                 completion(error: error, result: nil)
             }
-            else if let jsonResult = result as? Array<NSDictionary> {
-                var conversationMetadataArray = [ConversationMetadata]()
-                for jsonEntry in jsonResult {
-                    conversationMetadataArray.append(self.createConversationMetadataFromJson(jsonEntry))
-                }
-                completion(error: nil, result: conversationMetadataArray)
-            }
             else {
-                println("Unexpected JSON result while getting conversation metadata")
+                if let jsonArray = result as? [AnyObject] {
+                    for jsonEntry in jsonArray {
+                        let json = JSON(jsonEntry)
+                        conversationMetadataArray.append(self.createConversationMetadataFromJson(json))
+                    }
+                    completion(error: nil, result: conversationMetadataArray)
+                }
+                else {
+                    completion(error: nil, result: "Unexpected result when getting people collection")
+                }
             }
         })
     }
@@ -120,8 +125,8 @@ class ConversationMetadataService {
         //Update existing item
         for conversationMetadata in newCollection {
             if updatedCollection.filter({$0.username == conversationMetadata.username}).count > 0 {
-                var existingMetadata:ConversationMetadata = updatedCollection.filter({$0.username == conversationMetadata.username}).first!
-                var existingIndex:Int = find(updatedCollection, existingMetadata)!
+                let existingMetadata:ConversationMetadata = updatedCollection.filter({$0.username == conversationMetadata.username}).first!
+                let existingIndex:Int = updatedCollection.indexOf(existingMetadata)!
                 updatedCollection[existingIndex] = conversationMetadata
             }
                 // Append new item
@@ -137,7 +142,7 @@ class ConversationMetadataService {
     class func updateConversationMetadataAndAppendArrayToCache(newArray: [ConversationMetadata]) {
         
         conversationMetadataArray = self.updateConversationMetadataCollectionFromArray(conversationMetadataArray, newCollection: newArray)
-        conversationMetadataArray = conversationMetadataArray.sorted { $0.updatedAt.compare($1.updatedAt) == NSComparisonResult.OrderedDescending }
+        conversationMetadataArray = conversationMetadataArray.sort { $0.updatedAt.compare($1.updatedAt) == NSComparisonResult.OrderedDescending }
         self.appendConversationMetadataArrayToCoreData(newArray)
     }
     

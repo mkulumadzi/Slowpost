@@ -57,8 +57,8 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
         verticalSpaceToNext.constant = 10
         buttonHeight.constant = 30
         
-        usernameTextField.font = usernameTextField.font.fontWithSize(15.0)
-        passwordTextField.font = passwordTextField.font.fontWithSize(15.0)
+        usernameTextField.font = usernameTextField.font!.fontWithSize(15.0)
+        passwordTextField.font = passwordTextField.font!.fontWithSize(15.0)
         
     }
     
@@ -71,7 +71,7 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
     }
@@ -101,18 +101,16 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
         
         LoginService.checkFieldAvailability(params, completion: { (error, result) -> Void in
             if error != nil {
-                println(error)
+                print(error)
             }
-            else if let availability = result!.valueForKey("username") as? String {
+            else {
+                let availability = result!["username"].stringValue
                 if availability == "available" {
                     self.performSegueWithIdentifier("enterPhone", sender: nil)
                 }
                 else {
                     self.warningLabel.show("An account with that username already exists.")
                 }
-            }
-            else {
-                println("Unexpected result when checking field availability")
             }
         })
     }

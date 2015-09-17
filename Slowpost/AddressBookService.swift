@@ -11,8 +11,6 @@ import Foundation
 import AddressBook
 import SwiftyJSON
 
-//var addressBook:ABAddressBook!
-
 class AddressBookService {
     
     class func checkAuthorizationStatus(sender: UIViewController) {
@@ -20,7 +18,7 @@ class AddressBookService {
         let authorizationStatus = ABAddressBookGetAuthorizationStatus()
         switch authorizationStatus {
         case .Denied, .Restricted:
-            println("Unauthorized")
+            print("Unauthorized")
         case .Authorized:
             addressBook =  ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
         case .NotDetermined:
@@ -29,8 +27,6 @@ class AddressBookService {
     }
     
     func promptForAddressBookAccess(sender: UIViewController) {
-        
-        var err: Unmanaged<CFError>? = nil
         
         ABAddressBookRequestAccessWithCompletion(addressBook) {
             (granted: Bool, error: CFError!) in
@@ -45,7 +41,7 @@ class AddressBookService {
     }
     
     func accessGranted() {
-        println("Access granted!")
+        print("Access granted!")
         addressBook =  ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
     }
     
@@ -80,7 +76,7 @@ class AddressBookService {
     
     func getPhoneNumbersFromContact(person: ABRecord) -> [NSString] {
         var phoneNumbers = [NSString]()
-        var phones : ABMultiValueRef = ABRecordCopyValue(person, kABPersonPhoneProperty).takeUnretainedValue() as ABMultiValueRef
+        let phones : ABMultiValueRef = ABRecordCopyValue(person, kABPersonPhoneProperty).takeUnretainedValue() as ABMultiValueRef
         
         for(var numberIndex : CFIndex = 0; numberIndex < ABMultiValueGetCount(phones); numberIndex++) {
             let phoneUnmaganed = ABMultiValueCopyValueAtIndex(phones, numberIndex)
@@ -94,7 +90,7 @@ class AddressBookService {
     
     func getEmailsFromContact(person: ABRecord) -> [NSString] {
         var emails = [NSString]()
-        var emailRecords : ABMultiValueRef = ABRecordCopyValue(person, kABPersonEmailProperty).takeUnretainedValue() as ABMultiValueRef
+        let emailRecords : ABMultiValueRef = ABRecordCopyValue(person, kABPersonEmailProperty).takeUnretainedValue() as ABMultiValueRef
         
         for(var numberIndex : CFIndex = 0; numberIndex < ABMultiValueGetCount(emailRecords); numberIndex++) {
             let emailUnmaganed = ABMultiValueCopyValueAtIndex(emailRecords, numberIndex)
@@ -109,11 +105,11 @@ class AddressBookService {
     
     func createDictionaryWithContactInfo(person: ABRecord) -> NSDictionary {
         
-        var name = getNameFromContact(person)
-        var phoneNumbers = getPhoneNumbersFromContact(person)
-        var emails = getEmailsFromContact(person)
+        let name = getNameFromContact(person)
+        let phoneNumbers = getPhoneNumbersFromContact(person)
+        let emails = getEmailsFromContact(person)
         
-        var contactDict:NSDictionary = [
+        let contactDict:NSDictionary = [
             "name": name,
             "phoneNumbers": phoneNumbers,
             "emails": emails
@@ -123,14 +119,14 @@ class AddressBookService {
     }
     
     func getContacts(addressBook: ABAddressBook) -> [ABRecord] {
-        var addressBookContacts = ABAddressBookCopyArrayOfAllPeople(addressBook).takeRetainedValue() as NSArray as [ABRecord]
+        let addressBookContacts = ABAddressBookCopyArrayOfAllPeople(addressBook).takeRetainedValue() as NSArray as [ABRecord]
         return addressBookContacts
     }
     
     class func getContactsFromAddresssBook(addressBook: ABAddressBook) -> [NSDictionary] {
         let addressBookService:AddressBookService = AddressBookService.init()
         
-        var addressBookContacts = addressBookService.getContacts(addressBook)
+        let addressBookContacts = addressBookService.getContacts(addressBook)
         var contacts = [NSDictionary]()
         
         for person in addressBookContacts {

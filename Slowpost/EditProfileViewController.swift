@@ -43,7 +43,7 @@ class EditProfileViewController: UITableViewController {
         cityField.addBottomLayer()
         stateField.addBottomLayer()
         
-        var footerView = UIView(frame: CGRectZero)
+        let footerView = UIView(frame: CGRectZero)
         profileTable.tableFooterView = footerView
         profileTable.tableFooterView?.hidden = true
         profileTable.backgroundColor = UIColor.whiteColor()
@@ -67,13 +67,13 @@ class EditProfileViewController: UITableViewController {
         
         self.updatePerson( { (error, result) -> Void in
             if error != nil {
-                println(error)
+                print(error)
             }
             else if result as! String == "Update succeeded" {
                 self.updateLoggedInUser()
             }
             else {
-                println("Update failed")
+                print("Update failed")
             }
         })
     }
@@ -85,7 +85,7 @@ class EditProfileViewController: UITableViewController {
         
         RestService.postRequest(updatePersonURL, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
             if error != nil {
-                println(error)
+                print(error)
             }
             else if let response = result as? [AnyObject] {
                 if response[0] as? Int == 204 {
@@ -98,14 +98,14 @@ class EditProfileViewController: UITableViewController {
     func updateLoggedInUser() {
         PersonService.getPerson(loggedInUser.id, headers: nil, completion: { (error, result) -> Void in
             if error != nil {
-                println(error)
+                print(error)
             }
             else if let person = result as? Person {
                 loggedInUser = person
                 self.performSegueWithIdentifier("updateSucceeded", sender: nil)
             }
             else {
-                println("Unexpected result while updating logged in user.")
+                print("Unexpected result while updating logged in user.")
             }
         })
     }
@@ -114,7 +114,7 @@ class EditProfileViewController: UITableViewController {
         saveButton.enabled = true
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
     }
@@ -128,7 +128,7 @@ class EditProfileViewController: UITableViewController {
             
             // Delay the dismissal by 5 seconds
             let delay = 5.0 * Double(NSEC_PER_SEC)
-            var time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
             dispatch_after(time, dispatch_get_main_queue(), {
                 conversationListViewController!.messageLabel.hide()
             })

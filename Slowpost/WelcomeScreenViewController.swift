@@ -31,10 +31,10 @@ class WelcomeScreenViewController: UIViewController, UIPageViewControllerDataSou
         
         Flurry.logEvent("Welcome_Screen_Displayed")
         
-        pageOne = self.storyboard!.instantiateViewControllerWithIdentifier("pageOne") as! UIViewController
-        pageTwo = self.storyboard!.instantiateViewControllerWithIdentifier("pageTwo") as! UIViewController
-        pageThree = self.storyboard!.instantiateViewControllerWithIdentifier("pageThree") as! UIViewController
-        pageFour = self.storyboard!.instantiateViewControllerWithIdentifier("pageFour") as! UIViewController
+        pageOne = self.storyboard!.instantiateViewControllerWithIdentifier("pageOne") 
+        pageTwo = self.storyboard!.instantiateViewControllerWithIdentifier("pageTwo") 
+        pageThree = self.storyboard!.instantiateViewControllerWithIdentifier("pageThree") 
+        pageFour = self.storyboard!.instantiateViewControllerWithIdentifier("pageFour") 
 
         createPageViewController()
         setupPageControl()
@@ -53,7 +53,7 @@ class WelcomeScreenViewController: UIViewController, UIPageViewControllerDataSou
         pageController.delegate = self
         
         let startingViewControllers: NSArray = [pageOne]
-        pageController.setViewControllers(startingViewControllers as! [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
+        pageController.setViewControllers(startingViewControllers as? [UIViewController], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
         
         pageViewController = pageController
         addChildViewController(pageViewController!)
@@ -71,7 +71,7 @@ class WelcomeScreenViewController: UIViewController, UIPageViewControllerDataSou
     
     // MARK: - UIPageViewControllerDataSource
     
-    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
+    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         Flurry.logEvent("Page_View_Finished_Animating")
     }
     

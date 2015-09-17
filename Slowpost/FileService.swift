@@ -15,12 +15,12 @@ let defaultImageSize:CGSize = CGSize(width: 768.0, height: 577.0)
 
 class FileService {
 
-    class func uploadImage(image:UIImage, filename:String, completion: (error: NSError?, result: AnyObject?) -> Void) {
+    class func uploadImage(image:UIImage, filename:String, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
         let uploadURL = "\(PostOfficeURL)upload"
         
         self.resizeImage(image, completion: { (error, result) -> Void in
             if error != nil {
-                println(error)
+                print(error)
             }
             else if let contextImage = result as? UIImage {
                 
@@ -49,19 +49,19 @@ class FileService {
     }
     
     class func encodeImageAsBase64String(image: UIImage) -> String {
-        var imageData = UIImageJPEGRepresentation(image, 0.8)
-        let base64String = imageData.base64EncodedStringWithOptions(.allZeros)
+        let imageData = UIImageJPEGRepresentation(image, 0.8)
+        let base64String = imageData!.base64EncodedStringWithOptions([])
         return base64String
     }
     
-    class func downloadImage(url: String, completion: (error: NSError?, result: AnyObject?) -> Void) {
+    class func downloadImage(url: String, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
         
         let headers:[String: String] = ["Authorization": "Bearer \(userToken)"]
 
-        println("Getting image at \(url)")
+        print("Getting image at \(url)")
         Alamofire.request(.GET, url, headers: headers)
             .response { (request, response, data, error) in
-                if let anError = error {
+                if error != nil {
                     completion(error: error, result: nil)
                 }
                 else if let response: AnyObject = response {
@@ -80,7 +80,7 @@ class FileService {
     }
     
     class func postImageDownloadNotification() {
-        var notification = NSNotification(name: "imageDownloaded:", object: nil)
+        let notification = NSNotification(name: "imageDownloaded:", object: nil)
         NSNotificationCenter.defaultCenter().postNotification(notification)
     }
     

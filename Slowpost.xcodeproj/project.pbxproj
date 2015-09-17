@@ -133,6 +133,7 @@
 
 /* Begin PBXFileReference section */
 		32B793E9700DC223A5E8B9A6 /* Pods-Slowpost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slowpost.release.xcconfig"; path = "Pods/Target Support Files/Pods-Slowpost/Pods-Slowpost.release.xcconfig"; sourceTree = "<group>"; };
+		4D0C5C50CA6F55792B9B5E91 /* Pods-Slowpost.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slowpost.staging.xcconfig"; path = "Pods/Target Support Files/Pods-Slowpost/Pods-Slowpost.staging.xcconfig"; sourceTree = "<group>"; };
 		5AB7FA0FAA7496DEC4F3B5C4 /* Pods_Slowpost.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Slowpost.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A414996B57484FEE228F46E1 /* Pods-Slowpost.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slowpost.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Slowpost/Pods-Slowpost.debug.xcconfig"; sourceTree = "<group>"; };
 		CC23DE291AE54C0300AFEDE4 /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = login.storyboard; sourceTree = "<group>"; };
@@ -261,7 +262,6 @@
 		D2F5CAC11B8F91D900551435 /* Default Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default Card.png"; sourceTree = "<group>"; };
 		D2F5CAC31B8FAA1A00551435 /* SlowpostModel 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SlowpostModel 7.xcdatamodel"; sourceTree = "<group>"; };
 		D2FC675D1B7EBD0700F475CB /* Slowpost-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Slowpost-Bridging-Header.h"; sourceTree = "<group>"; };
-		D58257AF9C03394AF69653DE /* Pods-Slowpost.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slowpost.staging.xcconfig"; path = "Pods/Target Support Files/Pods-Slowpost/Pods-Slowpost.staging.xcconfig"; sourceTree = "<group>"; };
 		FEA5B7AEBEF825400B64DF28 /* Pods-Slowpost.testing.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Slowpost.testing.xcconfig"; path = "Pods/Target Support Files/Pods-Slowpost/Pods-Slowpost.testing.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -561,9 +561,9 @@
 			isa = PBXGroup;
 			children = (
 				A414996B57484FEE228F46E1 /* Pods-Slowpost.debug.xcconfig */,
-				D58257AF9C03394AF69653DE /* Pods-Slowpost.staging.xcconfig */,
 				FEA5B7AEBEF825400B64DF28 /* Pods-Slowpost.testing.xcconfig */,
 				32B793E9700DC223A5E8B9A6 /* Pods-Slowpost.release.xcconfig */,
+				4D0C5C50CA6F55792B9B5E91 /* Pods-Slowpost.staging.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -625,7 +625,9 @@
 		CCCB1A451AB0D48A0067F100 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Evan Waters";
 				TargetAttributes = {
 					CCCB1A4C1AB0D48A0067F100 = {
@@ -900,6 +902,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -975,11 +978,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Slowpost",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "bigedubs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Slowpost;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Slowpost-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -998,10 +1001,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Slowpost",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "bigedubs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Slowpost;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Slowpost-Bridging-Header.h";
-				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -1020,6 +1024,7 @@
 				);
 				INFOPLIST_FILE = SlowpostTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "bigedubs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SlowpostTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slowpost.app/Slowpost";
 			};
@@ -1035,12 +1040,13 @@
 				);
 				INFOPLIST_FILE = SlowpostTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "bigedubs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SlowpostTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slowpost.app/Slowpost";
 			};
 			name = Release;
 		};
-		D2C071021B3A3E68000154E8 /* Staging */ = {
+		D20ADC1F1BAB699D00BE83F2 /* Staging */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1059,15 +1065,9 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1076,17 +1076,16 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = Slowpost/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Slowpost-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Staging;
 		};
-		D2C071031B3A3E68000154E8 /* Staging */ = {
+		D20ADC201BAB699D00BE83F2 /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D58257AF9C03394AF69653DE /* Pods-Slowpost.staging.xcconfig */;
+			baseConfigurationReference = 4D0C5C50CA6F55792B9B5E91 /* Pods-Slowpost.staging.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1098,16 +1097,16 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Slowpost",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "bigedubs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Slowpost;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Slowpost-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Staging;
 		};
-		D2C071041B3A3E68000154E8 /* Staging */ = {
+		D20ADC211BAB699D00BE83F2 /* Staging */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1115,12 +1114,9 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = SlowpostTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "bigedubs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SlowpostTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slowpost.app/Slowpost";
 			};
@@ -1184,11 +1180,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Slowpost",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "bigedubs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = Slowpost;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Slowpost-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_WHOLE_MODULE_OPTIMIZATION = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Testing;
@@ -1207,6 +1203,7 @@
 				);
 				INFOPLIST_FILE = SlowpostTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "bigedubs.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SlowpostTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slowpost.app/Slowpost";
 			};
@@ -1219,9 +1216,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CCCB1A6A1AB0D48A0067F100 /* Debug */,
-				D2C071021B3A3E68000154E8 /* Staging */,
 				D2CC61BC1B5046BB00616EE4 /* Testing */,
 				CCCB1A6B1AB0D48A0067F100 /* Release */,
+				D20ADC1F1BAB699D00BE83F2 /* Staging */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1230,9 +1227,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CCCB1A6D1AB0D48A0067F100 /* Debug */,
-				D2C071031B3A3E68000154E8 /* Staging */,
 				D2CC61BD1B5046BB00616EE4 /* Testing */,
 				CCCB1A6E1AB0D48A0067F100 /* Release */,
+				D20ADC201BAB699D00BE83F2 /* Staging */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1241,9 +1238,9 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CCCB1A701AB0D48A0067F100 /* Debug */,
-				D2C071041B3A3E68000154E8 /* Staging */,
 				D2CC61BE1B5046BB00616EE4 /* Testing */,
 				CCCB1A711AB0D48A0067F100 /* Release */,
+				D20ADC211BAB699D00BE83F2 /* Staging */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

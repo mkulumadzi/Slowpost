@@ -104,7 +104,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
                 
             imagePicker.delegate = self
             imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-            imagePicker.mediaTypes = [kUTTypeImage as NSString]
+            imagePicker.mediaTypes = [kUTTypeImage as String]
             imagePicker.allowsEditing = false
             
             imagePicker.navigationBar.tintColor = UIColor.whiteColor()
@@ -124,7 +124,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
 
                 imagePicker.delegate = self
                 imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-                imagePicker.mediaTypes = [kUTTypeImage as NSString]
+                imagePicker.mediaTypes = [kUTTypeImage as String]
                 imagePicker.allowsEditing = false
                 
                 self.presentViewController(imagePicker, animated: true, completion: nil)
@@ -132,13 +132,13 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         }
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
         let mediaType = info[UIImagePickerControllerMediaType] as! String
         
         self.dismissViewControllerAnimated(true, completion: nil)
         
-        if mediaType == (kUTTypeImage as! String) {
+        if mediaType == (kUTTypeImage as String) {
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
             
             Flurry.logEvent("Got_Image_From_Library_Or_Camera")
@@ -146,7 +146,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
             
             if (newMedia == true) {
                 UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil)
-            } else if mediaType == (kUTTypeMovie as! String) {
+            } else if mediaType == (kUTTypeMovie as String) {
                 // Code to support video here
             }
             
@@ -165,9 +165,9 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     func cropImage() -> UIImage {
-        var scale = 1 / imageScrollView.zoomScale
+        let scale = 1 / imageScrollView.zoomScale
         
-        var contextImage:UIImage = UIImage(CGImage: imageSelected.image!.CGImage, scale: 1, orientation: imageSelected.image!.imageOrientation)!
+        let contextImage:UIImage = UIImage(CGImage: imageSelected.image!.CGImage!, scale: 1, orientation: imageSelected.image!.imageOrientation)
         
         var visibleRect:CGRect!
         let xOffset = imageScrollView.contentOffset.x * scale
@@ -190,9 +190,9 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
             visibleRect = CGRectMake(imageScrollView.contentOffset.x * scale, imageScrollView.contentOffset.y*scale, imageScrollView.bounds.size.width*scale, imageScrollView.bounds.size.height*scale)
         }
         
-        var ref:CGImageRef = CGImageCreateWithImageInRect(contextImage.CGImage, visibleRect)
+        let ref:CGImageRef = CGImageCreateWithImageInRect(contextImage.CGImage, visibleRect)!
         
-        var croppedImage:UIImage = UIImage(CGImage: ref, scale: scale, orientation: contextImage.imageOrientation)!
+        let croppedImage:UIImage = UIImage(CGImage: ref, scale: scale, orientation: contextImage.imageOrientation)
         
         return croppedImage
     }

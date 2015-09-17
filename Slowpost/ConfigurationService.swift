@@ -27,14 +27,14 @@ class ConfigurationService {
     
     class func getPostOfficeURL() -> String {
         var myDict: NSDictionary?
-        var currentConfiguration = getCurrentConfiguration()
+        let currentConfiguration = getCurrentConfiguration()
         var postOfficeURL = ""
         
         if let path = NSBundle.mainBundle().pathForResource("Configurations", ofType: "plist") {
             myDict = NSDictionary(contentsOfFile: path)
         }
         if let dict = myDict {
-            var configDict: NSDictionary = (dict[currentConfiguration] as? NSDictionary)!
+            let configDict: NSDictionary = (dict[currentConfiguration] as? NSDictionary)!
             postOfficeURL = configDict["PostOfficeURL"] as! String
         }
         

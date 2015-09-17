@@ -12,67 +12,62 @@ import SwiftyJSON
 
 class RestService {
 
-    class func getRequest(requestURL:String, headers: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
-        
+    class func getRequest(requestURL:String, headers: [String: String]?, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
         Flurry.logEvent("GET_Request", withParameters: ["URL": "\(requestURL)", "Headers": "\(headers)"])
-        
-        var request_headers:[String: String] = self.addAuthHeader(headers)
+        let request_headers:[String: String] = self.addAuthHeader(headers)
         
         Alamofire.request(.GET, requestURL, headers: request_headers)
-            .response { (request, response, data, error) in
-                if let anError = error {
-                    completion(error: error, result: nil)
-                }
-                else if let response: AnyObject = response {
-                    if response.statusCode != 200 {
-                        completion(error: error, result: response.statusCode)
-                    }
-                }
-            }
-            .responseJSON { (_, _, JSON, error) in
-                if let response = JSON as? NSDictionary {
-                    completion(error: nil, result: response)
-                }
-                else if let response = JSON as? Array<NSDictionary> {
-                    completion(error: nil, result: response)
-                }
-                else if let response = JSON as? Array<String> {
-                    completion(error: nil, result: response)
+            .responseJSON { (_, response, result) in
+            print(response)
+            print(result)
+            
+            print("The response status code is \(response!.statusCode)")
+            switch result {
+            case .Success (let result):
+                if let dataArray = result as? [AnyObject] {
+                    completion(error: nil, result: dataArray)
                 }
                 else {
-                    println("Unexpected JSON result for get request at \(requestURL)")
+                    completion(error: nil, result: result)
                 }
+            case .Failure(_, let error):
+                print(error)
+                completion(error: nil, result: response!.statusCode)
+            }
+        }
+    }
+
+    class func postRequest(requestURL:String, parameters: [String: String]?, headers: [String: String]?, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
+        
+        let request_headers:[String: String] = self.addAuthHeader(headers)
+        
+        lastPostRequest = Alamofire.request(.POST, requestURL, parameters: parameters, headers: request_headers, encoding: .JSON)
+            .responseJSON { (_, response, result) in
+            switch result {
+            case .Success (let data):
+                if response!.statusCode == 201 {
+                    completion(error: nil, result: [201, response!.allHeaderFields["Location"] as! String])
+                }
+                else if response!.statusCode == 204 {
+                    completion(error: nil, result: [204, ""])
+                }
+                else {
+                    let json = JSON(data)
+                    let error_message:String? = json["message"].stringValue
+                    if error_message != nil {
+                        completion(error: nil, result: error_message!)
+                    }
+                    else {
+                        completion(error: nil, result: "Unexpected result")
+                    }
+                }
+            case .Failure(_, let error):
+                print("Request failed with error: \(error)")
+            }
         }
     }
     
-    class func postRequest(requestURL:String, parameters: [String: String]?, headers: [String: String]?, completion: (error: NSError?, result: AnyObject?) -> Void) {
-        
-        var request_headers:[String: String] = self.addAuthHeader(headers)
-        
-        lastPostRequest = Alamofire.request(.POST, requestURL, parameters: parameters, headers: request_headers, encoding: .JSON)
-            .responseJSON { (request, response, JSON, error) in
-                if let anError = error {
-                    println(error)
-                    completion(error: error, result: nil)
-                }
-                else if let response: AnyObject = response {
-                    if response.statusCode == 201 {
-                        completion(error: nil, result: [201, response.allHeaderFields["Location"] as! String])
-                    }
-                    else if response.statusCode == 204 {
-                        completion(error: nil, result: [204, ""])
-                    }
-                    else if let response_body = JSON as? NSDictionary {
-                        if let error_message = response_body["message"] as? String {
-                            completion(error: nil, result: [response.statusCode, error_message])
-                        }
-                    }
-                }
-                else {
-                    completion(error: nil, result: "Unexpected result")
-                }
-            }
-    }
+            
     
     class func normalizeSearchTerm(term: String) -> String {
         var searchString = ""
@@ -89,13 +84,13 @@ class RestService {
         var maxUpdatedAt = ""
         
         if let objects = group as? [Mail] {
-            maxUpdatedAt = maxElement(objects.map{$0.updatedAtString})
+            maxUpdatedAt = objects.map{$0.updatedAtString}.maxElement()!
         }
         else if let objects = group as? [Person] {
-            maxUpdatedAt = maxElement(objects.map{$0.updatedAtString})
+            maxUpdatedAt = objects.map{$0.updatedAtString}.maxElement()!
         }
         else if let objects = group as? [ConversationMetadata] {
-            maxUpdatedAt = maxElement(objects.map{$0.updatedAtString})
+            maxUpdatedAt = objects.map{$0.updatedAtString}.maxElement()!
         }
         
         let headers = ["IF_MODIFIED_SINCE": maxUpdatedAt]
@@ -121,10 +116,10 @@ class RestService {
     
     class func endpointForLastPostRequest() -> String? {
         if lastPostRequest != nil {
-            let descriptionArray = split(lastPostRequest.description) {$0 == " "}
+            let descriptionArray = lastPostRequest.description.characters.split {$0 == " "}.map { String($0) }
             let url = descriptionArray[1]
-            let urlArray = split(url) {$0 == "/"}
-            var endpoint:String? = urlArray.last
+            let urlArray = url.characters.split {$0 == "/"}.map { String($0) }
+            let endpoint:String? = urlArray.last
             return endpoint
         }
         else {

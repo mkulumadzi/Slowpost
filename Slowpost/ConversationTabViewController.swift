@@ -29,8 +29,8 @@ class ConversationTabPlaceholderViewController: UIViewController {
     
     func showConversations() {
         
-        var storyboard = UIStoryboard(name: "conversations", bundle: nil)
-        var controller = storyboard.instantiateInitialViewController() as! UIViewController
+        let storyboard = UIStoryboard(name: "conversations", bundle: nil)
+        let controller = storyboard.instantiateInitialViewController() as UIViewController!
         addChildViewController(controller)
         view.addSubview(controller.view)
         controller.didMoveToParentViewController(self)

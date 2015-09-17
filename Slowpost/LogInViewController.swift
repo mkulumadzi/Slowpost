@@ -57,8 +57,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         verticalSpaceToLogIn.constant = 30
         logInButtonHeight.constant = 30
         
-        UsernameTextField.font = UsernameTextField.font.fontWithSize(15.0)
-        passwordTextField.font = passwordTextField.font.fontWithSize(15.0)
+        UsernameTextField.font = UsernameTextField.font!.fontWithSize(15.0)
+        passwordTextField.font = passwordTextField.font!.fontWithSize(15.0)
         
     }
     
@@ -75,11 +75,11 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBAction func LogIn(sender: AnyObject) {
         
         logInButton.disable()
-        let parameters = ["username": "\(UsernameTextField.text)", "password": "\(passwordTextField.text)"]
+        let parameters = ["username": "\(UsernameTextField.text!)", "password": "\(passwordTextField.text!)"]
 
         LoginService.logIn(parameters, completion: { (error, result) -> Void in
             if  error != nil {
-                println(error)
+                print(error)
             }
             else if let result: AnyObject = result {
                 if result as? String == "Success" {
@@ -93,7 +93,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
     }

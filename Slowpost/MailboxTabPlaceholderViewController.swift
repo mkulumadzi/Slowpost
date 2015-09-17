@@ -28,8 +28,8 @@ class MailboxTabPlaceholderViewController: UIViewController {
     
     func showMailbox() {
         
-        var storyboard = UIStoryboard(name: "mailbox", bundle: nil)
-        var controller = storyboard.instantiateInitialViewController() as! UIViewController
+        let storyboard = UIStoryboard(name: "mailbox", bundle: nil)
+        let controller = storyboard.instantiateInitialViewController()!
         addChildViewController(controller)
         view.addSubview(controller.view)
         controller.didMoveToParentViewController(self)

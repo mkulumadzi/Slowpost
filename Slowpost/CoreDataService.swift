@@ -23,11 +23,17 @@ class CoreDataService {
             fetchRequest.predicate = predicate!
         }
         
-        var error: NSError?
+        var fetchedResults:[NSManagedObject]!
         
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
+        do {
+            fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+        }
+        catch {
+            print(error)
+        }
         
         return fetchedResults!
+        
     }
     
     class func deleteCoreDataObjects(entityName: String) {
@@ -36,12 +42,15 @@ class CoreDataService {
         let managedContext = appDelegate.managedObjectContext!
         
         let fetchRequest = NSFetchRequest(entityName: entityName)
-        var error: NSError?
         
-        let fetchedResults = managedContext.executeFetchRequest(fetchRequest, error: &error) as? [NSManagedObject]
-        
-        for object:NSManagedObject in fetchedResults! {
-            managedContext.deleteObject(object)
+        do {
+            let fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+            for object:NSManagedObject in fetchedResults! {
+                managedContext.deleteObject(object)
+            }
+        }
+        catch {
+            print(error)
         }
         
     }
@@ -51,7 +60,7 @@ class CoreDataService {
         let fetchRequest = NSFetchRequest(entityName: entityName)
         fetchRequest.predicate = predicate
         
-        let fetchResults = managedContext.executeFetchRequest(fetchRequest, error: nil) as? [NSManagedObject]
+        let fetchResults = (try? managedContext.executeFetchRequest(fetchRequest)) as? [NSManagedObject]
         
         if fetchResults!.count > 0 {
             return fetchResults![0]

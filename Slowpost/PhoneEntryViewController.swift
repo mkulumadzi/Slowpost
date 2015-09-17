@@ -50,7 +50,7 @@ class PhoneEntryViewController: UIViewController {
         verticalSpaceToPhone.constant = 10
         buttonHeight.constant = 30
         
-        phoneTextField.font = phoneTextField.font.fontWithSize(15.0)
+        phoneTextField.font = phoneTextField.font!.fontWithSize(15.0)
         
     }
 
@@ -59,7 +59,7 @@ class PhoneEntryViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
     }
@@ -84,18 +84,16 @@ class PhoneEntryViewController: UIViewController {
             
             LoginService.checkFieldAvailability(params, completion: { (error, result) -> Void in
                 if error != nil {
-                    println(error)
+                    print(error)
                 }
-                else if let availability = result!.valueForKey("phone") as? String {
+                else {
+                let availability = result!["phone"].stringValue
                     if availability == "available" {
                         self.signUp()
                     }
                     else {
                         self.warningLabel.show("An account with that phone number already exists.")
                     }
-                }
-                else {
-                    println("Unexpected result when checking field availability")
                 }
             })
         }
@@ -104,20 +102,20 @@ class PhoneEntryViewController: UIViewController {
     func signUp() {
         
         let newPersonURL = "\(PostOfficeURL)person/new"
-        var parameters = ["name": "\(name)", "username": "\(username)", "email": "\(email)", "phone": "\(phoneTextField.text)", "password": "\(password)"]
+        let parameters = ["name": "\(name)", "username": "\(username)", "email": "\(email)", "phone": "\(phoneTextField.text)", "password": "\(password)"]
         
         let headers:[String: String] = ["Authorization": "Bearer \(appToken)"]
         
         RestService.postRequest(newPersonURL, parameters: parameters, headers: headers, completion: { (error, result) -> Void in
             if let response = result as? [AnyObject] {
                 if response[0] as? Int == 201 {
-                    if let location = response[1] as? String {
+                    if let _ = response[1] as? String {
                         
                         let parameters = ["username": "\(self.username)", "password": "\(self.password)"]
                         
                         LoginService.logIn(parameters, completion: { (error, result) -> Void in
                             if error != nil {
-                                println(error)
+                                print(error)
                             }
                             else if result as? String == "Success" {
                                 self.performSegueWithIdentifier("signUpComplete", sender: nil)

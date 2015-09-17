@@ -53,19 +53,19 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func addSearchBar() {
-        var textField = searchBar.valueForKey("searchField") as! UITextField
+        let textField = searchBar.valueForKey("searchField") as! UITextField
         textField.backgroundColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
         textField.textColor = UIColor.whiteColor()
-        var attributedString = NSAttributedString(string: "To: Name or Username", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
+        let attributedString = NSAttributedString(string: "To: Name or Username", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
         
         //Get the glass icon
-        var iconView:UIImageView = textField.leftView as! UIImageView
+        let iconView:UIImageView = textField.leftView as! UIImageView
         iconView.image = iconView.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         iconView.tintColor = UIColor.whiteColor()
         
         textField.attributedPlaceholder = attributedString
         
-        var rightNavBarButton = UIBarButtonItem(customView:searchBar)
+        let rightNavBarButton = UIBarButtonItem(customView:searchBar)
         self.navigationItem.rightBarButtonItem = rightNavBarButton
         
         searchBar.delegate = self
@@ -97,21 +97,21 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         contactsList = registeredContacts.filter({$0.username != loggedInUser.username})
         excludePenpalsFromContactsList()
         
-        if self.searchBar.text.isEmpty == false {
+        if self.searchBar.text!.isEmpty == false {
             
-            var newPenpalArray:[Person] = penpalList.filter() {
-                self.listMatches(self.searchBar.text, inString: $0.username).count >= 1 || self.listMatches(searchBar.text, inString: $0.name).count >= 1
+            let newPenpalArray:[Person] = penpalList.filter() {
+                self.listMatches(self.searchBar.text!, inString: $0.username).count >= 1 || self.listMatches(searchBar.text!, inString: $0.name).count >= 1
             }
             penpalList = newPenpalArray
             
-            var newContactsArray:[Person] = contactsList.filter() {
-                self.listMatches(self.searchBar.text, inString: $0.username).count >= 1 || self.listMatches(searchBar.text, inString: $0.name).count >= 1
+            let newContactsArray:[Person] = contactsList.filter() {
+                self.listMatches(self.searchBar.text!, inString: $0.username).count >= 1 || self.listMatches(searchBar.text!, inString: $0.name).count >= 1
             }
             contactsList = newContactsArray
             
-            if count(self.searchBar.text) > 1 {
+            if self.searchBar.text!.characters.count > 1 {
                 noResultsLabel.hidden = true
-                self.searchPeople(self.searchBar.text)
+                self.searchPeople(self.searchBar.text!)
             }
             
         }
@@ -126,11 +126,11 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func listMatches(pattern: String, inString string: String) -> [String] {
-        let regex = NSRegularExpression(pattern: pattern, options: .allZeros, error: nil)
-        let range = NSMakeRange(0, count(string))
-        let matches = regex?.matchesInString(string, options: .allZeros, range: range) as! [NSTextCheckingResult]
+        let regex = try? NSRegularExpression(pattern: pattern, options: [])
+        let range = NSMakeRange(0, string.characters.count)
+        let matches = regex?.matchesInString(string, options: [], range: range)
         
-        return matches.map {
+        return matches!.map {
             let range = $0.range
             return (string as NSString).substringWithRange(range)
         }
@@ -194,8 +194,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel.textColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
-        header.textLabel.font = UIFont(name: "OpenSans-Semibold", size: 15)
+        header.textLabel!.textColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
+        header.textLabel!.font = UIFont(name: "OpenSans-Semibold", size: 15)
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -286,15 +286,13 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func searchPeople(term: String) {
-        
-        var searchResults = [Person]()
     
-        var searchTerm = RestService.normalizeSearchTerm(searchBar.text)
+        let searchTerm = RestService.normalizeSearchTerm(searchBar.text!)
         let searchPeopleURL = "\(PostOfficeURL)people/search?term=\(searchTerm)&limit=10"
         
         PersonService.getPeopleCollection(searchPeopleURL, headers: nil, completion: { (error, result) -> Void in
             if error != nil {
-                println(error)
+                print(error)
             }
             else if let peopleArray = result as? Array<Person> {
                 self.otherUsersList = peopleArray
@@ -311,7 +309,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let contactsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"
         PersonService.getPeopleCollection(contactsURL, headers: nil, completion: { (error, result) -> Void in
             if error != nil {
-                println(error)
+                print(error)
             }
             else if let peopleArray = result as? Array<Person> {
                 penpals = peopleArray

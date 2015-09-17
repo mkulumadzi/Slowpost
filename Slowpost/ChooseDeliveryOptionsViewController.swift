@@ -54,7 +54,7 @@ class ChooseDeliveryOptionsViewController: UIViewController {
     
     @IBAction func expressDeliveryChosen(sender: AnyObject) {
         let calendar = NSCalendar.currentCalendar()
-        let date = calendar.dateByAddingUnit(.CalendarUnitMinute, value: 10, toDate: NSDate(), options: nil)
+        let date = calendar.dateByAddingUnit(.Minute, value: 10, toDate: NSDate(), options: [])
         scheduledToArrive = date!
         self.performSegueWithIdentifier("sendMail", sender: nil)
     }
@@ -66,7 +66,7 @@ class ChooseDeliveryOptionsViewController: UIViewController {
             self.performSegueWithIdentifier("sendMail", sender: nil)
         }
         else {
-            println("Date cannot be in the past")
+            print("Date cannot be in the past")
         }
         
     }

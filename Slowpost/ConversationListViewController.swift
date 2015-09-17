@@ -45,13 +45,13 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func addSearchBar() {
-        var textField = searchBar.valueForKey("searchField") as! UITextField
+        let textField = searchBar.valueForKey("searchField") as! UITextField
         textField.backgroundColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
         textField.textColor = UIColor.whiteColor()
-        var attributedString = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
+        let attributedString = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
         
         //Get the glass icon
-        var iconView:UIImageView = textField.leftView as! UIImageView
+        let iconView:UIImageView = textField.leftView as! UIImageView
         iconView.image = iconView.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         iconView.tintColor = UIColor.whiteColor()
         
@@ -59,7 +59,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         
         searchBar.delegate = self
         
-        var leftNavBarButton = UIBarButtonItem(customView:searchBar)
+        let leftNavBarButton = UIBarButtonItem(customView:searchBar)
         self.navigationItem.leftBarButtonItem = leftNavBarButton
         
         ////Can't get this to work...
@@ -82,10 +82,10 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         
         conversationMetadataList = conversationMetadataArray
         
-        if self.searchBar.text.isEmpty == false {
+        if self.searchBar.text!.isEmpty == false {
             
-            var newMetadataArray:[ConversationMetadata] = conversationMetadataList.filter() {
-                self.listMatches(self.searchBar.text, inString: $0.username).count >= 1 || self.listMatches(self.searchBar.text, inString: $0.name).count >= 1
+            let newMetadataArray:[ConversationMetadata] = conversationMetadataList.filter() {
+                self.listMatches(self.searchBar.text!, inString: $0.username).count >= 1 || self.listMatches(self.searchBar.text!, inString: $0.name).count >= 1
             }
             conversationMetadataList = newMetadataArray
         }
@@ -95,10 +95,10 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func listMatches(pattern: String, inString string: String) -> [String] {
-        let regex = NSRegularExpression(pattern: pattern, options: .allZeros, error: nil)
-        let range = NSMakeRange(0, count(string))
-        let matches = regex?.matchesInString(string, options: .allZeros, range: range) as! [NSTextCheckingResult]
-        return matches.map {
+        let regex = try? NSRegularExpression(pattern: pattern, options: [])
+        let range = NSMakeRange(0, string.characters.count)
+        let matches = regex?.matchesInString(string, options: [], range: range)
+        return matches!.map {
             let range = $0.range
             return (string as NSString).substringWithRange(range)
         }
@@ -154,7 +154,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         
         for view in cell.subviews {
             if let cellLabel = view as? CellLabelUIView {
-                println("\(cell.conversationMetadata.username) \(cell.conversationMetadata.numUndelivered)")
+                print("\(cell.conversationMetadata.username) \(cell.conversationMetadata.numUndelivered)")
                 if cell.conversationMetadata.numUnread > 0 {
                     cellLabel.backgroundColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
                     cellLabel.layer.borderWidth = 0.0
@@ -188,12 +188,12 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
             headers = RestService.sinceHeader(conversationMetadataArray)
         }
         
-        println("Reloading conversation metadata with headers \(headers)")
+        print("Reloading conversation metadata with headers \(headers)")
 
         ConversationMetadataService.getConversationMetadataCollection(headers, completion: { (error, result) -> Void in
             if let metadataArray = result as? Array<ConversationMetadata> {
                 conversationMetadataArray = ConversationMetadataService.updateConversationMetadataCollectionFromArray(conversationMetadataArray, newCollection: metadataArray)
-                conversationMetadataArray = conversationMetadataArray.sorted { $0.updatedAt.compare($1.updatedAt) == NSComparisonResult.OrderedDescending }
+                conversationMetadataArray = conversationMetadataArray.sort { $0.updatedAt.compare($1.updatedAt) == NSComparisonResult.OrderedDescending }
                 ConversationMetadataService.appendConversationMetadataArrayToCoreData(metadataArray)
                 self.conversationMetadataList = conversationMetadataArray
                 self.conversationList.reloadData()

@@ -53,7 +53,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     override func viewDidAppear(animated: Bool) {
-        println("View appeared")
+        print("View appeared")
         super.viewDidAppear(true)
         refreshConversation()
 //        mailTable.reloadData()
@@ -100,9 +100,9 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel.textColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
-        header.textLabel.font = UIFont(name: "OpenSans-Semibold", size: 13)
-        header.textLabel.textAlignment = NSTextAlignment.Center
+        header.textLabel!.textColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
+        header.textLabel!.font = UIFont(name: "OpenSans-Semibold", size: 13)
+        header.textLabel!.textAlignment = NSTextAlignment.Center
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -171,7 +171,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         }
         
         if cell.mail.imageUid != nil && cell.mail.image == nil && cell.mail.currentlyDownloadingImage == false {
-            downloadMailImages(cell.mail)
+            downloadMailImage(cell.mail)
         }
     }
     
@@ -214,22 +214,8 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
 
     }
     
-    func downloadMailImages(mail: Mail) {
-        mail.currentlyDownloadingImage = true
-        downloadMailThumbnail(mail)
-    }
-    
-    func downloadMailThumbnail(mail: Mail) {
-        MailService.getMailThumbnailImage(mail, completion: { (error, result) -> Void in
-            if let thumbnail = result as? UIImage {
-                mail.imageThumb = thumbnail
-                MailService.addImageToCoreDataMail(mail.id, image: thumbnail, key: "imageThumb")
-                self.downloadMailImage(mail)
-            }
-        })
-    }
-    
     func downloadMailImage(mail: Mail) {
+        mail.currentlyDownloadingImage = true
         MailService.getMailImage(mail, completion: { (error, result) -> Void in
             if let image = result as? UIImage {
                 mail.image = image
@@ -241,7 +227,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     
     func populateConversation() {
         conversation = mailbox.filter({$0.from == self.person.username}) + outbox.filter({$0.to == self.person.username})
-        conversation = conversation.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
+        conversation = conversation.sort { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
         populateSections()
 
     }
@@ -264,11 +250,11 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         
         MailService.getMailCollection(conversationURL, headers: headers, completion: { (error, result) -> Void in
             if error != nil {
-                println(error)
+                print(error)
             }
             else if let mailArray = result as? Array<Mail> {
                 self.conversation = MailService.updateMailCollectionFromNewMail(self.conversation, newCollection: mailArray)
-                self.conversation = self.conversation.sorted { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
+                self.conversation = self.conversation.sort { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
                 self.populateSections()
                 
                 MailService.appendMailArrayToCoreData(mailArray)
@@ -292,12 +278,12 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         case 1:
             mail = deliveredMail[indexPath.row]
         default:
-            println("No mail at seleted row")
+            print("No mail at seleted row")
         }
         
         if mail != nil {
-            var storyboard = UIStoryboard(name: "mail", bundle: nil)
-            var mailViewController = storyboard.instantiateInitialViewController() as! MailViewController
+            let storyboard = UIStoryboard(name: "mail", bundle: nil)
+            let mailViewController = storyboard.instantiateInitialViewController() as! MailViewController
             mailViewController.mail = mail
             mailViewController.runOnClose = {self.refreshConversation()}
             self.presentViewController(mailViewController, animated: true, completion: {})
@@ -306,8 +292,8 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     
     
     @IBAction func composeMessage(sender: AnyObject) {
-        var storyboard = UIStoryboard(name: "compose", bundle: nil)
-        var controller = storyboard.instantiateInitialViewController() as! ComposeNavigationController
+        let storyboard = UIStoryboard(name: "compose", bundle: nil)
+        let controller = storyboard.instantiateInitialViewController() as! ComposeNavigationController
         controller.toUsername = person.username
         self.presentViewController(controller, animated: true, completion: {})
     }

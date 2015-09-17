@@ -56,8 +56,8 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
         verticalSpaceToNext.constant = 10
         buttonHeight.constant = 30
         
-        nameTextField.font = nameTextField.font.fontWithSize(15.0)
-        emailTextField.font = emailTextField.font.fontWithSize(15.0)
+        nameTextField.font = nameTextField.font!.fontWithSize(15.0)
+        emailTextField.font = emailTextField.font!.fontWithSize(15.0)
         
     }
     
@@ -70,7 +70,7 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
     }
@@ -105,18 +105,16 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
         
         LoginService.checkFieldAvailability(params, completion: { (error, result) -> Void in
             if error != nil {
-                println(error)
+                print(error)
             }
-            else if let availability = result!.valueForKey("email") as? String {
+            else {
+                let availability = result!["email"].stringValue
                 if availability == "available" {
                     self.performSegueWithIdentifier("enterUsername", sender: nil)
                 }
                 else {
                     self.warningLabel.show("An account with that email already exists.")
                 }
-            }
-            else {
-                println("Unexpected result when checking field availability")
             }
         })
     }

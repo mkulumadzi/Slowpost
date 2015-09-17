@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeTabBarController: UITabBarController, UITabBarDelegate {
+class HomeTabBarController: UITabBarController {
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent

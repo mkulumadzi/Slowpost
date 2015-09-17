@@ -36,14 +36,14 @@ extension NSDate {
     }
     
     func addDays(daysToAdd : Int) -> NSDate {
-        var secondsInDays : NSTimeInterval = Double(daysToAdd) * 60 * 60 * 24
-        var dateWithDaysAdded : NSDate = self.dateByAddingTimeInterval(secondsInDays)
+        let secondsInDays : NSTimeInterval = Double(daysToAdd) * 60 * 60 * 24
+        let dateWithDaysAdded : NSDate = self.dateByAddingTimeInterval(secondsInDays)
         return dateWithDaysAdded
     }
     
     func addHours(hoursToAdd : Int) -> NSDate {
-        var secondsInHours : NSTimeInterval = Double(hoursToAdd) * 60 * 60
-        var dateWithHoursAdded : NSDate = self.dateByAddingTimeInterval(secondsInHours)
+        let secondsInHours : NSTimeInterval = Double(hoursToAdd) * 60 * 60
+        let dateWithHoursAdded : NSDate = self.dateByAddingTimeInterval(secondsInHours)
         return dateWithHoursAdded
     }
     
@@ -55,7 +55,7 @@ extension NSDate {
 }
 
 extension Array {
-    var last: T {
+    var last: Element {
         return self[self.endIndex - 1]
     }
 }
@@ -63,7 +63,7 @@ extension Array {
 extension UIImage {
     public func resize(size:CGSize, completionHandler:(resizedImage:UIImage, data:NSData)->()) {
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), { () -> Void in
-            var newSize:CGSize = size
+            let newSize:CGSize = size
             let rect = CGRectMake(0, 0, newSize.width, newSize.height)
             UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
             self.drawInRect(rect)
@@ -71,7 +71,7 @@ extension UIImage {
             UIGraphicsEndImageContext()
             let imageData = UIImageJPEGRepresentation(newImage, 0.5)
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                completionHandler(resizedImage: newImage, data:imageData)
+                completionHandler(resizedImage: newImage, data:imageData!)
             })
         })
     }
@@ -131,21 +131,12 @@ public extension UIDevice {
         uname(&systemInfo)
         
         let machine = systemInfo.machine
-        let mirror = reflect(machine)                // Swift 1.2
-        // let mirror = Mirror(reflecting: machine)  // Swift 2.0
+        let mirror = Mirror(reflecting: machine)
         var identifier = ""
         
-        // Swift 1.2 - if you use Swift 2.0 comment this loop out.
-        for i in 0..<mirror.count {
-            if let value = mirror[i].1.value as? Int8 where value != 0 {
-                identifier.append(UnicodeScalar(UInt8(value)))
-            }
-        }
-        
-        // Swift 2.0 and later - if you use Swift 2.0 uncomment his loop
-        // for child in mirror.children where child.value as? Int8 != 0 {
-        //     identifier.append(UnicodeScalar(UInt8(child.value as! Int8)))
-        // }
+         for child in mirror.children where child.value as? Int8 != 0 {
+             identifier.append(UnicodeScalar(UInt8(child.value as! Int8)))
+         }
         
         return DeviceList[identifier] ?? identifier
     }

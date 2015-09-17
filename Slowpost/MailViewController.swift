@@ -88,14 +88,14 @@ class MailViewController: UIViewController {
         let readMailURL = "\(PostOfficeURL)/mail/id/\(mail.id)/read"
         RestService.postRequest(readMailURL, parameters: nil, headers: nil, completion: { (error, result) -> Void in
             if error != nil {
-                println(error)
+                print(error)
             }
         })
     }
     
     @IBAction func replyToMail(sender: AnyObject) {
-        var storyboard = UIStoryboard(name: "compose", bundle: nil)
-        var controller = storyboard.instantiateInitialViewController() as! ComposeNavigationController
+        let storyboard = UIStoryboard(name: "compose", bundle: nil)
+        let controller = storyboard.instantiateInitialViewController() as! ComposeNavigationController
         controller.toUsername = fromPerson.username
         self.presentViewController(controller, animated: true, completion: {})
     }
