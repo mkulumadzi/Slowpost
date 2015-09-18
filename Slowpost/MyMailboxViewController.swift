@@ -89,7 +89,8 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         
         formatMailCellBasedOnMailStatus(cell, mail: mail)
         
-        if mail.imageUid != nil && mail.image == nil && mail.currentlyDownloadingImage == false {
+        if mail.imageUid != "" && mail.image == nil && mail.currentlyDownloadingImage == false {
+            print("The image UID is \(mail.imageUid)")
             downloadMailImage(mail)
         }
         

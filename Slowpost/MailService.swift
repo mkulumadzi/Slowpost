@@ -15,6 +15,8 @@ class MailService {
     
     class func createMailFromJson(jsonEntry: JSON) -> Mail {
         
+        print(jsonEntry)
+        
         let id = jsonEntry["_id"]["$oid"].stringValue
         
         print("Creating mail \(id)")
@@ -22,19 +24,19 @@ class MailService {
         let status = jsonEntry["status"].stringValue
         let from = jsonEntry["from"].stringValue
         let to = jsonEntry["to"].stringValue
-        let content:String? = jsonEntry["content"].stringValue
-        let imageUid:String? = jsonEntry["image_uid"].stringValue
+        let content = jsonEntry["content"].stringValue
+        let imageUid = jsonEntry["image_uid"].stringValue
         
         var image:UIImage?
-        if imageUid == nil {
+        if imageUid == "" {
             image = UIImage(named: "Default Card.png")!
         }
         
-        let arrivalString:String? = jsonEntry["scheduled_to_arrive"].stringValue
+        let arrivalString = jsonEntry["scheduled_to_arrive"].stringValue
         
         var scheduledToArrive:NSDate!
-        if arrivalString != nil {
-            scheduledToArrive = NSDate(dateString: arrivalString!)
+        if arrivalString != "" {
+            scheduledToArrive = NSDate(dateString: arrivalString)
         }
         
         let updatedString = jsonEntry["updated_at"].stringValue
@@ -106,7 +108,9 @@ class MailService {
         object.setValue(mail.content, forKey: "content")
         object.setValue(mail.imageUid, forKey: "imageUid")
         
-//        object.setValue(UIImagePNGRepresentation(mail.image), forKey: "image")
+        if mail.image != nil {
+            object.setValue(UIImagePNGRepresentation(mail.image), forKey: "image")
+        }
         
         object.setValue(mail.scheduledToArrive, forKey: "scheduledToArrive")
         object.setValue(mail.updatedAt, forKey: "updatedAt")
