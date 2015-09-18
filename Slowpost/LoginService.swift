@@ -46,7 +46,8 @@ class LoginService {
                     completion(error: nil, result: "Success")
                 }
             case .Failure(_, let error):
-                print("Request failed with error: \(error)")
+                print(error)
+                completion(error: nil, result: response!.statusCode)
             }
         }
         

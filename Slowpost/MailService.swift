@@ -121,23 +121,6 @@ class MailService {
             print(error.userInfo)
         }
         
-        
-//        do {
-//            try managedContext.save()
-//        } catch let error {
-//            print("Error saving mail \(error)")
-//        }
-        
-
-//        var error: NSError?
-//        do {
-//            try managedContext.save()
-//        } catch let error1 as NSError {
-//            error = error1
-//            print("Error saving mail \(error), \(error?.userInfo)")
-//        }
-        
-        
     }
     
     class func addImageToCoreDataMail(id: String, image: UIImage, key: String) {

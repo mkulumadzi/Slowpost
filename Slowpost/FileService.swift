@@ -60,24 +60,19 @@ class FileService {
 
         print("Getting image at \(url)")
         Alamofire.request(.GET, url, headers: headers)
-            .response { (request, response, data, error) in
-                if error != nil {
-                    completion(error: error, result: nil)
-                }
-                else if let response: AnyObject = response {
-                    if response.statusCode == 403 || response.statusCode == 404 {
-                        completion(error: nil, result: nil)
-                    }
-                    else if let image = UIImage(data: data! as NSData) {
-                        self.postImageDownloadNotification()
-                        completion(error: nil, result: image)
-                    }
-                    else {
-                        completion(error: nil, result: nil)
-                    }
-                }
+            .responseData { _, response, result in
+            switch result {
+            case .Success (let result):
+                let image = UIImage(data: result as NSData)
+                self.postImageDownloadNotification()
+                completion(error: nil, result: image)
+            case .Failure(_,let error):
+                print(error)
+                completion(error: nil, result: response!.statusCode)
+            }
         }
     }
+
     
     class func postImageDownloadNotification() {
         let notification = NSNotification(name: "imageDownloaded:", object: nil)

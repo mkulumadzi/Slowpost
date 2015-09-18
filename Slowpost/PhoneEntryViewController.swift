@@ -104,7 +104,7 @@ class PhoneEntryViewController: UIViewController {
         let newPersonURL = "\(PostOfficeURL)person/new"
         let parameters = ["name": "\(name)", "username": "\(username)", "email": "\(email)", "phone": "\(phoneTextField.text)", "password": "\(password)"]
         
-        let headers:[String: String] = ["Authorization": "Bearer \(appToken)"]
+        let headers:[String: String] = ["Authorization": "Bearer \(appToken)", "Accept": "application/json"]
         
         RestService.postRequest(newPersonURL, parameters: parameters, headers: headers, completion: { (error, result) -> Void in
             if let response = result as? [AnyObject] {
