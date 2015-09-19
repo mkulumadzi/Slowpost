@@ -7,12 +7,11 @@
 //
 
 import Foundation
+import CoreData
+import UIKit
 
-class Attachment: NSObject {
+class Attachment: NSManagedObject {
     
-    var id:String
-    
-    init(id:String) {
-        self.id = id
-    }
+    @NSManaged var id:String
+
 }

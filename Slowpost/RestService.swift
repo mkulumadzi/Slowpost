@@ -118,23 +118,23 @@ class RestService {
         return searchString
     }
     
-    class func sinceHeader(group: [AnyObject]) -> [String: String] {
-        var maxUpdatedAt = ""
-        
-        if let objects = group as? [Mail] {
-            maxUpdatedAt = objects.map{$0.updatedAtString}.maxElement()!
-        }
-        else if let objects = group as? [Person] {
-            maxUpdatedAt = objects.map{$0.updatedAtString}.maxElement()!
-        }
-        else if let objects = group as? [ConversationMetadata] {
-            maxUpdatedAt = objects.map{$0.updatedAtString}.maxElement()!
-        }
-        
-        let headers = ["IF_MODIFIED_SINCE": maxUpdatedAt]
-        
-        return headers
-    }
+//    class func sinceHeader(group: [AnyObject]) -> [String: String] {
+//        var maxUpdatedAt = ""
+//        
+//        if let objects = group as? [Mail] {
+//            maxUpdatedAt = objects.map{$0.updatedAtString}.maxElement()!
+//        }
+//        else if let objects = group as? [Person] {
+//            maxUpdatedAt = objects.map{$0.updatedAtString}.maxElement()!
+//        }
+//        else if let objects = group as? [ConversationMetadata] {
+//            maxUpdatedAt = objects.map{$0.updatedAtString}.maxElement()!
+//        }
+//        
+//        let headers = ["IF_MODIFIED_SINCE": maxUpdatedAt]
+//        
+//        return headers
+//    }
     
     class func addAuthHeader(headers: [String: String]?) -> [String: String] {
         var request_headers:[String: String]!

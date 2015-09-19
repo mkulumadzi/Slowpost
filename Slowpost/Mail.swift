@@ -7,31 +7,20 @@
 //
 
 import UIKit
+import Foundation
+import CoreData
 
 class Mail: PostofficeObject {
     
-    var status:String
-    var type:String
-    var fromPersonId:String
-    var toPeopleIds:[String]
-    var toEmails:[String]
-    var attachments:[Attachment]
-    var dateSent:NSDate!
-    var scheduledToArrive:NSDate!
-    var dateDelivered:NSDate!
-    var myStatus:String!
-    
-    init(id:String, status:String, type:String, fromPersonId:String, toPeopleIds:[String], toEmails: [String], attachments:[Attachment], dateSent:NSDate?, scheduledToArrive:NSDate?, dateDelivered:NSDate?, myStatus:String?, updatedAt:NSDate, updatedAtString:String, createdAt:NSDate) {
-        self.status = status
-        self.type = type
-        self.fromPersonId = fromPersonId
-        self.toPeopleIds = toPeopleIds
-        self.toEmails = toEmails
-        self.attachments = attachments
-        self.dateSent = dateSent
-        self.scheduledToArrive = scheduledToArrive
-        self.dateDelivered = dateDelivered
-        self.myStatus = myStatus
-        super.init(id: id, updatedAt: updatedAt, updatedAtString: updatedAtString, createdAt: createdAt)
-    }
+    @NSManaged var status:String
+    @NSManaged var type:String
+    @NSManaged var fromPersonId:String
+    @NSManaged var toPeopleIds:[String]
+    @NSManaged var toEmails:[String]
+    @NSManaged var attachments:[Attachment]
+    @NSManaged var dateSent:NSDate!
+    @NSManaged var scheduledToArrive:NSDate!
+    @NSManaged var dateDelivered:NSDate!
+    @NSManaged var myStatus:String!
+
 }

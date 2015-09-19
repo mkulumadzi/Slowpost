@@ -7,18 +7,13 @@
 //
 
 import Foundation
+import CoreData
+import UIKit
 
 class ImageAttachment: Attachment {
     
-    var url:String
-    var image:UIImage
-    var currentlyDownloadingImage:Bool!
+    @NSManaged var url:String
+    @NSManaged var image:UIImage
+    @NSManaged var currentlyDownloadingImage:Bool!
     
-    
-    init(id: String, url:String, image:UIImage, currentlyDownloadingImage:Bool?) {
-        self.url = url
-        self.image = image
-        self.currentlyDownloadingImage = currentlyDownloadingImage
-        super.init(id: id)
-    }
 }

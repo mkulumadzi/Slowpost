@@ -7,23 +7,15 @@
 //
 
 import Foundation
-
+import CoreData
 import UIKit
 
 class Conversation: PostofficeObject {
     
-    var people: [Person]
-    var emails: [String]
-    var numUnread: Int
-    var numUndelivered: Int
-    var personSentMostRecentMail: Bool
+    @NSManaged  var people: [Person]
+    @NSManaged var emails: [String]
+    @NSManaged var numUnread: Int
+    @NSManaged var numUndelivered: Int
+    @NSManaged var personSentMostRecentMail: Bool
     
-    init(id:String, people:[Person], emails:[String], numUnread:Int, numUndelivered:Int, personSentMostRecentMail:Bool, createdAt:NSDate, updatedAtString:String, updatedAt:NSDate) {
-        self.people = people
-        self.emails = emails
-        self.numUnread = numUnread
-        self.numUndelivered = numUndelivered
-        self.personSentMostRecentMail = personSentMostRecentMail
-        super.init(id: id, updatedAt: updatedAt, updatedAtString: updatedAtString, createdAt: createdAt)
-    }
 }

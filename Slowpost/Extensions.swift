@@ -52,6 +52,11 @@ extension NSDate {
         dateFormatter.dateFormat = format
         return dateFormatter.stringFromDate(self)
     }
+    
+    func formattedAsUTCString() -> String {
+        let format = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z"
+        return self.formattedAsString(format)
+    }
 }
 
 extension Array {

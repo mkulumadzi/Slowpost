@@ -10,10 +10,11 @@ import Foundation
 import Alamofire
 import CoreData
 import SwiftyJSON
+import JWTDecode
 
 let MyKeychainWrapper = KeychainWrapper()
 
-class LoginService {
+class LoginService: PersonService {
     
     class func saveLoginToUserDefaults(userToken: String) {
         MyKeychainWrapper.mySetObject(userToken, forKey:kSecValueData)
@@ -21,9 +22,121 @@ class LoginService {
         MyKeychainWrapper.writeToKeychain()
     }
     
-    class func logIn(parameters: [String: String], completion: (error: ErrorType?, result: AnyObject?) -> Void) {
+    class func decodeTokenAndAttemptLogin(token: String, managedContext: NSManagedObjectContext, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
+        let payload = getTokenPayload(token)
+        if let userId = payload!["id"] as? String {
+            self.updateLoggedInUserFromId(userId, token: token, managedContext: managedContext, completion: { (erorr, result) -> Void in
+                if result as? String == "Success" {
+                    completion(error: nil, result: "Success")
+                }
+                else {
+                    completion(error: nil, result: "Failure")
+                }
+            })
+        }
+        else {
+            completion(error: nil, result: "Failure")
+        }
+    }
+    
+    class func getTokenPayload(token: String) -> [String: AnyObject]? {
+        var payload:[String: AnyObject]!
+        let jwt = decodeToken(token)
+        if jwt != nil {
+            payload = jwt!.body
+        }
+        return payload
+    }
+    
+    class func decodeToken(token: String) -> JWT? {
+        do {
+            let jwt = try decode(token)
+            return jwt
+        } catch _ {
+            print("Could not decode token")
+        }
+    }
+    
+    // There are going to be some holes in this for now, with 304 and 404 statuses...
+    class func updateLoggedInUserFromId(userId: String, token: String, managedContext: NSManagedObjectContext, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
+        let headers = self.getUpdatedAtHeader()
+        let url = "\(PostOfficeURL)/person/id/\(userId)"
+        RestService.getRequest(url, headers: headers, completion: { (error, result) -> Void in
+            if let string = result as? String {
+                var json = JSON(string)
+                json["token"] = JSON(token)
+                self.addOrUpdateCoreDataEntityFromJson(json, object: loggedInUser, managedContext: managedContext)
+                completion(error: nil, result: "Success")
+            }
+            else {
+                completion(error: nil, result: "Failure")
+            }
+        })
+    }
+    
+    override class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject, managedContext: NSManagedObjectContext) {
+        let loggedInUserMoc = object as! LoggedInUser
+        loggedInUserMoc.token = json["token"].stringValue
         
-        print(parameters)
+        super.addOrUpdateCoreDataEntityFromJson(json, object: loggedInUserMoc, managedContext: managedContext)
+        
+        self.setLoggedInUserGlobalVariable()
+    }
+    
+    class func setLoggedInUserGlobalVariable() {
+        //To Do: Make sure global variable has been set
+    }
+
+    class func getUpdatedAtHeader() -> [String: String]? {
+        var headers:[String: String]!
+        if loggedInUser != nil {
+            let updatedAt = loggedInUser.updatedAt.formattedAsUTCString()
+            headers = ["IF_MODIFIED_SINCE": updatedAt]
+        }
+        return headers
+    }
+    
+    class func getLoggedInUser(managedContext: NSManagedObjectContext) -> LoggedInUser? {
+        let fetchRequest = NSFetchRequest(entityName: "LoggedInUser")
+        let loggedInUser = CoreDataService.executeFetchRequest(managedContext, fetchRequest: fetchRequest)![0] as! LoggedInUser
+        return loggedInUser
+    }
+    
+    class func getTokenFromKeychain() -> String? {
+        if MyKeychainWrapper.myObjectForKey(kSecAttrService) as? String == "postoffice" {
+            if let token = MyKeychainWrapper.myObjectForKey("v_Data") as? String {
+                let jwt = decodeToken(token)
+                if jwt!.expired == false {
+                    return token
+                }
+            }
+        }
+        return nil
+    }
+    
+    class func logOut() {
+        Flurry.logEvent("Logged_Out")
+        
+        // Clear the keychain
+        MyKeychainWrapper.mySetObject("", forKey:kSecValueData)
+        MyKeychainWrapper.mySetObject("", forKey:kSecAttrService)
+        MyKeychainWrapper.writeToKeychain()
+        
+        // Delete cached objects from Core Data
+        CoreDataService.deleteCoreDataObjects("Mail")
+        CoreDataService.deleteCoreDataObjects("Person")
+        CoreDataService.deleteCoreDataObjects("LoggedInUser")
+        CoreDataService.deleteCoreDataObjects("Conversation")
+        CoreDataService.deleteCoreDataObjects("Note")
+        CoreDataService.deleteCoreDataObjects("ImageAttachment")
+        
+        loggedInUser = nil
+        
+    }
+    
+    // Mark: Old functions
+    
+    class func logIn(parameters: [String: String], managedContext: NSManagedObjectContext, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
         
         Alamofire.request(.POST, "\(PostOfficeURL)login", parameters: parameters, encoding: .JSON)
             .responseJSON { (_, response, result) in
@@ -35,14 +148,13 @@ class LoginService {
                     completion(error: nil, result: response!.statusCode)
                 }
                 else {
-                    print("\(result)")
                     let json = JSON(result)
-                    print(json)
-                    userToken = json["access_token"].stringValue
-                    self.saveLoginToUserDefaults(userToken)
-                    let person:Person! = PersonService.createPersonFromJson(json["person"])
-                    loggedInUser = person
-                    PersonService.updateLoggedInUserInCoreData(person)
+                    let token = json["access_token"].stringValue
+                    self.saveLoginToUserDefaults(token)
+                    
+                    var loggedInUserJson = json["person"]
+                    loggedInUserJson["token"] = JSON(token)
+                    self.addOrUpdateCoreDataEntityFromJson(json, object: loggedInUser, managedContext: managedContext)
                     completion(error: nil, result: "Success")
                 }
             case .Failure(_, let error):
@@ -84,24 +196,7 @@ class LoginService {
 //        }
 //        
 //    }
-    
-    class func logOut() {
-        Flurry.logEvent("Logged_Out")
-        
-        // Clear the keychain
-        MyKeychainWrapper.mySetObject("", forKey:kSecValueData)
-        MyKeychainWrapper.mySetObject("", forKey:kSecAttrService)
-        MyKeychainWrapper.writeToKeychain()
-        
-        // Delete cached objects from Core Data
-        CoreDataService.deleteCoreDataObjects("Mail")
-        CoreDataService.deleteCoreDataObjects("Person")
-        CoreDataService.deleteCoreDataObjects("LoggedInUser")
-        CoreDataService.deleteCoreDataObjects("ConversationMetadata")
-        
-        loggedInUser = nil
-        
-    }
+
     
     class func checkFieldAvailability(params: [String: String], completion: (error: ErrorType?, result: JSON?) -> Void) {
         let key:String = Array(params.keys)[0]

@@ -13,20 +13,19 @@ import CoreData
 
 class ConversationService: PostofficeObjectService {
     
-    class func updateConversations() {
+    class func updateConversations(managedContext: NSManagedObjectContext) {
         print("Updating conversations at \(NSDate())")
         let conversationsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/conversations"
         let headers = CoreDataService.getIfModifiedSinceHeaderForEntity("Conversation")
         RestService.getRequest(conversationsURL, headers: headers, completion: { (error, result) -> Void in
             if let jsonArray = result as? [AnyObject] {
-                self.appendJsonArrayToCoreData(jsonArray)
+                self.appendJsonArrayToCoreData(jsonArray, managedContext: managedContext)
             }
         })
     }
     
-    class func appendJsonArrayToCoreData(jsonArray: [AnyObject]) {
+    class func appendJsonArrayToCoreData(jsonArray: [AnyObject], managedContext: NSManagedObjectContext) {
         let entityName = "Conversation"
-        let managedContext = CoreDataService.initializeManagedContext()
         for item in jsonArray {
             let json = JSON(item)
             let object = CoreDataService.getCoreDataObjectForJson(json, entityName: entityName, managedContext: managedContext)
@@ -35,11 +34,12 @@ class ConversationService: PostofficeObjectService {
     }
     
     override class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject, managedContext: NSManagedObjectContext) {
-        object.setValue(json["numUnread"].intValue, forKey: "numUnread")
-        object.setValue(json["numUndelivered"].intValue, forKey: "numUndelivered")
-        object.setValue(json["personSentMostRecentMail"].boolValue, forKey: "personSentMostRecentMail")
+        let conversation = object as! Conversation
+        conversation.numUnread = json["numUnread"].intValue
+        conversation.numUndelivered = json["numUndelivered"].intValue
+        conversation.personSentMostRecentMail = json["personSentMostRecentMail"].boolValue
         
-        super.addOrUpdateCoreDataEntityFromJson(json, object: object, managedContext: managedContext)
+        super.addOrUpdateCoreDataEntityFromJson(json, object: conversation, managedContext: managedContext)
     }
     
     /// Mark: Old functions

@@ -13,18 +13,18 @@ import CoreData
 
 class PersonService: PostofficeObjectService {
     
-    class func updatePeople() {
+    class func updatePeople(managedContext: NSManagedObjectContext) {
         print("Updating people at \(NSDate())")
         let peopleURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"
         let headers = CoreDataService.getIfModifiedSinceHeaderForEntity("People")
         RestService.getRequest(peopleURL, headers: headers, completion: { (error, result) -> Void in
             if let jsonArray = result as? [AnyObject] {
-                self.appendJsonArrayToCoreData(jsonArray)
+                self.appendJsonArrayToCoreData(jsonArray, managedContext: managedContext)
             }
         })
     }
     
-    class func appendJsonArrayToCoreData(jsonArray: [AnyObject]) {
+    class func appendJsonArrayToCoreData(jsonArray: [AnyObject], managedContext: NSManagedObjectContext) {
         let entityName = "People"
         let managedContext = CoreDataService.initializeManagedContext()
         for item in jsonArray {
@@ -35,17 +35,38 @@ class PersonService: PostofficeObjectService {
     }
     
     override class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject, managedContext: NSManagedObjectContext) {
-        object.setValue(json["username"].stringValue, forKey: "username")
-        object.setValue(json["name"].stringValue, forKey: "name")
-        object.setValue(json["email"].stringValue, forKey: "email")
-        object.setValue(json["phone"].stringValue, forKey: "phone")
-        object.setValue(json["address1"].stringValue, forKey: "address1")
-        object.setValue(json["city"].stringValue, forKey: "city")
-        object.setValue(json["state"].stringValue, forKey: "state")
-        object.setValue(json["zip"].stringValue, forKey: "zip")
+        let person = object as! Person
+        person.username = json["username"].stringValue
+        person.name = json["name"].stringValue
+        person.email = json["email"].stringValue
+        person.phone = json["phone"].stringValue
+        person.address1 = json["address1"].stringValue
+        person.city = json["city"].stringValue
+        person.state = json["state"].stringValue
+        person.zip = json["zip"].stringValue
         
-        super.addOrUpdateCoreDataEntityFromJson(json, object: object, managedContext: managedContext)
+        super.addOrUpdateCoreDataEntityFromJson(json, object: person, managedContext: managedContext)
     }
+    
+//    class func getPersonJson(personId: String, headers: [String: String]?, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
+//        let personURL = "\(PostOfficeURL)/person/id/\(personId)"
+//        RestService.getRequest(personURL, headers: headers, completion: { (error, result) -> Void in
+//            if error != nil {
+//                print(error)
+//                completion(error: error, result: nil)
+//            }
+//            else {
+//                if let status = result as? Int {
+//                    completion(error: nil, result: status)
+//                }
+//                else {
+//                    let json = JSON(result!)
+//                    completion(error: nil, result: json)
+//                }
+//            }
+//        })
+//        
+//    }
 
     
 //    class func createPersonFromJson(jsonEntry: JSON) -> Person {
@@ -103,20 +124,20 @@ class PersonService: PostofficeObjectService {
 //        return newPerson
 //    }
     
-    override class func createObjectFromCoreData(object: NSManagedObject) -> Person {
-        let person = super.createObjectFromCoreData(object) as! Person
-        
-        person.username = object.valueForKey("username") as! String
-        person.name = object.valueForKey("name") as? String
-        person.email = object.valueForKey("email") as? String
-        person.phone = object.valueForKey("phone") as? String
-        person.address1 = object.valueForKey("address1") as? String
-        person.city = object.valueForKey("city") as? String
-        person.state = object.valueForKey("state") as? String
-        person.zip = object.valueForKey("zip") as? String
-        
-        return person
-    }
+//    override class func createObjectFromCoreData(object: NSManagedObject) -> Person {
+//        let person = super.createObjectFromCoreData(object) as! Person
+//        
+//        person.username = object.valueForKey("username") as! String
+//        person.name = object.valueForKey("name") as? String
+//        person.email = object.valueForKey("email") as? String
+//        person.phone = object.valueForKey("phone") as? String
+//        person.address1 = object.valueForKey("address1") as? String
+//        person.city = object.valueForKey("city") as? String
+//        person.state = object.valueForKey("state") as? String
+//        person.zip = object.valueForKey("zip") as? String
+//        
+//        return person
+//    }
     
 //    class func appendPeopleArrayToCoreData(personArray: [Person]) {
 //        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -154,52 +175,31 @@ class PersonService: PostofficeObjectService {
 //        
 //    }
     
-    class func updateLoggedInUserInCoreData(person: Person) {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        
-        let predicate = NSPredicate(format: "id == %@", person.id)
-        
-        let object = CoreDataService.getExistingEntityOrReturnNewEntity("LoggedInUser", managedContext: managedContext, predicate: predicate)
-        self.saveOrUpdatePersonInCoreData(person, object: object, managedContext: managedContext)
-    }
-    
-    class func getPeopleObjectsFromCoreData() -> [NSManagedObject] {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        
-        var fetchedResults:[NSManagedObject]?
-        do {
-            let fetchRequest = NSFetchRequest(entityName: "Person")
-            try fetchedResults = managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
-        }
-        catch {
-            print("Error getting fetc results")
-        }
-        
-        return fetchedResults!
-    }
-    
-    class func getPerson(personId: String, headers: [String: String]?, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
-        let personURL = "\(PostOfficeURL)/person/id/\(personId)"
-        RestService.getRequest(personURL, headers: headers, completion: { (error, result) -> Void in
-            if error != nil {
-                print(error)
-                completion(error: error, result: nil)
-            }
-            else {
-                if let status = result as? Int {
-                    completion(error: nil, result: status)
-                }
-                else {
-                    let json = JSON(result!)
-                    let person:Person = self.createPersonFromJson(json)
-                    completion(error: nil, result: person)
-                }
-            }
-        })
-        
-    }
+//    class func updateLoggedInUserInCoreData(person: Person) {
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let managedContext = appDelegate.managedObjectContext!
+//        
+//        let predicate = NSPredicate(format: "id == %@", person.id)
+//        
+//        let object = CoreDataService.getExistingEntityOrReturnNewEntity("LoggedInUser", managedContext: managedContext, predicate: predicate)
+//        self.saveOrUpdatePersonInCoreData(person, object: object, managedContext: managedContext)
+//    }
+//    
+//    class func getPeopleObjectsFromCoreData() -> [NSManagedObject] {
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let managedContext = appDelegate.managedObjectContext!
+//        
+//        var fetchedResults:[NSManagedObject]?
+//        do {
+//            let fetchRequest = NSFetchRequest(entityName: "Person")
+//            try fetchedResults = managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+//        }
+//        catch {
+//            print("Error getting fetc results")
+//        }
+//        
+//        return fetchedResults!
+//    }
     
 //    class func getPeopleCollection(collectionURL: String, headers: [String: String]?, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
 //        RestService.getRequest(collectionURL, headers: headers, completion: { (error, result) -> Void in
@@ -223,94 +223,94 @@ class PersonService: PostofficeObjectService {
 //        })
 //    }
     
-    class func updatePeopleCollectionFromNewPeople(existingCollection: [Person], newCollection: [Person]) -> [Person] {
-        
-        //Creating a mutable collection of people from the existing collection
-        var updatedCollection:[Person] = existingCollection
-        
-        //Update existing people
-        for person in newCollection {
-            if updatedCollection.filter({$0.id == person.id}).count > 0 {
-                let existingPerson:Person = updatedCollection.filter({$0.id == person.id}).first!
-                let existingIndex:Int = updatedCollection.indexOf(existingPerson)!
-                updatedCollection[existingIndex] = person
-            }
-                // Append new people
-            else {
-                updatedCollection.append(person)
-            }
-        }
-        
-        return updatedCollection
-        
-    }
+//    class func updatePeopleCollectionFromNewPeople(existingCollection: [Person], newCollection: [Person]) -> [Person] {
+//        
+//        //Creating a mutable collection of people from the existing collection
+//        var updatedCollection:[Person] = existingCollection
+//        
+//        //Update existing people
+//        for person in newCollection {
+//            if updatedCollection.filter({$0.id == person.id}).count > 0 {
+//                let existingPerson:Person = updatedCollection.filter({$0.id == person.id}).first!
+//                let existingIndex:Int = updatedCollection.indexOf(existingPerson)!
+//                updatedCollection[existingIndex] = person
+//            }
+//                // Append new people
+//            else {
+//                updatedCollection.append(person)
+//            }
+//        }
+//        
+//        return updatedCollection
+//        
+//    }
+//    
+//    class func updateContactsAndAppendPeopleToCache(peopleArray: [Person]) {
+//        penpals = self.updatePeopleCollectionFromNewPeople(penpals, newCollection: peopleArray)
+//        self.appendPeopleArrayToCoreData(peopleArray)
+//    }
+//    
     
-    class func updateContactsAndAppendPeopleToCache(peopleArray: [Person]) {
-        penpals = self.updatePeopleCollectionFromNewPeople(penpals, newCollection: peopleArray)
-        self.appendPeopleArrayToCoreData(peopleArray)
-    }
+//    //Bulk search of people based on a users' contact info
+//    class func bulkPersonSearch(parameters: [NSDictionary], completion: (error: ErrorType?, result: AnyObject?) -> Void) {
+//        
+//        let bulkPersonSearchURL = NSURL.init(string: "\(PostOfficeURL)/people/bulk_search")
+//        
+//        let request = NSMutableURLRequest(URL: bulkPersonSearchURL!)
+//        request.HTTPMethod = "POST"
+//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.setValue("Bearer \(userToken)", forHTTPHeaderField: "Authorization")
+//        
+//        var error: NSError?
+//        do {
+//            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(parameters, options: [])
+//        } catch let error1 as NSError {
+//            error = error1
+//            request.HTTPBody = nil
+//        }
+//        
+//        Alamofire.request(request)
+//            .responseJSON { (_, response, result) in
+//            switch result {
+//            case .Success (let data):
+//                if response!.statusCode == 404 {
+//                    completion(error: error, result: response!.statusCode)
+//                }
+//                else {
+//                    if let jsonArray = data as? [AnyObject] {
+//                        var people_array = [Person]()
+//                        for jsonEntry in jsonArray {
+//                            let json = JSON(jsonEntry)
+//                            people_array.append(self.createPersonFromJson(json))
+//                        }
+//                        completion(error: nil, result: people_array)
+//                    }
+//                    else {
+//                        completion(error: nil, result: "Unexpected result when doing bulk search")
+//                    }
+//                }
+//            case .Failure(_, let error):
+//                print("Request failed with error: \(error)")
+//            }
+//        }
+//    }
     
-    
-    //Bulk search of people based on a users' contact info
-    class func bulkPersonSearch(parameters: [NSDictionary], completion: (error: ErrorType?, result: AnyObject?) -> Void) {
-        
-        let bulkPersonSearchURL = NSURL.init(string: "\(PostOfficeURL)/people/bulk_search")
-        
-        let request = NSMutableURLRequest(URL: bulkPersonSearchURL!)
-        request.HTTPMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \(userToken)", forHTTPHeaderField: "Authorization")
-        
-        var error: NSError?
-        do {
-            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(parameters, options: [])
-        } catch let error1 as NSError {
-            error = error1
-            request.HTTPBody = nil
-        }
-        
-        Alamofire.request(request)
-            .responseJSON { (_, response, result) in
-            switch result {
-            case .Success (let data):
-                if response!.statusCode == 404 {
-                    completion(error: error, result: response!.statusCode)
-                }
-                else {
-                    if let jsonArray = data as? [AnyObject] {
-                        var people_array = [Person]()
-                        for jsonEntry in jsonArray {
-                            let json = JSON(jsonEntry)
-                            people_array.append(self.createPersonFromJson(json))
-                        }
-                        completion(error: nil, result: people_array)
-                    }
-                    else {
-                        completion(error: nil, result: "Unexpected result when doing bulk search")
-                    }
-                }
-            case .Failure(_, let error):
-                print("Request failed with error: \(error)")
-            }
-        }
-    }
-    
-    class func parsePersonURLForId(personURL:String) -> String {
-        let personURLSplit:[String] = personURL.characters.split {$0 == "/"}.map { String($0) }
-        let personId:String = personURLSplit.last
-        return personId
-    }
-    
-    class func getPersonFromUsername(username: String) -> Person? {
-        if username == loggedInUser.username {
-            return loggedInUser
-        }
-        else if penpals.filter({$0.username == username}).count == 1 {
-            return penpals.filter({$0.username == username})[0]
-        }
-        else {
-            return nil
-        }
-    }
+//    class func parsePersonURLForId(personURL:String) -> String {
+//        let personURLSplit:[String] = personURL.characters.split {$0 == "/"}.map { String($0) }
+//        let personId:String = personURLSplit.last
+//        return personId
+//    }
+//    
+//    class func getPersonFromUsername(username: String) -> Person? {
+//        if username == loggedInUser.username {
+//            return loggedInUser
+//        }
+//        else if penpals.filter({$0.username == username}).count == 1 {
+//            return penpals.filter({$0.username == username})[0]
+//        }
+//        else {
+//            return nil
+//        }
+//    }
     
 }

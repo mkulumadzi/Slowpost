@@ -13,36 +13,35 @@ import CoreData
 
 class MailService: PostofficeObjectService {
     
-    class func updateMailbox() {
+    class func updateMailbox(managedContext: NSManagedObjectContext) {
         let mailURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mailbox"
         // To Do: Get headers using a query of core data
-        self.updateMail(mailURL, headers: nil)
+        self.updateMail(mailURL, headers: nil, managedContext: managedContext)
     }
     
-    class func updateOutbox() {
+    class func updateOutbox(managedContext: NSManagedObjectContext) {
         let mailURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/outbox"
         // To Do: Get headers using a query of core data
-        self.updateMail(mailURL, headers: nil)
+        self.updateMail(mailURL, headers: nil, managedContext: managedContext)
     }
     
-    class func updateConversationMail(conversationId: String) {
+    class func updateConversationMail(conversationId: String, managedContext: NSManagedObjectContext) {
         let mailURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/conversation/\(conversationId)"
         // To Do: Get headers using a query of core data
-        self.updateMail(mailURL, headers: nil)
+        self.updateMail(mailURL, headers: nil, managedContext: managedContext)
     }
     
-    class func updateMail(mailURL: String, headers:[String: String]?) {
+    class func updateMail(mailURL: String, headers:[String: String]?, managedContext: NSManagedObjectContext) {
         print("Updating mail at \(NSDate())")
         RestService.getRequest(mailURL, headers: headers, completion: { (error, result) -> Void in
             if let jsonArray = result as? [AnyObject] {
-                self.appendJsonArrayToCoreData(jsonArray)
+                self.appendJsonArrayToCoreData(jsonArray, managedContext: managedContext)
             }
         })
     }
     
-    class func appendJsonArrayToCoreData(jsonArray: [AnyObject]) {
+    class func appendJsonArrayToCoreData(jsonArray: [AnyObject], managedContext: NSManagedObjectContext) {
         let entityName = "Mail"
-        let managedContext = CoreDataService.initializeManagedContext()
         for item in jsonArray {
             let json = JSON(item)
             let object = CoreDataService.getCoreDataObjectForJson(json, entityName: entityName, managedContext: managedContext)
@@ -51,18 +50,19 @@ class MailService: PostofficeObjectService {
     }
     
     override class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject, managedContext: NSManagedObjectContext) {
+        let mail = object as! Mail
         
-        object.setValue(json["status"].stringValue, forKey: "status")
-        object.setValue(json["type"].stringValue, forKey: "type")
+        mail.status = json["status"].stringValue
+        mail.type = json["type"].stringValue
         
         // Relationships here
     
-        object.setValue(NSDate(dateString: json["date_sent"].stringValue), forKey: "dateSent")
-        object.setValue(NSDate(dateString: json["scheduled_to_arrive"].stringValue), forKey: "scheduledToArrive")
-        object.setValue(NSDate(dateString: json["date_delivered"].stringValue), forKey: "dateDelivered")
-        object.setValue(json["my_info"]["status"].stringValue, forKey: "myStatus")
+        mail.dateSent = NSDate(dateString: json["date_sent"].stringValue)
+        mail.scheduledToArrive = NSDate(dateString: json["scheduled_to_arrive"].stringValue)
+        mail.dateDelivered = NSDate(dateString: json["date_delivered"].stringValue)
+        mail.myStatus = json["my_info"]["status"].stringValue
         
-        super.addOrUpdateCoreDataEntityFromJson(json, object: object, managedContext: managedContext)
+        super.addOrUpdateCoreDataEntityFromJson(json, object: mail, managedContext: managedContext)
     }
     
     /// Mark: Old functions

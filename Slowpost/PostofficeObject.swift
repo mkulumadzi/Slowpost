@@ -7,20 +7,13 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 
-class PostofficeObject: NSObject {
+class PostofficeObject: NSManagedObject {
     
-    var id:String
-    var updatedAt:NSDate
-    var updatedAtString:String
-    var createdAt:NSDate
-    
-    init(id:String, updatedAt:NSDate, updatedAtString:String, createdAt:NSDate) {
-        self.id = id
-        self.updatedAt = updatedAt
-        self.updatedAtString = updatedAtString
-        self.createdAt = createdAt
-        super.init()
-    }
+    @NSManaged var id:String
+    @NSManaged var updatedAt:NSDate
+    @NSManaged var createdAt:NSDate
     
 }

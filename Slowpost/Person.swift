@@ -7,30 +7,19 @@
 //
 
 import Foundation
-
+import CoreData
 import UIKit
 
 class Person: PostofficeObject {
-    var username:String
-    var email:String!
-    var name:String!
-    var phone:String!
-    var address1:String!
-    var city:String!
-    var state:String!
-    var zip:String!
     
-    init(id:String, username:String, email:String?, name:String?, phone:String?, address1:String?, city:String?, state:String?, zip:String?, updatedAt:NSDate, updatedAtString:String, createdAt:NSDate) {
-        self.username = username
-        self.email = email
-        self.name = name
-        self.phone = phone
-        self.address1 = address1
-        self.city = city
-        self.state = state
-        self.zip = zip
-        super.init(id: id, updatedAt: updatedAt, updatedAtString: updatedAtString, createdAt: createdAt)
-    }
+    @NSManaged var username:String
+    @NSManaged var email:String!
+    @NSManaged var name:String!
+    @NSManaged var phone:String!
+    @NSManaged var address1:String!
+    @NSManaged var city:String!
+    @NSManaged var state:String!
+    @NSManaged var zip:String!
     
     func initials() -> String {
         let splitName = name.characters.split {$0 == " "}.map { String($0) }

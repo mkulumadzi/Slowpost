@@ -7,13 +7,11 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 
 class Note: Attachment {
     
-    var content:String
+    @NSManaged var content:String
     
-    init(id: String, content:String) {
-        self.content = content
-        super.init(id: id)
-    }
 }

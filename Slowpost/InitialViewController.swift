@@ -9,14 +9,18 @@
 import UIKit
 import CoreData
 import AddressBook
-import JWTDecode
 import SwiftyJSON
 
 class InitialViewController: UIViewController {
 
+    var managedContext:NSManagedObjectContext!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        managedContext = CoreDataService.initializeManagedContext()
+        loggedInUser = LoginService.getLoggedInUser(managedContext)
+        
         print("Initial view loaded at \(NSDate())")
         Flurry.logEvent("Initial_View_Loaded")
     }
@@ -37,83 +41,33 @@ class InitialViewController: UIViewController {
     
     func checkLogin() {
         print("Checking login at \(NSDate())")
-        if loggedInUser == nil || userToken == nil {
-            if MyKeychainWrapper.myObjectForKey(kSecAttrService) as? String == "postoffice" {
-                if let token = MyKeychainWrapper.myObjectForKey("v_Data") as? String {
-                    do {
-                        let jwt = try decode(token)
-                        if jwt.expired == false {
-                            self.setLoggedInUserFromToken(token)
-                        }
-                    } catch _ {
-                        print("Could not decode token")
-                    }
-                }
+        if loggedInUser == nil {
+            let token = LoginService.getTokenFromKeychain()
+            if token != nil {
+                setLoggedInUserFromToken(token!)
             }
             else {
                 goToLoginScreen()
             }
         }
-        else {
+        else if loggedInUser.isValid() {
             beginLoadingInitialData()
+        }
+        else {
+            goToLoginScreen()
         }
     }
     
     func setLoggedInUserFromToken(token: String) {
         print("Found token, trying to set logged in user at \(NSDate())")
-        print("The token is \(token)")
-        
-        userToken = token
-        var payload:[String : AnyObject]!
-        do {
-            let jwt = try decode(token)
-            payload = jwt.body
-        } catch _ {
-            print("Could not decode token")
-        }
-        
-        print(payload)
-    
-        if let userId = payload!["id"] as? String {
-            
-            // Trying to get LoggedInUser from core data to avoid downloading from server
-            let predicate = NSPredicate(format: "id == %@", userId)
-            let loggedInRecordFromCoreData = PersonService.populatePersonArrayFromCoreData(predicate, entityName: "LoggedInUser")
-            
-            var headers:[String: String]!
-            if loggedInRecordFromCoreData.count > 0 {
-                loggedInUser = loggedInRecordFromCoreData[0]
-                headers = ["IF_MODIFIED_SINCE": loggedInUser.updatedAtString]
+        LoginService.decodeTokenAndAttemptLogin(token, managedContext: managedContext, completion: { (error, result) -> Void in
+            if result as? String == "Success" {
+                self.beginLoadingInitialData()
             }
-            
-            print("Getting person record from token id at \(NSDate())")
-            print(headers)
-            PersonService.getPerson(userId, headers: headers, completion: { (error, result) -> Void in
-                print("The result is \(result)")
-                if let person = result as? Person {
-                    Flurry.logEvent("User_Logged_In_From_Session")
-                    loggedInUser = person
-                    self.beginLoadingInitialData()
-                }
-                else if let status = result as? Int {
-                    if status == 304 {
-                        // User already has the latest record, no need to update
-                        Flurry.logEvent("User_Logged_In_From_Session")
-                        self.beginLoadingInitialData()
-                    }
-                    else {
-                        // Handles cases such as a 404 status, where the ID is not found on the server
-                        self.goToLoginScreen()
-                    }
-                }
-                else {
-                    self.goToLoginScreen()
-                }
-            })
-        }
-        else {
-            goToLoginScreen()
-        }
+            else {
+                self.goToLoginScreen()
+            }
+        })
     }
     
     func goToLoginScreen() {
@@ -128,35 +82,34 @@ class InitialViewController: UIViewController {
         Flurry.logEvent("Initial_Data_Loading_Began", timed: true)
         
         AddressBookService.checkAuthorizationStatus(self)
-        
-        PersonService.updatePeople()
-        ConversationService.updateConversations()
-        MailService.updateMailbox()
-        MailService.updateOutbox()
-        getRegisteredContactsIfAuthorized()
+        PersonService.updatePeople(managedContext)
+        ConversationService.updateConversations(managedContext)
+        MailService.updateMailbox(managedContext)
+        MailService.updateOutbox(managedContext)
+//        getRegisteredContactsIfAuthorized()
         
         goToHomeScreen()
     }
 
-    func getRegisteredContactsIfAuthorized() {
-        print("Getting registered contacts at \(NSDate())")
-        
-        let authorizationStatus = ABAddressBookGetAuthorizationStatus()
-        switch authorizationStatus {
-        case .Authorized:
-            
-            let contacts:[NSDictionary] = AddressBookService.getContactsFromAddresssBook(addressBook)
-            
-            PersonService.bulkPersonSearch(contacts, completion: { (error, result) -> Void in
-                if let peopleArray = result as? Array<Person> {
-                    registeredContacts = peopleArray
-                }
-            })
-            
-        default:
-            print("Not authorized")
-        }
-    }
+//    func getRegisteredContactsIfAuthorized() {
+//        print("Getting registered contacts at \(NSDate())")
+//        
+//        let authorizationStatus = ABAddressBookGetAuthorizationStatus()
+//        switch authorizationStatus {
+//        case .Authorized:
+//            
+//            let contacts:[NSDictionary] = AddressBookService.getContactsFromAddresssBook(addressBook)
+//            
+//            PersonService.bulkPersonSearch(contacts, completion: { (error, result) -> Void in
+//                if let peopleArray = result as? Array<Person> {
+//                    registeredContacts = peopleArray
+//                }
+//            })
+//            
+//        default:
+//            print("Not authorized")
+//        }
+//    }
     
     func goToHomeScreen() {
         

@@ -55,6 +55,18 @@ class CoreDataService {
         return managedContext
     }
     
+    class func executeFetchRequest(managedContext: NSManagedObjectContext, fetchRequest: NSFetchRequest) -> [NSManagedObject]? {
+        var objects:[NSManagedObject]!
+        
+        do {
+            objects = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+        } catch {
+            fatalError("Failed to fetch logged in user: \(error)")
+        }
+        
+        return objects
+    }
+    
 //    class func getCoreDataObjectsForJsonArray(jsonArray: [AnyObject], entityName: String) -> [NSManagedObject] {
 //        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 //        let managedContext = appDelegate.managedObjectContext!
