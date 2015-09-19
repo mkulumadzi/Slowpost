@@ -13,7 +13,7 @@ import UIKit
 class Conversation: PostofficeObject {
     
     @NSManaged  var people: [Person]
-    @NSManaged var emails: [String]
+    @NSManaged var emails: String
     @NSManaged var numUnread: Int
     @NSManaged var numUndelivered: Int
     @NSManaged var personSentMostRecentMail: Bool

@@ -14,9 +14,9 @@ class Mail: PostofficeObject {
     
     @NSManaged var status:String
     @NSManaged var type:String
-    @NSManaged var fromPersonId:String
-    @NSManaged var toPeopleIds:[String]
-    @NSManaged var toEmails:[String]
+    @NSManaged var fromPerson:Person
+    @NSManaged var toPeople:[Person]
+    @NSManaged var toEmails:String
     @NSManaged var attachments:[Attachment]
     @NSManaged var dateSent:NSDate!
     @NSManaged var scheduledToArrive:NSDate!

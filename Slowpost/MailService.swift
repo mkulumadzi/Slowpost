@@ -51,18 +51,69 @@ class MailService: PostofficeObjectService {
     
     override class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject, managedContext: NSManagedObjectContext) {
         let mail = object as! Mail
-        
         mail.status = json["status"].stringValue
         mail.type = json["type"].stringValue
-        
-        // Relationships here
-    
+        self.addFromPerson(mail, json: json, managedContext: managedContext)
+        self.addToPeople(mail, json: json, managedContext: managedContext)
+        mail.toEmails = json["to_emails"].stringValue
+        self.addAttachments(mail, json: json, managedContext: managedContext)
         mail.dateSent = NSDate(dateString: json["date_sent"].stringValue)
         mail.scheduledToArrive = NSDate(dateString: json["scheduled_to_arrive"].stringValue)
         mail.dateDelivered = NSDate(dateString: json["date_delivered"].stringValue)
         mail.myStatus = json["my_info"]["status"].stringValue
         
         super.addOrUpdateCoreDataEntityFromJson(json, object: mail, managedContext: managedContext)
+    }
+    
+    class func addFromPerson(mail: Mail, json: JSON, managedContext: NSManagedObjectContext) {
+        let id = json["from_person_id"].stringValue
+        let person = CoreDataService.findObjectById(managedContext, id: id, entityName: "Person") as! Person
+        mail.fromPerson = person
+    }
+    
+    class func addToPeople(mail: Mail, json: JSON, managedContext: NSManagedObjectContext) {
+        for person_id in json["to_people_ids"].arrayValue {
+            let id = person_id.stringValue
+            let person = CoreDataService.findObjectById(managedContext, id: id, entityName: "Person") as! Person
+            mail.toPeople.append(person)
+        }
+    }
+    
+    class func addAttachments(mail: Mail, json: JSON, managedContext: NSManagedObjectContext) {
+        for attachment in json["attachments"].arrayValue {
+            if attachment["_type"].stringValue == "Postoffice::Note" {
+                mail.attachments.append(self.addNote(attachment, managedContext: managedContext))
+            }
+            else if attachment["_type"].stringValue == "Postoffice::ImageAttachment" {
+                mail.attachments.append(self.addImageAttachment(attachment, managedContext: managedContext))
+            }
+        }
+    }
+    
+    class func addNote(json: JSON, managedContext: NSManagedObjectContext) -> Note {
+        let note = NSEntityDescription.insertNewObjectForEntityForName("Note", inManagedObjectContext: managedContext) as! Note
+        note.id = json["_id"]["$oid"].stringValue
+        note.content = json["content"].stringValue
+        do {
+            try managedContext.save()
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
+        
+        return note
+    }
+    
+    class func addImageAttachment(json: JSON, managedContext: NSManagedObjectContext) -> ImageAttachment {
+        let imageAttachment = NSEntityDescription.insertNewObjectForEntityForName("ImageAttachment", inManagedObjectContext: managedContext) as! ImageAttachment
+        imageAttachment.id = json["_id"]["$oid"].stringValue
+        imageAttachment.url = json["url"].stringValue
+        do {
+            try managedContext.save()
+        } catch {
+            fatalError("Failure to save context: \(error)")
+        }
+        
+        return imageAttachment
     }
     
     /// Mark: Old functions

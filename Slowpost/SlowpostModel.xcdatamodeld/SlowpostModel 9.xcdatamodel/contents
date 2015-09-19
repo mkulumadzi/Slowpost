@@ -2,11 +2,14 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="14F27" minimumToolsVersion="Xcode 4.3">
     <entity name="Attachment" representedClassName="Attachment" isAbstract="YES" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="mail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mail" inverseName="attachments" inverseEntity="Mail" syncable="YES"/>
     </entity>
     <entity name="Conversation" representedClassName="Conversation" parentEntity="PostofficeObject" syncable="YES">
+        <attribute name="emails" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="numUndelivered" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="numUnread" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="personSentMostRecentMail" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="people" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="conversations" inverseEntity="Person" syncable="YES"/>
     </entity>
     <entity name="ImageAttachment" representedClassName="ImageAttachment" parentEntity="Attachment" syncable="YES">
         <attribute name="currentlyDownloadingImage" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -22,8 +25,11 @@
         <attribute name="myStatus" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="scheduledToArrive" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="toEmails" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="attachments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Attachment" syncable="YES"/>
+        <relationship name="attachments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Attachment" inverseName="mail" inverseEntity="Attachment" syncable="YES"/>
+        <relationship name="fromPerson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="sentMail" inverseEntity="Person" syncable="YES"/>
+        <relationship name="toPeople" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="receivedMail" inverseEntity="Person" syncable="YES"/>
     </entity>
     <entity name="Note" representedClassName="Note" parentEntity="Attachment" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
@@ -37,6 +43,9 @@
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="conversations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Conversation" inverseName="people" inverseEntity="Conversation" syncable="YES"/>
+        <relationship name="receivedMail" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Mail" inverseName="toPeople" inverseEntity="Mail" syncable="YES"/>
+        <relationship name="sentMail" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Mail" inverseName="fromPerson" inverseEntity="Mail" syncable="YES"/>
     </entity>
     <entity name="PostofficeObject" representedClassName="PostofficeObject" isAbstract="YES" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
@@ -44,13 +53,13 @@
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Conversation" positionX="-747" positionY="-9" width="128" height="88"/>
+        <element name="Conversation" positionX="-747" positionY="-9" width="128" height="118"/>
         <element name="ImageAttachment" positionX="-450" positionY="-0" width="128" height="88"/>
         <element name="LoggedInUser" positionX="-900" positionY="279" width="128" height="58"/>
-        <element name="Mail" positionX="-585" positionY="-207" width="128" height="148"/>
+        <element name="Mail" positionX="-585" positionY="-207" width="128" height="193"/>
         <element name="Note" positionX="-281" positionY="5" width="128" height="58"/>
-        <element name="Person" positionX="-900" positionY="-7" width="128" height="163"/>
+        <element name="Person" positionX="-900" positionY="-7" width="128" height="208"/>
         <element name="PostofficeObject" positionX="-749" positionY="-207" width="128" height="88"/>
-        <element name="Attachment" positionX="-369" positionY="-99" width="128" height="60"/>
+        <element name="Attachment" positionX="-369" positionY="-99" width="128" height="73"/>
     </elements>
 </model>

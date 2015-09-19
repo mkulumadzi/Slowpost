@@ -14,6 +14,6 @@ class ImageAttachment: Attachment {
     
     @NSManaged var url:String
     @NSManaged var image:UIImage
-    @NSManaged var currentlyDownloadingImage:Bool!
+    @NSManaged var currentlyDownloadingImage:Bool
     
 }

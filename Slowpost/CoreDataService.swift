@@ -55,6 +55,16 @@ class CoreDataService {
         return managedContext
     }
     
+    class func findObjectById(managedContext: NSManagedObjectContext, id:String, entityName: String) -> NSManagedObject {
+        let fetchRequest = NSFetchRequest(entityName: entityName)
+        let predicate = NSPredicate(format: "id == %@", id)
+        fetchRequest.predicate = predicate
+        let objects = self.executeFetchRequest(managedContext, fetchRequest: fetchRequest)
+        
+        return objects![0]
+
+    }
+    
     class func executeFetchRequest(managedContext: NSManagedObjectContext, fetchRequest: NSFetchRequest) -> [NSManagedObject]? {
         var objects:[NSManagedObject]!
         
