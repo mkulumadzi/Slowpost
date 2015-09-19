@@ -14,11 +14,12 @@ class LoggedInUser: Person {
     
     @NSManaged var token:String
     
-    func isValid() -> Bool {
-        //To Do:
-        // - check if token has expired
-        // - check if token and user are valid on the server
-        return true
-    }
+// May want to implement this, but not doing it yet...
+//    func isValid() -> Bool {
+//        //To Do:
+//        // - check if token has expired
+//        // - check if token and user are valid on the server
+//        return true
+//    }
     
 }

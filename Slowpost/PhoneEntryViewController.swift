@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreData
+import Foundation
 
 class PhoneEntryViewController: UIViewController {
     
@@ -19,6 +21,7 @@ class PhoneEntryViewController: UIViewController {
     var email:String!
     var username:String!
     var password:String!
+    var managedContext:NSManagedObjectContext!
 
 
     @IBOutlet weak var verticalSpaceToTitle: NSLayoutConstraint!
@@ -33,6 +36,8 @@ class PhoneEntryViewController: UIViewController {
         super.viewDidLoad()
         
         Flurry.logEvent("Phone_View_Opened")
+        
+        managedContext = CoreDataService.initializeManagedContext()
         
         phoneTextField.addBottomLayer()
         signUpButton.layer.cornerRadius = 5
@@ -113,7 +118,7 @@ class PhoneEntryViewController: UIViewController {
                         
                         let parameters = ["username": "\(self.username)", "password": "\(self.password)"]
                         
-                        LoginService.logIn(parameters, completion: { (error, result) -> Void in
+                        LoginService.logIn(parameters, managedContext: self.managedContext, completion: { (error, result) -> Void in
                             if error != nil {
                                 print(error)
                             }

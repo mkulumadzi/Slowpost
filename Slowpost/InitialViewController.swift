@@ -50,9 +50,6 @@ class InitialViewController: UIViewController {
                 goToLoginScreen()
             }
         }
-        else if loggedInUser.isValid() {
-            beginLoadingInitialData()
-        }
         else {
             goToLoginScreen()
         }

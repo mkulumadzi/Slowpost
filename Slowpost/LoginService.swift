@@ -41,21 +41,26 @@ class LoginService: PersonService {
     
     class func getTokenPayload(token: String) -> [String: AnyObject]? {
         var payload:[String: AnyObject]!
-        let jwt = decodeToken(token)
+        var jwt:JWT!
+        do {
+            jwt = try decode(token)
+        } catch _ {
+            print("Could not decode token")
+        }
         if jwt != nil {
             payload = jwt!.body
         }
         return payload
     }
     
-    class func decodeToken(token: String) -> JWT? {
-        do {
-            let jwt = try decode(token)
-            return jwt
-        } catch _ {
-            print("Could not decode token")
-        }
-    }
+//    class func decodeToken(token: String) -> JWT? {
+//        do {
+//            let jwt = try decode(token)
+//            return jwt
+//        } catch _ {
+//            print("Could not decode token")
+//        }
+//    }
     
     // There are going to be some holes in this for now, with 304 and 404 statuses...
     class func updateLoggedInUserFromId(userId: String, token: String, managedContext: NSManagedObjectContext, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
@@ -80,11 +85,26 @@ class LoginService: PersonService {
         
         super.addOrUpdateCoreDataEntityFromJson(json, object: loggedInUserMoc, managedContext: managedContext)
         
-        self.setLoggedInUserGlobalVariable()
+        self.setLoggedInUserGlobalVariable(managedContext)
     }
     
-    class func setLoggedInUserGlobalVariable() {
-        //To Do: Make sure global variable has been set
+    class func setLoggedInUserGlobalVariable(managedContext: NSManagedObjectContext) {
+        var fetchedUser:LoggedInUser!
+        fetchedUser = self.getLoggedInUser(managedContext)
+        if fetchedUser != nil {
+            loggedInUser = fetchedUser
+        }
+    }
+    
+    class func getLoggedInUser(managedContext: NSManagedObjectContext) -> LoggedInUser {
+        var loggedInUserFetched:LoggedInUser!
+        let fetchRequest = NSFetchRequest(entityName: "LoggedInUser")
+        fetchRequest.fetchLimit = 1
+        let fetchedResults = CoreDataService.executeFetchRequest(managedContext, fetchRequest: fetchRequest)
+        if fetchedResults != nil {
+            loggedInUserFetched = fetchedResults![0] as! LoggedInUser
+        }
+        return loggedInUserFetched
     }
 
     class func getUpdatedAtHeader() -> [String: String]? {
@@ -105,7 +125,12 @@ class LoginService: PersonService {
     class func getTokenFromKeychain() -> String? {
         if MyKeychainWrapper.myObjectForKey(kSecAttrService) as? String == "postoffice" {
             if let token = MyKeychainWrapper.myObjectForKey("v_Data") as? String {
-                let jwt = decodeToken(token)
+                var jwt:JWT!
+                do {
+                    jwt = try decode(token)
+                } catch _ {
+                    print("Could not decode token")
+                }
                 if jwt!.expired == false {
                     return token
                 }
@@ -114,7 +139,7 @@ class LoginService: PersonService {
         return nil
     }
     
-    class func logOut() {
+    class func logOut(managedContext: NSManagedObjectContext) {
         Flurry.logEvent("Logged_Out")
         
         // Clear the keychain
@@ -123,18 +148,16 @@ class LoginService: PersonService {
         MyKeychainWrapper.writeToKeychain()
         
         // Delete cached objects from Core Data
-        CoreDataService.deleteCoreDataObjects("Mail")
-        CoreDataService.deleteCoreDataObjects("Person")
-        CoreDataService.deleteCoreDataObjects("LoggedInUser")
-        CoreDataService.deleteCoreDataObjects("Conversation")
-        CoreDataService.deleteCoreDataObjects("Note")
-        CoreDataService.deleteCoreDataObjects("ImageAttachment")
+        CoreDataService.deleteCoreDataObjects("Mail", managedContext: managedContext)
+        CoreDataService.deleteCoreDataObjects("Person", managedContext: managedContext)
+        CoreDataService.deleteCoreDataObjects("LoggedInUser", managedContext: managedContext)
+        CoreDataService.deleteCoreDataObjects("Conversation", managedContext: managedContext)
+        CoreDataService.deleteCoreDataObjects("Note", managedContext: managedContext)
+        CoreDataService.deleteCoreDataObjects("ImageAttachment", managedContext: managedContext)
         
         loggedInUser = nil
         
     }
-    
-    // Mark: Old functions
     
     class func logIn(parameters: [String: String], managedContext: NSManagedObjectContext, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
         

@@ -13,13 +13,13 @@ import SwiftyJSON
 
 class CoreDataService {
     
-    class func getIfModifiedSinceHeaderForEntity(entityName: String) -> [String: String]? {
+    class func getIfModifiedSinceHeaderForEntity(entityName: String, managedContext: NSManagedObjectContext) -> [String: String]? {
         
         let fetchRequest = NSFetchRequest(entityName: entityName)
         fetchRequest.fetchLimit = 1
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "updatedAt", ascending: false)]
+        let fetchedResults = self.executeFetchRequest(managedContext, fetchRequest: fetchRequest)
         
-        let fetchedResults = self.getObjectsFromCoreData(fetchRequest, predicate: nil)
         if fetchedResults != nil {
             let maxUpdatedAt = fetchedResults![0].valueForKey("updatedAtString") as! String
             let headers = ["IF_MODIFIED_SINCE": maxUpdatedAt]
@@ -61,10 +61,23 @@ class CoreDataService {
         do {
             objects = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
         } catch {
-            fatalError("Failed to fetch logged in user: \(error)")
+            fatalError("Failed to fetch objects: \(error)")
         }
         
         return objects
+    }
+    
+    class func deleteCoreDataObjects(entityName: String, managedContext: NSManagedObjectContext) {
+        let fetchRequest = NSFetchRequest(entityName: entityName)
+        do {
+            let fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+            for object:NSManagedObject in fetchedResults! {
+                managedContext.deleteObject(object)
+            }
+        }
+        catch {
+            print(error)
+        }
     }
     
 //    class func getCoreDataObjectsForJsonArray(jsonArray: [AnyObject], entityName: String) -> [NSManagedObject] {
@@ -96,48 +109,29 @@ class CoreDataService {
 //        }
 //    }
     
-    /// Mark: Old functions
-    
-    class func getObjectsFromCoreData(fetchRequest: NSFetchRequest, predicate: NSPredicate?) -> [NSManagedObject]? {
-        //        let fetchRequest = NSFetchRequest(entityName: entityName)
-
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        
-        if predicate != nil {
-            fetchRequest.predicate = predicate!
-        }
-        
-        var fetchedResults:[NSManagedObject]!
-        
-        do {
-            fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
-        }
-        catch {
-            print(error)
-        }
-        
-        return fetchedResults!
-        
-    }
-    
-    class func deleteCoreDataObjects(entityName: String) {
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        
-        let fetchRequest = NSFetchRequest(entityName: entityName)
-        
-        do {
-            let fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
-            for object:NSManagedObject in fetchedResults! {
-                managedContext.deleteObject(object)
-            }
-        }
-        catch {
-            print(error)
-        }
-        
-    }
+//    /// Mark: Old functions
+//    
+//    class func getObjectsFromCoreData(fetchRequest: NSFetchRequest, predicate: NSPredicate?) -> [NSManagedObject]? {
+//        //        let fetchRequest = NSFetchRequest(entityName: entityName)
+//
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let managedContext = appDelegate.managedObjectContext!
+//        
+//        if predicate != nil {
+//            fetchRequest.predicate = predicate!
+//        }
+//        
+//        var fetchedResults:[NSManagedObject]!
+//        
+//        do {
+//            fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+//        }
+//        catch {
+//            print(error)
+//        }
+//        
+//        return fetchedResults!
+//        
+//    }
     
 }

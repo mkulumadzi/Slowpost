@@ -142,11 +142,11 @@ class RestService {
         if headers != nil {
             request_headers = headers!
             if request_headers["Authorization"] == nil {
-                request_headers["Authorization"] = "Bearer \(userToken)"
+                request_headers["Authorization"] = "Bearer \(loggedInUser.token)"
             }
         }
         else {
-            request_headers = ["Authorization": "Bearer \(userToken)"]
+            request_headers = ["Authorization": "Bearer \(loggedInUser.token)"]
         }
         
         return request_headers
