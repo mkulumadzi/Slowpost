@@ -1,5 +1,5 @@
 //
-//  ConversationMetadataService.swift
+//  ConversationService.swift
 //  Slowpost
 //
 //  Created by Evan Waters on 9/1/15.
@@ -11,7 +11,57 @@ import Alamofire
 import SwiftyJSON
 import CoreData
 
-class ConversationMetadataService {
+class ConversationService: PostofficeObjectService {
+    
+    class func updateConversations() {
+        print("Updating conversations at \(NSDate())")
+        let conversationsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/conversations"
+        let headers = CoreDataService.getIfModifiedSinceHeaderForEntity("Conversation")
+        RestService.getRequest(conversationsURL, headers: headers, completion: { (error, result) -> Void in
+            if let jsonArray = result as? [AnyObject] {
+                self.appendJsonArrayToCoreData(jsonArray)
+            }
+        })
+    }
+    
+    class func appendJsonArrayToCoreData(jsonArray: [AnyObject]) {
+        let entityName = "Conversation"
+        let managedContext = CoreDataService.initializeManagedContext()
+        for item in jsonArray {
+            let json = JSON(item)
+            let object = CoreDataService.getCoreDataObjectForJson(json, entityName: entityName, managedContext: managedContext)
+            self.addOrUpdateCoreDataEntityFromJson(json, object: object, managedContext: managedContext)
+        }
+    }
+    
+    override class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject, managedContext: NSManagedObjectContext) {
+        object.setValue(json["numUnread"].intValue, forKey: "numUnread")
+        object.setValue(json["numUndelivered"].intValue, forKey: "numUndelivered")
+        object.setValue(json["personSentMostRecentMail"].boolValue, forKey: "personSentMostRecentMail")
+        
+        super.addOrUpdateCoreDataEntityFromJson(json, object: object, managedContext: managedContext)
+    }
+    
+    /// Mark: Old functions
+    
+    func getConversationMetadata() {
+        print("Getting the conversation metadata at \(NSDate())")
+        let coreDataConversationMetadata = ConversationMetadataService.populateConversationMetadataArrayFromCoreData()
+        if coreDataConversationMetadata != nil {
+            conversationMetadataArray = coreDataConversationMetadata!
+        }
+        
+        var headers:[String: String]?
+        if conversationMetadataArray.count > 0 {
+            headers = RestService.sinceHeader(conversationMetadataArray)
+        }
+        
+        ConversationMetadataService.getConversationMetadataCollection(headers, completion: { (error, result) -> Void in
+            if let newArray = result as? Array<ConversationMetadata> {
+                ConversationMetadataService.updateConversationMetadataAndAppendArrayToCache(newArray)
+            }
+        })
+    }
     
     class func createConversationMetadataFromJson(json: JSON) -> ConversationMetadata {
         

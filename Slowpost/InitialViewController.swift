@@ -129,81 +129,15 @@ class InitialViewController: UIViewController {
         
         AddressBookService.checkAuthorizationStatus(self)
         
-        //This will load penpals, which will then load mailbox, which will then load outbox, which will then load contacts
-        PersonService.loadPenpals()
-        getConversationMetadata()
-        getMailbox()
-        getOutbox()
+        PersonService.updatePeople()
+        ConversationService.updateConversations()
+        MailService.updateMailbox()
+        MailService.updateOutbox()
         getRegisteredContactsIfAuthorized()
         
         goToHomeScreen()
     }
-    
-    func getConversationMetadata() {
-        print("Getting the conversation metadata at \(NSDate())")
-        let coreDataConversationMetadata = ConversationMetadataService.populateConversationMetadataArrayFromCoreData()
-        if coreDataConversationMetadata != nil {
-            conversationMetadataArray = coreDataConversationMetadata!
-        }
-        
-        var headers:[String: String]?
-        if conversationMetadataArray.count > 0 {
-            headers = RestService.sinceHeader(conversationMetadataArray)
-        }
-        
-        ConversationMetadataService.getConversationMetadataCollection(headers, completion: { (error, result) -> Void in
-            if let newArray = result as? Array<ConversationMetadata> {
-                ConversationMetadataService.updateConversationMetadataAndAppendArrayToCache(newArray)
-            }
-        })
-    }
 
-    func getMailbox() {
-        
-        print("Getting mailbox at \(NSDate())")
-        let predicate = NSPredicate(format: "to == %@", loggedInUser.username)
-        
-        let coreDataMailbox = MailService.populateMailArrayFromCoreData(predicate)
-        if coreDataMailbox != nil {
-            mailbox = coreDataMailbox!
-        }
-        
-        var headers:[String: String]?
-        if mailbox.count > 0 {
-            headers = RestService.sinceHeader(mailbox)
-        }
-
-        let myMailBoxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/mailbox"
-        MailService.getMailCollection(myMailBoxURL, headers: headers, completion: { (error, result) -> Void in
-            if let mailArray = result as? Array<Mail> {
-                MailService.updateMailboxAndAppendMailToCache(mailArray)
-            }
-        })
-    }
-    
-    func getOutbox() {
-        print("Getting outbox at \(NSDate())")
-        
-        let predicate = NSPredicate(format: "from == %@", loggedInUser.username)
-        
-        let coreDataOutbox = MailService.populateMailArrayFromCoreData(predicate)
-        if coreDataOutbox != nil {
-            outbox = coreDataOutbox!
-        }
-        
-        var headers:[String: String]?
-        if outbox.count > 0 {
-            headers = RestService.sinceHeader(outbox)
-        }
-        
-        let myOutboxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/outbox"
-        MailService.getMailCollection(myOutboxURL, headers: headers, completion: { (error, result) -> Void in
-            if let mailArray = result as? Array<Mail> {
-                MailService.updateOutboxAndAppendMailToCache(mailArray)
-            }
-        })
-    }
-    
     func getRegisteredContactsIfAuthorized() {
         print("Getting registered contacts at \(NSDate())")
         

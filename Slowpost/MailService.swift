@@ -11,7 +11,61 @@ import Alamofire
 import SwiftyJSON
 import CoreData
 
-class MailService {
+class MailService: PostofficeObjectService {
+    
+    class func updateMailbox() {
+        let mailURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mailbox"
+        // To Do: Get headers using a query of core data
+        self.updateMail(mailURL, headers: nil)
+    }
+    
+    class func updateOutbox() {
+        let mailURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/outbox"
+        // To Do: Get headers using a query of core data
+        self.updateMail(mailURL, headers: nil)
+    }
+    
+    class func updateConversationMail(conversationId: String) {
+        let mailURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/conversation/\(conversationId)"
+        // To Do: Get headers using a query of core data
+        self.updateMail(mailURL, headers: nil)
+    }
+    
+    class func updateMail(mailURL: String, headers:[String: String]?) {
+        print("Updating mail at \(NSDate())")
+        RestService.getRequest(mailURL, headers: headers, completion: { (error, result) -> Void in
+            if let jsonArray = result as? [AnyObject] {
+                self.appendJsonArrayToCoreData(jsonArray)
+            }
+        })
+    }
+    
+    class func appendJsonArrayToCoreData(jsonArray: [AnyObject]) {
+        let entityName = "Mail"
+        let managedContext = CoreDataService.initializeManagedContext()
+        for item in jsonArray {
+            let json = JSON(item)
+            let object = CoreDataService.getCoreDataObjectForJson(json, entityName: entityName, managedContext: managedContext)
+            self.addOrUpdateCoreDataEntityFromJson(json, object: object, managedContext: managedContext)
+        }
+    }
+    
+    override class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject, managedContext: NSManagedObjectContext) {
+        
+        object.setValue(json["status"].stringValue, forKey: "status")
+        object.setValue(json["type"].stringValue, forKey: "type")
+        
+        // Relationships here
+    
+        object.setValue(NSDate(dateString: json["date_sent"].stringValue), forKey: "dateSent")
+        object.setValue(NSDate(dateString: json["scheduled_to_arrive"].stringValue), forKey: "scheduledToArrive")
+        object.setValue(NSDate(dateString: json["date_delivered"].stringValue), forKey: "dateDelivered")
+        object.setValue(json["my_info"]["status"].stringValue, forKey: "myStatus")
+        
+        super.addOrUpdateCoreDataEntityFromJson(json, object: object, managedContext: managedContext)
+    }
+    
+    /// Mark: Old functions
     
     class func createMailFromJson(jsonEntry: JSON) -> Mail {
         

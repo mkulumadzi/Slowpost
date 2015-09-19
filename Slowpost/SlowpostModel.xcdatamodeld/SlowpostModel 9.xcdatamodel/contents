@@ -1,18 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="14F27" minimumToolsVersion="Xcode 4.3">
-    <entity name="ConversationMetadata" syncable="YES">
-        <attribute name="mostRecentSender" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="mostRecentStatus" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="Conversation" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="numUndelivered" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="numUnread" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="personSentMostRecentMail" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="updatedAtString" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="emails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Email" inverseName="conversations" inverseEntity="Email" syncable="YES"/>
+        <relationship name="people" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="conversations" inverseEntity="Person" syncable="YES"/>
+    </entity>
+    <entity name="Email" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="conversations" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Conversation" inverseName="emails" inverseEntity="Conversation" syncable="YES"/>
+        <relationship name="mail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mail" inverseName="toEmails" inverseEntity="Mail" syncable="YES"/>
     </entity>
     <entity name="ImageAttachment" syncable="YES">
+        <attribute name="currentlyDownloadingImage" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="mail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mail" inverseName="imageAttachment" inverseEntity="Mail" syncable="YES"/>
     </entity>
     <entity name="LoggedInUser" syncable="YES">
         <attribute name="address1" optional="YES" attributeType="String" syncable="YES"/>
@@ -32,16 +40,22 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="dateDelivered" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="dateSent" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="fromPersonId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="myStatus" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="scheduledToArrive" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="updatedAtString" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="fromPerson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="sentMail" inverseEntity="Person" syncable="YES"/>
+        <relationship name="imageAttachment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ImageAttachment" inverseName="mail" inverseEntity="ImageAttachment" syncable="YES"/>
+        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="mail" inverseEntity="Note" syncable="YES"/>
+        <relationship name="toEmails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Email" inverseName="mail" inverseEntity="Email" syncable="YES"/>
+        <relationship name="toPeople" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="receivedMail" inverseEntity="Person" syncable="YES"/>
     </entity>
     <entity name="Note" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="mail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mail" inverseName="note" inverseEntity="Mail" syncable="YES"/>
     </entity>
     <entity name="Person" syncable="YES">
         <attribute name="address1" optional="YES" attributeType="String" syncable="YES"/>
@@ -56,21 +70,17 @@
         <attribute name="updatedAtString" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
-    <entity name="ToEmail" syncable="YES">
-        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
-    <entity name="ToPerson" syncable="YES">
-        <attribute name="personId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="conversations" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Conversation" inverseName="people" inverseEntity="Conversation" syncable="YES"/>
+        <relationship name="receivedMail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mail" inverseName="toPeople" inverseEntity="Mail" syncable="YES"/>
+        <relationship name="sentMail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mail" inverseName="fromPerson" inverseEntity="Mail" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ConversationMetadata" positionX="-45" positionY="144" width="128" height="165"/>
-        <element name="LoggedInUser" positionX="-36" positionY="135" width="128" height="225"/>
-        <element name="Mail" positionX="-36" positionY="72" width="128" height="195"/>
-        <element name="Person" positionX="-54" positionY="-9" width="128" height="225"/>
-        <element name="ToPerson" positionX="-45" positionY="144" width="128" height="60"/>
-        <element name="ToEmail" positionX="-36" positionY="153" width="128" height="60"/>
-        <element name="ImageAttachment" positionX="-27" positionY="162" width="128" height="75"/>
-        <element name="Note" positionX="-9" positionY="171" width="128" height="60"/>
+        <element name="Conversation" positionX="-407" positionY="9" width="128" height="178"/>
+        <element name="LoggedInUser" positionX="-900" positionY="279" width="128" height="223"/>
+        <element name="Mail" positionX="-405" positionY="221" width="128" height="268"/>
+        <element name="Person" positionX="-900" positionY="-7" width="128" height="268"/>
+        <element name="Email" positionX="-207" positionY="225" width="128" height="88"/>
+        <element name="Note" positionX="-504" positionY="261" width="128" height="75"/>
+        <element name="ImageAttachment" positionX="-495" positionY="270" width="128" height="105"/>
     </elements>
 </model>

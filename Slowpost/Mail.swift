@@ -8,34 +8,30 @@
 
 import UIKit
 
-class Mail: NSObject {
+class Mail: PostofficeObject {
     
-    var id:String
     var status:String
-    var from:String
-    var to:String
-    var content:String!
-    var imageUid:String!
-    var currentlyDownloadingImage:Bool!
-    var image:UIImage!
+    var type:String
+    var fromPersonId:String
+    var toPeopleIds:[String]
+    var toEmails:[String]
+    var attachments:[Attachment]
+    var dateSent:NSDate!
     var scheduledToArrive:NSDate!
-    var updatedAt:NSDate
-    var updatedAtString:String
-    var createdAt:NSDate
+    var dateDelivered:NSDate!
+    var myStatus:String!
     
-    init(id:String, status:String, from:String, to:String, content:String?, imageUid:String?, currentlyDownloadingImage:Bool?, image:UIImage?, scheduledToArrive:NSDate?, updatedAt:NSDate, updatedAtString:String, createdAt:NSDate) {
-        self.id = id
+    init(id:String, status:String, type:String, fromPersonId:String, toPeopleIds:[String], toEmails: [String], attachments:[Attachment], dateSent:NSDate?, scheduledToArrive:NSDate?, dateDelivered:NSDate?, myStatus:String?, updatedAt:NSDate, updatedAtString:String, createdAt:NSDate) {
         self.status = status
-        self.from = from
-        self.to = to
-        self.content = content
-        self.imageUid = imageUid
-        self.currentlyDownloadingImage = currentlyDownloadingImage
-        self.image = image
+        self.type = type
+        self.fromPersonId = fromPersonId
+        self.toPeopleIds = toPeopleIds
+        self.toEmails = toEmails
+        self.attachments = attachments
+        self.dateSent = dateSent
         self.scheduledToArrive = scheduledToArrive
-        self.updatedAt = updatedAt
-        self.updatedAtString = updatedAtString
-        self.createdAt = createdAt
-        super.init()
+        self.dateDelivered = dateDelivered
+        self.myStatus = myStatus
+        super.init(id: id, updatedAt: updatedAt, updatedAtString: updatedAtString, createdAt: createdAt)
     }
 }

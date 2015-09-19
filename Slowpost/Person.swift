@@ -10,8 +10,7 @@ import Foundation
 
 import UIKit
 
-class Person: NSObject {
-    var id:String
+class Person: PostofficeObject {
     var username:String
     var email:String!
     var name:String!
@@ -20,12 +19,8 @@ class Person: NSObject {
     var city:String!
     var state:String!
     var zip:String!
-    var updatedAt:NSDate
-    var updatedAtString:String
-    var createdAt:NSDate
     
     init(id:String, username:String, email:String?, name:String?, phone:String?, address1:String?, city:String?, state:String?, zip:String?, updatedAt:NSDate, updatedAtString:String, createdAt:NSDate) {
-        self.id = id
         self.username = username
         self.email = email
         self.name = name
@@ -34,10 +29,7 @@ class Person: NSObject {
         self.city = city
         self.state = state
         self.zip = zip
-        self.updatedAt = updatedAt
-        self.updatedAtString = updatedAtString
-        self.createdAt = createdAt
-        super.init()
+        super.init(id: id, updatedAt: updatedAt, updatedAtString: updatedAtString, createdAt: createdAt)
     }
     
     func initials() -> String {
