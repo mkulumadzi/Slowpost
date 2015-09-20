@@ -10,7 +10,6 @@ import UIKit
 
 class PersonCell: UITableViewCell {
     
-    
     var person:Person!
     
     @IBOutlet weak var personNameLabel: UILabel!

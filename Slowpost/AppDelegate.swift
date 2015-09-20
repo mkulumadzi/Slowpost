@@ -193,7 +193,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     //Refreshing app badge icon based on number of unread mail
     func updateAppIconBadge(application: UIApplication) {
-        let numberUnread:Int = mailbox.filter{$0.status == "DELIVERED"}.count
+        
+        let managedContext = self.managedObjectContext
+        let fetchRequest = NSFetchRequest(entityName: "Mail")
+        let predicate = NSPredicate(format: "ANY toPerson.id == %@ AND status == %@", [loggedInUser.id,"DELIVERED"])
+        fetchRequest.predicate = predicate
+        
+        let numberUnread = CoreDataService.executeFetchRequest(managedContext!, fetchRequest: fetchRequest)!.count
+        
         application.applicationIconBadgeNumber = numberUnread
     }
     

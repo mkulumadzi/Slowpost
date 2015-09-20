@@ -74,7 +74,7 @@ class ChooseDeliveryOptionsViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "sendMail" {
             let sendingViewController = segue.destinationViewController as? SendingViewController
-            sendingViewController!.username = toPerson.username
+            sendingViewController!.toPerson = toPerson
             sendingViewController!.image = cardImage
             sendingViewController!.content = content
             

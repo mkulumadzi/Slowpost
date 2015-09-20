@@ -35,7 +35,7 @@ class RestService {
         }
     }
 
-    class func postRequest(requestURL:String, parameters: [String: String]?, headers: [String: String]?, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
+    class func postRequest(requestURL:String, parameters: [String: AnyObject]?, headers: [String: String]?, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
         
         let request_headers:[String: String] = self.addAuthHeader(headers)
         

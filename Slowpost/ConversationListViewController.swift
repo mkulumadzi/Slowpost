@@ -7,14 +7,19 @@
 //
 
 import UIKit
+import CoreData
+import Foundation
 
-class ConversationListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class ConversationListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, NSFetchedResultsControllerDelegate {
     
-    var conversationMetadataList:[ConversationMetadata]!
+//    var conversationMetadataList:[ConversationMetadata]!
     
     @IBOutlet weak var conversationList: UITableView!
 //    @IBOutlet weak var noResultsLabel: UILabel!
     @IBOutlet weak var messageLabel: MessageUILabel!
+    
+    var managedContext:NSManagedObjectContext!
+    var fetchedResultsController: NSFetchedResultsController!
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -28,48 +33,67 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         Flurry.logEvent("Conversation_View_Opened")
-        conversationMetadataList = conversationMetadataArray
+//        conversationMetadataList = conversationMetadataArray
+        
+        managedContext = CoreDataService.initializeManagedContext()
         
         messageLabel.hide()
         conversationList.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: conversationList.bounds.size.width, height: 0.01))
-        reloadConversationMetadata()
+        ConversationService.updateConversations(managedContext)
         conversationList.addSubview(self.refreshControl)
-        addSearchBar()
+//        addSearchBar()
         
 //        noResultsLabel.hidden = true
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        reloadConversationMetadata()
+        ConversationService.updateConversations(managedContext)
     }
     
-    func addSearchBar() {
-        let textField = searchBar.valueForKey("searchField") as! UITextField
-        textField.backgroundColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
-        textField.textColor = UIColor.whiteColor()
-        let attributedString = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
+//    func addSearchBar() {
+//        let textField = searchBar.valueForKey("searchField") as! UITextField
+//        textField.backgroundColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
+//        textField.textColor = UIColor.whiteColor()
+//        let attributedString = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
+//        
+//        //Get the glass icon
+//        let iconView:UIImageView = textField.leftView as! UIImageView
+//        iconView.image = iconView.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+//        iconView.tintColor = UIColor.whiteColor()
+//        
+//        textField.attributedPlaceholder = attributedString
+//        
+//        searchBar.delegate = self
+//        
+//        let leftNavBarButton = UIBarButtonItem(customView:searchBar)
+//        self.navigationItem.leftBarButtonItem = leftNavBarButton
+//        
+//        ////Can't get this to work...
+//        //        let horizontalConstraint = NSLayoutConstraint(item: self.navigationItem.leftBarButtonItem!, attribute: .TrailingMargin, relatedBy: .Equal, toItem: searchBar, attribute: .Left, multiplier: 1.0, constant: 10)
+//        //
+//        //        view.addConstraint(horizontalConstraint)
+//    }
+    
+    
+    // Mark: Set up Core Data
+    func initializeFetchedResultsController() {
+        let fetchRequest = NSFetchRequest(entityName: "Conversation")
+        let deliveredSort = NSSortDescriptor(key: "dateUpdated", ascending: false)
         
-        //Get the glass icon
-        let iconView:UIImageView = textField.leftView as! UIImageView
-        iconView.image = iconView.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        iconView.tintColor = UIColor.whiteColor()
-        
-        textField.attributedPlaceholder = attributedString
-        
-        searchBar.delegate = self
-        
-        let leftNavBarButton = UIBarButtonItem(customView:searchBar)
-        self.navigationItem.leftBarButtonItem = leftNavBarButton
-        
-        ////Can't get this to work...
-        //        let horizontalConstraint = NSLayoutConstraint(item: self.navigationItem.leftBarButtonItem!, attribute: .TrailingMargin, relatedBy: .Equal, toItem: searchBar, attribute: .Left, multiplier: 1.0, constant: 10)
-        //
-        //        view.addConstraint(horizontalConstraint)
+        fetchRequest.sortDescriptors = [deliveredSort]
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        self.fetchedResultsController.delegate = self
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            fatalError("Failed to initialize FetchedResultsController: \(error)")
+        }
     }
+
     
     func handleRefresh(refreshControl: UIRefreshControl) {
-        reloadConversationMetadata()
+        ConversationService.updateConversations(managedContext)
         refreshControl.endRefreshing()
     }
     
@@ -78,31 +102,31 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         // Dispose of any resources that can be recreated.
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        conversationMetadataList = conversationMetadataArray
-        
-        if self.searchBar.text!.isEmpty == false {
-            
-            let newMetadataArray:[ConversationMetadata] = conversationMetadataList.filter() {
-                self.listMatches(self.searchBar.text!, inString: $0.username).count >= 1 || self.listMatches(self.searchBar.text!, inString: $0.name).count >= 1
-            }
-            conversationMetadataList = newMetadataArray
-        }
-        
-//        validateNoResultsLabel()
-        self.conversationList.reloadData()
-    }
+//    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+//        
+////        conversationMetadataList = conversationMetadataArray
+//        
+//        if self.searchBar.text!.isEmpty == false {
+//            
+//            let newMetadataArray:[ConversationMetadata] = conversationMetadataList.filter() {
+//                self.listMatches(self.searchBar.text!, inString: $0.username).count >= 1 || self.listMatches(self.searchBar.text!, inString: $0.name).count >= 1
+//            }
+//            conversationMetadataList = newMetadataArray
+//        }
+//        
+////        validateNoResultsLabel()
+//        self.conversationList.reloadData()
+//    }
     
-    func listMatches(pattern: String, inString string: String) -> [String] {
-        let regex = try? NSRegularExpression(pattern: pattern, options: [])
-        let range = NSMakeRange(0, string.characters.count)
-        let matches = regex?.matchesInString(string, options: [], range: range)
-        return matches!.map {
-            let range = $0.range
-            return (string as NSString).substringWithRange(range)
-        }
-    }
+//    func listMatches(pattern: String, inString string: String) -> [String] {
+//        let regex = try? NSRegularExpression(pattern: pattern, options: [])
+//        let range = NSMakeRange(0, string.characters.count)
+//        let matches = regex?.matchesInString(string, options: [], range: range)
+//        return matches!.map {
+//            let range = $0.range
+//            return (string as NSString).substringWithRange(range)
+//        }
+//    }
     
 //    func validateNoResultsLabel() {
 //        if searchBar.text == "" {
@@ -116,9 +140,9 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
 //        }
 //    }
     
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        searchBar.resignFirstResponder()
-    }
+//    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+//        searchBar.resignFirstResponder()
+//    }
     
     // MARK: Section Configuration
     
@@ -131,7 +155,8 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return conversationMetadataList.count
+//        return conversationMetadataList.count
+        return fetchedResultsController.sections!.count
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -141,9 +166,10 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("conversationCell", forIndexPath: indexPath) as? ConversationCell
         
-        let conversationMetadata = conversationMetadataList[indexPath.row] as ConversationMetadata
-        cell?.conversationMetadata = conversationMetadata
-        cell?.personNameLabel.text = conversationMetadata.name
+//        let conversationMetadata = conversationMetadataList[indexPath.row] as ConversationMetadata
+        let conversation = fetchedResultsController.objectAtIndexPath(indexPath) as! Conversation
+        cell?.conversation = conversation
+        cell?.namesLabel.text = conversation.peopleNames()
         
         formatConversationCellLabel(cell!)
         
@@ -154,16 +180,15 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         
         for view in cell.subviews {
             if let cellLabel = view as? CellLabelUIView {
-                print("\(cell.conversationMetadata.username) \(cell.conversationMetadata.numUndelivered)")
-                if cell.conversationMetadata.numUnread > 0 {
+                if cell.conversation.numUnread > 0 {
                     cellLabel.backgroundColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
                     cellLabel.layer.borderWidth = 0.0
                 }
-                else if cell.conversationMetadata.numUndelivered > 0 {
+                else if cell.conversation.numUndelivered > 0 {
                     cellLabel.backgroundColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
                     cellLabel.layer.borderWidth = 0.0
                 }
-                else if cell.conversationMetadata.mostRecentSender == loggedInUser.username {
+                else if cell.conversation.personSentMostRecentMail == true {
                     cellLabel.backgroundColor = UIColor.whiteColor()
                     cellLabel.layer.borderColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0).CGColor
                     cellLabel.layer.borderWidth = 1.0
@@ -181,39 +206,19 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         Flurry.logEvent("Conversation_Opened")
     }
     
-    func reloadConversationMetadata() {
-        
-        var headers:[String: String]?
-        if conversationMetadataArray.count > 0 {
-            headers = RestService.sinceHeader(conversationMetadataArray)
-        }
-        
-        print("Reloading conversation metadata with headers \(headers)")
-
-        ConversationMetadataService.getConversationMetadataCollection(headers, completion: { (error, result) -> Void in
-            if let metadataArray = result as? Array<ConversationMetadata> {
-                conversationMetadataArray = ConversationMetadataService.updateConversationMetadataCollectionFromArray(conversationMetadataArray, newCollection: metadataArray)
-                conversationMetadataArray = conversationMetadataArray.sort { $0.updatedAt.compare($1.updatedAt) == NSComparisonResult.OrderedDescending }
-                ConversationMetadataService.appendConversationMetadataArrayToCoreData(metadataArray)
-                self.conversationMetadataList = conversationMetadataArray
-                self.conversationList.reloadData()
-            }
-        })
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "viewConversation" {
             if let conversationCell = sender as? ConversationCell {
                 let conversationViewController = segue.destinationViewController as? ConversationViewController
-                conversationViewController!.person = getPersonForCell(conversationCell)
+                conversationViewController!.conversation = conversationCell.conversation
             }
         }
     }
     
-    func getPersonForCell(conversationCell: ConversationCell) -> Person {
-        let person = penpals.filter({$0.username == conversationCell.conversationMetadata.username})[0]
-        return person
-    }
+//    func getPersonForCell(conversationCell: ConversationCell) -> Person {
+//        let person = penpals.filter({$0.username == conversationCell.conversationMetadata.username})[0]
+//        return person
+//    }
     
     @IBAction func settingsMenuItemSelected(segue:UIStoryboardSegue) {
         dismissSourceViewController(segue)
@@ -236,7 +241,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     
     @IBAction func choseToLogOut(segue:UIStoryboardSegue) {
         dismissSourceViewController(segue)
-        LoginService.logOut()
+        LoginService.logOut(managedContext)
         self.dismissViewControllerAnimated(true, completion: {})
     }
     

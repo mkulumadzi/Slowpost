@@ -8,6 +8,8 @@
 
 import UIKit
 import Alamofire
+import Foundation
+import CoreData
 
 class SendingViewController: UIViewController {
     
@@ -15,6 +17,9 @@ class SendingViewController: UIViewController {
     var username:String!
     var content:String!
     var scheduledToArrive:NSDate?
+    var toPerson:Person!
+    
+    var managedContext:NSManagedObjectContext!
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var cancelButtonHeight: NSLayoutConstraint!
@@ -30,6 +35,8 @@ class SendingViewController: UIViewController {
         super.viewDidLoad()
         
         Flurry.logEvent("Began_Sending_Mail")
+        
+        managedContext = CoreDataService.initializeManagedContext()
         
         cancelButton.layer.cornerRadius = 5
         
@@ -65,7 +72,8 @@ class SendingViewController: UIViewController {
     func sendMailToPostoffice(imageUid: String) {
         
         let sendMailEndpoint = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mail/send"
-        var parameters:[String: String] = ["to": "\(username)", "content": "\(content)", "image_uid": "\(imageUid)"]
+        
+        var parameters:[String : AnyObject] = ["correspondents": ["to_people": [toPerson.id]], "attachments": ["notes": [content], "image_attachments": [imageUid]]]
         
         if scheduledToArrive != nil {
             let dateFormatter = NSDateFormatter()
@@ -80,7 +88,7 @@ class SendingViewController: UIViewController {
         RestService.postRequest(sendMailEndpoint, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
             if let response = result as? [AnyObject] {
                 if response[0] as? Int == 201 {
-                    PersonService.loadPenpals()
+                    PersonService.updatePeople(self.managedContext)
                     Flurry.logEvent("Finished_Sending_Mail")
                     let nav = self.presentingViewController!
                     self.dismissViewControllerAnimated(true, completion: { () -> Void in

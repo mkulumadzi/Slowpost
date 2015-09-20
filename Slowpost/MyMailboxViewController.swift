@@ -7,11 +7,16 @@
 //
 
 import UIKit
+import CoreData
+import Foundation
 
-class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var mailTable: UITableView!
     @IBOutlet weak var navBar: UINavigationBar!
+    
+    var managedContext:NSManagedObjectContext!
+    var fetchedResultsController: NSFetchedResultsController!
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -27,8 +32,10 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        refreshPenpals()
-        mailTable.reloadData()
+        managedContext = CoreDataService.initializeManagedContext()
+        initializeFetchedResultsController()
+        
+        refreshData()
         
         navBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Quicksand-Regular", size: 24)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
         
@@ -45,7 +52,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         })
         
         NSNotificationCenter.defaultCenter().addObserverForName("appBecameActive:", object: nil, queue: nil, usingBlock: { (notification) -> Void in
-            self.refreshMailbox()
+            self.refreshData()
         })
         
     }
@@ -60,40 +67,50 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         // Dispose of any resources that can be recreated.
     }
     
+    // Mark: Set up Core Data
+    func initializeFetchedResultsController() {
+        let fetchRequest = NSFetchRequest(entityName: "Mail")
+        let deliveredSort = NSSortDescriptor(key: "dateDelivered", ascending: false)
+        let predicate = NSPredicate(format: "ANY toPerson.id == %@", loggedInUser.id)
+        fetchRequest.predicate = predicate
+        
+        fetchRequest.sortDescriptors = [deliveredSort]
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        self.fetchedResultsController.delegate = self
+        do {
+            try self.fetchedResultsController.performFetch()
+        } catch {
+            fatalError("Failed to initialize FetchedResultsController: \(error)")
+        }
+    }
+    
+    //
+    
+    func configureCell(cell: MailCell, indexPath: NSIndexPath) {
+        let mail = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Mail
+        cell.mail = mail
+        
+        let fromPerson = mail.fromPerson
+        cell.fromViewInitials.text = fromPerson.initials()
+        cell.fromLabel.text = fromPerson.name
+        cell.imageView!.image = mail.image(managedContext)
+        let deliveredDateString = mail.dateDelivered.formattedAsString("yyyy-MM-dd")
+        cell.deliveredLabel.text = "Delivered on \(deliveredDateString)"
+        formatMailCellBasedOnMailStatus(cell, mail: mail)
+        
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mailbox.count
+        return self.fetchedResultsController.sections!.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MailCell", forIndexPath: indexPath) as! MailCell
-        let mail = mailbox[indexPath.row] as Mail
-        
-        cell.mail = mail
-        
-        let person = PersonService.getPersonFromUsername(mail.from)
-        
-        if person != nil {
-            cell.from = person!
-            cell.fromViewInitials.text = person!.initials()
-            cell.fromLabel.text = cell.from.name
-        }
-        
-        cell.mailImage.image = mail.image
-        
-        let deliveredDateString = mail.createdAt.formattedAsString("yyyy-MM-dd")
-        cell.deliveredLabel.text = "Delivered on \(deliveredDateString)"
-        
-        formatMailCellBasedOnMailStatus(cell, mail: mail)
-        
-        if mail.imageUid != "" && mail.image == nil && mail.currentlyDownloadingImage == false {
-            print("The image UID is \(mail.imageUid)")
-            downloadMailImage(mail)
-        }
-        
+        self.configureCell(cell, indexPath: indexPath)
         return cell
         
     }
@@ -113,65 +130,23 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    func downloadMailImage(mail: Mail) {
-        MailService.getMailImage(mail, completion: { (error, result) -> Void in
-            if let image = result as? UIImage {
-                mail.image = image
-                MailService.addImageToCoreDataMail(mail.id, image: image, key: "image")
-                mail.currentlyDownloadingImage = false
-            }
-        })
-    }
-    
-    func refreshPenpals() {
-        let contactsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"
-        PersonService.getPeopleCollection(contactsURL, headers: nil, completion: { (error, result) -> Void in
-            if error != nil {
-                print(error)
-            }
-            else if let peopleArray = result as? Array<Person> {
-                penpals = peopleArray
-                self.refreshMailbox()
-            }
-        })
-    }
-    
-    func refreshMailbox() {
-        
-        //Refresh mailbox by retrieving mail for the user
-        let myMailBoxURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/mailbox"
-        
-        var headers:[String: String]?
-        if mailbox.count > 0 {
-            headers = RestService.sinceHeader(mailbox)
-        }
-        
-        MailService.getMailCollection(myMailBoxURL, headers: headers, completion: { (error, result) -> Void in
-            if error != nil {
-                print(error)
-            }
-            else if let mailArray = result as? Array<Mail> {
-                mailbox = MailService.updateMailCollectionFromNewMail(mailbox, newCollection: mailArray)
-                mailbox = mailbox.sort { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
-                
-                MailService.appendMailArrayToCoreData(mailArray)
-                
-                self.mailTable.reloadData()
-            }
-        })
-    }
-    
     func handleRefresh(refreshControl: UIRefreshControl) {
-        refreshPenpals()
+        refreshData()
         refreshControl.endRefreshing()
     }
     
+    func refreshData() {
+        PersonService.updatePeople(managedContext)
+        MailService.updateMailbox(managedContext)
+        mailTable.reloadData()
+    }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let mail = mailbox[indexPath.row]
+        let mail = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Mail
         let storyboard = UIStoryboard(name: "mail", bundle: nil)
         let mailViewController = storyboard.instantiateInitialViewController() as! MailViewController
         mailViewController.mail = mail
-        mailViewController.runOnClose = {self.refreshMailbox()}
+        mailViewController.runOnClose = {self.refreshData()}
         
         self.presentViewController(mailViewController, animated: true, completion: {})
     }

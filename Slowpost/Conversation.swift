@@ -18,4 +18,19 @@ class Conversation: PostofficeObject {
     @NSManaged var numUndelivered: Int
     @NSManaged var personSentMostRecentMail: Bool
     
+    func peopleNames() -> String {
+        var names = ""
+        var index = 0
+        for person in people {
+            if person.id != loggedInUser.id {
+                if index > 0 {
+                    names += ", "
+                }
+                names += person.name
+                index += 1
+            }
+        }
+        return names
+    }
+    
 }

@@ -19,7 +19,6 @@ class MailCell: UITableViewCell {
     @IBOutlet weak var statusIndicator: UIView!
     
     var mail:Mail!
-    var from:Person!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -24,7 +24,6 @@ class ConversationMailCell: UITableViewCell {
     @IBOutlet weak var trailingSpaceFromCardView: NSLayoutConstraint!
     
     var mail:Mail!
-    var person:Person!
     var row:Int!
     
     override func awakeFromNib() {

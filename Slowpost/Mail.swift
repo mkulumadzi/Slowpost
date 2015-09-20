@@ -14,6 +14,7 @@ class Mail: PostofficeObject {
     
     @NSManaged var status:String
     @NSManaged var type:String
+    @NSManaged var conversation:Conversation
     @NSManaged var fromPerson:Person
     @NSManaged var toPeople:[Person]
     @NSManaged var toEmails:String
@@ -22,5 +23,56 @@ class Mail: PostofficeObject {
     @NSManaged var scheduledToArrive:NSDate!
     @NSManaged var dateDelivered:NSDate!
     @NSManaged var myStatus:String!
+    
+    func image (managedContext: NSManagedObjectContext) -> UIImage {
+        var image:UIImage!
+        for attachment in self.attachments {
+            if let imageAttachment = attachment as? ImageAttachment {
+                if imageAttachment.image.isEqual(nil) && imageAttachment.currentlyDownloadingImage == false {
+                    imageAttachment.getImage(managedContext, completion: { (error, result) -> Void in
+                        if let imageReturned = result as? UIImage {
+                            image = imageReturned
+                        }
+                    })
+                }
+                else {
+                    image = imageAttachment.image
+                }
+            }
+        }
+        if image.isEqual(nil) {
+            return UIImage(named: "Default Card.png")!
+        }
+        else {
+            return image
+        }
+    }
+    
+    func content() -> String {
+        var content:String!
+        for attachment in self.attachments {
+            if let note = attachment as? Note {
+                content = note.content
+            }
+        }
+        return content
+    }
+    
+    func toNames() -> String {
+        var names = ""
+        for person in self.toPeople {
+            names += "\(person.name) "
+        }
+        return names
+    }
+    
+    func toLoggedInUser() -> Bool {
+        if self.fromPerson.id == loggedInUser.id {
+            return false
+        }
+        else {
+            return true
+        }
+    }
 
 }

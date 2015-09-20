@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreData
+import Foundation
 
 class EditProfileViewController: UITableViewController {
 
@@ -22,11 +24,15 @@ class EditProfileViewController: UITableViewController {
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet var profileTable: UITableView!
     
+    var managedContext:NSManagedObjectContext!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         Flurry.logEvent("Began_Editing_Profile")
+        
+        managedContext = CoreDataService.initializeManagedContext()
         
         navBar.frame.size = CGSize(width: navBar.frame.width, height: 60)
         
@@ -70,7 +76,7 @@ class EditProfileViewController: UITableViewController {
                 print(error)
             }
             else if result as! String == "Update succeeded" {
-                self.updateLoggedInUser()
+                LoginService.updateLoggedInUserFromId(loggedInUser.id, token: loggedInUser.token, managedContext: self.managedContext, completion: {error, result -> Void in })
             }
             else {
                 print("Update failed")
@@ -95,20 +101,20 @@ class EditProfileViewController: UITableViewController {
         })
     }
     
-    func updateLoggedInUser() {
-        PersonService.getPerson(loggedInUser.id, headers: nil, completion: { (error, result) -> Void in
-            if error != nil {
-                print(error)
-            }
-            else if let person = result as? Person {
-                loggedInUser = person
-                self.performSegueWithIdentifier("updateSucceeded", sender: nil)
-            }
-            else {
-                print("Unexpected result while updating logged in user.")
-            }
-        })
-    }
+//    func updateLoggedInUser() {
+//        PersonService.getPerson(loggedInUser.id, headers: nil, completion: { (error, result) -> Void in
+//            if error != nil {
+//                print(error)
+//            }
+//            else if let person = result as? Person {
+//                loggedInUser = person
+//                self.performSegueWithIdentifier("updateSucceeded", sender: nil)
+//            }
+//            else {
+//                print("Unexpected result while updating logged in user.")
+//            }
+//        })
+//    }
     
     @IBAction func editingChanged(sender: AnyObject) {
         saveButton.enabled = true

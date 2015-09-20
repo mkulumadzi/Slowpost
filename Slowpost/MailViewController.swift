@@ -15,6 +15,8 @@
 //
 
 import UIKit
+import CoreData
+import Foundation
 
 class MailViewController: UIViewController {
     
@@ -30,46 +32,46 @@ class MailViewController: UIViewController {
     @IBOutlet weak var replyButton: UIButton!
     @IBOutlet weak var navItem: UINavigationItem!
     
+    var managedContext:NSManagedObjectContext!
     var mail:Mail!
     var fromPerson:Person!
-    var toPerson:Person!
 
     var runOnClose: (() -> ())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        managedContext = CoreDataService.initializeManagedContext()
+        
         self.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         self.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
         
         Flurry.logEvent("Mail_Opened")
         
-        fromPerson = PersonService.getPersonFromUsername(mail.from)
-        toPerson = PersonService.getPersonFromUsername(mail.to)
         
-        mailImage.image = mail.image
+        mailImage.image = mail.image(managedContext)
         fromView.layer.cornerRadius = 15
+        
+        fromPerson = mail.fromPerson
+        fromLabel.text = fromPerson.name
         fromViewInitials.text = fromPerson.initials()
         
-        fromLabel.text = fromPerson.name
-        toLabel.text = toPerson.name
+        toLabel.text = mail.toNames()
         
-        let sentDateString = mail.createdAt.formattedAsString("yyyy-MM-dd")
+        let sentDateString = mail.dateSent.formattedAsString("yyyy-MM-dd")
         sentLabel.text = "Sent on \(sentDateString)"
         
         if mail.status != "SENT" {
-            let deliveredDateString = mail.scheduledToArrive.formattedAsString("yyyy-MM-dd")
+            let deliveredDateString = mail.dateDelivered.formattedAsString("yyyy-MM-dd")
             deliveredLabel.text = "Delivered on \(deliveredDateString)"
         }
         else {
             deliveredLabel.text = ""
         }
         
-        if mail.content != nil {
-            mailContent.text = mail.content
-        }
+        mailContent.text = mail.content()
         
-        if mail.status == "DELIVERED" && mail.to == loggedInUser.username {
+        if mail.status == "DELIVERED" && mail.toLoggedInUser() {
             readMail(mail)
         }
         
@@ -96,10 +98,9 @@ class MailViewController: UIViewController {
     @IBAction func replyToMail(sender: AnyObject) {
         let storyboard = UIStoryboard(name: "compose", bundle: nil)
         let controller = storyboard.instantiateInitialViewController() as! ComposeNavigationController
-        controller.toUsername = fromPerson.username
+        controller.toPerson = fromPerson
         self.presentViewController(controller, animated: true, completion: {})
     }
-    
     
     @IBAction func closeMailView(sender: AnyObject) {
         if runOnClose != nil { runOnClose!() }

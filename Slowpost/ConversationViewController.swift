@@ -7,13 +7,16 @@
 //
 
 import UIKit
+import CoreData
+import Foundation
 
-class ConversationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ConversationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
-    var person:Person!
-    var conversation:[Mail]!
-    var undeliveredMail:[Mail]!
-    var deliveredMail:[Mail]!
+    var conversation:Conversation!
+
+    var managedContext:NSManagedObjectContext!
+    var undeliveredMailController:NSFetchedResultsController!
+    var deliveredMailController:NSFetchedResultsController!
     
     @IBOutlet weak var mailTable: UITableView!
     @IBOutlet weak var navBar: UINavigationBar!
@@ -29,8 +32,10 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        populateConversation()
-        refreshConversation()
+        
+        managedContext = CoreDataService.initializeManagedContext()
+        
+        MailService.updateConversationMail(conversation.id, managedContext: managedContext)
 //        mailTable.reloadData()
         
         mailTable.addSubview(self.refreshControl)
@@ -41,13 +46,13 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         mailTable.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: mailTable.bounds.size.width, height: 0.01))
         mailTable.separatorStyle = UITableViewCellSeparatorStyle.None
         
-        navBarItem.title = person.name
+        navBarItem.title = conversation.peopleNames()
         NSNotificationCenter.defaultCenter().addObserverForName("imageDownloaded:", object: nil, queue: nil, usingBlock: { (notification) -> Void in
             self.mailTable.reloadData()
         })
         
         NSNotificationCenter.defaultCenter().addObserverForName("appBecameActive:", object: nil, queue: nil, usingBlock: { (notification) -> Void in
-            self.refreshConversation()
+            MailService.updateConversationMail(self.conversation.id, managedContext: self.managedContext)
         })
         
     }
@@ -55,7 +60,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidAppear(animated: Bool) {
         print("View appeared")
         super.viewDidAppear(true)
-        refreshConversation()
+        MailService.updateConversationMail(conversation.id, managedContext: managedContext)
 //        mailTable.reloadData()
     }
     
@@ -63,6 +68,41 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    
+    // Mark: Set up Core Data
+    func initializeUndeliveredMailController() {
+        let fetchRequest = NSFetchRequest(entityName: "Mail")
+        let dateSentSort = NSSortDescriptor(key: "dateSent", ascending: false)
+        let predicate = NSPredicate(format: "status == %@ AND conversation == %@", ["SENT", conversation])
+        fetchRequest.predicate = predicate
+        
+        fetchRequest.sortDescriptors = [dateSentSort]
+        self.undeliveredMailController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        self.undeliveredMailController.delegate = self
+        do {
+            try self.undeliveredMailController.performFetch()
+        } catch {
+            fatalError("Failed to initialize FetchedResultsController: \(error)")
+        }
+    }
+    
+    func initializeDeliveredMailController() {
+        let fetchRequest = NSFetchRequest(entityName: "Mail")
+        let dateDeliveredSort = NSSortDescriptor(key: "dateDelivered", ascending: false)
+        let predicate = NSPredicate(format: "status == %@ AND conversation == %@", ["DELIVERED", conversation])
+        fetchRequest.predicate = predicate
+        
+        fetchRequest.sortDescriptors = [dateDeliveredSort]
+        self.undeliveredMailController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        self.undeliveredMailController.delegate = self
+        do {
+            try self.undeliveredMailController.performFetch()
+        } catch {
+            fatalError("Failed to initialize FetchedResultsController: \(error)")
+        }
+    }
+    
     
     // MARK: Section Configuration
     
@@ -73,11 +113,11 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            if undeliveredMail.count > 0 {
+            if undeliveredMailController.sections!.count > 0 {
                 return "Undelivered mail"
             }
         case 1:
-            if deliveredMail.count > 0 {
+            if deliveredMailController.sections!.count > 0 {
                 return "Delivered mail"
             }
         default:
@@ -89,9 +129,9 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return undeliveredMail.count
+            return undeliveredMailController.sections!.count
         case 1:
-            return deliveredMail.count
+            return deliveredMailController.sections!.count
         default:
             return 0
         }
@@ -108,11 +148,11 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0:
-            if undeliveredMail.count == 0 {
+            if undeliveredMailController.sections!.count == 0 {
                 return 0.0
             }
         case 1:
-            if deliveredMail.count == 0 {
+            if deliveredMailController.sections!.count == 0 {
                 return 0.0
             }
         default:
@@ -129,11 +169,11 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         
         switch indexPath.section {
         case 0:
-            cell!.mail = undeliveredMail[indexPath.row]
+            cell!.mail = undeliveredMailController.objectAtIndexPath(indexPath) as! Mail
             cell!.row = indexPath.row
             formatCell(cell!)
         case 1:
-            cell!.mail = deliveredMail[indexPath.row]
+            cell!.mail = deliveredMailController.objectAtIndexPath(indexPath) as! Mail
             cell!.row = indexPath.row
             formatCell(cell!)
         default:
@@ -143,36 +183,27 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func formatCell(cell: ConversationMailCell) {
-        cell.person = person
         
         generateStatusLabel(cell, mail: cell.mail)
         
-        cell.mailImageView.image = cell.mail.image
+        cell.mailImageView.image = cell.mail.image(managedContext)
+        cell.initialsLabel.text = cell.mail.fromPerson.initials()
         
         formatMailStatusLabel(cell)
         
-        if cell.mail.to == person.username {
+        if cell.mail.toLoggedInUser() == false {
             cell.leadingSpaceToFromView.priority = 251
             cell.trailingSpaceFromFromView.priority = 999
-            
             cell.leadingSpaceToCardView.priority = 251
             cell.trailingSpaceFromCardView.priority = 999
-            
-            cell.initialsLabel.text = loggedInUser.initials()
         }
         else {
             cell.leadingSpaceToFromView.priority = 999
             cell.trailingSpaceFromFromView.priority = 251
-            
             cell.leadingSpaceToCardView.priority = 999
             cell.trailingSpaceFromCardView.priority = 251
-            
-            cell.initialsLabel.text = person.initials()
         }
         
-        if cell.mail.imageUid != nil && cell.mail.image == nil && cell.mail.currentlyDownloadingImage == false {
-            downloadMailImage(cell.mail)
-        }
     }
     
     func generateStatusLabel(cell: ConversationMailCell, mail: Mail) {
@@ -187,7 +218,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func formatMailStatusLabel(cell: ConversationMailCell) {
-        if cell.mail.to == loggedInUser.username {
+        if cell.mail.toLoggedInUser() == true {
             if cell.mail.status == "DELIVERED" {
                 cell.mailStatusLabel.backgroundColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
                 cell.statusLabel.textColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
@@ -214,59 +245,9 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
 
     }
     
-    func downloadMailImage(mail: Mail) {
-        mail.currentlyDownloadingImage = true
-        MailService.getMailImage(mail, completion: { (error, result) -> Void in
-            if let image = result as? UIImage {
-                mail.image = image
-                MailService.addImageToCoreDataMail(mail.id, image: image, key: "image")
-                mail.currentlyDownloadingImage = false
-            }
-        })
-    }
-    
-    func populateConversation() {
-        conversation = mailbox.filter({$0.from == self.person.username}) + outbox.filter({$0.to == self.person.username})
-        conversation = conversation.sort { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
-        populateSections()
-
-    }
-    
-    func populateSections() {
-        undeliveredMail = conversation.filter({$0.status == "SENT"})
-        deliveredMail = conversation.filter({$0.status != "SENT"})
-    }
-    
-    
-    func refreshConversation() {
-        
-        //Endpoint for conversation between logged in user and the selected person
-        let conversationURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)/conversation/id/\(person.id)"
-        
-        var headers:[String: String]?
-        if conversation.count > 0 {
-            headers = RestService.sinceHeader(conversation)
-        }
-        
-        MailService.getMailCollection(conversationURL, headers: headers, completion: { (error, result) -> Void in
-            if error != nil {
-                print(error)
-            }
-            else if let mailArray = result as? Array<Mail> {
-                self.conversation = MailService.updateMailCollectionFromNewMail(self.conversation, newCollection: mailArray)
-                self.conversation = self.conversation.sort { $0.scheduledToArrive.compare($1.scheduledToArrive) == NSComparisonResult.OrderedDescending }
-                self.populateSections()
-                
-                MailService.appendMailArrayToCoreData(mailArray)
-                
-                self.mailTable.reloadData()
-            }
-        })
-    }
-    
     
     func handleRefresh(refreshControl: UIRefreshControl) {
-        refreshConversation()
+        MailService.updateConversationMail(conversation.id, managedContext: managedContext)
         refreshControl.endRefreshing()
     }
     
@@ -274,9 +255,9 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         var mail:Mail!
         switch indexPath.section {
         case 0:
-            mail = undeliveredMail[indexPath.row]
+            mail = undeliveredMailController.objectAtIndexPath(indexPath) as! Mail
         case 1:
-            mail = deliveredMail[indexPath.row]
+            mail = deliveredMailController.objectAtIndexPath(indexPath) as! Mail
         default:
             print("No mail at seleted row")
         }
@@ -285,18 +266,18 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
             let storyboard = UIStoryboard(name: "mail", bundle: nil)
             let mailViewController = storyboard.instantiateInitialViewController() as! MailViewController
             mailViewController.mail = mail
-            mailViewController.runOnClose = {self.refreshConversation()}
+            mailViewController.runOnClose = {MailService.updateConversationMail(self.conversation.id, managedContext: self.managedContext)}
             self.presentViewController(mailViewController, animated: true, completion: {})
         }
     }
     
     
-    @IBAction func composeMessage(sender: AnyObject) {
-        let storyboard = UIStoryboard(name: "compose", bundle: nil)
-        let controller = storyboard.instantiateInitialViewController() as! ComposeNavigationController
-        controller.toUsername = person.username
-        self.presentViewController(controller, animated: true, completion: {})
-    }
+//    @IBAction func composeMessage(sender: AnyObject) {
+//        let storyboard = UIStoryboard(name: "compose", bundle: nil)
+//        let controller = storyboard.instantiateInitialViewController() as! ComposeNavigationController
+//        controller.toUsername = person.username
+//        self.presentViewController(controller, animated: true, completion: {})
+//    }
     
 
 }

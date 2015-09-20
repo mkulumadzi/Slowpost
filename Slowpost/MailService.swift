@@ -53,6 +53,7 @@ class MailService: PostofficeObjectService {
         let mail = object as! Mail
         mail.status = json["status"].stringValue
         mail.type = json["type"].stringValue
+        self.addConversation(mail, json: json, managedContext: managedContext)
         self.addFromPerson(mail, json: json, managedContext: managedContext)
         self.addToPeople(mail, json: json, managedContext: managedContext)
         mail.toEmails = json["to_emails"].stringValue
@@ -63,6 +64,12 @@ class MailService: PostofficeObjectService {
         mail.myStatus = json["my_info"]["status"].stringValue
         
         super.addOrUpdateCoreDataEntityFromJson(json, object: mail, managedContext: managedContext)
+    }
+    
+    class func addConversation(mail: Mail, json: JSON, managedContext: NSManagedObjectContext) {
+        let id = json["conversation_id"].stringValue
+        let conversation = CoreDataService.findObjectById(managedContext, id: id, entityName: "Conversation") as! Conversation
+        mail.conversation = conversation
     }
     
     class func addFromPerson(mail: Mail, json: JSON, managedContext: NSManagedObjectContext) {
@@ -115,6 +122,7 @@ class MailService: PostofficeObjectService {
         
         return imageAttachment
     }
+
     
     /// Mark: Old functions
     
