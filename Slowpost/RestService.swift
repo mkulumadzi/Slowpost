@@ -9,14 +9,24 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import CoreData
 
 class RestService {
 
     class func getRequest(requestURL:String, headers: [String: String]?, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
         Flurry.logEvent("GET_Request", withParameters: ["URL": "\(requestURL)", "Headers": "\(headers)"])
-        let request_headers:[String: String] = self.addAuthHeader(headers)
+        var requestHeaders = headers
+        if requestHeaders!["Authorization"] == nil {
+            if requestHeaders != nil {
+                requestHeaders!["Authorization"] = self.addAuthHeader()
+            }
+            else {
+                requestHeaders! = ["Authorization": self.addAuthHeader()]
+            }
+        }
         
-        Alamofire.request(.GET, requestURL, headers: request_headers)
+        
+        Alamofire.request(.GET, requestURL, headers: headers)
             .responseJSON { (_, response, result) in
 
             print("The response status code is \(response!.statusCode)")
@@ -36,13 +46,20 @@ class RestService {
     }
 
     class func postRequest(requestURL:String, parameters: [String: AnyObject]?, headers: [String: String]?, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
-        
-        let request_headers:[String: String] = self.addAuthHeader(headers)
+        var requestHeaders = headers
+        if requestHeaders!["Authorization"] == nil {
+            if requestHeaders != nil {
+                requestHeaders!["Authorization"] = self.addAuthHeader()
+            }
+            else {
+                requestHeaders! = ["Authorization": self.addAuthHeader()]
+            }
+        }
         
         
         print("POST to \(requestURL)")
-        print(request_headers)
-        lastPostRequest = Alamofire.request(.POST, requestURL, parameters: parameters, headers: request_headers, encoding: .JSON)
+        print(headers)
+        lastPostRequest = Alamofire.request(.POST, requestURL, parameters: parameters, headers: headers, encoding: .JSON)
             
             // To Do: Let Alamofire get correct result status (it seems to think that an empty response is a FAILURE
             .validate(statusCode: 200..<300)
@@ -136,20 +153,10 @@ class RestService {
 //        return headers
 //    }
     
-    class func addAuthHeader(headers: [String: String]?) -> [String: String] {
-        var request_headers:[String: String]!
-        
-        if headers != nil {
-            request_headers = headers!
-            if request_headers["Authorization"] == nil {
-                request_headers["Authorization"] = "Bearer \(loggedInUser.token)"
-            }
-        }
-        else {
-            request_headers = ["Authorization": "Bearer \(loggedInUser.token)"]
-        }
-        
-        return request_headers
+    class func addAuthHeader() -> String {
+        let token = LoginService.getTokenFromKeychain()
+        let auth = "Bearer \(token)"
+        return auth
     }
     
     class func endpointForLastPostRequest() -> String? {

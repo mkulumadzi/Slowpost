@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import Foundation
+import SwiftyJSON
+import Alamofire
 
 class PhoneEntryViewController: UIViewController {
     
@@ -37,7 +39,8 @@ class PhoneEntryViewController: UIViewController {
         
         Flurry.logEvent("Phone_View_Opened")
         
-        managedContext = CoreDataService.initializeManagedContext()
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        managedContext = appDelegate.managedObjectContext!
         
         phoneTextField.addBottomLayer()
         signUpButton.layer.cornerRadius = 5
@@ -114,21 +117,12 @@ class PhoneEntryViewController: UIViewController {
         RestService.postRequest(newPersonURL, parameters: parameters, headers: headers, completion: { (error, result) -> Void in
             if let response = result as? [AnyObject] {
                 if response[0] as? Int == 201 {
-                    if let _ = response[1] as? String {
-                        
-                        let parameters = ["username": "\(self.username)", "password": "\(self.password)"]
-                        
-                        LoginService.logIn(parameters, managedContext: self.managedContext, completion: { (error, result) -> Void in
-                            if error != nil {
-                                print(error)
-                            }
-                            else if result as? String == "Success" {
-                                self.performSegueWithIdentifier("signUpComplete", sender: nil)
-                            }
-                        })
-                    }
+                    let parameters = ["username": "\(self.username)", "password": "\(self.password)"]
+                    LoginService.logIn(parameters, completion: { (error, result) -> Void in
+                        self.performSegueWithIdentifier("loginCompleted", sender: nil)
+                    })
                 }
-                else if let error_message = response[1] as? String {
+            else if let error_message = response[1] as? String {
                     self.warningLabel.show(error_message)
                 }
             }

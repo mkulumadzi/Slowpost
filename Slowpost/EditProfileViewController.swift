@@ -25,14 +25,18 @@ class EditProfileViewController: UITableViewController {
     @IBOutlet var profileTable: UITableView!
     
     var managedContext:NSManagedObjectContext!
-    
+    var loggedInUser:Person!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         Flurry.logEvent("Began_Editing_Profile")
         
-        managedContext = CoreDataService.initializeManagedContext()
+//        managedContext = CoreDataService.initializeManagedContext()
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        managedContext = appDelegate.managedObjectContext!
+        
+        loggedInUser = getLoggedInUser()
         
         navBar.frame.size = CGSize(width: navBar.frame.width, height: 60)
         
@@ -67,24 +71,18 @@ class EditProfileViewController: UITableViewController {
     override func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         view.endEditing(true)
     }
+    
+    func getLoggedInUser() -> Person {
+        let userId = LoginService.getUserIdFromToken()
+        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let predicate = NSPredicate(format: "id == %@", userId)
+        fetchRequest.predicate = predicate
+        let person = CoreDataService.executeFetchRequest(managedContext, fetchRequest: fetchRequest)![0] as! Person
+        return person
+    }
 
     @IBAction func saveEditedInfo(sender: AnyObject) {
         saveButton.enabled = false
-        
-        self.updatePerson( { (error, result) -> Void in
-            if error != nil {
-                print(error)
-            }
-            else if result as! String == "Update succeeded" {
-                LoginService.updateLoggedInUserFromId(loggedInUser.id, token: loggedInUser.token, managedContext: self.managedContext, completion: {error, result -> Void in })
-            }
-            else {
-                print("Update failed")
-            }
-        })
-    }
-    
-    func updatePerson(completion: (error: NSError?, result: AnyObject?) -> Void) {
         
         let updatePersonURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)"
         let parameters = ["name": "\(nameField.text)", "phone": "\(phoneField.text)", "address1": "\(address1Field.text)", "city": "\(cityField.text)", "state": "\(stateField.text)", "zip": "\(zipField.text)"]
@@ -95,26 +93,12 @@ class EditProfileViewController: UITableViewController {
             }
             else if let response = result as? [AnyObject] {
                 if response[0] as? Int == 204 {
-                    completion(error: nil, result: "Update succeeded")
+                    PersonService.updatePeople(self.managedContext)
                 }
             }
         })
     }
-    
-//    func updateLoggedInUser() {
-//        PersonService.getPerson(loggedInUser.id, headers: nil, completion: { (error, result) -> Void in
-//            if error != nil {
-//                print(error)
-//            }
-//            else if let person = result as? Person {
-//                loggedInUser = person
-//                self.performSegueWithIdentifier("updateSucceeded", sender: nil)
-//            }
-//            else {
-//                print("Unexpected result while updating logged in user.")
-//            }
-//        })
-//    }
+
     
     @IBAction func editingChanged(sender: AnyObject) {
         saveButton.enabled = true

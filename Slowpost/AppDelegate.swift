@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Flurry.setCrashReportingEnabled(true)
         Flurry.startSession("FT74F5GW8XVG66BQBXW8")
         
+        
         if launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] != nil {
             Flurry.logEvent("Opened_App_From_Notification")
             print("Got a remote notification")
@@ -71,6 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
     
     lazy var applicationDocumentsDirectory: NSURL = {
+        
         // The directory the application uses to store the Core Data store file. This code uses a directory named "bigedubs.Slowpost" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         print(urls)
@@ -78,12 +80,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
+        
+        
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         let modelURL = NSBundle.mainBundle().URLForResource("SlowpostModel", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
         }()
     
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
+        
         // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
@@ -114,6 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }()
     
     lazy var managedObjectContext: NSManagedObjectContext? = {
+        
         // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
         let coordinator = self.persistentStoreCoordinator
         if coordinator == nil {
@@ -127,6 +133,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data Saving support
     
     func saveContext () {
+        
         if let moc = self.managedObjectContext {
             var error: NSError? = nil
             if moc.hasChanges {
@@ -196,7 +203,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let managedContext = self.managedObjectContext
         let fetchRequest = NSFetchRequest(entityName: "Mail")
-        let predicate = NSPredicate(format: "ANY toPerson.id == %@ AND status == %@", [loggedInUser.id,"DELIVERED"])
+        let userId = LoginService.getUserIdFromToken()
+        let predicate = NSPredicate(format: "ANY toPerson.id == %@ AND status == %@", [userId,"DELIVERED"])
         fetchRequest.predicate = predicate
         
         let numberUnread = CoreDataService.executeFetchRequest(managedContext!, fetchRequest: fetchRequest)!.count

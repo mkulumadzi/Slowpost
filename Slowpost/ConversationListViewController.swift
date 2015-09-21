@@ -35,7 +35,9 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         Flurry.logEvent("Conversation_View_Opened")
 //        conversationMetadataList = conversationMetadataArray
         
-        managedContext = CoreDataService.initializeManagedContext()
+//        managedContext = CoreDataService.initializeManagedContext()
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        managedContext = appDelegate.managedObjectContext!
         
         messageLabel.hide()
         conversationList.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: conversationList.bounds.size.width, height: 0.01))

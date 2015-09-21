@@ -15,7 +15,8 @@ class PersonService: PostofficeObjectService {
     
     class func updatePeople(managedContext: NSManagedObjectContext) {
         print("Updating people at \(NSDate())")
-        let peopleURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"
+        let userId = LoginService.getUserIdFromToken()
+        let peopleURL = "\(PostOfficeURL)person/id/\(userId)/contacts"
         let headers = CoreDataService.getIfModifiedSinceHeaderForEntity("People", managedContext: managedContext)
         RestService.getRequest(peopleURL, headers: headers, completion: { (error, result) -> Void in
             if let jsonArray = result as? [AnyObject] {
@@ -26,7 +27,9 @@ class PersonService: PostofficeObjectService {
     
     class func appendJsonArrayToCoreData(jsonArray: [AnyObject], managedContext: NSManagedObjectContext) {
         let entityName = "People"
-        let managedContext = CoreDataService.initializeManagedContext()
+//        let managedContext = CoreDataService.initializeManagedContext()
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let managedContext = appDelegate.managedObjectContext!
         for item in jsonArray {
             let json = JSON(item)
             let object = CoreDataService.getCoreDataObjectForJson(json, entityName: entityName, managedContext: managedContext)

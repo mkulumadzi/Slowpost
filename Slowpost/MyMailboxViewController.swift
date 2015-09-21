@@ -32,7 +32,9 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        managedContext = CoreDataService.initializeManagedContext()
+//        managedContext = CoreDataService.initializeManagedContext()
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        managedContext = appDelegate.managedObjectContext!
         initializeFetchedResultsController()
         
         refreshData()
@@ -71,7 +73,8 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     func initializeFetchedResultsController() {
         let fetchRequest = NSFetchRequest(entityName: "Mail")
         let deliveredSort = NSSortDescriptor(key: "dateDelivered", ascending: false)
-        let predicate = NSPredicate(format: "ANY toPerson.id == %@", loggedInUser.id)
+        let userId = LoginService.getUserIdFromToken()
+        let predicate = NSPredicate(format: "ANY toPerson.id == %@", userId)
         fetchRequest.predicate = predicate
         
         fetchRequest.sortDescriptors = [deliveredSort]

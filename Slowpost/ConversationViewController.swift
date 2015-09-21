@@ -33,7 +33,9 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        managedContext = CoreDataService.initializeManagedContext()
+//        managedContext = CoreDataService.initializeManagedContext()
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        managedContext = appDelegate.managedObjectContext!
         
         MailService.updateConversationMail(conversation.id, managedContext: managedContext)
 //        mailTable.reloadData()

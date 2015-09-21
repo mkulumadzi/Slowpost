@@ -41,7 +41,9 @@ class MailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        managedContext = CoreDataService.initializeManagedContext()
+//        managedContext = CoreDataService.initializeManagedContext()
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        managedContext = appDelegate.managedObjectContext!
         
         self.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         self.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
@@ -75,7 +77,8 @@ class MailViewController: UIViewController {
             readMail(mail)
         }
         
-        if fromPerson.username == loggedInUser.username {
+        let userId = LoginService.getUserIdFromToken()
+        if fromPerson.id == userId {
             navItem.rightBarButtonItem = nil
         }
         

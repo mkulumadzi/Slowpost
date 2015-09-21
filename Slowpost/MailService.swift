@@ -14,19 +14,22 @@ import CoreData
 class MailService: PostofficeObjectService {
     
     class func updateMailbox(managedContext: NSManagedObjectContext) {
-        let mailURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mailbox"
+        let userId = LoginService.getUserIdFromToken()
+        let mailURL = "\(PostOfficeURL)person/id/\(userId)/mailbox"
         // To Do: Get headers using a query of core data
         self.updateMail(mailURL, headers: nil, managedContext: managedContext)
     }
     
     class func updateOutbox(managedContext: NSManagedObjectContext) {
-        let mailURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/outbox"
+        let userId = LoginService.getUserIdFromToken()
+        let mailURL = "\(PostOfficeURL)person/id/\(userId)/outbox"
         // To Do: Get headers using a query of core data
         self.updateMail(mailURL, headers: nil, managedContext: managedContext)
     }
     
     class func updateConversationMail(conversationId: String, managedContext: NSManagedObjectContext) {
-        let mailURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/conversation/\(conversationId)"
+        let userId = LoginService.getUserIdFromToken()
+        let mailURL = "\(PostOfficeURL)person/id/\(userId)/conversation/\(conversationId)"
         // To Do: Get headers using a query of core data
         self.updateMail(mailURL, headers: nil, managedContext: managedContext)
     }

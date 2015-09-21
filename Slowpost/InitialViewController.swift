@@ -18,8 +18,10 @@ class InitialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        managedContext = CoreDataService.initializeManagedContext()
-        loggedInUser = LoginService.getLoggedInUser(managedContext)
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        managedContext = appDelegate.managedObjectContext!
+
+        checkLogin()
         
         print("Initial view loaded at \(NSDate())")
         Flurry.logEvent("Initial_View_Loaded")
@@ -41,30 +43,20 @@ class InitialViewController: UIViewController {
     
     func checkLogin() {
         print("Checking login at \(NSDate())")
-        if loggedInUser == nil {
-            let token = LoginService.getTokenFromKeychain()
-            if token != nil {
-                setLoggedInUserFromToken(token!)
-            }
-            else {
-                goToLoginScreen()
-            }
+        let token = LoginService.getTokenFromKeychain()
+        if token != nil {
+            LoginService.confirmTokenMatchesValidUserOnServer(token!, completion: { error, result -> Void in
+                if result as? String == "Success" {
+                    self.beginLoadingInitialData()
+                }
+                else {
+                    self.goToLoginScreen()
+                }
+            })
         }
         else {
             goToLoginScreen()
         }
-    }
-    
-    func setLoggedInUserFromToken(token: String) {
-        print("Found token, trying to set logged in user at \(NSDate())")
-        LoginService.decodeTokenAndAttemptLogin(token, managedContext: managedContext, completion: { (error, result) -> Void in
-            if result as? String == "Success" {
-                self.beginLoadingInitialData()
-            }
-            else {
-                self.goToLoginScreen()
-            }
-        })
     }
     
     func goToLoginScreen() {
@@ -122,7 +114,8 @@ class InitialViewController: UIViewController {
     
     func registerDeviceToken() {
         let parameters = ["device_token": deviceToken as String]
-        let updatePersonURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)"
+        let userId = LoginService.getUserIdFromToken()
+        let updatePersonURL = "\(PostOfficeURL)/person/id/\(userId)"
         
         RestService.postRequest(updatePersonURL, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
             if error != nil {

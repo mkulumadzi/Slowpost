@@ -14,7 +14,8 @@ import Alamofire
 let PostOfficeURL = ConfigurationService.getPostOfficeURL()
 var addressBook:ABAddressBook!
 var deviceToken:String!
-var loggedInUser:LoggedInUser!
+//var loggedInUserToken:String!
+//var loggedInUserId:String!
 //var mailbox = [Mail]()
 //var outbox = [Mail]()
 //var penpals = [Person]()

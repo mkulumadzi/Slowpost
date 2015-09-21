@@ -9,7 +9,6 @@
 import UIKit
 import Alamofire
 import Foundation
-import CoreData
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
     
@@ -22,8 +21,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var verticalSpaceToPassword: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToLogIn: NSLayoutConstraint!
     @IBOutlet weak var logInButtonHeight: NSLayoutConstraint!
-
-    var managedContext:NSManagedObjectContext!
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
@@ -36,8 +33,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         self.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
         
         Flurry.logEvent("Login_Screen_Opened")
-        
-        managedContext = CoreDataService.initializeManagedContext()
         
         UsernameTextField.addBottomLayer()
         passwordTextField.addBottomLayer()
@@ -81,7 +76,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         logInButton.disable()
         let parameters = ["username": "\(UsernameTextField.text!)", "password": "\(passwordTextField.text!)"]
 
-        LoginService.logIn(parameters, managedContext: managedContext, completion: { (error, result) -> Void in
+        LoginService.logIn(parameters, completion: { (error, result) -> Void in
             if  error != nil {
                 print(error)
             }

@@ -67,7 +67,8 @@ class Mail: PostofficeObject {
     }
     
     func toLoggedInUser() -> Bool {
-        if self.fromPerson.id == loggedInUser.id {
+        let userId = LoginService.getUserIdFromToken()
+        if self.fromPerson.id == userId {
             return false
         }
         else {

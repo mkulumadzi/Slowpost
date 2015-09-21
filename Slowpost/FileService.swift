@@ -56,7 +56,8 @@ class FileService {
     
     class func downloadImage(url: String, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
         
-        let headers:[String: String] = ["Authorization": "Bearer \(loggedInUser.token)"]
+        let token = LoginService.getTokenFromKeychain()
+        let headers:[String: String] = ["Authorization": "Bearer \(token)"]
 
         print("Getting image at \(url)")
         Alamofire.request(.GET, url, headers: headers)

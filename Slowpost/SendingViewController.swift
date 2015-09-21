@@ -36,7 +36,9 @@ class SendingViewController: UIViewController {
         
         Flurry.logEvent("Began_Sending_Mail")
         
-        managedContext = CoreDataService.initializeManagedContext()
+//        managedContext = CoreDataService.initializeManagedContext()
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        managedContext = appDelegate.managedObjectContext!
         
         cancelButton.layer.cornerRadius = 5
         
@@ -71,7 +73,8 @@ class SendingViewController: UIViewController {
     
     func sendMailToPostoffice(imageUid: String) {
         
-        let sendMailEndpoint = "\(PostOfficeURL)person/id/\(loggedInUser.id)/mail/send"
+        let userId = LoginService.getUserIdFromToken()
+        let sendMailEndpoint = "\(PostOfficeURL)person/id/\(userId)/mail/send"
         
         var parameters:[String : AnyObject] = ["correspondents": ["to_people": [toPerson.id]], "attachments": ["notes": [content], "image_attachments": [imageUid]]]
         

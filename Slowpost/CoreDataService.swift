@@ -49,11 +49,11 @@ class CoreDataService {
         
     }
     
-    class func initializeManagedContext() -> NSManagedObjectContext {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext!
-        return managedContext
-    }
+//    class func initializeManagedContext() -> NSManagedObjectContext {
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let managedContext = appDelegate.managedObjectContext!
+//        return managedContext
+//    }
     
     class func findObjectById(managedContext: NSManagedObjectContext, id:String, entityName: String) -> NSManagedObject {
         let fetchRequest = NSFetchRequest(entityName: entityName)
@@ -76,6 +76,22 @@ class CoreDataService {
         
         return objects
     }
+    
+//    class func executeFetchRequest2(fetchRequest: NSFetchRequest) -> [NSManagedObject]? {
+//        
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let managedContext = appDelegate.managedObjectContext!
+//        
+//        var objects:[NSManagedObject]!
+//        
+//        do {
+//            objects = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+//        } catch {
+//            fatalError("Failed to fetch objects: \(error)")
+//        }
+//        
+//        return objects
+//    }
     
     class func deleteCoreDataObjects(entityName: String, managedContext: NSManagedObjectContext) {
         let fetchRequest = NSFetchRequest(entityName: entityName)

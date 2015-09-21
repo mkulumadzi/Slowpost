@@ -22,7 +22,8 @@ class Conversation: PostofficeObject {
         var names = ""
         var index = 0
         for person in people {
-            if person.id != loggedInUser.id {
+            let userId = LoginService.getUserIdFromToken()
+            if person.id != userId {
                 if index > 0 {
                     names += ", "
                 }
