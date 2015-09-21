@@ -71,8 +71,8 @@ class InitialViewController: UIViewController {
         AddressBookService.checkAuthorizationStatus(self)
         PersonService.updatePeople(dataController)
         ConversationService.updateConversations(dataController)
-//        MailService.updateMailbox(dataController)
-//        MailService.updateOutbox(dataController)
+        MailService.updateMailbox(dataController)
+        MailService.updateOutbox(dataController)
 //        getRegisteredContactsIfAuthorized()
         
 //        goToHomeScreen()

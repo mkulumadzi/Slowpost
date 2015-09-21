@@ -82,20 +82,22 @@ class MailService: PostofficeObjectService {
     }
     
     class func addToPeople(mail: Mail, json: JSON, dataController: DataController) {
+        let toPeople = mail.mutableSetValueForKey("toPeople")
         for person_id in json["to_people_ids"].arrayValue {
             let id = person_id.stringValue
             let person = dataController.findObjectById(id, entityName: "Person") as! Person
-            mail.toPeople.append(person)
+            toPeople.addObject(person)
         }
     }
     
     class func addAttachments(mail: Mail, json: JSON, dataController: DataController) {
+        let attachments = mail.mutableSetValueForKey("attachments")
         for attachment in json["attachments"].arrayValue {
             if attachment["_type"].stringValue == "Postoffice::Note" {
-                mail.attachments.append(self.addNote(attachment, dataController: dataController))
+                attachments.addObject(self.addNote(attachment, dataController: dataController))
             }
             else if attachment["_type"].stringValue == "Postoffice::ImageAttachment" {
-                mail.attachments.append(self.addImageAttachment(attachment, dataController: dataController))
+                attachments.addObject(self.addImageAttachment(attachment, dataController: dataController))
             }
         }
     }
