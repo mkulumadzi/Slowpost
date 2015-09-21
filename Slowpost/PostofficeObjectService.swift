@@ -13,17 +13,13 @@ import CoreData
 
 class PostofficeObjectService {
     
-    class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject, managedContext: NSManagedObjectContext) {
+    class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject, dataController: DataController) {
         let postofficeObject = object as! PostofficeObject
         postofficeObject.id = json["_id"]["$oid"].stringValue
         postofficeObject.updatedAt = NSDate(dateString: json["updated_at"].stringValue)
         postofficeObject.createdAt = NSDate(dateString: json["created_at"].stringValue)
         
-        do {
-            try managedContext.save()
-        } catch {
-            fatalError("Failure to save context: \(error)")
-        }
+        dataController.save()
         
     }
     

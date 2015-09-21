@@ -24,7 +24,7 @@ class EditProfileViewController: UITableViewController {
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet var profileTable: UITableView!
     
-    var managedContext:NSManagedObjectContext!
+    var dataController:DataController!
     var loggedInUser:Person!
     
     override func viewDidLoad() {
@@ -32,9 +32,7 @@ class EditProfileViewController: UITableViewController {
         
         Flurry.logEvent("Began_Editing_Profile")
         
-//        managedContext = CoreDataService.initializeManagedContext()
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        managedContext = appDelegate.managedObjectContext!
+        dataController = DataController()
         
         loggedInUser = getLoggedInUser()
         
@@ -77,7 +75,7 @@ class EditProfileViewController: UITableViewController {
         let fetchRequest = NSFetchRequest(entityName: "Person")
         let predicate = NSPredicate(format: "id == %@", userId)
         fetchRequest.predicate = predicate
-        let person = CoreDataService.executeFetchRequest(managedContext, fetchRequest: fetchRequest)![0] as! Person
+        let person = dataController.executeFetchRequest(fetchRequest)![0] as! Person
         return person
     }
 
@@ -93,7 +91,7 @@ class EditProfileViewController: UITableViewController {
             }
             else if let response = result as? [AnyObject] {
                 if response[0] as? Int == 204 {
-                    PersonService.updatePeople(self.managedContext)
+                    PersonService.updatePeople(self.dataController)
                 }
             }
         })

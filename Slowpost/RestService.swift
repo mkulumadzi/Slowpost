@@ -15,19 +15,42 @@ class RestService {
 
     class func getRequest(requestURL:String, headers: [String: String]?, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
         Flurry.logEvent("GET_Request", withParameters: ["URL": "\(requestURL)", "Headers": "\(headers)"])
-        var requestHeaders = headers
-        if requestHeaders!["Authorization"] == nil {
-            if requestHeaders != nil {
-                requestHeaders!["Authorization"] = self.addAuthHeader()
-            }
-            else {
-                requestHeaders! = ["Authorization": self.addAuthHeader()]
-            }
+        
+        var requestHeaders:[String: String]!
+        if headers != nil {
+            requestHeaders = headers
+        }
+        else {
+            requestHeaders = [String: String]()
         }
         
+        if requestHeaders["Authorization"] == nil {
+            requestHeaders["Authorization"] = self.addAuthHeader()
+        }
         
-        Alamofire.request(.GET, requestURL, headers: headers)
+        print(requestHeaders)
+        
+//        var requestHeaders = headers
+//        if requestHeaders != nil && requestHeaders!["Authorization"] == nil {
+//            if requestHeaders != nil {
+//                requestHeaders!["Authorization"] = self.addAuthHeader()
+//            }
+//            else {
+//                requestHeaders! = ["Authorization": self.addAuthHeader()]
+//            }
+//        }
+//        else {
+//            requestHeaders! = ["Authorization": self.addAuthHeader()]
+//        }
+        
+//        let requestHeaders = ["Authorization": self.addAuthHeader()]
+        
+        
+        Alamofire.request(.GET, requestURL, headers: requestHeaders)
             .responseJSON { (_, response, result) in
+                
+            print(response)
+            print(result)
 
             print("The response status code is \(response!.statusCode)")
             switch result {
@@ -47,13 +70,16 @@ class RestService {
 
     class func postRequest(requestURL:String, parameters: [String: AnyObject]?, headers: [String: String]?, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
         var requestHeaders = headers
-        if requestHeaders!["Authorization"] == nil {
+        if requestHeaders != nil && requestHeaders!["Authorization"] == nil {
             if requestHeaders != nil {
                 requestHeaders!["Authorization"] = self.addAuthHeader()
             }
             else {
                 requestHeaders! = ["Authorization": self.addAuthHeader()]
             }
+        }
+        else {
+            requestHeaders! = ["Authorization": self.addAuthHeader()]
         }
         
         
@@ -154,7 +180,7 @@ class RestService {
 //    }
     
     class func addAuthHeader() -> String {
-        let token = LoginService.getTokenFromKeychain()
+        let token = LoginService.getTokenFromKeychain()!
         let auth = "Bearer \(token)"
         return auth
     }

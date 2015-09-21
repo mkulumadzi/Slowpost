@@ -13,116 +13,106 @@ import CoreData
 
 class MailService: PostofficeObjectService {
     
-    class func updateMailbox(managedContext: NSManagedObjectContext) {
+    class func updateMailbox(dataController: DataController) {
         let userId = LoginService.getUserIdFromToken()
         let mailURL = "\(PostOfficeURL)person/id/\(userId)/mailbox"
         // To Do: Get headers using a query of core data
-        self.updateMail(mailURL, headers: nil, managedContext: managedContext)
+        self.updateMail(mailURL, headers: nil, dataController: dataController)
     }
     
-    class func updateOutbox(managedContext: NSManagedObjectContext) {
+    class func updateOutbox(dataController: DataController) {
         let userId = LoginService.getUserIdFromToken()
         let mailURL = "\(PostOfficeURL)person/id/\(userId)/outbox"
         // To Do: Get headers using a query of core data
-        self.updateMail(mailURL, headers: nil, managedContext: managedContext)
+        self.updateMail(mailURL, headers: nil, dataController: dataController)
     }
     
-    class func updateConversationMail(conversationId: String, managedContext: NSManagedObjectContext) {
+    class func updateConversationMail(conversationId: String, dataController: DataController) {
         let userId = LoginService.getUserIdFromToken()
         let mailURL = "\(PostOfficeURL)person/id/\(userId)/conversation/\(conversationId)"
         // To Do: Get headers using a query of core data
-        self.updateMail(mailURL, headers: nil, managedContext: managedContext)
+        self.updateMail(mailURL, headers: nil, dataController: dataController)
     }
     
-    class func updateMail(mailURL: String, headers:[String: String]?, managedContext: NSManagedObjectContext) {
+    class func updateMail(mailURL: String, headers:[String: String]?, dataController: DataController) {
         print("Updating mail at \(NSDate())")
         RestService.getRequest(mailURL, headers: headers, completion: { (error, result) -> Void in
             if let jsonArray = result as? [AnyObject] {
-                self.appendJsonArrayToCoreData(jsonArray, managedContext: managedContext)
+                self.appendJsonArrayToCoreData(jsonArray, dataController: dataController)
             }
         })
     }
     
-    class func appendJsonArrayToCoreData(jsonArray: [AnyObject], managedContext: NSManagedObjectContext) {
+    class func appendJsonArrayToCoreData(jsonArray: [AnyObject], dataController: DataController) {
         let entityName = "Mail"
         for item in jsonArray {
             let json = JSON(item)
-            let object = CoreDataService.getCoreDataObjectForJson(json, entityName: entityName, managedContext: managedContext)
-            self.addOrUpdateCoreDataEntityFromJson(json, object: object, managedContext: managedContext)
+            let object = dataController.getCoreDataObjectForJson(json, entityName: entityName)
+            self.addOrUpdateCoreDataEntityFromJson(json, object: object, dataController: dataController)
         }
     }
     
-    override class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject, managedContext: NSManagedObjectContext) {
+    override class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject, dataController: DataController) {
         let mail = object as! Mail
         mail.status = json["status"].stringValue
         mail.type = json["type"].stringValue
-        self.addConversation(mail, json: json, managedContext: managedContext)
-        self.addFromPerson(mail, json: json, managedContext: managedContext)
-        self.addToPeople(mail, json: json, managedContext: managedContext)
+        self.addConversation(mail, json: json, dataController: dataController)
+        self.addFromPerson(mail, json: json, dataController: dataController)
+        self.addToPeople(mail, json: json, dataController: dataController)
         mail.toEmails = json["to_emails"].stringValue
-        self.addAttachments(mail, json: json, managedContext: managedContext)
+        self.addAttachments(mail, json: json, dataController: dataController)
         mail.dateSent = NSDate(dateString: json["date_sent"].stringValue)
         mail.scheduledToArrive = NSDate(dateString: json["scheduled_to_arrive"].stringValue)
         mail.dateDelivered = NSDate(dateString: json["date_delivered"].stringValue)
         mail.myStatus = json["my_info"]["status"].stringValue
         
-        super.addOrUpdateCoreDataEntityFromJson(json, object: mail, managedContext: managedContext)
+        super.addOrUpdateCoreDataEntityFromJson(json, object: mail, dataController: dataController)
     }
     
-    class func addConversation(mail: Mail, json: JSON, managedContext: NSManagedObjectContext) {
+    class func addConversation(mail: Mail, json: JSON, dataController: DataController) {
         let id = json["conversation_id"].stringValue
-        let conversation = CoreDataService.findObjectById(managedContext, id: id, entityName: "Conversation") as! Conversation
+        let conversation = dataController.findObjectById(id, entityName: "Conversation") as! Conversation
         mail.conversation = conversation
     }
     
-    class func addFromPerson(mail: Mail, json: JSON, managedContext: NSManagedObjectContext) {
+    class func addFromPerson(mail: Mail, json: JSON, dataController: DataController) {
         let id = json["from_person_id"].stringValue
-        let person = CoreDataService.findObjectById(managedContext, id: id, entityName: "Person") as! Person
+        let person = dataController.findObjectById(id, entityName: "Person") as! Person
         mail.fromPerson = person
     }
     
-    class func addToPeople(mail: Mail, json: JSON, managedContext: NSManagedObjectContext) {
+    class func addToPeople(mail: Mail, json: JSON, dataController: DataController) {
         for person_id in json["to_people_ids"].arrayValue {
             let id = person_id.stringValue
-            let person = CoreDataService.findObjectById(managedContext, id: id, entityName: "Person") as! Person
+            let person = dataController.findObjectById(id, entityName: "Person") as! Person
             mail.toPeople.append(person)
         }
     }
     
-    class func addAttachments(mail: Mail, json: JSON, managedContext: NSManagedObjectContext) {
+    class func addAttachments(mail: Mail, json: JSON, dataController: DataController) {
         for attachment in json["attachments"].arrayValue {
             if attachment["_type"].stringValue == "Postoffice::Note" {
-                mail.attachments.append(self.addNote(attachment, managedContext: managedContext))
+                mail.attachments.append(self.addNote(attachment, dataController: dataController))
             }
             else if attachment["_type"].stringValue == "Postoffice::ImageAttachment" {
-                mail.attachments.append(self.addImageAttachment(attachment, managedContext: managedContext))
+                mail.attachments.append(self.addImageAttachment(attachment, dataController: dataController))
             }
         }
     }
     
-    class func addNote(json: JSON, managedContext: NSManagedObjectContext) -> Note {
-        let note = NSEntityDescription.insertNewObjectForEntityForName("Note", inManagedObjectContext: managedContext) as! Note
+    class func addNote(json: JSON, dataController: DataController) -> Note {
+        let note = NSEntityDescription.insertNewObjectForEntityForName("Note", inManagedObjectContext: dataController.moc) as! Note
         note.id = json["_id"]["$oid"].stringValue
         note.content = json["content"].stringValue
-        do {
-            try managedContext.save()
-        } catch {
-            fatalError("Failure to save context: \(error)")
-        }
-        
+        dataController.save()
         return note
     }
     
-    class func addImageAttachment(json: JSON, managedContext: NSManagedObjectContext) -> ImageAttachment {
-        let imageAttachment = NSEntityDescription.insertNewObjectForEntityForName("ImageAttachment", inManagedObjectContext: managedContext) as! ImageAttachment
+    class func addImageAttachment(json: JSON, dataController: DataController) -> ImageAttachment {
+        let imageAttachment = NSEntityDescription.insertNewObjectForEntityForName("ImageAttachment", inManagedObjectContext: dataController.moc) as! ImageAttachment
         imageAttachment.id = json["_id"]["$oid"].stringValue
         imageAttachment.url = json["url"].stringValue
-        do {
-            try managedContext.save()
-        } catch {
-            fatalError("Failure to save context: \(error)")
-        }
-        
+        dataController.save()
         return imageAttachment
     }
 
@@ -207,13 +197,13 @@ class MailService: PostofficeObjectService {
 //        
 //        for mail in mailArray {
 //            let predicate = NSPredicate(format: "id == %@", mail.id)
-//            let object = CoreDataService.getExistingEntityOrReturnNewEntity("Mail", managedContext: managedContext, predicate: predicate)
-//            self.saveOrUpdateMailInCoreData(mail, object: object, managedContext: managedContext)
+//            let object = CoreDataService.getExistingEntityOrReturnNewEntity("Mail", dataController: dataController, predicate: predicate)
+//            self.saveOrUpdateMailInCoreData(mail, object: object, dataController: dataController)
 //        }
 //        
 //    }
 //    
-//    class func saveOrUpdateMailInCoreData(mail: Mail, object: NSManagedObject, managedContext: NSManagedObjectContext) {
+//    class func saveOrUpdateMailInCoreData(mail: Mail, object: NSManagedObject, dataController: DataController) {
 //        
 //        print(mail)
 //        

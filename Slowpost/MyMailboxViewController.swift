@@ -15,7 +15,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var mailTable: UITableView!
     @IBOutlet weak var navBar: UINavigationBar!
     
-    var managedContext:NSManagedObjectContext!
+    var dataController:DataController!
     var fetchedResultsController: NSFetchedResultsController!
     
     lazy var refreshControl: UIRefreshControl = {
@@ -32,9 +32,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        managedContext = CoreDataService.initializeManagedContext()
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        managedContext = appDelegate.managedObjectContext!
+        dataController = DataController()
         initializeFetchedResultsController()
         
         refreshData()
@@ -78,7 +76,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         fetchRequest.predicate = predicate
         
         fetchRequest.sortDescriptors = [deliveredSort]
-        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: nil, cacheName: nil)
         self.fetchedResultsController.delegate = self
         do {
             try self.fetchedResultsController.performFetch()
@@ -96,7 +94,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         let fromPerson = mail.fromPerson
         cell.fromViewInitials.text = fromPerson.initials()
         cell.fromLabel.text = fromPerson.name
-        cell.imageView!.image = mail.image(managedContext)
+        cell.imageView!.image = mail.image(dataController.moc)
         let deliveredDateString = mail.dateDelivered.formattedAsString("yyyy-MM-dd")
         cell.deliveredLabel.text = "Delivered on \(deliveredDateString)"
         formatMailCellBasedOnMailStatus(cell, mail: mail)
@@ -139,8 +137,8 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func refreshData() {
-        PersonService.updatePeople(managedContext)
-        MailService.updateMailbox(managedContext)
+        PersonService.updatePeople(dataController)
+        MailService.updateMailbox(dataController)
         mailTable.reloadData()
     }
     

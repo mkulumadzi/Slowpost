@@ -12,13 +12,12 @@ import Foundation
 
 class ConversationListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, NSFetchedResultsControllerDelegate {
     
-//    var conversationMetadataList:[ConversationMetadata]!
     
     @IBOutlet weak var conversationList: UITableView!
 //    @IBOutlet weak var noResultsLabel: UILabel!
     @IBOutlet weak var messageLabel: MessageUILabel!
     
-    var managedContext:NSManagedObjectContext!
+    var dataController:DataController!
     var fetchedResultsController: NSFetchedResultsController!
     
     lazy var refreshControl: UIRefreshControl = {
@@ -35,13 +34,11 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         Flurry.logEvent("Conversation_View_Opened")
 //        conversationMetadataList = conversationMetadataArray
         
-//        managedContext = CoreDataService.initializeManagedContext()
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        managedContext = appDelegate.managedObjectContext!
+        dataController = DataController()
         
         messageLabel.hide()
         conversationList.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: conversationList.bounds.size.width, height: 0.01))
-        ConversationService.updateConversations(managedContext)
+        ConversationService.updateConversations(dataController)
         conversationList.addSubview(self.refreshControl)
 //        addSearchBar()
         
@@ -50,7 +47,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        ConversationService.updateConversations(managedContext)
+        ConversationService.updateConversations(dataController)
     }
     
 //    func addSearchBar() {
@@ -84,7 +81,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         let deliveredSort = NSSortDescriptor(key: "dateUpdated", ascending: false)
         
         fetchRequest.sortDescriptors = [deliveredSort]
-        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: nil, cacheName: nil)
         self.fetchedResultsController.delegate = self
         do {
             try self.fetchedResultsController.performFetch()
@@ -95,7 +92,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
 
     
     func handleRefresh(refreshControl: UIRefreshControl) {
-        ConversationService.updateConversations(managedContext)
+        ConversationService.updateConversations(dataController)
         refreshControl.endRefreshing()
     }
     
@@ -243,7 +240,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     
     @IBAction func choseToLogOut(segue:UIStoryboardSegue) {
         dismissSourceViewController(segue)
-        LoginService.logOut(managedContext)
+        LoginService.logOut(dataController)
         self.dismissViewControllerAnimated(true, completion: {})
     }
     

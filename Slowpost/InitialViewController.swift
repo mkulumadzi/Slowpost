@@ -13,14 +13,12 @@ import SwiftyJSON
 
 class InitialViewController: UIViewController {
 
-    var managedContext:NSManagedObjectContext!
+    var dataController:DataController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        managedContext = appDelegate.managedObjectContext!
-
+        dataController = DataController()        
         checkLogin()
         
         print("Initial view loaded at \(NSDate())")
@@ -45,7 +43,7 @@ class InitialViewController: UIViewController {
         print("Checking login at \(NSDate())")
         let token = LoginService.getTokenFromKeychain()
         if token != nil {
-            LoginService.confirmTokenMatchesValidUserOnServer(token!, completion: { error, result -> Void in
+            LoginService.confirmTokenMatchesValidUserOnServer( { error, result -> Void in
                 if result as? String == "Success" {
                     self.beginLoadingInitialData()
                 }
@@ -71,13 +69,13 @@ class InitialViewController: UIViewController {
         Flurry.logEvent("Initial_Data_Loading_Began", timed: true)
         
         AddressBookService.checkAuthorizationStatus(self)
-        PersonService.updatePeople(managedContext)
-        ConversationService.updateConversations(managedContext)
-        MailService.updateMailbox(managedContext)
-        MailService.updateOutbox(managedContext)
+        PersonService.updatePeople(dataController)
+        ConversationService.updateConversations(dataController)
+//        MailService.updateMailbox(dataController)
+//        MailService.updateOutbox(dataController)
 //        getRegisteredContactsIfAuthorized()
         
-        goToHomeScreen()
+//        goToHomeScreen()
     }
 
 //    func getRegisteredContactsIfAuthorized() {

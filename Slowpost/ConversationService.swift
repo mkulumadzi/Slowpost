@@ -13,43 +13,44 @@ import CoreData
 
 class ConversationService: PostofficeObjectService {
     
-    class func updateConversations(managedContext: NSManagedObjectContext) {
+    class func updateConversations(dataController: DataController) {
         print("Updating conversations at \(NSDate())")
         let userId = LoginService.getUserIdFromToken()
         let conversationsURL = "\(PostOfficeURL)person/id/\(userId)/conversations"
-        let headers = CoreDataService.getIfModifiedSinceHeaderForEntity("Conversation", managedContext: managedContext)
+        let headers = dataController.getIfModifiedSinceHeaderForEntity("Conversation")
         RestService.getRequest(conversationsURL, headers: headers, completion: { (error, result) -> Void in
             if let jsonArray = result as? [AnyObject] {
-                self.appendJsonArrayToCoreData(jsonArray, managedContext: managedContext)
+                self.appendJsonArrayToCoreData(jsonArray, dataController: dataController)
             }
         })
     }
     
-    class func appendJsonArrayToCoreData(jsonArray: [AnyObject], managedContext: NSManagedObjectContext) {
+    class func appendJsonArrayToCoreData(jsonArray: [AnyObject], dataController: DataController) {
         let entityName = "Conversation"
         for item in jsonArray {
             let json = JSON(item)
-            let object = CoreDataService.getCoreDataObjectForJson(json, entityName: entityName, managedContext: managedContext)
-            self.addOrUpdateCoreDataEntityFromJson(json, object: object, managedContext: managedContext)
+            let object = dataController.getCoreDataObjectForJson(json, entityName: entityName)
+            self.addOrUpdateCoreDataEntityFromJson(json, object: object, dataController: dataController)
         }
     }
     
-    override class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject, managedContext: NSManagedObjectContext) {
+    override class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject, dataController: DataController) {
         let conversation = object as! Conversation
-        self.addPeople(conversation, json: json, managedContext: managedContext)
+        self.addPeople(conversation, json: json, dataController: dataController)
         conversation.emails = json["emails"].stringValue
-        conversation.numUnread = json["numUnread"].intValue
-        conversation.numUndelivered = json["numUndelivered"].intValue
-        conversation.personSentMostRecentMail = json["personSentMostRecentMail"].boolValue
+        conversation.numUnread = json["num_unread"].int16Value
+        conversation.numUndelivered = json["num_undelivered"].int16Value
+        conversation.personSentMostRecentMail = json["person_sent_most_recent_mail"].boolValue
         
-        super.addOrUpdateCoreDataEntityFromJson(json, object: conversation, managedContext: managedContext)
+        super.addOrUpdateCoreDataEntityFromJson(json, object: conversation, dataController: dataController)
     }
     
-    class func addPeople(conversation: Conversation, json: JSON, managedContext: NSManagedObjectContext) {
+    class func addPeople(conversation: Conversation, json: JSON, dataController: DataController) {
+        let conversationPeople = conversation.mutableSetValueForKey("people")
         for person_id in json["people"].arrayValue {
             let id = person_id["$oid"].stringValue
-            let person = CoreDataService.findObjectById(managedContext, id: id, entityName: "Person") as! Person
-            conversation.people.append(person)
+            let person = dataController.findObjectById(id, entityName: "Person") as! Person
+            conversationPeople.addObject(person)
         }
     }
     
@@ -128,13 +129,13 @@ class ConversationService: PostofficeObjectService {
 //        for conversationMetadata in conversationMetadataArray {
 //            let predicate = NSPredicate(format: "username == %@", conversationMetadata.username)
 //            
-//            let object = CoreDataService.getExistingEntityOrReturnNewEntity("ConversationMetadata", managedContext: managedContext, predicate: predicate)
-//            self.saveOrUpdateConversationMetadataInCoreData(conversationMetadata, object: object, managedContext: managedContext)
+//            let object = CoreDataService.getExistingEntityOrReturnNewEntity("ConversationMetadata", dataController: dataController, predicate: predicate)
+//            self.saveOrUpdateConversationMetadataInCoreData(conversationMetadata, object: object, dataController: dataController)
 //        }
 //        
 //    }
 //    
-//    class func saveOrUpdateConversationMetadataInCoreData(conversationMetadata: ConversationMetadata, object: NSManagedObject, managedContext: NSManagedObjectContext) {
+//    class func saveOrUpdateConversationMetadataInCoreData(conversationMetadata: ConversationMetadata, object: NSManagedObject, dataController: dataController) {
 //        
 //        object.setValue(conversationMetadata.username, forKey: "username")
 //        object.setValue(conversationMetadata.name, forKey: "name")

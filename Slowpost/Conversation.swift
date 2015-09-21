@@ -14,8 +14,8 @@ class Conversation: PostofficeObject {
     
     @NSManaged  var people: [Person]
     @NSManaged var emails: String
-    @NSManaged var numUnread: Int
-    @NSManaged var numUndelivered: Int
+    @NSManaged var numUnread: Int16
+    @NSManaged var numUndelivered: Int16
     @NSManaged var personSentMostRecentMail: Bool
     
     func peopleNames() -> String {

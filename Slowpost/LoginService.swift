@@ -39,11 +39,10 @@ class LoginService: PersonService {
         MyKeychainWrapper.writeToKeychain()
     }
     
-    class func confirmTokenMatchesValidUserOnServer(token: String, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
+    class func confirmTokenMatchesValidUserOnServer(completion: (error: ErrorType?, result: AnyObject?) -> Void) {
         let userId = self.getUserIdFromToken()
         let url = "\(PostOfficeURL)/person/id/\(userId)"
-        let headers = ["Authorization": "Bearer \(token)"]
-        RestService.getRequest(url, headers: headers, completion: { error, result -> Void in
+        RestService.getRequest(url, headers: nil, completion: { error, result -> Void in
             if error != nil {
                 print("Token does not match valid user")
                 completion(error: error, result: nil)
@@ -92,7 +91,7 @@ class LoginService: PersonService {
         return payload
     }
     
-    class func logOut(managedContext: NSManagedObjectContext) {
+    class func logOut(dataController: DataController) {
         Flurry.logEvent("Logged_Out")
         
         // Clear the keychain
@@ -101,12 +100,11 @@ class LoginService: PersonService {
         MyKeychainWrapper.writeToKeychain()
         
         // Delete cached objects from Core Data
-        CoreDataService.deleteCoreDataObjects("Mail", managedContext: managedContext)
-        CoreDataService.deleteCoreDataObjects("Person", managedContext: managedContext)
-        CoreDataService.deleteCoreDataObjects("LoggedInUser", managedContext: managedContext)
-        CoreDataService.deleteCoreDataObjects("Conversation", managedContext: managedContext)
-        CoreDataService.deleteCoreDataObjects("Note", managedContext: managedContext)
-        CoreDataService.deleteCoreDataObjects("ImageAttachment", managedContext: managedContext)
+        dataController.deleteCoreDataObjects("Mail")
+        dataController.deleteCoreDataObjects("Person")
+        dataController.deleteCoreDataObjects("Conversation")
+        dataController.deleteCoreDataObjects("Note")
+        dataController.deleteCoreDataObjects("ImageAttachment")
         
     }
     
