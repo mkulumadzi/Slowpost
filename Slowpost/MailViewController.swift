@@ -41,17 +41,13 @@ class MailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        managedContext = CoreDataService.initializeManagedContext()
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        managedContext = appDelegate.managedObjectContext!
-        
         self.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         self.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
         
         Flurry.logEvent("Mail_Opened")
         
         
-        mailImage.image = mail.image(managedContext)
+//        mailImage.image = mail.image()
         fromView.layer.cornerRadius = 15
         
         fromPerson = mail.fromPerson

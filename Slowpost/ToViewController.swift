@@ -43,8 +43,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         noResultsLabel.hidden = true
         
 //        managedContext = CoreDataService.initializeManagedContext()
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        managedContext = appDelegate.managedObjectContext!
         initializeFetchedResultsController()
         
 //        addSearchBar()
@@ -59,8 +57,10 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     // Mark: Set up Core Data
     func initializeFetchedResultsController() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
         let fetchRequest = NSFetchRequest(entityName: "Person")
-        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: managedContext, sectionNameKeyPath: nil, cacheName: nil)
+        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: nil, cacheName: nil)
         self.fetchedResultsController.delegate = self
         do {
             try self.fetchedResultsController.performFetch()

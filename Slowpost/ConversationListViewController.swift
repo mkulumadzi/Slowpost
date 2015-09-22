@@ -17,7 +17,6 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
 //    @IBOutlet weak var noResultsLabel: UILabel!
     @IBOutlet weak var messageLabel: MessageUILabel!
     
-    var dataController:DataController!
     var fetchedResultsController: NSFetchedResultsController!
     
     lazy var refreshControl: UIRefreshControl = {
@@ -34,11 +33,9 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         Flurry.logEvent("Conversation_View_Opened")
 //        conversationMetadataList = conversationMetadataArray
         
-        dataController = DataController()
-        
         messageLabel.hide()
         conversationList.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: conversationList.bounds.size.width, height: 0.01))
-        ConversationService.updateConversations(dataController)
+        ConversationService.updateConversations()
         conversationList.addSubview(self.refreshControl)
 //        addSearchBar()
         
@@ -47,7 +44,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        ConversationService.updateConversations(dataController)
+        ConversationService.updateConversations()
     }
     
 //    func addSearchBar() {
@@ -77,6 +74,8 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     
     // Mark: Set up Core Data
     func initializeFetchedResultsController() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
         let fetchRequest = NSFetchRequest(entityName: "Conversation")
         let deliveredSort = NSSortDescriptor(key: "dateUpdated", ascending: false)
         
@@ -92,7 +91,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
 
     
     func handleRefresh(refreshControl: UIRefreshControl) {
-        ConversationService.updateConversations(dataController)
+        ConversationService.updateConversations()
         refreshControl.endRefreshing()
     }
     
@@ -240,7 +239,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     
     @IBAction func choseToLogOut(segue:UIStoryboardSegue) {
         dismissSourceViewController(segue)
-        LoginService.logOut(dataController)
+        LoginService.logOut()
         self.dismissViewControllerAnimated(true, completion: {})
     }
     

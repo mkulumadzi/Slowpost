@@ -15,7 +15,6 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var mailTable: UITableView!
     @IBOutlet weak var navBar: UINavigationBar!
     
-    var dataController:DataController!
     var fetchedResultsController: NSFetchedResultsController!
     
     lazy var refreshControl: UIRefreshControl = {
@@ -32,7 +31,6 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dataController = DataController()
         initializeFetchedResultsController()
         
         refreshData()
@@ -69,8 +67,8 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // Mark: Set up Core Data
     func initializeFetchedResultsController() {
-        
-        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
         
         let fetchRequest = NSFetchRequest(entityName: "Mail")
         let deliveredSort = NSSortDescriptor(key: "dateDelivered", ascending: false)
@@ -95,13 +93,14 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     //
     
     func configureCell(cell: MailCell, indexPath: NSIndexPath) {
+        
         let mail = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Mail
         cell.mail = mail
         
         let fromPerson = mail.fromPerson
         cell.fromViewInitials.text = fromPerson.initials()
         cell.fromLabel.text = fromPerson.name
-        cell.imageView!.image = mail.image(dataController.moc)
+//        cell.imageView!.image = mail.image()
         let deliveredDateString = mail.dateDelivered.formattedAsString("yyyy-MM-dd")
         cell.deliveredLabel.text = "Delivered on \(deliveredDateString)"
         formatMailCellBasedOnMailStatus(cell, mail: mail)
@@ -144,8 +143,8 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func refreshData() {
-        PersonService.updatePeople(dataController)
-        MailService.updateMailbox(dataController)
+        PersonService.updatePeople()
+        MailService.updateMailbox()
         mailTable.reloadData()
     }
     

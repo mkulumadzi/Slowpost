@@ -13,29 +13,33 @@ import CoreData
 
 class PersonService: PostofficeObjectService {
     
-    class func updatePeople(dataController: DataController) {
+    class func updatePeople() {
         print("Updating people at \(NSDate())")
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
         let userId = LoginService.getUserIdFromToken()
         let peopleURL = "\(PostOfficeURL)person/id/\(userId)/contacts"
         let headers = dataController.getIfModifiedSinceHeaderForEntity("Person")
         
         RestService.getRequest(peopleURL, headers: headers, completion: { (error, result) -> Void in
             if let jsonArray = result as? [AnyObject] {
-                self.appendJsonArrayToCoreData(jsonArray, dataController: dataController)
+                self.appendJsonArrayToCoreData(jsonArray)
             }
         })
     }
     
-    class func appendJsonArrayToCoreData(jsonArray: [AnyObject], dataController: DataController) {
+    class func appendJsonArrayToCoreData(jsonArray: [AnyObject]) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
         let entityName = "Person"
         for item in jsonArray {
             let json = JSON(item)
             let object = dataController.getCoreDataObjectForJson(json, entityName: entityName)
-            self.addOrUpdateCoreDataEntityFromJson(json, object: object, dataController: dataController)
+            self.addOrUpdateCoreDataEntityFromJson(json, object: object)
         }
     }
     
-    override class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject, dataController: DataController) {
+    override class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject) {
         let person = object as! Person
         person.username = json["username"].stringValue
         person.name = json["name"].stringValue
@@ -46,7 +50,7 @@ class PersonService: PostofficeObjectService {
         person.state = json["state"].stringValue
         person.zip = json["zip"].stringValue
         
-        super.addOrUpdateCoreDataEntityFromJson(json, object: person, dataController: dataController)
+        super.addOrUpdateCoreDataEntityFromJson(json, object: person)
     }
     
 //    class func getPersonJson(personId: String, headers: [String: String]?, completion: (error: ErrorType?, result: AnyObject?) -> Void) {

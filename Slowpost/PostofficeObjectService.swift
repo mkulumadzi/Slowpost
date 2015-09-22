@@ -13,7 +13,9 @@ import CoreData
 
 class PostofficeObjectService {
     
-    class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject, dataController: DataController) {
+    class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
         let postofficeObject = object as! PostofficeObject
         postofficeObject.id = json["_id"]["$oid"].stringValue
         postofficeObject.updatedAt = NSDate(dateString: json["updated_at"].stringValue)

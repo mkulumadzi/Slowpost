@@ -19,8 +19,6 @@ class SendingViewController: UIViewController {
     var scheduledToArrive:NSDate?
     var toPerson:Person!
     
-    var dataController:DataController!
-    
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var cancelButtonHeight: NSLayoutConstraint!
     
@@ -33,10 +31,7 @@ class SendingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         Flurry.logEvent("Began_Sending_Mail")
-        
-        dataController = DataController()
         
         cancelButton.layer.cornerRadius = 5
         
@@ -89,7 +84,7 @@ class SendingViewController: UIViewController {
         RestService.postRequest(sendMailEndpoint, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
             if let response = result as? [AnyObject] {
                 if response[0] as? Int == 201 {
-                    PersonService.updatePeople(self.dataController)
+                    PersonService.updatePeople()
                     Flurry.logEvent("Finished_Sending_Mail")
                     let nav = self.presentingViewController!
                     self.dismissViewControllerAnimated(true, completion: { () -> Void in

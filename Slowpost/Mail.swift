@@ -26,60 +26,39 @@ class Mail: PostofficeObject {
     @NSManaged var dateDelivered:NSDate!
     @NSManaged var myStatus:String!
     
-    func image (managedContext: NSManagedObjectContext) -> UIImage {
-        var image:UIImage!
-        
-        
-        
-        for attachment in self.attachments {
-            if let imageAttachment = attachment as? ImageAttachment {
-                
-                
-                
-                print("The size of the image is \(imageAttachment.image.size)")
-                print("The image is equal to nil?")
-                if imageAttachment.image.isEqual(nil) {
-                    print("yes")
-                }
-                else {
-                    print("no")
-                }
-                
-                
-                if imageAttachment.image.isEqual(nil) && imageAttachment.currentlyDownloadingImage == false {
-                    
-                    
-                    
-                    imageAttachment.getImage(managedContext, completion: { (error, result) -> Void in
-                        if let imageReturned = result as? UIImage {
-                            image = imageReturned
-                        }
-                    })
-                }
-                else {
-                    image = imageAttachment.image
-                }
-            }
-        }
-        
-        
-        
-        
-        
-//        print(image.size)
-        
-        
-        
-        
-        
-//        if image.isEqual(nil) {
-//            return UIImage(named: "Default Card.png")!
+//    func image () -> UIImage {
+//        var image:UIImage!
+//        for attachment in self.attachments {
+//            if let imageAttachment = attachment as? ImageAttachment {
+//                print("The size of the image is \(imageAttachment.image.size)")
+//                print("The image is equal to nil?")
+//                if imageAttachment.image.isEqual(nil) {
+//                    print("yes")
+//                }
+//                else {
+//                    print("no")
+//                }
+//                if imageAttachment.image.isEqual(nil) && imageAttachment.currentlyDownloadingImage == false {
+//                    imageAttachment.getImage(completion: { (error, result) -> Void in
+//                        if let imageReturned = result as? UIImage {
+//                            image = imageReturned
+//                        }
+//                    })
+//                }
+//                else {
+//                    image = imageAttachment.image
+//                }
+//            }
 //        }
-//        else {
-//            return image
-//        }
-        return image
-    }
+////        print(image.size)
+////        if image.isEqual(nil) {
+////            return UIImage(named: "Default Card.png")!
+////        }
+////        else {
+////            return image
+////        }
+//        return image
+//    }
     
     func content() -> String {
         var content:String!

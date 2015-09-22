@@ -13,12 +13,9 @@ import SwiftyJSON
 
 class InitialViewController: UIViewController {
 
-    var dataController:DataController!
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dataController = DataController()        
         checkLogin()
         
         print("Initial view loaded at \(NSDate())")
@@ -69,13 +66,13 @@ class InitialViewController: UIViewController {
         Flurry.logEvent("Initial_Data_Loading_Began", timed: true)
         
         AddressBookService.checkAuthorizationStatus(self)
-        PersonService.updatePeople(dataController)
-        ConversationService.updateConversations(dataController)
-        MailService.updateMailbox(dataController)
-        MailService.updateOutbox(dataController)
+        PersonService.updatePeople()
+        ConversationService.updateConversations()
+        MailService.updateMailbox()
+        MailService.updateOutbox()
 //        getRegisteredContactsIfAuthorized()
         
-        goToHomeScreen()
+//        goToHomeScreen()
     }
 
 //    func getRegisteredContactsIfAuthorized() {

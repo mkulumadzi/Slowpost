@@ -14,7 +14,6 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     
     var conversation:Conversation!
 
-    var dataController:DataController!
     var undeliveredMailController:NSFetchedResultsController!
     var deliveredMailController:NSFetchedResultsController!
     
@@ -33,9 +32,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dataController = DataController()
-        
-        MailService.updateConversationMail(conversation.id, dataController: dataController)
+        MailService.updateConversationMail(conversation.id)
 //        mailTable.reloadData()
         
         mailTable.addSubview(self.refreshControl)
@@ -52,7 +49,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         })
         
         NSNotificationCenter.defaultCenter().addObserverForName("appBecameActive:", object: nil, queue: nil, usingBlock: { (notification) -> Void in
-        MailService.updateConversationMail(self.conversation.id, dataController: self.dataController)
+        MailService.updateConversationMail(self.conversation.id)
         })
         
     }
@@ -60,7 +57,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidAppear(animated: Bool) {
         print("View appeared")
         super.viewDidAppear(true)
-        MailService.updateConversationMail(conversation.id, dataController: dataController)
+        MailService.updateConversationMail(conversation.id)
 //        mailTable.reloadData()
     }
     
@@ -72,6 +69,8 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     
     // Mark: Set up Core Data
     func initializeUndeliveredMailController() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
         let fetchRequest = NSFetchRequest(entityName: "Mail")
         let dateSentSort = NSSortDescriptor(key: "dateSent", ascending: false)
         let predicate = NSPredicate(format: "status == %@ AND conversation == %@", ["SENT", conversation])
@@ -88,6 +87,8 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func initializeDeliveredMailController() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
         let fetchRequest = NSFetchRequest(entityName: "Mail")
         let dateDeliveredSort = NSSortDescriptor(key: "dateDelivered", ascending: false)
         let predicate = NSPredicate(format: "status == %@ AND conversation == %@", ["DELIVERED", conversation])
@@ -186,7 +187,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         
         generateStatusLabel(cell, mail: cell.mail)
         
-        cell.mailImageView.image = cell.mail.image(dataController.moc)
+//        cell.mailImageView.image = cell.mail.image()
         cell.initialsLabel.text = cell.mail.fromPerson.initials()
         
         formatMailStatusLabel(cell)
@@ -247,7 +248,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     
     
     func handleRefresh(refreshControl: UIRefreshControl) {
-        MailService.updateConversationMail(conversation.id, dataController: dataController)
+        MailService.updateConversationMail(conversation.id)
         refreshControl.endRefreshing()
     }
     
@@ -266,7 +267,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
             let storyboard = UIStoryboard(name: "mail", bundle: nil)
             let mailViewController = storyboard.instantiateInitialViewController() as! MailViewController
             mailViewController.mail = mail
-            mailViewController.runOnClose = {MailService.updateConversationMail(self.conversation.id, dataController: self.dataController)}
+            mailViewController.runOnClose = {MailService.updateConversationMail(self.conversation.id)}
             self.presentViewController(mailViewController, animated: true, completion: {})
         }
     }

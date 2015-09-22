@@ -91,8 +91,10 @@ class LoginService: PersonService {
         return payload
     }
     
-    class func logOut(dataController: DataController) {
+    class func logOut() {
         Flurry.logEvent("Logged_Out")
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
         
         // Clear the keychain
         MyKeychainWrapper.mySetObject("", forKey:kSecValueData)

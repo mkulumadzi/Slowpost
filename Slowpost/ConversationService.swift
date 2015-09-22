@@ -13,39 +13,45 @@ import CoreData
 
 class ConversationService: PostofficeObjectService {
     
-    class func updateConversations(dataController: DataController) {
+    class func updateConversations() {
         print("Updating conversations at \(NSDate())")
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
         let userId = LoginService.getUserIdFromToken()
         let conversationsURL = "\(PostOfficeURL)person/id/\(userId)/conversations"
         let headers = dataController.getIfModifiedSinceHeaderForEntity("Conversation")
         RestService.getRequest(conversationsURL, headers: headers, completion: { (error, result) -> Void in
             if let jsonArray = result as? [AnyObject] {
-                self.appendJsonArrayToCoreData(jsonArray, dataController: dataController)
+                self.appendJsonArrayToCoreData(jsonArray)
             }
         })
     }
     
-    class func appendJsonArrayToCoreData(jsonArray: [AnyObject], dataController: DataController) {
+    class func appendJsonArrayToCoreData(jsonArray: [AnyObject]) {
         let entityName = "Conversation"
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
         for item in jsonArray {
             let json = JSON(item)
             let object = dataController.getCoreDataObjectForJson(json, entityName: entityName)
-            self.addOrUpdateCoreDataEntityFromJson(json, object: object, dataController: dataController)
+            self.addOrUpdateCoreDataEntityFromJson(json, object: object)
         }
     }
     
-    override class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject, dataController: DataController) {
+    override class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject) {
         let conversation = object as! Conversation
-        self.addPeople(conversation, json: json, dataController: dataController)
+        self.addPeople(conversation, json: json)
         conversation.emails = json["emails"].stringValue
         conversation.numUnread = json["num_unread"].int16Value
         conversation.numUndelivered = json["num_undelivered"].int16Value
         conversation.personSentMostRecentMail = json["person_sent_most_recent_mail"].boolValue
         
-        super.addOrUpdateCoreDataEntityFromJson(json, object: conversation, dataController: dataController)
+        super.addOrUpdateCoreDataEntityFromJson(json, object: conversation)
     }
     
-    class func addPeople(conversation: Conversation, json: JSON, dataController: DataController) {
+    class func addPeople(conversation: Conversation, json: JSON) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
         let conversationPeople = conversation.mutableSetValueForKey("people")
         for person_id in json["people"].arrayValue {
             let id = person_id["$oid"].stringValue

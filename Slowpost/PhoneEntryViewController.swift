@@ -23,8 +23,6 @@ class PhoneEntryViewController: UIViewController {
     var email:String!
     var username:String!
     var password:String!
-    var managedContext:NSManagedObjectContext!
-
 
     @IBOutlet weak var verticalSpaceToTitle: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToPhone: NSLayoutConstraint!
@@ -38,9 +36,6 @@ class PhoneEntryViewController: UIViewController {
         super.viewDidLoad()
         
         Flurry.logEvent("Phone_View_Opened")
-        
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        managedContext = appDelegate.managedObjectContext!
         
         phoneTextField.addBottomLayer()
         signUpButton.layer.cornerRadius = 5

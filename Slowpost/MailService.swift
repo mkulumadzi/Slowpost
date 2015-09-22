@@ -13,75 +13,90 @@ import CoreData
 
 class MailService: PostofficeObjectService {
     
-    class func updateMailbox(dataController: DataController) {
+    class func updateMailbox() {
         let userId = LoginService.getUserIdFromToken()
         let mailURL = "\(PostOfficeURL)person/id/\(userId)/mailbox"
         // To Do: Get headers using a query of core data
-        self.updateMail(mailURL, headers: nil, dataController: dataController)
+        self.updateMail(mailURL, headers: nil)
     }
     
-    class func updateOutbox(dataController: DataController) {
+    class func updateOutbox() {
         let userId = LoginService.getUserIdFromToken()
         let mailURL = "\(PostOfficeURL)person/id/\(userId)/outbox"
         // To Do: Get headers using a query of core data
-        self.updateMail(mailURL, headers: nil, dataController: dataController)
+        self.updateMail(mailURL, headers: nil)
     }
     
-    class func updateConversationMail(conversationId: String, dataController: DataController) {
+    class func updateConversationMail(conversationId: String) {
         let userId = LoginService.getUserIdFromToken()
         let mailURL = "\(PostOfficeURL)person/id/\(userId)/conversation/\(conversationId)"
         // To Do: Get headers using a query of core data
-        self.updateMail(mailURL, headers: nil, dataController: dataController)
+        self.updateMail(mailURL, headers: nil)
     }
     
-    class func updateMail(mailURL: String, headers:[String: String]?, dataController: DataController) {
+    class func updateMail(mailURL: String, headers:[String: String]?) {
         print("Updating mail at \(NSDate())")
         RestService.getRequest(mailURL, headers: headers, completion: { (error, result) -> Void in
             if let jsonArray = result as? [AnyObject] {
-                self.appendJsonArrayToCoreData(jsonArray, dataController: dataController)
+                self.appendJsonArrayToCoreData(jsonArray)
             }
         })
     }
     
-    class func appendJsonArrayToCoreData(jsonArray: [AnyObject], dataController: DataController) {
+    class func appendJsonArrayToCoreData(jsonArray: [AnyObject]) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
         let entityName = "Mail"
         for item in jsonArray {
             let json = JSON(item)
             let object = dataController.getCoreDataObjectForJson(json, entityName: entityName)
-            self.addOrUpdateCoreDataEntityFromJson(json, object: object, dataController: dataController)
+            self.addOrUpdateCoreDataEntityFromJson(json, object: object)
         }
     }
     
-    override class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject, dataController: DataController) {
+    override class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject) {
         let mail = object as! Mail
         mail.status = json["status"].stringValue
         mail.type = json["type"].stringValue
-        self.addConversation(mail, json: json, dataController: dataController)
-        self.addFromPerson(mail, json: json, dataController: dataController)
-        self.addToPeople(mail, json: json, dataController: dataController)
+        self.addConversation(mail, json: json)
+        self.addFromPerson(mail, json: json)
+        self.addToPeople(mail, json: json)
         mail.toEmails = json["to_emails"].stringValue
-        self.addAttachments(mail, json: json, dataController: dataController)
-        mail.dateSent = NSDate(dateString: json["date_sent"].stringValue)
-        mail.scheduledToArrive = NSDate(dateString: json["scheduled_to_arrive"].stringValue)
-        mail.dateDelivered = NSDate(dateString: json["date_delivered"].stringValue)
+        self.addAttachments(mail, json: json)
+        
+        if json["date_sent"].stringValue != "" {
+            mail.dateSent = NSDate(dateString: json["date_sent"].stringValue)
+        }
+        if json["scheduled_to_arrive"].stringValue != "" {
+            mail.scheduledToArrive = NSDate(dateString: json["scheduled_to_arrive"].stringValue)
+        }
+        if json["date_delivered"].stringValue != "" {
+            mail.dateDelivered = NSDate(dateString: json["date_delivered"].stringValue)
+        }
         mail.myStatus = json["my_info"]["status"].stringValue
         
-        super.addOrUpdateCoreDataEntityFromJson(json, object: mail, dataController: dataController)
+        super.addOrUpdateCoreDataEntityFromJson(json, object: mail)
     }
     
-    class func addConversation(mail: Mail, json: JSON, dataController: DataController) {
+    class func addConversation(mail: Mail, json: JSON) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
         let id = json["conversation_id"].stringValue
         let conversation = dataController.findObjectById(id, entityName: "Conversation") as! Conversation
         mail.conversation = conversation
     }
     
-    class func addFromPerson(mail: Mail, json: JSON, dataController: DataController) {
+    class func addFromPerson(mail: Mail, json: JSON) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
         let id = json["from_person_id"].stringValue
         let person = dataController.findObjectById(id, entityName: "Person") as! Person
         mail.fromPerson = person
     }
     
-    class func addToPeople(mail: Mail, json: JSON, dataController: DataController) {
+    class func addToPeople(mail: Mail, json: JSON) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
         let toPeople = mail.mutableSetValueForKey("toPeople")
         for person_id in json["to_people_ids"].arrayValue {
             let id = person_id.stringValue
@@ -90,19 +105,21 @@ class MailService: PostofficeObjectService {
         }
     }
     
-    class func addAttachments(mail: Mail, json: JSON, dataController: DataController) {
+    class func addAttachments(mail: Mail, json: JSON) {
         let attachments = mail.mutableSetValueForKey("attachments")
         for attachment in json["attachments"].arrayValue {
             if attachment["_type"].stringValue == "Postoffice::Note" {
-                attachments.addObject(self.addNote(attachment, dataController: dataController))
+                attachments.addObject(self.addNote(attachment))
             }
             else if attachment["_type"].stringValue == "Postoffice::ImageAttachment" {
-                attachments.addObject(self.addImageAttachment(attachment, dataController: dataController))
+                attachments.addObject(self.addImageAttachment(attachment))
             }
         }
     }
     
-    class func addNote(json: JSON, dataController: DataController) -> Note {
+    class func addNote(json: JSON) -> Note {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
         let note = NSEntityDescription.insertNewObjectForEntityForName("Note", inManagedObjectContext: dataController.moc) as! Note
         note.id = json["_id"]["$oid"].stringValue
         note.content = json["content"].stringValue
@@ -110,7 +127,9 @@ class MailService: PostofficeObjectService {
         return note
     }
     
-    class func addImageAttachment(json: JSON, dataController: DataController) -> ImageAttachment {
+    class func addImageAttachment(json: JSON) -> ImageAttachment {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
         let imageAttachment = NSEntityDescription.insertNewObjectForEntityForName("ImageAttachment", inManagedObjectContext: dataController.moc) as! ImageAttachment
         imageAttachment.id = json["_id"]["$oid"].stringValue
         imageAttachment.url = json["url"].stringValue
