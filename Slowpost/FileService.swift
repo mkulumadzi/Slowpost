@@ -73,11 +73,33 @@ class FileService {
             }
         }
     }
-
     
     class func postImageDownloadNotification() {
         let notification = NSNotification(name: "imageDownloaded:", object: nil)
         NSNotificationCenter.defaultCenter().postNotification(notification)
+    }
+    
+    class func convertFileNameToNSURL(fileName: String) -> NSURL {
+        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        let docURL = urls[urls.endIndex-1]
+        let path = docURL.URLByAppendingPathComponent(fileName)
+        return path
+    }
+    
+    class func saveImageToDocumentDirectory(image: UIImage, fileName: String) -> Bool {
+        let path = self.convertFileNameToNSURL(fileName)
+        let imageData = UIImageJPEGRepresentation(image, 1.0)!
+        let success = imageData.writeToURL(path, atomically: true)
+        return success
+    }
+    
+    class func getImageFromDocumentDirectory(fileName: String) -> UIImage {
+        let path = self.convertFileNameToNSURL(fileName)
+        var image:UIImage!
+        if let data = NSData(contentsOfURL: path){
+            image = UIImage(data: data)
+        }
+        return image
     }
     
 }

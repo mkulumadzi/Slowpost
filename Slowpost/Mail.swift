@@ -17,7 +17,6 @@ class Mail: PostofficeObject {
     @NSManaged var conversation:Conversation
     @NSManaged var fromPerson:Person
     @NSManaged var toPeople:NSSet
-//    @NSManaged var toPeople:[Person]
     @NSManaged var toEmails:String
     @NSManaged var attachments:NSSet
     @NSManaged var dateSent:NSDate!
@@ -25,39 +24,15 @@ class Mail: PostofficeObject {
     @NSManaged var dateDelivered:NSDate!
     @NSManaged var myStatus:String!
     
-//    func image () -> UIImage {
-//        var image:UIImage!
-//        for attachment in self.attachments {
-//            if let imageAttachment = attachment as? ImageAttachment {
-//                print("The size of the image is \(imageAttachment.image.size)")
-//                print("The image is equal to nil?")
-//                if imageAttachment.image.isEqual(nil) {
-//                    print("yes")
-//                }
-//                else {
-//                    print("no")
-//                }
-//                if imageAttachment.image.isEqual(nil) && imageAttachment.currentlyDownloadingImage == false {
-//                    imageAttachment.getImage(completion: { (error, result) -> Void in
-//                        if let imageReturned = result as? UIImage {
-//                            image = imageReturned
-//                        }
-//                    })
-//                }
-//                else {
-//                    image = imageAttachment.image
-//                }
-//            }
-//        }
-////        print(image.size)
-////        if image.isEqual(nil) {
-////            return UIImage(named: "Default Card.png")!
-////        }
-////        else {
-////            return image
-////        }
-//        return image
-//    }
+    func imageAttachments() -> [ImageAttachment] {
+        var imageAttachments:[ImageAttachment]!
+        for attachment in attachments.allObjects {
+            if let imageAttachment = attachment as? ImageAttachment {
+                imageAttachments.append(imageAttachment)
+            }
+        }
+        return imageAttachments
+    }
     
     func content() -> String {
         var content:String!
@@ -71,8 +46,13 @@ class Mail: PostofficeObject {
     
     func toNames() -> String {
         var names = ""
+        var index = 0
         for person in self.toPeople.allObjects {
-            names += "\(person.name) "
+            if index > 0 {
+                names += ", "
+            }
+            names += "\(person.name)"
+            index += 1
         }
         return names
     }

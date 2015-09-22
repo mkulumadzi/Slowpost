@@ -98,11 +98,23 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         let fromPerson = mail.fromPerson
         cell.fromViewInitials.text = fromPerson.initials()
         cell.fromLabel.text = fromPerson.name
-//        cell.imageView!.image = mail.image()
+        self.addImageToCell(cell)
         let deliveredDateString = mail.dateDelivered.formattedAsString("yyyy-MM-dd")
         cell.deliveredLabel.text = "Delivered on \(deliveredDateString)"
         formatMailCellBasedOnMailStatus(cell, mail: mail)
         
+    }
+    
+    func addImageToCell(cell: MailCell) {
+        let imageAttachments = cell.mail.imageAttachments()
+        if imageAttachments.count > 0 {
+            let firstImage = imageAttachments[0]
+            firstImage.image({error, result -> Void in
+                if let image = result as? UIImage {
+                    cell.imageView!.image = image
+                }
+            })
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -114,14 +126,6 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         let sectionInfo = sections[section]
         return sectionInfo.numberOfObjects
     }
-    
-//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        return 1
-//    }
-//    
-//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return self.fetchedResultsController.sections!.count
-//    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MailCell", forIndexPath: indexPath) as! MailCell
