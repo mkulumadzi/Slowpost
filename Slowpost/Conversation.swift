@@ -12,7 +12,8 @@ import UIKit
 
 class Conversation: PostofficeObject {
     
-    @NSManaged  var people: [Person]
+//    @NSManaged  var people: [Person]
+    @NSManaged var people:NSSet
     @NSManaged var emails: String
     @NSManaged var numUnread: Int16
     @NSManaged var numUndelivered: Int16

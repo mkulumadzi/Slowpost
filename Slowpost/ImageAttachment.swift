@@ -18,10 +18,19 @@ class ImageAttachment: Attachment {
     
     func getImage(managedContext: NSManagedObjectContext, completion: (error: NSError?, result: AnyObject?) -> Void) {
         
+        
+        
         self.currentlyDownloadingImage = true
         FileService.downloadImage(self.url, completion: { (error, result) -> Void in
             if let image = result as? UIImage {
+                
+                
+                
                 self.image = image
+                
+                
+                
+                
                 self.currentlyDownloadingImage = false
                 do {
                     try managedContext.save()
@@ -39,3 +48,27 @@ class ImageAttachment: Attachment {
     }
     
 }
+
+//    class func addImageToCoreDataMail(id: String, image: UIImage, key: String) {
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let managedContext = appDelegate.managedObjectContext!
+//
+//        let fetchRequest = NSFetchRequest(entityName: "Mail")
+//        let predicate = NSPredicate(format: "id == %@", id)
+//        fetchRequest.predicate = predicate
+//
+//        let fetchResults = (try? managedContext.executeFetchRequest(fetchRequest)) as? [NSManagedObject]
+//
+//        for object in fetchResults! {
+//            object.setValue(UIImagePNGRepresentation(image), forKey: key)
+//        }
+//
+//        var error: NSError?
+//        do {
+//            try managedContext.save()
+//        } catch let error1 as NSError {
+//            error = error1
+//            print("Error saving person \(error), \(error?.userInfo)")
+//        }
+//
+//    }

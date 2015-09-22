@@ -17,8 +17,10 @@ class Mail: PostofficeObject {
     @NSManaged var conversation:Conversation
     @NSManaged var fromPerson:Person
     @NSManaged var toPeople:[Person]
+//    @NSManaged var toPeople:[Person]
     @NSManaged var toEmails:String
-    @NSManaged var attachments:[Attachment]
+//    @NSManaged var attachments:[Attachment]
+    @NSManaged var attachments:NSSet
     @NSManaged var dateSent:NSDate!
     @NSManaged var scheduledToArrive:NSDate!
     @NSManaged var dateDelivered:NSDate!
@@ -26,9 +28,28 @@ class Mail: PostofficeObject {
     
     func image (managedContext: NSManagedObjectContext) -> UIImage {
         var image:UIImage!
+        
+        
+        
         for attachment in self.attachments {
             if let imageAttachment = attachment as? ImageAttachment {
+                
+                
+                
+                print("The size of the image is \(imageAttachment.image.size)")
+                print("The image is equal to nil?")
+                if imageAttachment.image.isEqual(nil) {
+                    print("yes")
+                }
+                else {
+                    print("no")
+                }
+                
+                
                 if imageAttachment.image.isEqual(nil) && imageAttachment.currentlyDownloadingImage == false {
+                    
+                    
+                    
                     imageAttachment.getImage(managedContext, completion: { (error, result) -> Void in
                         if let imageReturned = result as? UIImage {
                             image = imageReturned
@@ -40,12 +61,24 @@ class Mail: PostofficeObject {
                 }
             }
         }
-        if image.isEqual(nil) {
-            return UIImage(named: "Default Card.png")!
-        }
-        else {
-            return image
-        }
+        
+        
+        
+        
+        
+//        print(image.size)
+        
+        
+        
+        
+        
+//        if image.isEqual(nil) {
+//            return UIImage(named: "Default Card.png")!
+//        }
+//        else {
+//            return image
+//        }
+        return image
     }
     
     func content() -> String {

@@ -75,7 +75,7 @@ class InitialViewController: UIViewController {
         MailService.updateOutbox(dataController)
 //        getRegisteredContactsIfAuthorized()
         
-//        goToHomeScreen()
+        goToHomeScreen()
     }
 
 //    func getRegisteredContactsIfAuthorized() {

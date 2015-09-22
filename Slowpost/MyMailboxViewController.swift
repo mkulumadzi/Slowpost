@@ -69,15 +69,22 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // Mark: Set up Core Data
     func initializeFetchedResultsController() {
+        
+        
+        
         let fetchRequest = NSFetchRequest(entityName: "Mail")
         let deliveredSort = NSSortDescriptor(key: "dateDelivered", ascending: false)
         let userId = LoginService.getUserIdFromToken()
-        let predicate = NSPredicate(format: "ANY toPerson.id == %@", userId)
+        
+        let predicate = NSPredicate(format: "ANY toPeople.id == %@", userId)
         fetchRequest.predicate = predicate
         
         fetchRequest.sortDescriptors = [deliveredSort]
+        
         self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: nil, cacheName: nil)
         self.fetchedResultsController.delegate = self
+        
+        
         do {
             try self.fetchedResultsController.performFetch()
         } catch {
