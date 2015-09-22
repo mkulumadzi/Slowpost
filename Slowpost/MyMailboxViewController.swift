@@ -72,8 +72,8 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let fetchRequest = NSFetchRequest(entityName: "Mail")
         let deliveredSort = NSSortDescriptor(key: "dateDelivered", ascending: false)
+    
         let userId = LoginService.getUserIdFromToken()
-        
         let predicate = NSPredicate(format: "ANY toPeople.id == %@", userId)
         fetchRequest.predicate = predicate
         
@@ -81,8 +81,6 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         
         self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: nil, cacheName: nil)
         self.fetchedResultsController.delegate = self
-        
-        
         do {
             try self.fetchedResultsController.performFetch()
         } catch {
@@ -108,12 +106,22 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return fetchedResultsController.sections!.count
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.fetchedResultsController.sections!.count
+        let sections = self.fetchedResultsController.sections!
+        let sectionInfo = sections[section]
+        return sectionInfo.numberOfObjects
     }
+    
+//    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//        return 1
+//    }
+//    
+//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return self.fetchedResultsController.sections!.count
+//    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MailCell", forIndexPath: indexPath) as! MailCell
@@ -123,17 +131,17 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func formatMailCellBasedOnMailStatus(cell: MailCell, mail: Mail) {
-        if mail.status == "DELIVERED" {
-            cell.fromLabel.font = UIFont(name: "OpenSans-Semibold", size: 17.0)
-            cell.statusIndicator.backgroundColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
-            cell.statusIndicator.layer.borderWidth = 0.0
-        }
-        else {
+        if mail.myStatus == "READ" {
             cell.fromLabel.font = UIFont(name: "OpenSans-Regular", size: 17.0)
             cell.statusIndicator.backgroundColor = UIColor.whiteColor()
             cell.statusIndicator.layer.borderColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0).CGColor
             cell.statusIndicator.layer.borderWidth = 1.0
             
+        }
+        else {
+            cell.fromLabel.font = UIFont(name: "OpenSans-Semibold", size: 17.0)
+            cell.statusIndicator.backgroundColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
+            cell.statusIndicator.layer.borderWidth = 0.0
         }
     }
     

@@ -31,7 +31,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         Flurry.logEvent("Conversation_View_Opened")
-//        conversationMetadataList = conversationMetadataArray
+        initializeFetchedResultsController()
         
         messageLabel.hide()
         conversationList.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: conversationList.bounds.size.width, height: 0.01))
@@ -76,10 +76,11 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     func initializeFetchedResultsController() {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let dataController = appDelegate.dataController
-        let fetchRequest = NSFetchRequest(entityName: "Conversation")
-        let deliveredSort = NSSortDescriptor(key: "dateUpdated", ascending: false)
         
-        fetchRequest.sortDescriptors = [deliveredSort]
+        let fetchRequest = NSFetchRequest(entityName: "Conversation")
+        let updatedSort = NSSortDescriptor(key: "updatedAt", ascending: false)
+        fetchRequest.sortDescriptors = [updatedSort]
+        
         self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: nil, cacheName: nil)
         self.fetchedResultsController.delegate = self
         do {
@@ -144,17 +145,18 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     
     // MARK: Section Configuration
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return nil
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return conversationMetadataList.count
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return fetchedResultsController.sections!.count
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let sections = self.fetchedResultsController.sections!
+        let sectionInfo = sections[section]
+        return sectionInfo.numberOfObjects
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

@@ -16,10 +16,9 @@ class Mail: PostofficeObject {
     @NSManaged var type:String
     @NSManaged var conversation:Conversation
     @NSManaged var fromPerson:Person
-    @NSManaged var toPeople:[Person]
+    @NSManaged var toPeople:NSSet
 //    @NSManaged var toPeople:[Person]
     @NSManaged var toEmails:String
-//    @NSManaged var attachments:[Attachment]
     @NSManaged var attachments:NSSet
     @NSManaged var dateSent:NSDate!
     @NSManaged var scheduledToArrive:NSDate!
@@ -72,7 +71,7 @@ class Mail: PostofficeObject {
     
     func toNames() -> String {
         var names = ""
-        for person in self.toPeople {
+        for person in self.toPeople.allObjects {
             names += "\(person.name) "
         }
         return names

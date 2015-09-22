@@ -72,7 +72,7 @@ class InitialViewController: UIViewController {
         MailService.updateOutbox()
 //        getRegisteredContactsIfAuthorized()
         
-//        goToHomeScreen()
+        goToHomeScreen()
     }
 
 //    func getRegisteredContactsIfAuthorized() {

@@ -17,9 +17,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
 //    var contactsList: [Person] = []
 //    var otherUsersList: [Person] = []
     
-    var managedContext:NSManagedObjectContext!
     var fetchedResultsController: NSFetchedResultsController!
-    var searchResultsController: NSFetchedResultsController!
     
     @IBOutlet weak var cancelBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var toPersonList: UITableView!
@@ -34,7 +32,9 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        initializeFetchedResultsController()
+    
         Flurry.logEvent("Compose_Message_Workflow_Began")
         
 //        reloadPenpals()
@@ -42,8 +42,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         warningLabel.hide()
         noResultsLabel.hidden = true
         
-//        managedContext = CoreDataService.initializeManagedContext()
-        initializeFetchedResultsController()
+
         
 //        addSearchBar()
 //        optionallyPopulateSearchBar()
@@ -59,7 +58,15 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func initializeFetchedResultsController() {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let dataController = appDelegate.dataController
+        
         let fetchRequest = NSFetchRequest(entityName: "Person")
+        let usernameSort = NSSortDescriptor(key: "username", ascending: false)
+        
+        let userId = LoginService.getUserIdFromToken()
+        let predicate = NSPredicate(format: "id != %@", userId)
+        fetchRequest.predicate = predicate
+        fetchRequest.sortDescriptors = [usernameSort]
+        
         self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: nil, cacheName: nil)
         self.fetchedResultsController.delegate = self
         do {
@@ -186,8 +193,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     // MARK: Section Configuration
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        return 3
-        return 1
+        return fetchedResultsController.sections!.count
     }
     
 //    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -211,7 +217,9 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
 //    }
  
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.fetchedResultsController.sections!.count
+        let sections = self.fetchedResultsController.sections!
+        let sectionInfo = sections[section]
+        return sectionInfo.numberOfObjects
 //        switch section {
 //        case 0:
 //            return penpalList.count
@@ -255,9 +263,9 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     // MARK: Row configuration
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("personCell", forIndexPath: indexPath) as? PersonCell
         
-        self.configureCell(cell!, indexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("personCell", forIndexPath: indexPath) as! PersonCell
+        self.configureCell(cell, indexPath: indexPath)
         
 //        switch indexPath.section {
 //        case 0:
@@ -281,7 +289,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
 //            cell?.usernameLabel.text = ""
 //        }
         
-        return cell!
+        return cell
     }
     
     func configureCell(cell: PersonCell, indexPath: NSIndexPath) {
@@ -291,7 +299,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
         toPerson = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Person
         self.performSegueWithIdentifier("selectImage", sender: nil)
         

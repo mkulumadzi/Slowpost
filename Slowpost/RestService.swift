@@ -30,22 +30,6 @@ class RestService {
         
         print(requestHeaders)
         
-//        var requestHeaders = headers
-//        if requestHeaders != nil && requestHeaders!["Authorization"] == nil {
-//            if requestHeaders != nil {
-//                requestHeaders!["Authorization"] = self.addAuthHeader()
-//            }
-//            else {
-//                requestHeaders! = ["Authorization": self.addAuthHeader()]
-//            }
-//        }
-//        else {
-//            requestHeaders! = ["Authorization": self.addAuthHeader()]
-//        }
-        
-//        let requestHeaders = ["Authorization": self.addAuthHeader()]
-        
-        
         Alamofire.request(.GET, requestURL, headers: requestHeaders)
             .responseJSON { (_, response, result) in
                 
@@ -69,23 +53,24 @@ class RestService {
     }
 
     class func postRequest(requestURL:String, parameters: [String: AnyObject]?, headers: [String: String]?, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
-        var requestHeaders = headers
-        if requestHeaders != nil && requestHeaders!["Authorization"] == nil {
-            if requestHeaders != nil {
-                requestHeaders!["Authorization"] = self.addAuthHeader()
-            }
-            else {
-                requestHeaders! = ["Authorization": self.addAuthHeader()]
-            }
+        var requestHeaders:[String: String]!
+        if headers != nil {
+            requestHeaders = headers
         }
         else {
-            requestHeaders! = ["Authorization": self.addAuthHeader()]
+            requestHeaders = [String: String]()
         }
+        
+        if requestHeaders["Authorization"] == nil {
+            requestHeaders["Authorization"] = self.addAuthHeader()
+        }
+        
+        print(requestHeaders)
         
         
         print("POST to \(requestURL)")
         print(headers)
-        lastPostRequest = Alamofire.request(.POST, requestURL, parameters: parameters, headers: headers, encoding: .JSON)
+        lastPostRequest = Alamofire.request(.POST, requestURL, parameters: parameters, headers: requestHeaders, encoding: .JSON)
             
             // To Do: Let Alamofire get correct result status (it seems to think that an empty response is a FAILURE
             .validate(statusCode: 200..<300)

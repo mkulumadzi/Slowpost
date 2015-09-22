@@ -29,7 +29,7 @@ class MailService: PostofficeObjectService {
     
     class func updateConversationMail(conversationId: String) {
         let userId = LoginService.getUserIdFromToken()
-        let mailURL = "\(PostOfficeURL)person/id/\(userId)/conversation/\(conversationId)"
+        let mailURL = "\(PostOfficeURL)person/id/\(userId)/conversation/id/\(conversationId)"
         // To Do: Get headers using a query of core data
         self.updateMail(mailURL, headers: nil)
     }

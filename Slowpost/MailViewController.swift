@@ -46,14 +46,12 @@ class MailViewController: UIViewController {
         
         Flurry.logEvent("Mail_Opened")
         
-        
 //        mailImage.image = mail.image()
         fromView.layer.cornerRadius = 15
-        
+
         fromPerson = mail.fromPerson
         fromLabel.text = fromPerson.name
         fromViewInitials.text = fromPerson.initials()
-        
         toLabel.text = mail.toNames()
         
         let sentDateString = mail.dateSent.formattedAsString("yyyy-MM-dd")
@@ -69,7 +67,7 @@ class MailViewController: UIViewController {
         
         mailContent.text = mail.content()
         
-        if mail.status == "DELIVERED" && mail.toLoggedInUser() {
+        if mail.myStatus != "READ" && mail.toLoggedInUser() {
             readMail(mail)
         }
         
