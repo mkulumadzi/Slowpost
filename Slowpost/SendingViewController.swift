@@ -91,7 +91,9 @@ class SendingViewController: UIViewController {
         RestService.postRequest(sendMailEndpoint, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
             if let response = result as? [AnyObject] {
                 if response[0] as? Int == 201 {
-                    PersonService.updatePeople()
+                    MailService.updateAllData( {error, result -> Void in
+                        if error != nil { print (error) }
+                    })
                     Flurry.logEvent("Finished_Sending_Mail")
                     let nav = self.presentingViewController!
                     self.dismissViewControllerAnimated(true, completion: { () -> Void in

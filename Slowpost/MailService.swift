@@ -59,35 +59,35 @@ class MailService: PostofficeObjectService {
         })
     }
     
-    class func updateMailbox() {
-        let userId = LoginService.getUserIdFromToken()
-        let mailURL = "\(PostOfficeURL)person/id/\(userId)/mailbox"
-        // To Do: Get headers using a query of core data
-        self.updateMail(mailURL, headers: nil)
-    }
-    
-    class func updateOutbox() {
-        let userId = LoginService.getUserIdFromToken()
-        let mailURL = "\(PostOfficeURL)person/id/\(userId)/outbox"
-        // To Do: Get headers using a query of core data
-        self.updateMail(mailURL, headers: nil)
-    }
-    
-    class func updateConversationMail(conversationId: String) {
-        let userId = LoginService.getUserIdFromToken()
-        let mailURL = "\(PostOfficeURL)person/id/\(userId)/conversation/id/\(conversationId)"
-        // To Do: Get headers using a query of core data
-        self.updateMail(mailURL, headers: nil)
-    }
-    
-    class func updateMail(mailURL: String, headers:[String: String]?) {
-        print("Updating mail at \(NSDate())")
-        RestService.getRequest(mailURL, headers: headers, completion: { (error, result) -> Void in
-            if let jsonArray = result as? [AnyObject] {
-                self.appendJsonArrayToCoreData(jsonArray)
-            }
-        })
-    }
+//    class func updateMailbox() {
+//        let userId = LoginService.getUserIdFromToken()
+//        let mailURL = "\(PostOfficeURL)person/id/\(userId)/mailbox"
+//        // To Do: Get headers using a query of core data
+//        self.updateMail(mailURL, headers: nil)
+//    }
+//    
+//    class func updateOutbox() {
+//        let userId = LoginService.getUserIdFromToken()
+//        let mailURL = "\(PostOfficeURL)person/id/\(userId)/outbox"
+//        // To Do: Get headers using a query of core data
+//        self.updateMail(mailURL, headers: nil)
+//    }
+//    
+//    class func updateConversationMail(conversationId: String) {
+//        let userId = LoginService.getUserIdFromToken()
+//        let mailURL = "\(PostOfficeURL)person/id/\(userId)/conversation/id/\(conversationId)"
+//        // To Do: Get headers using a query of core data
+//        self.updateMail(mailURL, headers: nil)
+//    }
+//    
+//    class func updateMail(mailURL: String, headers:[String: String]?) {
+//        print("Updating mail at \(NSDate())")
+//        RestService.getRequest(mailURL, headers: headers, completion: { (error, result) -> Void in
+//            if let jsonArray = result as? [AnyObject] {
+//                self.appendJsonArrayToCoreData(jsonArray)
+//            }
+//        })
+//    }
     
     class func appendJsonArrayToCoreData(jsonArray: [AnyObject]) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

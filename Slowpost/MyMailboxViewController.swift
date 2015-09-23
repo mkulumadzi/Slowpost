@@ -172,9 +172,14 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func refreshData() {
-        PersonService.updatePeople()
-        MailService.updateMailbox()
-        mailTable.reloadData()
+        MailService.updateAllData( { error, result -> Void in
+            if result as? String == "Success" {
+                self.mailTable.reloadData()
+            }
+            else {
+                print(error)
+            }
+        })
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

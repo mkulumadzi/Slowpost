@@ -33,7 +33,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         
         initializeFetchedResultsController()
         
-        refresh()
+        refreshData()
         
         mailTable.addSubview(self.refreshControl)
         
@@ -45,11 +45,11 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         
         navBarItem.title = conversation.peopleNames()
         NSNotificationCenter.defaultCenter().addObserverForName("imageDownloaded:", object: nil, queue: nil, usingBlock: { (notification) -> Void in
-            self.refresh()
+            self.refreshData()
         })
         
         NSNotificationCenter.defaultCenter().addObserverForName("appBecameActive:", object: nil, queue: nil, usingBlock: { (notification) -> Void in
-            self.refresh()
+            self.refreshData()
             
         })
         
@@ -58,7 +58,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidAppear(animated: Bool) {
         print("View appeared")
         super.viewDidAppear(true)
-        MailService.updateConversationMail(conversation.id)
+        refreshData()
 //        mailTable.reloadData()
     }
     
@@ -242,7 +242,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     
     
     func handleRefresh(refreshControl: UIRefreshControl) {
-        refresh()
+        refreshData()
         refreshControl.endRefreshing()
     }
     
@@ -251,12 +251,19 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         let storyboard = UIStoryboard(name: "mail", bundle: nil)
         let mailViewController = storyboard.instantiateInitialViewController() as! MailViewController
         mailViewController.mail = mail
-        mailViewController.runOnClose = {MailService.updateConversationMail(self.conversation.id)}
+        mailViewController.runOnClose = {self.refreshData()}
         self.presentViewController(mailViewController, animated: true, completion: {})
     }
     
-    func refresh() {
-        MailService.updateConversationMail(conversation.id)
+    func refreshData() {
+        MailService.updateAllData( { error, result -> Void in
+            if result as? String == "Success" {
+                self.mailTable.reloadData()
+            }
+            else {
+                print(error)
+            }
+        })
     }
     
     //Mark: Refresh controller

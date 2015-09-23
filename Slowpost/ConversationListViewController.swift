@@ -35,7 +35,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         
         messageLabel.hide()
         conversationList.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: conversationList.bounds.size.width, height: 0.01))
-        ConversationService.updateConversations()
+        refreshData()
         conversationList.addSubview(self.refreshControl)
 //        addSearchBar()
         
@@ -44,7 +44,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        ConversationService.updateConversations()
+        refreshData()
     }
     
 //    func addSearchBar() {
@@ -92,7 +92,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
 
     
     func handleRefresh(refreshControl: UIRefreshControl) {
-        ConversationService.updateConversations()
+        refreshData()
         refreshControl.endRefreshing()
     }
     
@@ -165,8 +165,6 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("conversationCell", forIndexPath: indexPath) as? ConversationCell
-        
-//        let conversationMetadata = conversationMetadataList[indexPath.row] as ConversationMetadata
         let conversation = fetchedResultsController.objectAtIndexPath(indexPath) as! Conversation
         cell?.conversation = conversation
         cell?.namesLabel.text = conversation.peopleNames()
@@ -219,6 +217,17 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
 //        let person = penpals.filter({$0.username == conversationCell.conversationMetadata.username})[0]
 //        return person
 //    }
+    
+    func refreshData() {
+        MailService.updateAllData( { error, result -> Void in
+            if result as? String == "Success" {
+                self.conversationList.reloadData()
+            }
+            else {
+                print(error)
+            }
+        })
+    }
     
     @IBAction func settingsMenuItemSelected(segue:UIStoryboardSegue) {
         dismissSourceViewController(segue)

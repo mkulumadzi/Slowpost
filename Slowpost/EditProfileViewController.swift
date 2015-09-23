@@ -90,7 +90,9 @@ class EditProfileViewController: UITableViewController {
             }
             else if let response = result as? [AnyObject] {
                 if response[0] as? Int == 204 {
-                    PersonService.updatePeople()
+                    MailService.updateAllData( { error, result -> Void in
+                        if error != nil { print(error) }
+                    })
                 }
             }
         })
