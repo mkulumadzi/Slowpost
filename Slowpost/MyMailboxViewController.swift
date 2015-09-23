@@ -153,12 +153,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func refreshData() {
         MailService.updateAllData( { error, result -> Void in
-            if result as? String == "Success" {
-                self.mailTable.reloadData()
-            }
-            else {
-                print(error)
-            }
+            if error != nil { print(error) }
         })
     }
     
@@ -170,6 +165,10 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         mailViewController.runOnClose = {self.refreshData()}
         
         self.presentViewController(mailViewController, animated: true, completion: {})
+    }
+
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        self.mailTable.reloadData()
     }
 
 

@@ -260,4 +260,9 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
     
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        self.conversationList.reloadData()
+    }
+
+    
 }

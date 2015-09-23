@@ -257,43 +257,9 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         })
     }
     
-    //Mark: Refresh controller
-    // Can't get this to work, moving on...
-    
-//    func controllerWillChangeContent(controller: NSFetchedResultsController) {
-//        self.mailTable.beginUpdates()
-//    }
-//    
-//    func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
-//        switch type {
-//        case .Insert:
-//            self.mailTable.insertSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-//        case .Delete:
-//            self.mailTable.deleteSections(NSIndexSet(index: sectionIndex), withRowAnimation: .Fade)
-//        case .Move:
-//            break
-//        case .Update:
-//            break
-//        }
-//    }
-//    
-//    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-//        switch type {
-//        case .Insert:
-//            self.mailTable.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: .Fade)
-//        case .Delete:
-//            self.mailTable.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-//        case .Update:
-//            self.configureCell(self.mailTable.cellForRowAtIndexPath(indexPath!)! as! ConversationMailCell, indexPath: indexPath!)
-//        case .Move:
-//            self.mailTable.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-//            self.mailTable.insertRowsAtIndexPaths([indexPath!], withRowAnimation: .Fade)
-//        }
-//    }
-//    
-//    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-//        self.mailTable.endUpdates()
-//    }
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        mailTable.reloadData()
+    }
     
     
 //    @IBAction func composeMessage(sender: AnyObject) {
