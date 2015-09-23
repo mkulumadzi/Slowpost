@@ -95,7 +95,7 @@ class FileService {
         return success
     }
     
-    class func getImageFromDocumentDirectory(fileName: String) -> UIImage {
+    class func getImageFromDocumentDirectory(fileName: String) -> UIImage? {
         let path = self.convertFileNameToNSURL(fileName)
         var image:UIImage!
         if let data = NSData(contentsOfURL: path){

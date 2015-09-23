@@ -21,16 +21,22 @@ class ImageAttachment: Attachment {
         let dataController = appDelegate.dataController
         print(self)
         if fileName != "" {
-            let image = FileService.getImageFromDocumentDirectory(fileName)
+            let image = FileService.getImageFromDocumentDirectory(fileName)!
             completion(error: nil, result: image)
         }
         else {
-            if currentlyDownloadingImage == false {
+            let fileName = self.getFileNameFromURL()
+            let image = FileService.getImageFromDocumentDirectory(fileName)
+            if image != nil {
+                self.fileName = fileName
+                dataController.save()
+                completion(error: nil, result: image)
+            }
+            else if currentlyDownloadingImage == false {
                 currentlyDownloadingImage = true
                 dataController.save()
                 FileService.downloadImage(url, completion: { error, result -> Void in
                     if let image = result as? UIImage {
-                        let fileName = self.getFileNameFromURL()
                         let imageSaved = FileService.saveImageToDocumentDirectory(image, fileName: fileName)
                         if imageSaved {
                             self.fileName = fileName
