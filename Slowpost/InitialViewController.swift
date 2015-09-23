@@ -66,10 +66,11 @@ class InitialViewController: UIViewController {
         Flurry.logEvent("Initial_Data_Loading_Began", timed: true)
         
         AddressBookService.checkAuthorizationStatus(self)
-        PersonService.updatePeople()
-        ConversationService.updateConversations()
-        MailService.updateMailbox()
-        MailService.updateOutbox()
+        MailService.updateAllData()
+//        PersonService.updatePeople()
+//        ConversationService.updateConversations()
+//        MailService.updateMailbox()
+//        MailService.updateOutbox()
 //        getRegisteredContactsIfAuthorized()
         
         goToHomeScreen()

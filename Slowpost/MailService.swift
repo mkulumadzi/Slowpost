@@ -13,6 +13,51 @@ import CoreData
 
 class MailService: PostofficeObjectService {
     
+    class func updateAllData() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
+        let userId = LoginService.getUserIdFromToken()
+        
+        //Update people first
+        let peopleURL = "\(PostOfficeURL)person/id/\(userId)/contacts"
+        let peopleHeaders = dataController.getIfModifiedSinceHeaderForEntity("Person")
+        
+        RestService.getRequest(peopleURL, headers: peopleHeaders, completion: { (error, result) -> Void in
+            if let jsonArray = result as? [AnyObject] {
+                PersonService.appendJsonArrayToCoreData(jsonArray)
+                
+                //Then update conversations
+                let conversationsURL = "\(PostOfficeURL)person/id/\(userId)/conversations"
+                let conversationHeaders = dataController.getIfModifiedSinceHeaderForEntity("Conversation")
+                RestService.getRequest(conversationsURL, headers: conversationHeaders, completion: { (error, result) -> Void in
+                    if let jsonArray = result as? [AnyObject] {
+                        ConversationService.appendJsonArrayToCoreData(jsonArray)
+                        
+                        //Then finally update mail
+                        let mailURL = "\(PostOfficeURL)person/id/\(userId)/all_mail"
+                        let mailHeaders = dataController.getIfModifiedSinceHeaderForEntity("Mail")
+                        RestService.getRequest(mailURL, headers: mailHeaders, completion: { (error, result) -> Void in
+                            if let jsonArray = result as? [AnyObject] {
+                                self.appendJsonArrayToCoreData(jsonArray)
+                            }
+                            else if error != nil {
+                                print(error)
+                            }
+                        })
+                        
+                    }
+                    else if error != nil {
+                        print(error)
+                    }
+                })
+                
+            }
+            else if error != nil {
+                print(error)
+            }
+        })
+    }
+    
     class func updateMailbox() {
         let userId = LoginService.getUserIdFromToken()
         let mailURL = "\(PostOfficeURL)person/id/\(userId)/mailbox"
