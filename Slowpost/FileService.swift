@@ -56,12 +56,14 @@ class FileService {
     
     class func downloadImage(url: String, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
         
-        let token = LoginService.getTokenFromKeychain()
+        let token = LoginService.getTokenFromKeychain()!
         let headers:[String: String] = ["Authorization": "Bearer \(token)"]
 
         print("Getting image at \(url)")
         Alamofire.request(.GET, url, headers: headers)
+            .validate(statusCode: 200..<400)
             .responseData { _, response, result in
+            print(result)
             switch result {
             case .Success (let result):
                 let image = UIImage(data: result as NSData)

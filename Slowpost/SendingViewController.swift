@@ -54,7 +54,8 @@ class SendingViewController: UIViewController {
     
     func sendMail() {
         
-        FileService.uploadImage(image, filename: "image.jpg", completion: { (error, result) -> Void in
+        let fileName = generateFileName()
+        FileService.uploadImage(image, filename: fileName, completion: { (error, result) -> Void in
             if let imageUid = result as? String {
                 self.sendMailToPostoffice(imageUid)
             }
@@ -62,6 +63,12 @@ class SendingViewController: UIViewController {
                 print("Unexpected result")
             }
         })
+    }
+    
+    func generateFileName() -> String {
+        let uuid = NSUUID().UUIDString
+        let fileName = uuid + ".jpg"
+        return fileName
     }
     
     func sendMailToPostoffice(imageUid: String) {

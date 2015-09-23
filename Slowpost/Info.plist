@@ -22,6 +22,11 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>kuyenda-slowpost-development.s3-us-west-2.amazonaws.com</key>
+			<dict>
+				<key>NSExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
 			<key>localhost</key>
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>

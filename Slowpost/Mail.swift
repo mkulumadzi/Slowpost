@@ -24,13 +24,32 @@ class Mail: PostofficeObject {
     @NSManaged var dateDelivered:NSDate!
     @NSManaged var myStatus:String!
     
+//    func imageAttachments() -> [ImageAttachment] {
+//        print(self.attachments)
+//        print(self.mailAttachments.count)
+//        var imageAttachments:[ImageAttachment]!
+//        if self.mailAttachments.count > 0 {
+//            for mailAttachment in self.mailAttachments.allObjects {
+//                if let imageAttachment = mailAttachment as? ImageAttachment {
+//                    imageAttachments.append(imageAttachment)
+//                }
+//            }
+//        }
+//        return imageAttachments
+//    }
+    
     func imageAttachments() -> [ImageAttachment] {
+        print(self)
+        print(self.id)
+        print(self.attachments.allObjects)
+        
         var imageAttachments:[ImageAttachment]!
-        for attachment in attachments.allObjects {
+        for attachment in self.attachments {
             if let imageAttachment = attachment as? ImageAttachment {
                 imageAttachments.append(imageAttachment)
             }
         }
+        print(imageAttachments)
         return imageAttachments
     }
     

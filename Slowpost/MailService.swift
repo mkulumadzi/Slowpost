@@ -120,7 +120,7 @@ class MailService: PostofficeObjectService {
     class func addNote(json: JSON) -> Note {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let dataController = appDelegate.dataController
-        let note = NSEntityDescription.insertNewObjectForEntityForName("Note", inManagedObjectContext: dataController.moc) as! Note
+        let note = dataController.getCoreDataObjectForJson(json, entityName: "Note") as! Note
         note.id = json["_id"]["$oid"].stringValue
         note.content = json["content"].stringValue
         dataController.save()
@@ -130,7 +130,7 @@ class MailService: PostofficeObjectService {
     class func addImageAttachment(json: JSON) -> ImageAttachment {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let dataController = appDelegate.dataController
-        let imageAttachment = NSEntityDescription.insertNewObjectForEntityForName("ImageAttachment", inManagedObjectContext: dataController.moc) as! ImageAttachment
+        let imageAttachment = dataController.getCoreDataObjectForJson(json, entityName: "ImageAttachment") as! ImageAttachment
         imageAttachment.id = json["_id"]["$oid"].stringValue
         imageAttachment.url = json["url"].stringValue
         dataController.save()

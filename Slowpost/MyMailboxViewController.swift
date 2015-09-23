@@ -105,11 +105,27 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
     
+//    func addImageToCell(cell: MailCell) {
+//        let imageAttachments = cell.mail.imageAttachments()
+//        if imageAttachments.count > 0 {
+//            let firstImage = imageAttachments[0]
+//            firstImage.image({error, result -> Void in
+//                if let image = result as? UIImage {
+//                    cell.imageView!.image = image
+//                }
+//            })
+//        }
+//    }
+    
     func addImageToCell(cell: MailCell) {
-        let imageAttachments = cell.mail.imageAttachments()
-        if imageAttachments.count > 0 {
-            let firstImage = imageAttachments[0]
-            firstImage.image({error, result -> Void in
+        var cellImageAttachment:ImageAttachment!
+        for attachment in cell.mail.attachments.allObjects {
+            if let imageAttachment = attachment as? ImageAttachment {
+                cellImageAttachment = imageAttachment
+            }
+        }
+        if cellImageAttachment != nil {
+            cellImageAttachment.image({error, result -> Void in
                 if let image = result as? UIImage {
                     cell.imageView!.image = image
                 }
