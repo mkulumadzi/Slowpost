@@ -13,7 +13,7 @@ import CoreData
 
 class MailService: PostofficeObjectService {
     
-    class func updateAllData() {
+    class func updateAllData(completion: (error: ErrorType?, result: AnyObject?) -> Void) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let dataController = appDelegate.dataController
         let userId = LoginService.getUserIdFromToken()
@@ -39,21 +39,22 @@ class MailService: PostofficeObjectService {
                         RestService.getRequest(mailURL, headers: mailHeaders, completion: { (error, result) -> Void in
                             if let jsonArray = result as? [AnyObject] {
                                 self.appendJsonArrayToCoreData(jsonArray)
+                                completion(error: nil, result: "Success")
                             }
-                            else if error != nil {
-                                print(error)
+                            else {
+                                completion(error: error, result: nil)
                             }
                         })
                         
                     }
-                    else if error != nil {
-                        print(error)
+                    else {
+                        completion(error: error, result: nil)
                     }
                 })
                 
             }
-            else if error != nil {
-                print(error)
+            else {
+                completion(error: error, result: nil)
             }
         })
     }

@@ -66,14 +66,15 @@ class InitialViewController: UIViewController {
         Flurry.logEvent("Initial_Data_Loading_Began", timed: true)
         
         AddressBookService.checkAuthorizationStatus(self)
-        MailService.updateAllData()
-//        PersonService.updatePeople()
-//        ConversationService.updateConversations()
-//        MailService.updateMailbox()
-//        MailService.updateOutbox()
-//        getRegisteredContactsIfAuthorized()
+        MailService.updateAllData( { error, result -> Void in
+            if result as? String == "Success" {
+                self.goToHomeScreen()
+            }
+            else {
+               print(error)
+            }
+        })
         
-        goToHomeScreen()
     }
 
 //    func getRegisteredContactsIfAuthorized() {
