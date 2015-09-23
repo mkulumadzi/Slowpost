@@ -46,7 +46,7 @@ class MailViewController: UIViewController {
         
         Flurry.logEvent("Mail_Opened")
         
-//        mailImage.image = mail.image()
+        addImage()
         fromView.layer.cornerRadius = 15
 
         fromPerson = mail.fromPerson
@@ -81,6 +81,22 @@ class MailViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func addImage() {
+        var mailImageAttachment:ImageAttachment!
+        for attachment in mail.attachments.allObjects {
+            if let imageAttachment = attachment as? ImageAttachment {
+                mailImageAttachment = imageAttachment
+            }
+        }
+        if mailImageAttachment != nil {
+            mailImageAttachment.image({error, result -> Void in
+                if let image = result as? UIImage {
+                    self.mailImage.image = image
+                }
+            })
+        }
     }
     
     func readMail(mail:Mail) {

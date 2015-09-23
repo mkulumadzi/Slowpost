@@ -99,6 +99,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.fromViewInitials.text = fromPerson.initials()
         cell.fromLabel.text = fromPerson.name
         self.addImageToCell(cell)
+        if cell.imageFile != nil { cell.mailImage.image = cell.imageFile }
         let deliveredDateString = mail.dateDelivered.formattedAsString("yyyy-MM-dd")
         cell.deliveredLabel.text = "Delivered on \(deliveredDateString)"
         formatMailCellBasedOnMailStatus(cell, mail: mail)
@@ -127,7 +128,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         if cellImageAttachment != nil {
             cellImageAttachment.image({error, result -> Void in
                 if let image = result as? UIImage {
-                    cell.imageView!.image = image
+                    cell.imageFile = image
                 }
             })
         }

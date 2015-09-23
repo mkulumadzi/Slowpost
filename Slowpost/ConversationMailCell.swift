@@ -25,6 +25,7 @@ class ConversationMailCell: UITableViewCell {
     
     var mail:Mail!
     var row:Int!
+    var imageFile:UIImage!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -157,12 +157,14 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func configureCell(cell: ConversationMailCell, indexPath: NSIndexPath) {
+        print("Configuring cell...")
         let mail = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Mail
         cell.mail = mail
         
         generateStatusLabel(cell, mail: cell.mail)
         
-//        cell.mailImageView.image = cell.mail.image()
+        self.addImageToCell(cell)
+        if cell.imageFile != nil { cell.mailImageView.image = cell.imageFile }
         cell.initialsLabel.text = cell.mail.fromPerson.initials()
         
         formatMailStatusLabel(cell)
@@ -181,6 +183,23 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         }
         
     }
+    func addImageToCell(cell: ConversationMailCell) {
+        print("adding image to cell...")
+        var cellImageAttachment:ImageAttachment!
+        for attachment in cell.mail.attachments.allObjects {
+            if let imageAttachment = attachment as? ImageAttachment {
+                cellImageAttachment = imageAttachment
+            }
+        }
+        if cellImageAttachment != nil {
+            cellImageAttachment.image({error, result -> Void in
+                if let image = result as? UIImage {
+                    cell.imageFile = image
+                }
+            })
+        }
+    }
+    
     
     func generateStatusLabel(cell: ConversationMailCell, mail: Mail) {
         if mail.status == "SENT" {
