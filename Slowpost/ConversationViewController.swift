@@ -183,23 +183,14 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         }
         
     }
-    func addImageToCell(cell: ConversationMailCell) {
-        print("adding image to cell...")
-        var cellImageAttachment:ImageAttachment!
-        for attachment in cell.mail.attachments.allObjects {
-            if let imageAttachment = attachment as? ImageAttachment {
-                cellImageAttachment = imageAttachment
-            }
-        }
-        if cellImageAttachment != nil {
-            cellImageAttachment.image({error, result -> Void in
-                if let image = result as? UIImage {
-                    cell.imageFile = image
-                }
-            })
-        }
-    }
     
+    func addImageToCell(cell: ConversationMailCell) {
+        cell.mail.getImage({error, result -> Void in
+            if let image = result as? UIImage {
+                cell.imageFile = image
+            }
+        })
+    }
     
     func generateStatusLabel(cell: ConversationMailCell, mail: Mail) {
         if mail.status == "SENT" {

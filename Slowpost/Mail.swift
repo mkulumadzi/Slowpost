@@ -24,33 +24,29 @@ class Mail: PostofficeObject {
     @NSManaged var dateDelivered:NSDate!
     @NSManaged var myStatus:String!
     
-//    func imageAttachments() -> [ImageAttachment] {
-//        print(self.attachments)
-//        print(self.mailAttachments.count)
-//        var imageAttachments:[ImageAttachment]!
-//        if self.mailAttachments.count > 0 {
-//            for mailAttachment in self.mailAttachments.allObjects {
-//                if let imageAttachment = mailAttachment as? ImageAttachment {
-//                    imageAttachments.append(imageAttachment)
-//                }
-//            }
-//        }
-//        return imageAttachments
-//    }
-    
-    func imageAttachments() -> [ImageAttachment] {
-        print(self)
-        print(self.id)
-        print(self.attachments.allObjects)
-        
-        var imageAttachments:[ImageAttachment]!
-        for attachment in self.attachments {
+    func getImage(completion: (error: ErrorType?, result: AnyObject?) -> Void ) {
+        var mailImageAttachment:ImageAttachment!
+        for attachment in attachments.allObjects {
             if let imageAttachment = attachment as? ImageAttachment {
-                imageAttachments.append(imageAttachment)
+                mailImageAttachment = imageAttachment
             }
         }
-        print(imageAttachments)
-        return imageAttachments
+        if mailImageAttachment != nil {
+            mailImageAttachment.image({error, result -> Void in
+                if let image = result as? UIImage {
+                    completion(error: nil, result: image)
+                }
+                else {
+                    print("Error getting image for mail")
+                    let image = UIImage(named: "Default Card.png")
+                    completion(error: nil, result: image)
+                }
+            })
+        }
+        else {
+            let image = UIImage(named: "Default Card.png")
+            completion(error: nil, result: image)
+        }
     }
     
     func content() -> String {

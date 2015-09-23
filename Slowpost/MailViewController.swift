@@ -84,19 +84,11 @@ class MailViewController: UIViewController {
     }
     
     func addImage() {
-        var mailImageAttachment:ImageAttachment!
-        for attachment in mail.attachments.allObjects {
-            if let imageAttachment = attachment as? ImageAttachment {
-                mailImageAttachment = imageAttachment
+        mail.getImage({error, result -> Void in
+            if let image = result as? UIImage {
+                self.mailImage.image = image
             }
-        }
-        if mailImageAttachment != nil {
-            mailImageAttachment.image({error, result -> Void in
-                if let image = result as? UIImage {
-                    self.mailImage.image = image
-                }
-            })
-        }
+        })
     }
     
     func readMail(mail:Mail) {
