@@ -15,6 +15,8 @@ class PersonCell: UITableViewCell {
     @IBOutlet weak var personNameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     
+    var checked:Bool!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

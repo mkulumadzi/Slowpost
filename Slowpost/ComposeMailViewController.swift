@@ -10,7 +10,7 @@ import UIKit
 
 class ComposeMailViewController: UIViewController, UITextViewDelegate {
     
-    var toPerson:Person!
+    var toPeople:[Person]!
     var cardImage:UIImage!
     var keyboardShowing:Bool!
     
@@ -31,7 +31,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         Flurry.logEvent("Opened_Compose_View")
         
         keyboardShowing = false
-        toLabel.text = toPerson.name
+        toLabel.text = toPeopleNames()
         
         self.automaticallyAdjustsScrollViewInsets = false
         
@@ -65,6 +65,17 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func toPeopleNames() -> String {
+        var names = ""
+        var index = 0
+        for person in toPeople {
+            if index > 0 { names += ", " }
+            names += person.name
+            index += 1
+        }
+        return names
+    }
+    
     func keyboardShow(notification: NSNotification) {
         self.keyboardShowing = true
         self.placeholderTextLabel.hidden = true
@@ -95,7 +106,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "chooseDelivery" {
             let chooseDeliveryOptionsViewController = segue.destinationViewController as? ChooseDeliveryOptionsViewController
-            chooseDeliveryOptionsViewController!.toPerson = toPerson
+            chooseDeliveryOptionsViewController!.toPeople = toPeople
             chooseDeliveryOptionsViewController!.cardImage = cardImage
             chooseDeliveryOptionsViewController!.content = composeText.text
         }

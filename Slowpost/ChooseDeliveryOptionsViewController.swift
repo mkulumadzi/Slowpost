@@ -10,7 +10,7 @@ import UIKit
 
 class ChooseDeliveryOptionsViewController: UIViewController {
     
-    var toPerson:Person!
+    var toPeople:[Person]!
     var cardImage:UIImage!
     var content:String!
     var scheduledToArrive:NSDate?
@@ -74,7 +74,7 @@ class ChooseDeliveryOptionsViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "sendMail" {
             let sendingViewController = segue.destinationViewController as? SendingViewController
-            sendingViewController!.toPerson = toPerson
+            sendingViewController!.toPeople = toPeople
             sendingViewController!.image = cardImage
             sendingViewController!.content = content
             

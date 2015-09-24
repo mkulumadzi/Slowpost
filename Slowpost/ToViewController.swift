@@ -12,6 +12,7 @@ import Foundation
 
 class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, NSFetchedResultsControllerDelegate {
 
+    var toPeople:[Person]!
     var toPerson:Person!
 //    var penpalList: [Person] = []
 //    var contactsList: [Person] = []
@@ -23,6 +24,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     @IBOutlet weak var toPersonList: UITableView!
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var noResultsLabel: UILabel!
+    @IBOutlet weak var nextButton: UIButton!
     
     lazy var searchBar:UISearchBar = UISearchBar(frame: CGRectMake(0, 0, 240, 20))
     
@@ -34,6 +36,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         super.viewDidLoad()
 
         initializeFetchedResultsController()
+        toPeople = [Person]()
     
         Flurry.logEvent("Compose_Message_Workflow_Began")
         
@@ -220,17 +223,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let sections = self.fetchedResultsController.sections!
         let sectionInfo = sections[section]
         return sectionInfo.numberOfObjects
-//        switch section {
-//        case 0:
-//            return penpalList.count
-//        case 1:
-//            return contactsList.count
-//        case 2:
-//            return otherUsersList.count
-//        default:
-//            return 0
-//        }
-        
     }
     
 //    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -263,72 +255,43 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     // MARK: Row configuration
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("personCell", forIndexPath: indexPath) as! PersonCell
         self.configureCell(cell, indexPath: indexPath)
-        
-//        switch indexPath.section {
-//        case 0:
-//            if penpalList.count > 0 {
-//                let person = penpalList[indexPath.row] as Person
-//                cell?.personNameLabel.text = person.name
-//                cell?.usernameLabel.text = "@" + person.username
-//            }
-//        case 1:
-//            if contactsList.count > 0 {
-//                let person = contactsList[indexPath.row] as Person
-//                cell?.personNameLabel.text = person.name
-//                cell?.usernameLabel.text = "@" + person.username
-//            }
-//        case 2:
-//            let person = otherUsersList[indexPath.row] as Person
-//            cell?.personNameLabel.text = person.name
-//            cell?.usernameLabel.text = "@" + person.username
-//        default:
-//            cell?.personNameLabel.text = ""
-//            cell?.usernameLabel.text = ""
-//        }
-        
         return cell
     }
     
     func configureCell(cell: PersonCell, indexPath: NSIndexPath) {
         let person = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Person
+        cell.person = person
         cell.personNameLabel.text = person.name
         cell.usernameLabel.text = "@" + person.username
+        if cell.checked == nil {
+            cell.checked = false
+            cell.accessoryType = .None
+        }
+        else if cell.checked == true {
+            cell.accessoryType = .Checkmark
+        }
+        else {
+            cell.accessoryType = .None
+        }
+        
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        toPerson = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Person
-        self.performSegueWithIdentifier("selectImage", sender: nil)
-        
-//        switch indexPath.section {
-//        case 0:
-//            if penpalList.count > 0 {
-//                Flurry.logEvent("Penpal_Selected")
-//                let person = penpalList[indexPath.row] as Person
-//                searchBar.text = person.username
-//                toPerson = person
-//                self.performSegueWithIdentifier("selectImage", sender: nil)
-//            }
-//        case 1:
-//            if contactsList.count > 0 {
-//                Flurry.logEvent("Contact_Selected")
-//                let person = contactsList[indexPath.row] as Person
-//                searchBar.text = person.username
-//                toPerson = person
-//                self.performSegueWithIdentifier("selectImage", sender: nil)
-//            }
-//        case 2:
-//            Flurry.logEvent("Other_User_Selected")
-//            let person = otherUsersList[indexPath.row] as Person
-//            searchBar.text = person.username
-//            toPerson = person
-//            self.performSegueWithIdentifier("selectImage", sender: nil)
-//        default:
-//            toPerson = nil
-//        }
-        
+        let cell = toPersonList.cellForRowAtIndexPath(indexPath) as! PersonCell
+        if cell.checked == false {
+            cell.checked = true
+            cell.accessoryType = .Checkmark
+            toPeople.append(cell.person)
+            print(toPeople)
+        }
+        else {
+            cell.checked = false
+            cell.accessoryType = .None
+            toPeople = toPeople.filter() {$0.id != cell.person.id}
+            print(toPeople)
+        }
     }
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
@@ -396,10 +359,14 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
 //        }
 //    }
     
+    @IBAction func nextButtonPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("selectImage", sender: nil)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "selectImage" {
             let chooseImageViewController = segue.destinationViewController as? ChooseImageViewController
-            chooseImageViewController?.toPerson = toPerson
+            chooseImageViewController?.toPeople = toPeople
         }
     }
     

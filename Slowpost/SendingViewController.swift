@@ -17,7 +17,7 @@ class SendingViewController: UIViewController {
     var username:String!
     var content:String!
     var scheduledToArrive:NSDate?
-    var toPerson:Person!
+    var toPeople:[Person]!
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var cancelButtonHeight: NSLayoutConstraint!
@@ -76,8 +76,7 @@ class SendingViewController: UIViewController {
         
         let userId = LoginService.getUserIdFromToken()
         let sendMailEndpoint = "\(PostOfficeURL)person/id/\(userId)/mail/send"
-        
-        var parameters:[String : AnyObject] = ["correspondents": ["to_people": [toPerson.id]], "attachments": ["notes": [content], "image_attachments": [imageUid]]]
+        var parameters:[String : AnyObject] = ["correspondents": ["to_people": peopleIds()], "attachments": ["notes": [content], "image_attachments": [imageUid]]]
         
         if scheduledToArrive != nil {
             let dateFormatter = NSDateFormatter()
@@ -104,6 +103,14 @@ class SendingViewController: UIViewController {
             }
         })
         
+    }
+    
+    func peopleIds() -> [String] {
+        var peopleIds = [String]()
+        for person in toPeople {
+            peopleIds.append(person.id)
+        }
+        return peopleIds
     }
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {

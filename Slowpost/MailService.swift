@@ -38,6 +38,8 @@ class MailService: PostofficeObjectService {
                         let mailHeaders = dataController.getIfModifiedSinceHeaderForEntity("Mail")
                         RestService.getRequest(mailURL, headers: mailHeaders, completion: { (error, result) -> Void in
                             if let jsonArray = result as? [AnyObject] {
+                                print("You've got mail")
+                                print(jsonArray)
                                 self.appendJsonArrayToCoreData(jsonArray)
                                 completion(error: nil, result: "Success")
                             }

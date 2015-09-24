@@ -28,6 +28,7 @@ class RestService {
             requestHeaders["Authorization"] = self.addAuthHeader()
         }
         
+        print(requestURL)   
         print(requestHeaders)
         
         Alamofire.request(.GET, requestURL, headers: requestHeaders)
