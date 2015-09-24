@@ -65,9 +65,9 @@ class InitialViewController: UIViewController {
         print("Beginning to load initial data at \(NSDate())")
         Flurry.logEvent("Initial_Data_Loading_Began", timed: true)
         
-        AddressBookService.checkAuthorizationStatus(self)
         MailService.updateAllData( { error, result -> Void in
             if result as? String == "Success" {
+                self.getContactsIfAuthorized()
                 self.goToHomeScreen()
             }
             else {
@@ -76,27 +76,17 @@ class InitialViewController: UIViewController {
         })
         
     }
-
-//    func getRegisteredContactsIfAuthorized() {
-//        print("Getting registered contacts at \(NSDate())")
-//        
-//        let authorizationStatus = ABAddressBookGetAuthorizationStatus()
-//        switch authorizationStatus {
-//        case .Authorized:
-//            
-//            let contacts:[NSDictionary] = AddressBookService.getContactsFromAddresssBook(addressBook)
-//            
-//            PersonService.bulkPersonSearch(contacts, completion: { (error, result) -> Void in
-//                if let peopleArray = result as? Array<Person> {
-//                    registeredContacts = peopleArray
-//                }
-//            })
-//            
-//        default:
-//            print("Not authorized")
-//        }
-//    }
     
+    func getContactsIfAuthorized() {
+        if #available(iOS 9, *) {
+            ContactService.fetchContactsIfAuthorized()
+        } else {
+            AddressBookService.checkAuthorizationStatus(self)
+            AddressBookService.getRegisteredContactsIfAuthorized()
+        }
+    }
+
+
     func goToHomeScreen() {
         
         if deviceToken != nil {

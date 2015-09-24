@@ -53,6 +53,36 @@ class PersonService: PostofficeObjectService {
         super.addOrUpdateCoreDataEntityFromJson(json, object: person)
     }
     
+    class func getAllEmailAddresses() -> [String] {
+        var emailAddresses = [String]()
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
+        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let fetchedResults = (try? dataController.moc.executeFetchRequest(fetchRequest)) as? [NSManagedObject]
+        if fetchedResults!.count > 0 {
+            for result in fetchedResults! {
+                let person = result as! Person
+                if person.email != "" { emailAddresses.append(person.email) }
+            }
+        }
+        return emailAddresses
+    }
+    
+    class func searchByEmailAddress(emailAddress: String) -> Person? {
+        var person:Person!
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
+        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let predicate = NSPredicate(format: "email == %@", emailAddress)
+        fetchRequest.predicate = predicate
+        let fetchResults = (try? dataController.moc.executeFetchRequest(fetchRequest)) as? [NSManagedObject]
+        if fetchResults!.count > 0 {
+            person = fetchResults![0] as! Person
+        }
+        return person
+        
+    }
+    
 //    class func getPersonJson(personId: String, headers: [String: String]?, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
 //        let personURL = "\(PostOfficeURL)/person/id/\(personId)"
 //        RestService.getRequest(personURL, headers: headers, completion: { (error, result) -> Void in

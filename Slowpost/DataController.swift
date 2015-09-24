@@ -63,7 +63,13 @@ class DataController: NSObject {
     }
     
     func getCoreDataObjectForJson(json: JSON, entityName: String) -> NSManagedObject {
-        let predicate = NSPredicate(format: "id == %@", json["_id"]["$oid"].stringValue)
+        let id = json["_id"]["$oid"].stringValue
+        let object = getCoreDataObject(id, entityName: entityName)
+        return object
+    }
+    
+    func getCoreDataObject(id: String, entityName: String) -> NSManagedObject {
+        let predicate = NSPredicate(format: "id == %@", id)
         let fetchRequest = NSFetchRequest(entityName: entityName)
         fetchRequest.predicate = predicate
         
@@ -77,7 +83,6 @@ class DataController: NSObject {
             let newObject = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.moc)
             return newObject
         }
-        
     }
     
     func findObjectById(id:String, entityName: String) -> NSManagedObject {

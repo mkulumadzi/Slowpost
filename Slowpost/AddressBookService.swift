@@ -123,7 +123,7 @@ class AddressBookService {
         return addressBookContacts
     }
     
-    class func getContactsFromAddresssBook(addressBook: ABAddressBook) -> [NSDictionary] {
+    class func getContactsFromAddressBook(addressBook: ABAddressBook) -> [NSDictionary] {
         let addressBookService:AddressBookService = AddressBookService.init()
         
         let addressBookContacts = addressBookService.getContacts(addressBook)
@@ -134,6 +134,25 @@ class AddressBookService {
         }
         
         return contacts
+    }
+    
+    class func getRegisteredContactsIfAuthorized() {
+        print("Getting registered contacts at \(NSDate())")
+        
+        let authorizationStatus = ABAddressBookGetAuthorizationStatus()
+        switch authorizationStatus {
+        case .Authorized:
+            let qualityOfServiceClass = QOS_CLASS_BACKGROUND
+            let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
+            dispatch_async(backgroundQueue, {
+                let contacts:[NSDictionary] = self.getContactsFromAddressBook(addressBook)
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    print(contacts)
+                })
+            })
+        default:
+            print("Not authorized")
+        }
     }
 
 }

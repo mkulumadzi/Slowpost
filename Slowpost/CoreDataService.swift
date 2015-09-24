@@ -14,19 +14,10 @@ import SwiftyJSON
 class CoreDataService {
     
     class func getIfModifiedSinceHeaderForEntity(entityName: String, managedContext: NSManagedObjectContext) -> [String: String]? {
-        
-        
-        
-        
         let fetchRequest = NSFetchRequest(entityName: entityName)
         fetchRequest.fetchLimit = 1
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "updatedAt", ascending: false)]
         let fetchedResults = self.executeFetchRequest(managedContext, fetchRequest: fetchRequest)
-        
-        
-        
-        
-        
         if fetchedResults != nil {
             let maxUpdatedAt = fetchedResults![0].valueForKey("updatedAt") as! NSDate
             let maxUpdatedAtString = maxUpdatedAt.formattedAsUTCString()
