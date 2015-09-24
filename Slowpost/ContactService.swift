@@ -57,7 +57,7 @@ class ContactService {
         if (!contact.givenName.isEmpty || !contact.familyName.isEmpty) && contact.emailAddresses.count > 0 {
             let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
             let dataController = appDelegate.dataController
-            let phoneContact = dataController.getCoreDataObject(contact.identifier, entityName: "PhoneContact") as! PhoneContact
+            let phoneContact = dataController.getCoreDataObject("id == %@", predicateValue: contact.identifier, entityName: "PhoneContact") as! PhoneContact
             
             phoneContact.id = contact.identifier
             phoneContact.name = self.createFullNameFromContact(contact)
@@ -90,7 +90,7 @@ class ContactService {
         let contactEmails = self.getContactEmailAddresses(contact)
         let emails = phoneContact.mutableSetValueForKey("emails")
         for email in contactEmails {
-            let emailAddress = NSEntityDescription.insertNewObjectForEntityForName("EmailAddress", inManagedObjectContext: dataController.moc) as! EmailAddress
+            let emailAddress = dataController.getCoreDataObject("email == %@", predicateValue: email, entityName: "EmailAddress") as! EmailAddress
             emailAddress.email = email
             emails.addObject(emailAddress)
         }

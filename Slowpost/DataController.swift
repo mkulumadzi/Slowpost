@@ -64,12 +64,12 @@ class DataController: NSObject {
     
     func getCoreDataObjectForJson(json: JSON, entityName: String) -> NSManagedObject {
         let id = json["_id"]["$oid"].stringValue
-        let object = getCoreDataObject(id, entityName: entityName)
+        let object = getCoreDataObject("id == %@", predicateValue: id, entityName: entityName)
         return object
     }
     
-    func getCoreDataObject(id: String, entityName: String) -> NSManagedObject {
-        let predicate = NSPredicate(format: "id == %@", id)
+    func getCoreDataObject(predicateFormat: String, predicateValue: String, entityName: String) -> NSManagedObject {
+        let predicate = NSPredicate(format: predicateFormat, predicateValue)
         let fetchRequest = NSFetchRequest(entityName: entityName)
         fetchRequest.predicate = predicate
         
