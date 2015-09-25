@@ -55,19 +55,45 @@ class ContactService {
     
     class func addContactToCoreData(contact: CNContact, coreDataEmailAddresses: [String]) {
         if (!contact.givenName.isEmpty || !contact.familyName.isEmpty) && contact.emailAddresses.count > 0 {
-            let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-            let dataController = appDelegate.dataController
-            let phoneContact = dataController.getCoreDataObject("id == %@", predicateValue: contact.identifier, entityName: "PhoneContact") as! PhoneContact
-            
-            phoneContact.id = contact.identifier
-            phoneContact.name = self.createFullNameFromContact(contact)
-            
-            self.addEmailsAndPostofficeId(phoneContact, contact: contact, coreDataEmailAddresses: coreDataEmailAddresses, dataController: dataController)
-            
-            dataController.save()
-            
+            let contactEmailAddresses = getContactEmailAddresses(contact)
+            let matchEmail = Set(contactEmailAddresses).intersect(Set(coreDataEmailAddresses))
+            if matchEmail.count > 0 {
+                addPhoneContactToPostofficePersonRecord(contact, email: Array(matchEmail)[0])
+            }
+            else {
+                createNewPersonFromContact(contact)
+            }
         }
+    }
+    
+    class func addPhoneContactToPostofficePersonRecord(contact: CNContact, email: String) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
+        let fetchRequest = NSFetchRequest(entityName: "Person")
+        let predicate = NSPredicate(format: "primaryEmail == %@", email)
+        fetchRequest.predicate = predicate
+        let personMatch = CoreDataService.executeFetchRequest(dataController.moc, fetchRequest: fetchRequest)
+        if personMatch != nil {
+            let person = personMatch![0] as! Person
+            person.contactId = contact.identifier
+            dataController.save()
+        }
+        else {
+            print("Error merging contact with Postoffice record")
+        }
+    }
+    
+    class func createNewPersonFromContact(contact: CNContact) {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
+        let person = dataController.getCoreDataObject("contactId == %@", predicateValue: contact.identifier, entityName: "Person") as! Person
         
+        person.contactId = contact.identifier
+        person.name = self.createFullNameFromContact(contact)
+        
+        self.addEmailsToNewPerson(person, contact: contact, dataController: dataController)
+        
+        dataController.save()
     }
     
     class func createFullNameFromContact(contact: CNContact) -> String {
@@ -86,26 +112,13 @@ class ContactService {
         return fullName
     }
     
-    class func addEmailsAndPostofficeId(phoneContact: PhoneContact, contact:CNContact, coreDataEmailAddresses: [String], dataController: DataController) {
+    class func addEmailsToNewPerson(person: Person, contact:CNContact, dataController: DataController) {
         let contactEmails = self.getContactEmailAddresses(contact)
-        let emails = phoneContact.mutableSetValueForKey("emails")
+        let emails = person.mutableSetValueForKey("emails")
         for email in contactEmails {
             let emailAddress = dataController.getCoreDataObject("email == %@", predicateValue: email, entityName: "EmailAddress") as! EmailAddress
             emailAddress.email = email
             emails.addObject(emailAddress)
-        }
-        
-        let matchEmail = Set(contactEmails).intersect(Set(coreDataEmailAddresses))
-        if matchEmail.count > 0 {
-            let match = Array(matchEmail)[0]
-            let fetchRequest = NSFetchRequest(entityName: "Person")
-            let predicate = NSPredicate(format: "email == %@", match)
-            fetchRequest.predicate = predicate
-            let personMatch = CoreDataService.executeFetchRequest(dataController.moc, fetchRequest: fetchRequest)
-            if personMatch != nil {
-                let person = personMatch![0] as! Person
-                phoneContact.postofficeId = person.id
-            }
         }
     }
     

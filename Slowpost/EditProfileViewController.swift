@@ -37,7 +37,7 @@ class EditProfileViewController: UITableViewController {
         
         nameField.text = loggedInUser.name
         usernameLabel.text = loggedInUser.username
-        emailLabel.text = loggedInUser.email
+        emailLabel.text = loggedInUser.primaryEmail
         phoneField.text = loggedInUser.phone
         address1Field.text = loggedInUser.address1
         cityField.text = loggedInUser.city

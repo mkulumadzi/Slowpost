@@ -20,7 +20,7 @@ class ImageAttachment: Attachment {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let dataController = appDelegate.dataController
         print(self)
-        if fileName != "" {
+        if !fileName.isEmpty && fileName != "" {
             let image = FileService.getImageFromDocumentDirectory(fileName)!
             completion(error: nil, result: image)
         }

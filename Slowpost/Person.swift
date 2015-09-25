@@ -13,13 +13,16 @@ import UIKit
 class Person: PostofficeObject {
     
     @NSManaged var username:String
-    @NSManaged var email:String!
+    @NSManaged var primaryEmail:String!
     @NSManaged var name:String!
     @NSManaged var phone:String!
     @NSManaged var address1:String!
     @NSManaged var city:String!
     @NSManaged var state:String!
     @NSManaged var zip:String!
+    @NSManaged var origin:String!
+    @NSManaged var contactId:String!
+    @NSManaged var emails:NSSet!
     
     func initials() -> String {
         let splitName = name.characters.split {$0 == " "}.map { String($0) }
