@@ -15,8 +15,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var toPeople:[Person]!
     var toPerson:Person!
     
-    var penpalController: NSFetchedResultsController!
-    var phoneContactsController: NSFetchedResultsController!
+    var peopleController: NSFetchedResultsController!
     
     @IBOutlet weak var cancelBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var personTable: UITableView!
@@ -33,8 +32,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        initializePenpalController()
-        initializePhoneContactsController()
+        initializePeopleController()
         
         toPeople = [Person]()
     
@@ -49,40 +47,24 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     // Mark: Set up Core Data
     
-    // This controller does not register the view as its delegate - its data should not change during the compose workflow.
-    func initializePenpalController() {
+    func initializePeopleController() {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let dataController = appDelegate.dataController
         
         let fetchRequest = NSFetchRequest(entityName: "Person")
-        let usernameSort = NSSortDescriptor(key: "username", ascending: true)
+        let nameSort = NSSortDescriptor(key: "name", ascending: true)
         
         let userId = LoginService.getUserIdFromToken()
-        let predicate = NSPredicate(format: "id != %@", userId)
-        fetchRequest.predicate = predicate
-        fetchRequest.sortDescriptors = [usernameSort]
-        
-        penpalController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: nil, cacheName: nil)
-        do {
-            try penpalController.performFetch()
-        } catch {
-            fatalError("Failed to initialize FetchedResultsController: \(error)")
-        }
-    }
-    
-    // This controller DOES register the view as its delegate - its data should change as records are queried for matches
-    func initializePhoneContactsController() {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let dataController = appDelegate.dataController
-        
-        let fetchRequest = NSFetchRequest(entityName: "PhoneContact")
-        let nameSort = NSSortDescriptor(key: "name", ascending: true)
+        let predicate1 = NSPredicate(format: "id != %@", userId)
+        let predicate2 = NSPredicate(format: "origin != %@", "Postoffice")
+        let compoundPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [predicate1, predicate2])
+        fetchRequest.predicate = compoundPredicate
         fetchRequest.sortDescriptors = [nameSort]
         
-        phoneContactsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: nil, cacheName: nil)
-        phoneContactsController.delegate = self
+        peopleController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: nil, cacheName: nil)
+        peopleController.delegate = self
         do {
-            try phoneContactsController.performFetch()
+            try peopleController.performFetch()
         } catch {
             fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
@@ -100,69 +82,55 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     // MARK: Section Configuration
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        let numPenpalSections = penpalController.sections!.count
-        let numPhoneContactSections = phoneContactsController.sections!.count
-        let numSections = numPenpalSections + numPhoneContactSections
-        return numSections
+        return peopleController.sections!.count
     }
  
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let numPenpalSections = penpalController.sections!.count
-        switch section {
-        case 0..<numPenpalSections:
-            let sections = penpalController.sections!
-            let sectionInfo = sections[section]
-            return sectionInfo.numberOfObjects
-        default:
-            let adjustedSectionNumber = section - numPenpalSections
-            let sections = phoneContactsController.sections!
-            let sectionInfo = sections[adjustedSectionNumber]
-            return sectionInfo.numberOfObjects
-        }
+        let sections = peopleController.sections!
+        let sectionInfo = sections[section]
+        return sectionInfo.numberOfObjects
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return "Slowpost Penpals"
-        case 1:
-            return "Phone Contacts"
-        default:
-            return nil
-        }
-    }
+//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        switch section {
+//        case 0:
+//            return "Slowpost Penpals"
+//        case 1:
+//            return "Phone Contacts"
+//        default:
+//            return nil
+//        }
+//    }
     
-    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let header = view as! UITableViewHeaderFooterView
-        header.textLabel!.textColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
-        header.textLabel!.font = UIFont(name: "OpenSans-Semibold", size: 15)
-    }
-    
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 34.0
-    }
+//    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+//        let header = view as! UITableViewHeaderFooterView
+//        header.textLabel!.textColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
+//        header.textLabel!.font = UIFont(name: "OpenSans-Semibold", size: 15)
+//    }
+//    
+//    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 34.0
+//    }
 
     // MARK: Row configuration
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let numPenpalSections = penpalController.sections!.count
-        switch indexPath.section {
-        case 0..<numPenpalSections:
+        let person = peopleController.objectAtIndexPath(indexPath) as! Person
+        if !person.id.isEmpty {
             let cell = tableView.dequeueReusableCellWithIdentifier("personCell", forIndexPath: indexPath) as! PersonCell
             self.configurePersonCell(cell, indexPath: indexPath)
             return cell
-        default:
-            let adjustedSection = indexPath.section - numPenpalSections
-            let adjustedIndexPath = NSIndexPath(forRow: indexPath.row, inSection: adjustedSection)
+        }
+        else {
             let cell = tableView.dequeueReusableCellWithIdentifier("phoneContactCell", forIndexPath: indexPath) as! PhoneContactCell
-            self.configurePhoneContactCell(cell, indexPath: adjustedIndexPath)
+            self.configurePhoneContactCell(cell, indexPath: indexPath)
             return cell
         }
     }
     
     func configurePersonCell(cell: PersonCell, indexPath: NSIndexPath) {
         
-        let person = penpalController.objectAtIndexPath(indexPath) as! Person
+        let person = peopleController.objectAtIndexPath(indexPath) as! Person
         cell.person = person
         cell.personNameLabel.text = person.name
         cell.avatarView.layer.cornerRadius = 15
@@ -182,12 +150,11 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func configurePhoneContactCell(cell: PhoneContactCell, indexPath: NSIndexPath) {
         
-        let phoneContact = phoneContactsController.objectAtIndexPath(indexPath) as! PhoneContact
-        cell.phoneContact = phoneContact
-        cell.personNameLabel.text = phoneContact.name
+        let person = peopleController.objectAtIndexPath(indexPath) as! Person
+        cell.person = person
+        cell.personNameLabel.text = person.name
         cell.avatarView.layer.cornerRadius = 15
         cell.avatarImageView.layer.cornerRadius = 15
-        if !cell.phoneContact.postofficeId.isEmpty { cell.avatarImageView.image = UIImage(named: "Slowpost.png") }
         if cell.checked == nil {
             cell.checked = false
             cell.accessoryType = .None
@@ -202,9 +169,9 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let numPenpalSections = penpalController.sections!.count
-        switch indexPath.section {
-        case 0..<numPenpalSections:
+        let person = peopleController.objectAtIndexPath(indexPath) as! Person
+        switch person.id.isEmpty {
+        case false:
             let cell = personTable.cellForRowAtIndexPath(indexPath) as! PersonCell
             if cell.checked == false {
                 cell.checked = true

@@ -10,7 +10,7 @@ import UIKit
 
 class PhoneContactCell: UITableViewCell {
     
-    var phoneContact:PhoneContact!
+    var person:Person!
     @IBOutlet weak var personNameLabel: UILabel!
     @IBOutlet weak var avatarView: UIView!
     @IBOutlet weak var avatarImageView: UIImageView!
