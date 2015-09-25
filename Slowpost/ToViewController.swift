@@ -165,7 +165,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let person = penpalController.objectAtIndexPath(indexPath) as! Person
         cell.person = person
         cell.personNameLabel.text = person.name
-        cell.usernameLabel.text = "@" + person.username
+        cell.avatarView.layer.cornerRadius = 15
+        cell.avatarInitials.text = person.initials()
         if cell.checked == nil {
             cell.checked = false
             cell.accessoryType = .None
@@ -184,6 +185,9 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let phoneContact = phoneContactsController.objectAtIndexPath(indexPath) as! PhoneContact
         cell.phoneContact = phoneContact
         cell.personNameLabel.text = phoneContact.name
+        cell.avatarView.layer.cornerRadius = 15
+        cell.avatarImageView.layer.cornerRadius = 15
+        if !cell.phoneContact.postofficeId.isEmpty { cell.avatarImageView.image = UIImage(named: "Slowpost.png") }
         if cell.checked == nil {
             cell.checked = false
             cell.accessoryType = .None

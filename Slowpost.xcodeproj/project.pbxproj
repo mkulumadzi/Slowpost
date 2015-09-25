@@ -85,6 +85,7 @@
 		D27E12F31BB49F1E0059FF07 /* PhoneContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27E12F21BB49F1E0059FF07 /* PhoneContact.swift */; settings = {ASSET_TAGS = (); }; };
 		D27E12F71BB4A98E0059FF07 /* EmailAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27E12F61BB4A98E0059FF07 /* EmailAddress.swift */; settings = {ASSET_TAGS = (); }; };
 		D27E194E1B3B770C0052687F /* SlowpostModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D27E194C1B3B770C0052687F /* SlowpostModel.xcdatamodeld */; };
+		D2856E431BB5C32700A454C9 /* Slowpost.png in Resources */ = {isa = PBXBuildFile; fileRef = D2856E421BB5C32700A454C9 /* Slowpost.png */; settings = {ASSET_TAGS = (); }; };
 		D28CB0101BB4CDC100111213 /* PhoneContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28CB00F1BB4CDC100111213 /* PhoneContactCell.swift */; settings = {ASSET_TAGS = (); }; };
 		D290B2A61BB083260069A3DD /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290B2A51BB083260069A3DD /* DataController.swift */; settings = {ASSET_TAGS = (); }; };
 		D291B24C1B69AA5A00C72816 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291B24B1B69AA5A00C72816 /* FileService.swift */; };
@@ -231,6 +232,7 @@
 		D27E12F21BB49F1E0059FF07 /* PhoneContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneContact.swift; sourceTree = "<group>"; };
 		D27E12F61BB4A98E0059FF07 /* EmailAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailAddress.swift; sourceTree = "<group>"; };
 		D27E194D1B3B770C0052687F /* SnailMailModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SnailMailModel.xcdatamodel; sourceTree = "<group>"; };
+		D2856E421BB5C32700A454C9 /* Slowpost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slowpost.png; sourceTree = "<group>"; };
 		D28CB00F1BB4CDC100111213 /* PhoneContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneContactCell.swift; sourceTree = "<group>"; };
 		D290B2A51BB083260069A3DD /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		D291B24B1B69AA5A00C72816 /* FileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 		CC96E4A31ABCD5AB001E6D27 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D2856E421BB5C32700A454C9 /* Slowpost.png */,
 				D24BC0FD1B98F898000405F7 /* reply-gray.png */,
 				D2E4EDD11B7D1EC000D2A028 /* example_card.jpg */,
 				D2F5CAC11B8F91D900551435 /* Default Card.png */,
@@ -714,6 +717,7 @@
 				D2CEC4701B7256E9002CFD25 /* photos_green.png in Resources */,
 				CC23DE2C1AE54C1A00AFEDE4 /* mailbox.storyboard in Resources */,
 				CCCB1A5D1AB0D48A0067F100 /* LaunchScreen.xib in Resources */,
+				D2856E431BB5C32700A454C9 /* Slowpost.png in Resources */,
 				D2C071061B3A3E99000154E8 /* Configurations.plist in Resources */,
 				D25A9CA41B2259D300ABBBA4 /* OpenSans-Regular.ttf in Resources */,
 				D2CEC4721B725D0C002CFD25 /* ios7-minus-outline-white-center.png in Resources */,
