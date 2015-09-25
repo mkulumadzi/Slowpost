@@ -47,7 +47,6 @@
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="conversations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Conversation" inverseName="people" inverseEntity="Conversation" syncable="YES"/>
-        <relationship name="phoneContact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PhoneContact" syncable="YES"/>
         <relationship name="receivedMail" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Mail" inverseName="toPeople" inverseEntity="Mail" syncable="YES"/>
         <relationship name="sentMail" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Mail" inverseName="fromPerson" inverseEntity="Mail" syncable="YES"/>
     </entity>
@@ -65,12 +64,12 @@
     <elements>
         <element name="Attachment" positionX="-245" positionY="269" width="128" height="73"/>
         <element name="Conversation" positionX="-731" positionY="-18" width="128" height="135"/>
+        <element name="EmailAddress" positionX="-684" positionY="-81" width="128" height="75"/>
         <element name="ImageAttachment" positionX="-308" positionY="135" width="128" height="88"/>
         <element name="Mail" positionX="-558" positionY="126" width="128" height="208"/>
         <element name="Note" positionX="-155" positionY="140" width="128" height="60"/>
-        <element name="Person" positionX="-900" positionY="-7" width="128" height="225"/>
-        <element name="PostofficeObject" positionX="-729" positionY="-243" width="128" height="90"/>
+        <element name="Person" positionX="-900" positionY="-7" width="128" height="210"/>
         <element name="PhoneContact" positionX="-693" positionY="-90" width="128" height="105"/>
-        <element name="EmailAddress" positionX="-684" positionY="-81" width="128" height="75"/>
+        <element name="PostofficeObject" positionX="-729" positionY="-243" width="128" height="90"/>
     </elements>
 </model>

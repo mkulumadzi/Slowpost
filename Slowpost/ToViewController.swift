@@ -14,14 +14,12 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
 
     var toPeople:[Person]!
     var toPerson:Person!
-//    var penpalList: [Person] = []
-//    var contactsList: [Person] = []
-//    var otherUsersList: [Person] = []
     
-    var fetchedResultsController: NSFetchedResultsController!
+    var penpalController: NSFetchedResultsController!
+    var phoneContactsController: NSFetchedResultsController!
     
     @IBOutlet weak var cancelBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var toPersonList: UITableView!
+    @IBOutlet weak var personTable: UITableView!
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var noResultsLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
@@ -35,45 +33,56 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        initializeFetchedResultsController()
+        initializePenpalController()
+        initializePhoneContactsController()
+        
         toPeople = [Person]()
     
         Flurry.logEvent("Compose_Message_Workflow_Began")
         
-//        reloadPenpals()
-
         warningLabel.hide()
         noResultsLabel.hidden = true
         
-
+        self.personTable.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: self.personTable.bounds.size.width, height: 0.01))
         
-//        addSearchBar()
-//        optionallyPopulateSearchBar()
-        
-        self.toPersonList.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: self.toPersonList.bounds.size.width, height: 0.01))
-        
-//        penpalList = penpals.filter({$0.username != loggedInUser.username})
-//        contactsList = registeredContacts.filter({$0.username != loggedInUser.username})
-//        excludePenpalsFromContactsList()
     }
     
     // Mark: Set up Core Data
-    func initializeFetchedResultsController() {
+    
+    // This controller does not register the view as its delegate - its data should not change during the compose workflow.
+    func initializePenpalController() {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let dataController = appDelegate.dataController
         
         let fetchRequest = NSFetchRequest(entityName: "Person")
-        let usernameSort = NSSortDescriptor(key: "username", ascending: false)
+        let usernameSort = NSSortDescriptor(key: "username", ascending: true)
         
         let userId = LoginService.getUserIdFromToken()
         let predicate = NSPredicate(format: "id != %@", userId)
         fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = [usernameSort]
         
-        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: nil, cacheName: nil)
-        self.fetchedResultsController.delegate = self
+        penpalController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: nil, cacheName: nil)
         do {
-            try self.fetchedResultsController.performFetch()
+            try penpalController.performFetch()
+        } catch {
+            fatalError("Failed to initialize FetchedResultsController: \(error)")
+        }
+    }
+    
+    // This controller DOES register the view as its delegate - its data should change as records are queried for matches
+    func initializePhoneContactsController() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
+        
+        let fetchRequest = NSFetchRequest(entityName: "PhoneContact")
+        let nameSort = NSSortDescriptor(key: "name", ascending: true)
+        fetchRequest.sortDescriptors = [nameSort]
+        
+        phoneContactsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: nil, cacheName: nil)
+        phoneContactsController.delegate = self
+        do {
+            try phoneContactsController.performFetch()
         } catch {
             fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
@@ -84,111 +93,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         // Dispose of any resources that can be recreated.
     }
     
-//    func addSearchBar() {
-//        let textField = searchBar.valueForKey("searchField") as! UITextField
-//        textField.backgroundColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
-//        textField.textColor = UIColor.whiteColor()
-//        let attributedString = NSAttributedString(string: "To: Name or Username", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
-//        
-//        //Get the glass icon
-//        let iconView:UIImageView = textField.leftView as! UIImageView
-//        iconView.image = iconView.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-//        iconView.tintColor = UIColor.whiteColor()
-//        
-//        textField.attributedPlaceholder = attributedString
-//        
-//        let rightNavBarButton = UIBarButtonItem(customView:searchBar)
-//        self.navigationItem.rightBarButtonItem = rightNavBarButton
-//        
-//        searchBar.delegate = self
-//        
-////        view.needsUpdateConstraints()
-////        
-////        let horizontalConstraint = NSLayoutConstraint(item: self.navigationItem.leftBarButtonItem!, attribute: .TrailingMargin, relatedBy: .Equal, toItem: searchBar, attribute: .Left, multiplier: 1.0, constant: 10)
-////        
-////        view.addConstraint(horizontalConstraint)
-////        
-////        view.updateConstraints()
-//    }
-    
-//    func optionallyPopulateSearchBar() {
-//        if let navController = self.navigationController as? ComposeNavigationController {
-//            if let toUsername:String = navController.toUsername {
-//                searchBar.text = toUsername
-//                if penpals.filter({$0.username == toUsername}).count == 1 {
-//                    toPerson = penpals.filter({$0.username == toUsername})[0]
-//                    self.performSegueWithIdentifier("selectImage", sender: nil)
-//                }
-//            }
-//        }
-//    }
-    
-    func optionallyAddPersonAutomatically() {
-        if let navController = self.navigationController as? ComposeNavigationController {
-            if navController.toPerson != nil {
-                toPerson = navController.toPerson
-                self.performSegueWithIdentifier("selectImage", sender: nil)
-            }
-        }
-    }
-    
-//    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-//        
-////        penpalList = penpals.filter({$0.username != loggedInUser.username})
-////        contactsList = registeredContacts.filter({$0.username != loggedInUser.username})
-////        excludePenpalsFromContactsList()
-//        
-//        if self.searchBar.text!.isEmpty == false {
-//            
-////            let newPenpalArray:[Person] = penpalList.filter() {
-////                self.listMatches(self.searchBar.text!, inString: $0.username).count >= 1 || self.listMatches(searchBar.text!, inString: $0.name).count >= 1
-////            }
-////            penpalList = newPenpalArray
-////            
-////            let newContactsArray:[Person] = contactsList.filter() {
-////                self.listMatches(self.searchBar.text!, inString: $0.username).count >= 1 || self.listMatches(searchBar.text!, inString: $0.name).count >= 1
-////            }
-////            contactsList = newContactsArray
-//            
-//            if self.searchBar.text!.characters.count > 1 {
-//                noResultsLabel.hidden = true
-//                self.searchPeople(self.searchBar.text!)
-//            }
-//            
-//        }
-//        else {
-//            toPerson = nil
-//            otherUsersList = []
-//        }
-//        
-//        validateNoResultsLabel()
-//        warningLabel.hide()
-//        self.toPersonList.reloadData()
-//    }
-    
-//    func listMatches(pattern: String, inString string: String) -> [String] {
-//        let regex = try? NSRegularExpression(pattern: pattern, options: [])
-//        let range = NSMakeRange(0, string.characters.count)
-//        let matches = regex?.matchesInString(string, options: [], range: range)
-//        
-//        return matches!.map {
-//            let range = $0.range
-//            return (string as NSString).substringWithRange(range)
-//        }
-//    }
-    
-//    func validateNoResultsLabel() {
-//        if searchBar.text == "" {
-//            noResultsLabel.hidden = true
-//        }
-//        else if penpalList.count == 0 && contactsList.count == 0 && otherUsersList.count == 0 {
-//            noResultsLabel.hidden = false
-//        }
-//        else {
-//            noResultsLabel.hidden = true
-//        }
-//    }
-    
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
         searchBar.resignFirstResponder()
     }
@@ -196,72 +100,69 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     // MARK: Section Configuration
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return fetchedResultsController.sections!.count
+        let numPenpalSections = penpalController.sections!.count
+        let numPhoneContactSections = phoneContactsController.sections!.count
+        let numSections = numPenpalSections + numPhoneContactSections
+        return numSections
     }
-    
-//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        switch section {
-//        case 0:
-//            if penpalList.count > 0 {
-//                return "Penpals"
-//            }
-//        case 1:
-//            if contactsList.count > 0 {
-//                return "Your address book"
-//            }
-//        case 2:
-//            if otherUsersList.count > 0 {
-//                return "People on Slowpost"
-//            }
-//        default:
-//            return nil
-//        }
-//        return nil
-//    }
  
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sections = self.fetchedResultsController.sections!
-        let sectionInfo = sections[section]
-        return sectionInfo.numberOfObjects
+        let numPenpalSections = penpalController.sections!.count
+        switch section {
+        case 0..<numPenpalSections:
+            let sections = penpalController.sections!
+            let sectionInfo = sections[section]
+            return sectionInfo.numberOfObjects
+        default:
+            let adjustedSectionNumber = section - numPenpalSections
+            let sections = phoneContactsController.sections!
+            let sectionInfo = sections[adjustedSectionNumber]
+            return sectionInfo.numberOfObjects
+        }
     }
     
-//    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-//        let header = view as! UITableViewHeaderFooterView
-//        header.textLabel!.textColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
-//        header.textLabel!.font = UIFont(name: "OpenSans-Semibold", size: 15)
-//    }
-//    
-//    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        switch section {
-//        case 0:
-//            if penpalList.count == 0 {
-//                return 0.0
-//            }
-//        case 1:
-//            if contactsList.count == 0 {
-//                return 0.0
-//            }
-//        case 2:
-//            if otherUsersList.count == 0 {
-//                return 0.0
-//            }
-//        default:
-//            return 34.0
-//        }
-//        return 34.0
-//
-//    }
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Slowpost Penpals"
+        case 1:
+            return "Phone Contacts"
+        default:
+            return nil
+        }
+    }
+    
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel!.textColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
+        header.textLabel!.font = UIFont(name: "OpenSans-Semibold", size: 15)
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 34.0
+    }
 
     // MARK: Row configuration
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("personCell", forIndexPath: indexPath) as! PersonCell
-        self.configureCell(cell, indexPath: indexPath)
-        return cell
+        let numPenpalSections = penpalController.sections!.count
+        switch indexPath.section {
+        case 0..<numPenpalSections:
+            let cell = tableView.dequeueReusableCellWithIdentifier("personCell", forIndexPath: indexPath) as! PersonCell
+            self.configurePersonCell(cell, indexPath: indexPath)
+            return cell
+        default:
+            let adjustedSection = indexPath.section - numPenpalSections
+            let adjustedIndexPath = NSIndexPath(forRow: indexPath.row, inSection: adjustedSection)
+            let cell = tableView.dequeueReusableCellWithIdentifier("phoneContactCell", forIndexPath: indexPath) as! PhoneContactCell
+            self.configurePhoneContactCell(cell, indexPath: adjustedIndexPath)
+            return cell
+        }
     }
     
-    func configureCell(cell: PersonCell, indexPath: NSIndexPath) {
-        let person = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Person
+    func configurePersonCell(cell: PersonCell, indexPath: NSIndexPath) {
+        
+        let person = penpalController.objectAtIndexPath(indexPath) as! Person
         cell.person = person
         cell.personNameLabel.text = person.name
         cell.usernameLabel.text = "@" + person.username
@@ -278,19 +179,52 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let cell = toPersonList.cellForRowAtIndexPath(indexPath) as! PersonCell
-        if cell.checked == false {
-            cell.checked = true
-            cell.accessoryType = .Checkmark
-            toPeople.append(cell.person)
-            print(toPeople)
-        }
-        else {
+    func configurePhoneContactCell(cell: PhoneContactCell, indexPath: NSIndexPath) {
+        
+        let phoneContact = phoneContactsController.objectAtIndexPath(indexPath) as! PhoneContact
+        cell.phoneContact = phoneContact
+        cell.personNameLabel.text = phoneContact.name
+        if cell.checked == nil {
             cell.checked = false
             cell.accessoryType = .None
-            toPeople = toPeople.filter() {$0.id != cell.person.id}
-            print(toPeople)
+        }
+        else if cell.checked == true {
+            cell.accessoryType = .Checkmark
+        }
+        else {
+            cell.accessoryType = .None
+        }
+        
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let numPenpalSections = penpalController.sections!.count
+        switch indexPath.section {
+        case 0..<numPenpalSections:
+            let cell = personTable.cellForRowAtIndexPath(indexPath) as! PersonCell
+            if cell.checked == false {
+                cell.checked = true
+                cell.accessoryType = .Checkmark
+                toPeople.append(cell.person)
+                print(toPeople)
+            }
+            else {
+                cell.checked = false
+                cell.accessoryType = .None
+                toPeople = toPeople.filter() {$0.id != cell.person.id}
+                print(toPeople)
+            }
+        default:
+            let cell = personTable.cellForRowAtIndexPath(indexPath) as! PhoneContactCell
+            if cell.checked == false {
+                cell.checked = true
+                cell.accessoryType = .Checkmark
+            }
+            else {
+                cell.checked = false
+                cell.accessoryType = .None
+            }
+            
         }
     }
     
@@ -298,66 +232,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         Flurry.logEvent("Compose_Cancelled")
         self.dismissViewControllerAnimated(true, completion: {})
     }
-    
-//    func searchPeople(term: String) {
-//    
-//        let searchTerm = RestService.normalizeSearchTerm(searchBar.text!)
-//        let searchPeopleURL = "\(PostOfficeURL)people/search?term=\(searchTerm)&limit=10"
-//        
-//        PersonService.getPeopleCollection(searchPeopleURL, headers: nil, completion: { (error, result) -> Void in
-//            if error != nil {
-//                print(error)
-//            }
-//            else if let peopleArray = result as? Array<Person> {
-//                self.otherUsersList = peopleArray
-//                self.excludeContactsFromOtherList()
-//                self.toPersonList.reloadData()
-//                self.validateNoResultsLabel()
-//            }
-//        })
-//    }
-    
-//    func reloadPenpals() {
-//        
-//        //Get all 'penpal' records whom the user has sent mail to or received mail from
-//        let contactsURL = "\(PostOfficeURL)person/id/\(loggedInUser.id)/contacts"
-//        PersonService.getPeopleCollection(contactsURL, headers: nil, completion: { (error, result) -> Void in
-//            if error != nil {
-//                print(error)
-//            }
-//            else if let peopleArray = result as? Array<Person> {
-//                penpals = peopleArray
-//            }
-//        })
-//    }
-//    
-//    func excludePenpalsFromContactsList() {
-//        for penpal in penpalList {
-//            var i = 0
-//            for contact in contactsList {
-//                if penpal.username == contact.username {
-//                    contactsList.removeAtIndex(i)
-//                }
-//                else {
-//                    i += 1
-//                }
-//            }
-//        }
-//    }
-//    
-//    func excludeContactsFromOtherList() {
-//        for contact in contactsList {
-//            var i = 0
-//            for other in otherUsersList {
-//                if contact.username == other.username {
-//                    otherUsersList.removeAtIndex(i)
-//                }
-//                else {
-//                    i += 1
-//                }
-//            }
-//        }
-//    }
     
     @IBAction func nextButtonPressed(sender: AnyObject) {
         self.performSegueWithIdentifier("selectImage", sender: nil)

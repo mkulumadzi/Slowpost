@@ -35,6 +35,11 @@
 		D20D8EDC1B2B384E00BBF6B5 /* compose.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8ED61B2B384E00BBF6B5 /* compose.png */; };
 		D20D8EDF1B2B384E00BBF6B5 /* ios7-compose.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8ED91B2B384E00BBF6B5 /* ios7-compose.png */; };
 		D20D8EE21B2E448100BBF6B5 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D8EE11B2E448100BBF6B5 /* PersonCell.swift */; };
+		D20EC2511BAC82C500E3DEA5 /* Attachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EC2501BAC82C500E3DEA5 /* Attachment.swift */; settings = {ASSET_TAGS = (); }; };
+		D20EC2531BAC84E500E3DEA5 /* ImageAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EC2521BAC84E500E3DEA5 /* ImageAttachment.swift */; settings = {ASSET_TAGS = (); }; };
+		D20EC2551BAC84FA00E3DEA5 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EC2541BAC84FA00E3DEA5 /* Note.swift */; settings = {ASSET_TAGS = (); }; };
+		D20EC2571BAC880C00E3DEA5 /* PostofficeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EC2561BAC880C00E3DEA5 /* PostofficeObject.swift */; settings = {ASSET_TAGS = (); }; };
+		D20EC2591BAC8F1400E3DEA5 /* PostofficeObjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EC2581BAC8F1400E3DEA5 /* PostofficeObjectService.swift */; settings = {ASSET_TAGS = (); }; };
 		D21D79D51B5093430014510E /* ios7-checkmark-not-checked.png in Resources */ = {isa = PBXBuildFile; fileRef = D21D79D41B5093430014510E /* ios7-checkmark-not-checked.png */; };
 		D21D79D71B5093490014510E /* ios7-checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = D21D79D61B5093490014510E /* ios7-checkmark.png */; };
 		D21D79DD1B56ED540014510E /* AddressBookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D79DC1B56ED540014510E /* AddressBookService.swift */; };
@@ -45,8 +50,8 @@
 		D2389E731B95157700CB19BB /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E721B95157700CB19BB /* ConversationViewController.swift */; };
 		D2389E771B9515D300CB19BB /* ConversationMailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E761B9515D300CB19BB /* ConversationMailCell.swift */; };
 		D2389E7B1B96162200CB19BB /* ComposeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E7A1B96162200CB19BB /* ComposeNavigationController.swift */; };
-		D2389E7D1B962B7000CB19BB /* ConversationMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E7C1B962B7000CB19BB /* ConversationMetadata.swift */; };
-		D2389E7F1B962D1F00CB19BB /* ConversationMetadataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E7E1B962D1F00CB19BB /* ConversationMetadataService.swift */; };
+		D2389E7D1B962B7000CB19BB /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E7C1B962B7000CB19BB /* Conversation.swift */; };
+		D2389E7F1B962D1F00CB19BB /* ConversationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E7E1B962D1F00CB19BB /* ConversationService.swift */; };
 		D2389E821B9674AB00CB19BB /* CellLabelUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E811B9674AB00CB19BB /* CellLabelUIView.swift */; };
 		D24BC0F51B96994D000405F7 /* CustomContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24BC0F41B96994D000405F7 /* CustomContainerView.swift */; };
 		D24BC0F71B97C2D5000405F7 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D24BC0F61B97C2D5000405F7 /* OpenSans-LightItalic.ttf */; };
@@ -76,7 +81,12 @@
 		D27DA3291B62E7BC00DF32A1 /* SettingsMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DA3281B62E7BC00DF32A1 /* SettingsMenuViewController.swift */; };
 		D27DA32B1B66B74800DF32A1 /* EditPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DA32A1B66B74800DF32A1 /* EditPasswordViewController.swift */; };
 		D27DA32D1B66C51900DF32A1 /* MessageUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DA32C1B66C51900DF32A1 /* MessageUILabel.swift */; };
+		D27E12F11BB4791A0059FF07 /* ContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27E12F01BB4791A0059FF07 /* ContactService.swift */; settings = {ASSET_TAGS = (); }; };
+		D27E12F31BB49F1E0059FF07 /* PhoneContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27E12F21BB49F1E0059FF07 /* PhoneContact.swift */; settings = {ASSET_TAGS = (); }; };
+		D27E12F71BB4A98E0059FF07 /* EmailAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27E12F61BB4A98E0059FF07 /* EmailAddress.swift */; settings = {ASSET_TAGS = (); }; };
 		D27E194E1B3B770C0052687F /* SlowpostModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D27E194C1B3B770C0052687F /* SlowpostModel.xcdatamodeld */; };
+		D28CB0101BB4CDC100111213 /* PhoneContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28CB00F1BB4CDC100111213 /* PhoneContactCell.swift */; settings = {ASSET_TAGS = (); }; };
+		D290B2A61BB083260069A3DD /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290B2A51BB083260069A3DD /* DataController.swift */; settings = {ASSET_TAGS = (); }; };
 		D291B24C1B69AA5A00C72816 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291B24B1B69AA5A00C72816 /* FileService.swift */; };
 		D29D3DC01B83D28A00B3E0DA /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D29D3DBF1B83D28A00B3E0DA /* KeychainWrapper.m */; };
 		D2A361361B3CAC5D00811D14 /* TextUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A361351B3CAC5D00811D14 /* TextUIButton.swift */; };
@@ -168,6 +178,12 @@
 		D20D8ED61B2B384E00BBF6B5 /* compose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compose.png; sourceTree = "<group>"; };
 		D20D8ED91B2B384E00BBF6B5 /* ios7-compose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-compose.png"; sourceTree = "<group>"; };
 		D20D8EE11B2E448100BBF6B5 /* PersonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
+		D20EC24F1BAC818400E3DEA5 /* SlowpostModel 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SlowpostModel 9.xcdatamodel"; sourceTree = "<group>"; };
+		D20EC2501BAC82C500E3DEA5 /* Attachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attachment.swift; sourceTree = "<group>"; };
+		D20EC2521BAC84E500E3DEA5 /* ImageAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageAttachment.swift; sourceTree = "<group>"; };
+		D20EC2541BAC84FA00E3DEA5 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		D20EC2561BAC880C00E3DEA5 /* PostofficeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostofficeObject.swift; sourceTree = "<group>"; };
+		D20EC2581BAC8F1400E3DEA5 /* PostofficeObjectService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostofficeObjectService.swift; sourceTree = "<group>"; };
 		D21D79D41B5093430014510E /* ios7-checkmark-not-checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-checkmark-not-checked.png"; sourceTree = "<group>"; };
 		D21D79D61B5093490014510E /* ios7-checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-checkmark.png"; sourceTree = "<group>"; };
 		D21D79DC1B56ED540014510E /* AddressBookService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookService.swift; sourceTree = "<group>"; };
@@ -179,8 +195,8 @@
 		D2389E721B95157700CB19BB /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		D2389E761B9515D300CB19BB /* ConversationMailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationMailCell.swift; sourceTree = "<group>"; };
 		D2389E7A1B96162200CB19BB /* ComposeNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeNavigationController.swift; sourceTree = "<group>"; };
-		D2389E7C1B962B7000CB19BB /* ConversationMetadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationMetadata.swift; sourceTree = "<group>"; };
-		D2389E7E1B962D1F00CB19BB /* ConversationMetadataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationMetadataService.swift; sourceTree = "<group>"; };
+		D2389E7C1B962B7000CB19BB /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		D2389E7E1B962D1F00CB19BB /* ConversationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationService.swift; sourceTree = "<group>"; };
 		D2389E801B964A0F00CB19BB /* SlowpostModel 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SlowpostModel 8.xcdatamodel"; sourceTree = "<group>"; };
 		D2389E811B9674AB00CB19BB /* CellLabelUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellLabelUIView.swift; sourceTree = "<group>"; };
 		D24BC0F41B96994D000405F7 /* CustomContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomContainerView.swift; sourceTree = "<group>"; };
@@ -211,7 +227,12 @@
 		D27DA3281B62E7BC00DF32A1 /* SettingsMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsMenuViewController.swift; sourceTree = "<group>"; };
 		D27DA32A1B66B74800DF32A1 /* EditPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPasswordViewController.swift; sourceTree = "<group>"; };
 		D27DA32C1B66C51900DF32A1 /* MessageUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageUILabel.swift; sourceTree = "<group>"; };
+		D27E12F01BB4791A0059FF07 /* ContactService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactService.swift; sourceTree = "<group>"; };
+		D27E12F21BB49F1E0059FF07 /* PhoneContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneContact.swift; sourceTree = "<group>"; };
+		D27E12F61BB4A98E0059FF07 /* EmailAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailAddress.swift; sourceTree = "<group>"; };
 		D27E194D1B3B770C0052687F /* SnailMailModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SnailMailModel.xcdatamodel; sourceTree = "<group>"; };
+		D28CB00F1BB4CDC100111213 /* PhoneContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneContactCell.swift; sourceTree = "<group>"; };
+		D290B2A51BB083260069A3DD /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		D291B24B1B69AA5A00C72816 /* FileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
 		D29D3DBE1B83D28200B3E0DA /* KeychainWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
 		D29D3DBF1B83D28A00B3E0DA /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
@@ -329,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				CC23DE2D1AE54C2B00AFEDE4 /* compose.storyboard */,
+				D27DA3241B62C04E00DF32A1 /* ComposeTabPlaceholderViewController.swift */,
 				D2389E7A1B96162200CB19BB /* ComposeNavigationController.swift */,
 				D2CEC4731B72ACBD002CFD25 /* SendingViewController.swift */,
 				D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */,
@@ -340,6 +362,7 @@
 				D2CEC4651B6C1F5C002CFD25 /* TakePhotoViewController.swift */,
 				D2CEC4671B6C1F6E002CFD25 /* CardGalleryUIViewController.swift */,
 				D2389E671B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift */,
+				D28CB00F1BB4CDC100111213 /* PhoneContactCell.swift */,
 			);
 			name = Compose;
 			sourceTree = "<group>";
@@ -349,7 +372,14 @@
 			children = (
 				CCCB1A741AB0D87F0067F100 /* Person.swift */,
 				CC96E4A81ABCD91A001E6D27 /* Mail.swift */,
-				D2389E7C1B962B7000CB19BB /* ConversationMetadata.swift */,
+				D2389E7C1B962B7000CB19BB /* Conversation.swift */,
+				D20EC2501BAC82C500E3DEA5 /* Attachment.swift */,
+				D20EC2521BAC84E500E3DEA5 /* ImageAttachment.swift */,
+				D20EC2541BAC84FA00E3DEA5 /* Note.swift */,
+				D20EC2561BAC880C00E3DEA5 /* PostofficeObject.swift */,
+				D290B2A51BB083260069A3DD /* DataController.swift */,
+				D27E12F21BB49F1E0059FF07 /* PhoneContact.swift */,
+				D27E12F61BB4A98E0059FF07 /* EmailAddress.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -462,7 +492,6 @@
 				D206FB551B619AA5008BB412 /* HomeTabBarController.swift */,
 				D27DA3201B62BDA900DF32A1 /* ConversationTabViewController.swift */,
 				D27DA3221B62BECD00DF32A1 /* MailboxTabPlaceholderViewController.swift */,
-				D27DA3241B62C04E00DF32A1 /* ComposeTabPlaceholderViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -543,7 +572,9 @@
 				D2B7CEAD1B696DBC007F8235 /* RestService.swift */,
 				D291B24B1B69AA5A00C72816 /* FileService.swift */,
 				D2CEC4771B73A45F002CFD25 /* CoreDataService.swift */,
-				D2389E7E1B962D1F00CB19BB /* ConversationMetadataService.swift */,
+				D2389E7E1B962D1F00CB19BB /* ConversationService.swift */,
+				D20EC2581BAC8F1400E3DEA5 /* PostofficeObjectService.swift */,
+				D27E12F01BB4791A0059FF07 /* ContactService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -786,15 +817,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D20EC2591BAC8F1400E3DEA5 /* PostofficeObjectService.swift in Sources */,
 				D24BC0F51B96994D000405F7 /* CustomContainerView.swift in Sources */,
 				CC96E4A91ABCD91A001E6D27 /* Mail.swift in Sources */,
 				CCCB1A7B1AB0DE780067F100 /* MyMailboxViewController.swift in Sources */,
+				D20EC2551BAC84FA00E3DEA5 /* Note.swift in Sources */,
 				D206FB561B619AA5008BB412 /* HomeTabBarController.swift in Sources */,
 				D27DA3211B62BDA900DF32A1 /* ConversationTabViewController.swift in Sources */,
 				D2E956461B30952800CA8CC8 /* ChooseImageViewController.swift in Sources */,
 				D27DA32B1B66B74800DF32A1 /* EditPasswordViewController.swift in Sources */,
+				D27E12F31BB49F1E0059FF07 /* PhoneContact.swift in Sources */,
 				D2CEC4781B73A45F002CFD25 /* CoreDataService.swift in Sources */,
 				D2389E6F1B95136B00CB19BB /* ConversationCell.swift in Sources */,
+				D27E12F71BB4A98E0059FF07 /* EmailAddress.swift in Sources */,
+				D27E12F11BB4791A0059FF07 /* ContactService.swift in Sources */,
 				CC96E4C91AC0B334001E6D27 /* ComposeMailViewController.swift in Sources */,
 				D206FB4B1B61688D008BB412 /* WelcomeScreenViewController.swift in Sources */,
 				D206FB4F1B617504008BB412 /* BottomBorderUITextField.swift in Sources */,
@@ -802,6 +838,7 @@
 				CC6105F51AC3941900D15150 /* LoginService.swift in Sources */,
 				D2A361361B3CAC5D00811D14 /* TextUIButton.swift in Sources */,
 				D20D8EE21B2E448100BBF6B5 /* PersonCell.swift in Sources */,
+				D20EC2531BAC84E500E3DEA5 /* ImageAttachment.swift in Sources */,
 				D291B24C1B69AA5A00C72816 /* FileService.swift in Sources */,
 				CCCB1A551AB0D48A0067F100 /* ViewController.swift in Sources */,
 				D2D8663F1B2F62B200847051 /* EditProfileViewController.swift in Sources */,
@@ -816,7 +853,7 @@
 				D27DA32D1B66C51900DF32A1 /* MessageUILabel.swift in Sources */,
 				D2E9564A1B309AA100CA8CC8 /* CardCollectionViewCell.swift in Sources */,
 				D20D8ED41B2A510700BBF6B5 /* ToViewController.swift in Sources */,
-				D2389E7D1B962B7000CB19BB /* ConversationMetadata.swift in Sources */,
+				D2389E7D1B962B7000CB19BB /* Conversation.swift in Sources */,
 				D2CEC4741B72ACBD002CFD25 /* SendingViewController.swift in Sources */,
 				D27DA3291B62E7BC00DF32A1 /* SettingsMenuViewController.swift in Sources */,
 				D21D79DD1B56ED540014510E /* AddressBookService.swift in Sources */,
@@ -828,19 +865,23 @@
 				D2389E681B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift in Sources */,
 				D2B651E71B38827100134C23 /* Extensions.swift in Sources */,
 				D2389E7B1B96162200CB19BB /* ComposeNavigationController.swift in Sources */,
+				D20EC2511BAC82C500E3DEA5 /* Attachment.swift in Sources */,
 				D27DA3231B62BECD00DF32A1 /* MailboxTabPlaceholderViewController.swift in Sources */,
 				D2B7CEA81B694D95007F8235 /* PersonService.swift in Sources */,
 				D27DA3251B62C04E00DF32A1 /* ComposeTabPlaceholderViewController.swift in Sources */,
 				D2B7CEA61B694C14007F8235 /* GlobalVariables.swift in Sources */,
+				D28CB0101BB4CDC100111213 /* PhoneContactCell.swift in Sources */,
 				D27E194E1B3B770C0052687F /* SlowpostModel.xcdatamodeld in Sources */,
 				CC96E49C1ABCC8EB001E6D27 /* InitialViewController.swift in Sources */,
-				D2389E7F1B962D1F00CB19BB /* ConversationMetadataService.swift in Sources */,
+				D2389E7F1B962D1F00CB19BB /* ConversationService.swift in Sources */,
 				D2389E6D1B9511E100CB19BB /* ConversationListViewController.swift in Sources */,
 				D2389E821B9674AB00CB19BB /* CellLabelUIView.swift in Sources */,
 				D2B7CEAC1B6951CE007F8235 /* ConfigurationService.swift in Sources */,
 				D2B7CEAA1B694E55007F8235 /* MailService.swift in Sources */,
 				CCCB1A531AB0D48A0067F100 /* AppDelegate.swift in Sources */,
 				D2389E771B9515D300CB19BB /* ConversationMailCell.swift in Sources */,
+				D290B2A61BB083260069A3DD /* DataController.swift in Sources */,
+				D20EC2571BAC880C00E3DEA5 /* PostofficeObject.swift in Sources */,
 				D2CEC4661B6C1F5C002CFD25 /* TakePhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1251,6 +1292,7 @@
 		D27E194C1B3B770C0052687F /* SlowpostModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D20EC24F1BAC818400E3DEA5 /* SlowpostModel 9.xcdatamodel */,
 				D2389E801B964A0F00CB19BB /* SlowpostModel 8.xcdatamodel */,
 				D2F5CAC31B8FAA1A00551435 /* SlowpostModel 7.xcdatamodel */,
 				D2F5CAC01B8F79B800551435 /* SlowpostModel 6.xcdatamodel */,
@@ -1260,7 +1302,7 @@
 				D2222A741B588695007E74BB /* SnailMailModel 2.xcdatamodel */,
 				D27E194D1B3B770C0052687F /* SnailMailModel.xcdatamodel */,
 			);
-			currentVersion = D2389E801B964A0F00CB19BB /* SlowpostModel 8.xcdatamodel */;
+			currentVersion = D20EC24F1BAC818400E3DEA5 /* SlowpostModel 9.xcdatamodel */;
 			path = SlowpostModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
