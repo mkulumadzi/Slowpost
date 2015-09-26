@@ -11,6 +11,7 @@ import UIKit
 class ComposeMailViewController: UIViewController, UITextViewDelegate {
     
     var toPeople:[Person]!
+    var toEmails:[String]!
     var cardImage:UIImage!
     var keyboardShowing:Bool!
     
@@ -31,7 +32,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         Flurry.logEvent("Opened_Compose_View")
         
         keyboardShowing = false
-        toLabel.text = toPeopleNames()
+        toLabel.text = toList()
         
         self.automaticallyAdjustsScrollViewInsets = false
         
@@ -65,15 +66,19 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func toPeopleNames() -> String {
-        var names = ""
+    func toList() -> String {
+        var toList = ""
         var index = 0
         for person in toPeople {
-            if index > 0 { names += ", " }
-            names += person.name
+            if index > 0 { toList += ", " }
+            toList += person.name
             index += 1
         }
-        return names
+        for email in toEmails {
+            if index > 0 { toList += ", " }
+            toList += email
+        }
+        return toList
     }
     
     func keyboardShow(notification: NSNotification) {
@@ -107,6 +112,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         if segue.identifier == "chooseDelivery" {
             let chooseDeliveryOptionsViewController = segue.destinationViewController as? ChooseDeliveryOptionsViewController
             chooseDeliveryOptionsViewController!.toPeople = toPeople
+            chooseDeliveryOptionsViewController!.toEmails = toEmails
             chooseDeliveryOptionsViewController!.cardImage = cardImage
             chooseDeliveryOptionsViewController!.content = composeText.text
         }

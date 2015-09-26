@@ -13,6 +13,9 @@
             <string>OpenSans-Light</string>
             <string>OpenSans-Light</string>
         </mutableArray>
+        <mutableArray key="OpenSans-LightItalic.ttf">
+            <string>OpenSansLight-Italic</string>
+        </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
             <string>OpenSans</string>
@@ -803,7 +806,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zot-be-XaU" userLabel="Name Label">
-                                                    <rect key="frame" x="46" y="13" width="546" height="24"/>
+                                                    <rect key="frame" x="46" y="13" width="48" height="24"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -827,13 +830,23 @@
                                                         <constraint firstAttribute="width" constant="30" id="gRy-LZ-iHx"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emails" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbJ-Cy-GaD" userLabel="Email Label">
+                                                    <rect key="frame" x="102" y="14" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" name="OpenSansLight-Italic" family="Open Sans" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="ZIL-K4-zIC" firstAttribute="centerY" secondItem="7Gd-Jg-pXP" secondAttribute="centerY" id="1S7-kl-s3Y"/>
+                                                <constraint firstAttribute="trailing" secondItem="AbJ-Cy-GaD" secondAttribute="trailing" constant="10" id="4TA-JZ-nHG"/>
                                                 <constraint firstItem="Zot-be-XaU" firstAttribute="top" secondItem="7Gd-Jg-pXP" secondAttribute="top" constant="2" id="Ct0-vI-V2X"/>
                                                 <constraint firstItem="Zot-be-XaU" firstAttribute="centerY" secondItem="7Gd-Jg-pXP" secondAttribute="centerY" id="M9s-Nx-o5f"/>
                                                 <constraint firstItem="Zot-be-XaU" firstAttribute="leading" secondItem="7Gd-Jg-pXP" secondAttribute="leading" constant="8" id="NZO-GZ-nPF"/>
+                                                <constraint firstItem="AbJ-Cy-GaD" firstAttribute="centerY" secondItem="7Gd-Jg-pXP" secondAttribute="centerY" id="Qs1-hP-Qsn"/>
+                                                <constraint firstItem="AbJ-Cy-GaD" firstAttribute="leading" secondItem="Zot-be-XaU" secondAttribute="trailing" constant="8" id="T4G-7z-VSd"/>
                                                 <constraint firstItem="ZIL-K4-zIC" firstAttribute="leading" secondItem="7Gd-Jg-pXP" secondAttribute="leading" constant="8" id="VOZ-yZ-v5N"/>
+                                                <constraint firstAttribute="trailing" secondItem="AbJ-Cy-GaD" secondAttribute="trailing" constant="10" id="cz5-cd-61q"/>
                                                 <constraint firstItem="Zot-be-XaU" firstAttribute="leading" secondItem="ZIL-K4-zIC" secondAttribute="trailing" constant="8" id="df5-iN-YyR"/>
                                                 <constraint firstAttribute="trailing" secondItem="Zot-be-XaU" secondAttribute="trailing" constant="8" id="txX-QC-G2N"/>
                                             </constraints>
@@ -841,12 +854,16 @@
                                                 <mask key="constraints">
                                                     <exclude reference="Ct0-vI-V2X"/>
                                                     <exclude reference="NZO-GZ-nPF"/>
+                                                    <exclude reference="txX-QC-G2N"/>
+                                                    <exclude reference="4TA-JZ-nHG"/>
+                                                    <exclude reference="cz5-cd-61q"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="avatarImageView" destination="XUO-qJ-SFw" id="v1L-y4-RRf"/>
                                             <outlet property="avatarView" destination="ZIL-K4-zIC" id="A1q-fS-UuE"/>
+                                            <outlet property="emailLabel" destination="AbJ-Cy-GaD" id="kMV-mF-V04"/>
                                             <outlet property="personNameLabel" destination="Zot-be-XaU" id="7Bu-aE-NCH"/>
                                         </connections>
                                     </tableViewCell>

@@ -5,15 +5,17 @@
         <relationship name="mail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mail" inverseName="attachments" inverseEntity="Mail" syncable="YES"/>
     </entity>
     <entity name="Conversation" representedClassName=".Conversation" parentEntity="PostofficeObject" syncable="YES">
-        <attribute name="emails" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="numUndelivered" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="numUnread" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="personSentMostRecentMail" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="emails" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EmailAddress" inverseName="conversation" inverseEntity="EmailAddress" syncable="YES"/>
         <relationship name="mail" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Mail" inverseName="conversation" inverseEntity="Mail" syncable="YES"/>
         <relationship name="people" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="conversations" inverseEntity="Person" syncable="YES"/>
     </entity>
     <entity name="EmailAddress" representedClassName=".EmailAddress" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="conversation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Conversation" inverseName="emails" inverseEntity="Conversation" syncable="YES"/>
+        <relationship name="mail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mail" inverseName="toEmails" inverseEntity="Mail" syncable="YES"/>
         <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="emails" inverseEntity="Person" syncable="YES"/>
     </entity>
     <entity name="ImageAttachment" representedClassName=".ImageAttachment" parentEntity="Attachment" syncable="YES">
@@ -27,11 +29,11 @@
         <attribute name="myStatus" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="scheduledToArrive" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="toEmails" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="attachments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Attachment" inverseName="mail" inverseEntity="Attachment" syncable="YES"/>
         <relationship name="conversation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Conversation" inverseName="mail" inverseEntity="Conversation" syncable="YES"/>
         <relationship name="fromPerson" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="sentMail" inverseEntity="Person" syncable="YES"/>
+        <relationship name="toEmails" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EmailAddress" inverseName="mail" inverseEntity="EmailAddress" syncable="YES"/>
         <relationship name="toPeople" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Person" inverseName="receivedMail" inverseEntity="Person" syncable="YES"/>
     </entity>
     <entity name="Note" representedClassName=".Note" parentEntity="Attachment" syncable="YES">
@@ -61,9 +63,9 @@
     <elements>
         <element name="Attachment" positionX="-245" positionY="269" width="128" height="73"/>
         <element name="Conversation" positionX="-731" positionY="-18" width="128" height="135"/>
-        <element name="EmailAddress" positionX="-684" positionY="-81" width="128" height="75"/>
+        <element name="EmailAddress" positionX="-684" positionY="-81" width="128" height="105"/>
         <element name="ImageAttachment" positionX="-308" positionY="135" width="128" height="88"/>
-        <element name="Mail" positionX="-558" positionY="126" width="128" height="208"/>
+        <element name="Mail" positionX="-558" positionY="126" width="128" height="210"/>
         <element name="Note" positionX="-155" positionY="140" width="128" height="60"/>
         <element name="Person" positionX="-900" positionY="-7" width="128" height="255"/>
         <element name="PostofficeObject" positionX="-729" positionY="-243" width="128" height="90"/>

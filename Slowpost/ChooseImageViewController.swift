@@ -12,6 +12,7 @@ import MobileCoreServices
 class ChooseImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
     
     var toPeople:[Person]!
+    var toEmails:[String]!
     var newMedia: Bool?
     var imageSelected:UIImageView!
     var imageSize = CGSizeMake(0,0)
@@ -39,7 +40,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         
         super.viewDidLoad()
         
-        toLabel.text = toPeopleNames()
+        toLabel.text = toList()
         
         removePhotoButton.layer.cornerRadius = 5
         nextButton.layer.cornerRadius = 5
@@ -91,15 +92,19 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         return imageSelected
     }
     
-    func toPeopleNames() -> String {
-        var names = ""
+    func toList() -> String {
+        var toList = ""
         var index = 0
         for person in toPeople {
-            if index > 0 { names += ", " }
-            names += person.name
+            if index > 0 { toList += ", " }
+            toList += person.name
             index += 1
         }
-        return names
+        for email in toEmails {
+            if index > 0 { toList += ", " }
+            toList += email
+        }
+        return toList
     }
 
     override func didReceiveMemoryWarning() {
@@ -284,6 +289,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
                 composeMailViewController?.cardImage = UIImage(named: "Default Card.png")
             }
             composeMailViewController!.toPeople = toPeople
+            composeMailViewController!.toEmails = toEmails
         }
     }
 

@@ -11,6 +11,7 @@ import UIKit
 class ChooseDeliveryOptionsViewController: UIViewController {
     
     var toPeople:[Person]!
+    var toEmails:[String]!
     var cardImage:UIImage!
     var content:String!
     var scheduledToArrive:NSDate?
@@ -75,6 +76,7 @@ class ChooseDeliveryOptionsViewController: UIViewController {
         if segue.identifier == "sendMail" {
             let sendingViewController = segue.destinationViewController as? SendingViewController
             sendingViewController!.toPeople = toPeople
+            sendingViewController!.toEmails = toEmails
             sendingViewController!.image = cardImage
             sendingViewController!.content = content
             

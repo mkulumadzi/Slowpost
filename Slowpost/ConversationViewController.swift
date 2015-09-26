@@ -43,7 +43,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         mailTable.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: mailTable.bounds.size.width, height: 0.01))
         mailTable.separatorStyle = UITableViewCellSeparatorStyle.None
         
-        navBarItem.title = conversation.peopleNames()
+        navBarItem.title = conversation.conversationList()
         NSNotificationCenter.defaultCenter().addObserverForName("imageDownloaded:", object: nil, queue: nil, usingBlock: { (notification) -> Void in
             self.refreshData()
         })

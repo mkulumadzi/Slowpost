@@ -13,7 +13,7 @@ import Foundation
 class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, NSFetchedResultsControllerDelegate {
 
     var toPeople:[Person]!
-    var toPerson:Person!
+    var toEmails:[String]!
     
     var peopleController: NSFetchedResultsController!
     
@@ -35,6 +35,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         initializePeopleController()
         
         toPeople = [Person]()
+        toEmails = [String]()
     
         Flurry.logEvent("Compose_Message_Workflow_Began")
         
@@ -154,7 +155,11 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         cell.person = person
         cell.personNameLabel.text = person.name
         cell.avatarView.layer.cornerRadius = 15
+        cell.avatarView.backgroundColor = UIColor.whiteColor()
+        cell.avatarView.layer.borderColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0).CGColor
+        cell.avatarView.layer.borderWidth = 1.0
         cell.avatarImageView.layer.cornerRadius = 15
+        configureEmailLabel(cell)
         if cell.checked == nil {
             cell.checked = false
             cell.accessoryType = .None
@@ -166,6 +171,16 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             cell.accessoryType = .None
         }
         
+    }
+    
+    func configureEmailLabel(cell: PhoneContactCell) {
+        if cell.person.emails.count == 1 {
+            let emailAddress = cell.person.emails.allObjects[0] as! EmailAddress
+            cell.emailLabel.text = emailAddress.email
+        }
+        else {
+            cell.emailLabel.text = "multiple emails..."
+        }
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -190,6 +205,10 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             if cell.checked == false {
                 cell.checked = true
                 cell.accessoryType = .Checkmark
+                if cell.person.emails.count == 1 {
+                    let emailAddress = cell.person.emails.allObjects[0] as! EmailAddress
+                    toEmails.append(emailAddress.email)
+                }
             }
             else {
                 cell.checked = false
@@ -212,6 +231,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         if segue.identifier == "selectImage" {
             let chooseImageViewController = segue.destinationViewController as? ChooseImageViewController
             chooseImageViewController?.toPeople = toPeople
+            chooseImageViewController?.toEmails = toEmails
         }
     }
     

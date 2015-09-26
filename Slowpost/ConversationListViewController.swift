@@ -167,7 +167,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         let cell = tableView.dequeueReusableCellWithIdentifier("conversationCell", forIndexPath: indexPath) as? ConversationCell
         let conversation = fetchedResultsController.objectAtIndexPath(indexPath) as! Conversation
         cell?.conversation = conversation
-        cell?.namesLabel.text = conversation.peopleNames()
+        cell?.namesLabel.text = conversation.conversationList()
         
         formatConversationCellLabel(cell!)
         

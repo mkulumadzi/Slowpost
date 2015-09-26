@@ -52,7 +52,7 @@ class MailViewController: UIViewController {
         fromPerson = mail.fromPerson
         fromLabel.text = fromPerson.name
         fromViewInitials.text = fromPerson.initials()
-        toLabel.text = mail.toNames()
+        toLabel.text = mail.toList()
         
         let sentDateString = mail.dateSent.formattedAsString("yyyy-MM-dd")
         sentLabel.text = "Sent on \(sentDateString)"

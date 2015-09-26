@@ -71,19 +71,4 @@ class PersonService: PostofficeObjectService {
         return emailAddresses
     }
     
-//    class func searchByEmailAddress(emailAddress: String) -> Person? {
-//        var person:Person!
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let dataController = appDelegate.dataController
-//        let fetchRequest = NSFetchRequest(entityName: "Person")
-//        let predicate = NSPredicate(format: "email == %@", emailAddress)
-//        fetchRequest.predicate = predicate
-//        let fetchResults = (try? dataController.moc.executeFetchRequest(fetchRequest)) as? [NSManagedObject]
-//        if fetchResults!.count > 0 {
-//            person = fetchResults![0] as! Person
-//        }
-//        return person
-//        
-//    }
-    
 }

@@ -17,7 +17,7 @@ class Mail: PostofficeObject {
     @NSManaged var conversation:Conversation
     @NSManaged var fromPerson:Person
     @NSManaged var toPeople:NSSet
-    @NSManaged var toEmails:String
+    @NSManaged var toEmails:NSSet
     @NSManaged var attachments:NSSet
     @NSManaged var dateSent:NSDate!
     @NSManaged var scheduledToArrive:NSDate!
@@ -59,17 +59,23 @@ class Mail: PostofficeObject {
         return content
     }
     
-    func toNames() -> String {
-        var names = ""
+    func toList() -> String {
+        var list = ""
         var index = 0
         for person in self.toPeople.allObjects {
             if index > 0 {
-                names += ", "
+                list += ", "
             }
-            names += "\(person.name)"
+            list += "\(person.name)"
             index += 1
         }
-        return names
+        for item in self.toEmails.allObjects {
+            let emailAddress = item as! EmailAddress
+            if index > 0 { list += ", " }
+            list += emailAddress.email
+            index += 1
+        }
+        return list
     }
     
     func toLoggedInUser() -> Bool {

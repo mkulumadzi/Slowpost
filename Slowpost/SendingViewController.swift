@@ -18,6 +18,7 @@ class SendingViewController: UIViewController {
     var content:String!
     var scheduledToArrive:NSDate?
     var toPeople:[Person]!
+    var toEmails:[String]!
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var cancelButtonHeight: NSLayoutConstraint!
@@ -76,7 +77,8 @@ class SendingViewController: UIViewController {
         
         let userId = LoginService.getUserIdFromToken()
         let sendMailEndpoint = "\(PostOfficeURL)person/id/\(userId)/mail/send"
-        var parameters:[String : AnyObject] = ["correspondents": ["to_people": peopleIds()], "attachments": ["notes": [content], "image_attachments": [imageUid]]]
+        let correspondents = formatCorrespondents()
+        var parameters:[String : AnyObject] = ["correspondents": correspondents, "attachments": ["notes": [content], "image_attachments": [imageUid]]]
         
         if scheduledToArrive != nil {
             let dateFormatter = NSDateFormatter()
@@ -103,6 +105,20 @@ class SendingViewController: UIViewController {
             }
         })
         
+    }
+    
+    func formatCorrespondents() -> [String : [String]] {
+        var correspondents = [String : [String]]()
+        if toPeople.count > 0 && toEmails.count > 0 {
+            correspondents = ["to_people": peopleIds(), "emails": toEmails]
+        }
+        else if toEmails.count > 0 {
+            correspondents = ["emails": toEmails]
+        }
+        else {
+            correspondents = ["to_people": peopleIds()]
+        }
+        return correspondents
     }
     
     func peopleIds() -> [String] {
