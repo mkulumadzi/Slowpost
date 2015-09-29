@@ -14,8 +14,8 @@
     </entity>
     <entity name="EmailAddress" representedClassName=".EmailAddress" syncable="YES">
         <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="conversation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Conversation" inverseName="emails" inverseEntity="Conversation" syncable="YES"/>
-        <relationship name="mail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mail" inverseName="toEmails" inverseEntity="Mail" syncable="YES"/>
+        <relationship name="conversation" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Conversation" inverseName="emails" inverseEntity="Conversation" syncable="YES"/>
+        <relationship name="mail" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Mail" inverseName="toEmails" inverseEntity="Mail" syncable="YES"/>
         <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Person" inverseName="emails" inverseEntity="Person" syncable="YES"/>
     </entity>
     <entity name="ImageAttachment" representedClassName=".ImageAttachment" parentEntity="Attachment" syncable="YES">
