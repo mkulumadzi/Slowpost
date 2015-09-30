@@ -58,6 +58,8 @@
 		D24BC0FA1B98E249000405F7 /* mail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D24BC0F91B98E249000405F7 /* mail.storyboard */; };
 		D24BC0FC1B98E317000405F7 /* MailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24BC0FB1B98E317000405F7 /* MailViewController.swift */; };
 		D24BC0FE1B98F898000405F7 /* reply-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = D24BC0FD1B98F898000405F7 /* reply-gray.png */; };
+		D25453841BBB437600BA2A50 /* PhoneContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25453831BBB437600BA2A50 /* PhoneContactViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		D25453861BBB482A00BA2A50 /* EmailAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25453851BBB482900BA2A50 /* EmailAddressTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		D25A9C9C1B2259D300ABBBA4 /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C911B2259D300ABBBA4 /* Apache License.txt */; };
 		D25A9C9D1B2259D300ABBBA4 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */; };
 		D25A9C9E1B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */; };
@@ -204,6 +206,8 @@
 		D24BC0F91B98E249000405F7 /* mail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = mail.storyboard; sourceTree = "<group>"; };
 		D24BC0FB1B98E317000405F7 /* MailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailViewController.swift; sourceTree = "<group>"; };
 		D24BC0FD1B98F898000405F7 /* reply-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply-gray.png"; sourceTree = "<group>"; };
+		D25453831BBB437600BA2A50 /* PhoneContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneContactViewController.swift; sourceTree = "<group>"; };
+		D25453851BBB482900BA2A50 /* EmailAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailAddressTableViewCell.swift; sourceTree = "<group>"; };
 		D25A9C911B2259D300ABBBA4 /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apache License.txt"; sourceTree = "<group>"; };
 		D25A9C921B2259D300ABBBA4 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		D25A9C931B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -363,6 +367,8 @@
 				D2CEC4671B6C1F6E002CFD25 /* CardGalleryUIViewController.swift */,
 				D2389E671B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift */,
 				D28CB00F1BB4CDC100111213 /* PhoneContactCell.swift */,
+				D25453831BBB437600BA2A50 /* PhoneContactViewController.swift */,
+				D25453851BBB482900BA2A50 /* EmailAddressTableViewCell.swift */,
 			);
 			name = Compose;
 			sourceTree = "<group>";
@@ -842,6 +848,7 @@
 				D291B24C1B69AA5A00C72816 /* FileService.swift in Sources */,
 				CCCB1A551AB0D48A0067F100 /* ViewController.swift in Sources */,
 				D2D8663F1B2F62B200847051 /* EditProfileViewController.swift in Sources */,
+				D25453841BBB437600BA2A50 /* PhoneContactViewController.swift in Sources */,
 				D25A9CAC1B225D3400ABBBA4 /* PersonalDetailsViewController.swift in Sources */,
 				D267262C1B7D3E1D00FE651F /* PhoneEntryViewController.swift in Sources */,
 				CCCB1A751AB0D87F0067F100 /* Person.swift in Sources */,
@@ -867,6 +874,7 @@
 				D2389E7B1B96162200CB19BB /* ComposeNavigationController.swift in Sources */,
 				D20EC2511BAC82C500E3DEA5 /* Attachment.swift in Sources */,
 				D27DA3231B62BECD00DF32A1 /* MailboxTabPlaceholderViewController.swift in Sources */,
+				D25453861BBB482A00BA2A50 /* EmailAddressTableViewCell.swift in Sources */,
 				D2B7CEA81B694D95007F8235 /* PersonService.swift in Sources */,
 				D27DA3251B62C04E00DF32A1 /* ComposeTabPlaceholderViewController.swift in Sources */,
 				D2B7CEA61B694C14007F8235 /* GlobalVariables.swift in Sources */,

@@ -202,19 +202,24 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             }
         default:
             let cell = personTable.cellForRowAtIndexPath(indexPath) as! PhoneContactCell
-            if cell.checked == false {
-                cell.checked = true
-                cell.accessoryType = .Checkmark
-                if cell.person.emails.count == 1 {
-                    let emailAddress = cell.person.emails.allObjects[0] as! EmailAddress
-                    toEmails.append(emailAddress.email)
+            cell.indexPath = indexPath
+            if cell.person.emails.count == 1 {
+                if cell.checked == false {
+                    cell.checked = true
+                    cell.accessoryType = .Checkmark
+                    if cell.person.emails.count == 1 {
+                        let emailAddress = cell.person.emails.allObjects[0] as! EmailAddress
+                        toEmails.append(emailAddress.email)
+                    }
+                }
+                else {
+                    cell.checked = false
+                    cell.accessoryType = .None
                 }
             }
             else {
-                cell.checked = false
-                cell.accessoryType = .None
+                self.performSegueWithIdentifier("viewPhoneContact", sender: cell)
             }
-            
         }
     }
     
@@ -232,6 +237,22 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             let chooseImageViewController = segue.destinationViewController as? ChooseImageViewController
             chooseImageViewController?.toPeople = toPeople
             chooseImageViewController?.toEmails = toEmails
+        }
+        if segue.identifier == "viewPhoneContact" {
+            let cell = sender as! PhoneContactCell
+            let phoneContactViewController = segue.destinationViewController as! PhoneContactViewController
+            phoneContactViewController.person = cell.person
+            phoneContactViewController.indexPath = cell.indexPath
+        }
+    }
+    
+    @IBAction func emailAddressSelected(segue:UIStoryboardSegue) {
+        if let contactView = segue.sourceViewController as? PhoneContactViewController {
+            let updateCell = personTable.cellForRowAtIndexPath(contactView.indexPath) as! PhoneContactCell
+            updateCell.emailLabel.text = "multiple (\(contactView.emailSelected.email))"
+            toEmails.append(contactView.emailSelected.email)
+            updateCell.accessoryType = .Checkmark
+            updateCell.checked = true
         }
     }
     
