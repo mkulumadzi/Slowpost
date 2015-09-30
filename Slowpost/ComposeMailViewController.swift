@@ -77,6 +77,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         for email in toEmails {
             if index > 0 { toList += ", " }
             toList += email
+            index += 1
         }
         return toList
     }

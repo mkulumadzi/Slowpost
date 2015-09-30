@@ -14,6 +14,7 @@ class PhoneContactViewController: UIViewController, UITableViewDelegate, UITable
     
     var person:Person!
     var emailSelected:EmailAddress!
+    var checkedIndexPath:NSIndexPath!
     var indexPath:NSIndexPath!
     
     @IBOutlet weak var cancelButton: UIButton!
@@ -35,7 +36,12 @@ class PhoneContactViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     @IBAction func cancelButtonPressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: {})
+        if emailSelected == nil {
+            performSegueWithIdentifier("emailCleared", sender: nil)
+        }
+        else {
+            self.dismissViewControllerAnimated(true, completion: {})
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -51,7 +57,15 @@ class PhoneContactViewController: UIViewController, UITableViewDelegate, UITable
         let emailAddress = person.emails.allObjects[indexPath.row] as! EmailAddress
         cell.emailAddress = emailAddress
         cell.emailAddressLabel.text = emailAddress.email
-        cell.checked = false
+        if emailSelected != nil && emailSelected == cell.emailAddress {
+            cell.checked = true
+            cell.accessoryType = .Checkmark
+            checkedIndexPath = indexPath
+        }
+        else {
+            cell.checked = false
+            cell.accessoryType = .None
+        }
         return cell
     }
     
@@ -60,12 +74,22 @@ class PhoneContactViewController: UIViewController, UITableViewDelegate, UITable
         if cell.checked == true {
             cell.checked = false
             cell.accessoryType = .None
+            emailSelected = nil
         }
         else {
+            clearCheckMark()
             cell.checked = true
             cell.accessoryType = .Checkmark
             emailSelected = cell.emailAddress
             performSegueWithIdentifier("emailAddressSelected", sender: cell)
+        }
+    }
+    
+    func clearCheckMark() {
+        if checkedIndexPath != nil {
+            let cell = emailAddressTable.cellForRowAtIndexPath(checkedIndexPath) as! EmailAddressTableViewCell
+            cell.checked = false
+            cell.accessoryType = .None
         }
     }
 

@@ -18,6 +18,7 @@ class PhoneContactCell: UITableViewCell {
     var checked:Bool!
     var person:Person!
     var indexPath:NSIndexPath!
+    var emailAddress:EmailAddress!
 
     override func awakeFromNib() {
         super.awakeFromNib()

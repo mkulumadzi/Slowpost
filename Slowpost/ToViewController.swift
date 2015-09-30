@@ -215,6 +215,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 else {
                     cell.checked = false
                     cell.accessoryType = .None
+                    let emailAddress = cell.person.emails.allObjects[0] as! EmailAddress
+                    toEmails = toEmails.filter() {$0 != emailAddress.email }
                 }
             }
             else {
@@ -243,16 +245,32 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             let phoneContactViewController = segue.destinationViewController as! PhoneContactViewController
             phoneContactViewController.person = cell.person
             phoneContactViewController.indexPath = cell.indexPath
+            if cell.checked == true { phoneContactViewController.emailSelected = cell.emailAddress }
         }
     }
     
     @IBAction func emailAddressSelected(segue:UIStoryboardSegue) {
         if let contactView = segue.sourceViewController as? PhoneContactViewController {
             let updateCell = personTable.cellForRowAtIndexPath(contactView.indexPath) as! PhoneContactCell
+            if updateCell.emailAddress != nil {
+                toEmails = toEmails.filter() {$0 != updateCell.emailAddress.email }
+            }
             updateCell.emailLabel.text = "multiple (\(contactView.emailSelected.email))"
+            updateCell.emailAddress = contactView.emailSelected
             toEmails.append(contactView.emailSelected.email)
             updateCell.accessoryType = .Checkmark
             updateCell.checked = true
+        }
+    }
+    
+    @IBAction func cancelledWithNoEmailSelected(segue:UIStoryboardSegue) {
+        if let contactView = segue.sourceViewController as? PhoneContactViewController {
+            let updateCell = personTable.cellForRowAtIndexPath(contactView.indexPath) as! PhoneContactCell
+            updateCell.emailLabel.text = "multiple emails..."
+            toEmails = toEmails.filter() {$0 != updateCell.emailAddress.email }
+            updateCell.emailAddress = nil
+            updateCell.accessoryType = .None
+            updateCell.checked = false
         }
     }
     

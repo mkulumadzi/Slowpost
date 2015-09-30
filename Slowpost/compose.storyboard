@@ -1058,6 +1058,7 @@
                         <outlet property="emailAddressTable" destination="Eqv-yf-BQV" id="s7g-OU-uVa"/>
                         <outlet property="name" destination="TZD-cb-YLM" id="OK6-Ur-oNN"/>
                         <segue destination="IC7-Le-5yi" kind="unwind" identifier="emailAddressSelected" unwindAction="emailAddressSelected:" id="jz6-mp-Jyt"/>
+                        <segue destination="IC7-Le-5yi" kind="unwind" identifier="emailCleared" unwindAction="cancelledWithNoEmailSelected:" id="3n1-ka-2E6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZEe-cK-U6z" userLabel="First Responder" sceneMemberID="firstResponder"/>
