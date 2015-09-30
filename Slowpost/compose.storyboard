@@ -18,6 +18,7 @@
         </mutableArray>
         <mutableArray key="OpenSans-LightItalic.ttf">
             <string>OpenSansLight-Italic</string>
+            <string>OpenSansLight-Italic</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
@@ -765,7 +766,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLv-eL-jpg" userLabel="Name Label">
-                                                    <rect key="frame" x="46" y="13" width="546" height="24"/>
+                                                    <rect key="frame" x="46" y="5" width="546" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="Yw8-K8-ZOw"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -788,19 +792,40 @@
                                                         <constraint firstItem="IcM-Uk-yhN" firstAttribute="centerX" secondItem="8AJ-Kx-NQH" secondAttribute="centerX" id="O2A-vQ-ncD"/>
                                                     </constraints>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Is2-1c-wFb" userLabel="Email Label">
+                                                    <rect key="frame" x="46" y="27" width="546" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="17" id="2r4-X9-h27"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="OpenSansLight-Italic" family="Open Sans" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="leading" secondItem="8AJ-Kx-NQH" secondAttribute="leading" constant="-8" id="7ro-El-xKU"/>
+                                                <constraint firstItem="Is2-1c-wFb" firstAttribute="top" secondItem="xLv-eL-jpg" secondAttribute="top" id="BGW-ri-jzO"/>
                                                 <constraint firstItem="xLv-eL-jpg" firstAttribute="leading" secondItem="8AJ-Kx-NQH" secondAttribute="trailing" constant="8" id="Bdi-la-uaw"/>
                                                 <constraint firstItem="xLv-eL-jpg" firstAttribute="centerY" secondItem="wjn-aq-Tzt" secondAttribute="centerY" id="G87-Da-PVg"/>
+                                                <constraint firstItem="Is2-1c-wFb" firstAttribute="top" secondItem="xLv-eL-jpg" secondAttribute="bottom" id="fao-Cg-yvi"/>
+                                                <constraint firstAttribute="trailing" secondItem="Is2-1c-wFb" secondAttribute="trailing" constant="8" id="i6M-Ud-acV"/>
+                                                <constraint firstItem="Is2-1c-wFb" firstAttribute="leading" secondItem="xLv-eL-jpg" secondAttribute="leading" id="jXR-yM-imC"/>
                                                 <constraint firstItem="8AJ-Kx-NQH" firstAttribute="centerY" secondItem="wjn-aq-Tzt" secondAttribute="centerY" id="lwy-cq-ohG"/>
+                                                <constraint firstItem="xLv-eL-jpg" firstAttribute="top" secondItem="wjn-aq-Tzt" secondAttribute="top" constant="5" id="pKp-eb-jr4"/>
                                                 <constraint firstAttribute="trailing" secondItem="xLv-eL-jpg" secondAttribute="trailing" constant="8" id="zfk-6m-Jb4"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="G87-Da-PVg"/>
+                                                    <exclude reference="BGW-ri-jzO"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="avatarInitials" destination="IcM-Uk-yhN" id="Y8z-ee-6L7"/>
                                             <outlet property="avatarView" destination="8AJ-Kx-NQH" id="mLJ-uN-B9m"/>
                                             <outlet property="personNameLabel" destination="xLv-eL-jpg" id="Cua-4G-hkb"/>
+                                            <outlet property="usernameLabel" destination="Is2-1c-wFb" id="fBa-D8-Wmp"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="phoneContactCell" id="xv2-Ut-Xqa" customClass="PhoneContactCell" customModule="Slowpost" customModuleProvider="target">
@@ -811,62 +836,56 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zot-be-XaU" userLabel="Name Label">
-                                                    <rect key="frame" x="46" y="13" width="48" height="24"/>
+                                                    <rect key="frame" x="46" y="5" width="546" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="NXm-l7-Yi1"/>
+                                                        <constraint firstAttribute="height" constant="22" id="m4B-Gc-48H"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="NXm-l7-Yi1"/>
+                                                        </mask>
+                                                    </variation>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZIL-K4-zIC" userLabel="Avatar">
                                                     <rect key="frame" x="8" y="10" width="30" height="30"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XUO-qJ-SFw">
-                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="30" id="RbX-DB-K2d"/>
-                                                                <constraint firstAttribute="width" constant="30" id="nK5-l1-v3P"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                    </subviews>
                                                     <color key="backgroundColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstItem="XUO-qJ-SFw" firstAttribute="centerY" secondItem="ZIL-K4-zIC" secondAttribute="centerY" id="95X-y5-Mk7"/>
-                                                        <constraint firstItem="XUO-qJ-SFw" firstAttribute="centerX" secondItem="ZIL-K4-zIC" secondAttribute="centerX" id="GNF-8e-XX0"/>
                                                         <constraint firstAttribute="height" constant="30" id="evU-h6-lwW"/>
                                                         <constraint firstAttribute="width" constant="30" id="gRy-LZ-iHx"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emails" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbJ-Cy-GaD" userLabel="Email Label">
-                                                    <rect key="frame" x="102" y="14" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" name="OpenSansLight-Italic" family="Open Sans" pointSize="15"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emails@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AbJ-Cy-GaD" userLabel="Email Label">
+                                                    <rect key="frame" x="46" y="27" width="538" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="17" id="uH2-Rz-81a"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="OpenSansLight-Italic" family="Open Sans" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="ZIL-K4-zIC" firstAttribute="centerY" secondItem="7Gd-Jg-pXP" secondAttribute="centerY" id="1S7-kl-s3Y"/>
-                                                <constraint firstAttribute="trailing" secondItem="AbJ-Cy-GaD" secondAttribute="trailing" constant="10" id="4TA-JZ-nHG"/>
-                                                <constraint firstItem="Zot-be-XaU" firstAttribute="top" secondItem="7Gd-Jg-pXP" secondAttribute="top" constant="2" id="Ct0-vI-V2X"/>
-                                                <constraint firstItem="Zot-be-XaU" firstAttribute="centerY" secondItem="7Gd-Jg-pXP" secondAttribute="centerY" id="M9s-Nx-o5f"/>
-                                                <constraint firstItem="Zot-be-XaU" firstAttribute="leading" secondItem="7Gd-Jg-pXP" secondAttribute="leading" constant="8" id="NZO-GZ-nPF"/>
-                                                <constraint firstItem="AbJ-Cy-GaD" firstAttribute="centerY" secondItem="7Gd-Jg-pXP" secondAttribute="centerY" id="Qs1-hP-Qsn"/>
-                                                <constraint firstItem="AbJ-Cy-GaD" firstAttribute="leading" secondItem="Zot-be-XaU" secondAttribute="trailing" constant="8" id="T4G-7z-VSd"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="AbJ-Cy-GaD" secondAttribute="trailing" constant="8" id="AKa-8A-xs9"/>
+                                                <constraint firstItem="Zot-be-XaU" firstAttribute="top" secondItem="7Gd-Jg-pXP" secondAttribute="top" constant="5" id="GXh-7A-hvA"/>
+                                                <constraint firstAttribute="trailing" secondItem="Zot-be-XaU" secondAttribute="trailing" constant="8" id="PlF-Jj-dgs"/>
+                                                <constraint firstItem="Zot-be-XaU" firstAttribute="top" secondItem="ZIL-K4-zIC" secondAttribute="top" id="TjI-fQ-cf4"/>
                                                 <constraint firstItem="ZIL-K4-zIC" firstAttribute="leading" secondItem="7Gd-Jg-pXP" secondAttribute="leading" constant="8" id="VOZ-yZ-v5N"/>
-                                                <constraint firstAttribute="trailing" secondItem="AbJ-Cy-GaD" secondAttribute="trailing" constant="10" id="cz5-cd-61q"/>
                                                 <constraint firstItem="Zot-be-XaU" firstAttribute="leading" secondItem="ZIL-K4-zIC" secondAttribute="trailing" constant="8" id="df5-iN-YyR"/>
-                                                <constraint firstAttribute="trailing" secondItem="Zot-be-XaU" secondAttribute="trailing" constant="8" id="txX-QC-G2N"/>
+                                                <constraint firstItem="AbJ-Cy-GaD" firstAttribute="leading" secondItem="Zot-be-XaU" secondAttribute="leading" id="dhX-Dj-T4U"/>
+                                                <constraint firstItem="AbJ-Cy-GaD" firstAttribute="top" secondItem="Zot-be-XaU" secondAttribute="bottom" id="k7t-7c-Mn9"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="Ct0-vI-V2X"/>
-                                                    <exclude reference="NZO-GZ-nPF"/>
-                                                    <exclude reference="txX-QC-G2N"/>
-                                                    <exclude reference="4TA-JZ-nHG"/>
-                                                    <exclude reference="cz5-cd-61q"/>
+                                                    <exclude reference="TjI-fQ-cf4"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="avatarImageView" destination="XUO-qJ-SFw" id="v1L-y4-RRf"/>
                                             <outlet property="avatarView" destination="ZIL-K4-zIC" id="A1q-fS-UuE"/>
                                             <outlet property="emailLabel" destination="AbJ-Cy-GaD" id="kMV-mF-V04"/>
                                             <outlet property="personNameLabel" destination="Zot-be-XaU" id="7Bu-aE-NCH"/>
@@ -900,7 +919,9 @@
                             <constraint firstItem="zBk-j3-1iC" firstAttribute="leading" secondItem="8rF-TK-R8E" secondAttribute="leading" id="CQH-h1-3XB"/>
                             <constraint firstItem="j7P-4p-ATv" firstAttribute="top" secondItem="DaV-in-3s9" secondAttribute="bottom" id="IwL-r6-Ewj"/>
                             <constraint firstItem="zBk-j3-1iC" firstAttribute="top" secondItem="DaV-in-3s9" secondAttribute="bottom" id="Lfg-OD-Pti"/>
+                            <constraint firstAttribute="trailing" secondItem="j7P-4p-ATv" secondAttribute="trailing" id="VCW-QF-49m"/>
                             <constraint firstAttribute="centerY" secondItem="hdm-d4-YAc" secondAttribute="centerY" id="aOb-5E-D7b"/>
+                            <constraint firstItem="j7P-4p-ATv" firstAttribute="top" secondItem="DaV-in-3s9" secondAttribute="bottom" id="bAk-nM-6NY"/>
                             <constraint firstAttribute="centerX" secondItem="hdm-d4-YAc" secondAttribute="centerX" id="bWt-GS-Svo"/>
                             <constraint firstAttribute="bottom" secondItem="j7P-4p-ATv" secondAttribute="bottom" id="cPk-Bh-nPH"/>
                             <constraint firstItem="z2b-dc-6Oc" firstAttribute="top" secondItem="j7P-4p-ATv" secondAttribute="bottom" id="cWE-fT-aG3"/>
@@ -908,6 +929,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="B8p-DB-vk5"/>
+                                <exclude reference="IwL-r6-Ewj"/>
                                 <exclude reference="cPk-Bh-nPH"/>
                             </mask>
                         </variation>
@@ -941,12 +964,21 @@
                         <outlet property="nextButton" destination="o80-ii-CG7" id="WRf-Hb-XSr"/>
                         <outlet property="noResultsLabel" destination="hdm-d4-YAc" id="Fd8-nV-szO"/>
                         <outlet property="personTable" destination="j7P-4p-ATv" id="OVd-fN-7rf"/>
+                        <outlet property="searchDisplayController" destination="dgW-Ke-fkE" id="EGD-wT-ihf"/>
                         <outlet property="warningLabel" destination="zBk-j3-1iC" id="5WO-lm-7cq"/>
                         <segue destination="2t1-x4-fi1" kind="show" identifier="selectImage" id="4mr-Nl-MT5"/>
                         <segue destination="MLD-RO-lNg" kind="presentation" identifier="viewPhoneContact" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="gid-Rd-alk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJY-Gj-eOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="dgW-Ke-fkE">
+                    <connections>
+                        <outlet property="delegate" destination="56L-ux-Lnu" id="q6z-pp-uzq"/>
+                        <outlet property="searchContentsController" destination="56L-ux-Lnu" id="Md8-8X-UKS"/>
+                        <outlet property="searchResultsDataSource" destination="56L-ux-Lnu" id="4Oj-nb-oBk"/>
+                        <outlet property="searchResultsDelegate" destination="56L-ux-Lnu" id="1Bh-Nx-Tgo"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1008" y="924"/>
         </scene>

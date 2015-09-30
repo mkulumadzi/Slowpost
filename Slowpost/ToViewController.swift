@@ -10,12 +10,13 @@ import UIKit
 import CoreData
 import Foundation
 
-class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, NSFetchedResultsControllerDelegate {
+class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, NSFetchedResultsControllerDelegate , UISearchControllerDelegate, UISearchResultsUpdating {
 
     var toPeople:[Person]!
     var toEmails:[String]!
     
     var peopleController: NSFetchedResultsController!
+    var searchController: UISearchController!
     
     @IBOutlet weak var cancelBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var personTable: UITableView!
@@ -23,16 +24,23 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     @IBOutlet weak var noResultsLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     
-    lazy var searchBar:UISearchBar = UISearchBar(frame: CGRectMake(0, 0, 240, 20))
-    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         initializePeopleController()
+
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.sizeToFit()
+        searchController.searchBar.showsCancelButton = false
+        self.personTable.tableHeaderView = searchController.searchBar
+    
         
         toPeople = [Person]()
         toEmails = [String]()
@@ -42,7 +50,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         warningLabel.hide()
         noResultsLabel.hidden = true
         
-        self.personTable.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: self.personTable.bounds.size.width, height: 0.01))
+//        self.personTable.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: self.personTable.bounds.size.width, height: 0.01))
         
     }
     
@@ -77,7 +85,12 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        searchBar.resignFirstResponder()
+        searchController.searchBar.resignFirstResponder()
+    }
+    
+    //MARK: search configuration
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        
     }
     
     // MARK: Section Configuration
@@ -91,27 +104,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let sectionInfo = sections[section]
         return sectionInfo.numberOfObjects
     }
-    
-//    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        switch section {
-//        case 0:
-//            return "Slowpost Penpals"
-//        case 1:
-//            return "Phone Contacts"
-//        default:
-//            return nil
-//        }
-//    }
-    
-//    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-//        let header = view as! UITableViewHeaderFooterView
-//        header.textLabel!.textColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
-//        header.textLabel!.font = UIFont(name: "OpenSans-Semibold", size: 15)
-//    }
-//    
-//    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 34.0
-//    }
 
     // MARK: Row configuration
     
@@ -134,6 +126,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let person = peopleController.objectAtIndexPath(indexPath) as! Person
         cell.person = person
         cell.personNameLabel.text = person.name
+        cell.usernameLabel.text = "@\(person.username)"
         cell.avatarView.layer.cornerRadius = 15
         cell.avatarInitials.text = person.initials()
         if cell.checked == nil {
@@ -158,7 +151,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         cell.avatarView.backgroundColor = UIColor.whiteColor()
         cell.avatarView.layer.borderColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0).CGColor
         cell.avatarView.layer.borderWidth = 1.0
-        cell.avatarImageView.layer.cornerRadius = 15
         configureEmailLabel(cell)
         if cell.checked == nil {
             cell.checked = false

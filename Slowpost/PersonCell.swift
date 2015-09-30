@@ -12,6 +12,7 @@ class PersonCell: UITableViewCell {
     
     var person:Person!
     
+    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var personNameLabel: UILabel!
     @IBOutlet weak var avatarView: UIView!
     @IBOutlet weak var avatarInitials: UILabel!
