@@ -14,6 +14,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
 
     var toPeople:[Person]!
     var toEmails:[String]!
+    var searchTextEntered:Bool!
     
     var peopleController: NSFetchedResultsController!
     var searchController: UISearchController!
@@ -31,6 +32,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchTextEntered = false
         initializePeopleController()
 
         searchController = UISearchController(searchResultsController: nil)
@@ -66,8 +68,18 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let userId = LoginService.getUserIdFromToken()
         let predicate1 = NSPredicate(format: "id != %@", userId)
         let predicate2 = NSPredicate(format: "origin != %@", "Postoffice")
-        let compoundPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [predicate1, predicate2])
-        fetchRequest.predicate = compoundPredicate
+        let orPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [predicate1, predicate2])
+        var finalPredicate:NSCompoundPredicate!
+        
+        if !searchTextEntered {
+            finalPredicate = orPredicate
+        }
+        else {
+            let predicate3 = NSPredicate(format: "name contains[c] %@", searchController.searchBar.text!)
+            finalPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [orPredicate, predicate3])
+        }
+        
+        fetchRequest.predicate = finalPredicate
         fetchRequest.sortDescriptors = [nameSort]
         
         peopleController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: nil, cacheName: nil)
@@ -90,7 +102,15 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     //MARK: search configuration
     func updateSearchResultsForSearchController(searchController: UISearchController) {
+        if searchController.searchBar.text == "" {
+            searchTextEntered = false
+        }
+        else {
+            searchTextEntered = true
+        }
         
+        initializePeopleController()
+        personTable.reloadData()
     }
     
     // MARK: Section Configuration
@@ -129,17 +149,21 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         cell.usernameLabel.text = "@\(person.username)"
         cell.avatarView.layer.cornerRadius = 15
         cell.avatarInitials.text = person.initials()
-        if cell.checked == nil {
-            cell.checked = false
-            cell.accessoryType = .None
-        }
-        else if cell.checked == true {
+        if personSelected(person) {
             cell.accessoryType = .Checkmark
         }
         else {
             cell.accessoryType = .None
         }
         
+    }
+    
+    func personSelected(person: Person) -> Bool {
+        let filter = toPeople.filter() {$0.id == person.id}
+        if filter.count > 0 {
+            return true
+        }
+        return false
     }
     
     func configurePhoneContactCell(cell: PhoneContactCell, indexPath: NSIndexPath) {
@@ -152,17 +176,30 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         cell.avatarView.layer.borderColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0).CGColor
         cell.avatarView.layer.borderWidth = 1.0
         configureEmailLabel(cell)
-        if cell.checked == nil {
-            cell.checked = false
-            cell.accessoryType = .None
-        }
-        else if cell.checked == true {
+        if personEmailSelected(person) {
             cell.accessoryType = .Checkmark
+//            cell.checked = true
         }
         else {
             cell.accessoryType = .None
+//            cell.checked = false
         }
-        
+    }
+    
+    func personEmailSelected(person: Person) -> Bool {
+        let selectedSet = Set(toEmails)
+        var personEmails = [String]()
+        for object in person.emails.allObjects {
+            let emailAddress = object as! EmailAddress
+            personEmails.append(emailAddress.email)
+        }
+        let personSet = Set(personEmails)
+        if selectedSet.intersect(personSet).count > 0 {
+            return true
+        }
+        else {
+            return false
+        }
     }
     
     func configureEmailLabel(cell: PhoneContactCell) {
@@ -180,24 +217,19 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         switch person.id.isEmpty {
         case false:
             let cell = personTable.cellForRowAtIndexPath(indexPath) as! PersonCell
-            if cell.checked == false {
-                cell.checked = true
+            if !personSelected(cell.person) {
                 cell.accessoryType = .Checkmark
                 toPeople.append(cell.person)
-                print(toPeople)
             }
             else {
-                cell.checked = false
                 cell.accessoryType = .None
                 toPeople = toPeople.filter() {$0.id != cell.person.id}
-                print(toPeople)
             }
         default:
             let cell = personTable.cellForRowAtIndexPath(indexPath) as! PhoneContactCell
             cell.indexPath = indexPath
             if cell.person.emails.count == 1 {
-                if cell.checked == false {
-                    cell.checked = true
+                if !personEmailSelected(cell.person) {
                     cell.accessoryType = .Checkmark
                     if cell.person.emails.count == 1 {
                         let emailAddress = cell.person.emails.allObjects[0] as! EmailAddress
@@ -205,7 +237,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                     }
                 }
                 else {
-                    cell.checked = false
                     cell.accessoryType = .None
                     let emailAddress = cell.person.emails.allObjects[0] as! EmailAddress
                     toEmails = toEmails.filter() {$0 != emailAddress.email }
@@ -215,6 +246,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 self.performSegueWithIdentifier("viewPhoneContact", sender: cell)
             }
         }
+        searchController.searchBar.text = ""
+        searchController.searchBar.resignFirstResponder()
     }
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
@@ -237,7 +270,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             let phoneContactViewController = segue.destinationViewController as! PhoneContactViewController
             phoneContactViewController.person = cell.person
             phoneContactViewController.indexPath = cell.indexPath
-            if cell.checked == true { phoneContactViewController.emailSelected = cell.emailAddress }
+            if personEmailSelected(cell.person) { phoneContactViewController.emailSelected = cell.emailAddress }
         }
     }
     
@@ -251,7 +284,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             updateCell.emailAddress = contactView.emailSelected
             toEmails.append(contactView.emailSelected.email)
             updateCell.accessoryType = .Checkmark
-            updateCell.checked = true
         }
     }
     
@@ -262,7 +294,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             toEmails = toEmails.filter() {$0 != updateCell.emailAddress.email }
             updateCell.emailAddress = nil
             updateCell.accessoryType = .None
-            updateCell.checked = false
         }
     }
     

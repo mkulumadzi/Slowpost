@@ -14,7 +14,7 @@ class PhoneContactCell: UITableViewCell {
     @IBOutlet weak var avatarView: UIView!
     @IBOutlet weak var emailLabel: UILabel!
     
-    var checked:Bool!
+//    var checked:Bool!
     var person:Person!
     var indexPath:NSIndexPath!
     var emailAddress:EmailAddress!
