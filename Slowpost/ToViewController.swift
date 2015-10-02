@@ -20,6 +20,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var searchController: UISearchController!
     var segmentedControl: UISegmentedControl!
     
+    let indexTitles = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    
     @IBOutlet weak var personTable: UITableView!
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var noResultsLabel: UILabel!
@@ -184,6 +186,33 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let sectionInfo = sections[section]
         return sectionInfo.numberOfObjects
     }
+    
+    func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+        return indexTitles
+    }
+    
+    func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
+        let peopleIndex = peopleController.sectionIndexTitles.indexOf(title)
+        if peopleIndex != nil {
+            return peopleIndex!
+        }
+        else {
+            var i = index + 1
+            while i < indexTitles.count {
+                let nextTitle = indexTitles[i]
+                let nextIndex = peopleController.sectionIndexTitles.indexOf(nextTitle)
+                if nextIndex != nil {
+                    return nextIndex!
+                }
+                else {
+                    i += 1
+                }
+            }
+            let lastIndex = peopleController.sectionIndexTitles.count - 1
+            return lastIndex
+        }
+    }
+    
 
     // MARK: Row configuration
     
