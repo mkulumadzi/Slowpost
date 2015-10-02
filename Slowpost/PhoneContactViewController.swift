@@ -15,7 +15,6 @@ class PhoneContactViewController: UIViewController, UITableViewDelegate, UITable
     var person:Person!
     var emailSelected:EmailAddress!
     var checkedIndexPath:NSIndexPath!
-    var indexPath:NSIndexPath!
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var name: UILabel!

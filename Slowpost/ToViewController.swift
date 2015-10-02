@@ -229,17 +229,32 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         cell.avatarView.layer.borderColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0).CGColor
         cell.avatarView.layer.borderWidth = 1.0
         configureEmailLabel(cell)
-        if personEmailSelected(person) {
+        if personEmailSelected(person) != "" {
             cell.accessoryType = .Checkmark
-//            cell.checked = true
+            
         }
         else {
             cell.accessoryType = .None
-//            cell.checked = false
         }
     }
     
-    func personEmailSelected(person: Person) -> Bool {
+//    func personEmailSelected(person: Person) -> Bool {
+//        let selectedSet = Set(toEmails)
+//        var personEmails = [String]()
+//        for object in person.emails.allObjects {
+//            let emailAddress = object as! EmailAddress
+//            personEmails.append(emailAddress.email)
+//        }
+//        let personSet = Set(personEmails)
+//        if selectedSet.intersect(personSet).count > 0 {
+//            return true
+//        }
+//        else {
+//            return false
+//        }
+//    }
+    
+    func personEmailSelected(person: Person) -> String {
         let selectedSet = Set(toEmails)
         var personEmails = [String]()
         for object in person.emails.allObjects {
@@ -248,10 +263,10 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
         let personSet = Set(personEmails)
         if selectedSet.intersect(personSet).count > 0 {
-            return true
+            return Array(selectedSet)[0]
         }
         else {
-            return false
+            return ""
         }
     }
     
@@ -261,7 +276,13 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             cell.emailLabel.text = emailAddress.email
         }
         else {
-            cell.emailLabel.text = "multiple emails..."
+            let email = personEmailSelected(cell.person)
+            if email == "" {
+                cell.emailLabel.text = "multiple emails..."
+            }
+            else {
+                cell.emailLabel.text = "multiple emails (\(email))"
+            }
         }
     }
     
@@ -280,9 +301,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             }
         default:
             let cell = personTable.cellForRowAtIndexPath(indexPath) as! PhoneContactCell
-            cell.indexPath = indexPath
             if cell.person.emails.count == 1 {
-                if !personEmailSelected(cell.person) {
+                if personEmailSelected(cell.person) == "" {
                     cell.accessoryType = .Checkmark
                     if cell.person.emails.count == 1 {
                         let emailAddress = cell.person.emails.allObjects[0] as! EmailAddress
@@ -296,6 +316,9 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 }
             }
             else {
+                if self.searchController.isBeingPresented() {
+                    self.dismissViewControllerAnimated(true, completion: {})
+                }
                 self.performSegueWithIdentifier("viewPhoneContact", sender: cell)
             }
         }
@@ -332,31 +355,39 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             let cell = sender as! PhoneContactCell
             let phoneContactViewController = segue.destinationViewController as! PhoneContactViewController
             phoneContactViewController.person = cell.person
-            phoneContactViewController.indexPath = cell.indexPath
-            if personEmailSelected(cell.person) { phoneContactViewController.emailSelected = cell.emailAddress }
+            let email = personEmailSelected(cell.person)
+            if email != "" {
+                let personEmails = cell.person.emails.allObjects as! [EmailAddress]
+                let emailSelected = personEmails.filter() {$0.email == personEmailSelected(cell.person) }[0]
+                phoneContactViewController.emailSelected = emailSelected
+            }
         }
     }
     
     @IBAction func emailAddressSelected(segue:UIStoryboardSegue) {
         if let contactView = segue.sourceViewController as? PhoneContactViewController {
-            let updateCell = personTable.cellForRowAtIndexPath(contactView.indexPath) as! PhoneContactCell
-            if updateCell.emailAddress != nil {
-                toEmails = toEmails.filter() {$0 != updateCell.emailAddress.email }
-            }
-            updateCell.emailLabel.text = "multiple (\(contactView.emailSelected.email))"
-            updateCell.emailAddress = contactView.emailSelected
+            clearSelectedEmailsForPerson(contactView.person)
             toEmails.append(contactView.emailSelected.email)
-            updateCell.accessoryType = .Checkmark
+            personTable.reloadData()
+            validateNextButton()
+        }
+    }
+    
+    func clearSelectedEmailsForPerson(person: Person) {
+        let email = personEmailSelected(person)
+        if email != "" {
+            toEmails = toEmails.filter() {$0 != email }
         }
     }
     
     @IBAction func cancelledWithNoEmailSelected(segue:UIStoryboardSegue) {
         if let contactView = segue.sourceViewController as? PhoneContactViewController {
-            let updateCell = personTable.cellForRowAtIndexPath(contactView.indexPath) as! PhoneContactCell
-            updateCell.emailLabel.text = "multiple emails..."
-            toEmails = toEmails.filter() {$0 != updateCell.emailAddress.email }
-            updateCell.emailAddress = nil
-            updateCell.accessoryType = .None
+            clearSelectedEmailsForPerson(contactView.person)
+            if contactView.emailSelected != nil {
+                toEmails.append(contactView.emailSelected.email)
+            }
+            personTable.reloadData()
+            validateNextButton()
         }
     }
     
