@@ -23,6 +23,7 @@ class Person: PostofficeObject {
     @NSManaged var origin:String!
     @NSManaged var contactId:String!
     @NSManaged var emails:NSSet!
+    @NSManaged var nameLetter:String
     
     func initials() -> String {
         let splitName = name.characters.split {$0 == " "}.map { String($0) }
@@ -43,4 +44,10 @@ class Person: PostofficeObject {
             }
         }
     }
+    
+    func getLetterFromName(name: String) -> String {
+        let firstLetter = String(name.characters.first!)
+        return firstLetter.uppercaseString
+    }
+    
 }

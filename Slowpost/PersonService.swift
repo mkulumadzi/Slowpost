@@ -50,6 +50,7 @@ class PersonService: PostofficeObjectService {
         person.state = json["state"].stringValue
         person.zip = json["zip"].stringValue
         person.origin = "Postoffice"
+        person.nameLetter = person.getLetterFromName(json["name"].stringValue)
         
         super.addOrUpdateCoreDataEntityFromJson(json, object: person)
     }
@@ -70,5 +71,7 @@ class PersonService: PostofficeObjectService {
         }
         return emailAddresses
     }
+    
+
     
 }

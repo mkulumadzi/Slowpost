@@ -44,6 +44,7 @@
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="contactId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nameLetter" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="origin" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="primaryEmail" optional="YES" attributeType="String" syncable="YES"/>
@@ -67,7 +68,7 @@
         <element name="ImageAttachment" positionX="-308" positionY="135" width="128" height="88"/>
         <element name="Mail" positionX="-558" positionY="126" width="128" height="210"/>
         <element name="Note" positionX="-155" positionY="140" width="128" height="60"/>
-        <element name="Person" positionX="-900" positionY="-7" width="128" height="255"/>
+        <element name="Person" positionX="-900" positionY="-7" width="128" height="270"/>
         <element name="PostofficeObject" positionX="-729" positionY="-243" width="128" height="90"/>
     </elements>
 </model>

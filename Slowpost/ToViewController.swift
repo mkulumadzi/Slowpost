@@ -129,7 +129,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         fetchRequest.predicate = finalPredicate
         fetchRequest.sortDescriptors = [nameSort]
         
-        peopleController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: nil, cacheName: nil)
+        peopleController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: "nameLetter", cacheName: nil)
         peopleController.delegate = self
         do {
             try peopleController.performFetch()
@@ -170,6 +170,13 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return peopleController.sections!.count
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sections = self.peopleController.sections!
+        let sectionInfo = sections[section]
+        let title = sectionInfo.name
+        return title
     }
  
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -237,22 +244,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             cell.accessoryType = .None
         }
     }
-    
-//    func personEmailSelected(person: Person) -> Bool {
-//        let selectedSet = Set(toEmails)
-//        var personEmails = [String]()
-//        for object in person.emails.allObjects {
-//            let emailAddress = object as! EmailAddress
-//            personEmails.append(emailAddress.email)
-//        }
-//        let personSet = Set(personEmails)
-//        if selectedSet.intersect(personSet).count > 0 {
-//            return true
-//        }
-//        else {
-//            return false
-//        }
-//    }
     
     func personEmailSelected(person: Person) -> String {
         let selectedSet = Set(toEmails)

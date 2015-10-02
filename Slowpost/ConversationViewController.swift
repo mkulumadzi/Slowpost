@@ -91,7 +91,6 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     // MARK: Section Configuration
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        print("There are \(fetchedResultsController.sections!.count) sections")
         return fetchedResultsController.sections!.count
     }
     

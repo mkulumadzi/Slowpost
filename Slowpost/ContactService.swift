@@ -91,6 +91,7 @@ class ContactService {
         person.contactId = contact.identifier
         person.name = self.createFullNameFromContact(contact)
         person.origin = "Phone"
+        person.nameLetter = person.getLetterFromName(person.name)
         
         self.addEmailsToNewPerson(person, contact: contact, dataController: dataController)
         
