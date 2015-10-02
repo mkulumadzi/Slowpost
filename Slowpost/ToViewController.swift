@@ -18,8 +18,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     var peopleController: NSFetchedResultsController!
     var searchController: UISearchController!
+    var segmentedControl: UISegmentedControl!
     
-    @IBOutlet weak var cancelBarButtonItem: UIBarButtonItem!
     @IBOutlet weak var personTable: UITableView!
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var noResultsLabel: UILabel!
@@ -33,19 +33,19 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         super.viewDidLoad()
         
         searchTextEntered = false
+        initializeSegmentedControl()
         initializePeopleController()
 
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
-        searchController.searchBar.sizeToFit()
-        searchController.searchBar.showsCancelButton = false
-        self.personTable.tableHeaderView = searchController.searchBar
-    
-        
+        addSearchBar()
+        addSegmentedControlToHeader()
+
         toPeople = [Person]()
         toEmails = [String]()
+        validateNextButton()
     
         Flurry.logEvent("Compose_Message_Workflow_Began")
         
@@ -54,6 +54,46 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
 //        self.personTable.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: self.personTable.bounds.size.width, height: 0.01))
         
+    }
+    
+    // Add search bar
+    func addSearchBar() {
+        searchController.searchBar.sizeToFit()
+        searchController.searchBar.showsCancelButton = false
+        searchController.searchBar.searchBarStyle = .Minimal
+        self.navigationItem.titleView = self.searchController.searchBar
+        self.definesPresentationContext = true
+        
+        let textField = searchController.searchBar.valueForKey("searchField") as! UITextField
+        textField.backgroundColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
+        textField.textColor = UIColor.whiteColor()
+        let attributedString = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
+        
+        //Get the glass icon
+        let iconView:UIImageView = textField.leftView as! UIImageView
+        iconView.image = iconView.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        iconView.tintColor = UIColor.whiteColor()
+        
+        textField.attributedPlaceholder = attributedString
+        
+    }
+    
+    func initializeSegmentedControl() {
+        segmentedControl = UISegmentedControl(items: ["Slowpost", "Everyone"])
+        segmentedControl.tintColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
+        segmentedControl.selectedSegmentIndex = 1
+    }
+
+    func addSegmentedControlToHeader() {
+        let headerView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: self.personTable.bounds.size.width, height: 40.0))
+        headerView.backgroundColor = UIColor.whiteColor()
+        headerView.addSubview(segmentedControl)
+        let horizontalConstraint = NSLayoutConstraint(item: segmentedControl, attribute: .CenterX, relatedBy: .Equal, toItem: headerView, attribute: .CenterX, multiplier: 1.0, constant: 0.0)
+        let verticalConstraint = NSLayoutConstraint(item: segmentedControl, attribute: .CenterY, relatedBy: .Equal, toItem: headerView, attribute: .CenterY, multiplier: 1.0, constant: 0.0)
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([horizontalConstraint, verticalConstraint])
+        self.personTable.tableHeaderView = headerView
+        segmentedControl.addTarget(self, action:"toggleResults", forControlEvents: .ValueChanged)
     }
     
     // Mark: Set up Core Data
@@ -66,17 +106,24 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let nameSort = NSSortDescriptor(key: "name", ascending: true)
         
         let userId = LoginService.getUserIdFromToken()
-        let predicate1 = NSPredicate(format: "id != %@", userId)
-        let predicate2 = NSPredicate(format: "origin != %@", "Postoffice")
-        let orPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [predicate1, predicate2])
-        var finalPredicate:NSCompoundPredicate!
         
-        if !searchTextEntered {
-            finalPredicate = orPredicate
+        let slowpostPredicate = NSPredicate(format: "id != %@", userId)
+        var startingPredicate:NSCompoundPredicate!
+        if segmentedControl.selectedSegmentIndex == 0 {
+            startingPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [slowpostPredicate])
         }
         else {
-            let predicate3 = NSPredicate(format: "name contains[c] %@", searchController.searchBar.text!)
-            finalPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [orPredicate, predicate3])
+            let phonePredicate = NSPredicate(format: "origin != %@", "Postoffice")
+            startingPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [slowpostPredicate, phonePredicate])
+        }
+        
+        var finalPredicate:NSCompoundPredicate!
+        if !searchTextEntered {
+            finalPredicate = startingPredicate
+        }
+        else {
+            let searchPredicate = NSPredicate(format: "name contains[c] %@", searchController.searchBar.text!)
+            finalPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [startingPredicate, searchPredicate])
         }
         
         fetchRequest.predicate = finalPredicate
@@ -109,6 +156,12 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             searchTextEntered = true
         }
         
+        initializePeopleController()
+        personTable.reloadData()
+    }
+    
+    //MARK: segmented control configuration
+    func toggleResults() {
         initializePeopleController()
         personTable.reloadData()
     }
@@ -248,11 +301,21 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
         searchController.searchBar.text = ""
         searchController.searchBar.resignFirstResponder()
+        validateNextButton()
     }
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
         Flurry.logEvent("Compose_Cancelled")
         self.dismissViewControllerAnimated(true, completion: {})
+    }
+    
+    func validateNextButton() {
+        if toPeople.count > 0 || toEmails.count > 0 {
+            nextButton.hidden = false
+        }
+        else {
+            nextButton.hidden = true
+        }
     }
     
     @IBAction func nextButtonPressed(sender: AnyObject) {

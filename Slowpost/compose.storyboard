@@ -873,17 +873,11 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="AbJ-Cy-GaD" secondAttribute="trailing" constant="8" id="AKa-8A-xs9"/>
                                                 <constraint firstItem="Zot-be-XaU" firstAttribute="top" secondItem="7Gd-Jg-pXP" secondAttribute="top" constant="5" id="GXh-7A-hvA"/>
                                                 <constraint firstAttribute="trailing" secondItem="Zot-be-XaU" secondAttribute="trailing" constant="8" id="PlF-Jj-dgs"/>
-                                                <constraint firstItem="Zot-be-XaU" firstAttribute="top" secondItem="ZIL-K4-zIC" secondAttribute="top" id="TjI-fQ-cf4"/>
                                                 <constraint firstItem="ZIL-K4-zIC" firstAttribute="leading" secondItem="7Gd-Jg-pXP" secondAttribute="leading" constant="8" id="VOZ-yZ-v5N"/>
                                                 <constraint firstItem="Zot-be-XaU" firstAttribute="leading" secondItem="ZIL-K4-zIC" secondAttribute="trailing" constant="8" id="df5-iN-YyR"/>
                                                 <constraint firstItem="AbJ-Cy-GaD" firstAttribute="leading" secondItem="Zot-be-XaU" secondAttribute="leading" id="dhX-Dj-T4U"/>
                                                 <constraint firstItem="AbJ-Cy-GaD" firstAttribute="top" secondItem="Zot-be-XaU" secondAttribute="bottom" id="k7t-7c-Mn9"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="TjI-fQ-cf4"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="avatarView" destination="ZIL-K4-zIC" id="A1q-fS-UuE"/>
@@ -904,6 +898,20 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uWb-HR-NCX" userLabel="nextButton">
+                                <rect key="frame" x="0.0" y="496" width="600" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="fJS-Hc-uzr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="56L-ux-Lnu" eventType="touchUpInside" id="xUY-fz-Bsu"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdm-d4-YAc">
                                 <rect key="frame" x="253" y="256" width="95" height="24"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
@@ -914,54 +922,37 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="uWb-HR-NCX" secondAttribute="trailing" id="8Br-qb-oyd"/>
                             <constraint firstAttribute="trailing" secondItem="zBk-j3-1iC" secondAttribute="trailing" id="9Nc-IG-JIg"/>
-                            <constraint firstAttribute="trailing" secondItem="j7P-4p-ATv" secondAttribute="trailing" id="B8p-DB-vk5"/>
+                            <constraint firstItem="z2b-dc-6Oc" firstAttribute="top" secondItem="uWb-HR-NCX" secondAttribute="bottom" id="9ga-RK-Ska"/>
                             <constraint firstItem="zBk-j3-1iC" firstAttribute="leading" secondItem="8rF-TK-R8E" secondAttribute="leading" id="CQH-h1-3XB"/>
-                            <constraint firstItem="j7P-4p-ATv" firstAttribute="top" secondItem="DaV-in-3s9" secondAttribute="bottom" id="IwL-r6-Ewj"/>
                             <constraint firstItem="zBk-j3-1iC" firstAttribute="top" secondItem="DaV-in-3s9" secondAttribute="bottom" id="Lfg-OD-Pti"/>
+                            <constraint firstItem="uWb-HR-NCX" firstAttribute="leading" secondItem="8rF-TK-R8E" secondAttribute="leading" id="Lxa-qX-pTP"/>
                             <constraint firstAttribute="trailing" secondItem="j7P-4p-ATv" secondAttribute="trailing" id="VCW-QF-49m"/>
                             <constraint firstAttribute="centerY" secondItem="hdm-d4-YAc" secondAttribute="centerY" id="aOb-5E-D7b"/>
                             <constraint firstItem="j7P-4p-ATv" firstAttribute="top" secondItem="DaV-in-3s9" secondAttribute="bottom" id="bAk-nM-6NY"/>
                             <constraint firstAttribute="centerX" secondItem="hdm-d4-YAc" secondAttribute="centerX" id="bWt-GS-Svo"/>
-                            <constraint firstAttribute="bottom" secondItem="j7P-4p-ATv" secondAttribute="bottom" id="cPk-Bh-nPH"/>
                             <constraint firstItem="z2b-dc-6Oc" firstAttribute="top" secondItem="j7P-4p-ATv" secondAttribute="bottom" id="cWE-fT-aG3"/>
                             <constraint firstItem="j7P-4p-ATv" firstAttribute="leading" secondItem="8rF-TK-R8E" secondAttribute="leading" id="rao-k6-Mm5"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="B8p-DB-vk5"/>
-                                <exclude reference="IwL-r6-Ewj"/>
-                                <exclude reference="cPk-Bh-nPH"/>
-                            </mask>
-                        </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="Ibi-X6-7cy">
+                        <nil key="title"/>
                         <barButtonItem key="backBarButtonItem" title="To" id="DUh-A0-SWj"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="xpp-RY-Stw">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="cancelButtonPressed:" destination="56L-ux-Lnu" id="C9i-Jo-H3i"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="done" id="k52-Me-npb">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="o80-ii-CG7">
-                                <rect key="frame" x="530" y="7" width="50" height="30"/>
+                        <barButtonItem key="leftBarButtonItem" id="fLv-d0-hGp">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3F6-xX-45Z" userLabel="Cancel">
+                                <rect key="frame" x="20" y="12" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
-                                <state key="normal" title="Next">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
+                                <state key="normal" image="ios7-close-empty-white.png"/>
                                 <connections>
-                                    <action selector="nextButtonPressed:" destination="56L-ux-Lnu" eventType="touchUpInside" id="5C3-9j-P1j"/>
+                                    <action selector="cancelButtonPressed:" destination="56L-ux-Lnu" eventType="touchUpInside" id="abF-jo-AfS"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="cancelBarButtonItem" destination="xpp-RY-Stw" id="PdO-Rj-3o7"/>
-                        <outlet property="nextButton" destination="o80-ii-CG7" id="WRf-Hb-XSr"/>
+                        <outlet property="nextButton" destination="uWb-HR-NCX" id="rHC-2r-3zm"/>
                         <outlet property="noResultsLabel" destination="hdm-d4-YAc" id="Fd8-nV-szO"/>
                         <outlet property="personTable" destination="j7P-4p-ATv" id="OVd-fN-7rf"/>
                         <outlet property="searchDisplayController" destination="dgW-Ke-fkE" id="EGD-wT-ihf"/>
@@ -1105,6 +1096,7 @@
         <image name="grid-green.png" width="512" height="512"/>
         <image name="ios7-camera-green.png" width="512" height="512"/>
         <image name="ios7-close-empty-gray.png" width="192" height="192"/>
+        <image name="ios7-close-empty-white.png" width="192" height="192"/>
         <image name="photos_green.png" width="512" height="512"/>
     </resources>
 </document>
