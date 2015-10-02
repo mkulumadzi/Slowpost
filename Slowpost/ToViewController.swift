@@ -53,8 +53,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         warningLabel.hide()
         noResultsLabel.hidden = true
-        
-//        self.personTable.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: self.personTable.bounds.size.width, height: 0.01))
+        personTable.sectionIndexColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
+        personTable.sectionHeaderHeight = 24.0
         
     }
     
@@ -191,6 +191,17 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         return indexTitles
     }
     
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30.0
+    }
+    
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.contentView.backgroundColor = UIColor.whiteColor()
+        header.textLabel!.textColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
+        header.textLabel!.font = UIFont(name: "OpenSans-Semibold", size: 13)
+    }
+    
     func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
         let peopleIndex = peopleController.sectionIndexTitles.indexOf(title)
         if peopleIndex != nil {
@@ -244,6 +255,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         else {
             cell.accessoryType = .None
         }
+        cell.tintColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
         
     }
     
@@ -272,6 +284,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         else {
             cell.accessoryType = .None
         }
+        cell.tintColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
     }
     
     func personEmailSelected(person: Person) -> String {
