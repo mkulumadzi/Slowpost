@@ -9,6 +9,7 @@
 import Foundation
 import Contacts
 import CoreData
+import Alamofire
 
 @available(iOS 9.0, *)
 class ContactService {
@@ -48,7 +49,7 @@ class ContactService {
             }
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                print("Finished getting contacts")
+                PersonService.searchForContactsOnSlowpost()
             })
         })
     }
@@ -117,6 +118,7 @@ class ContactService {
     class func addEmailsToNewPerson(person: Person, contact:CNContact, dataController: DataController) {
         let contactEmails = self.getContactEmailAddresses(contact)
         let emails = person.mutableSetValueForKey("emails")
+        print("Adding emails: \(emails)")   
         for email in contactEmails {
             let emailAddress = dataController.getCoreDataObject("email == %@", predicateValue: email, entityName: "EmailAddress") as! EmailAddress
             emailAddress.email = email

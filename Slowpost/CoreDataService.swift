@@ -48,12 +48,6 @@ class CoreDataService {
         
     }
     
-//    class func initializeManagedContext() -> NSManagedObjectContext {
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let managedContext = appDelegate.managedObjectContext!
-//        return managedContext
-//    }
-    
     class func findObjectById(managedContext: NSManagedObjectContext, id:String, entityName: String) -> NSManagedObject {
         let fetchRequest = NSFetchRequest(entityName: entityName)
         let predicate = NSPredicate(format: "id == %@", id)
@@ -76,22 +70,6 @@ class CoreDataService {
         return objects
     }
     
-//    class func executeFetchRequest2(fetchRequest: NSFetchRequest) -> [NSManagedObject]? {
-//        
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let managedContext = appDelegate.managedObjectContext!
-//        
-//        var objects:[NSManagedObject]!
-//        
-//        do {
-//            objects = try managedContext.executeFetchRequest(fetchRequest) as! [NSManagedObject]
-//        } catch {
-//            fatalError("Failed to fetch objects: \(error)")
-//        }
-//        
-//        return objects
-//    }
-    
     class func deleteCoreDataObjects(entityName: String, managedContext: NSManagedObjectContext) {
         let fetchRequest = NSFetchRequest(entityName: entityName)
         do {
@@ -104,59 +82,5 @@ class CoreDataService {
             print(error)
         }
     }
-    
-//    class func getCoreDataObjectsForJsonArray(jsonArray: [AnyObject], entityName: String) -> [NSManagedObject] {
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let managedContext = appDelegate.managedObjectContext!
-//        
-//        for object in jsonArray {
-//            let json = JSON(object)
-//            let predicate = NSPredicate(format: "id == %@", json["_id"]["$oid"].stringValue)
-//            let object = CoreDataService.getExistingEntityOrReturnNewEntity(entityName, managedContext: managedContext, predicate: predicate)
-//            self.addOrUpdateCoreDataEntityFromJson(json, object: object, managedContext: managedContext)
-//        }
-//    }
-//    
-//    class func getExistingEntityOrReturnNewEntity(entityName: String, managedContext: NSManagedObjectContext, predicate: NSPredicate) -> NSManagedObject {
-//        
-//        let fetchRequest = NSFetchRequest(entityName: entityName)
-//        fetchRequest.predicate = predicate
-//        
-//        let fetchResults = (try? managedContext.executeFetchRequest(fetchRequest)) as? [NSManagedObject]
-//        
-//        if fetchResults!.count > 0 {
-//            return fetchResults![0]
-//        }
-//        else {
-//            let entity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: managedContext)
-//            let newObject = NSManagedObject(entity: entity!, insertIntoManagedObjectContext:managedContext)
-//            return newObject
-//        }
-//    }
-    
-//    /// Mark: Old functions
-//    
-//    class func getObjectsFromCoreData(fetchRequest: NSFetchRequest, predicate: NSPredicate?) -> [NSManagedObject]? {
-//        //        let fetchRequest = NSFetchRequest(entityName: entityName)
-//
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let managedContext = appDelegate.managedObjectContext!
-//        
-//        if predicate != nil {
-//            fetchRequest.predicate = predicate!
-//        }
-//        
-//        var fetchedResults:[NSManagedObject]!
-//        
-//        do {
-//            fetchedResults = try managedContext.executeFetchRequest(fetchRequest) as? [NSManagedObject]
-//        }
-//        catch {
-//            print(error)
-//        }
-//        
-//        return fetchedResults!
-//        
-//    }
     
 }
