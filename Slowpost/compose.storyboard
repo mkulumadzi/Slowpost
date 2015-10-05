@@ -19,6 +19,7 @@
         <mutableArray key="OpenSans-LightItalic.ttf">
             <string>OpenSansLight-Italic</string>
             <string>OpenSansLight-Italic</string>
+            <string>OpenSansLight-Italic</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
@@ -34,6 +35,7 @@
             <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
@@ -884,6 +886,64 @@
                                             <outlet property="emailLabel" destination="AbJ-Cy-GaD" id="kMV-mF-V04"/>
                                             <outlet property="personNameLabel" destination="Zot-be-XaU" id="7Bu-aE-NCH"/>
                                         </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="emailRecipientCell" id="FHW-FA-Fyj" customClass="EmailRecipientCell" customModule="Slowpost" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="150" width="600" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FHW-FA-Fyj" id="cH9-g1-4gh">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JeX-WP-GYh" userLabel="Avatar">
+                                                    <rect key="frame" x="8" y="10" width="30" height="30"/>
+                                                    <color key="backgroundColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="4mF-DW-IgI"/>
+                                                        <constraint firstAttribute="height" constant="30" id="MRn-1d-S8L"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emails@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8P-q5-msp" userLabel="Email Label">
+                                                    <rect key="frame" x="46" y="16" width="538" height="17"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="17" id="xea-HI-w7I"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="OpenSansLight-Italic" family="Open Sans" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="a8P-q5-msp" firstAttribute="centerY" secondItem="cH9-g1-4gh" secondAttribute="centerY" id="4lG-lV-gGC"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="a8P-q5-msp" secondAttribute="trailing" constant="8" id="WyI-5f-HB2"/>
+                                                <constraint firstItem="JeX-WP-GYh" firstAttribute="centerY" secondItem="cH9-g1-4gh" secondAttribute="centerY" id="j8Z-RD-OTY"/>
+                                                <constraint firstItem="a8P-q5-msp" firstAttribute="leading" secondItem="JeX-WP-GYh" secondAttribute="trailing" constant="8" id="jCN-TG-nYp"/>
+                                                <constraint firstItem="JeX-WP-GYh" firstAttribute="leading" secondItem="cH9-g1-4gh" secondAttribute="leading" constant="8" id="oJo-Ik-SFR"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="avatarView" destination="JeX-WP-GYh" id="BzN-zg-SOd"/>
+                                            <outlet property="emailLabel" destination="a8P-q5-msp" id="hWr-bo-lh9"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="manualEmailCell" id="A7m-zK-2ph">
+                                        <rect key="frame" x="0.0" y="200" width="600" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A7m-zK-2ph" id="OGa-Bv-Pvc">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add an email address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aPy-nE-j1E">
+                                                    <rect key="frame" x="222" y="14" width="156" height="21"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="aPy-nE-j1E" firstAttribute="centerX" secondItem="OGa-Bv-Pvc" secondAttribute="centerX" id="OO3-dX-GYf"/>
+                                                <constraint firstItem="aPy-nE-j1E" firstAttribute="centerY" secondItem="OGa-Bv-Pvc" secondAttribute="centerY" id="sux-nZ-aqW"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

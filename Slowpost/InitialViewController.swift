@@ -67,7 +67,7 @@ class InitialViewController: UIViewController {
         
         MailService.updateAllData( { error, result -> Void in
             if result as? String == "Success" {
-//                self.getContactsIfAuthorized()
+                self.getContactsIfAuthorized()
                 self.goToHomeScreen()
             }
             else {

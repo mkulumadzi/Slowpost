@@ -20,7 +20,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var searchController: UISearchController!
     var segmentedControl: UISegmentedControl!
     
-    let indexTitles = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","#"]
+    let indexTitles = [">", "#", "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","?"]
     
     @IBOutlet weak var personTable: UITableView!
     @IBOutlet weak var warningLabel: WarningUILabel!
@@ -33,6 +33,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        toPeople = [Person]()
+        toEmails = [String]()
         
         searchTextEntered = false
         initializeSegmentedControl()
@@ -45,8 +47,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         addSearchBar()
         addSegmentedControlToHeader()
 
-        toPeople = [Person]()
-        toEmails = [String]()
         validateNextButton()
     
         Flurry.logEvent("Compose_Message_Workflow_Began")
@@ -172,20 +172,75 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     // MARK: Section Configuration
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return peopleController.sections!.count
+        var numSections:Int = peopleController.sections!.count
+        if recipientSection() == true {
+            numSections += 1
+        }
+        if otherSection() == true {
+            numSections += 1
+        }
+        return numSections
+    }
+    
+    func recipientSection() -> Bool {
+        if (toPeople.count + toEmails.count) > 0 {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    
+    func otherSection() -> Bool {
+        if searchTextEntered == true {
+            return true
+        }
+        else {
+            return false
+        }
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let sections = self.peopleController.sections!
-        let sectionInfo = sections[section]
-        let title = sectionInfo.name
-        return title
+        let peopleSections = self.peopleController.sections!
+        var adjustedSection:Int!
+        if recipientSection() == true {
+            adjustedSection = section - 1
+            if section == 0 {
+                return "Recipients"
+            }
+        }
+        else {
+            adjustedSection = section
+        }
+        if adjustedSection < peopleSections.count {
+            let sectionInfo = peopleSections[adjustedSection]
+            let title = sectionInfo.name
+            return title
+        }
+        else {
+            return "Other people"
+        }
     }
  
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sections = peopleController.sections!
-        let sectionInfo = sections[section]
-        return sectionInfo.numberOfObjects
+        let peopleSections = peopleController.sections!
+        var adjustedSection:Int!
+        if recipientSection() == true {
+            adjustedSection = section - 1
+            if section == 0 {
+                return (toPeople.count + toEmails.count)
+            }
+        }
+        else {
+            adjustedSection = section
+        }
+        if adjustedSection < peopleSections.count {
+            let sectionInfo = peopleSections[adjustedSection]
+            return sectionInfo.numberOfObjects
+        }
+        else {
+            return 1
+        }
     }
     
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
@@ -203,6 +258,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         header.textLabel!.font = UIFont(name: "OpenSans-Semibold", size: 13)
     }
     
+    // Come back to this...
     func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
         let peopleIndex = peopleController.sectionIndexTitles.indexOf(title)
         if peopleIndex != nil {
@@ -229,28 +285,68 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     // MARK: Row configuration
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let person = peopleController.objectAtIndexPath(indexPath) as! Person
-        if !person.id.isEmpty {
-            let cell = tableView.dequeueReusableCellWithIdentifier("personCell", forIndexPath: indexPath) as! PersonCell
-            self.configurePersonCell(cell, indexPath: indexPath)
+        var adjustedIndexPath:NSIndexPath!
+        if recipientSection() == false {
+            adjustedIndexPath = indexPath
+        }
+        else {
+            adjustedIndexPath = NSIndexPath(forRow: indexPath.row, inSection: indexPath.section - 1)
+            if indexPath.section == 0 {
+                let cell = cellForRecipient(tableView, indexPath: indexPath)
+                return cell
+            }
+        }
+        let peopleSections = peopleController.sections!
+        if adjustedIndexPath.section < peopleSections.count {
+            let cell = cellForPerson(tableView, indexPath: adjustedIndexPath)
             return cell
         }
         else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("phoneContactCell", forIndexPath: indexPath) as! PhoneContactCell
-            self.configurePhoneContactCell(cell, indexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithIdentifier("manualEmailCell", forIndexPath: indexPath)
             return cell
         }
     }
     
-    func configurePersonCell(cell: PersonCell, indexPath: NSIndexPath) {
-        
+    func cellForRecipient(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
+        if indexPath.row < toPeople.count {
+            let person = toPeople[indexPath.row]
+            let cell = tableView.dequeueReusableCellWithIdentifier("personCell", forIndexPath: indexPath) as! PersonCell
+            cell.person = person
+            self.configurePersonCell(cell)
+            return cell
+        }
+        else {
+            let adjustedIndex = indexPath.row - toPeople.count
+            let email = toEmails[adjustedIndex]
+            let cell = tableView.dequeueReusableCellWithIdentifier("emailRecipientCell", forIndexPath: indexPath) as! EmailRecipientCell
+            cell.email = email
+            self.configureEmailCell(cell)
+            return cell
+        }
+    }
+    
+    func cellForPerson(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
         let person = peopleController.objectAtIndexPath(indexPath) as! Person
-        cell.person = person
-        cell.personNameLabel.text = person.name
-        cell.usernameLabel.text = "@\(person.username)"
+        if !person.id.isEmpty {
+            let cell = tableView.dequeueReusableCellWithIdentifier("personCell") as! PersonCell
+            cell.person = person
+            self.configurePersonCell(cell)
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("phoneContactCell") as! PhoneContactCell
+            cell.person = person
+            self.configurePhoneContactCell(cell)
+            return cell
+        }
+    }
+    
+    func configurePersonCell(cell: PersonCell) {
+        cell.personNameLabel.text = cell.person.name
+        cell.usernameLabel.text = "@\(cell.person.username)"
         cell.avatarView.layer.cornerRadius = 15
-        cell.avatarInitials.text = person.initials()
-        if personSelected(person) {
+        cell.avatarInitials.text = cell.person.initials()
+        if personSelected(cell.person) {
             cell.accessoryType = .Checkmark
         }
         else {
@@ -258,6 +354,16 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
         cell.tintColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
         
+    }
+    
+    func configureEmailCell(cell: EmailRecipientCell) {
+        cell.emailLabel.text = cell.email
+        cell.avatarView.layer.cornerRadius = 15
+        cell.avatarView.backgroundColor = UIColor.whiteColor()
+        cell.avatarView.layer.borderColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0).CGColor
+        cell.avatarView.layer.borderWidth = 1.0
+        cell.accessoryType = .Checkmark
+        cell.tintColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
     }
     
     func personSelected(person: Person) -> Bool {
@@ -268,17 +374,14 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         return false
     }
     
-    func configurePhoneContactCell(cell: PhoneContactCell, indexPath: NSIndexPath) {
-        
-        let person = peopleController.objectAtIndexPath(indexPath) as! Person
-        cell.person = person
-        cell.personNameLabel.text = person.name
+    func configurePhoneContactCell(cell: PhoneContactCell) {
+        cell.personNameLabel.text = cell.person.name
         cell.avatarView.layer.cornerRadius = 15
         cell.avatarView.backgroundColor = UIColor.whiteColor()
         cell.avatarView.layer.borderColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0).CGColor
         cell.avatarView.layer.borderWidth = 1.0
         configureEmailLabel(cell)
-        if personEmailSelected(person) != "" {
+        if personEmailSelected(cell.person) != "" {
             cell.accessoryType = .Checkmark
             
         }
@@ -321,10 +424,37 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let person = peopleController.objectAtIndexPath(indexPath) as! Person
-        switch person.id.isEmpty {
-        case false:
-            let cell = personTable.cellForRowAtIndexPath(indexPath) as! PersonCell
+        var adjuster:Int = 0
+        if recipientSection() == true {
+            adjuster = 1
+        }
+        let numPeopleSections = peopleController.sections!.count
+        if recipientSection() == true && indexPath.section == 0 {
+            removeRecipient(tableView, indexPath: indexPath)
+        }
+        else if (indexPath.section - adjuster) < numPeopleSections {
+            handlePersonSelection(tableView, indexPath: indexPath)
+        }
+        else {
+            print("Manual email entry")
+        }
+        searchController.searchBar.text = ""
+        searchController.searchBar.resignFirstResponder()
+        validateNextButton()
+    }
+    
+    func removeRecipient(tableView: UITableView, indexPath: NSIndexPath) {
+        if indexPath.row < toPeople.count {
+            toPeople.removeAtIndex(indexPath.row)
+        }
+        else {
+            let adjustedIndex = indexPath.row - toPeople.count
+            toEmails.removeAtIndex(adjustedIndex)
+        }
+    }
+    
+    func handlePersonSelection(tableView: UITableView, indexPath: NSIndexPath) {
+        if let cell = personTable.cellForRowAtIndexPath(indexPath) as? PersonCell {
             if !personSelected(cell.person) {
                 cell.accessoryType = .Checkmark
                 toPeople.append(cell.person)
@@ -333,8 +463,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 cell.accessoryType = .None
                 toPeople = toPeople.filter() {$0.id != cell.person.id}
             }
-        default:
-            let cell = personTable.cellForRowAtIndexPath(indexPath) as! PhoneContactCell
+        }
+        else if let cell = personTable.cellForRowAtIndexPath(indexPath) as? PhoneContactCell {
             if cell.person.emails.count == 1 {
                 if personEmailSelected(cell.person) == "" {
                     cell.accessoryType = .Checkmark
@@ -356,9 +486,9 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 self.performSegueWithIdentifier("viewPhoneContact", sender: cell)
             }
         }
-        searchController.searchBar.text = ""
-        searchController.searchBar.resignFirstResponder()
-        validateNextButton()
+        else {
+            print("Did not recognize cell")
+        }
     }
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {

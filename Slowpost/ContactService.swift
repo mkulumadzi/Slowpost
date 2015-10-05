@@ -63,11 +63,12 @@ class ContactService {
                 addPhoneContactToPostofficePersonRecord(contact, email: Array(matchEmail)[0])
             }
             else {
-                print("Creating new person")
                 createNewPersonFromContact(contact)
             }
         }
     }
+    
+    
     
     class func addPhoneContactToPostofficePersonRecord(contact: CNContact, email: String) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -89,16 +90,30 @@ class ContactService {
     class func createNewPersonFromContact(contact: CNContact) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let dataController = appDelegate.dataController
-        let person = dataController.getCoreDataObject("contactId == %@", predicateValue: contact.identifier, entityName: "Person") as! Person
-        
-        person.contactId = contact.identifier
-        person.name = self.createFullNameFromContact(contact)
-        person.origin = "Phone"
-        person.nameLetter = person.getLetterFromName(person.name)
-        
-        self.addEmailsToNewPerson(person, contact: contact, dataController: dataController)
-        
-        dataController.save()
+        if personNeedsUpdating(contact) == true {
+            let person = dataController.getCoreDataObject("contactId == %@", predicateValue: contact.identifier, entityName: "Person") as! Person
+            print("creating new person \(contact.familyName)")
+            person.contactId = contact.identifier
+            person.name = self.createFullNameFromContact(contact)
+            person.origin = "Phone"
+            person.nameLetter = person.getLetterFromName(person.name)
+            self.addEmailsToNewPerson(person, contact: contact, dataController: dataController)
+            dataController.save()
+        }
+    }
+    
+    class func personNeedsUpdating(contact: CNContact) -> Bool {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
+        let fetchRequest = NSFetchRequest(entityName: "Person")
+        fetchRequest.predicate = NSPredicate(format: "contactId == %@", contact.identifier)
+        let objects = dataController.executeFetchRequest(fetchRequest)!
+        if objects.count == 0 {
+            return true
+        }
+        else {
+            return false
+        }
     }
     
     class func createFullNameFromContact(contact: CNContact) -> String {
