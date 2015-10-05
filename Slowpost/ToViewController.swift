@@ -436,7 +436,10 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             handlePersonSelection(tableView, indexPath: indexPath)
         }
         else {
-            print("Manual email entry")
+            if self.searchController.isBeingPresented() {
+                self.dismissViewControllerAnimated(true, completion: {})
+            }
+            self.performSegueWithIdentifier("addEmail", sender: nil)
         }
         searchController.searchBar.text = ""
         searchController.searchBar.resignFirstResponder()
@@ -532,6 +535,14 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         if let contactView = segue.sourceViewController as? PhoneContactViewController {
             clearSelectedEmailsForPerson(contactView.person)
             toEmails.append(contactView.emailSelected.email)
+            personTable.reloadData()
+            validateNextButton()
+        }
+    }
+    
+    @IBAction func emailAdded(segue:UIStoryboardSegue) {
+        if let addEmailView = segue.sourceViewController as? AddEmailViewController {
+            toEmails.append(addEmailView.emailField.text!)
             personTable.reloadData()
             validateNextButton()
         }

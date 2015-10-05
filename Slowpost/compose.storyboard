@@ -19,7 +19,6 @@
         <mutableArray key="OpenSans-LightItalic.ttf">
             <string>OpenSansLight-Italic</string>
             <string>OpenSansLight-Italic</string>
-            <string>OpenSansLight-Italic</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
@@ -33,8 +32,12 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
@@ -903,11 +906,11 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emails@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8P-q5-msp" userLabel="Email Label">
-                                                    <rect key="frame" x="46" y="16" width="538" height="17"/>
+                                                    <rect key="frame" x="46" y="14" width="538" height="22"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="17" id="xea-HI-w7I"/>
+                                                        <constraint firstAttribute="height" constant="22" id="xea-HI-w7I"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="OpenSansLight-Italic" family="Open Sans" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1019,6 +1022,7 @@
                         <outlet property="warningLabel" destination="zBk-j3-1iC" id="5WO-lm-7cq"/>
                         <segue destination="2t1-x4-fi1" kind="show" identifier="selectImage" id="4mr-Nl-MT5"/>
                         <segue destination="MLD-RO-lNg" kind="presentation" identifier="viewPhoneContact" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="gid-Rd-alk"/>
+                        <segue destination="k2f-JH-cs8" kind="presentation" identifier="addEmail" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="cJF-c2-KKC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UJY-Gj-eOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1148,6 +1152,113 @@
                 <exit id="IC7-Le-5yi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1008" y="1653"/>
+        </scene>
+        <!--Add Email View Controller-->
+        <scene sceneID="3qC-Q5-h9x">
+            <objects>
+                <viewController id="k2f-JH-cs8" customClass="AddEmailViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WfY-Lp-kjD"/>
+                        <viewControllerLayoutGuide type="bottom" id="313-OV-p7U"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="w2c-23-pHU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4h0-hq-y7d">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="kgJ-Bm-CJh"/>
+                                </constraints>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <items>
+                                    <navigationItem id="ShP-pI-Ic0">
+                                        <barButtonItem key="leftBarButtonItem" style="done" id="Xee-Ge-lt6">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="lE4-aN-6I4" userLabel="cancel">
+                                                <rect key="frame" x="20" y="28" width="20" height="20"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="ios7-close-empty-gray.png"/>
+                                                <connections>
+                                                    <action selector="cancelButtonPressed:" destination="k2f-JH-cs8" eventType="touchUpInside" id="oTx-Ua-bh3"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jLF-94-gMO" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="140" width="540" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="leC-69-ycZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="editingChanged:" destination="k2f-JH-cs8" eventType="editingChanged" id="4pm-Un-1zi"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="967-Hb-Na9" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="200" width="540" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="hN8-XU-RDH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitButtonPressed:" destination="k2f-JH-cs8" eventType="touchUpInside" id="OGs-hq-TF7"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="krw-IB-9nd" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="60" width="600" height="30"/>
+                                <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="aj5-PL-p0f"/>
+                                    <constraint firstAttribute="height" constant="30" id="m3m-Vr-lgH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="m3m-Vr-lgH"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="967-Hb-Na9" firstAttribute="top" secondItem="jLF-94-gMO" secondAttribute="bottom" constant="30" id="9bK-ax-zsu"/>
+                            <constraint firstItem="krw-IB-9nd" firstAttribute="top" secondItem="4h0-hq-y7d" secondAttribute="bottom" id="Hh2-f2-3MZ"/>
+                            <constraint firstAttribute="trailing" secondItem="krw-IB-9nd" secondAttribute="trailing" id="HnR-bJ-Eun"/>
+                            <constraint firstItem="967-Hb-Na9" firstAttribute="leading" secondItem="w2c-23-pHU" secondAttribute="leading" constant="30" id="MCn-j6-UtO"/>
+                            <constraint firstItem="krw-IB-9nd" firstAttribute="leading" secondItem="w2c-23-pHU" secondAttribute="leading" id="W5o-fK-EyK"/>
+                            <constraint firstAttribute="trailing" secondItem="4h0-hq-y7d" secondAttribute="trailing" id="bo8-aB-rEo"/>
+                            <constraint firstItem="jLF-94-gMO" firstAttribute="top" secondItem="4h0-hq-y7d" secondAttribute="bottom" constant="80" id="fH6-gf-Wz3"/>
+                            <constraint firstItem="jLF-94-gMO" firstAttribute="leading" secondItem="w2c-23-pHU" secondAttribute="leading" constant="30" id="kgD-VG-6XW"/>
+                            <constraint firstAttribute="trailing" secondItem="967-Hb-Na9" secondAttribute="trailing" constant="30" id="tsF-oy-Fsb"/>
+                            <constraint firstAttribute="trailing" secondItem="jLF-94-gMO" secondAttribute="trailing" constant="30" id="wp5-YT-biP"/>
+                            <constraint firstItem="4h0-hq-y7d" firstAttribute="leading" secondItem="w2c-23-pHU" secondAttribute="leading" id="wvi-hh-Rjd"/>
+                            <constraint firstItem="4h0-hq-y7d" firstAttribute="top" secondItem="w2c-23-pHU" secondAttribute="top" id="y5l-dA-F6O"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cancelButton" destination="lE4-aN-6I4" id="3MG-26-GuH"/>
+                        <outlet property="emailField" destination="jLF-94-gMO" id="6Vs-Oz-HWb"/>
+                        <outlet property="submitButton" destination="967-Hb-Na9" id="eLb-4x-C37"/>
+                        <outlet property="submitButtonHeight" destination="hN8-XU-RDH" id="UcM-y8-SCE"/>
+                        <outlet property="warningLabel" destination="krw-IB-9nd" id="pXE-Jr-1uT"/>
+                        <segue destination="8Bg-Ph-Rmr" kind="unwind" identifier="emailAddressSelected" unwindAction="emailAddressSelected:" id="BTL-M5-tQY"/>
+                        <segue destination="8Bg-Ph-Rmr" kind="unwind" identifier="emailCleared" unwindAction="cancelledWithNoEmailSelected:" id="8fH-8l-uKB"/>
+                        <segue destination="8Bg-Ph-Rmr" kind="unwind" identifier="emailAdded" unwindAction="emailAdded:" id="aws-7e-8OG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mTj-jf-zWl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="8Bg-Ph-Rmr" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="303" y="1653"/>
         </scene>
     </scenes>
     <resources>

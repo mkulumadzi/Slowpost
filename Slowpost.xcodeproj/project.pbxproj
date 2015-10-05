@@ -75,6 +75,7 @@
 		D267262C1B7D3E1D00FE651F /* PhoneEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D267262B1B7D3E1D00FE651F /* PhoneEntryViewController.swift */; };
 		D267262E1B7D3E3700FE651F /* SignUpCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D267262D1B7D3E3700FE651F /* SignUpCompleteViewController.swift */; };
 		D26726301B7D524100FE651F /* UsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D267262F1B7D524100FE651F /* UsernameViewController.swift */; };
+		D27C7B451BC33820005F08BC /* AddEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27C7B441BC33820005F08BC /* AddEmailViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D27DA31B1B61C8EE00DF32A1 /* settings-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D27DA31A1B61C8EE00DF32A1 /* settings-white.png */; };
 		D27DA31E1B62ADB600DF32A1 /* ios7-arrow-left-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D27DA31C1B62ADB600DF32A1 /* ios7-arrow-left-white.png */; };
 		D27DA31F1B62ADB600DF32A1 /* ios7-arrow-right-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D27DA31D1B62ADB600DF32A1 /* ios7-arrow-right-white.png */; };
@@ -225,6 +226,7 @@
 		D267262B1B7D3E1D00FE651F /* PhoneEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneEntryViewController.swift; sourceTree = "<group>"; };
 		D267262D1B7D3E3700FE651F /* SignUpCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpCompleteViewController.swift; sourceTree = "<group>"; };
 		D267262F1B7D524100FE651F /* UsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsernameViewController.swift; sourceTree = "<group>"; };
+		D27C7B441BC33820005F08BC /* AddEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEmailViewController.swift; sourceTree = "<group>"; };
 		D27DA31A1B61C8EE00DF32A1 /* settings-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-white.png"; sourceTree = "<group>"; };
 		D27DA31C1B62ADB600DF32A1 /* ios7-arrow-left-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-arrow-left-white.png"; sourceTree = "<group>"; };
 		D27DA31D1B62ADB600DF32A1 /* ios7-arrow-right-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-arrow-right-white.png"; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 				D25453831BBB437600BA2A50 /* PhoneContactViewController.swift */,
 				D25453851BBB482900BA2A50 /* EmailAddressTableViewCell.swift */,
 				D2E97D8C1BC322BF00DAEB6C /* EmailRecipientCell.swift */,
+				D27C7B441BC33820005F08BC /* AddEmailViewController.swift */,
 			);
 			name = Compose;
 			sourceTree = "<group>";
@@ -853,6 +856,7 @@
 				D2D8663F1B2F62B200847051 /* EditProfileViewController.swift in Sources */,
 				D25453841BBB437600BA2A50 /* PhoneContactViewController.swift in Sources */,
 				D25A9CAC1B225D3400ABBBA4 /* PersonalDetailsViewController.swift in Sources */,
+				D27C7B451BC33820005F08BC /* AddEmailViewController.swift in Sources */,
 				D267262C1B7D3E1D00FE651F /* PhoneEntryViewController.swift in Sources */,
 				CCCB1A751AB0D87F0067F100 /* Person.swift in Sources */,
 				D2CEC4681B6C1F6E002CFD25 /* CardGalleryUIViewController.swift in Sources */,
