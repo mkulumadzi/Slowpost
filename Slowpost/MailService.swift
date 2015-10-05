@@ -20,7 +20,7 @@ class MailService: PostofficeObjectService {
         
         //Update people first
         let peopleURL = "\(PostOfficeURL)person/id/\(userId)/contacts"
-        let peopleHeaders = dataController.getIfModifiedSinceHeaderForEntity("Person")
+        let peopleHeaders = dataController.getIfModifiedSinceHeaderForPeople()
         
         RestService.getRequest(peopleURL, headers: peopleHeaders, completion: { (error, result) -> Void in
             if let jsonArray = result as? [AnyObject] {

@@ -47,7 +47,14 @@ class Person: PostofficeObject {
     
     func getLetterFromName(name: String) -> String {
         let firstLetter = String(name.characters.first!)
-        return firstLetter.uppercaseString
+        let upper = firstLetter.uppercaseString
+        let acceptableLetters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+        if acceptableLetters.indexOf(upper) != nil {
+            return upper
+        }
+        else {
+            return "#"
+        }
     }
     
 }

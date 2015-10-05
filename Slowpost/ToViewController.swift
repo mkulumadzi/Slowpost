@@ -20,7 +20,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var searchController: UISearchController!
     var segmentedControl: UISegmentedControl!
     
-    let indexTitles = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    let indexTitles = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","#"]
     
     @IBOutlet weak var personTable: UITableView!
     @IBOutlet weak var warningLabel: WarningUILabel!
@@ -105,6 +105,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let dataController = appDelegate.dataController
         
         let fetchRequest = NSFetchRequest(entityName: "Person")
+        let nameLetterSort = NSSortDescriptor(key: "nameLetter", ascending: true)
         let nameSort = NSSortDescriptor(key: "name", ascending: true)
         
         let userId = LoginService.getUserIdFromToken()
@@ -129,7 +130,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
         
         fetchRequest.predicate = finalPredicate
-        fetchRequest.sortDescriptors = [nameSort]
+        fetchRequest.sortDescriptors = [nameLetterSort, nameSort]
         
         peopleController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: "nameLetter", cacheName: nil)
         peopleController.delegate = self

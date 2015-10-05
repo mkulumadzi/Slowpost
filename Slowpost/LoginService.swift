@@ -48,6 +48,7 @@ class LoginService: PersonService {
                 completion(error: error, result: nil)
             }
             else {
+                print(result)
                 completion(error: nil, result: "Success")
             }
         })

@@ -62,6 +62,25 @@ class DataController: NSObject {
         
     }
     
+    func getIfModifiedSinceHeaderForPeople() -> [String: String]? {
+        
+        let fetchRequest = NSFetchRequest(entityName: "Person")
+        fetchRequest.predicate = NSPredicate(format: "origin == %@", "Postoffice")
+        fetchRequest.fetchLimit = 1
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "updatedAt", ascending: false)]
+        let fetchedResults = self.executeFetchRequest(fetchRequest)
+        if fetchedResults!.count > 0 {
+            let maxUpdatedAt = fetchedResults![0].valueForKey("updatedAt") as! NSDate
+            let maxUpdatedAtString = maxUpdatedAt.formattedAsUTCString()
+            let headers = ["IF_MODIFIED_SINCE": maxUpdatedAtString]
+            return headers
+        }
+        else {
+            return nil
+        }
+        
+    }
+    
     func getCoreDataObjectForJson(json: JSON, entityName: String) -> NSManagedObject {
         let id = json["_id"]["$oid"].stringValue
         let object = getCoreDataObject("id == %@", predicateValue: id, entityName: entityName)

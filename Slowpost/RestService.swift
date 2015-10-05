@@ -47,8 +47,7 @@ class RestService {
                     completion(error: nil, result: result)
                 }
             case .Failure(_, let error):
-                print(error)
-                completion(error: nil, result: response!.statusCode)
+                completion(error: error, result: response!.statusCode)
             }
         }
     }

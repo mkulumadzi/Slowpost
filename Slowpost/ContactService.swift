@@ -59,9 +59,11 @@ class ContactService {
             let contactEmailAddresses = getContactEmailAddresses(contact)
             let matchEmail = Set(contactEmailAddresses).intersect(Set(coreDataEmailAddresses))
             if matchEmail.count > 0 {
+                print("Found match with existing person")
                 addPhoneContactToPostofficePersonRecord(contact, email: Array(matchEmail)[0])
             }
             else {
+                print("Creating new person")
                 createNewPersonFromContact(contact)
             }
         }
@@ -118,7 +120,6 @@ class ContactService {
     class func addEmailsToNewPerson(person: Person, contact:CNContact, dataController: DataController) {
         let contactEmails = self.getContactEmailAddresses(contact)
         let emails = person.mutableSetValueForKey("emails")
-        print("Adding emails: \(emails)")   
         for email in contactEmails {
             let emailAddress = dataController.getCoreDataObject("email == %@", predicateValue: email, entityName: "EmailAddress") as! EmailAddress
             emailAddress.email = email

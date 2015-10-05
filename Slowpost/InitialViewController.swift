@@ -16,7 +16,7 @@ class InitialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        checkLogin()
+//        checkLogin()
         
         print("Initial view loaded at \(NSDate())")
         Flurry.logEvent("Initial_View_Loaded")
@@ -67,7 +67,7 @@ class InitialViewController: UIViewController {
         
         MailService.updateAllData( { error, result -> Void in
             if result as? String == "Success" {
-                self.getContactsIfAuthorized()
+//                self.getContactsIfAuthorized()
                 self.goToHomeScreen()
             }
             else {

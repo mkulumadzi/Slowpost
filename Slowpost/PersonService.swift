@@ -68,10 +68,6 @@ class PersonService: PostofficeObjectService {
                 }
             })
         })
-        //Upload all emails to Postoffice
-        //Wait for list to be processed
-        // Get people
-        // Do this each time app loads?
     }
     
     class func getEmailsForAllPhoneContacts() -> [String] {
