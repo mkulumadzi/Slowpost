@@ -380,9 +380,9 @@
                     <navigationItem key="navigationItem" title="Image" id="7pu-pI-Kte">
                         <barButtonItem key="leftBarButtonItem" id="0EL-lF-VVW">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tqT-F7-FED" userLabel="Back">
-                                <rect key="frame" x="20" y="12" width="12" height="20"/>
+                                <rect key="frame" x="20" y="16" width="20" height="12"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="ios7-arrow-left-white.png"/>
+                                <state key="normal" image="ios7-arrow-down-white.png"/>
                                 <connections>
                                     <action selector="backButtonPressed:" destination="2t1-x4-fi1" eventType="touchUpInside" id="9yM-gT-10l"/>
                                 </connections>
@@ -742,7 +742,7 @@
         <image name="Default Card.png" width="768" height="576"/>
         <image name="Slowpost Icon Set (green)" width="150" height="95"/>
         <image name="grid-green.png" width="512" height="512"/>
-        <image name="ios7-arrow-left-white.png" width="192" height="320"/>
+        <image name="ios7-arrow-down-white.png" width="320" height="192"/>
         <image name="ios7-camera-green.png" width="512" height="512"/>
         <image name="photos_green.png" width="512" height="512"/>
     </resources>

@@ -60,6 +60,7 @@
 		D24BC0FE1B98F898000405F7 /* reply-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = D24BC0FD1B98F898000405F7 /* reply-gray.png */; };
 		D25130421BC425C3007541BE /* to.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D25130411BC425C3007541BE /* to.storyboard */; settings = {ASSET_TAGS = (); }; };
 		D25130441BC43C44007541BE /* ComposeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25130431BC43C44007541BE /* ComposeNavigationController.swift */; settings = {ASSET_TAGS = (); }; };
+		D251304A1BC46595007541BE /* ios7-arrow-down-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D25130491BC46595007541BE /* ios7-arrow-down-white.png */; settings = {ASSET_TAGS = (); }; };
 		D25453841BBB437600BA2A50 /* PhoneContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25453831BBB437600BA2A50 /* PhoneContactViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D25453861BBB482A00BA2A50 /* EmailAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25453851BBB482900BA2A50 /* EmailAddressTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		D25A9C9C1B2259D300ABBBA4 /* Apache License.txt in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C911B2259D300ABBBA4 /* Apache License.txt */; };
@@ -215,6 +216,7 @@
 		D24BC0FD1B98F898000405F7 /* reply-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply-gray.png"; sourceTree = "<group>"; };
 		D25130411BC425C3007541BE /* to.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = to.storyboard; sourceTree = "<group>"; };
 		D25130431BC43C44007541BE /* ComposeNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeNavigationController.swift; sourceTree = "<group>"; };
+		D25130491BC46595007541BE /* ios7-arrow-down-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-arrow-down-white.png"; sourceTree = "<group>"; };
 		D25453831BBB437600BA2A50 /* PhoneContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneContactViewController.swift; sourceTree = "<group>"; };
 		D25453851BBB482900BA2A50 /* EmailAddressTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailAddressTableViewCell.swift; sourceTree = "<group>"; };
 		D25A9C911B2259D300ABBBA4 /* Apache License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "Apache License.txt"; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 				D2CEC46C1B7256E9002CFD25 /* ios7-camera-green.png */,
 				D2CEC46D1B7256E9002CFD25 /* photos_green.png */,
 				D2B7CEA11B671149007F8235 /* ios7-close-empty-gray.png */,
+				D25130491BC46595007541BE /* ios7-arrow-down-white.png */,
 				D27DA31C1B62ADB600DF32A1 /* ios7-arrow-left-white.png */,
 				D27DA31D1B62ADB600DF32A1 /* ios7-arrow-right-white.png */,
 				D206FB501B618287008BB412 /* ios7-close-empty-white.png */,
@@ -734,6 +737,7 @@
 			files = (
 				CC23DE2A1AE54C0300AFEDE4 /* login.storyboard in Resources */,
 				D20D8EDF1B2B384E00BBF6B5 /* ios7-compose.png in Resources */,
+				D251304A1BC46595007541BE /* ios7-arrow-down-white.png in Resources */,
 				D2E4EDCC1B7D135F00D2A028 /* Quicksand-BoldItalic.otf in Resources */,
 				D25A9CA01B2259D300ABBBA4 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				D2E4EDD21B7D1EC000D2A028 /* example_card.jpg in Resources */,
