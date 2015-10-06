@@ -603,17 +603,15 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     @IBAction func nextButtonPressed(sender: AnyObject) {
-        
-        self.performSegueWithIdentifier("selectImage", sender: nil)
+        let storyboard = UIStoryboard(name: "compose", bundle: nil)
+        let controller = storyboard.instantiateInitialViewController() as! ComposeNavigationController!
+        controller.toPeople = toPeople
+        controller.toSearchPeople = toSearchPeople
+        controller.toEmails = toEmails
+        self.presentViewController(controller, animated: true, completion: {})
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "selectImage" {
-            let chooseImageViewController = segue.destinationViewController as? ChooseImageViewController
-            chooseImageViewController?.toPeople = toPeople
-            chooseImageViewController?.toSearchPeople = toSearchPeople
-            chooseImageViewController?.toEmails = toEmails
-        }
         if segue.identifier == "viewPhoneContact" {
             let cell = sender as! PhoneContactCell
             let phoneContactViewController = segue.destinationViewController as! PhoneContactViewController

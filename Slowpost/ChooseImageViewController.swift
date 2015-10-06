@@ -41,6 +41,8 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         
         super.viewDidLoad()
         
+        getRecipientsFromNavController()
+        
         toLabel.text = toList()
         
         removePhotoButton.layer.cornerRadius = 5
@@ -57,6 +59,14 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
             formatForiPhone4S()
         }
         
+    }
+    
+    func getRecipientsFromNavController() {
+        if let navController = self.navigationController as? ComposeNavigationController {
+            toPeople = navController.toPeople
+            toSearchPeople = navController.toSearchPeople
+            toEmails = navController.toEmails
+        }
     }
     
     func formatForiPhone4S() {
@@ -283,6 +293,19 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBAction func nextButtonPressed(sender: AnyObject) {
         self.performSegueWithIdentifier("composeMessage", sender: nil)
+    }
+    
+    @IBAction func backButtonPressed(sender: AnyObject) {
+        self.navigationController?.dismissViewControllerAnimated(true, completion: {})
+//        self.navigationController?.removeFromParentViewController()
+//        self.removeFromParentViewController()
+//        print(self.parentViewController)
+//        print(self.presentingViewController)
+//        print(self.parentViewController)
+//        print(self.parentViewController!.parentViewController)
+//        print(self.parentViewController!.parentViewController!.presentedViewController)
+//        print(self.presentationController)
+//        let presenter = self.parentViewController!.parentViewController!
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
