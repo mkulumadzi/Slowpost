@@ -95,23 +95,9 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            let sections = self.fetchedResultsController.sections!
-            let sectionInfo = sections[section]
-            if sectionInfo.numberOfObjects > 0 {
-                return "Undelivered mail"
-            }
-        case 1:
-            let sections = self.fetchedResultsController.sections!
-            let sectionInfo = sections[section]
-            if sectionInfo.numberOfObjects > 0 {
-                return "Delivered mail"
-            }
-        default:
-            return nil
-        }
-        return nil
+        let sections = self.fetchedResultsController.sections!
+        let sectionInfo = sections[section]
+        return sectionInfo.name
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

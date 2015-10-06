@@ -27,7 +27,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     @IBOutlet weak var personTable: UITableView!
     @IBOutlet weak var warningLabel: WarningUILabel!
-    @IBOutlet weak var noResultsLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -57,7 +56,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         Flurry.logEvent("Compose_Message_Workflow_Began")
         
         warningLabel.hide()
-        noResultsLabel.hidden = true
         personTable.sectionIndexColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
         personTable.sectionHeaderHeight = 24.0
         

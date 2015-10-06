@@ -37,7 +37,6 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
-            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -1043,12 +1042,6 @@
                                     <action selector="nextButtonPressed:" destination="56L-ux-Lnu" eventType="touchUpInside" id="xUY-fz-Bsu"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No results..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdm-d4-YAc">
-                                <rect key="frame" x="253" y="256" width="95" height="24"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                <color key="textColor" red="0.49803921568627452" green="0.47843137254901963" blue="0.47843137254901963" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -1060,9 +1053,7 @@
                             <constraint firstItem="zBk-j3-1iC" firstAttribute="top" secondItem="DaV-in-3s9" secondAttribute="bottom" id="Lfg-OD-Pti"/>
                             <constraint firstItem="uWb-HR-NCX" firstAttribute="leading" secondItem="8rF-TK-R8E" secondAttribute="leading" id="Lxa-qX-pTP"/>
                             <constraint firstAttribute="trailing" secondItem="j7P-4p-ATv" secondAttribute="trailing" id="VCW-QF-49m"/>
-                            <constraint firstAttribute="centerY" secondItem="hdm-d4-YAc" secondAttribute="centerY" id="aOb-5E-D7b"/>
                             <constraint firstItem="j7P-4p-ATv" firstAttribute="top" secondItem="DaV-in-3s9" secondAttribute="bottom" id="bAk-nM-6NY"/>
-                            <constraint firstAttribute="centerX" secondItem="hdm-d4-YAc" secondAttribute="centerX" id="bWt-GS-Svo"/>
                             <constraint firstItem="z2b-dc-6Oc" firstAttribute="top" secondItem="j7P-4p-ATv" secondAttribute="bottom" id="cWE-fT-aG3"/>
                             <constraint firstItem="j7P-4p-ATv" firstAttribute="leading" secondItem="8rF-TK-R8E" secondAttribute="leading" id="rao-k6-Mm5"/>
                         </constraints>
@@ -1084,7 +1075,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="nextButton" destination="uWb-HR-NCX" id="rHC-2r-3zm"/>
-                        <outlet property="noResultsLabel" destination="hdm-d4-YAc" id="Fd8-nV-szO"/>
                         <outlet property="personTable" destination="j7P-4p-ATv" id="OVd-fN-7rf"/>
                         <outlet property="searchDisplayController" destination="dgW-Ke-fkE" id="EGD-wT-ihf"/>
                         <outlet property="warningLabel" destination="zBk-j3-1iC" id="5WO-lm-7cq"/>
