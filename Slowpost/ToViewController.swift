@@ -13,8 +13,11 @@ import Foundation
 class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, NSFetchedResultsControllerDelegate , UISearchControllerDelegate, UISearchResultsUpdating {
 
     var toPeople:[Person]!
+    var toSearchPeople:[SearchPerson]!
     var toEmails:[String]!
+    
     var searchTextEntered:Bool!
+    var searchResults:[SearchPerson]!
     
     var peopleController: NSFetchedResultsController!
     var searchController: UISearchController!
@@ -34,7 +37,9 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         toPeople = [Person]()
+        toSearchPeople = [SearchPerson]()
         toEmails = [String]()
+        searchResults = [SearchPerson]()
         
         searchTextEntered = false
         initializeSegmentedControl()
@@ -141,6 +146,20 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
+    func searchPeopleOnSlowpost(term: String) {
+        let searchTerm = RestService.normalizeSearchTerm(searchController.searchBar.text!)
+        let searchPeopleURL = "\(PostOfficeURL)people/search?term=\(searchTerm)&limit=10"
+        
+        SearchPersonService.searchPeople(searchPeopleURL, completion: { (error, result) -> Void in
+            if error != nil {
+                print(error)
+            }
+            else if let peopleArray = result as? Array<SearchPerson> {
+                self.searchResults = peopleArray
+            }
+        })
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -156,8 +175,12 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             searchTextEntered = false
         }
         else {
+            if searchController.searchBar.text!.characters.count > 2 {
+                searchPeopleOnSlowpost(searchController.searchBar.text!)
+            }
             searchTextEntered = true
         }
+
         
         initializePeopleController()
         personTable.reloadData()
@@ -183,7 +206,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func recipientSection() -> Bool {
-        if (toPeople.count + toEmails.count) > 0 {
+        if (toPeople.count + toSearchPeople.count + toEmails.count) > 0 {
             return true
         }
         else {
@@ -228,7 +251,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         if recipientSection() == true {
             adjustedSection = section - 1
             if section == 0 {
-                return (toPeople.count + toEmails.count)
+                return (toPeople.count + toSearchPeople.count + toEmails.count)
             }
         }
         else {
@@ -239,7 +262,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             return sectionInfo.numberOfObjects
         }
         else {
-            return 1
+            return (searchResults.count + 1)
         }
     }
     
@@ -302,7 +325,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             return cell
         }
         else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("manualEmailCell", forIndexPath: indexPath)
+            let cell = otherCell(tableView, indexPath: indexPath)
             return cell
         }
     }
@@ -315,8 +338,17 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             self.configurePersonCell(cell)
             return cell
         }
-        else {
+        else if indexPath.row < (toSearchPeople.count + toPeople.count) {
             let adjustedIndex = indexPath.row - toPeople.count
+            let searchPerson = toSearchPeople[adjustedIndex]
+            let cell = tableView.dequeueReusableCellWithIdentifier("searchPersonCell", forIndexPath: indexPath) as! SearchPersonCell
+            cell.searchPerson = searchPerson
+            self.configureSearchPersonCell(cell)
+            cell.accessoryType = .Checkmark
+            return cell
+        }
+        else {
+            let adjustedIndex = indexPath.row - (toPeople.count + toSearchPeople.count)
             let email = toEmails[adjustedIndex]
             let cell = tableView.dequeueReusableCellWithIdentifier("emailRecipientCell", forIndexPath: indexPath) as! EmailRecipientCell
             cell.email = email
@@ -341,6 +373,19 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
+    func otherCell(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
+        if indexPath.row < searchResults.count {
+            let cell = tableView.dequeueReusableCellWithIdentifier("searchPersonCell") as! SearchPersonCell
+            cell.searchPerson = searchResults[indexPath.row]
+            self.configureSearchPersonCell(cell)
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("manualEmailCell")!
+            return cell
+        }
+    }
+    
     func configurePersonCell(cell: PersonCell) {
         cell.personNameLabel.text = cell.person.name
         cell.usernameLabel.text = "@\(cell.person.username)"
@@ -354,6 +399,14 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
         cell.tintColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
         
+    }
+    
+    func configureSearchPersonCell(cell: SearchPersonCell) {
+        cell.nameLabel.text = cell.searchPerson.name
+        cell.usernameLabel.text = "@\(cell.searchPerson.username)"
+        cell.avatarView.layer.cornerRadius = 15
+        cell.avatarInitials.text = cell.searchPerson.initials()
+        cell.tintColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
     }
     
     func configureEmailCell(cell: EmailRecipientCell) {
@@ -436,10 +489,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             handlePersonSelection(tableView, indexPath: indexPath)
         }
         else {
-            if self.searchController.isBeingPresented() {
-                self.dismissViewControllerAnimated(true, completion: {})
-            }
-            self.performSegueWithIdentifier("addEmail", sender: nil)
+            handleOtherSelection(tableView, indexPath: indexPath)
         }
         searchController.searchBar.text = ""
         searchController.searchBar.resignFirstResponder()
@@ -450,8 +500,12 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         if indexPath.row < toPeople.count {
             toPeople.removeAtIndex(indexPath.row)
         }
-        else {
+        else if indexPath.row < (toPeople.count + toSearchPeople.count) {
             let adjustedIndex = indexPath.row - toPeople.count
+            toSearchPeople.removeAtIndex(adjustedIndex)
+        }
+        else {
+            let adjustedIndex = indexPath.row - (toPeople.count + toSearchPeople.count)
             toEmails.removeAtIndex(adjustedIndex)
         }
     }
@@ -491,6 +545,18 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
         else {
             print("Did not recognize cell")
+        }
+    }
+    
+    func handleOtherSelection(tableView: UITableView, indexPath: NSIndexPath) {
+        if let searchPersonCell = tableView.cellForRowAtIndexPath(indexPath) as? SearchPersonCell {
+            toSearchPeople.append(searchPersonCell.searchPerson)
+        }
+        else {
+            if self.searchController.isBeingPresented() {
+                self.dismissViewControllerAnimated(true, completion: {})
+            }
+            self.performSegueWithIdentifier("addEmail", sender: nil)
         }
     }
     
