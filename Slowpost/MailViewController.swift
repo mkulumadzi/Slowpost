@@ -100,12 +100,12 @@ class MailViewController: UIViewController {
         })
     }
     
-    @IBAction func replyToMail(sender: AnyObject) {
-        let storyboard = UIStoryboard(name: "compose", bundle: nil)
-        let controller = storyboard.instantiateInitialViewController() as! ComposeNavigationController
-        controller.toPerson = fromPerson
-        self.presentViewController(controller, animated: true, completion: {})
-    }
+//    @IBAction func replyToMail(sender: AnyObject) {
+//        let storyboard = UIStoryboard(name: "compose", bundle: nil)
+//        let controller = storyboard.instantiateInitialViewController() as! ComposeNavigationController
+//        controller.toPerson = fromPerson
+//        self.presentViewController(controller, animated: true, completion: {})
+//    }
     
     @IBAction func closeMailView(sender: AnyObject) {
         if runOnClose != nil { runOnClose!() }

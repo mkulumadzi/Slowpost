@@ -63,9 +63,16 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     // Add search bar
     func addSearchBar() {
+        let view = UIView(frame:
+            CGRect(x: 0.0, y: 0.0, width: UIScreen.mainScreen().bounds.size.width, height: 20.0)
+        )
+        view.backgroundColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
+        self.view.addSubview(view)
+        
         searchController.searchBar.sizeToFit()
         searchController.searchBar.showsCancelButton = false
         searchController.searchBar.searchBarStyle = .Minimal
+
         self.navigationItem.titleView = self.searchController.searchBar
         self.definesPresentationContext = true
         
@@ -513,6 +520,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         searchController.searchBar.text = ""
         searchController.searchBar.resignFirstResponder()
         validateNextButton()
+        let topRect = CGRect(x: 0.0, y: 0.0, width: personTable.frame.width, height: personTable.frame.height)
+        personTable.scrollRectToVisible(topRect, animated: false)
     }
     
     func removeRecipient(tableView: UITableView, indexPath: NSIndexPath) {
@@ -594,6 +603,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     @IBAction func nextButtonPressed(sender: AnyObject) {
+        
         self.performSegueWithIdentifier("selectImage", sender: nil)
     }
     

@@ -30,8 +30,8 @@ class ComposeTabPlaceholderViewController: UIViewController, UITabBarDelegate {
     }
     
     func composeMessage() {
-        let storyboard = UIStoryboard(name: "compose", bundle: nil)
-        let controller = storyboard.instantiateInitialViewController() as! ComposeNavigationController
+        let storyboard = UIStoryboard(name: "to", bundle: nil)
+        let controller = storyboard.instantiateInitialViewController() as! ToViewController
         self.presentViewController(controller, animated: true, completion: { () -> Void in
             self.tabBarController!.selectedIndex = 0
         })
