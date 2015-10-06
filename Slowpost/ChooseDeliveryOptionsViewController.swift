@@ -11,6 +11,7 @@ import UIKit
 class ChooseDeliveryOptionsViewController: UIViewController {
     
     var toPeople:[Person]!
+    var toSearchPeople:[SearchPerson]!
     var toEmails:[String]!
     var cardImage:UIImage!
     var content:String!
@@ -76,6 +77,7 @@ class ChooseDeliveryOptionsViewController: UIViewController {
         if segue.identifier == "sendMail" {
             let sendingViewController = segue.destinationViewController as? SendingViewController
             sendingViewController!.toPeople = toPeople
+            sendingViewController!.toSearchPeople = toSearchPeople
             sendingViewController!.toEmails = toEmails
             sendingViewController!.image = cardImage
             sendingViewController!.content = content

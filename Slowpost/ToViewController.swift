@@ -582,6 +582,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         if segue.identifier == "selectImage" {
             let chooseImageViewController = segue.destinationViewController as? ChooseImageViewController
             chooseImageViewController?.toPeople = toPeople
+            chooseImageViewController?.toSearchPeople = toSearchPeople
             chooseImageViewController?.toEmails = toEmails
         }
         if segue.identifier == "viewPhoneContact" {

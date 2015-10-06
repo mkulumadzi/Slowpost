@@ -12,6 +12,7 @@ import MobileCoreServices
 class ChooseImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
     
     var toPeople:[Person]!
+    var toSearchPeople:[SearchPerson]!
     var toEmails:[String]!
     var newMedia: Bool?
     var imageSelected:UIImageView!
@@ -98,6 +99,11 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         for person in toPeople {
             if index > 0 { toList += ", " }
             toList += person.name
+            index += 1
+        }
+        for searchPerson in toSearchPeople {
+            if index > 0 { toList += ", " }
+            toList += searchPerson.name
             index += 1
         }
         for email in toEmails {
@@ -290,6 +296,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
                 composeMailViewController?.cardImage = UIImage(named: "Default Card.png")
             }
             composeMailViewController!.toPeople = toPeople
+            composeMailViewController!.toSearchPeople = toSearchPeople
             composeMailViewController!.toEmails = toEmails
         }
     }

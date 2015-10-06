@@ -20,9 +20,7 @@ class PostofficeObjectService {
         postofficeObject.id = json["_id"]["$oid"].stringValue
         postofficeObject.updatedAt = NSDate(dateString: json["updated_at"].stringValue)
         postofficeObject.createdAt = NSDate(dateString: json["created_at"].stringValue)
-        
         dataController.save()
-        
     }
         
 }

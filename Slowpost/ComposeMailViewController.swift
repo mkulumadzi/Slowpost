@@ -11,6 +11,7 @@ import UIKit
 class ComposeMailViewController: UIViewController, UITextViewDelegate {
     
     var toPeople:[Person]!
+    var toSearchPeople:[SearchPerson]!
     var toEmails:[String]!
     var cardImage:UIImage!
     var keyboardShowing:Bool!
@@ -74,6 +75,11 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
             toList += person.name
             index += 1
         }
+        for searchPerson in toSearchPeople {
+            if index > 0 { toList += ", " }
+            toList += searchPerson.name
+            index += 1
+        }
         for email in toEmails {
             if index > 0 { toList += ", " }
             toList += email
@@ -113,6 +119,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         if segue.identifier == "chooseDelivery" {
             let chooseDeliveryOptionsViewController = segue.destinationViewController as? ChooseDeliveryOptionsViewController
             chooseDeliveryOptionsViewController!.toPeople = toPeople
+            chooseDeliveryOptionsViewController!.toSearchPeople = toSearchPeople
             chooseDeliveryOptionsViewController!.toEmails = toEmails
             chooseDeliveryOptionsViewController!.cardImage = cardImage
             chooseDeliveryOptionsViewController!.content = composeText.text

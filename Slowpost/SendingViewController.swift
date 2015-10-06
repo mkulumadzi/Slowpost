@@ -18,6 +18,7 @@ class SendingViewController: UIViewController {
     var content:String!
     var scheduledToArrive:NSDate?
     var toPeople:[Person]!
+    var toSearchPeople:[SearchPerson]!
     var toEmails:[String]!
     
     @IBOutlet weak var cancelButton: UIButton!
@@ -109,7 +110,7 @@ class SendingViewController: UIViewController {
     
     func formatCorrespondents() -> [String : [String]] {
         var correspondents = [String : [String]]()
-        if toPeople.count > 0 && toEmails.count > 0 {
+        if (toPeople.count > 0 || toSearchPeople.count > 0) && toEmails.count > 0 {
             correspondents = ["to_people": peopleIds(), "emails": toEmails]
         }
         else if toEmails.count > 0 {
@@ -125,6 +126,9 @@ class SendingViewController: UIViewController {
         var peopleIds = [String]()
         for person in toPeople {
             peopleIds.append(person.id)
+        }
+        for searchPerson in toSearchPeople {
+            peopleIds.append(searchPerson.id)
         }
         return peopleIds
     }
