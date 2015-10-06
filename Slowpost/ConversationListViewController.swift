@@ -37,39 +37,12 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         conversationList.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: conversationList.bounds.size.width, height: 0.01))
         refreshData()
         conversationList.addSubview(self.refreshControl)
-//        addSearchBar()
-        
-//        noResultsLabel.hidden = true
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         refreshData()
     }
-    
-//    func addSearchBar() {
-//        let textField = searchBar.valueForKey("searchField") as! UITextField
-//        textField.backgroundColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
-//        textField.textColor = UIColor.whiteColor()
-//        let attributedString = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
-//        
-//        //Get the glass icon
-//        let iconView:UIImageView = textField.leftView as! UIImageView
-//        iconView.image = iconView.image?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-//        iconView.tintColor = UIColor.whiteColor()
-//        
-//        textField.attributedPlaceholder = attributedString
-//        
-//        searchBar.delegate = self
-//        
-//        let leftNavBarButton = UIBarButtonItem(customView:searchBar)
-//        self.navigationItem.leftBarButtonItem = leftNavBarButton
-//        
-//        ////Can't get this to work...
-//        //        let horizontalConstraint = NSLayoutConstraint(item: self.navigationItem.leftBarButtonItem!, attribute: .TrailingMargin, relatedBy: .Equal, toItem: searchBar, attribute: .Left, multiplier: 1.0, constant: 10)
-//        //
-//        //        view.addConstraint(horizontalConstraint)
-//    }
     
     
     // Mark: Set up Core Data
@@ -100,48 +73,6 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-//    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-//        
-////        conversationMetadataList = conversationMetadataArray
-//        
-//        if self.searchBar.text!.isEmpty == false {
-//            
-//            let newMetadataArray:[ConversationMetadata] = conversationMetadataList.filter() {
-//                self.listMatches(self.searchBar.text!, inString: $0.username).count >= 1 || self.listMatches(self.searchBar.text!, inString: $0.name).count >= 1
-//            }
-//            conversationMetadataList = newMetadataArray
-//        }
-//        
-////        validateNoResultsLabel()
-//        self.conversationList.reloadData()
-//    }
-    
-//    func listMatches(pattern: String, inString string: String) -> [String] {
-//        let regex = try? NSRegularExpression(pattern: pattern, options: [])
-//        let range = NSMakeRange(0, string.characters.count)
-//        let matches = regex?.matchesInString(string, options: [], range: range)
-//        return matches!.map {
-//            let range = $0.range
-//            return (string as NSString).substringWithRange(range)
-//        }
-//    }
-    
-//    func validateNoResultsLabel() {
-//        if searchBar.text == "" {
-//            noResultsLabel.hidden = true
-//        }
-//        else if penpalList.count == 0 {
-//            noResultsLabel.hidden = false
-//        }
-//        else {
-//            noResultsLabel.hidden = true
-//        }
-//    }
-    
-//    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-//        searchBar.resignFirstResponder()
-//    }
     
     // MARK: Section Configuration
     
@@ -213,11 +144,6 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
     
-//    func getPersonForCell(conversationCell: ConversationCell) -> Person {
-//        let person = penpals.filter({$0.username == conversationCell.conversationMetadata.username})[0]
-//        return person
-//    }
-    
     func refreshData() {
         MailService.updateAllData( { error, result -> Void in
             if result as? String == "Success" {
@@ -240,16 +166,13 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     @IBAction func cancelToConversationViewController(segue:UIStoryboardSegue) {
-        dismissSourceViewController(segue)
         Flurry.logEvent("Cancelled_Back_To_Conversation_View")
     }
     
     @IBAction func completeEditingAndReturnToConversationViewController(segue:UIStoryboardSegue) {
-        dismissSourceViewController(segue)
     }
     
     @IBAction func choseToLogOut(segue:UIStoryboardSegue) {
-        dismissSourceViewController(segue)
         LoginService.logOut()
         self.dismissViewControllerAnimated(true, completion: {})
     }

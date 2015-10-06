@@ -82,18 +82,16 @@ class EditProfileViewController: UITableViewController {
         saveButton.enabled = false
         
         let updatePersonURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)"
-        let parameters = ["name": "\(nameField.text)", "phone": "\(phoneField.text)", "address1": "\(address1Field.text)", "city": "\(cityField.text)", "state": "\(stateField.text)", "zip": "\(zipField.text)"]
+        let parameters = ["name": "\(nameField.text!)", "phone": "\(phoneField.text!)", "address1": "\(address1Field.text!)", "city": "\(cityField.text!)", "state": "\(stateField.text!)", "zip": "\(zipField.text!)"]
         
         RestService.postRequest(updatePersonURL, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
+            print(result)
             if error != nil {
                 print(error)
             }
-            else if let response = result as? [AnyObject] {
-                if response[0] as? Int == 204 {
-                    MailService.updateAllData( { error, result -> Void in
-                        if error != nil { print(error) }
-                    })
-                }
+            else {
+                MailService.updateAllData({(error, result) -> Void in})
+                self.performSegueWithIdentifier("updateSucceeded", sender: nil)
             }
         })
     }
