@@ -40,10 +40,26 @@ class SearchPersonService {
         var searchPeople = [SearchPerson]()
         for item in jsonArray {
             let json = JSON(item)
-            let searchPerson = self.createSearchPersonFromJson(json)
-            searchPeople.append(searchPerson)
+            if personIsNew(json) == true {
+                let searchPerson = self.createSearchPersonFromJson(json)
+                searchPeople.append(searchPerson)
+            }
         }
         return searchPeople
+    }
+    
+    class func personIsNew(json: JSON) -> Bool {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
+        let fetchRequest = NSFetchRequest(entityName: "Person")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", json["_id"]["$oid"].stringValue)
+        let results = dataController.executeFetchRequest(fetchRequest)
+        if results!.count == 0 {
+            return true
+        }
+        else {
+            return false
+        }
     }
     
 }
