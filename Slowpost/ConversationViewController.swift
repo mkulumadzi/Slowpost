@@ -247,12 +247,28 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     
-//    @IBAction func composeMessage(sender: AnyObject) {
-//        let storyboard = UIStoryboard(name: "compose", bundle: nil)
-//        let controller = storyboard.instantiateInitialViewController() as! ComposeNavigationController
-//        controller.toUsername = person.username
-//        self.presentViewController(controller, animated: true, completion: {})
-//    }
+    @IBAction func composeMessage(sender: AnyObject) {
+        var toPeople = [Person]()
+        let userId = LoginService.getUserIdFromToken()
+        for item in conversation.people.allObjects {
+            let person = item as! Person
+            if person.id != userId {
+                toPeople.append(person)
+            }
+        }
+        var toEmails = [String]()
+        for item in conversation.emails.allObjects {
+            let emailAddress = item as! EmailAddress
+            toEmails.append(emailAddress.email)
+        }
+        
+        let storyboard = UIStoryboard(name: "compose", bundle: nil)
+        let controller = storyboard.instantiateInitialViewController() as! ComposeNavigationController!
+        controller.toPeople = toPeople
+        controller.toSearchPeople = [SearchPerson]()
+        controller.toEmails = toEmails
+        self.presentViewController(controller, animated: true, completion: {})
+    }
     
 
 }
