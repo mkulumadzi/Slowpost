@@ -154,10 +154,31 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             if error != nil {
                 print(error)
             }
-            else if let peopleArray = result as? Array<SearchPerson> {
-                self.searchResults = peopleArray
+            else if let peopleArray = result as? [SearchPerson] {
+                if peopleArray.count > 0 {
+                    if self.toSearchPeople.count == 0 {
+                        self.searchResults = peopleArray
+                    }
+                    else {
+                        self.filterSelectedPeopleFromSearchResults(peopleArray)
+                    }
+                }
             }
         })
+    }
+    
+    func filterSelectedPeopleFromSearchResults(results:[SearchPerson]) {
+        var selectedIds = [String]()
+        for selectedPerson in toSearchPeople {
+            selectedIds.append(selectedPerson.id)
+        }
+        var filteredResults = [SearchPerson]()
+        for person in results {
+            if selectedIds.indexOf(person.id) == nil {
+                filteredResults.append(person)
+            }
+        }
+        searchResults = filteredResults
     }
     
     override func didReceiveMemoryWarning() {
