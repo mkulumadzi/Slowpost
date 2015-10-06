@@ -13,6 +13,10 @@ class ComposeNavigationController: UINavigationController {
     var toPeople:[Person]!
     var toSearchPeople:[SearchPerson]!
     var toEmails:[String]!
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

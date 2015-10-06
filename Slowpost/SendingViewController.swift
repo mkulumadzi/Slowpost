@@ -98,8 +98,18 @@ class SendingViewController: UIViewController {
                         if error != nil { print (error) }
                     })
                     Flurry.logEvent("Finished_Sending_Mail")
+                    
                     let greatgrandparent = self.presentingViewController!.presentingViewController!.presentingViewController!
-                    greatgrandparent.dismissViewControllerAnimated(true, completion: {})
+                    print(greatgrandparent)
+                    if let _ = greatgrandparent as? UITabBarController {
+                        greatgrandparent.dismissViewControllerAnimated(true, completion: {})
+                    }
+                    else {
+                        let presenter = self.presentingViewController!
+                        self.dismissViewControllerAnimated(true, completion: { Void in
+                            presenter.dismissViewControllerAnimated(true, completion: {})
+                        })
+                    }
                 }
             }
         })
