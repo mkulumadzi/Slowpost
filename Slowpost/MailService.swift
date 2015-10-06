@@ -20,7 +20,8 @@ class MailService: PostofficeObjectService {
         
         //Update people first
         let peopleURL = "\(PostOfficeURL)person/id/\(userId)/contacts"
-        let peopleHeaders = dataController.getIfModifiedSinceHeaderForPeople()
+        //Using the mail updated date because there is a chance the the user record was updated more recently them some mail that has not been delivered yet, and this mail could include people who have not been loaded yet.
+        let peopleHeaders = dataController.getIfModifiedSinceHeaderForEntity("Mail")
         
         RestService.getRequest(peopleURL, headers: peopleHeaders, completion: { (error, result) -> Void in
             if let jsonArray = result as? [AnyObject] {
