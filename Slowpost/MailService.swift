@@ -25,6 +25,7 @@ class MailService: PostofficeObjectService {
         
         RestService.getRequest(peopleURL, headers: peopleHeaders, completion: { (error, result) -> Void in
             if let jsonArray = result as? [AnyObject] {
+                print(jsonArray)
                 PersonService.appendJsonArrayToCoreData(jsonArray)
                 
                 //Then update conversations
@@ -32,6 +33,7 @@ class MailService: PostofficeObjectService {
                 let conversationHeaders = dataController.getIfModifiedSinceHeaderForEntity("Conversation")
                 RestService.getRequest(conversationsURL, headers: conversationHeaders, completion: { (error, result) -> Void in
                     if let jsonArray = result as? [AnyObject] {
+                        print(jsonArray)
                         ConversationService.appendJsonArrayToCoreData(jsonArray)
                         
                         //Then finally update mail

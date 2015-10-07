@@ -16,8 +16,6 @@ class InitialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        checkLogin()
-        
         print("Initial view loaded at \(NSDate())")
         Flurry.logEvent("Initial_View_Loaded")
     }
@@ -40,6 +38,7 @@ class InitialViewController: UIViewController {
         print("Checking login at \(NSDate())")
         let token = LoginService.getTokenFromKeychain()
         if token != nil {
+            print("Found token")
             LoginService.confirmTokenMatchesValidUserOnServer( { error, result -> Void in
                 if result as? String == "Success" {
                     self.beginLoadingInitialData()
@@ -112,6 +111,7 @@ class InitialViewController: UIViewController {
     }
     
     @IBAction func signUpOrLogInCompleted(segue: UIStoryboardSegue) {
+        print("Got here after signup or login")
     }
 
 }

@@ -114,7 +114,7 @@ class PhoneEntryViewController: UIViewController {
                 if response[0] as? Int == 201 {
                     let parameters = ["username": "\(self.username)", "password": "\(self.password)"]
                     LoginService.logIn(parameters, completion: { (error, result) -> Void in
-                        self.performSegueWithIdentifier("loginCompleted", sender: nil)
+                        self.performSegueWithIdentifier("signUpComplete", sender: nil)
                     })
                 }
             else if let error_message = response[1] as? String {

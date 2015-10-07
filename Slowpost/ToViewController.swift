@@ -565,9 +565,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 }
             }
             else {
-                if self.searchController.isBeingPresented() {
-                    self.dismissViewControllerAnimated(true, completion: {})
-                }
+                self.searchController.dismissViewControllerAnimated(true, completion: {})
                 self.performSegueWithIdentifier("viewPhoneContact", sender: cell)
             }
         }
@@ -581,10 +579,9 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             toSearchPeople.append(searchPersonCell.searchPerson)
         }
         else {
-            if self.searchController.isBeingPresented() {
-                self.dismissViewControllerAnimated(true, completion: {})
-            }
-            self.performSegueWithIdentifier("addEmail", sender: nil)
+            self.searchController.dismissViewControllerAnimated(true, completion: {Void in
+                self.performSegueWithIdentifier("addEmail", sender: nil)
+            })
         }
     }
     

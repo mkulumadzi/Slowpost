@@ -79,6 +79,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         LoginService.logIn(parameters, completion: { (error, result) -> Void in
             if  error != nil {
                 print(error)
+                self.warningLabel.show("Invalid login")
             }
             else if let result: AnyObject = result {
                 if result as? String == "Success" {
