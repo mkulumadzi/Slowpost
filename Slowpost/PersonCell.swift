@@ -14,8 +14,7 @@ class PersonCell: UITableViewCell {
     
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var personNameLabel: UILabel!
-    @IBOutlet weak var avatarView: UIView!
-    @IBOutlet weak var avatarInitials: UILabel!
+    @IBOutlet weak var cellImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

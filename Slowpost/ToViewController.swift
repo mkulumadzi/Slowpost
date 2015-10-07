@@ -19,6 +19,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var searchTextEntered:Bool!
     var searchResults:[SearchPerson]!
     
+    @IBOutlet weak var nextButtonHeight: NSLayoutConstraint!
+    
     var peopleController: NSFetchedResultsController!
     var searchController: UISearchController!
     var segmentedControl: UISegmentedControl!
@@ -57,6 +59,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         warningLabel.hide()
         personTable.sectionIndexColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
+        personTable.sectionIndexBackgroundColor = UIColor.clearColor()
         personTable.sectionHeaderHeight = 24.0
         
     }
@@ -263,7 +266,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         if recipientSection() == true {
             adjustedSection = section - 1
             if section == 0 {
-                return "Recipients"
+                return "Recipients (tap to deselect)"
             }
         }
         else {
@@ -365,28 +368,22 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func cellForRecipient(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("recipientCell", forIndexPath: indexPath) as! RecipientCell
         if indexPath.row < toPeople.count {
             let person = toPeople[indexPath.row]
-            let cell = tableView.dequeueReusableCellWithIdentifier("personCell", forIndexPath: indexPath) as! PersonCell
-            cell.person = person
-            self.configurePersonCell(cell)
+            self.configureRecipientCell(cell, object: person)
             return cell
         }
         else if indexPath.row < (toSearchPeople.count + toPeople.count) {
             let adjustedIndex = indexPath.row - toPeople.count
             let searchPerson = toSearchPeople[adjustedIndex]
-            let cell = tableView.dequeueReusableCellWithIdentifier("searchPersonCell", forIndexPath: indexPath) as! SearchPersonCell
-            cell.searchPerson = searchPerson
-            self.configureSearchPersonCell(cell)
-            cell.accessoryType = .Checkmark
+            self.configureRecipientCell(cell, object: searchPerson)
             return cell
         }
         else {
             let adjustedIndex = indexPath.row - (toPeople.count + toSearchPeople.count)
             let email = toEmails[adjustedIndex]
-            let cell = tableView.dequeueReusableCellWithIdentifier("emailRecipientCell", forIndexPath: indexPath) as! EmailRecipientCell
-            cell.email = email
-            self.configureEmailCell(cell)
+            self.configureRecipientCell(cell, object: email)
             return cell
         }
     }
@@ -423,8 +420,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func configurePersonCell(cell: PersonCell) {
         cell.personNameLabel.text = cell.person.name
         cell.usernameLabel.text = "@\(cell.person.username)"
-        cell.avatarView.layer.cornerRadius = 15
-        cell.avatarInitials.text = cell.person.initials()
+        cell.cellImage.image = UIImage(named: "Slowpost.png")
+        cell.cellImage.layer.cornerRadius = 10
         if personSelected(cell.person) {
             cell.accessoryType = .Checkmark
         }
@@ -438,19 +435,29 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func configureSearchPersonCell(cell: SearchPersonCell) {
         cell.nameLabel.text = cell.searchPerson.name
         cell.usernameLabel.text = "@\(cell.searchPerson.username)"
-        cell.avatarView.layer.cornerRadius = 15
-        cell.avatarInitials.text = cell.searchPerson.initials()
+        cell.cellImage.image = UIImage(named: "Slowpost.png")
+        cell.cellImage.layer.cornerRadius = 10
         cell.tintColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
     }
     
-    func configureEmailCell(cell: EmailRecipientCell) {
-        cell.emailLabel.text = cell.email
-        cell.avatarView.layer.cornerRadius = 15
-        cell.avatarView.backgroundColor = UIColor.whiteColor()
-        cell.avatarView.layer.borderColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0).CGColor
-        cell.avatarView.layer.borderWidth = 1.0
-        cell.accessoryType = .Checkmark
-        cell.tintColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
+    func configureRecipientCell(cell: RecipientCell, object: AnyObject) {
+        if let person = object as? Person {
+            cell.person = person
+            cell.cellImage.image = UIImage(named: "Slowpost.png")
+            cell.cellImage.layer.cornerRadius = 10
+            cell.recipientLabel.text = "\(person.name) (@\(person.username))"
+        }
+        else if let searchPerson = object as? SearchPerson {
+            cell.searchPerson = searchPerson
+            cell.cellImage.image = UIImage(named: "Slowpost.png")
+            cell.cellImage.layer.cornerRadius = 10
+            cell.recipientLabel.text = "\(searchPerson.name) (@\(searchPerson.username))"
+        }
+        else if let email = object as? String {
+            cell.email = email
+            cell.recipientLabel.text = cell.email
+            cell.labelLeadingDistance.constant = 8
+        }
     }
     
     func personSelected(person: Person) -> Bool {
@@ -463,10 +470,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func configurePhoneContactCell(cell: PhoneContactCell) {
         cell.personNameLabel.text = cell.person.name
-        cell.avatarView.layer.cornerRadius = 15
-        cell.avatarView.backgroundColor = UIColor.whiteColor()
-        cell.avatarView.layer.borderColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0).CGColor
-        cell.avatarView.layer.borderWidth = 1.0
         configureEmailLabel(cell)
         if personEmailSelected(cell.person) != "" {
             cell.accessoryType = .Checkmark
@@ -604,10 +607,11 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func validateNextButton() {
         if toPeople.count > 0 || toSearchPeople.count > 0 || toEmails.count > 0 {
-            nextButton.hidden = false
+            nextButtonHeight.constant = 40.0
+            
         }
         else {
-            nextButton.hidden = true
+            nextButtonHeight.constant = 0.0
         }
     }
     

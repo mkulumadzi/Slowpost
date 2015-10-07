@@ -32,7 +32,8 @@ class ImageAttachment: Attachment {
                 dataController.save()
                 completion(error: nil, result: image)
             }
-            else if currentlyDownloadingImage == false {
+            else {
+//            else if currentlyDownloadingImage == false {
                 currentlyDownloadingImage = true
                 dataController.save()
                 FileService.downloadImage(url, completion: { error, result -> Void in
@@ -58,9 +59,9 @@ class ImageAttachment: Attachment {
                     }
                 })
             }
-            else {
-                completion(error: nil, result: nil)
-            }
+//            else {
+//                completion(error: nil, result: nil)
+//            }
         }
     }
     

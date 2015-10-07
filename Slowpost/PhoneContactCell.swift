@@ -11,7 +11,6 @@ import UIKit
 class PhoneContactCell: UITableViewCell {
     
     @IBOutlet weak var personNameLabel: UILabel!
-    @IBOutlet weak var avatarView: UIView!
     @IBOutlet weak var emailLabel: UILabel!
     
     var person:Person!

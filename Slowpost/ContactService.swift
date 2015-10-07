@@ -32,47 +32,43 @@ class ContactService {
     }
     
     class func fetchContacts() {
-        let qualityOfServiceClass = QOS_CLASS_BACKGROUND
-        let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
-        dispatch_async(backgroundQueue, {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
             let coreDataEmailAddresses = PersonService.getAllEmailAddresses()
             let store = CNContactStore()
             let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName), CNContactEmailAddressesKey, CNContactIdentifierKey]
             let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
             do {
                 try store.enumerateContactsWithFetchRequest(fetchRequest, usingBlock: { (contact, cursor) -> Void in
-                    self.addContactToCoreData(contact, coreDataEmailAddresses: coreDataEmailAddresses)
+                    self.addContactToCoreData(contact, coreDataEmailAddresses: coreDataEmailAddresses, dataController: dataController)
                 })
             }
             catch {
                 print(error)
             }
-            
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                PersonService.searchForContactsOnSlowpost()
-            })
-        })
+            dataController.save()
+            PersonService.searchForContactsOnSlowpost()
     }
     
-    class func addContactToCoreData(contact: CNContact, coreDataEmailAddresses: [String]) {
+    class func addContactToCoreData(contact: CNContact, coreDataEmailAddresses: [String], dataController: DataController) {
         if (!contact.givenName.isEmpty || !contact.familyName.isEmpty) && contact.emailAddresses.count > 0 {
             let contactEmailAddresses = getContactEmailAddresses(contact)
             let matchEmail = Set(contactEmailAddresses).intersect(Set(coreDataEmailAddresses))
             if matchEmail.count > 0 {
                 print("Found match with existing person")
-                addPhoneContactToPostofficePersonRecord(contact, email: Array(matchEmail)[0])
+                addPhoneContactToPostofficePersonRecord(contact, email: Array(matchEmail)[0], dataController: dataController)
             }
             else {
-                createNewPersonFromContact(contact)
+                createNewPersonFromContact(contact, dataController: dataController)
             }
         }
     }
     
     
     
-    class func addPhoneContactToPostofficePersonRecord(contact: CNContact, email: String) {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let dataController = appDelegate.dataController
+    class func addPhoneContactToPostofficePersonRecord(contact: CNContact, email: String, dataController: DataController) {
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let dataController = appDelegate.dataController
         let fetchRequest = NSFetchRequest(entityName: "Person")
         let predicate = NSPredicate(format: "primaryEmail == %@", email)
         fetchRequest.predicate = predicate
@@ -80,16 +76,16 @@ class ContactService {
         if personMatch != nil {
             let person = personMatch![0] as! Person
             person.contactId = contact.identifier
-            dataController.save()
+//            dataController.save()
         }
         else {
             print("Error merging contact with Postoffice record")
         }
     }
     
-    class func createNewPersonFromContact(contact: CNContact) {
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let dataController = appDelegate.dataController
+    class func createNewPersonFromContact(contact: CNContact, dataController: DataController) {
+//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+//        let dataController = appDelegate.dataController
         if personNeedsUpdating(contact) == true {
             let person = dataController.getCoreDataObject("contactId == %@", predicateValue: contact.identifier, entityName: "Person") as! Person
             print("creating new person \(contact.familyName)")
@@ -98,7 +94,7 @@ class ContactService {
             person.origin = "Phone"
             person.nameLetter = person.getLetterFromName(person.name)
             self.addEmailsToNewPerson(person, contact: contact, dataController: dataController)
-            dataController.save()
+//            dataController.save()
         }
     }
     

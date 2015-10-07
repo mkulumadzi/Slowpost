@@ -10,10 +10,9 @@ import UIKit
 
 class SearchPersonCell: UITableViewCell {
     
-    @IBOutlet weak var avatarView: UIView!
-    @IBOutlet weak var avatarInitials: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var cellImage: UIImageView!
     
     var searchPerson:SearchPerson!
 
