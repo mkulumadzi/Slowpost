@@ -27,11 +27,6 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
-            <string>OpenSans</string>
-            <string>OpenSans</string>
-            <string>OpenSans</string>
-            <string>OpenSans</string>
-            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -372,7 +367,7 @@
                             </items>
                         </navigationBar>
                         <sections>
-                            <tableViewSection id="eG3-2V-BIW">
+                            <tableViewSection id="eG3-2V-BIW" userLabel="Login info">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="nvf-ak-uTa">
                                         <rect key="frame" x="0.0" y="44" width="600" height="40"/>
@@ -446,7 +441,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle=" " id="M58-7k-9sy">
+                            <tableViewSection headerTitle=" " id="M58-7k-9sy" userLabel="Personal details">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="WWD-ox-YxF">
                                         <rect key="frame" x="0.0" y="146" width="600" height="40"/>
@@ -492,98 +487,6 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="160" id="XMz-1h-1Kp">
-                                        <rect key="frame" x="0.0" y="186" width="600" height="160"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XMz-1h-1Kp" id="Nqg-gG-KZc">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="159"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2dH-ft-0Kd">
-                                                    <rect key="frame" x="10" y="0.0" width="80" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="bqU-d8-6dx"/>
-                                                        <constraint firstAttribute="width" constant="80" id="chg-vt-GbR"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
-                                                    <color key="textColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1 2nd Street" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0kR-QW-OH9" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                                    <rect key="frame" x="90" y="0.0" width="500" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="y50-aF-WZT"/>
-                                                    </constraints>
-                                                    <color key="textColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="editingChanged:" destination="z52-1Q-RH9" eventType="editingDidEnd" id="xvB-6g-oeX"/>
-                                                    </connections>
-                                                </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Springfield" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f2h-hK-kc9" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                                    <rect key="frame" x="90" y="40" width="500" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="kHr-lG-QzO"/>
-                                                    </constraints>
-                                                    <color key="textColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="editingChanged:" destination="z52-1Q-RH9" eventType="editingDidEnd" id="8UN-ls-7T0"/>
-                                                    </connections>
-                                                </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="01111" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a9e-u8-dgl">
-                                                    <rect key="frame" x="90" y="120" width="500" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="0Ni-ZR-MBb"/>
-                                                    </constraints>
-                                                    <color key="textColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="editingChanged:" destination="z52-1Q-RH9" eventType="editingDidEnd" id="xqa-wu-fmh"/>
-                                                    </connections>
-                                                </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="MO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hv3-GA-wQF" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                                    <rect key="frame" x="90" y="80" width="500" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="VP0-BZ-EPc"/>
-                                                    </constraints>
-                                                    <color key="textColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="editingChanged:" destination="z52-1Q-RH9" eventType="editingDidEnd" id="c18-2T-RvN"/>
-                                                    </connections>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="f2h-hK-kc9" firstAttribute="top" secondItem="0kR-QW-OH9" secondAttribute="bottom" id="0nI-RX-E80"/>
-                                                <constraint firstAttribute="centerY" secondItem="2dH-ft-0Kd" secondAttribute="centerY" id="7sf-ha-gCc"/>
-                                                <constraint firstAttribute="trailing" secondItem="0kR-QW-OH9" secondAttribute="trailing" constant="10" id="G9c-Ea-c9B"/>
-                                                <constraint firstItem="a9e-u8-dgl" firstAttribute="top" secondItem="Hv3-GA-wQF" secondAttribute="bottom" id="GnH-qJ-Wvi"/>
-                                                <constraint firstAttribute="trailing" secondItem="Hv3-GA-wQF" secondAttribute="trailing" constant="10" id="IAB-lh-ent"/>
-                                                <constraint firstItem="2dH-ft-0Kd" firstAttribute="leading" secondItem="Nqg-gG-KZc" secondAttribute="leading" constant="10" id="JeM-ZT-JCu"/>
-                                                <constraint firstItem="Hv3-GA-wQF" firstAttribute="leading" secondItem="Nqg-gG-KZc" secondAttribute="leading" constant="90" id="VEB-DE-oxg"/>
-                                                <constraint firstItem="Hv3-GA-wQF" firstAttribute="top" secondItem="0kR-QW-OH9" secondAttribute="bottom" id="aqi-Xq-XaB"/>
-                                                <constraint firstItem="Hv3-GA-wQF" firstAttribute="top" secondItem="f2h-hK-kc9" secondAttribute="bottom" id="cVd-RQ-rfG"/>
-                                                <constraint firstItem="f2h-hK-kc9" firstAttribute="leading" secondItem="Nqg-gG-KZc" secondAttribute="leading" constant="90" id="fD6-qw-yYs"/>
-                                                <constraint firstAttribute="trailing" secondItem="f2h-hK-kc9" secondAttribute="trailing" constant="10" id="hEw-Sd-lxs"/>
-                                                <constraint firstItem="0kR-QW-OH9" firstAttribute="leading" secondItem="2dH-ft-0Kd" secondAttribute="trailing" id="iwd-Lk-VAV"/>
-                                                <constraint firstAttribute="trailing" secondItem="a9e-u8-dgl" secondAttribute="trailing" constant="10" id="n1r-Uh-2fD"/>
-                                                <constraint firstItem="2dH-ft-0Kd" firstAttribute="top" secondItem="Nqg-gG-KZc" secondAttribute="top" id="o4R-cB-5jo"/>
-                                                <constraint firstItem="a9e-u8-dgl" firstAttribute="leading" secondItem="Nqg-gG-KZc" secondAttribute="leading" constant="90" id="uqq-mm-DRb"/>
-                                                <constraint firstItem="0kR-QW-OH9" firstAttribute="top" secondItem="Nqg-gG-KZc" secondAttribute="top" id="xm1-gD-IeP"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="7sf-ha-gCc"/>
-                                                    <exclude reference="aqi-Xq-XaB"/>
-                                                </mask>
-                                            </variation>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -595,16 +498,12 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="address1Field" destination="0kR-QW-OH9" id="WSH-q8-rgZ"/>
-                        <outlet property="cityField" destination="f2h-hK-kc9" id="bWg-43-rte"/>
                         <outlet property="emailLabel" destination="zsF-GD-xmu" id="tDg-5H-O4f"/>
                         <outlet property="nameField" destination="b4k-IC-8GA" id="YwM-qS-Ryq"/>
                         <outlet property="navBar" destination="TdJ-C7-HVy" id="YFw-cY-WeC"/>
                         <outlet property="profileTable" destination="wMh-r9-6MC" id="7oR-uB-PHy"/>
                         <outlet property="saveButton" destination="tYn-69-rSA" id="9Z1-cD-Anl"/>
-                        <outlet property="stateField" destination="Hv3-GA-wQF" id="Xcq-rR-HDr"/>
                         <outlet property="usernameLabel" destination="Akc-Pi-P7d" id="m0N-me-1M2"/>
-                        <outlet property="zipField" destination="a9e-u8-dgl" id="H2E-PT-eoS"/>
                         <segue destination="YxR-qC-lKw" kind="unwind" identifier="updateSucceeded" unwindAction="completeEditingAndReturnToConversationViewController:" id="dWY-Hj-nZG"/>
                     </connections>
                 </tableViewController>

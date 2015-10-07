@@ -29,10 +29,6 @@ class PersonService: PostofficeObjectService {
         person.username = json["username"].stringValue
         person.name = json["name"].stringValue
         person.primaryEmail = json["email"].stringValue
-        person.address1 = json["address1"].stringValue
-        person.city = json["city"].stringValue
-        person.state = json["state"].stringValue
-        person.zip = json["zip"].stringValue
         person.origin = "Postoffice"
         person.nameLetter = person.getLetterFromName(json["name"].stringValue)
         
@@ -131,10 +127,6 @@ class PersonService: PostofficeObjectService {
         person.username = json["username"].stringValue
         person.name = json["name"].stringValue
         person.primaryEmail = json["email"].stringValue
-        person.address1 = json["address1"].stringValue
-        person.city = json["city"].stringValue
-        person.state = json["state"].stringValue
-        person.zip = json["zip"].stringValue
         
         // Keeping this as Phone to ensure it is not confused for an actual person the user has sent or received mail to
         person.origin = "Phone"

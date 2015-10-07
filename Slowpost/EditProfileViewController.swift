@@ -15,10 +15,6 @@ class EditProfileViewController: UITableViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var nameField: UITextField!
-    @IBOutlet weak var address1Field: BottomBorderUITextField!
-    @IBOutlet weak var cityField: BottomBorderUITextField!
-    @IBOutlet weak var stateField: BottomBorderUITextField!
-    @IBOutlet weak var zipField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet var profileTable: UITableView!
@@ -37,14 +33,6 @@ class EditProfileViewController: UITableViewController {
         nameField.text = loggedInUser.name
         usernameLabel.text = loggedInUser.username
         emailLabel.text = loggedInUser.primaryEmail
-        address1Field.text = loggedInUser.address1
-        cityField.text = loggedInUser.city
-        stateField.text = loggedInUser.state
-        zipField.text = loggedInUser.zip
-        
-        address1Field.addBottomLayer()
-        cityField.addBottomLayer()
-        stateField.addBottomLayer()
         
         let footerView = UIView(frame: CGRectZero)
         profileTable.tableFooterView = footerView
@@ -80,7 +68,7 @@ class EditProfileViewController: UITableViewController {
         saveButton.enabled = false
         
         let updatePersonURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)"
-        let parameters = ["name": "\(nameField.text!)", "address1": "\(address1Field.text!)", "city": "\(cityField.text!)", "state": "\(stateField.text!)", "zip": "\(zipField.text!)"]
+        let parameters = ["name": "\(nameField.text!)"]
         
         RestService.postRequest(updatePersonURL, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
             print(result)

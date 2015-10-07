@@ -15,10 +15,6 @@ class Person: PostofficeObject {
     @NSManaged var username:String
     @NSManaged var primaryEmail:String!
     @NSManaged var name:String!
-    @NSManaged var address1:String!
-    @NSManaged var city:String!
-    @NSManaged var state:String!
-    @NSManaged var zip:String!
     @NSManaged var origin:String!
     @NSManaged var contactId:String!
     @NSManaged var emails:NSSet!
