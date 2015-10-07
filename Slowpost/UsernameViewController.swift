@@ -106,7 +106,7 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
             else {
                 let availability = result!["username"].stringValue
                 if availability == "available" {
-                    self.performSegueWithIdentifier("enterPhone", sender: nil)
+                    self.signUp()
                 }
                 else {
                     self.warningLabel.show("An account with that username already exists.")
@@ -114,16 +114,30 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
             }
         })
     }
+
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "enterPhone" {
-            let destinationViewController = segue.destinationViewController as? PhoneEntryViewController
-            
-            destinationViewController!.name = name
-            destinationViewController!.email = email
-            destinationViewController!.username = usernameTextField.text
-            destinationViewController!.password = passwordTextField.text
-        }
+    func signUp() {
+        
+        let newPersonURL = "\(PostOfficeURL)person/new"
+        let username = usernameTextField.text
+        let password = passwordTextField.text
+        let parameters = ["name": "\(name)", "username": "\(username)", "email": "\(email)", "password": "\(password)"]
+        
+        let headers:[String: String] = ["Authorization": "Bearer \(appToken)", "Accept": "application/json"]
+        
+        RestService.postRequest(newPersonURL, parameters: parameters, headers: headers, completion: { (error, result) -> Void in
+            if let response = result as? [AnyObject] {
+                if response[0] as? Int == 201 {
+                    let parameters = ["username": "\(username)", "password": "\(password)"]
+                    LoginService.logIn(parameters, completion: { (error, result) -> Void in
+                        self.performSegueWithIdentifier("signUpComplete", sender: nil)
+                    })
+                }
+                else if let error_message = response[1] as? String {
+                    self.warningLabel.show(error_message)
+                }
+            }
+        })
     }
 
 }

@@ -15,7 +15,6 @@ class EditProfileViewController: UITableViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var nameField: UITextField!
-    @IBOutlet weak var phoneField: UITextField!
     @IBOutlet weak var address1Field: BottomBorderUITextField!
     @IBOutlet weak var cityField: BottomBorderUITextField!
     @IBOutlet weak var stateField: BottomBorderUITextField!
@@ -38,7 +37,6 @@ class EditProfileViewController: UITableViewController {
         nameField.text = loggedInUser.name
         usernameLabel.text = loggedInUser.username
         emailLabel.text = loggedInUser.primaryEmail
-        phoneField.text = loggedInUser.phone
         address1Field.text = loggedInUser.address1
         cityField.text = loggedInUser.city
         stateField.text = loggedInUser.state
@@ -82,7 +80,7 @@ class EditProfileViewController: UITableViewController {
         saveButton.enabled = false
         
         let updatePersonURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)"
-        let parameters = ["name": "\(nameField.text!)", "phone": "\(phoneField.text!)", "address1": "\(address1Field.text!)", "city": "\(cityField.text!)", "state": "\(stateField.text!)", "zip": "\(zipField.text!)"]
+        let parameters = ["name": "\(nameField.text!)", "address1": "\(address1Field.text!)", "city": "\(cityField.text!)", "state": "\(stateField.text!)", "zip": "\(zipField.text!)"]
         
         RestService.postRequest(updatePersonURL, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
             print(result)

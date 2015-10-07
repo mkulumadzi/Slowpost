@@ -32,8 +32,6 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
-            <string>OpenSans</string>
-            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -494,54 +492,8 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="MUa-4E-rYD">
-                                        <rect key="frame" x="0.0" y="186" width="600" height="40"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MUa-4E-rYD" id="Bow-Oi-VOk">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="39"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yoO-hP-QX4">
-                                                    <rect key="frame" x="10" y="11" width="80" height="18"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="Psl-dg-rzT"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
-                                                    <color key="textColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="555-333-4444" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FzC-Gc-lL6">
-                                                    <rect key="frame" x="90" y="-1" width="500" height="41"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="A6G-pZ-XjR"/>
-                                                    </constraints>
-                                                    <color key="textColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="editingChanged:" destination="z52-1Q-RH9" eventType="editingDidEnd" id="hLr-4C-guW"/>
-                                                    </connections>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="yoO-hP-QX4" firstAttribute="leading" secondItem="Bow-Oi-VOk" secondAttribute="leadingMargin" constant="10" id="FCq-Ee-sL9"/>
-                                                <constraint firstItem="FzC-Gc-lL6" firstAttribute="leading" secondItem="yoO-hP-QX4" secondAttribute="trailing" id="S85-Xk-fF6"/>
-                                                <constraint firstAttribute="centerX" secondItem="FzC-Gc-lL6" secondAttribute="centerX" id="ZOR-Md-h2V"/>
-                                                <constraint firstAttribute="centerY" secondItem="yoO-hP-QX4" secondAttribute="centerY" id="bLZ-gw-bke"/>
-                                                <constraint firstItem="yoO-hP-QX4" firstAttribute="leading" secondItem="Bow-Oi-VOk" secondAttribute="leading" constant="10" id="bMe-31-MMU"/>
-                                                <constraint firstAttribute="centerY" secondItem="FzC-Gc-lL6" secondAttribute="centerY" id="c6T-oz-WCO"/>
-                                                <constraint firstAttribute="trailing" secondItem="FzC-Gc-lL6" secondAttribute="trailing" constant="10" id="gco-WM-pKh"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="FCq-Ee-sL9"/>
-                                                    <exclude reference="ZOR-Md-h2V"/>
-                                                </mask>
-                                            </variation>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="160" id="XMz-1h-1Kp">
-                                        <rect key="frame" x="0.0" y="226" width="600" height="160"/>
+                                        <rect key="frame" x="0.0" y="186" width="600" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XMz-1h-1Kp" id="Nqg-gG-KZc">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="159"/>
@@ -648,7 +600,6 @@
                         <outlet property="emailLabel" destination="zsF-GD-xmu" id="tDg-5H-O4f"/>
                         <outlet property="nameField" destination="b4k-IC-8GA" id="YwM-qS-Ryq"/>
                         <outlet property="navBar" destination="TdJ-C7-HVy" id="YFw-cY-WeC"/>
-                        <outlet property="phoneField" destination="FzC-Gc-lL6" id="Muh-bo-3Se"/>
                         <outlet property="profileTable" destination="wMh-r9-6MC" id="7oR-uB-PHy"/>
                         <outlet property="saveButton" destination="tYn-69-rSA" id="9Z1-cD-Anl"/>
                         <outlet property="stateField" destination="Hv3-GA-wQF" id="Xcq-rR-HDr"/>

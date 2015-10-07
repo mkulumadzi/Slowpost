@@ -29,7 +29,6 @@ class PersonService: PostofficeObjectService {
         person.username = json["username"].stringValue
         person.name = json["name"].stringValue
         person.primaryEmail = json["email"].stringValue
-        person.phone = json["phone"].stringValue
         person.address1 = json["address1"].stringValue
         person.city = json["city"].stringValue
         person.state = json["state"].stringValue
@@ -132,7 +131,6 @@ class PersonService: PostofficeObjectService {
         person.username = json["username"].stringValue
         person.name = json["name"].stringValue
         person.primaryEmail = json["email"].stringValue
-        person.phone = json["phone"].stringValue
         person.address1 = json["address1"].stringValue
         person.city = json["city"].stringValue
         person.state = json["state"].stringValue
