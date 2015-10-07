@@ -512,19 +512,20 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var adjuster:Int = 0
-        if recipientSection() == true {
+        if self.recipientSection() == true {
             adjuster = 1
         }
         let numPeopleSections = peopleController.sections!.count
         if recipientSection() == true && indexPath.section == 0 {
-            removeRecipient(tableView, indexPath: indexPath)
+            self.removeRecipient(tableView, indexPath: indexPath)
         }
         else if (indexPath.section - adjuster) < numPeopleSections {
-            handlePersonSelection(tableView, indexPath: indexPath)
+            self.handlePersonSelection(tableView, indexPath: indexPath)
         }
         else {
-            handleOtherSelection(tableView, indexPath: indexPath)
+            self.handleOtherSelection(tableView, indexPath: indexPath)
         }
+        self.searchController.dismissViewControllerAnimated(true, completion: {})
         searchController.searchBar.text = ""
         searchController.searchBar.resignFirstResponder()
         validateNextButton()
@@ -585,11 +586,9 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func handleOtherSelection(tableView: UITableView, indexPath: NSIndexPath) {
         if let searchPersonCell = tableView.cellForRowAtIndexPath(indexPath) as? SearchPersonCell {
             let searchPerson = searchPersonCell.searchPerson
-            self.searchController.dismissViewControllerAnimated(true, completion: {Void in
-                self.toSearchPeople.append(searchPerson)
-                self.personTable.reloadData()
-                self.validateNextButton()
-            })
+            self.toSearchPeople.append(searchPerson)
+            self.personTable.reloadData()
+            self.validateNextButton()
         }
         else {
             self.searchController.dismissViewControllerAnimated(true, completion: {Void in
