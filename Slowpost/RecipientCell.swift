@@ -1,5 +1,5 @@
 //
-//  EmailRecipientCell.swift
+//  RecipientCell.swift
 //  Slowpost
 //
 //  Created by Evan Waters on 10/5/15.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class EmailRecipientCell: UITableViewCell {
+class RecipientCell: UITableViewCell {
     
     var email:String!
+    var person:Person!
+    var searchPerson:SearchPerson!
 
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var avatarView: UIView!
-    
+    @IBOutlet weak var cellLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
