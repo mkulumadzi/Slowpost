@@ -77,9 +77,9 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         self.definesPresentationContext = true
         
         let textField = searchController.searchBar.valueForKey("searchField") as! UITextField
-        textField.backgroundColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
         textField.textColor = UIColor.whiteColor()
         let attributedString = NSAttributedString(string: "Name", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
+        textField.clearButtonMode = .Never
         
         //Get the glass icon
         let iconView:UIImageView = textField.leftView as! UIImageView
@@ -92,8 +92,10 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func initializeSegmentedControl() {
         segmentedControl = UISegmentedControl(items: ["Slowpost", "Everyone"])
-        segmentedControl.tintColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
-        segmentedControl.selectedSegmentIndex = 1
+        segmentedControl.tintColor = UIColor(red:0/255, green: 182/255, blue: 185/255, alpha: 1.0)
+        segmentedControl.backgroundColor = UIColor.whiteColor()
+        segmentedControl.layer.cornerRadius = 4
+        segmentedControl.selectedSegmentIndex = 0
     }
 
     func addSegmentedControlToHeader() {
@@ -163,10 +165,14 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 if peopleArray.count > 0 {
                     if self.toSearchPeople.count == 0 {
                         self.searchResults = peopleArray
+                        self.personTable.reloadData()
                     }
                     else {
                         self.filterSelectedPeopleFromSearchResults(peopleArray)
                     }
+                }
+                else {
+                    self.searchResults = [SearchPerson]()
                 }
             }
         })
@@ -184,6 +190,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             }
         }
         searchResults = filteredResults
+        personTable.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -199,6 +206,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         if searchController.searchBar.text == "" {
             searchTextEntered = false
+            searchResults = [SearchPerson]()
         }
         else {
             if searchController.searchBar.text!.characters.count > 2 {
@@ -576,7 +584,12 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func handleOtherSelection(tableView: UITableView, indexPath: NSIndexPath) {
         if let searchPersonCell = tableView.cellForRowAtIndexPath(indexPath) as? SearchPersonCell {
-            toSearchPeople.append(searchPersonCell.searchPerson)
+            let searchPerson = searchPersonCell.searchPerson
+            self.searchController.dismissViewControllerAnimated(true, completion: {Void in
+                self.toSearchPeople.append(searchPerson)
+                self.personTable.reloadData()
+                self.validateNextButton()
+            })
         }
         else {
             self.searchController.dismissViewControllerAnimated(true, completion: {Void in
@@ -591,7 +604,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func validateNextButton() {
-        if toPeople.count > 0 || toEmails.count > 0 {
+        if toPeople.count > 0 || toSearchPeople.count > 0 || toEmails.count > 0 {
             nextButton.hidden = false
         }
         else {
