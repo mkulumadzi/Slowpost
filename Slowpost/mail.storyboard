@@ -121,16 +121,19 @@
                                             <constraint firstAttribute="centerX" secondItem="Po6-5o-kGa" secondAttribute="centerX" id="v9c-ZR-HYQ"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="toLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pf6-MY-tqg">
-                                        <rect key="frame" x="36" y="492" width="52" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="toLabel" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pf6-MY-tqg">
+                                        <rect key="frame" x="36" y="492" width="554" height="21"/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pu1-y7-3bR">
                                         <rect key="frame" x="10" y="492" width="21" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="21" id="B9c-yl-2cb"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="deliveredLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30B-PY-nyB">
@@ -160,7 +163,9 @@
                                     <constraint firstItem="Z0g-6G-Jyb" firstAttribute="leading" secondItem="gDw-dV-fIF" secondAttribute="leading" id="ZFx-ge-56N"/>
                                     <constraint firstItem="Pu1-y7-3bR" firstAttribute="top" secondItem="Po6-5o-kGa" secondAttribute="bottom" constant="5" id="Zq9-1c-eSh"/>
                                     <constraint firstItem="cP1-Ty-omr" firstAttribute="top" secondItem="G1z-nS-mxA" secondAttribute="bottom" id="ZuB-Yu-b7F"/>
+                                    <constraint firstItem="pf6-MY-tqg" firstAttribute="top" secondItem="G1z-nS-mxA" secondAttribute="bottom" constant="8" id="aFd-iU-BfK"/>
                                     <constraint firstItem="3rD-Uv-DUz" firstAttribute="top" secondItem="30B-PY-nyB" secondAttribute="bottom" constant="10" id="acu-Oj-Pl5"/>
+                                    <constraint firstAttribute="trailing" secondItem="pf6-MY-tqg" secondAttribute="trailing" constant="10" id="bUX-Ir-gnb"/>
                                     <constraint firstItem="Tgu-49-09J" firstAttribute="centerY" secondItem="G1z-nS-mxA" secondAttribute="centerY" id="bYU-Q6-Nsf"/>
                                     <constraint firstAttribute="bottom" secondItem="3rD-Uv-DUz" secondAttribute="bottom" constant="10" id="dqV-IL-ZsD"/>
                                     <constraint firstAttribute="trailing" secondItem="Z0g-6G-Jyb" secondAttribute="trailing" id="elw-aP-3yz"/>
@@ -170,6 +175,7 @@
                                     <constraint firstItem="cP1-Ty-omr" firstAttribute="top" secondItem="Pu1-y7-3bR" secondAttribute="bottom" id="lgd-2E-Unr"/>
                                     <constraint firstItem="G1z-nS-mxA" firstAttribute="top" secondItem="Z0g-6G-Jyb" secondAttribute="bottom" constant="10" id="oIA-AM-6QF"/>
                                     <constraint firstItem="30B-PY-nyB" firstAttribute="top" secondItem="cP1-Ty-omr" secondAttribute="bottom" id="pbi-xC-YLr"/>
+                                    <constraint firstItem="cP1-Ty-omr" firstAttribute="top" secondItem="pf6-MY-tqg" secondAttribute="bottom" id="vIA-Ab-JQT"/>
                                     <constraint firstAttribute="trailing" secondItem="cP1-Ty-omr" secondAttribute="trailing" constant="10" id="viQ-I0-ZiF"/>
                                     <constraint firstItem="3rD-Uv-DUz" firstAttribute="top" secondItem="Z0g-6G-Jyb" secondAttribute="bottom" constant="80" id="ypX-Ls-GhH"/>
                                     <constraint firstAttribute="trailing" secondItem="G1z-nS-mxA" secondAttribute="trailing" constant="10" id="zxc-a9-fOL"/>
@@ -182,8 +188,10 @@
                                         <exclude reference="QvP-ht-Gai"/>
                                         <exclude reference="UeK-KW-jd7"/>
                                         <exclude reference="Zq9-1c-eSh"/>
+                                        <exclude reference="hh1-hC-b1o"/>
                                         <exclude reference="Gd3-EO-6M5"/>
                                         <exclude reference="ZuB-Yu-b7F"/>
+                                        <exclude reference="lgd-2E-Unr"/>
                                         <exclude reference="ffh-xA-IEO"/>
                                         <exclude reference="ypX-Ls-GhH"/>
                                     </mask>
