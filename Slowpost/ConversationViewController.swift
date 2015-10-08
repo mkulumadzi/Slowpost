@@ -38,7 +38,8 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         mailTable.addSubview(self.refreshControl)
         
 //         Calculating row height automatically; can't get it working with autolayout.
-        mailTable.rowHeight = 45 + view.frame.width / 2
+        mailTable.estimatedRowHeight = 45 + view.frame.width / 2
+        mailTable.rowHeight = UITableViewAutomaticDimension
         
         mailTable.tableHeaderView = createTableHeader()
         mailTable.separatorStyle = UITableViewCellSeparatorStyle.None

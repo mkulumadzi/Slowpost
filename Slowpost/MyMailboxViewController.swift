@@ -42,11 +42,16 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         
         mailTable.addSubview(self.refreshControl)
         
-        // Calculating row height automatically; can't get it working with autolayout.
-        mailTable.rowHeight = 85 + (view.frame.width - 20) * 0.75
+//        mailTable.rowHeight = 85 + (view.frame.width - 20) * 0.75
+        mailTable.estimatedRowHeight = 85 + (view.frame.width - 20) * 0.75
+        mailTable.rowHeight = UITableViewAutomaticDimension
 
         NSNotificationCenter.defaultCenter().addObserverForName("imageDownloaded:", object: nil, queue: nil, usingBlock: { (notification) -> Void in
             self.mailTable.reloadData()
+        })
+        
+        NSNotificationCenter.defaultCenter().addObserverForName("appBecameActive:", object: nil, queue: nil, usingBlock: { (notification) -> Void in
+            self.refreshData()
         })
         
         NSNotificationCenter.defaultCenter().addObserverForName("appBecameActive:", object: nil, queue: nil, usingBlock: { (notification) -> Void in
@@ -64,6 +69,14 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval)
+    {
+        print("this happened")
+        self.mailTable.reloadData()
+    }
+    
+    
     
     // Mark: Set up Core Data
     func initializeFetchedResultsController() {
