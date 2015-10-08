@@ -38,7 +38,7 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Conversation List View Controller-->
+        <!--Conversations-->
         <scene sceneID="PJV-Qc-5Ir">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="auR-xQ-yYd" customClass="ConversationListViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
@@ -107,8 +107,8 @@
                             <constraint firstItem="NiG-s1-hET" firstAttribute="leading" secondItem="7Cu-4W-t0n" secondAttribute="leading" id="Z44-mM-Nrq"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="0a7-jc-KbE">
-                        <barButtonItem key="backBarButtonItem" title=" " id="kh6-zd-XEA"/>
+                    <navigationItem key="navigationItem" title="Conversations" id="0a7-jc-KbE">
+                        <barButtonItem key="backBarButtonItem" id="kh6-zd-XEA"/>
                         <barButtonItem key="rightBarButtonItem" id="olK-a2-aSh">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Met-Uj-onw">
                                 <rect key="frame" x="550" y="7" width="30" height="30"/>

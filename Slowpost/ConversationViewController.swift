@@ -40,10 +40,10 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
 //         Calculating row height automatically; can't get it working with autolayout.
         mailTable.rowHeight = 45 + view.frame.width / 2
         
-        mailTable.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: mailTable.bounds.size.width, height: 0.01))
+        mailTable.tableHeaderView = createTableHeader()
         mailTable.separatorStyle = UITableViewCellSeparatorStyle.None
         
-        navBarItem.title = conversation.conversationList()
+//        navBarItem.title = conversation.conversationList()
         NSNotificationCenter.defaultCenter().addObserverForName("imageDownloaded:", object: nil, queue: nil, usingBlock: { (notification) -> Void in
             self.refreshData()
         })
@@ -59,12 +59,37 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         print("View appeared")
         super.viewDidAppear(true)
         refreshData()
-//        mailTable.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func createTableHeader() -> UIView {
+        let conversationList = conversation.conversationList()
+        let headerView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: 30.0))
+        headerView.backgroundColor = UIColor.whiteColor()
+        let label = UILabel(frame: CGRect(x: 8.0, y: 5.0, width: self.view.frame.width - 16.0, height: 20.0))
+        label.font = UIFont(name: "OpenSans-Light", size: 15.0)
+        label.textColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
+        label.text = conversationList
+        label.numberOfLines = 0
+        label.sizeToFit()
+        let fixedHeight = label.frame.height
+        headerView.addSubview(label)
+        headerView.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: fixedHeight + 10.0)
+        
+        let border = CALayer()
+        let width = CGFloat(1.0)
+        border.borderColor = UIColor(red: 181/255, green: 181/255, blue: 181/255, alpha: 1.0).CGColor
+        border.frame = CGRect(x: 0, y: headerView.frame.height - width, width:  self.view.frame.width, height: headerView.frame.height)
+        
+        border.borderWidth = width
+        headerView.layer.addSublayer(border)
+        headerView.layer.masksToBounds = true
+        
+        return headerView
     }
     
     
