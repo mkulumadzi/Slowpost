@@ -33,10 +33,6 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
         
         emailTextField.delegate = self
         
-        givenNameTextField.addBottomLayer()
-        familyNameTextField.addBottomLayer()
-        emailTextField.addBottomLayer()
-        
         nextButton.layer.cornerRadius = 5
         
         warningLabel.hide()
@@ -63,6 +59,13 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(animated: Bool) {
         validateNextButton()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        givenNameTextField.addBottomLayer()
+        familyNameTextField.addBottomLayer()
+        emailTextField.addBottomLayer()
     }
     
     override func didReceiveMemoryWarning() {

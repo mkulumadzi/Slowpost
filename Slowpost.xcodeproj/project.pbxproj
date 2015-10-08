@@ -74,7 +74,6 @@
 		D25A9CA51B2259D300ABBBA4 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C9A1B2259D300ABBBA4 /* OpenSans-Semibold.ttf */; };
 		D25A9CA61B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D25A9C9B1B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf */; };
 		D25A9CAC1B225D3400ABBBA4 /* PersonalDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25A9CAB1B225D3400ABBBA4 /* PersonalDetailsViewController.swift */; };
-		D267262C1B7D3E1D00FE651F /* PhoneEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D267262B1B7D3E1D00FE651F /* PhoneEntryViewController.swift */; };
 		D267262E1B7D3E3700FE651F /* SignUpCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D267262D1B7D3E3700FE651F /* SignUpCompleteViewController.swift */; };
 		D26726301B7D524100FE651F /* UsernameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D267262F1B7D524100FE651F /* UsernameViewController.swift */; };
 		D27C7B451BC33820005F08BC /* AddEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27C7B441BC33820005F08BC /* AddEmailViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -232,7 +231,6 @@
 		D25A9C9A1B2259D300ABBBA4 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
 		D25A9C9B1B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		D25A9CAB1B225D3400ABBBA4 /* PersonalDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonalDetailsViewController.swift; sourceTree = "<group>"; };
-		D267262B1B7D3E1D00FE651F /* PhoneEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneEntryViewController.swift; sourceTree = "<group>"; };
 		D267262D1B7D3E3700FE651F /* SignUpCompleteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpCompleteViewController.swift; sourceTree = "<group>"; };
 		D267262F1B7D524100FE651F /* UsernameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsernameViewController.swift; sourceTree = "<group>"; };
 		D27C7B441BC33820005F08BC /* AddEmailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEmailViewController.swift; sourceTree = "<group>"; };
@@ -352,7 +350,6 @@
 				CC23DE291AE54C0300AFEDE4 /* login.storyboard */,
 				D25A9CAB1B225D3400ABBBA4 /* PersonalDetailsViewController.swift */,
 				D206FB4A1B61688D008BB412 /* WelcomeScreenViewController.swift */,
-				D267262B1B7D3E1D00FE651F /* PhoneEntryViewController.swift */,
 				D267262D1B7D3E3700FE651F /* SignUpCompleteViewController.swift */,
 				D267262F1B7D524100FE651F /* UsernameViewController.swift */,
 			);
@@ -891,7 +888,6 @@
 				D25453841BBB437600BA2A50 /* PhoneContactViewController.swift in Sources */,
 				D25A9CAC1B225D3400ABBBA4 /* PersonalDetailsViewController.swift in Sources */,
 				D27C7B451BC33820005F08BC /* AddEmailViewController.swift in Sources */,
-				D267262C1B7D3E1D00FE651F /* PhoneEntryViewController.swift in Sources */,
 				CCCB1A751AB0D87F0067F100 /* Person.swift in Sources */,
 				D2CEC4681B6C1F6E002CFD25 /* CardGalleryUIViewController.swift in Sources */,
 				CC96E4A01ABCCBF2001E6D27 /* LogInViewController.swift in Sources */,

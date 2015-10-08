@@ -35,10 +35,6 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
         
         passwordTextField.delegate = self
         
-        usernameTextField.addBottomLayer()
-        passwordTextField.addBottomLayer()
-        confirmPasswordTextField.addBottomLayer()
-        
         warningLabel.hide()
         validateNextButton()
         
@@ -64,6 +60,13 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidAppear(animated: Bool) {
         validateNextButton()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        usernameTextField.addBottomLayer()
+        passwordTextField.addBottomLayer()
+        confirmPasswordTextField.addBottomLayer()
     }
     
     override func didReceiveMemoryWarning() {

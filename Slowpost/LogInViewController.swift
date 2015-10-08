@@ -34,9 +34,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
         Flurry.logEvent("Login_Screen_Opened")
         
-        UsernameTextField.addBottomLayer()
-        passwordTextField.addBottomLayer()
-        
         passwordTextField.delegate = self
         
         logInButton.layer.cornerRadius = 5
@@ -64,6 +61,12 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        UsernameTextField.addBottomLayer()
+        passwordTextField.addBottomLayer()
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

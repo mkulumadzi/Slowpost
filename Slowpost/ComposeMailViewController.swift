@@ -42,8 +42,6 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         validatePlaceholderLabel()
         composeText.textContainerInset.left = 10
         composeText.textContainerInset.right = 10
-
-        composeText.addTopBorder()
         
         if cardImage != nil {
             imagePreview.image = cardImage
@@ -53,6 +51,11 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
         
         resignFirstResponder()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        composeText.addTopBorder()
     }
     
     func validatePlaceholderLabel() {

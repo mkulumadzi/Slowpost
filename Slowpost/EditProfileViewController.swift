@@ -44,8 +44,6 @@ class EditProfileViewController: UITableViewController {
         profileTable.tableFooterView?.hidden = true
         profileTable.backgroundColor = UIColor.whiteColor()
         
-        
-        
         // Do any additional setup after loading the view.
     }
 
