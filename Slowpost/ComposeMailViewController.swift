@@ -96,7 +96,16 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     func keyboardShow(notification: NSNotification) {
         self.keyboardShowing = true
         self.placeholderTextLabel.hidden = true
-        composeTextToImageTop.constant = 50
+        if deviceType == "iPhone 4S" {
+            composeTextToImageTop.constant = 50
+        }
+        else if deviceType == "iPhone 5" || deviceType == "iPhone 5C" || deviceType == "iPhone 5S" {
+            composeTextToImageTop.constant = 100
+        }
+        else {
+            composeTextToImageTop.constant = self.view.frame.width * 3/8
+        }
+        
         
         let userInfo = notification.userInfo!
         var r = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
