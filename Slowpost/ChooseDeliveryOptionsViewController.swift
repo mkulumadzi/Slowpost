@@ -19,10 +19,12 @@ class ChooseDeliveryOptionsViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBOutlet weak var standardButton: TextUIButton!
-    @IBOutlet weak var expressButton: TextUIButton!
+//    @IBOutlet weak var expressButton: TextUIButton!
     @IBOutlet weak var customButton: TextUIButton!
     
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!
+    @IBOutlet weak var standardDeliveryButtonHeight: NSLayoutConstraint!
+    @IBOutlet weak var distanceToScheduledSection: NSLayoutConstraint!
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
@@ -32,8 +34,9 @@ class ChooseDeliveryOptionsViewController: UIViewController {
         super.viewDidLoad()
         
         standardButton.layer.cornerRadius = 5
-        expressButton.layer.cornerRadius = 5
+//        expressButton.layer.cornerRadius = 5
         customButton.layer.cornerRadius = 5
+        datePicker.minimumDate = setMinimumDate()
 
         if deviceType == "iPhone 4S" {
             formatForiPhone4S()
@@ -42,7 +45,9 @@ class ChooseDeliveryOptionsViewController: UIViewController {
     }
     
     func formatForiPhone4S() {
+        standardDeliveryButtonHeight.constant = 30
         buttonHeight.constant = 30
+        distanceToScheduledSection.constant = 10
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,16 +55,22 @@ class ChooseDeliveryOptionsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func setMinimumDate() -> NSDate {
+        let userCalendar = NSCalendar.currentCalendar()
+        let minimumDate = userCalendar.dateByAddingUnit(.Day, value: 1, toDate: NSDate(), options: .MatchFirst)
+        return minimumDate!
+    }
+    
     @IBAction func standardDeliveryChosen(sender: AnyObject) {
         self.performSegueWithIdentifier("sendMail", sender: nil)
     }
     
-    @IBAction func expressDeliveryChosen(sender: AnyObject) {
-        let calendar = NSCalendar.currentCalendar()
-        let date = calendar.dateByAddingUnit(.Minute, value: 10, toDate: NSDate(), options: [])
-        scheduledToArrive = date!
-        self.performSegueWithIdentifier("sendMail", sender: nil)
-    }
+//    @IBAction func expressDeliveryChosen(sender: AnyObject) {
+//        let calendar = NSCalendar.currentCalendar()
+//        let date = calendar.dateByAddingUnit(.Minute, value: 10, toDate: NSDate(), options: [])
+//        scheduledToArrive = date!
+//        self.performSegueWithIdentifier("sendMail", sender: nil)
+//    }
     
     @IBAction func customDeliveryChosen(sender: AnyObject) {
         let currentDateTime = NSDate()

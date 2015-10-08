@@ -30,7 +30,6 @@
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
-            <string>OpenSans-Semibold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -564,7 +563,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFT-Rb-cNu" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="482" width="540" height="40"/>
+                                <rect key="frame" x="30" y="442" width="540" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="NZN-MQ-cwe"/>
@@ -578,35 +577,20 @@
                                     <action selector="customDeliveryChosen:" destination="FyT-yD-Bbu" eventType="touchUpInside" id="WH7-oo-12z"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a standard delivery method:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4A0-Za-BgN">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose standard delivery:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4A0-Za-BgN">
                                 <rect key="frame" x="30" y="94" width="540" height="21"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="raB-AL-x7a" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="175" width="540" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="pOA-gb-oy2"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                <state key="normal" title="Express (10 to 20 minutes)">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="expressDeliveryChosen:" destination="FyT-yD-Bbu" eventType="touchUpInside" id="cgx-8o-FNy"/>
-                                </connections>
-                            </button>
                             <datePicker contentMode="scaleToFill" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="Uk2-1o-YPF">
-                                <rect key="frame" x="30" y="256" width="540" height="216"/>
+                                <rect key="frame" x="30" y="216" width="540" height="216"/>
                                 <date key="date" timeIntervalSinceReferenceDate="462746146.04611301">
                                     <!--2015-08-31 20:35:46 +0000-->
                                 </date>
                             </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or a custom date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbs-Lk-8bE">
-                                <rect key="frame" x="30" y="235" width="540" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or schedule it (must be at least 1 day from now):" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbs-Lk-8bE">
+                                <rect key="frame" x="30" y="195" width="540" height="21"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -618,16 +602,13 @@
                             <constraint firstItem="Uk2-1o-YPF" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" constant="30" id="1Qd-eg-ddK"/>
                             <constraint firstAttribute="trailing" secondItem="sbs-Lk-8bE" secondAttribute="trailing" constant="30" id="D6B-5z-UNb"/>
                             <constraint firstItem="oFT-Rb-cNu" firstAttribute="top" secondItem="Uk2-1o-YPF" secondAttribute="bottom" constant="10" id="DA2-QI-BlE"/>
-                            <constraint firstItem="raB-AL-x7a" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" constant="30" id="I3e-0h-I3j"/>
                             <constraint firstItem="fhm-0k-4pj" firstAttribute="top" secondItem="4A0-Za-BgN" secondAttribute="bottom" constant="10" id="Suz-Mf-sea"/>
-                            <constraint firstAttribute="trailing" secondItem="raB-AL-x7a" secondAttribute="trailing" constant="30" id="TFr-CT-LQJ"/>
                             <constraint firstAttribute="trailing" secondItem="Uk2-1o-YPF" secondAttribute="trailing" constant="30" id="XcT-WL-GdU"/>
                             <constraint firstItem="4A0-Za-BgN" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" constant="30" id="atX-hu-m9C"/>
                             <constraint firstItem="Uk2-1o-YPF" firstAttribute="top" secondItem="sbs-Lk-8bE" secondAttribute="bottom" id="fOS-RG-0M0"/>
                             <constraint firstAttribute="trailing" secondItem="fhm-0k-4pj" secondAttribute="trailing" constant="30" id="h3g-co-L4c"/>
-                            <constraint firstItem="raB-AL-x7a" firstAttribute="top" secondItem="fhm-0k-4pj" secondAttribute="bottom" constant="10" id="lPP-vj-e6H"/>
+                            <constraint firstItem="sbs-Lk-8bE" firstAttribute="top" secondItem="fhm-0k-4pj" secondAttribute="bottom" constant="30" id="rkt-vP-d3T"/>
                             <constraint firstItem="4A0-Za-BgN" firstAttribute="top" secondItem="EPo-xN-8yt" secondAttribute="bottom" constant="30" id="s8S-7x-AtX"/>
-                            <constraint firstItem="sbs-Lk-8bE" firstAttribute="top" secondItem="raB-AL-x7a" secondAttribute="bottom" constant="20" id="spP-7u-H6A"/>
                             <constraint firstItem="oFT-Rb-cNu" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" constant="30" id="tBL-dB-oXn"/>
                             <constraint firstItem="fhm-0k-4pj" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" constant="30" id="vfB-fl-v3t"/>
                             <constraint firstItem="sbs-Lk-8bE" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" constant="30" id="xTT-eD-E8L"/>
@@ -640,8 +621,9 @@
                         <outlet property="buttonHeight" destination="NZN-MQ-cwe" id="nbo-nv-f9H"/>
                         <outlet property="customButton" destination="oFT-Rb-cNu" id="qTp-N4-RzT"/>
                         <outlet property="datePicker" destination="Uk2-1o-YPF" id="ttf-Gg-snq"/>
-                        <outlet property="expressButton" destination="raB-AL-x7a" id="qTr-rS-QsL"/>
+                        <outlet property="distanceToScheduledSection" destination="rkt-vP-d3T" id="0HY-v1-Xwv"/>
                         <outlet property="standardButton" destination="fhm-0k-4pj" id="Xn2-47-ina"/>
+                        <outlet property="standardDeliveryButtonHeight" destination="TsL-no-8b7" id="vs0-uX-YNx"/>
                         <segue destination="MtH-uW-ItT" kind="presentation" identifier="sendMail" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="fof-2k-i0C"/>
                     </connections>
                 </viewController>
