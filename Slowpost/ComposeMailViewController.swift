@@ -20,6 +20,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var imagePreview: UIImageView!
     @IBOutlet weak var composeText: UITextView!
     @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var composeTextToImageTop: NSLayoutConstraint!
     
     @IBOutlet weak var placeholderTextLabel: UILabel!
     
@@ -37,6 +38,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         
         self.automaticallyAdjustsScrollViewInsets = false
         
+        composeTextToImageTop.constant = self.view.frame.width * 3/4
         validatePlaceholderLabel()
         composeText.textContainerInset.left = 10
         composeText.textContainerInset.right = 10
@@ -91,6 +93,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     func keyboardShow(notification: NSNotification) {
         self.keyboardShowing = true
         self.placeholderTextLabel.hidden = true
+        composeTextToImageTop.constant = 50
         
         let userInfo = notification.userInfo!
         var r = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
@@ -100,6 +103,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     }
     
     func keyboardHide(notification:NSNotification) {
+        composeTextToImageTop.constant = self.view.frame.width * 3/4
         self.keyboardShowing = false
         self.validatePlaceholderLabel()
         self.composeText.contentInset = UIEdgeInsetsZero
@@ -107,6 +111,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        print("tapped")
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
     }
