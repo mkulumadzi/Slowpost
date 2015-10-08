@@ -120,8 +120,8 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
     func signUp() {
         
         let newPersonURL = "\(PostOfficeURL)person/new"
-        let username = usernameTextField.text
-        let password = passwordTextField.text
+        let username = usernameTextField.text!
+        let password = passwordTextField.text!
         let parameters = ["given_name": "\(givenName)", "family_name": "\(familyName)", "username": "\(username)", "email": "\(email)", "password": "\(password)"]
         
         let headers:[String: String] = ["Authorization": "Bearer \(appToken)", "Accept": "application/json"]

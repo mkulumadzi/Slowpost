@@ -62,11 +62,12 @@ class Mail: PostofficeObject {
     func toList() -> String {
         var list = ""
         var index = 0
-        for person in self.toPeople.allObjects {
+        for item in self.toPeople.allObjects {
+            let person = item as! Person
             if index > 0 {
                 list += ", "
             }
-            list += "\(person.name)"
+            list += "\(person.fullName())"
             index += 1
         }
         for item in self.toEmails.allObjects {

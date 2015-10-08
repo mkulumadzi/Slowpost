@@ -122,9 +122,9 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "enterUsername" {
             let destinationViewController = segue.destinationViewController as? UsernameViewController
-            destinationViewController!.givenName = givenNameTextField.text
-            destinationViewController!.familyName = familyNameTextField.text
-            destinationViewController!.email = emailTextField.text
+            destinationViewController!.givenName = givenNameTextField.text!
+            destinationViewController!.familyName = familyNameTextField.text!
+            destinationViewController!.email = emailTextField.text!
         }
     }
     

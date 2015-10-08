@@ -78,6 +78,7 @@ class InitialViewController: UIViewController {
     
     func getContactsIfAuthorized() {
         if #available(iOS 9, *) {
+            Flurry.logEvent("Attempting_to_fetch_contacts")
             ContactService.fetchContactsIfAuthorized()
         } else {
             AddressBookService.checkAuthorizationStatus(self)
