@@ -85,7 +85,7 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
             nextButton.enable()
         }
         else {
-            nextButton.enable()
+            nextButton.disable()
         }
     }
     

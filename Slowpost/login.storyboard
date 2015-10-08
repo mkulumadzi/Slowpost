@@ -30,6 +30,7 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -726,8 +727,8 @@ We won't save your address book on our servers, but we will search for matches w
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ikw-33-dC8" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="224" width="540" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ikw-33-dC8" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="244" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Ivq-f5-C5L"/>
                                 </constraints>
@@ -773,7 +774,7 @@ We won't save your address book on our servers, but we will search for matches w
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qoT-XQ-G2Z" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="284" width="540" height="40"/>
+                                <rect key="frame" x="30" y="304" width="540" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="9Jt-1d-rNd"/>
@@ -787,17 +788,33 @@ We won't save your address book on our servers, but we will search for matches w
                                     <action selector="checkUsernameAvailability:" destination="65F-qu-B8L" eventType="touchUpInside" id="NUI-jo-053"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ca5-x4-yba" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="204" width="540" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0ol-Dg-Zkr"/>
+                                </constraints>
+                                <color key="textColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="editingChanged:" destination="65F-qu-B8L" eventType="editingChanged" id="6JQ-PS-okq"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ikw-33-dC8" firstAttribute="top" secondItem="Ca5-x4-yba" secondAttribute="bottom" constant="10" id="BFV-Bh-1cN"/>
+                            <constraint firstItem="Ca5-x4-yba" firstAttribute="leading" secondItem="reT-Hu-5gT" secondAttribute="leading" constant="30" id="DfH-8w-ZY3"/>
                             <constraint firstAttribute="trailing" secondItem="ikw-33-dC8" secondAttribute="trailing" constant="30" id="DgR-4U-WIp"/>
                             <constraint firstAttribute="trailing" secondItem="8DA-LN-k4L" secondAttribute="trailing" id="DnQ-iU-jgh"/>
-                            <constraint firstItem="ikw-33-dC8" firstAttribute="top" secondItem="fyz-vB-IcF" secondAttribute="bottom" constant="30" id="Eou-RT-0xT"/>
+                            <constraint firstItem="ikw-33-dC8" firstAttribute="top" secondItem="fyz-vB-IcF" secondAttribute="bottom" constant="90" id="Eou-RT-0xT"/>
                             <constraint firstItem="fyz-vB-IcF" firstAttribute="leading" secondItem="reT-Hu-5gT" secondAttribute="leading" constant="30" id="IzP-os-mQ2"/>
+                            <constraint firstAttribute="trailing" secondItem="Ca5-x4-yba" secondAttribute="trailing" constant="30" id="V6H-Jv-c3U"/>
                             <constraint firstItem="y0R-1X-YfO" firstAttribute="leading" secondItem="reT-Hu-5gT" secondAttribute="leading" constant="30" id="XOr-kF-Omz"/>
                             <constraint firstAttribute="trailing" secondItem="qoT-XQ-G2Z" secondAttribute="trailing" constant="30" id="a8h-DE-P1l"/>
                             <constraint firstItem="8DA-LN-k4L" firstAttribute="top" secondItem="ony-8R-FTy" secondAttribute="bottom" constant="-4" id="dbu-ZZ-ut3"/>
                             <constraint firstItem="fyz-vB-IcF" firstAttribute="top" secondItem="y0R-1X-YfO" secondAttribute="bottom" constant="30" id="lZu-bV-hjI"/>
+                            <constraint firstItem="Ca5-x4-yba" firstAttribute="top" secondItem="fyz-vB-IcF" secondAttribute="bottom" constant="10" id="njX-dW-Www"/>
                             <constraint firstAttribute="trailing" secondItem="y0R-1X-YfO" secondAttribute="trailing" constant="30" id="p6S-7Q-pw2"/>
                             <constraint firstItem="8DA-LN-k4L" firstAttribute="leading" secondItem="reT-Hu-5gT" secondAttribute="leading" id="pBo-IX-dR7"/>
                             <constraint firstItem="ikw-33-dC8" firstAttribute="leading" secondItem="reT-Hu-5gT" secondAttribute="leading" constant="30" id="riA-0Z-7Yn"/>
@@ -806,19 +823,23 @@ We won't save your address book on our servers, but we will search for matches w
                             <constraint firstItem="qoT-XQ-G2Z" firstAttribute="leading" secondItem="reT-Hu-5gT" secondAttribute="leading" constant="30" id="wQi-g0-rCg"/>
                             <constraint firstAttribute="trailing" secondItem="fyz-vB-IcF" secondAttribute="trailing" constant="30" id="xTm-PQ-LBm"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Eou-RT-0xT"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Username" id="QyS-et-90t" userLabel="Username"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="buttonHeight" destination="9Jt-1d-rNd" id="57n-Xo-VFX"/>
+                        <outlet property="confirmPasswordTextField" destination="ikw-33-dC8" id="9Rs-4R-WI9"/>
                         <outlet property="nextButton" destination="qoT-XQ-G2Z" id="Uso-bY-5PR"/>
-                        <outlet property="passwordTextField" destination="ikw-33-dC8" id="4b2-Cw-oRX"/>
+                        <outlet property="passwordTextField" destination="Ca5-x4-yba" id="Den-Le-jtK"/>
                         <outlet property="usernameTextField" destination="fyz-vB-IcF" id="kl5-dr-2sO"/>
                         <outlet property="verticalSpaceToNext" destination="tCN-34-CGI" id="dgd-jw-xno"/>
-                        <outlet property="verticalSpaceToPassword" destination="Eou-RT-0xT" id="hQ3-Ug-qWl"/>
                         <outlet property="verticalSpaceToTitle" destination="soI-pA-5xf" id="8dT-fY-wzS"/>
-                        <outlet property="verticalSpaceToUsername" destination="lZu-bV-hjI" id="0rp-p0-cli"/>
                         <outlet property="warningLabel" destination="8DA-LN-k4L" id="Aiq-7M-8DE"/>
                         <segue destination="w8n-Sy-2a1" kind="presentation" identifier="signUpComplete" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="fMY-FY-hbH"/>
                     </connections>

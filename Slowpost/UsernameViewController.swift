@@ -12,6 +12,7 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var usernameTextField: BottomBorderUITextField!
     @IBOutlet weak var passwordTextField: BottomBorderUITextField!
+    @IBOutlet weak var confirmPasswordTextField: BottomBorderUITextField!
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var nextButton: TextUIButton!
   
@@ -20,8 +21,6 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
     var email:String!
 
     @IBOutlet weak var verticalSpaceToTitle: NSLayoutConstraint!
-    @IBOutlet weak var verticalSpaceToUsername: NSLayoutConstraint!
-    @IBOutlet weak var verticalSpaceToPassword: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToNext: NSLayoutConstraint!
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!
     
@@ -38,6 +37,7 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
         
         usernameTextField.addBottomLayer()
         passwordTextField.addBottomLayer()
+        confirmPasswordTextField.addBottomLayer()
         
         warningLabel.hide()
         validateNextButton()
@@ -53,13 +53,12 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
     func formatForiPhone4S() {
         
         verticalSpaceToTitle.constant = 10
-        verticalSpaceToUsername.constant = 10
-        verticalSpaceToPassword.constant = 10
         verticalSpaceToNext.constant = 10
         buttonHeight.constant = 30
         
         usernameTextField.font = usernameTextField.font!.fontWithSize(15.0)
         passwordTextField.font = passwordTextField.font!.fontWithSize(15.0)
+        confirmPasswordTextField.font = confirmPasswordTextField.font!.fontWithSize(15.0)
         
     }
     
@@ -83,11 +82,11 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
     }
     
     func validateNextButton() {
-        if usernameTextField.text != "" && passwordTextField.text != "" {
+        if usernameTextField.text != "" && passwordTextField.text != "" && confirmPasswordTextField.text != "" {
             nextButton.enable()
         }
         else {
-            nextButton.enable()
+            nextButton.disable()
         }
     }
     
@@ -98,22 +97,36 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func checkUsernameAvailability(sender: AnyObject) {
         nextButton.disable()
-        let params = ["username": usernameTextField.text!]
-        
-        LoginService.checkFieldAvailability(params, completion: { (error, result) -> Void in
-            if error != nil {
-                print(error)
-            }
-            else {
-                let availability = result!["username"].stringValue
-                if availability == "available" {
-                    self.signUp()
+        if passwordsMatch() {
+            let params = ["username": usernameTextField.text!]
+            
+            LoginService.checkFieldAvailability(params, completion: { (error, result) -> Void in
+                if error != nil {
+                    print(error)
                 }
                 else {
-                    self.warningLabel.show("An account with that username already exists.")
+                    let availability = result!["username"].stringValue
+                    if availability == "available" {
+                        self.signUp()
+                    }
+                    else {
+                        self.warningLabel.show("An account with that username already exists.")
+                    }
                 }
-            }
-        })
+            })
+        }
+        else {
+            self.warningLabel.show("Passwords must match.")
+        }
+    }
+    
+    func passwordsMatch() -> Bool {
+        if passwordTextField.text! == confirmPasswordTextField.text! {
+            return true
+        }
+        else {
+            return false
+        }
     }
 
     
