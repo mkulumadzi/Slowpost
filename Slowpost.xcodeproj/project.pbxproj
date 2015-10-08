@@ -93,6 +93,8 @@
 		D27E12F11BB4791A0059FF07 /* ContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27E12F01BB4791A0059FF07 /* ContactService.swift */; settings = {ASSET_TAGS = (); }; };
 		D27E12F71BB4A98E0059FF07 /* EmailAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27E12F61BB4A98E0059FF07 /* EmailAddress.swift */; settings = {ASSET_TAGS = (); }; };
 		D27E194E1B3B770C0052687F /* SlowpostModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D27E194C1B3B770C0052687F /* SlowpostModel.xcdatamodeld */; };
+		D28266CE1BC6DEA10029F57E /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28266CD1BC6DEA10029F57E /* AvatarView.swift */; settings = {ASSET_TAGS = (); }; };
+		D28266D01BC6E4950029F57E /* grey-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = D28266CF1BC6E4950029F57E /* grey-circle.png */; settings = {ASSET_TAGS = (); }; };
 		D2856E431BB5C32700A454C9 /* Slowpost.png in Resources */ = {isa = PBXBuildFile; fileRef = D2856E421BB5C32700A454C9 /* Slowpost.png */; settings = {ASSET_TAGS = (); }; };
 		D28CB0101BB4CDC100111213 /* PhoneContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28CB00F1BB4CDC100111213 /* PhoneContactCell.swift */; settings = {ASSET_TAGS = (); }; };
 		D290B2A61BB083260069A3DD /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290B2A51BB083260069A3DD /* DataController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -249,6 +251,8 @@
 		D27E12F01BB4791A0059FF07 /* ContactService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactService.swift; sourceTree = "<group>"; };
 		D27E12F61BB4A98E0059FF07 /* EmailAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailAddress.swift; sourceTree = "<group>"; };
 		D27E194D1B3B770C0052687F /* SnailMailModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SnailMailModel.xcdatamodel; sourceTree = "<group>"; };
+		D28266CD1BC6DEA10029F57E /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		D28266CF1BC6E4950029F57E /* grey-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grey-circle.png"; sourceTree = "<group>"; };
 		D2856E421BB5C32700A454C9 /* Slowpost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slowpost.png; sourceTree = "<group>"; };
 		D28CB00F1BB4CDC100111213 /* PhoneContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneContactCell.swift; sourceTree = "<group>"; };
 		D290B2A51BB083260069A3DD /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
@@ -402,6 +406,7 @@
 		CC96E4A31ABCD5AB001E6D27 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D28266CF1BC6E4950029F57E /* grey-circle.png */,
 				D2856E421BB5C32700A454C9 /* Slowpost.png */,
 				D24BC0FD1B98F898000405F7 /* reply-gray.png */,
 				D2E4EDD11B7D1EC000D2A028 /* example_card.jpg */,
@@ -590,6 +595,7 @@
 				D27DA32C1B66C51900DF32A1 /* MessageUILabel.swift */,
 				D2389E811B9674AB00CB19BB /* CellLabelUIView.swift */,
 				D24BC0F41B96994D000405F7 /* CustomContainerView.swift */,
+				D28266CD1BC6DEA10029F57E /* AvatarView.swift */,
 			);
 			name = Customizations;
 			sourceTree = "<group>";
@@ -767,6 +773,7 @@
 				D20D8EDB1B2B384E00BBF6B5 /* compose-white.png in Resources */,
 				D2E4EDCA1B7D135900D2A028 /* Quicksand_Dash.otf in Resources */,
 				D27DA31E1B62ADB600DF32A1 /* ios7-arrow-left-white.png in Resources */,
+				D28266D01BC6E4950029F57E /* grey-circle.png in Resources */,
 				D2F5CAC21B8F91D900551435 /* Default Card.png in Resources */,
 				D25A9CA51B2259D300ABBBA4 /* OpenSans-Semibold.ttf in Resources */,
 				D2D8662C1B2F50CC00847051 /* ios7-contact-outline-white.png in Resources */,
@@ -874,6 +881,7 @@
 				D29D3DC01B83D28A00B3E0DA /* KeychainWrapper.m in Sources */,
 				CC6105F51AC3941900D15150 /* LoginService.swift in Sources */,
 				D2A361361B3CAC5D00811D14 /* TextUIButton.swift in Sources */,
+				D28266CE1BC6DEA10029F57E /* AvatarView.swift in Sources */,
 				D20D8EE21B2E448100BBF6B5 /* PersonCell.swift in Sources */,
 				D20EC2531BAC84E500E3DEA5 /* ImageAttachment.swift in Sources */,
 				D291B24C1B69AA5A00C72816 /* FileService.swift in Sources */,
