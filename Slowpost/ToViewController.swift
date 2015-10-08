@@ -121,7 +121,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         let fetchRequest = NSFetchRequest(entityName: "Person")
         let nameLetterSort = NSSortDescriptor(key: "nameLetter", ascending: true)
-        let nameSort = NSSortDescriptor(key: "name", ascending: true)
+        let familyNameSort = NSSortDescriptor(key: "familyName", ascending: true)
         
         let userId = LoginService.getUserIdFromToken()
         
@@ -140,12 +140,15 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             finalPredicate = startingPredicate
         }
         else {
-            let searchPredicate = NSPredicate(format: "name contains[c] %@", searchController.searchBar.text!)
+            let searchGivenNamePredicate = NSPredicate(format: "givenName contains[c] %@", searchController.searchBar.text!)
+            let searchFamilyNamePredicate = NSPredicate(format: "familyName contains[c] %@", searchController.searchBar.text!)
+            //To Do: Search given name and family name if space is entered
+            let searchPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [searchGivenNamePredicate, searchFamilyNamePredicate])
             finalPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [startingPredicate, searchPredicate])
         }
         
         fetchRequest.predicate = finalPredicate
-        fetchRequest.sortDescriptors = [nameLetterSort, nameSort]
+        fetchRequest.sortDescriptors = [nameLetterSort, familyNameSort]
         
         peopleController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: "nameLetter", cacheName: nil)
         peopleController.delegate = self
@@ -418,7 +421,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func configurePersonCell(cell: PersonCell) {
-        cell.personNameLabel.text = cell.person.name
+        cell.personNameLabel.text = cell.person.fullName()
         cell.usernameLabel.text = "@\(cell.person.username)"
         cell.cellImage.image = UIImage(named: "Slowpost.png")
         cell.cellImage.layer.cornerRadius = 10
@@ -433,7 +436,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func configureSearchPersonCell(cell: SearchPersonCell) {
-        cell.nameLabel.text = cell.searchPerson.name
+        cell.nameLabel.text = cell.searchPerson.fullName()
         cell.usernameLabel.text = "@\(cell.searchPerson.username)"
         cell.cellImage.image = UIImage(named: "Slowpost.png")
         cell.cellImage.layer.cornerRadius = 10
@@ -445,13 +448,13 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             cell.person = person
             cell.cellImage.image = UIImage(named: "Slowpost.png")
             cell.cellImage.layer.cornerRadius = 10
-            cell.recipientLabel.text = "\(person.name) (@\(person.username))"
+            cell.recipientLabel.text = "\(person.fullName()) (@\(person.username))"
         }
         else if let searchPerson = object as? SearchPerson {
             cell.searchPerson = searchPerson
             cell.cellImage.image = UIImage(named: "Slowpost.png")
             cell.cellImage.layer.cornerRadius = 10
-            cell.recipientLabel.text = "\(searchPerson.name) (@\(searchPerson.username))"
+            cell.recipientLabel.text = "\(searchPerson.fullName()) (@\(searchPerson.username))"
         }
         else if let email = object as? String {
             cell.email = email
@@ -469,7 +472,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func configurePhoneContactCell(cell: PhoneContactCell) {
-        cell.personNameLabel.text = cell.person.name
+        cell.personNameLabel.text = cell.person.fullName()
         configureEmailLabel(cell)
         if personEmailSelected(cell.person) != "" {
             cell.accessoryType = .Checkmark

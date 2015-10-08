@@ -27,6 +27,8 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -377,16 +379,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uhu-au-8kv">
-                                                    <rect key="frame" x="10" y="11" width="80" height="18"/>
+                                                    <rect key="frame" x="10" y="11" width="90" height="18"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="cpX-Le-mP3"/>
+                                                        <constraint firstAttribute="width" constant="90" id="cpX-Le-mP3"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                                     <color key="textColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Akc-Pi-P7d">
-                                                    <rect key="frame" x="90" y="9" width="500" height="21"/>
+                                                    <rect key="frame" x="100" y="9" width="490" height="21"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                                     <color key="textColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -415,16 +417,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CoG-Dl-h4Q">
-                                                    <rect key="frame" x="10" y="11" width="80" height="18"/>
+                                                    <rect key="frame" x="10" y="11" width="90" height="18"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="F9W-aD-JgN"/>
+                                                        <constraint firstAttribute="width" constant="90" id="F9W-aD-JgN"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                                     <color key="textColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsF-GD-xmu">
-                                                    <rect key="frame" x="90" y="9" width="500" height="21"/>
+                                                    <rect key="frame" x="100" y="9" width="490" height="21"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                                     <color key="textColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -450,17 +452,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="39"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wa-Cy-MER">
-                                                    <rect key="frame" x="10" y="11" width="80" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Given Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wa-Cy-MER">
+                                                    <rect key="frame" x="10" y="11" width="90" height="18"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="Bef-vg-idO"/>
+                                                        <constraint firstAttribute="width" constant="90" id="Bef-vg-idO"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                                     <color key="textColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="George Byron" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b4k-IC-8GA">
-                                                    <rect key="frame" x="90" y="-1" width="500" height="41"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="George" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b4k-IC-8GA" userLabel="givenNameField">
+                                                    <rect key="frame" x="100" y="-1" width="490" height="41"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="McG-4w-Gwx"/>
                                                     </constraints>
@@ -487,6 +489,50 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="isb-FI-dV4">
+                                        <rect key="frame" x="0.0" y="186" width="600" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="isb-FI-dV4" id="8Ra-e2-0pA">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="39"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Family Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8tz-hq-Uqu">
+                                                    <rect key="frame" x="10" y="11" width="90" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="90" id="3xp-yr-Wr6"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
+                                                    <color key="textColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Byron" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rOm-LH-dnq" userLabel="familyNameField">
+                                                    <rect key="frame" x="100" y="-1" width="490" height="41"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="ghb-HW-om2"/>
+                                                    </constraints>
+                                                    <color key="textColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="editingChanged:" destination="z52-1Q-RH9" eventType="editingDidEnd" id="lSc-Nv-Zed"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="8tz-hq-Uqu" secondAttribute="centerY" id="0kU-eJ-2aB"/>
+                                                <constraint firstItem="rOm-LH-dnq" firstAttribute="leading" secondItem="8tz-hq-Uqu" secondAttribute="trailing" id="8WU-pw-LUN"/>
+                                                <constraint firstItem="8tz-hq-Uqu" firstAttribute="leading" secondItem="8Ra-e2-0pA" secondAttribute="leadingMargin" constant="10" id="JUC-GI-422"/>
+                                                <constraint firstAttribute="trailing" secondItem="rOm-LH-dnq" secondAttribute="trailing" constant="10" id="Pd8-FY-qMp"/>
+                                                <constraint firstItem="8tz-hq-Uqu" firstAttribute="leading" secondItem="8Ra-e2-0pA" secondAttribute="leading" constant="10" id="VSv-lU-Yfu"/>
+                                                <constraint firstAttribute="centerY" secondItem="rOm-LH-dnq" secondAttribute="centerY" id="W4Q-f9-zAd"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="JUC-GI-422"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -499,7 +545,8 @@
                     </tableView>
                     <connections>
                         <outlet property="emailLabel" destination="zsF-GD-xmu" id="tDg-5H-O4f"/>
-                        <outlet property="nameField" destination="b4k-IC-8GA" id="YwM-qS-Ryq"/>
+                        <outlet property="familyNameField" destination="rOm-LH-dnq" id="KV5-KN-Nnh"/>
+                        <outlet property="givenNameField" destination="b4k-IC-8GA" id="fZj-yw-3ZW"/>
                         <outlet property="navBar" destination="TdJ-C7-HVy" id="YFw-cY-WeC"/>
                         <outlet property="profileTable" destination="wMh-r9-6MC" id="7oR-uB-PHy"/>
                         <outlet property="saveButton" destination="tYn-69-rSA" id="9Z1-cD-Anl"/>

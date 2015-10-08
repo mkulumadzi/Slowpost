@@ -26,7 +26,7 @@ class Conversation: PostofficeObject {
             let userId = LoginService.getUserIdFromToken()
             if person.id != userId {
                 if index > 0 { list += ", " }
-                list += person.name
+                list += person.fullName()
                 index += 1
             }
         }

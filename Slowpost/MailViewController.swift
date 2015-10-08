@@ -50,7 +50,7 @@ class MailViewController: UIViewController {
         fromView.layer.cornerRadius = 15
 
         fromPerson = mail.fromPerson
-        fromLabel.text = fromPerson.name
+        fromLabel.text = fromPerson.fullName()
         fromViewInitials.text = fromPerson.initials()
         toLabel.text = mail.toList()
         

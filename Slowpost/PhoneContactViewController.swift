@@ -24,7 +24,7 @@ class PhoneContactViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         
         emailAddressTable.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: emailAddressTable.bounds.size.width, height: 0.01))
-        name.text = person.name
+        name.text = person.fullName()
 
         // Do any additional setup after loading the view.
     }

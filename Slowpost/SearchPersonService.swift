@@ -16,8 +16,9 @@ class SearchPersonService {
     class func createSearchPersonFromJson(json: JSON) -> SearchPerson {
         let id = json["_id"]["$oid"].stringValue
         let username = json["username"].stringValue
-        let name = json["name"].stringValue
-        let newSearchPerson = SearchPerson(id: id, username: username, name: name)
+        let givenName = json["given_name"].stringValue
+        let familyName = json["family_name"].stringValue
+        let newSearchPerson = SearchPerson(id: id, username: username, givenName: givenName, familyName: familyName)
         return newSearchPerson
     }
     

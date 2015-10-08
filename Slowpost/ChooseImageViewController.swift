@@ -108,12 +108,12 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         var index = 0
         for person in toPeople {
             if index > 0 { toList += ", " }
-            toList += person.name
+            toList += person.fullName()
             index += 1
         }
         for searchPerson in toSearchPeople {
             if index > 0 { toList += ", " }
-            toList += searchPerson.name
+            toList += searchPerson.fullName()
             index += 1
         }
         for email in toEmails {

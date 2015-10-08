@@ -15,7 +15,8 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var nextButton: TextUIButton!
   
-    var name:String!
+    var givenName:String!
+    var familyName:String!
     var email:String!
 
     @IBOutlet weak var verticalSpaceToTitle: NSLayoutConstraint!
@@ -121,7 +122,7 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
         let newPersonURL = "\(PostOfficeURL)person/new"
         let username = usernameTextField.text
         let password = passwordTextField.text
-        let parameters = ["name": "\(name)", "username": "\(username)", "email": "\(email)", "password": "\(password)"]
+        let parameters = ["given_name": "\(givenName)", "family_name": "\(familyName)", "username": "\(username)", "email": "\(email)", "password": "\(password)"]
         
         let headers:[String: String] = ["Authorization": "Bearer \(appToken)", "Accept": "application/json"]
         

@@ -84,15 +84,23 @@ class ContactService {
     }
     
     class func createNewPersonFromContact(contact: CNContact, dataController: DataController) {
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let dataController = appDelegate.dataController
         if personNeedsUpdating(contact) == true {
             let person = dataController.getCoreDataObject("contactId == %@", predicateValue: contact.identifier, entityName: "Person") as! Person
-            print("creating new person \(contact.familyName)")
             person.contactId = contact.identifier
-            person.name = self.createFullNameFromContact(contact)
+            if !contact.givenName.isEmpty {
+                person.givenName = contact.givenName
+            }
+            else {
+                person.givenName = ""
+            }
+            if !contact.familyName.isEmpty {
+                person.familyName = contact.familyName
+            }
+            else {
+                person.familyName = ""
+            }
             person.origin = "Phone"
-            person.nameLetter = person.getLetterFromName(person.name)
+            person.nameLetter = person.getLetterFromName()
             self.addEmailsToNewPerson(person, contact: contact, dataController: dataController)
 //            dataController.save()
         }
@@ -110,22 +118,6 @@ class ContactService {
         else {
             return false
         }
-    }
-    
-    class func createFullNameFromContact(contact: CNContact) -> String {
-        var fullName = ""
-        if !contact.givenName.isEmpty {
-            fullName = contact.givenName
-        }
-        if !contact.familyName.isEmpty {
-            if fullName != "" {
-                fullName += " \(contact.familyName)"
-            }
-            else {
-                fullName = contact.familyName
-            }
-        }
-        return fullName
     }
     
     class func addEmailsToNewPerson(person: Person, contact:CNContact, dataController: DataController) {

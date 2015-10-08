@@ -11,14 +11,14 @@ import Alamofire
 
 class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var nameTextField: BottomBorderUITextField!
+
+    @IBOutlet weak var givenNameTextField: BottomBorderUITextField!
+    @IBOutlet weak var familyNameTextField: BottomBorderUITextField!
     @IBOutlet weak var emailTextField: BottomBorderUITextField!
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var nextButton: TextUIButton!
 
     @IBOutlet weak var verticalSpaceToTitle: NSLayoutConstraint!
-    @IBOutlet weak var verticalSpaceToName: NSLayoutConstraint!
-    @IBOutlet weak var verticalSpaceToEmail: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToNext: NSLayoutConstraint!
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!
     
@@ -33,7 +33,8 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
         
         emailTextField.delegate = self
         
-        nameTextField.addBottomLayer()
+        givenNameTextField.addBottomLayer()
+        familyNameTextField.addBottomLayer()
         emailTextField.addBottomLayer()
         
         nextButton.layer.cornerRadius = 5
@@ -51,12 +52,11 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
     func formatForiPhone4S() {
     
         verticalSpaceToTitle.constant = 10
-        verticalSpaceToName.constant = 10
-        verticalSpaceToEmail.constant = 10
         verticalSpaceToNext.constant = 10
         buttonHeight.constant = 30
         
-        nameTextField.font = nameTextField.font!.fontWithSize(15.0)
+        givenNameTextField.font = givenNameTextField.font!.fontWithSize(15.0)
+        familyNameTextField.font = familyNameTextField.font!.fontWithSize(15.0)
         emailTextField.font = emailTextField.font!.fontWithSize(15.0)
         
     }
@@ -81,7 +81,7 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
     }
     
     func validateNextButton() {
-        if nameTextField.text != "" && emailTextField.text != "" {
+        if (givenNameTextField.text != "" || familyNameTextField.text != "") && emailTextField.text != "" {
             nextButton.enable()
         }
         else {
@@ -122,7 +122,8 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "enterUsername" {
             let destinationViewController = segue.destinationViewController as? UsernameViewController
-            destinationViewController!.name = nameTextField.text
+            destinationViewController!.givenName = givenNameTextField.text
+            destinationViewController!.familyName = familyNameTextField.text
             destinationViewController!.email = emailTextField.text
         }
     }

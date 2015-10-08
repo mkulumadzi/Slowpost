@@ -14,34 +14,40 @@ class Person: PostofficeObject {
     
     @NSManaged var username:String
     @NSManaged var primaryEmail:String!
-    @NSManaged var name:String!
+    @NSManaged var givenName:String!
+    @NSManaged var familyName:String!
     @NSManaged var origin:String!
     @NSManaged var contactId:String!
     @NSManaged var emails:NSSet!
     @NSManaged var nameLetter:String
     
     func initials() -> String {
-        let splitName = name.characters.split {$0 == " "}.map { String($0) }
-        if splitName.count > 1 {
-            let firstNameCharacters = Array(splitName[0].characters)
-            let firstInitial = firstNameCharacters[0]
-            let lastNameCharacters = Array(splitName[splitName.count - 1].characters)
-            let lastInitial = lastNameCharacters[0]
-            return "\(firstInitial)\(lastInitial)"
+        if givenName != "" && familyName != "" {
+            return "\(givenName.characters.first!)\(familyName.characters.first!)"
+        }
+        else if givenName != "" {
+            return "\(givenName.characters.first!)"
+        }
+        else if familyName != "" {
+            return "\(familyName.characters.first!)"
         }
         else {
-            let nameCharacters = Array(name.characters)
-            if nameCharacters.count > 1 {
-                return "\(nameCharacters[0])\(nameCharacters[1])"
-            }
-            else {
-                return "\(nameCharacters[0])"
-            }
+            return ""
         }
     }
     
-    func getLetterFromName(name: String) -> String {
-        let firstLetter = String(name.characters.first!)
+    func getLetterFromName() -> String {
+        var firstLetter:String!
+        if familyName != "" {
+            firstLetter = String(familyName.characters.first!)
+        }
+        else if givenName != "" {
+            firstLetter = String(givenName.characters.first!)
+        }
+        else {
+            firstLetter = "#"
+        }
+        
         let upper = firstLetter.uppercaseString
         let acceptableLetters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
         if acceptableLetters.indexOf(upper) != nil {
@@ -49,6 +55,18 @@ class Person: PostofficeObject {
         }
         else {
             return "#"
+        }
+    }
+    
+    func fullName() -> String {
+        if givenName != "" && familyName != "" {
+            return "\(givenName) \(familyName)"
+        }
+        else if givenName != "" {
+            return givenName
+        }
+        else {
+            return familyName
         }
     }
     

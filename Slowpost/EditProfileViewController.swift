@@ -14,10 +14,14 @@ class EditProfileViewController: UITableViewController {
 
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var nameField: UITextField!
+
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet var profileTable: UITableView!
+    
+    @IBOutlet weak var givenNameField: UITextField!
+    @IBOutlet weak var familyNameField: UITextField!
+    
     
     var loggedInUser:Person!
     
@@ -30,7 +34,8 @@ class EditProfileViewController: UITableViewController {
         
         navBar.frame.size = CGSize(width: navBar.frame.width, height: 60)
         
-        nameField.text = loggedInUser.name
+        givenNameField.text = loggedInUser.givenName
+        familyNameField.text = loggedInUser.familyName
         usernameLabel.text = loggedInUser.username
         emailLabel.text = loggedInUser.primaryEmail
         
@@ -68,7 +73,7 @@ class EditProfileViewController: UITableViewController {
         saveButton.enabled = false
         
         let updatePersonURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)"
-        let parameters = ["name": "\(nameField.text!)"]
+        let parameters = ["given_name": "\(givenNameField.text!)", "family_name": "\(familyNameField.text!)"]
         
         RestService.postRequest(updatePersonURL, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
             print(result)

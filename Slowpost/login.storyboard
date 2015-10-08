@@ -29,6 +29,7 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -538,7 +539,7 @@ Evan</string>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VGQ-6a-6wA" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Given Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VGQ-6a-6wA" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="164" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Sa5-ec-ezx"/>
@@ -551,7 +552,7 @@ Evan</string>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOu-Ii-hWQ" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="284" width="540" height="40"/>
+                                <rect key="frame" x="30" y="304" width="540" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="IsH-bf-IGC"/>
@@ -566,7 +567,7 @@ Evan</string>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="P5I-cq-lFh" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="224" width="540" height="30"/>
+                                <rect key="frame" x="30" y="244" width="540" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Tco-OY-Y9H"/>
                                 </constraints>
@@ -575,6 +576,18 @@ Evan</string>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="ssz-Wc-Wtv"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Family Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Zal-kx-u8W" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="204" width="540" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="5er-Fr-WXK"/>
+                                </constraints>
+                                <color key="textColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                <connections>
+                                    <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="1qC-Tt-8lk"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -589,17 +602,22 @@ Evan</string>
                             <constraint firstItem="P5I-cq-lFh" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="B8V-qf-Rx7"/>
                             <constraint firstAttribute="trailing" secondItem="EJb-Ir-fa9" secondAttribute="trailing" constant="30" id="Gxb-XP-rdg"/>
                             <constraint firstItem="VGQ-6a-6wA" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="I9B-8l-kjq"/>
-                            <constraint firstItem="P5I-cq-lFh" firstAttribute="top" secondItem="VGQ-6a-6wA" secondAttribute="bottom" constant="30" id="MCo-Fw-Poj"/>
+                            <constraint firstItem="P5I-cq-lFh" firstAttribute="top" secondItem="VGQ-6a-6wA" secondAttribute="bottom" constant="90" id="MCo-Fw-Poj"/>
                             <constraint firstAttribute="trailing" secondItem="8aQ-qm-rHK" secondAttribute="trailing" id="UCx-Bs-3nE"/>
                             <constraint firstItem="8aQ-qm-rHK" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" id="XJQ-hw-mBd"/>
+                            <constraint firstItem="P5I-cq-lFh" firstAttribute="top" secondItem="Zal-kx-u8W" secondAttribute="bottom" constant="10" id="Y8h-C1-xFr"/>
                             <constraint firstItem="VOu-Ii-hWQ" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="aHq-dx-1N4"/>
                             <constraint firstItem="EJb-Ir-fa9" firstAttribute="top" secondItem="5ay-1r-pEx" secondAttribute="bottom" constant="46" id="c7W-KK-wsb"/>
                             <constraint firstAttribute="trailing" secondItem="VOu-Ii-hWQ" secondAttribute="trailing" constant="30" id="eyq-GC-f9l"/>
+                            <constraint firstAttribute="trailing" secondItem="Zal-kx-u8W" secondAttribute="trailing" constant="30" id="gaW-bx-cr1"/>
                             <constraint firstItem="VOu-Ii-hWQ" firstAttribute="top" secondItem="P5I-cq-lFh" secondAttribute="bottom" constant="30" id="jJc-a7-f2S"/>
+                            <constraint firstItem="Zal-kx-u8W" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="lDc-fQ-GJY"/>
+                            <constraint firstItem="Zal-kx-u8W" firstAttribute="top" secondItem="VGQ-6a-6wA" secondAttribute="bottom" constant="10" id="xpg-ff-Ecg"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="393-Pl-oue"/>
+                                <exclude reference="MCo-Fw-Poj"/>
                             </mask>
                         </variation>
                     </view>
@@ -616,10 +634,9 @@ Evan</string>
                     <connections>
                         <outlet property="buttonHeight" destination="IsH-bf-IGC" id="RPc-P6-YS0"/>
                         <outlet property="emailTextField" destination="P5I-cq-lFh" id="9zA-yl-P3b"/>
-                        <outlet property="nameTextField" destination="VGQ-6a-6wA" id="fdE-Zf-mlF"/>
+                        <outlet property="familyNameTextField" destination="Zal-kx-u8W" id="1VN-Lx-iHr"/>
+                        <outlet property="givenNameTextField" destination="VGQ-6a-6wA" id="2tT-D3-N6j"/>
                         <outlet property="nextButton" destination="VOu-Ii-hWQ" id="kc2-Tq-Fjz"/>
-                        <outlet property="verticalSpaceToEmail" destination="MCo-Fw-Poj" id="m0b-hj-nVW"/>
-                        <outlet property="verticalSpaceToName" destination="1I8-Zk-R8Z" id="gl0-IE-cDe"/>
                         <outlet property="verticalSpaceToNext" destination="jJc-a7-f2S" id="7cU-45-dGY"/>
                         <outlet property="verticalSpaceToTitle" destination="c7W-KK-wsb" id="1vD-19-Nxj"/>
                         <outlet property="warningLabel" destination="8aQ-qm-rHK" id="LAo-un-FAk"/>

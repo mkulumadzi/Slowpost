@@ -97,7 +97,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         
         let fromPerson = mail.fromPerson
         cell.fromViewInitials.text = fromPerson.initials()
-        cell.fromLabel.text = fromPerson.name
+        cell.fromLabel.text = fromPerson.fullName()
         self.addImageToCell(cell)
         if cell.imageFile != nil { cell.mailImage.image = cell.imageFile }
         let deliveredDateString = mail.dateDelivered.formattedAsString("yyyy-MM-dd")

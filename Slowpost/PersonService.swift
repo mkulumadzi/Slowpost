@@ -27,10 +27,11 @@ class PersonService: PostofficeObjectService {
     override class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject) {
         let person = object as! Person
         person.username = json["username"].stringValue
-        person.name = json["name"].stringValue
+        person.givenName = json["given_name"].stringValue
+        person.familyName = json["family_name"].stringValue
         person.primaryEmail = json["email"].stringValue
         person.origin = "Postoffice"
-        person.nameLetter = person.getLetterFromName(json["name"].stringValue)
+        person.nameLetter = person.getLetterFromName()
         
         super.addOrUpdateCoreDataEntityFromJson(json, object: person)
     }
@@ -125,12 +126,13 @@ class PersonService: PostofficeObjectService {
         fetchRequest.predicate = NSPredicate(format: "ANY emails.email == %@", email)
         let person = CoreDataService.executeFetchRequest(dataController.moc, fetchRequest: fetchRequest)![0] as! Person
         person.username = json["username"].stringValue
-        person.name = json["name"].stringValue
+        person.givenName = json["given_name"].stringValue
+        person.familyName = json["family_name"].stringValue
         person.primaryEmail = json["email"].stringValue
         
         // Keeping this as Phone to ensure it is not confused for an actual person the user has sent or received mail to
         person.origin = "Phone"
-        person.nameLetter = person.getLetterFromName(json["name"].stringValue)
+        person.nameLetter = person.getLetterFromName()
         
         super.addOrUpdateCoreDataEntityFromJson(json, object: person)
         

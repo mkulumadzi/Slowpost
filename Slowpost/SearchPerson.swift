@@ -12,32 +12,41 @@ import UIKit
 class SearchPerson: NSObject {
     var id:String
     var username:String
-    var name:String!
+    var givenName:String!
+    var familyName:String!
     
-    init(id:String, username:String, name:String?) {
+    init(id:String, username:String, givenName:String?, familyName: String?) {
         self.id = id
         self.username = username
-        self.name = name
+        self.givenName = givenName
+        self.familyName = familyName
         super.init()
     }
     
     func initials() -> String {
-        let splitName = name.characters.split {$0 == " "}.map { String($0) }
-        if splitName.count > 1 {
-            let firstNameCharacters = Array(splitName[0].characters)
-            let firstInitial = firstNameCharacters[0]
-            let lastNameCharacters = Array(splitName[splitName.count - 1].characters)
-            let lastInitial = lastNameCharacters[0]
-            return "\(firstInitial)\(lastInitial)"
+        if givenName != "" && familyName != "" {
+            return "\(givenName.characters.first!)\(familyName.characters.first!)"
+        }
+        else if givenName != "" {
+            return "\(givenName.characters.first!)"
+        }
+        else if familyName != "" {
+            return "\(familyName.characters.first!)"
         }
         else {
-            let nameCharacters = Array(name.characters)
-            if nameCharacters.count > 1 {
-                return "\(nameCharacters[0])\(nameCharacters[1])"
-            }
-            else {
-                return "\(nameCharacters[0])"
-            }
+            return ""
+        }
+    }
+    
+    func fullName() -> String {
+        if givenName != "" && familyName != "" {
+            return "\(givenName) \(familyName)"
+        }
+        else if givenName != "" {
+            return givenName
+        }
+        else {
+            return familyName
         }
     }
 }
