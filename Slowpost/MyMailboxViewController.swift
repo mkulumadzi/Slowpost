@@ -30,6 +30,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Flurry.logEvent("Mailbox_opened")
         
         initializeFetchedResultsController()
         
@@ -116,7 +117,6 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         self.addImageToCell(cell)
         if cell.imageFile != nil {
             cell.mailImage.image = cell.imageFile
-            print("Found image file for \(cell): \(cell.imageFile)")
         }
         let deliveredDateString = mail.dateDelivered.formattedAsString("yyyy-MM-dd")
         cell.deliveredLabel.text = "Delivered on \(deliveredDateString)"

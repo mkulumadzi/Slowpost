@@ -32,22 +32,24 @@ class ContactService {
     }
     
     class func fetchContacts() {
+        Flurry.logEvent("Fetching_Contacts", timed: true)
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let dataController = appDelegate.dataController
-            let coreDataEmailAddresses = PersonService.getAllEmailAddresses()
-            let store = CNContactStore()
-            let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName), CNContactEmailAddressesKey, CNContactIdentifierKey]
-            let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
-            do {
-                try store.enumerateContactsWithFetchRequest(fetchRequest, usingBlock: { (contact, cursor) -> Void in
-                    self.addContactToCoreData(contact, coreDataEmailAddresses: coreDataEmailAddresses, dataController: dataController)
-                })
-            }
-            catch {
-                print(error)
-            }
-            dataController.save()
-            PersonService.searchForContactsOnSlowpost()
+        let coreDataEmailAddresses = PersonService.getAllEmailAddresses()
+        let store = CNContactStore()
+        let keysToFetch = [CNContactFormatter.descriptorForRequiredKeysForStyle(.FullName), CNContactEmailAddressesKey, CNContactIdentifierKey]
+        let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
+        do {
+            try store.enumerateContactsWithFetchRequest(fetchRequest, usingBlock: { (contact, cursor) -> Void in
+                self.addContactToCoreData(contact, coreDataEmailAddresses: coreDataEmailAddresses, dataController: dataController)
+            })
+        }
+        catch {
+            print(error)
+        }
+        dataController.save()
+        PersonService.searchForContactsOnSlowpost()
+        Flurry.endTimedEvent("Fetching_Contacts", withParameters: nil)
     }
     
     class func addContactToCoreData(contact: CNContact, coreDataEmailAddresses: [String], dataController: DataController) {

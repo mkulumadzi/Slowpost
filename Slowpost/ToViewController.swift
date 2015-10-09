@@ -37,6 +37,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Flurry.logEvent("Compose_Message_Workflow_Began")
         toPeople = [Person]()
         toSearchPeople = [SearchPerson]()
         toEmails = [String]()
@@ -54,8 +55,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         addSegmentedControlToHeader()
 
         validateNextButton()
-    
-        Flurry.logEvent("Compose_Message_Workflow_Began")
         
         warningLabel.hide()
         personTable.sectionIndexColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
@@ -228,6 +227,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     //MARK: segmented control configuration
     func toggleResults() {
+        Flurry.logEvent("Toggled_list_of_people")
         initializePeopleController()
         personTable.reloadData()
     }
@@ -523,6 +523,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
         let numPeopleSections = peopleController.sections!.count
         if recipientSection() == true && indexPath.section == 0 {
+            Flurry.logEvent("Removed_recipient")
             self.removeRecipient(tableView, indexPath: indexPath)
         }
         else if (indexPath.section - adjuster) < numPeopleSections {
@@ -556,10 +557,12 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func handlePersonSelection(tableView: UITableView, indexPath: NSIndexPath) {
         if let cell = personTable.cellForRowAtIndexPath(indexPath) as? PersonCell {
             if !personSelected(cell.person) {
+                Flurry.logEvent("Added_person")
                 cell.accessoryType = .Checkmark
                 toPeople.append(cell.person)
             }
             else {
+                Flurry.logEvent("Removed_person")
                 cell.accessoryType = .None
                 toPeople = toPeople.filter() {$0.id != cell.person.id}
             }
@@ -567,6 +570,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         else if let cell = personTable.cellForRowAtIndexPath(indexPath) as? PhoneContactCell {
             if cell.person.emails.count == 1 {
                 if personEmailSelected(cell.person) == "" {
+                    Flurry.logEvent("Added_email")
                     cell.accessoryType = .Checkmark
                     if cell.person.emails.count == 1 {
                         let emailAddress = cell.person.emails.allObjects[0] as! EmailAddress
@@ -574,6 +578,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                     }
                 }
                 else {
+                    Flurry.logEvent("Removed_email")
                     cell.accessoryType = .None
                     let emailAddress = cell.person.emails.allObjects[0] as! EmailAddress
                     toEmails = toEmails.filter() {$0 != emailAddress.email }
@@ -591,6 +596,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func handleOtherSelection(tableView: UITableView, indexPath: NSIndexPath) {
         if let searchPersonCell = tableView.cellForRowAtIndexPath(indexPath) as? SearchPersonCell {
+            Flurry.logEvent("Added_person_searched_on_slowpost")
             let searchPerson = searchPersonCell.searchPerson
             self.toSearchPeople.append(searchPerson)
             self.personTable.reloadData()
@@ -642,6 +648,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     @IBAction func emailAddressSelected(segue:UIStoryboardSegue) {
+        Flurry.logEvent("Added_email_for_person_with_multiple")
         if let contactView = segue.sourceViewController as? PhoneContactViewController {
             clearSelectedEmailsForPerson(contactView.person)
             toEmails.append(contactView.emailSelected.email)
@@ -666,6 +673,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     @IBAction func cancelledWithNoEmailSelected(segue:UIStoryboardSegue) {
+        Flurry.logEvent("Removed_email_for_person_with_multiple")
         if let contactView = segue.sourceViewController as? PhoneContactViewController {
             clearSelectedEmailsForPerson(contactView.person)
             if contactView.emailSelected != nil {

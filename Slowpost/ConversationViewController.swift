@@ -30,6 +30,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Flurry.logEvent("Conversation_view_opened")
         
         initializeFetchedResultsController()
         
@@ -37,7 +38,6 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         
         mailTable.addSubview(self.refreshControl)
         
-//         Calculating row height automatically; can't get it working with autolayout.
         mailTable.estimatedRowHeight = 45 + view.frame.width / 2
         mailTable.rowHeight = UITableViewAutomaticDimension
         
@@ -56,7 +56,6 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     override func viewDidAppear(animated: Bool) {
-        print("View appeared")
         super.viewDidAppear(true)
         refreshData()
     }
@@ -167,7 +166,6 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func configureCell(cell: ConversationMailCell, indexPath: NSIndexPath) {
-        print("Configuring cell...")
         let mail = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Mail
         cell.mail = mail
         cell.imageFile = nil
@@ -275,6 +273,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     
     
     @IBAction func composeMessage(sender: AnyObject) {
+        Flurry.logEvent("Clicked_compose_from_conversation_view")
         var toPeople = [Person]()
         let userId = LoginService.getUserIdFromToken()
         for item in conversation.people.allObjects {

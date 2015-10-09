@@ -64,6 +64,7 @@ class FileService {
             .validate(statusCode: 200..<400)
             .responseData { _, response, result in
             print(result)
+            print(response)
             switch result {
             case .Success (let result):
                 let image = UIImage(data: result as NSData)

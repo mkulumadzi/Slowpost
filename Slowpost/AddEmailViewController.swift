@@ -68,6 +68,7 @@ class AddEmailViewController: UIViewController {
     }
 
     @IBAction func submitButtonPressed(sender: AnyObject) {
+        Flurry.logEvent("Added_email_manually")
         addEmail()
     }
     

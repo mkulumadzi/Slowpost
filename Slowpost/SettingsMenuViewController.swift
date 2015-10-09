@@ -18,6 +18,7 @@ class SettingsMenuViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        Flurry.logEvent("Settings_opened")
         
         logOutButton.layer.cornerRadius = 5
         editProfileButton.layer.cornerRadius = 5

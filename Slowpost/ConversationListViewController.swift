@@ -14,7 +14,6 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     
     
     @IBOutlet weak var conversationList: UITableView!
-//    @IBOutlet weak var noResultsLabel: UILabel!
     @IBOutlet weak var messageLabel: MessageUILabel!
     
     var fetchedResultsController: NSFetchedResultsController!

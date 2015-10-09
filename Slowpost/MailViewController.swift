@@ -101,6 +101,7 @@ class MailViewController: UIViewController {
     }
     
     @IBAction func replyToMail(sender: AnyObject) {
+        Flurry.logEvent("Replied_to_mail")
         var toPeople = [Person]()
         let userId = LoginService.getUserIdFromToken()
         for item in mail.conversation.people.allObjects {

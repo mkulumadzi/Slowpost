@@ -38,7 +38,6 @@ class InitialViewController: UIViewController {
         print("Checking login at \(NSDate())")
         let token = LoginService.getTokenFromKeychain()
         if token != nil {
-            print("Found token")
             LoginService.confirmTokenMatchesValidUserOnServer( { error, result -> Void in
                 if result as? String == "Success" {
                     self.beginLoadingInitialData()
