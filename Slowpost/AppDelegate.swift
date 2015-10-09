@@ -129,11 +129,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let userId = LoginService.getUserIdFromToken()
         let predicate1 = NSPredicate(format: "ANY toPeople.id == %@", userId)
         let predicate2 = NSPredicate(format: "status == %@", "DELIVERED")
-        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate1, predicate2])
+        let predicate3 = NSPredicate(format: "myStatus != %@", "READ")
+        let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate1, predicate2, predicate3])
         fetchRequest.predicate = compoundPredicate
         
         let numberUnread = dataController.executeFetchRequest(fetchRequest)!.count
         
+        print(numberUnread)
         application.applicationIconBadgeNumber = numberUnread
     }
     
