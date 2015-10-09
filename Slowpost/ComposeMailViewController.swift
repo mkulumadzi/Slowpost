@@ -20,7 +20,8 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var imagePreview: UIImageView!
     @IBOutlet weak var composeText: UITextView!
     @IBOutlet weak var doneButton: UIButton!
-    @IBOutlet weak var composeTextToImageTop: NSLayoutConstraint!
+    @IBOutlet weak var composeTextToTopLayoutGuide: NSLayoutConstraint!
+    @IBOutlet weak var composeTextToImageBottom: NSLayoutConstraint!
     
     @IBOutlet weak var placeholderTextLabel: UILabel!
     
@@ -35,10 +36,10 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         
         keyboardShowing = false
         toLabel.text = toList()
+        composeTextToImageBottom.priority = 999
+        composeTextToTopLayoutGuide.priority = 251
         
         self.automaticallyAdjustsScrollViewInsets = false
-        
-        composeTextToImageTop.constant = self.view.frame.width * 3/4
         validatePlaceholderLabel()
         composeText.textContainerInset.left = 10
         composeText.textContainerInset.right = 10
@@ -61,9 +62,11 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     func validatePlaceholderLabel() {
         if composeText.text != "" || self.keyboardShowing == true {
             placeholderTextLabel.hidden = true
+            print("hiding placeholder")
         }
         else {
             placeholderTextLabel.hidden = false
+            print("showing placeholder")
         }
     }
 
@@ -94,16 +97,21 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     }
     
     func keyboardShow(notification: NSNotification) {
+        composeTextToImageBottom.priority = 251
+        composeTextToTopLayoutGuide.priority = 999
         self.keyboardShowing = true
         self.placeholderTextLabel.hidden = true
         if deviceType == "iPhone 4S" {
-            composeTextToImageTop.constant = 50
+            composeTextToTopLayoutGuide.constant = 114
         }
         else if deviceType == "iPhone 5" || deviceType == "iPhone 5C" || deviceType == "iPhone 5S" {
-            composeTextToImageTop.constant = 100
+            composeTextToTopLayoutGuide.constant = 164
+        }
+        else if UIDevice.currentDevice().orientation == .LandscapeLeft || UIDevice.currentDevice().orientation == .LandscapeRight {
+            composeTextToTopLayoutGuide.constant = 164
         }
         else {
-            composeTextToImageTop.constant = self.view.frame.width * 3/8
+            composeTextToTopLayoutGuide.constant = self.view.frame.width * 3/8 + 64
         }
         
         
@@ -115,11 +123,13 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     }
     
     func keyboardHide(notification:NSNotification) {
-        composeTextToImageTop.constant = self.view.frame.width * 3/4
         self.keyboardShowing = false
+        composeTextToImageBottom.priority = 999
+        composeTextToTopLayoutGuide.priority = 251
         self.validatePlaceholderLabel()
         self.composeText.contentInset = UIEdgeInsetsZero
         self.composeText.scrollIndicatorInsets = UIEdgeInsetsZero
+        self.updateViewConstraints()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
