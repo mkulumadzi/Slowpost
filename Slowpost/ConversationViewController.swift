@@ -170,6 +170,8 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         print("Configuring cell...")
         let mail = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Mail
         cell.mail = mail
+        cell.imageFile = nil
+        cell.mailImageView.image = nil
         
         generateStatusLabel(cell, mail: cell.mail)
         
