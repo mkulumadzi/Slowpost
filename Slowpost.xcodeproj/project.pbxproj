@@ -42,7 +42,6 @@
 		D20EC2591BAC8F1400E3DEA5 /* PostofficeObjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EC2581BAC8F1400E3DEA5 /* PostofficeObjectService.swift */; settings = {ASSET_TAGS = (); }; };
 		D21D79D51B5093430014510E /* ios7-checkmark-not-checked.png in Resources */ = {isa = PBXBuildFile; fileRef = D21D79D41B5093430014510E /* ios7-checkmark-not-checked.png */; };
 		D21D79D71B5093490014510E /* ios7-checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = D21D79D61B5093490014510E /* ios7-checkmark.png */; };
-		D21D79DD1B56ED540014510E /* AddressBookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21D79DC1B56ED540014510E /* AddressBookService.swift */; };
 		D21E2C871BC09C6100E17572 /* libFlurry_7.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D21E2C861BC09C6100E17572 /* libFlurry_7.2.1.a */; settings = {ASSET_TAGS = (); }; };
 		D2389E681B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E671B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift */; };
 		D2389E6B1B950C0300CB19BB /* conversations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2389E6A1B950C0300CB19BB /* conversations.storyboard */; };
@@ -196,7 +195,6 @@
 		D20EC2581BAC8F1400E3DEA5 /* PostofficeObjectService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostofficeObjectService.swift; sourceTree = "<group>"; };
 		D21D79D41B5093430014510E /* ios7-checkmark-not-checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-checkmark-not-checked.png"; sourceTree = "<group>"; };
 		D21D79D61B5093490014510E /* ios7-checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-checkmark.png"; sourceTree = "<group>"; };
-		D21D79DC1B56ED540014510E /* AddressBookService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressBookService.swift; sourceTree = "<group>"; };
 		D21E2C851BC09C5900E17572 /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		D21E2C861BC09C6100E17572 /* libFlurry_7.2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.2.1.a; sourceTree = "<group>"; };
 		D2222A741B588695007E74BB /* SnailMailModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SnailMailModel 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -601,7 +599,6 @@
 			isa = PBXGroup;
 			children = (
 				CC6105F41AC3941900D15150 /* LoginService.swift */,
-				D21D79DC1B56ED540014510E /* AddressBookService.swift */,
 				D2B7CEA51B694C14007F8235 /* GlobalVariables.swift */,
 				D2B7CEA71B694D95007F8235 /* PersonService.swift */,
 				D2B7CEA91B694E55007F8235 /* MailService.swift */,
@@ -901,7 +898,6 @@
 				D2389E7D1B962B7000CB19BB /* Conversation.swift in Sources */,
 				D2CEC4741B72ACBD002CFD25 /* SendingViewController.swift in Sources */,
 				D27DA3291B62E7BC00DF32A1 /* SettingsMenuViewController.swift in Sources */,
-				D21D79DD1B56ED540014510E /* AddressBookService.swift in Sources */,
 				D2CEC4641B6C1F4F002CFD25 /* PhotoLibraryViewController.swift in Sources */,
 				D267262E1B7D3E3700FE651F /* SignUpCompleteViewController.swift in Sources */,
 				D24BC0FC1B98E317000405F7 /* MailViewController.swift in Sources */,
