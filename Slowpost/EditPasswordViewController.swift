@@ -48,6 +48,13 @@ class EditPasswordViewController: UIViewController {
         verticalSpaceToNewPasswordField1.constant = 10
         saveButtonHeight.constant = 30
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        existingPasswordField.addBottomLayer()
+        newPasswordField.addBottomLayer()
+        confirmPasswordField.addBottomLayer()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
