@@ -40,7 +40,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        refreshData()
+//        refreshData()
     }
     
     

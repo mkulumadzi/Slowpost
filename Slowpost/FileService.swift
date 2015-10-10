@@ -29,12 +29,22 @@ class FileService {
                 
                 RestService.postRequest(uploadURL, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
                     if error != nil {
+                        print("Got error")
                         completion(error: error, result: nil)
                     }
                     if let response = result as? [AnyObject] {
                         if let location = response[1] as? String {
+                            print("Uploaded image!")
                             completion(error: nil, result: location)
                         }
+                        else {
+                            print("Got an unexpected result")
+                            completion(error: nil, result: nil)
+                        }
+                    }
+                    else {
+                        print("Something else happened")
+                        completion(error: nil, result: nil)
                     }
                 })
             }
@@ -71,8 +81,11 @@ class FileService {
                 self.postImageDownloadNotification()
                 completion(error: nil, result: image)
             case .Failure(_,let error):
-                print(error)
-                completion(error: nil, result: response!.statusCode)
+                var statusCode:Int!
+                if response != nil {
+                    statusCode = response!.statusCode
+                }
+                completion(error: error, result: statusCode)
             }
         }
     }

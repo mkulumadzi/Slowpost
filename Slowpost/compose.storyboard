@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wl4-oX-yWn">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
@@ -12,6 +11,7 @@
             <string>OpenSans-Light</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
@@ -698,6 +698,13 @@
                                     <rect key="frame" x="100" y="332" width="400" height="18"/>
                                 </variation>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="warningLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wj0-gO-sx1" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="21"/>
+                                <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -711,6 +718,7 @@
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
                             <constraint firstItem="oFT-Rb-cNu" firstAttribute="top" secondItem="Uk2-1o-YPF" secondAttribute="bottom" constant="10" id="DA2-QI-BlE"/>
+                            <constraint firstAttribute="trailing" secondItem="Wj0-gO-sx1" secondAttribute="trailing" id="K44-O8-phd"/>
                             <constraint firstItem="fhm-0k-4pj" firstAttribute="top" secondItem="4A0-Za-BgN" secondAttribute="bottom" constant="10" id="Suz-Mf-sea"/>
                             <constraint firstAttribute="trailing" secondItem="Uk2-1o-YPF" secondAttribute="trailing" constant="30" id="XcT-WL-GdU">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
@@ -719,9 +727,11 @@
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
                             <constraint firstItem="Uk2-1o-YPF" firstAttribute="top" secondItem="sbs-Lk-8bE" secondAttribute="bottom" id="fOS-RG-0M0"/>
+                            <constraint firstItem="Wj0-gO-sx1" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" id="grH-Ge-Vzl"/>
                             <constraint firstAttribute="trailing" secondItem="fhm-0k-4pj" secondAttribute="trailing" constant="30" id="h3g-co-L4c">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
+                            <constraint firstItem="Wj0-gO-sx1" firstAttribute="top" secondItem="EPo-xN-8yt" secondAttribute="bottom" id="q1M-Wh-8Ao"/>
                             <constraint firstItem="sbs-Lk-8bE" firstAttribute="top" secondItem="fhm-0k-4pj" secondAttribute="bottom" constant="30" id="rkt-vP-d3T">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
@@ -751,6 +761,7 @@
                         <outlet property="distanceToScheduledSection" destination="rkt-vP-d3T" id="0HY-v1-Xwv"/>
                         <outlet property="standardButton" destination="fhm-0k-4pj" id="Xn2-47-ina"/>
                         <outlet property="standardDeliveryButtonHeight" destination="TsL-no-8b7" id="vs0-uX-YNx"/>
+                        <outlet property="warningLabel" destination="Wj0-gO-sx1" id="Ade-s0-M45"/>
                         <segue destination="MtH-uW-ItT" kind="presentation" identifier="sendMail" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="fof-2k-i0C"/>
                     </connections>
                 </viewController>
@@ -836,6 +847,7 @@
                         <outlet property="cancelButtonHeight" destination="fK0-R7-jpw" id="TGF-iD-cRV"/>
                         <segue destination="hsk-st-IZq" kind="unwind" identifier="mailSent" unwindAction="unwindCompose:" id="goE-kQ-V1a"/>
                         <segue destination="hsk-st-IZq" kind="unwind" identifier="sendingCancelled" unwindAction="sendingCancelled:" id="Gqu-Hq-kPO"/>
+                        <segue destination="hsk-st-IZq" kind="unwind" identifier="mailFailedToSend" unwindAction="mailFailedToSend:" id="dD4-Mx-bJ9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HIU-N4-2SL" userLabel="First Responder" sceneMemberID="firstResponder"/>

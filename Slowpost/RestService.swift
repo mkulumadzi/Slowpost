@@ -34,10 +34,10 @@ class RestService {
         Alamofire.request(.GET, requestURL, headers: requestHeaders)
             .responseJSON { (_, response, result) in
                 
-            print(response)
-            print(result)
-
-            print("The response status code is \(response!.statusCode)")
+//            print(response)
+//            print(result)
+//
+//            print("The response status code is \(response!.statusCode)")
             switch result {
             case .Success (let result):
                 if let dataArray = result as? [AnyObject] {
@@ -47,7 +47,11 @@ class RestService {
                     completion(error: nil, result: result)
                 }
             case .Failure(_, let error):
-                completion(error: error, result: response!.statusCode)
+                var statusCode:Int!
+                if response != nil {
+                    statusCode = response!.statusCode
+                }
+                completion(error: error, result: statusCode)
             }
         }
     }
@@ -75,17 +79,26 @@ class RestService {
             // To Do: Let Alamofire get correct result status (it seems to think that an empty response is a FAILURE
             .validate(statusCode: 200..<300)
             .responseJSON { (_, response, result) in
-            if response!.statusCode == 201 {
-                completion(error: nil, result: [201, response!.allHeaderFields["Location"] as! String])
+            var statusCode:Int!
+            if response != nil {
+                statusCode = response!.statusCode
             }
-            else if response!.statusCode == 204 {
-                completion(error: nil, result: [204, ""])
+            if statusCode != nil {
+                if statusCode == 201 {
+                    completion(error: nil, result: [201, response!.allHeaderFields["Location"] as! String])
+                }
+                else if statusCode == 204 {
+                    completion(error: nil, result: [204, ""])
+                }
+                else {
+                    //To Do: Capture case where an error message is returned
+                    completion(error: nil, result: "Unexpected result")
+                }
             }
             else {
-                //To Do: Capture case where an error message is returned
-                
                 completion(error: nil, result: "Unexpected result")
             }
+            
         }
     }
     

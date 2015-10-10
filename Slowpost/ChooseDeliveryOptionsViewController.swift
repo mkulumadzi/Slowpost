@@ -21,6 +21,7 @@ class ChooseDeliveryOptionsViewController: UIViewController {
     @IBOutlet weak var standardButton: TextUIButton!
 //    @IBOutlet weak var expressButton: TextUIButton!
     @IBOutlet weak var customButton: TextUIButton!
+    @IBOutlet weak var warningLabel: WarningUILabel!
     
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!
     @IBOutlet weak var standardDeliveryButtonHeight: NSLayoutConstraint!
@@ -32,6 +33,7 @@ class ChooseDeliveryOptionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        warningLabel.hide()
         
         standardButton.layer.cornerRadius = 5
 //        expressButton.layer.cornerRadius = 5
@@ -97,6 +99,10 @@ class ChooseDeliveryOptionsViewController: UIViewController {
                 sendingViewController!.scheduledToArrive = scheduledToArrive!
             }
         }
+        
+    }
+    
+    @IBAction func mailFailedToSend(segue: UIStoryboardSegue) {
         
     }
     

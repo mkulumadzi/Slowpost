@@ -63,7 +63,7 @@ class SendingViewController: UIViewController {
                 self.sendMailToPostoffice(imageUid)
             }
             else {
-                print("Unexpected result")
+                self.performSegueWithIdentifier("mailFailedToSend", sender: nil)
             }
         })
     }
@@ -148,6 +148,21 @@ class SendingViewController: UIViewController {
                 lastPostRequest.cancel()
                 self.dismissViewControllerAnimated(true, completion: {})
             }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "mailFailedToSend" {
+            
+            let chooseDeliveryOptionsController = segue.destinationViewController as? ChooseDeliveryOptionsViewController
+            chooseDeliveryOptionsController!.warningLabel.show("Mail failed to send.")
+            
+            // Delay the dismissal by 5 seconds
+            let delay = 5.0 * Double(NSEC_PER_SEC)
+            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+            dispatch_after(time, dispatch_get_main_queue(), {
+                chooseDeliveryOptionsController!.warningLabel.hide()
+            })
         }
     }
     
