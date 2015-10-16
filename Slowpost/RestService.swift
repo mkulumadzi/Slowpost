@@ -33,11 +33,6 @@ class RestService {
         
         Alamofire.request(.GET, requestURL, headers: requestHeaders)
             .responseJSON { (_, response, result) in
-                
-//            print(response)
-//            print(result)
-//
-//            print("The response status code is \(response!.statusCode)")
             switch result {
             case .Success (let result):
                 if let dataArray = result as? [AnyObject] {

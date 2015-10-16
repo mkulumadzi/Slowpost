@@ -116,5 +116,9 @@ class WelcomeScreenViewController: UIViewController, UIPageViewControllerDataSou
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
         return 0
     }
+    
+    // MARK: Unwind segues
+    @IBAction func passwordResetEmailSent(segue: UIStoryboardSegue) {
+    }
 
 }

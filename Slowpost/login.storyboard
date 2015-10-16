@@ -32,8 +32,13 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
@@ -69,7 +74,7 @@
             </objects>
             <point key="canvasLocation" x="839" y="-607"/>
         </scene>
-        <!--Log In View Controller-->
+        <!--Log In-->
         <scene sceneID="68U-Yf-3Uf">
             <objects>
                 <viewController storyboardIdentifier="LogInView" id="5Lt-wu-z72" customClass="LogInViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
@@ -128,6 +133,19 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bw5-ht-NmV">
+                                <rect key="frame" x="30" y="366" width="540" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="eDa-UH-7Cv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="I can't remember my password.">
+                                    <color key="titleColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="aQL-Ky-hSH" kind="show" id="9nP-Oz-q1B"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -145,19 +163,22 @@
                             <constraint firstItem="1Cx-Sp-3Un" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" constant="30" id="VwY-xU-UiE">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
+                            <constraint firstAttribute="trailing" secondItem="bw5-ht-NmV" secondAttribute="trailing" constant="30" id="doO-qe-GvF"/>
                             <constraint firstItem="zkc-KO-jnT" firstAttribute="top" secondItem="CYa-XF-MvS" secondAttribute="bottom" constant="-4" id="eLF-7T-DdU"/>
                             <constraint firstAttribute="trailing" secondItem="Y1L-HG-f5a" secondAttribute="trailing" constant="30" id="gjP-hW-WVv">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
+                            <constraint firstItem="bw5-ht-NmV" firstAttribute="top" secondItem="Hez-ky-lsM" secondAttribute="bottom" constant="30" id="oNK-Uj-P3C"/>
                             <constraint firstItem="Hez-ky-lsM" firstAttribute="top" secondItem="Y1L-HG-f5a" secondAttribute="bottom" constant="30" id="t7E-sP-gIy"/>
                             <constraint firstItem="Hez-ky-lsM" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" constant="30" id="t9o-c3-9dW">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
                             <constraint firstItem="Y1L-HG-f5a" firstAttribute="top" secondItem="1Cx-Sp-3Un" secondAttribute="bottom" constant="30" id="urM-Kt-db7"/>
+                            <constraint firstItem="bw5-ht-NmV" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" constant="30" id="vsy-T9-STQ"/>
                             <constraint firstAttribute="trailing" secondItem="zkc-KO-jnT" secondAttribute="trailing" id="wEJ-uF-FH4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="M2x-xn-zow">
+                    <navigationItem key="navigationItem" title="Log In" id="M2x-xn-zow">
                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="8If-Lq-ajW">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -938,6 +959,135 @@ We won't save your address book on our servers, but we will search for matches w
                 <placeholder placeholderIdentifier="IBFirstResponder" id="coA-1v-Wbb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2213" y="-1300"/>
+        </scene>
+        <!--Reset Password-->
+        <scene sceneID="LiR-H3-FS7">
+            <objects>
+                <viewController storyboardIdentifier="RequestPasswordReset" id="aQL-Ky-hSH" customClass="RequestPasswordResetViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IAK-o1-M5h"/>
+                        <viewControllerLayoutGuide type="bottom" id="rxc-aa-WgW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KPW-SZ-vhY">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="748" verticalHuggingPriority="751" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" minimumFontSize="8" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fsL-7X-rqQ" userLabel="emailTextField" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="176" width="540" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Ah8-oa-UNW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <connections>
+                                    <action selector="editingChanged:" destination="aQL-Ky-hSH" eventType="editingChanged" id="tVY-YF-9AZ"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="746" verticalHuggingPriority="746" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sQd-Tl-hEi" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="236" width="540" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9Ca-29-4z6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitButtonPressed:" destination="aQL-Ky-hSH" eventType="touchUpInside" id="fAh-Dq-pfO"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="I1c-j4-KBD" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="60" width="600" height="30"/>
+                                <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="NKq-fy-gNU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fsL-7X-rqQ" firstAttribute="top" secondItem="IAK-o1-M5h" secondAttribute="bottom" constant="112" id="1Ak-lO-7s8"/>
+                            <constraint firstItem="sQd-Tl-hEi" firstAttribute="top" secondItem="fsL-7X-rqQ" secondAttribute="bottom" constant="30" id="Dja-B7-i7K"/>
+                            <constraint firstItem="fsL-7X-rqQ" firstAttribute="leading" secondItem="KPW-SZ-vhY" secondAttribute="leading" constant="30" id="Dx6-nX-GCL">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                            <constraint firstItem="sQd-Tl-hEi" firstAttribute="leading" secondItem="KPW-SZ-vhY" secondAttribute="leading" constant="30" id="F7c-mn-xAJ">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                            <constraint firstItem="I1c-j4-KBD" firstAttribute="leading" secondItem="KPW-SZ-vhY" secondAttribute="leading" id="FBh-AX-8OY"/>
+                            <constraint firstItem="I1c-j4-KBD" firstAttribute="top" secondItem="IAK-o1-M5h" secondAttribute="bottom" constant="-4" id="G8M-ru-5ca"/>
+                            <constraint firstAttribute="trailing" secondItem="I1c-j4-KBD" secondAttribute="trailing" id="LJ0-Mg-VtX"/>
+                            <constraint firstAttribute="trailing" secondItem="fsL-7X-rqQ" secondAttribute="trailing" constant="30" id="QHk-Nm-z4b">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="sQd-Tl-hEi" secondAttribute="trailing" constant="30" id="cb5-CX-xDk">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Reset Password" id="P8r-ma-Kjy">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="WPS-1u-sg5">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="aQL-Ky-hSH" id="5Kk-42-dUH"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="fsL-7X-rqQ" id="gkC-bT-wBe"/>
+                        <outlet property="submitButton" destination="sQd-Tl-hEi" id="lUF-DN-Bsp"/>
+                        <outlet property="warningLabel" destination="I1c-j4-KBD" id="mqn-Bf-Eu1"/>
+                        <segue destination="GjK-R8-VUg" kind="unwind" identifier="loginCompleted" unwindAction="signUpOrLogInCompleted:" id="0El-8Z-2r2"/>
+                        <segue destination="OwY-dE-dWs" kind="presentation" identifier="requestSubmitted" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="IyI-hT-Tvb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F9m-ma-OJp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="GjK-R8-VUg" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="gRm-Tr-RbT"/>
+            </objects>
+            <point key="canvasLocation" x="2166" y="-607"/>
+        </scene>
+        <!--Request Submitted View Controller-->
+        <scene sceneID="j9t-Y0-biB">
+            <objects>
+                <viewController id="OwY-dE-dWs" customClass="RequestSubmittedViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Onq-gS-Hbc"/>
+                        <viewControllerLayoutGuide type="bottom" id="G8O-PK-sPr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ml8-4e-ODd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check your email! You should get a message with instructions for resetting you password." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbl-JX-1dV">
+                                <rect key="frame" x="30" y="276" width="540" height="47"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Bbl-JX-1dV" secondAttribute="trailing" constant="30" id="8XJ-Zq-DTL"/>
+                            <constraint firstItem="Bbl-JX-1dV" firstAttribute="leading" secondItem="Ml8-4e-ODd" secondAttribute="leading" constant="30" id="Miz-6X-EJI"/>
+                            <constraint firstItem="Bbl-JX-1dV" firstAttribute="centerX" secondItem="Ml8-4e-ODd" secondAttribute="centerX" id="lC1-6J-Ok5"/>
+                            <constraint firstItem="Bbl-JX-1dV" firstAttribute="centerY" secondItem="Ml8-4e-ODd" secondAttribute="centerY" id="pHY-yK-9IR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="J29-95-eme" kind="unwind" identifier="passwordResetEmailSent" unwindAction="passwordResetEmailSent:" id="cw8-a9-Vmx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bTP-y0-0ma" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="J29-95-eme" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2848" y="-607"/>
         </scene>
     </scenes>
     <resources>

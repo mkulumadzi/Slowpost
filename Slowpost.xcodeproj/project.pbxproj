@@ -43,6 +43,7 @@
 		D21D79D51B5093430014510E /* ios7-checkmark-not-checked.png in Resources */ = {isa = PBXBuildFile; fileRef = D21D79D41B5093430014510E /* ios7-checkmark-not-checked.png */; };
 		D21D79D71B5093490014510E /* ios7-checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = D21D79D61B5093490014510E /* ios7-checkmark.png */; };
 		D21E2C871BC09C6100E17572 /* libFlurry_7.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D21E2C861BC09C6100E17572 /* libFlurry_7.2.1.a */; settings = {ASSET_TAGS = (); }; };
+		D2319AC01BD16D8F00B989C0 /* RequestSubmittedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2319ABF1BD16D8F00B989C0 /* RequestSubmittedViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D2389E681B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E671B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift */; };
 		D2389E6B1B950C0300CB19BB /* conversations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2389E6A1B950C0300CB19BB /* conversations.storyboard */; };
 		D2389E6D1B9511E100CB19BB /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E6C1B9511E100CB19BB /* ConversationListViewController.swift */; };
@@ -94,6 +95,7 @@
 		D28266CE1BC6DEA10029F57E /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28266CD1BC6DEA10029F57E /* AvatarView.swift */; settings = {ASSET_TAGS = (); }; };
 		D28266D01BC6E4950029F57E /* grey-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = D28266CF1BC6E4950029F57E /* grey-circle.png */; settings = {ASSET_TAGS = (); }; };
 		D2856E431BB5C32700A454C9 /* Slowpost.png in Resources */ = {isa = PBXBuildFile; fileRef = D2856E421BB5C32700A454C9 /* Slowpost.png */; settings = {ASSET_TAGS = (); }; };
+		D289F2181BD15517004D29FA /* RequestPasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289F2171BD15517004D29FA /* RequestPasswordResetViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D28CB0101BB4CDC100111213 /* PhoneContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28CB00F1BB4CDC100111213 /* PhoneContactCell.swift */; settings = {ASSET_TAGS = (); }; };
 		D290B2A61BB083260069A3DD /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290B2A51BB083260069A3DD /* DataController.swift */; settings = {ASSET_TAGS = (); }; };
 		D291B24C1B69AA5A00C72816 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291B24B1B69AA5A00C72816 /* FileService.swift */; };
@@ -198,6 +200,7 @@
 		D21E2C851BC09C5900E17572 /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		D21E2C861BC09C6100E17572 /* libFlurry_7.2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.2.1.a; sourceTree = "<group>"; };
 		D2222A741B588695007E74BB /* SnailMailModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SnailMailModel 2.xcdatamodel"; sourceTree = "<group>"; };
+		D2319ABF1BD16D8F00B989C0 /* RequestSubmittedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestSubmittedViewController.swift; sourceTree = "<group>"; };
 		D2389E671B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseDeliveryOptionsViewController.swift; sourceTree = "<group>"; };
 		D2389E6A1B950C0300CB19BB /* conversations.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = conversations.storyboard; sourceTree = "<group>"; };
 		D2389E6C1B9511E100CB19BB /* ConversationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +253,7 @@
 		D28266CD1BC6DEA10029F57E /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		D28266CF1BC6E4950029F57E /* grey-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grey-circle.png"; sourceTree = "<group>"; };
 		D2856E421BB5C32700A454C9 /* Slowpost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slowpost.png; sourceTree = "<group>"; };
+		D289F2171BD15517004D29FA /* RequestPasswordResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestPasswordResetViewController.swift; sourceTree = "<group>"; };
 		D28CB00F1BB4CDC100111213 /* PhoneContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneContactCell.swift; sourceTree = "<group>"; };
 		D290B2A51BB083260069A3DD /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		D291B24B1B69AA5A00C72816 /* FileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
@@ -350,6 +354,8 @@
 				D206FB4A1B61688D008BB412 /* WelcomeScreenViewController.swift */,
 				D267262D1B7D3E3700FE651F /* SignUpCompleteViewController.swift */,
 				D267262F1B7D524100FE651F /* UsernameViewController.swift */,
+				D289F2171BD15517004D29FA /* RequestPasswordResetViewController.swift */,
+				D2319ABF1BD16D8F00B989C0 /* RequestSubmittedViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -889,7 +895,9 @@
 				D2CEC4681B6C1F6E002CFD25 /* CardGalleryUIViewController.swift in Sources */,
 				CC96E4A01ABCCBF2001E6D27 /* LogInViewController.swift in Sources */,
 				D2E97D8D1BC322BF00DAEB6C /* RecipientCell.swift in Sources */,
+				D289F2181BD15517004D29FA /* RequestPasswordResetViewController.swift in Sources */,
 				D26726301B7D524100FE651F /* UsernameViewController.swift in Sources */,
+				D2319AC01BD16D8F00B989C0 /* RequestSubmittedViewController.swift in Sources */,
 				D2B7CEAE1B696DBC007F8235 /* RestService.swift in Sources */,
 				D2A361381B3CB52B00811D14 /* WarningUILabel.swift in Sources */,
 				D27DA32D1B66C51900DF32A1 /* MessageUILabel.swift in Sources */,
