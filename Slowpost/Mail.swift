@@ -88,5 +88,12 @@ class Mail: PostofficeObject {
             return true
         }
     }
+    
+    func markAsRead() {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let dataController = appDelegate.dataController
+        self.myStatus = "READ"
+        dataController.save()
+    }
 
 }
