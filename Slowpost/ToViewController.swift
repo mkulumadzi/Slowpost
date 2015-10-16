@@ -449,14 +449,17 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             cell.cellImage.image = UIImage(named: "Slowpost.png")
             cell.cellImage.layer.cornerRadius = 10
             cell.recipientLabel.text = "\(person.fullName()) (@\(person.username))"
+            cell.labelLeadingDistance.constant = 31
         }
         else if let searchPerson = object as? SearchPerson {
             cell.searchPerson = searchPerson
             cell.cellImage.image = UIImage(named: "Slowpost.png")
             cell.cellImage.layer.cornerRadius = 10
             cell.recipientLabel.text = "\(searchPerson.fullName()) (@\(searchPerson.username))"
+            cell.labelLeadingDistance.constant = 31
         }
         else if let email = object as? String {
+            cell.cellImage.image = nil
             cell.email = email
             cell.recipientLabel.text = cell.email
             cell.labelLeadingDistance.constant = 8
