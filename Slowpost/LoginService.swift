@@ -74,7 +74,12 @@ class LoginService: PersonService {
                     self.saveLoginToUserDefaults(token)
                     completion(error: nil, result: "Success")
                 case .Failure(_, let error):
-                    completion(error: error, result: nil)
+                    if response != nil {
+                        completion(error: nil, result: "Invalid login")
+                    }
+                    else {
+                        completion(error: error, result: nil)
+                    }
                 }
         }
         
