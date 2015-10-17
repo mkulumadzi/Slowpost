@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vyY-w3-kfL">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--SnailMail-->
         <scene sceneID="cz6-31-KdU">
@@ -18,20 +22,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Slowpost Icon Set" translatesAutoresizingMaskIntoConstraints="NO" id="gS2-fo-EqC">
-                                <rect key="frame" x="225" y="253" width="151" height="95"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="turtleAnimation0.png" translatesAutoresizingMaskIntoConstraints="NO" id="gS2-fo-EqC">
+                                <rect key="frame" x="200" y="200" width="200" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="gS2-fo-EqC" secondAttribute="height" multiplier="1.59:1" id="jH7-8k-MVA"/>
+                                    <constraint firstAttribute="width" constant="200" id="3JC-id-CeW"/>
+                                    <constraint firstAttribute="height" constant="200" id="c7F-to-LPY"/>
+                                    <constraint firstAttribute="width" secondItem="gS2-fo-EqC" secondAttribute="height" multiplier="1:1" id="jH7-8k-MVA"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLE-Mf-rsT">
+                                <rect key="frame" x="262" y="370" width="77" height="24"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="gS2-fo-EqC" secondAttribute="centerX" id="00n-rD-4U1"/>
+                            <constraint firstItem="QLE-Mf-rsT" firstAttribute="top" secondItem="gS2-fo-EqC" secondAttribute="bottom" constant="-30" id="Buf-CV-kji"/>
+                            <constraint firstItem="QLE-Mf-rsT" firstAttribute="centerX" secondItem="U40-7c-4eC" secondAttribute="centerX" id="Q1L-DP-rYk"/>
                             <constraint firstAttribute="centerY" secondItem="gS2-fo-EqC" secondAttribute="centerY" id="xBK-mU-rUi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="SnailMail" id="yZM-9R-1kR"/>
+                    <connections>
+                        <outlet property="iconImage" destination="gS2-fo-EqC" id="Vyv-Dy-MyN"/>
+                        <outlet property="loadingLabel" destination="QLE-Mf-rsT" id="VDJ-YR-ZW5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aY7-R7-Gyq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -39,6 +57,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Slowpost Icon Set" width="150" height="95"/>
+        <image name="turtleAnimation0.png" width="1024" height="1024"/>
     </resources>
 </document>

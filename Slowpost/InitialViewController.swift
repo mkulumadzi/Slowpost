@@ -13,11 +13,16 @@ import SwiftyJSON
 
 class InitialViewController: UIViewController {
 
+    @IBOutlet weak var iconImage: UIImageView!
+    @IBOutlet weak var loadingLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadingLabel.hidden = true
         print("Initial view loaded at \(NSDate())")
         Flurry.logEvent("Initial_View_Loaded")
+        
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -60,6 +65,10 @@ class InitialViewController: UIViewController {
     }
     
     func beginLoadingInitialData() {
+        let interval = NSTimeInterval(1.0)
+        iconImage.image = UIImage.animatedImageNamed("turtleAnimation", duration: interval)
+        loadingLabel.hidden = false
+        
         print("Beginning to load initial data at \(NSDate())")
         Flurry.logEvent("Initial_Data_Loading_Began", timed: true)
         
@@ -82,6 +91,8 @@ class InitialViewController: UIViewController {
 
 
     func goToHomeScreen() {
+        loadingLabel.hidden = true
+        iconImage.image = UIImage(named: "turtleAnimation")
         
         if deviceToken != nil {
             registerDeviceToken()

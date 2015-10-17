@@ -53,6 +53,10 @@
 		D2389E7D1B962B7000CB19BB /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E7C1B962B7000CB19BB /* Conversation.swift */; };
 		D2389E7F1B962D1F00CB19BB /* ConversationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E7E1B962D1F00CB19BB /* ConversationService.swift */; };
 		D2389E821B9674AB00CB19BB /* CellLabelUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E811B9674AB00CB19BB /* CellLabelUIView.swift */; };
+		D2392AC41BD1D0DD0069316F /* turtleAnimation2.png in Resources */ = {isa = PBXBuildFile; fileRef = D2392AC01BD1D0DD0069316F /* turtleAnimation2.png */; settings = {ASSET_TAGS = (); }; };
+		D2392AC51BD1D0DD0069316F /* turtleAnimation1.png in Resources */ = {isa = PBXBuildFile; fileRef = D2392AC11BD1D0DD0069316F /* turtleAnimation1.png */; settings = {ASSET_TAGS = (); }; };
+		D2392AC61BD1D0DD0069316F /* turtleAnimation3.png in Resources */ = {isa = PBXBuildFile; fileRef = D2392AC21BD1D0DD0069316F /* turtleAnimation3.png */; settings = {ASSET_TAGS = (); }; };
+		D2392AC71BD1D0DD0069316F /* turtleAnimation0.png in Resources */ = {isa = PBXBuildFile; fileRef = D2392AC31BD1D0DD0069316F /* turtleAnimation0.png */; settings = {ASSET_TAGS = (); }; };
 		D24BC0F51B96994D000405F7 /* CustomContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24BC0F41B96994D000405F7 /* CustomContainerView.swift */; };
 		D24BC0F71B97C2D5000405F7 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D24BC0F61B97C2D5000405F7 /* OpenSans-LightItalic.ttf */; };
 		D24BC0FA1B98E249000405F7 /* mail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D24BC0F91B98E249000405F7 /* mail.storyboard */; };
@@ -211,6 +215,10 @@
 		D2389E7E1B962D1F00CB19BB /* ConversationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationService.swift; sourceTree = "<group>"; };
 		D2389E801B964A0F00CB19BB /* SlowpostModel 8.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SlowpostModel 8.xcdatamodel"; sourceTree = "<group>"; };
 		D2389E811B9674AB00CB19BB /* CellLabelUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellLabelUIView.swift; sourceTree = "<group>"; };
+		D2392AC01BD1D0DD0069316F /* turtleAnimation2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = turtleAnimation2.png; sourceTree = "<group>"; };
+		D2392AC11BD1D0DD0069316F /* turtleAnimation1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = turtleAnimation1.png; sourceTree = "<group>"; };
+		D2392AC21BD1D0DD0069316F /* turtleAnimation3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = turtleAnimation3.png; sourceTree = "<group>"; };
+		D2392AC31BD1D0DD0069316F /* turtleAnimation0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = turtleAnimation0.png; sourceTree = "<group>"; };
 		D24BC0F41B96994D000405F7 /* CustomContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomContainerView.swift; sourceTree = "<group>"; };
 		D24BC0F61B97C2D5000405F7 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
 		D24BC0F91B98E249000405F7 /* mail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = mail.storyboard; sourceTree = "<group>"; };
@@ -407,6 +415,10 @@
 		CC96E4A31ABCD5AB001E6D27 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				D2392AC01BD1D0DD0069316F /* turtleAnimation2.png */,
+				D2392AC11BD1D0DD0069316F /* turtleAnimation1.png */,
+				D2392AC21BD1D0DD0069316F /* turtleAnimation3.png */,
+				D2392AC31BD1D0DD0069316F /* turtleAnimation0.png */,
 				D28266CF1BC6E4950029F57E /* grey-circle.png */,
 				D2856E421BB5C32700A454C9 /* Slowpost.png */,
 				D24BC0FD1B98F898000405F7 /* reply-gray.png */,
@@ -748,6 +760,7 @@
 				D25A9CA01B2259D300ABBBA4 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				D2E4EDD21B7D1EC000D2A028 /* example_card.jpg in Resources */,
 				D25A9C9C1B2259D300ABBBA4 /* Apache License.txt in Resources */,
+				D2392AC41BD1D0DD0069316F /* turtleAnimation2.png in Resources */,
 				D25A9CA21B2259D300ABBBA4 /* OpenSans-Light.ttf in Resources */,
 				D25130421BC425C3007541BE /* to.storyboard in Resources */,
 				D206FB471B615A3C008BB412 /* SIL Open Font License.txt in Resources */,
@@ -759,12 +772,14 @@
 				CCCB1A5D1AB0D48A0067F100 /* LaunchScreen.xib in Resources */,
 				D2856E431BB5C32700A454C9 /* Slowpost.png in Resources */,
 				D2C071061B3A3E99000154E8 /* Configurations.plist in Resources */,
+				D2392AC71BD1D0DD0069316F /* turtleAnimation0.png in Resources */,
 				D25A9CA41B2259D300ABBBA4 /* OpenSans-Regular.ttf in Resources */,
 				D2CEC4721B725D0C002CFD25 /* ios7-minus-outline-white-center.png in Resources */,
 				D2CEC46F1B7256E9002CFD25 /* ios7-camera-green.png in Resources */,
 				D2B7CEA21B671149007F8235 /* ios7-close-empty-gray.png in Resources */,
 				D21D79D51B5093430014510E /* ios7-checkmark-not-checked.png in Resources */,
 				D2E4EDCE1B7D136500D2A028 /* Quicksand-Light.otf in Resources */,
+				D2392AC61BD1D0DD0069316F /* turtleAnimation3.png in Resources */,
 				D2389E6B1B950C0300CB19BB /* conversations.storyboard in Resources */,
 				D25A9CA11B2259D300ABBBA4 /* OpenSans-Italic.ttf in Resources */,
 				D24BC0FA1B98E249000405F7 /* mail.storyboard in Resources */,
@@ -786,6 +801,7 @@
 				D25A9C9E1B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf in Resources */,
 				CC23DE2E1AE54C2B00AFEDE4 /* compose.storyboard in Resources */,
 				D2D866391B2F5DF900847051 /* log-out-white.png in Resources */,
+				D2392AC51BD1D0DD0069316F /* turtleAnimation1.png in Resources */,
 				D25A9C9F1B2259D300ABBBA4 /* OpenSans-ExtraBold.ttf in Resources */,
 				D2D866261B2F4AF800847051 /* ios7-person-outline.png in Resources */,
 				D21D79D71B5093490014510E /* ios7-checkmark.png in Resources */,
