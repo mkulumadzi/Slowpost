@@ -541,6 +541,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         validateNextButton()
         let topRect = CGRect(x: 0.0, y: 0.0, width: personTable.frame.width, height: personTable.frame.height)
         personTable.scrollRectToVisible(topRect, animated: false)
+        formatNextLabel()
     }
     
     func removeRecipient(tableView: UITableView, indexPath: NSIndexPath) {
@@ -620,7 +621,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func validateNextButton() {
         if toPeople.count > 0 || toSearchPeople.count > 0 || toEmails.count > 0 {
             nextButtonHeight.constant = 40.0
-            
         }
         else {
             nextButtonHeight.constant = 0.0
@@ -657,6 +657,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             toEmails.append(contactView.emailSelected.email)
             personTable.reloadData()
             validateNextButton()
+            formatNextLabel()
         }
     }
     
@@ -665,6 +666,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             toEmails.append(addEmailView.emailField.text!)
             personTable.reloadData()
             validateNextButton()
+            formatNextLabel()
         }
     }
     
@@ -684,7 +686,46 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             }
             personTable.reloadData()
             validateNextButton()
+            formatNextLabel()
         }
+    }
+    
+    func formatNextLabel() {
+        let numSlowposts = toPeople.count + toSearchPeople.count
+        let numEmails = toEmails.count
+        var title:String?
+        
+        var slowpostString:String!
+        if numSlowposts > 1 {
+            slowpostString = "\(numSlowposts) on Slowpost"
+        }
+        else if numSlowposts > 0 {
+            slowpostString = "\(numSlowposts) on Slowpost"
+        }
+        
+        var emailString:String!
+        if numEmails > 1 {
+            emailString = "\(numEmails) emails"
+        }
+        else if numEmails > 0 {
+            emailString = "\(numEmails) email"
+        }
+        
+        if numSlowposts > 0 && numEmails > 0 {
+            title = "Write to \(slowpostString) and \(emailString)"
+        }
+        else if numSlowposts > 0 {
+            title = "Write to \(slowpostString)"
+        }
+        else if numEmails > 0 {
+            title = "Write to \(emailString)"
+        }
+        else {
+            title = ""
+        }
+        
+        nextButton.setTitle(title, forState: .Normal)
+        
     }
     
 }
