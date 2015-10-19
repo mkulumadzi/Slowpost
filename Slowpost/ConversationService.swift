@@ -13,20 +13,6 @@ import CoreData
 
 class ConversationService: PostofficeObjectService {
     
-//    class func updateConversations() {
-//        print("Updating conversations at \(NSDate())")
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let dataController = appDelegate.dataController
-//        let userId = LoginService.getUserIdFromToken()
-//        let conversationsURL = "\(PostOfficeURL)person/id/\(userId)/conversations"
-//        let headers = dataController.getIfModifiedSinceHeaderForEntity("Conversation")
-//        RestService.getRequest(conversationsURL, headers: headers, completion: { (error, result) -> Void in
-//            if let jsonArray = result as? [AnyObject] {
-//                self.appendJsonArrayToCoreData(jsonArray)
-//            }
-//        })
-//    }
-    
     class func appendJsonArrayToCoreData(jsonArray: [AnyObject]) {
         let entityName = "Conversation"
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate

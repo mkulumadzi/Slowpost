@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 class SearchPerson: NSObject {
+    
     var id:String
     var username:String
     var givenName:String!
