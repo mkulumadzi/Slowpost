@@ -1040,8 +1040,10 @@ We won't save your address book on our servers, but we will search for matches w
                     </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="distanceToEmailField" destination="1Ak-lO-7s8" id="acp-vc-Zps"/>
                         <outlet property="emailTextField" destination="fsL-7X-rqQ" id="gkC-bT-wBe"/>
                         <outlet property="submitButton" destination="sQd-Tl-hEi" id="lUF-DN-Bsp"/>
+                        <outlet property="submitButtonHeight" destination="9Ca-29-4z6" id="Xc5-rT-QQZ"/>
                         <outlet property="warningLabel" destination="I1c-j4-KBD" id="mqn-Bf-Eu1"/>
                         <segue destination="GjK-R8-VUg" kind="unwind" identifier="loginCompleted" unwindAction="signUpOrLogInCompleted:" id="0El-8Z-2r2"/>
                         <segue destination="OwY-dE-dWs" kind="presentation" identifier="requestSubmitted" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="IyI-hT-Tvb"/>

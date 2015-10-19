@@ -43,7 +43,6 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         
         mailTable.addSubview(self.refreshControl)
         
-//        mailTable.rowHeight = 85 + (view.frame.width - 20) * 0.75
         mailTable.estimatedRowHeight = 85 + (view.frame.width - 20) * 0.75
         mailTable.rowHeight = UITableViewAutomaticDimension
 
@@ -76,8 +75,6 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         print("this happened")
         self.mailTable.reloadData()
     }
-    
-    
     
     // Mark: Set up Core Data
     func initializeFetchedResultsController() {
