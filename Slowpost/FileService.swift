@@ -72,18 +72,16 @@ class FileService {
         print("Getting image at \(url)")
         Alamofire.request(.GET, url, headers: headers)
             .validate(statusCode: 200..<400)
-            .responseData { _, response, result in
-            print(result)
-            print(response)
-            switch result {
+            .responseData { response in
+            switch response.result {
             case .Success (let result):
                 let image = UIImage(data: result as NSData)
                 self.postImageDownloadNotification()
                 completion(error: nil, result: image)
-            case .Failure(_,let error):
+            case .Failure(let error):
                 var statusCode:Int!
-                if response != nil {
-                    statusCode = response!.statusCode
+                if response.response != nil {
+                    statusCode = response.response!.statusCode
                 }
                 completion(error: error, result: statusCode)
             }

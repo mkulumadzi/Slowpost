@@ -68,17 +68,17 @@ class RequestPasswordResetViewController: UIViewController {
         let headers:[String: String] = ["Authorization": "Bearer \(appToken)", "Content-Type": "application/json"]
         
         Alamofire.request(.POST, resetPasswordURL, parameters: parameters, headers: headers, encoding: .JSON)
-        .responseJSON { (_, response, result) in
-            let status = response!.statusCode
+        .responseJSON { (response) in
+            let status = response.response!.statusCode
             if status == 201 {
                 self.performSegueWithIdentifier("requestSubmitted", sender: nil)
             }
             else {
-                switch result {
+                switch response.result {
                 case .Success(let result):
                     let warning = JSON(result)
                     self.warningLabel.show(warning["message"].stringValue)
-                case .Failure(_, let error):
+                case .Failure(let error):
                     print(error)
                 }
             }

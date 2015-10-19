@@ -65,16 +65,15 @@ class LoginService: PersonService {
         print(parameters)
         
         Alamofire.request(.POST, "\(PostOfficeURL)login", parameters: parameters, encoding: .JSON)
-            .responseJSON { (_, response, result) in
-                print(response)
-                switch result {
+            .responseJSON { (response) in
+                switch response.result {
                 case .Success (let result):
                     let json = JSON(result)
                     let token = json["access_token"].stringValue
                     self.saveLoginToUserDefaults(token)
                     completion(error: nil, result: "Success")
-                case .Failure(_, let error):
-                    if response != nil {
+                case .Failure(let error):
+                    if response.response != nil {
                         completion(error: nil, result: "Invalid login")
                     }
                     else {

@@ -32,8 +32,8 @@ class RestService {
         print(requestHeaders)
         
         Alamofire.request(.GET, requestURL, headers: requestHeaders)
-            .responseJSON { (_, response, result) in
-            switch result {
+            .responseJSON { (response) in
+            switch response.result {
             case .Success (let result):
                 if let dataArray = result as? [AnyObject] {
                     completion(error: nil, result: dataArray)
@@ -41,10 +41,10 @@ class RestService {
                 else {
                     completion(error: nil, result: result)
                 }
-            case .Failure(_, let error):
+            case .Failure(let error):
                 var statusCode:Int!
-                if response != nil {
-                    statusCode = response!.statusCode
+                if response.response != nil {
+                    statusCode = response.response!.statusCode
                 }
                 completion(error: error, result: statusCode)
             }
@@ -73,14 +73,14 @@ class RestService {
             
             // To Do: Let Alamofire get correct result status (it seems to think that an empty response is a FAILURE
             .validate(statusCode: 200..<300)
-            .responseJSON { (_, response, result) in
+            .responseJSON { (response) in
             var statusCode:Int!
-            if response != nil {
-                statusCode = response!.statusCode
+            if response.response != nil {
+                statusCode = response.response!.statusCode
             }
             if statusCode != nil {
                 if statusCode == 201 {
-                    completion(error: nil, result: [201, response!.allHeaderFields["Location"] as! String])
+                    completion(error: nil, result: [201, response.response!.allHeaderFields["Location"] as! String])
                 }
                 else if statusCode == 204 {
                     completion(error: nil, result: [204, ""])

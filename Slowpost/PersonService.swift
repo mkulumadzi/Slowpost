@@ -103,8 +103,8 @@ class PersonService: PostofficeObjectService {
         let url = "\(PostOfficeURL)/people/find_matches"
         let headers = ["Authorization": RestService.addAuthHeader()]
         Alamofire.request(.POST, url, parameters: parameters, headers: headers, encoding: .JSON)
-            .responseJSON { (_, response, result) in
-                switch result {
+            .responseJSON { (response) in
+                switch response.result {
                 case .Success (let result):
                     if let dataArray = result as? [AnyObject] {
                         completion(error: nil, result: dataArray)
@@ -112,7 +112,7 @@ class PersonService: PostofficeObjectService {
                     else {
                         completion(error: nil, result: "Unexpected result")
                     }
-                case .Failure(_, let error):
+                case .Failure(let error):
                     completion(error: error, result: nil)
                 }
         }
