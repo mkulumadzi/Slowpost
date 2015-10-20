@@ -127,6 +127,7 @@ class MailViewController: UIViewController {
     }
     
     @IBAction func closeMailView(sender: AnyObject) {
+        print("Close pressed")
         if runOnClose != nil { runOnClose!() }
         dismissViewControllerAnimated(true, completion: {})
     }

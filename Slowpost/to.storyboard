@@ -354,15 +354,10 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="btQ-V0-3mE">
-                        <barButtonItem key="leftBarButtonItem" style="done" id="lML-DH-sTP">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="9tk-9A-6iL" userLabel="Cancel">
-                                <rect key="frame" x="20" y="12" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="ios7-close-empty-white.png"/>
-                                <connections>
-                                    <action selector="cancelButtonPressed:" destination="8xB-T9-MnV" eventType="touchUpInside" id="Plb-aN-2VO"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="stop" id="lML-DH-sTP">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="8xB-T9-MnV" id="aXx-tW-ZXe"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -613,6 +608,5 @@
     </scenes>
     <resources>
         <image name="ios7-close-empty-gray.png" width="192" height="192"/>
-        <image name="ios7-close-empty-white.png" width="192" height="192"/>
     </resources>
 </document>

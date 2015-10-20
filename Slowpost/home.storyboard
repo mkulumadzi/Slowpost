@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rsQ-Dm-iR8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9058" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rsQ-Dm-iR8">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9048"/>
     </dependencies>
     <scenes>
         <!--Conversations-->
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Conversations" image="Conversation Tab Bar Item (grey)" id="IHI-SR-3ez"/>
+                    <tabBarItem key="tabBarItem" title="Conversations" image="conversations" id="IHI-SR-3ez"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Df7-us-o1z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Compose" image="Compose Tab Bar Item (grey)" id="VD2-Xd-fru"/>
+                    <tabBarItem key="tabBarItem" title="Compose" image="quill" id="VD2-Xd-fru"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="composeTabBarItem" destination="VD2-Xd-fru" id="SNH-OO-AVz"/>
@@ -59,7 +59,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Mailbox" image="Mail Tab Bar Item (grey)" id="LAL-Gz-Akb"/>
+                    <tabBarItem key="tabBarItem" title="Mailbox" image="mailbox" id="LAL-Gz-Akb"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4N-zK-LbQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -94,8 +94,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Compose Tab Bar Item (grey)" width="25" height="24"/>
-        <image name="Conversation Tab Bar Item (grey)" width="25" height="25"/>
-        <image name="Mail Tab Bar Item (grey)" width="25" height="17"/>
+        <image name="conversations" width="48" height="48"/>
+        <image name="mailbox" width="48" height="48"/>
+        <image name="quill" width="48" height="48"/>
     </resources>
 </document>

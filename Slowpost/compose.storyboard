@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wl4-oX-yWn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9058" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wl4-oX-yWn">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9048"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -235,13 +235,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plQ-dw-tew" userLabel="takePhoto">
-                                <rect key="frame" x="270" y="588" width="60" height="60"/>
+                                <rect key="frame" x="275" y="588" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="RUW-8j-Vdf"/>
-                                    <constraint firstAttribute="width" constant="60" id="iaH-2e-Vnh"/>
+                                    <constraint firstAttribute="height" constant="50" id="RUW-8j-Vdf"/>
+                                    <constraint firstAttribute="width" constant="50" id="iaH-2e-Vnh"/>
                                 </constraints>
-                                <state key="normal" image="ios7-camera-green.png">
+                                <state key="normal" image="camera-green.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
@@ -250,13 +250,13 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A1v-Uj-6rd" userLabel="cardGallery">
-                                <rect key="frame" x="390" y="588" width="60" height="60"/>
+                                <rect key="frame" x="385" y="588" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="EhL-2B-1RO"/>
-                                    <constraint firstAttribute="width" constant="60" id="rWV-E7-SZb"/>
+                                    <constraint firstAttribute="height" constant="50" id="EhL-2B-1RO"/>
+                                    <constraint firstAttribute="width" constant="50" id="rWV-E7-SZb"/>
                                 </constraints>
-                                <state key="normal" image="grid-green.png">
+                                <state key="normal" image="collection-green.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
@@ -265,7 +265,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Library" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1tY-3U-3Qe">
-                                <rect key="frame" x="158" y="648" width="45" height="18"/>
+                                <rect key="frame" x="168" y="638" width="45" height="18"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -274,7 +274,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Camera" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oaw-FG-qkO">
-                                <rect key="frame" x="276" y="648" width="49" height="18"/>
+                                <rect key="frame" x="276" y="638" width="49" height="18"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -283,7 +283,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gallery" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sV-7G-sp5">
-                                <rect key="frame" x="398" y="648" width="45" height="18"/>
+                                <rect key="frame" x="388" y="638" width="45" height="18"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -299,12 +299,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBl-Iz-blC">
-                                <rect key="frame" x="150" y="588" width="60" height="60"/>
+                                <rect key="frame" x="165" y="588" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="8ac-mQ-ajt"/>
-                                    <constraint firstAttribute="width" constant="60" id="fV5-Ow-z1m"/>
+                                    <constraint firstAttribute="height" constant="50" id="8ac-mQ-ajt"/>
+                                    <constraint firstAttribute="width" constant="50" id="fV5-Ow-z1m"/>
                                 </constraints>
-                                <state key="normal" image="photos_green.png">
+                                <state key="normal" image="picture-3-green.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -880,9 +880,9 @@
     <resources>
         <image name="Default Card.png" width="768" height="576"/>
         <image name="Slowpost Icon Set (green)" width="150" height="95"/>
-        <image name="grid-green.png" width="512" height="512"/>
+        <image name="camera-green.png" width="120" height="120"/>
+        <image name="collection-green.png" width="120" height="120"/>
         <image name="ios7-arrow-down-white.png" width="320" height="192"/>
-        <image name="ios7-camera-green.png" width="512" height="512"/>
-        <image name="photos_green.png" width="512" height="512"/>
+        <image name="picture-3-green.png" width="120" height="120"/>
     </resources>
 </document>
