@@ -12,8 +12,8 @@ import UIKit
 
 class Conversation: PostofficeObject {
     
-    @NSManaged var people:NSSet
-    @NSManaged var emails: NSSet
+    @NSManaged weak var people:NSSet?
+    @NSManaged weak var emails: NSSet?
     @NSManaged var numUnread: Int16
     @NSManaged var numUndelivered: Int16
     @NSManaged var personSentMostRecentMail: Bool
@@ -21,7 +21,7 @@ class Conversation: PostofficeObject {
     func conversationList() -> String {
         var list = ""
         var index = 0
-        for item in people.allObjects {
+        for item in people!.allObjects {
             let person = item as! Person
             let userId = LoginService.getUserIdFromToken()
             if person.id != userId {
@@ -30,7 +30,7 @@ class Conversation: PostofficeObject {
                 index += 1
             }
         }
-        for item in emails.allObjects {
+        for item in emails!.allObjects {
             let emailAddress = item as! EmailAddress
             if index > 0 { list += ", " }
             list += emailAddress.email
