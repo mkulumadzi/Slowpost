@@ -15,7 +15,8 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var confirmPasswordTextField: BottomBorderUITextField!
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var nextButton: TextUIButton!
-  
+    @IBOutlet weak var termsTextView: UITextView!
+    
     var givenName:String!
     var familyName:String!
     var email:String!
@@ -44,6 +45,23 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
             formatForiPhone4S()
         }
         
+        formatTermsString()
+        
+    }
+    
+    func formatTermsString() {
+        termsTextView.text = ""
+        let termsString = "By clicking 'Sign up' I confirm I agree to the Privacy Policy."
+        let greenColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
+        let darkGreenColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
+        let privacyLink = NSURL(string: "https://slowpost.me/#/legal")
+        
+        let termsMutableString = NSMutableAttributedString(string: termsString, attributes: [NSFontAttributeName : UIFont(name: "OpenSans", size: 13)!, NSForegroundColorAttributeName : greenColor])
+        termsMutableString.addAttribute(NSFontAttributeName, value: UIFont(name: "OpenSans-Semibold", size: 13)!, range: NSRange(location: 47, length: 14))
+        termsMutableString.addAttribute(NSLinkAttributeName, value: privacyLink!, range: NSRange(location: 47, length: 14))
+        
+        termsTextView.attributedText = termsMutableString
+        termsTextView.linkTextAttributes = [NSForegroundColorAttributeName: darkGreenColor]
     }
     
     func formatForiPhone4S() {

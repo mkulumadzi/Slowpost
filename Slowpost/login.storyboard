@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6az-Oz-1fo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9058" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6az-Oz-1fo">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9048"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -11,6 +11,7 @@
             <string>OpenSans-Italic</string>
         </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
@@ -892,6 +893,14 @@ We won't save your address book on our servers, but we will search for matches w
                                     <action selector="editingChanged:" destination="65F-qu-B8L" eventType="editingChanged" id="6JQ-PS-okq"/>
                                 </connections>
                             </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="By clicking 'Sign up' I confirm I agree to the Privacy Policy." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gH6-YH-ce8">
+                                <rect key="frame" x="30" y="352" width="540" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -907,6 +916,7 @@ We won't save your address book on our servers, but we will search for matches w
                             <constraint firstItem="fyz-vB-IcF" firstAttribute="leading" secondItem="reT-Hu-5gT" secondAttribute="leading" constant="30" id="IzP-os-mQ2">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
+                            <constraint firstItem="gH6-YH-ce8" firstAttribute="top" secondItem="qoT-XQ-G2Z" secondAttribute="bottom" constant="8" id="Sj0-75-z3M"/>
                             <constraint firstAttribute="trailing" secondItem="Ca5-x4-yba" secondAttribute="trailing" constant="30" id="V6H-Jv-c3U">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
@@ -928,6 +938,8 @@ We won't save your address book on our servers, but we will search for matches w
                             </constraint>
                             <constraint firstItem="y0R-1X-YfO" firstAttribute="top" secondItem="ony-8R-FTy" secondAttribute="bottom" constant="46" id="soI-pA-5xf"/>
                             <constraint firstItem="qoT-XQ-G2Z" firstAttribute="top" secondItem="ikw-33-dC8" secondAttribute="bottom" constant="30" id="tCN-34-CGI"/>
+                            <constraint firstItem="gH6-YH-ce8" firstAttribute="leading" secondItem="reT-Hu-5gT" secondAttribute="leading" constant="30" id="utH-nI-aMN"/>
+                            <constraint firstAttribute="trailing" secondItem="gH6-YH-ce8" secondAttribute="trailing" constant="30" id="wDn-gS-ihz"/>
                             <constraint firstItem="qoT-XQ-G2Z" firstAttribute="leading" secondItem="reT-Hu-5gT" secondAttribute="leading" constant="30" id="wQi-g0-rCg">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
@@ -949,6 +961,7 @@ We won't save your address book on our servers, but we will search for matches w
                         <outlet property="confirmPasswordTextField" destination="ikw-33-dC8" id="9Rs-4R-WI9"/>
                         <outlet property="nextButton" destination="qoT-XQ-G2Z" id="Uso-bY-5PR"/>
                         <outlet property="passwordTextField" destination="Ca5-x4-yba" id="Den-Le-jtK"/>
+                        <outlet property="termsTextView" destination="gH6-YH-ce8" id="vNb-1q-AKd"/>
                         <outlet property="usernameTextField" destination="fyz-vB-IcF" id="kl5-dr-2sO"/>
                         <outlet property="verticalSpaceToNext" destination="tCN-34-CGI" id="dgd-jw-xno"/>
                         <outlet property="verticalSpaceToTitle" destination="soI-pA-5xf" id="8dT-fY-wzS"/>
