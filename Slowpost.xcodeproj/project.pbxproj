@@ -104,6 +104,7 @@
 		D290B2A61BB083260069A3DD /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D290B2A51BB083260069A3DD /* DataController.swift */; };
 		D291B24C1B69AA5A00C72816 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291B24B1B69AA5A00C72816 /* FileService.swift */; };
 		D29D3DC01B83D28A00B3E0DA /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D29D3DBF1B83D28A00B3E0DA /* KeychainWrapper.m */; };
+		D2A2B4291BD6ED2A0069C3E4 /* ToNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A2B4281BD6ED2A0069C3E4 /* ToNavigationController.swift */; };
 		D2A361361B3CAC5D00811D14 /* TextUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A361351B3CAC5D00811D14 /* TextUIButton.swift */; };
 		D2A361381B3CB52B00811D14 /* WarningUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A361371B3CB52B00811D14 /* WarningUILabel.swift */; };
 		D2B2BB961B7EB7D4007377DD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B2BB951B7EB7D4007377DD /* SystemConfiguration.framework */; };
@@ -267,6 +268,7 @@
 		D291B24B1B69AA5A00C72816 /* FileService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileService.swift; sourceTree = "<group>"; };
 		D29D3DBE1B83D28200B3E0DA /* KeychainWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
 		D29D3DBF1B83D28A00B3E0DA /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
+		D2A2B4281BD6ED2A0069C3E4 /* ToNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToNavigationController.swift; sourceTree = "<group>"; };
 		D2A361351B3CAC5D00811D14 /* TextUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextUIButton.swift; sourceTree = "<group>"; };
 		D2A361371B3CB52B00811D14 /* WarningUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarningUILabel.swift; sourceTree = "<group>"; };
 		D2AA56E81B83FDBA007D8AAC /* SlowpostModel 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SlowpostModel 5.xcdatamodel"; sourceTree = "<group>"; };
@@ -568,6 +570,7 @@
 				D2E97D8C1BC322BF00DAEB6C /* RecipientCell.swift */,
 				D27C7B441BC33820005F08BC /* AddEmailViewController.swift */,
 				D27C7B4C1BC3481F005F08BC /* SearchPersonCell.swift */,
+				D2A2B4281BD6ED2A0069C3E4 /* ToNavigationController.swift */,
 			);
 			name = To;
 			sourceTree = "<group>";
@@ -878,6 +881,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2A2B4291BD6ED2A0069C3E4 /* ToNavigationController.swift in Sources */,
 				D20EC2591BAC8F1400E3DEA5 /* PostofficeObjectService.swift in Sources */,
 				D24BC0F51B96994D000405F7 /* CustomContainerView.swift in Sources */,
 				CC96E4A91ABCD91A001E6D27 /* Mail.swift in Sources */,

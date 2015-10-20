@@ -31,7 +31,7 @@ class ComposeTabPlaceholderViewController: UIViewController, UITabBarDelegate {
     
     func composeMessage() {
         let storyboard = UIStoryboard(name: "to", bundle: nil)
-        let controller = storyboard.instantiateInitialViewController() as! ToViewController
+        let controller = storyboard.instantiateInitialViewController() as! ToNavigationController
         presentViewController(controller, animated: true, completion: { () -> Void in
             self.tabBarController!.selectedIndex = 0
         })
