@@ -105,14 +105,14 @@ class MailViewController: UIViewController {
         Flurry.logEvent("Replied_to_mail")
         var toPeople = [Person]()
         let userId = LoginService.getUserIdFromToken()
-        for item in mail.conversation.people!.allObjects {
+        for item in mail.conversation.people.allObjects {
             let person = item as! Person
             if person.id != userId {
                 toPeople.append(person)
             }
         }
         var toEmails = [String]()
-        for item in mail.conversation.emails!.allObjects {
+        for item in mail.conversation.emails.allObjects {
             let emailAddress = item as! EmailAddress
             toEmails.append(emailAddress.email)
         }

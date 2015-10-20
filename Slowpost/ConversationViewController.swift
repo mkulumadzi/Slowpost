@@ -267,14 +267,14 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         Flurry.logEvent("Clicked_compose_from_conversation_view")
         var toPeople = [Person]()
         let userId = LoginService.getUserIdFromToken()
-        for item in conversation.people!.allObjects {
+        for item in conversation.people.allObjects {
             let person = item as! Person
             if person.id != userId {
                 toPeople.append(person)
             }
         }
         var toEmails = [String]()
-        for item in conversation.emails!.allObjects {
+        for item in conversation.emails.allObjects {
             let emailAddress = item as! EmailAddress
             toEmails.append(emailAddress.email)
         }
