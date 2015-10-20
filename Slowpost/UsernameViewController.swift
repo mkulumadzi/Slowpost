@@ -51,14 +51,18 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
     
     func formatTermsString() {
         termsTextView.text = ""
-        let termsString = "By clicking 'Sign up' I confirm I agree to the Privacy Policy."
+        let termsString = "By clicking 'Sign up' I confirm I agree to the Terms and Privacy Policy."
         let greenColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
         let darkGreenColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
-        let privacyLink = NSURL(string: "https://slowpost.me/#/legal")
+        let privacyLink = NSURL(string: "https://slowpost.me/#/privacy")
+        let termsLink = NSURL(string: "https://slowpost.me/#/terms")
         
         let termsMutableString = NSMutableAttributedString(string: termsString, attributes: [NSFontAttributeName : UIFont(name: "OpenSans", size: 13)!, NSForegroundColorAttributeName : greenColor])
-        termsMutableString.addAttribute(NSFontAttributeName, value: UIFont(name: "OpenSans-Semibold", size: 13)!, range: NSRange(location: 47, length: 14))
-        termsMutableString.addAttribute(NSLinkAttributeName, value: privacyLink!, range: NSRange(location: 47, length: 14))
+        termsMutableString.addAttribute(NSFontAttributeName, value: UIFont(name: "OpenSans-Semibold", size: 13)!, range: NSRange(location: 47, length: 5))
+        termsMutableString.addAttribute(NSFontAttributeName, value: UIFont(name: "OpenSans-Semibold", size: 13)!, range: NSRange(location: 57, length: 14))
+        
+        termsMutableString.addAttribute(NSLinkAttributeName, value: termsLink!, range: NSRange(location: 47, length: 5))
+        termsMutableString.addAttribute(NSLinkAttributeName, value: privacyLink!, range: NSRange(location: 57, length: 14))
         
         termsTextView.attributedText = termsMutableString
         termsTextView.linkTextAttributes = [NSForegroundColorAttributeName: darkGreenColor]
