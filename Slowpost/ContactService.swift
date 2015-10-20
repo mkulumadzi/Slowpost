@@ -18,13 +18,13 @@ class ContactService {
         let store = CNContactStore()
         switch CNContactStore.authorizationStatusForEntityType(.Contacts){
         case .Authorized:
-            self.fetchContacts()
+            fetchContacts()
         case .NotDetermined:
             store.requestAccessForEntityType(.Contacts){succeeded, err in
                 guard err == nil && succeeded else{
                     return
                 }
-                self.fetchContacts()
+                fetchContacts()
             }
         default:
             return
@@ -41,7 +41,7 @@ class ContactService {
         let fetchRequest = CNContactFetchRequest(keysToFetch: keysToFetch)
         do {
             try store.enumerateContactsWithFetchRequest(fetchRequest, usingBlock: { (contact, cursor) -> Void in
-                self.addContactToCoreData(contact, coreDataEmailAddresses: coreDataEmailAddresses, dataController: dataController)
+                addContactToCoreData(contact, coreDataEmailAddresses: coreDataEmailAddresses, dataController: dataController)
             })
         }
         catch {
@@ -103,8 +103,7 @@ class ContactService {
             }
             person.origin = "Phone"
             person.nameLetter = person.getLetterFromName()
-            self.addEmailsToNewPerson(person, contact: contact, dataController: dataController)
-//            dataController.save()
+            addEmailsToNewPerson(person, contact: contact, dataController: dataController)
         }
     }
     
@@ -123,7 +122,7 @@ class ContactService {
     }
     
     class func addEmailsToNewPerson(person: Person, contact:CNContact, dataController: DataController) {
-        let contactEmails = self.getContactEmailAddresses(contact)
+        let contactEmails = getContactEmailAddresses(contact)
         let emails = person.mutableSetValueForKey("emails")
         for email in contactEmails {
             let emailAddress = dataController.getCoreDataObject("email == %@", predicateValue: email, entityName: "EmailAddress") as! EmailAddress

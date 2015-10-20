@@ -25,7 +25,7 @@ class RestService {
         }
         
         if requestHeaders["Authorization"] == nil {
-            requestHeaders["Authorization"] = self.addAuthHeader()
+            requestHeaders["Authorization"] = addAuthHeader()
         }
         
         print(requestURL)   
@@ -61,7 +61,7 @@ class RestService {
         }
         
         if requestHeaders["Authorization"] == nil {
-            requestHeaders["Authorization"] = self.addAuthHeader()
+            requestHeaders["Authorization"] = addAuthHeader()
         }
         
         print(requestHeaders)

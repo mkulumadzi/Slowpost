@@ -40,7 +40,7 @@ class LoginService: PersonService {
     }
     
     class func confirmTokenMatchesValidUserOnServer(completion: (error: ErrorType?, result: AnyObject?) -> Void) {
-        let userId = self.getUserIdFromToken()
+        let userId = getUserIdFromToken()
         let url = "\(PostOfficeURL)/person/id/\(userId)"
         RestService.getRequest(url, headers: nil, completion: { error, result -> Void in
             if error != nil {
@@ -55,8 +55,8 @@ class LoginService: PersonService {
     }
     
     class func getUserIdFromToken() -> String {
-        let token = self.getTokenFromKeychain()!
-        let payload = JSON(self.getTokenPayload(token)!)
+        let token = getTokenFromKeychain()!
+        let payload = JSON(getTokenPayload(token)!)
         let userId = payload["id"].stringValue
         return userId
     }
@@ -70,7 +70,7 @@ class LoginService: PersonService {
                 case .Success (let result):
                     let json = JSON(result)
                     let token = json["access_token"].stringValue
-                    self.saveLoginToUserDefaults(token)
+                    saveLoginToUserDefaults(token)
                     completion(error: nil, result: "Success")
                 case .Failure(let error):
                     if response.response != nil {

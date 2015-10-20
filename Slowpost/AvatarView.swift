@@ -10,11 +10,9 @@ import UIKit
 
 class AvatarView: UIView {
     
-    
-    
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
-        self.layer.cornerRadius = 15
+        layer.cornerRadius = 15
     }
 
 }

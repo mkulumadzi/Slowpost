@@ -15,11 +15,11 @@ class BottomBorderUITextField: UITextField {
         let border = CALayer()
         let thickness = CGFloat(1.0)
         border.borderColor = UIColor(red: 181/255, green: 181/255, blue: 181/255, alpha: 1.0).CGColor
-        border.frame = CGRect(x: 0, y: self.frame.size.height - thickness, width:  self.frame.size.width, height: self.frame.size.height)
+        border.frame = CGRect(x: 0, y: frame.size.height - thickness, width:  frame.size.width, height: frame.size.height)
         
         border.borderWidth = thickness
-        self.layer.addSublayer(border)
-        self.layer.masksToBounds = true
+        layer.addSublayer(border)
+        layer.masksToBounds = true
     }
 
 }

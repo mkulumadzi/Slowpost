@@ -19,13 +19,13 @@ class MessageUILabel: UILabel {
     */
 
     func hide() {
-        self.text = ""
-        self.backgroundColor = UIColor.clearColor()
+        text = ""
+        backgroundColor = UIColor.clearColor()
         
     }
     
     func show(message: String) {
-        self.text = message
-        self.backgroundColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
+        text = message
+        backgroundColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
     }
 }

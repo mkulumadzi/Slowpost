@@ -20,14 +20,14 @@ class ConversationService: PostofficeObjectService {
         for item in jsonArray {
             let json = JSON(item)
             let object = dataController.getCoreDataObjectForJson(json, entityName: entityName)
-            self.addOrUpdateCoreDataEntityFromJson(json, object: object)
+            addOrUpdateCoreDataEntityFromJson(json, object: object)
         }
     }
     
     override class func addOrUpdateCoreDataEntityFromJson(json: JSON, object: NSManagedObject) {
         let conversation = object as! Conversation
-        self.addPeople(conversation, json: json)
-        self.addEmails(conversation, json: json)
+        addPeople(conversation, json: json)
+        addEmails(conversation, json: json)
         conversation.numUnread = json["num_unread"].int16Value
         conversation.numUndelivered = json["num_undelivered"].int16Value
         conversation.personSentMostRecentMail = json["person_sent_most_recent_mail"].boolValue

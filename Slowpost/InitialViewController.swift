@@ -61,7 +61,7 @@ class InitialViewController: UIViewController {
         Flurry.logEvent("Sending_User_To_Login_Screen")
         let storyboard = UIStoryboard(name: "login", bundle: nil)
         let controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") 
-        self.presentViewController(controller, animated: true, completion: nil)
+        presentViewController(controller, animated: true, completion: nil)
     }
     
     func beginLoadingInitialData() {
@@ -101,7 +101,7 @@ class InitialViewController: UIViewController {
         Flurry.endTimedEvent("Initial_Data_Loading_Began", withParameters: nil)
         let storyboard = UIStoryboard(name: "home", bundle: nil)
         let controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") 
-        self.presentViewController(controller, animated: false, completion: nil)
+        presentViewController(controller, animated: false, completion: nil)
     }
     
     func registerDeviceToken() {

@@ -20,7 +20,7 @@ class PersonService: PostofficeObjectService {
         for item in jsonArray {
             let json = JSON(item)
             let object = dataController.getCoreDataObjectForJson(json, entityName: entityName)
-            self.addOrUpdateCoreDataEntityFromJson(json, object: object)
+            addOrUpdateCoreDataEntityFromJson(json, object: object)
         }
     }
     
@@ -57,10 +57,10 @@ class PersonService: PostofficeObjectService {
         let qualityOfServiceClass = QOS_CLASS_BACKGROUND
         let backgroundQueue = dispatch_get_global_queue(qualityOfServiceClass, 0)
         dispatch_async(backgroundQueue, {
-            let emails = self.getEmailsForAllPhoneContacts()
+            let emails = getEmailsForAllPhoneContacts()
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 if emails.count > 0 {
-                    self.findMatchesAndUpdateContacts(emails)
+                    findMatchesAndUpdateContacts(emails)
                 }
             })
         })
@@ -84,12 +84,12 @@ class PersonService: PostofficeObjectService {
     }
     
     class func findMatchesAndUpdateContacts(emails: [String]) {
-        self.findMatchesFromEmails(emails, completion: { (error, result) -> Void in
+        findMatchesFromEmails(emails, completion: { (error, result) -> Void in
             if let dataArray = result as? [AnyObject] {
                 print(dataArray)
                 for item in dataArray {
                     let json = JSON(item)
-                    self.updatePhoneContactWithSlowpostInfo(json)
+                    updatePhoneContactWithSlowpostInfo(json)
                 }
             }
             else {

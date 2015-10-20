@@ -17,7 +17,7 @@ class CoreDataService {
         let fetchRequest = NSFetchRequest(entityName: entityName)
         fetchRequest.fetchLimit = 1
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "updatedAt", ascending: false)]
-        let fetchedResults = self.executeFetchRequest(managedContext, fetchRequest: fetchRequest)
+        let fetchedResults = executeFetchRequest(managedContext, fetchRequest: fetchRequest)
         if fetchedResults != nil {
             let maxUpdatedAt = fetchedResults![0].valueForKey("updatedAt") as! NSDate
             let maxUpdatedAtString = maxUpdatedAt.formattedAsUTCString()
@@ -52,7 +52,7 @@ class CoreDataService {
         let fetchRequest = NSFetchRequest(entityName: entityName)
         let predicate = NSPredicate(format: "id == %@", id)
         fetchRequest.predicate = predicate
-        let objects = self.executeFetchRequest(managedContext, fetchRequest: fetchRequest)
+        let objects = executeFetchRequest(managedContext, fetchRequest: fetchRequest)
         
         return objects![0]
 

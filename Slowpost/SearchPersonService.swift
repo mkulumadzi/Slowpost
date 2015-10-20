@@ -28,7 +28,7 @@ class SearchPersonService {
                 completion(error: error, result: nil)
             }
             else if let jsonArray = result as? [AnyObject] {
-                let searchPeople = self.createPeopleFromJson(jsonArray)
+                let searchPeople = createPeopleFromJson(jsonArray)
                 completion(error: nil, result: searchPeople)
             }
             else {
@@ -42,7 +42,7 @@ class SearchPersonService {
         for item in jsonArray {
             let json = JSON(item)
             if personIsNew(json) == true {
-                let searchPerson = self.createSearchPersonFromJson(json)
+                let searchPerson = createSearchPersonFromJson(json)
                 searchPeople.append(searchPerson)
             }
         }

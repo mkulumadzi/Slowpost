@@ -18,13 +18,13 @@ class FileService {
     class func uploadImage(image:UIImage, filename:String, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
         let uploadURL = "\(PostOfficeURL)upload"
         
-        self.resizeImage(image, completion: { (error, result) -> Void in
+        resizeImage(image, completion: { (error, result) -> Void in
             if error != nil {
                 print(error)
             }
             else if let contextImage = result as? UIImage {
                 
-                let base64String = self.encodeImageAsBase64String(contextImage)
+                let base64String = encodeImageAsBase64String(contextImage)
                 let parameters = ["file": base64String, "filename": filename]
                 
                 RestService.postRequest(uploadURL, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
@@ -76,7 +76,7 @@ class FileService {
             switch response.result {
             case .Success (let result):
                 let image = UIImage(data: result as NSData)
-                self.postImageDownloadNotification()
+                postImageDownloadNotification()
                 completion(error: nil, result: image)
             case .Failure(let error):
                 var statusCode:Int!
@@ -101,14 +101,14 @@ class FileService {
     }
     
     class func saveImageToDocumentDirectory(image: UIImage, fileName: String) -> Bool {
-        let path = self.convertFileNameToNSURL(fileName)
+        let path = convertFileNameToNSURL(fileName)
         let imageData = UIImageJPEGRepresentation(image, 1.0)!
         let success = imageData.writeToURL(path, atomically: true)
         return success
     }
     
     class func getImageFromDocumentDirectory(fileName: String) -> UIImage? {
-        let path = self.convertFileNameToNSURL(fileName)
+        let path = convertFileNameToNSURL(fileName)
         var image:UIImage!
         if let data = NSData(contentsOfURL: path){
             image = UIImage(data: data)

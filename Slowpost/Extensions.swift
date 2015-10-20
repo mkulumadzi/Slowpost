@@ -21,7 +21,7 @@ extension NSDate {
     
     func isGreaterThanDate(dateToCompare : NSDate) -> Bool {
         var isGreater = false
-        if self.compare(dateToCompare) == NSComparisonResult.OrderedDescending {
+        if compare(dateToCompare) == NSComparisonResult.OrderedDescending {
             isGreater = true
         }
         return isGreater
@@ -29,7 +29,7 @@ extension NSDate {
     
     func isLessThanDate(dateToCompare : NSDate) -> Bool {
         var isLess = false
-        if self.compare(dateToCompare) == NSComparisonResult.OrderedAscending {
+        if compare(dateToCompare) == NSComparisonResult.OrderedAscending {
             isLess = true
         }
         return isLess
@@ -37,13 +37,13 @@ extension NSDate {
     
     func addDays(daysToAdd : Int) -> NSDate {
         let secondsInDays : NSTimeInterval = Double(daysToAdd) * 60 * 60 * 24
-        let dateWithDaysAdded : NSDate = self.dateByAddingTimeInterval(secondsInDays)
+        let dateWithDaysAdded : NSDate = dateByAddingTimeInterval(secondsInDays)
         return dateWithDaysAdded
     }
     
     func addHours(hoursToAdd : Int) -> NSDate {
         let secondsInHours : NSTimeInterval = Double(hoursToAdd) * 60 * 60
-        let dateWithHoursAdded : NSDate = self.dateByAddingTimeInterval(secondsInHours)
+        let dateWithHoursAdded : NSDate = dateByAddingTimeInterval(secondsInHours)
         return dateWithHoursAdded
     }
     
@@ -55,13 +55,13 @@ extension NSDate {
     
     func formattedAsUTCString() -> String {
         let format = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z"
-        return self.formattedAsString(format)
+        return formattedAsString(format)
     }
 }
 
 extension Array {
     var last: Element {
-        return self[self.endIndex - 1]
+        return self[endIndex - 1]
     }
 }
 
@@ -87,22 +87,22 @@ extension UITextView {
         let border = CALayer()
         let thickness = CGFloat(2.0)
         border.borderColor = UIColor(red: 181/255, green: 181/255, blue: 181/255, alpha: 1.0).CGColor
-        border.frame = CGRect(x: 0, y: 0, width:  self.frame.size.width, height: thickness)
+        border.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: thickness)
         
         border.borderWidth = thickness
-        self.layer.addSublayer(border)
-        self.layer.masksToBounds = true
+        layer.addSublayer(border)
+        layer.masksToBounds = true
     }
     
     public func addBottomBorder() {
         let border = CALayer()
         let thickness = CGFloat(1.0)
         border.borderColor = UIColor(red: 181/255, green: 181/255, blue: 181/255, alpha: 1.0).CGColor
-        border.frame = CGRect(x: 0, y: self.frame.size.height, width:  self.frame.size.width, height: thickness)
+        border.frame = CGRect(x: 0, y: frame.size.height, width:  frame.size.width, height: thickness)
         
         border.borderWidth = thickness
-        self.layer.addSublayer(border)
-        self.layer.masksToBounds = true
+        layer.addSublayer(border)
+        layer.masksToBounds = true
     }
     
 }

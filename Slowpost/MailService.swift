@@ -43,7 +43,7 @@ class MailService: PostofficeObjectService {
                             if let jsonArray = result as? [AnyObject] {
                                 print("You've got mail")
                                 print(jsonArray)
-                                self.appendJsonArrayToCoreData(jsonArray)
+                                appendJsonArrayToCoreData(jsonArray)
                                 completion(error: nil, result: "Success")
                             }
                             else {
@@ -71,7 +71,7 @@ class MailService: PostofficeObjectService {
         for item in jsonArray {
             let json = JSON(item)
             let object = dataController.getCoreDataObjectForJson(json, entityName: entityName)
-            self.addOrUpdateCoreDataEntityFromJson(json, object: object)
+            addOrUpdateCoreDataEntityFromJson(json, object: object)
         }
     }
     
@@ -79,11 +79,11 @@ class MailService: PostofficeObjectService {
         let mail = object as! Mail
         mail.status = json["status"].stringValue
         mail.type = json["type"].stringValue
-        self.addConversation(mail, json: json)
-        self.addFromPerson(mail, json: json)
-        self.addToPeople(mail, json: json)
-        self.addEmails(mail, json: json)
-        self.addAttachments(mail, json: json)
+        addConversation(mail, json: json)
+        addFromPerson(mail, json: json)
+        addToPeople(mail, json: json)
+        addEmails(mail, json: json)
+        addAttachments(mail, json: json)
         
         if json["date_sent"].stringValue != "" {
             mail.dateSent = NSDate(dateString: json["date_sent"].stringValue)
@@ -142,10 +142,10 @@ class MailService: PostofficeObjectService {
         let attachments = mail.mutableSetValueForKey("attachments")
         for attachment in json["attachments"].arrayValue {
             if attachment["_type"].stringValue == "Postoffice::Note" {
-                attachments.addObject(self.addNote(attachment))
+                attachments.addObject(addNote(attachment))
             }
             else if attachment["_type"].stringValue == "Postoffice::ImageAttachment" {
-                attachments.addObject(self.addImageAttachment(attachment))
+                attachments.addObject(addImageAttachment(attachment))
             }
         }
     }
