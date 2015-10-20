@@ -36,22 +36,13 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         
         refreshData()
         
-        mailTable.addSubview(self.refreshControl)
+        mailTable.addSubview(refreshControl)
         
         mailTable.estimatedRowHeight = 45 + view.frame.width / 2
         mailTable.rowHeight = UITableViewAutomaticDimension
         
         mailTable.tableHeaderView = createTableHeader()
         mailTable.separatorStyle = UITableViewCellSeparatorStyle.None
-        
-        NSNotificationCenter.defaultCenter().addObserverForName("imageDownloaded:", object: nil, queue: nil, usingBlock: { (notification) -> Void in
-            self.refreshData()
-        })
-        
-        NSNotificationCenter.defaultCenter().addObserverForName("appBecameActive:", object: nil, queue: nil, usingBlock: { (notification) -> Void in
-            self.refreshData()
-            
-        })
         
     }
     
@@ -67,9 +58,9 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     
     func createTableHeader() -> UIView {
         let conversationList = conversation.conversationList()
-        let headerView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: 30.0))
+        let headerView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: 30.0))
         headerView.backgroundColor = UIColor.whiteColor()
-        let label = UILabel(frame: CGRect(x: 8.0, y: 5.0, width: self.view.frame.width - 16.0, height: 20.0))
+        let label = UILabel(frame: CGRect(x: 8.0, y: 5.0, width: view.frame.width - 16.0, height: 20.0))
         label.font = UIFont(name: "OpenSans-Light", size: 15.0)
         label.textColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
         label.text = conversationList
@@ -77,12 +68,12 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         label.sizeToFit()
         let fixedHeight = label.frame.height
         headerView.addSubview(label)
-        headerView.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: fixedHeight + 10.0)
+        headerView.frame = CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: fixedHeight + 10.0)
         
         let border = CALayer()
         let width = CGFloat(1.0)
         border.borderColor = UIColor(red: 181/255, green: 181/255, blue: 181/255, alpha: 1.0).CGColor
-        border.frame = CGRect(x: 0, y: headerView.frame.height - width, width:  self.view.frame.width, height: headerView.frame.height)
+        border.frame = CGRect(x: 0, y: headerView.frame.height - width, width:  view.frame.width, height: headerView.frame.height)
         
         border.borderWidth = width
         headerView.layer.addSublayer(border)
@@ -103,10 +94,10 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         fetchRequest.predicate = predicate
         
         fetchRequest.sortDescriptors = [statusSort, dateScheduledSort]
-        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: "status", cacheName: nil)
-        self.fetchedResultsController.delegate = self
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: "status", cacheName: nil)
+        fetchedResultsController.delegate = self
         do {
-            try self.fetchedResultsController.performFetch()
+            try fetchedResultsController.performFetch()
         } catch {
             fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
@@ -119,13 +110,13 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let sections = self.fetchedResultsController.sections!
+        let sections = fetchedResultsController.sections!
         let sectionInfo = sections[section]
         return sectionInfo.name
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sections = self.fetchedResultsController.sections!
+        let sections = fetchedResultsController.sections!
         let sectionInfo = sections[section]
         return sectionInfo.numberOfObjects
     }
@@ -140,13 +131,13 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0:
-            let sections = self.fetchedResultsController.sections!
+            let sections = fetchedResultsController.sections!
             let sectionInfo = sections[section]
             if sectionInfo.numberOfObjects == 0 {
                 return 0.0
             }
         case 1:
-            let sections = self.fetchedResultsController.sections!
+            let sections = fetchedResultsController.sections!
             let sectionInfo = sections[section]
             if sectionInfo.numberOfObjects == 0  {
                 return 0.0
@@ -161,19 +152,19 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("mailCell", forIndexPath: indexPath) as! ConversationMailCell
-        self.configureCell(cell, indexPath: indexPath)
+        configureCell(cell, indexPath: indexPath)
         return cell
     }
     
     func configureCell(cell: ConversationMailCell, indexPath: NSIndexPath) {
-        let mail = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Mail
+        let mail = fetchedResultsController.objectAtIndexPath(indexPath) as! Mail
         cell.mail = mail
         cell.imageFile = nil
         cell.mailImageView.image = nil
         
         generateStatusLabel(cell, mail: cell.mail)
         
-        self.addImageToCell(cell)
+        addImageToCell(cell)
         if cell.imageFile != nil { cell.mailImageView.image = cell.imageFile }
         cell.initialsLabel.text = cell.mail.fromPerson.initials()
         
@@ -248,12 +239,12 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let mail = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Mail
+        let mail = fetchedResultsController.objectAtIndexPath(indexPath) as! Mail
         let storyboard = UIStoryboard(name: "mail", bundle: nil)
         let mailViewController = storyboard.instantiateInitialViewController() as! MailViewController
         mailViewController.mail = mail
         mailViewController.runOnClose = {self.refreshData()}
-        self.presentViewController(mailViewController, animated: true, completion: {})
+        presentViewController(mailViewController, animated: true, completion: {})
     }
     
     func refreshData() {
@@ -293,8 +284,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         controller.toPeople = toPeople
         controller.toSearchPeople = [SearchPerson]()
         controller.toEmails = toEmails
-        self.presentViewController(controller, animated: true, completion: {})
+        presentViewController(controller, animated: true, completion: {})
     }
-    
 
 }
