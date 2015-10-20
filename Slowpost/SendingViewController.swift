@@ -59,7 +59,7 @@ class SendingViewController: UIViewController {
         let fileName = generateFileName()
         FileService.uploadImage(image, filename: fileName, completion: { (error, result) -> Void in
             if let imageUid = result as? String {
-                FileService.saveImageToDocumentDirectory(self.image, fileName: fileName)
+                FileService.saveImageToDirectory(self.image, fileName: fileName)
                 self.sendMailToPostoffice(imageUid)
             }
             else {

@@ -18,10 +18,12 @@ class ImageAttachment: Attachment {
     func image(completion: (error: NSError?, result: AnyObject?) -> Void) {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let dataController = appDelegate.dataController
+        var existingImage:UIImage?
         if !fileName.isEmpty && fileName != "" {
-            
-            let image = FileService.getImageFromDocumentDirectory(fileName)!
-            completion(error: nil, result: image)
+            existingImage = FileService.getImageFromDirectory(fileName)
+        }
+        if existingImage != nil {
+            completion(error: nil, result: existingImage!)
         }
         else {
             var fileName = getFileNameFromURL()
@@ -30,7 +32,7 @@ class ImageAttachment: Attachment {
                 let uuid = NSUUID().UUIDString
                 fileName = uuid + ".jpg"
             }
-            let image = FileService.getImageFromDocumentDirectory(fileName)
+            let image = FileService.getImageFromDirectory(fileName)
             if image != nil {
                 self.fileName = fileName
                 dataController.save()
@@ -39,7 +41,7 @@ class ImageAttachment: Attachment {
             else {
                 FileService.downloadImage(url, completion: { error, result -> Void in
                     if let image = result as? UIImage {
-                        let imageSaved = FileService.saveImageToDocumentDirectory(image, fileName: fileName)
+                        let imageSaved = FileService.saveImageToDirectory(image, fileName: fileName)
                         if imageSaved {
                             self.fileName = fileName
                             dataController.save()

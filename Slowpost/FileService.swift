@@ -94,22 +94,22 @@ class FileService {
     }
     
     class func convertFileNameToNSURL(fileName: String) -> NSURL {
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        let urls = NSFileManager.defaultManager().URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask)
         let docURL = urls[urls.endIndex-1]
         let path = docURL.URLByAppendingPathComponent(fileName)
         return path
     }
     
-    class func saveImageToDocumentDirectory(image: UIImage, fileName: String) -> Bool {
+    class func saveImageToDirectory(image: UIImage, fileName: String) -> Bool {
         let path = convertFileNameToNSURL(fileName)
         let imageData = UIImageJPEGRepresentation(image, 1.0)!
         let success = imageData.writeToURL(path, atomically: true)
         return success
     }
     
-    class func getImageFromDocumentDirectory(fileName: String) -> UIImage? {
+    class func getImageFromDirectory(fileName: String) -> UIImage? {
         let path = convertFileNameToNSURL(fileName)
-        var image:UIImage!
+        var image:UIImage?
         if let data = NSData(contentsOfURL: path){
             image = UIImage(data: data)
         }
