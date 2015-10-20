@@ -697,34 +697,31 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         var slowpostString:String!
         if numSlowposts > 1 {
-            slowpostString = "\(numSlowposts) on Slowpost"
+            slowpostString = "\(numSlowposts) people on Slowpost"
         }
         else if numSlowposts > 0 {
-            slowpostString = "\(numSlowposts) on Slowpost"
-        }
-        
-        var emailString:String!
-        if numEmails > 1 {
-            emailString = "\(numEmails) emails"
-        }
-        else if numEmails > 0 {
-            emailString = "\(numEmails) email"
+            slowpostString = "\(numSlowposts) person on Slowpost"
         }
         
         if numSlowposts > 0 && numEmails > 0 {
-            title = "Write to \(slowpostString) and \(emailString)"
+            title = "Write to \(slowpostString) and \(numEmails) on email"
         }
         else if numSlowposts > 0 {
             title = "Write to \(slowpostString)"
         }
+        else if numEmails > 1 {
+            title = "Write to \(numEmails) people on email"
+        }
         else if numEmails > 0 {
-            title = "Write to \(emailString)"
+            title = "Write to \(numEmails) person on email"
         }
         else {
             title = ""
         }
         
         nextButton.setTitle(title, forState: .Normal)
+        nextButton.titleLabel?.numberOfLines = 1
+        nextButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
     }
     
