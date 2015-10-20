@@ -51,7 +51,7 @@ class Mail: PostofficeObject {
     
     func content() -> String {
         var content:String!
-        for attachment in self.attachments {
+        for attachment in attachments {
             if let note = attachment as? Note {
                 content = note.content
             }
@@ -62,7 +62,7 @@ class Mail: PostofficeObject {
     func toList() -> String {
         var list = ""
         var index = 0
-        for item in self.toPeople.allObjects {
+        for item in toPeople.allObjects {
             let person = item as! Person
             if index > 0 {
                 list += ", "
@@ -70,7 +70,7 @@ class Mail: PostofficeObject {
             list += "\(person.fullName())"
             index += 1
         }
-        for item in self.toEmails.allObjects {
+        for item in toEmails.allObjects {
             let emailAddress = item as! EmailAddress
             if index > 0 { list += ", " }
             list += emailAddress.email
@@ -81,7 +81,7 @@ class Mail: PostofficeObject {
     
     func toLoggedInUser() -> Bool {
         let userId = LoginService.getUserIdFromToken()
-        if self.fromPerson.id == userId {
+        if fromPerson.id == userId {
             return false
         }
         else {
@@ -92,7 +92,7 @@ class Mail: PostofficeObject {
     func markAsRead() {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let dataController = appDelegate.dataController
-        self.myStatus = "READ"
+        myStatus = "READ"
         dataController.save()
     }
 

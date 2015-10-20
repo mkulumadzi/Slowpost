@@ -75,8 +75,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         searchController.searchBar.showsCancelButton = false
         searchController.searchBar.searchBarStyle = .Minimal
 
-        self.navigationItem.titleView = self.searchController.searchBar
-        self.definesPresentationContext = true
+        navigationItem.titleView = searchController.searchBar
+        definesPresentationContext = true
         
         let textField = searchController.searchBar.valueForKey("searchField") as! UITextField
         textField.textColor = UIColor.whiteColor()
@@ -101,14 +101,14 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
 
     func addSegmentedControlToHeader() {
-        let headerView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: self.personTable.bounds.size.width, height: 40.0))
+        let headerView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: personTable.bounds.size.width, height: 40.0))
         headerView.backgroundColor = UIColor.whiteColor()
         headerView.addSubview(segmentedControl)
         let horizontalConstraint = NSLayoutConstraint(item: segmentedControl, attribute: .CenterX, relatedBy: .Equal, toItem: headerView, attribute: .CenterX, multiplier: 1.0, constant: 0.0)
         let verticalConstraint = NSLayoutConstraint(item: segmentedControl, attribute: .CenterY, relatedBy: .Equal, toItem: headerView, attribute: .CenterY, multiplier: 1.0, constant: 0.0)
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activateConstraints([horizontalConstraint, verticalConstraint])
-        self.personTable.tableHeaderView = headerView
+        personTable.tableHeaderView = headerView
         segmentedControl.addTarget(self, action:"toggleResults", forControlEvents: .ValueChanged)
     }
     
@@ -264,7 +264,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let peopleSections = self.peopleController.sections!
+        let peopleSections = peopleController.sections!
         var adjustedSection:Int!
         if recipientSection() == true {
             adjustedSection = section - 1
@@ -374,19 +374,19 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let cell = tableView.dequeueReusableCellWithIdentifier("recipientCell", forIndexPath: indexPath) as! RecipientCell
         if indexPath.row < toPeople.count {
             let person = toPeople[indexPath.row]
-            self.configureRecipientCell(cell, object: person)
+            configureRecipientCell(cell, object: person)
             return cell
         }
         else if indexPath.row < (toSearchPeople.count + toPeople.count) {
             let adjustedIndex = indexPath.row - toPeople.count
             let searchPerson = toSearchPeople[adjustedIndex]
-            self.configureRecipientCell(cell, object: searchPerson)
+            configureRecipientCell(cell, object: searchPerson)
             return cell
         }
         else {
             let adjustedIndex = indexPath.row - (toPeople.count + toSearchPeople.count)
             let email = toEmails[adjustedIndex]
-            self.configureRecipientCell(cell, object: email)
+            configureRecipientCell(cell, object: email)
             return cell
         }
     }
@@ -396,13 +396,13 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         if !person.id.isEmpty {
             let cell = tableView.dequeueReusableCellWithIdentifier("personCell") as! PersonCell
             cell.person = person
-            self.configurePersonCell(cell)
+            configurePersonCell(cell)
             return cell
         }
         else {
             let cell = tableView.dequeueReusableCellWithIdentifier("phoneContactCell") as! PhoneContactCell
             cell.person = person
-            self.configurePhoneContactCell(cell)
+            configurePhoneContactCell(cell)
             return cell
         }
     }
@@ -411,7 +411,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         if indexPath.row < searchResults.count {
             let cell = tableView.dequeueReusableCellWithIdentifier("searchPersonCell") as! SearchPersonCell
             cell.searchPerson = searchResults[indexPath.row]
-            self.configureSearchPersonCell(cell)
+            configureSearchPersonCell(cell)
             return cell
         }
         else {
@@ -521,21 +521,21 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         var adjuster:Int = 0
-        if self.recipientSection() == true {
+        if recipientSection() == true {
             adjuster = 1
         }
         let numPeopleSections = peopleController.sections!.count
         if recipientSection() == true && indexPath.section == 0 {
             Flurry.logEvent("Removed_recipient")
-            self.removeRecipient(tableView, indexPath: indexPath)
+            removeRecipient(tableView, indexPath: indexPath)
         }
         else if (indexPath.section - adjuster) < numPeopleSections {
-            self.handlePersonSelection(tableView, indexPath: indexPath)
+            handlePersonSelection(tableView, indexPath: indexPath)
         }
         else {
-            self.handleOtherSelection(tableView, indexPath: indexPath)
+            handleOtherSelection(tableView, indexPath: indexPath)
         }
-        self.searchController.dismissViewControllerAnimated(true, completion: {})
+        searchController.dismissViewControllerAnimated(true, completion: {})
         searchController.searchBar.text = ""
         searchController.searchBar.resignFirstResponder()
         validateNextButton()
@@ -589,8 +589,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 }
             }
             else {
-                self.searchController.dismissViewControllerAnimated(true, completion: {})
-                self.performSegueWithIdentifier("viewPhoneContact", sender: cell)
+                searchController.dismissViewControllerAnimated(true, completion: {})
+                performSegueWithIdentifier("viewPhoneContact", sender: cell)
             }
         }
         else {
@@ -602,12 +602,12 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         if let searchPersonCell = tableView.cellForRowAtIndexPath(indexPath) as? SearchPersonCell {
             Flurry.logEvent("Added_person_searched_on_slowpost")
             let searchPerson = searchPersonCell.searchPerson
-            self.toSearchPeople.append(searchPerson)
-            self.personTable.reloadData()
-            self.validateNextButton()
+            toSearchPeople.append(searchPerson)
+            personTable.reloadData()
+            validateNextButton()
         }
         else {
-            self.searchController.dismissViewControllerAnimated(true, completion: {Void in
+            searchController.dismissViewControllerAnimated(true, completion: {Void in
                 self.performSegueWithIdentifier("addEmail", sender: nil)
             })
         }
@@ -615,7 +615,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
         Flurry.logEvent("Compose_Cancelled")
-        self.dismissViewControllerAnimated(true, completion: {})
+        dismissViewControllerAnimated(true, completion: {})
     }
     
     func validateNextButton() {
@@ -633,7 +633,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         controller.toPeople = toPeople
         controller.toSearchPeople = toSearchPeople
         controller.toEmails = toEmails
-        self.presentViewController(controller, animated: true, completion: {})
+        presentViewController(controller, animated: true, completion: {})
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

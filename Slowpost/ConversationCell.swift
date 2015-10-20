@@ -17,7 +17,7 @@ class ConversationCell: UITableViewCell {
         super.awakeFromNib()
         
         let cellLabel = addConversationCellLabel()
-        self.addSubview(cellLabel)
+        addSubview(cellLabel)
 
     }
 

@@ -90,7 +90,7 @@ class CardGalleryUIViewController: UIViewController, UICollectionViewDataSource,
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize {
         
-        let width:CGFloat = self.cardCollection.frame.width - 20
+        let width:CGFloat = cardCollection.frame.width - 20
         let height:CGFloat = width * 3 / 4
         
         let cardSize = CGSize.init(width: width, height: height)
@@ -117,7 +117,7 @@ class CardGalleryUIViewController: UIViewController, UICollectionViewDataSource,
         imageSelected = photoArray[indexPath.row]
         let parameters:[String: String] = ["Name": cardNames[indexPath.row]]
         Flurry.logEvent("Chose_Image_From_Gallery", withParameters: parameters)
-        self.performSegueWithIdentifier("imageSelected", sender: nil)
+        performSegueWithIdentifier("imageSelected", sender: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

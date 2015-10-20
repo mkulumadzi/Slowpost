@@ -33,7 +33,7 @@ class ConversationMailCell: UITableViewCell {
         fromView.layer.cornerRadius = 15
         cardView.layer.cornerRadius = 5
         mailStatusLabel.layer.cornerRadius = 6
-        self.backgroundColor = UIColor.clearColor()
+        backgroundColor = UIColor.clearColor()
         
     }
     

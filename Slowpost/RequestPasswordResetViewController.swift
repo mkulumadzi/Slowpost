@@ -86,7 +86,7 @@ class RequestPasswordResetViewController: UIViewController {
     }
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
-        self.navigationController?.popViewControllerAnimated(true)
+        navigationController?.popViewControllerAnimated(true)
     }
 
 

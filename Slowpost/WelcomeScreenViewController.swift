@@ -31,10 +31,10 @@ class WelcomeScreenViewController: UIViewController, UIPageViewControllerDataSou
         
         Flurry.logEvent("Welcome_Screen_Displayed")
         
-        pageOne = self.storyboard!.instantiateViewControllerWithIdentifier("pageOne") 
-        pageTwo = self.storyboard!.instantiateViewControllerWithIdentifier("pageTwo") 
-        pageThree = self.storyboard!.instantiateViewControllerWithIdentifier("pageThree") 
-        pageFour = self.storyboard!.instantiateViewControllerWithIdentifier("pageFour") 
+        pageOne = storyboard!.instantiateViewControllerWithIdentifier("pageOne")
+        pageTwo = storyboard!.instantiateViewControllerWithIdentifier("pageTwo")
+        pageThree = storyboard!.instantiateViewControllerWithIdentifier("pageThree")
+        pageFour = storyboard!.instantiateViewControllerWithIdentifier("pageFour")
 
         createPageViewController()
         setupPageControl()
@@ -57,11 +57,11 @@ class WelcomeScreenViewController: UIViewController, UIPageViewControllerDataSou
         
         pageViewController = pageController
         addChildViewController(pageViewController!)
-        self.view.addSubview(pageViewController!.view)
+        view.addSubview(pageViewController!.view)
         pageViewController!.didMoveToParentViewController(self)
         
-        self.view.bringSubviewToFront(logInButton)
-        self.view.bringSubviewToFront(signUpButton)
+        view.bringSubviewToFront(logInButton)
+        view.bringSubviewToFront(signUpButton)
     }
     
     private func setupPageControl() {

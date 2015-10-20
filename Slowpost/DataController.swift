@@ -25,8 +25,8 @@ class DataController: NSObject {
             fatalError("Error initializing mom from: \(modelURL)")
         }
         let psc = NSPersistentStoreCoordinator(managedObjectModel: mom)
-        self.moc = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
-        self.moc.persistentStoreCoordinator = psc
+        moc = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        moc.persistentStoreCoordinator = psc
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
             let docURL = urls[urls.endIndex-1]
@@ -49,7 +49,7 @@ class DataController: NSObject {
         let fetchRequest = NSFetchRequest(entityName: entityName)
         fetchRequest.fetchLimit = 1
                 fetchRequest.sortDescriptors = [NSSortDescriptor(key: "updatedAt", ascending: false)]
-        let fetchedResults = self.executeFetchRequest(fetchRequest)
+        let fetchedResults = executeFetchRequest(fetchRequest)
         if fetchedResults!.count > 0 {
             let maxUpdatedAt = fetchedResults![0].valueForKey("updatedAt") as! NSDate
             let maxUpdatedAtString = maxUpdatedAt.formattedAsUTCString()
@@ -68,7 +68,7 @@ class DataController: NSObject {
         fetchRequest.predicate = NSPredicate(format: "origin == %@", "Postoffice")
         fetchRequest.fetchLimit = 1
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "updatedAt", ascending: false)]
-        let fetchedResults = self.executeFetchRequest(fetchRequest)
+        let fetchedResults = executeFetchRequest(fetchRequest)
         if fetchedResults!.count > 0 {
             let maxUpdatedAt = fetchedResults![0].valueForKey("updatedAt") as! NSDate
             let maxUpdatedAtString = maxUpdatedAt.formattedAsUTCString()
@@ -92,14 +92,14 @@ class DataController: NSObject {
         let fetchRequest = NSFetchRequest(entityName: entityName)
         fetchRequest.predicate = predicate
         
-        let fetchResults = (try? self.moc.executeFetchRequest(fetchRequest)) as? [NSManagedObject]
+        let fetchResults = (try? moc.executeFetchRequest(fetchRequest)) as? [NSManagedObject]
         
         if fetchResults!.count > 0 {
             return fetchResults![0]
         }
         else {
-            let entity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: self.moc)
-            let newObject = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.moc)
+            let entity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: moc)
+            let newObject = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: moc)
             return newObject
         }
     }
@@ -108,7 +108,7 @@ class DataController: NSObject {
         let fetchRequest = NSFetchRequest(entityName: entityName)
         let predicate = NSPredicate(format: "id == %@", id)
         fetchRequest.predicate = predicate
-        let objects = self.executeFetchRequest(fetchRequest)
+        let objects = executeFetchRequest(fetchRequest)
         
         return objects![0]
         
@@ -117,7 +117,7 @@ class DataController: NSObject {
     func executeFetchRequest(fetchRequest: NSFetchRequest) -> [NSManagedObject]? {
         var objects:[NSManagedObject]!
         do {
-            objects = try self.moc.executeFetchRequest(fetchRequest) as! [NSManagedObject]
+            objects = try moc.executeFetchRequest(fetchRequest) as! [NSManagedObject]
         } catch {
             fatalError("Failed to fetch objects: \(error)")
         }
@@ -129,9 +129,9 @@ class DataController: NSObject {
     func deleteCoreDataObjects(entityName: String) {
         let fetchRequest = NSFetchRequest(entityName: entityName)
         do {
-            let fetchedResults = try self.moc.executeFetchRequest(fetchRequest) as? [NSManagedObject]
+            let fetchedResults = try moc.executeFetchRequest(fetchRequest) as? [NSManagedObject]
             for object:NSManagedObject in fetchedResults! {
-                self.moc.deleteObject(object)
+                moc.deleteObject(object)
             }
         }
         catch {
@@ -141,7 +141,7 @@ class DataController: NSObject {
     
     func save() {
         do {
-            try self.moc.save()
+            try moc.save()
         } catch {
             fatalError("Failure to save context: \(error)")
         }

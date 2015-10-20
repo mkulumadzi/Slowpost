@@ -24,7 +24,7 @@ class SignUpCompleteViewController: UIViewController {
         gotItButton.layer.cornerRadius = 5
 
         if deviceType == "iPhone 4S" {
-            self.formatForiPhone4S()
+            formatForiPhone4S()
         }
         
     }

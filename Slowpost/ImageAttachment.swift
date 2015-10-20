@@ -24,7 +24,7 @@ class ImageAttachment: Attachment {
             completion(error: nil, result: image)
         }
         else {
-            var fileName = self.getFileNameFromURL()
+            var fileName = getFileNameFromURL()
             // Previously was saving all images with the same filename; this is a temporary workaround to save these with a UUID
             if fileName == "image.jpg" {
                 let uuid = NSUUID().UUIDString

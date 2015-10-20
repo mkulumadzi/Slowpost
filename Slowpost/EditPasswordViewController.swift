@@ -103,7 +103,7 @@ class EditPasswordViewController: UIViewController {
     
     func passwordChanged() {
         Flurry.logEvent("Changed_Password")
-        self.performSegueWithIdentifier("passwordChanged", sender: nil)
+        performSegueWithIdentifier("passwordChanged", sender: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

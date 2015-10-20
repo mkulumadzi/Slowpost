@@ -35,7 +35,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         messageLabel.hide()
         conversationList.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: conversationList.bounds.size.width, height: 0.01))
         refreshData()
-        conversationList.addSubview(self.refreshControl)
+        conversationList.addSubview(refreshControl)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -52,10 +52,10 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         let updatedSort = NSSortDescriptor(key: "updatedAt", ascending: false)
         fetchRequest.sortDescriptors = [updatedSort]
         
-        self.fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: nil, cacheName: nil)
-        self.fetchedResultsController.delegate = self
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: dataController.moc, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
         do {
-            try self.fetchedResultsController.performFetch()
+            try fetchedResultsController.performFetch()
         } catch {
             fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
@@ -83,7 +83,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sections = self.fetchedResultsController.sections!
+        let sections = fetchedResultsController.sections!
         let sectionInfo = sections[section]
         return sectionInfo.numberOfObjects
     }
@@ -156,10 +156,10 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     @IBAction func settingsMenuItemSelected(segue:UIStoryboardSegue) {
         dismissSourceViewController(segue)
         if segue.identifier == "editPasswordSelected" {
-            self.performSegueWithIdentifier("editPassword", sender: nil)
+            performSegueWithIdentifier("editPassword", sender: nil)
         }
         else if segue.identifier == "editProfileSelected" {
-            self.performSegueWithIdentifier("editProfile", sender: nil)
+            performSegueWithIdentifier("editProfile", sender: nil)
         }
     }
     
@@ -172,7 +172,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     
     @IBAction func choseToLogOut(segue:UIStoryboardSegue) {
         LoginService.logOut()
-        self.dismissViewControllerAnimated(true, completion: {})
+        dismissViewControllerAnimated(true, completion: {})
     }
     
     func dismissSourceViewController(segue: UIStoryboardSegue) {

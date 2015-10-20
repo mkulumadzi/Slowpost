@@ -41,8 +41,8 @@ class MailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-        self.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
         
         Flurry.logEvent("Mail_Opened")
         
@@ -122,13 +122,13 @@ class MailViewController: UIViewController {
         controller.toPeople = toPeople
         controller.toSearchPeople = [SearchPerson]()
         controller.toEmails = toEmails
-        self.presentViewController(controller, animated: true, completion: {})
+        presentViewController(controller, animated: true, completion: {})
         
     }
     
     @IBAction func closeMailView(sender: AnyObject) {
         if runOnClose != nil { runOnClose!() }
-        self.dismissViewControllerAnimated(true, completion: {})
+        dismissViewControllerAnimated(true, completion: {})
     }
 }
 

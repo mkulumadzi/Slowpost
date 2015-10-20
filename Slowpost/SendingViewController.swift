@@ -146,7 +146,7 @@ class SendingViewController: UIViewController {
         if lastRequestEndpoint != nil {
             if lastRequestEndpoint! == "send" || lastRequestEndpoint! == "upload" {
                 lastPostRequest.cancel()
-                self.dismissViewControllerAnimated(true, completion: {})
+                dismissViewControllerAnimated(true, completion: {})
             }
         }
     }

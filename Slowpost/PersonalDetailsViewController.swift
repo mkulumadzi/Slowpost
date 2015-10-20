@@ -40,7 +40,7 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
         validateNextButton()
         
         if deviceType == "iPhone 4S" {
-            self.formatForiPhone4S()
+            formatForiPhone4S()
         }
         
     }
@@ -94,7 +94,7 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func cancel(sender: AnyObject) {
         Flurry.logEvent("Signup_Cancelled")
-        self.dismissViewControllerAnimated(true, completion: {})
+        dismissViewControllerAnimated(true, completion: {})
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {

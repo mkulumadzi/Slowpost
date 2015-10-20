@@ -29,8 +29,8 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-        self.modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
+        modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
         
         Flurry.logEvent("Login_Screen_Opened")
         
@@ -117,7 +117,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func cancel(sender: AnyObject) {
         Flurry.logEvent("Login_Cancelled_By_User")
-        self.dismissViewControllerAnimated(true, completion: {})
+        dismissViewControllerAnimated(true, completion: {})
     }
     
 }

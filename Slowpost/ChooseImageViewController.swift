@@ -49,7 +49,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         nextButton.layer.cornerRadius = 5
         validateButtons()
         
-        self.automaticallyAdjustsScrollViewInsets = false
+        automaticallyAdjustsScrollViewInsets = false
         
         imageScrollView.delegate = self
         imageScrollView.showsHorizontalScrollIndicator = false
@@ -62,7 +62,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     func getRecipientsFromNavController() {
-        if let navController = self.navigationController as? ComposeNavigationController {
+        if let navController = navigationController as? ComposeNavigationController {
             toPeople = navController.toPeople
             toSearchPeople = navController.toSearchPeople
             toEmails = navController.toEmails
@@ -78,7 +78,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     func setupSubview(image: UIImage) {
-        let subViews = self.imageScrollView.subviews
+        let subViews = imageScrollView.subviews
         for subview in subViews {
             if subview is UIImageView {
                 subview.removeFromSuperview()
@@ -143,7 +143,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
             imagePicker.navigationBar.tintColor = UIColor.whiteColor()
             imagePicker.navigationBar.barTintColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
             
-            self.presentViewController(imagePicker, animated: true, completion: nil)
+            presentViewController(imagePicker, animated: true, completion: nil)
             newMedia = false
         }
     }
@@ -153,15 +153,15 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
                 
-                let imagePicker = UIImagePickerController()
+            let imagePicker = UIImagePickerController()
 
-                imagePicker.delegate = self
-                imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-                imagePicker.mediaTypes = [kUTTypeImage as String]
-                imagePicker.allowsEditing = false
-                
-                self.presentViewController(imagePicker, animated: true, completion: nil)
-                newMedia = true
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+            imagePicker.mediaTypes = [kUTTypeImage as String]
+            imagePicker.allowsEditing = false
+            
+            presentViewController(imagePicker, animated: true, completion: nil)
+            newMedia = true
         }
     }
     
@@ -169,13 +169,13 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         
         let mediaType = info[UIImagePickerControllerMediaType] as! String
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
         
         if mediaType == (kUTTypeImage as String) {
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
             
             Flurry.logEvent("Got_Image_From_Library_Or_Camera")
-            self.setupSubview(image)
+            setupSubview(image)
             
             if (newMedia == true) {
                 UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil)
@@ -193,7 +193,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
             let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
             
             alert.addAction(cancelAction)
-            self.presentViewController(alert, animated: true, completion: nil)
+            presentViewController(alert, animated: true, completion: nil)
         }
     }
     
@@ -231,11 +231,11 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func removePhoto(sender: AnyObject) {
-        let subViews = self.imageScrollView.subviews
+        let subViews = imageScrollView.subviews
         for subview in subViews {
             if subview is UIImageView {
                 subview.removeFromSuperview()
@@ -281,7 +281,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func backToSelectRecipient(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: {})
+        dismissViewControllerAnimated(true, completion: {})
     }
     
     @IBAction func cancelToChooseImage(segue:UIStoryboardSegue) {
@@ -292,27 +292,18 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func nextButtonPressed(sender: AnyObject) {
-        self.performSegueWithIdentifier("composeMessage", sender: nil)
+        performSegueWithIdentifier("composeMessage", sender: nil)
     }
     
     @IBAction func backButtonPressed(sender: AnyObject) {
-        self.navigationController?.dismissViewControllerAnimated(true, completion: {})
-//        self.navigationController?.removeFromParentViewController()
-//        self.removeFromParentViewController()
-//        print(self.parentViewController)
-//        print(self.presentingViewController)
-//        print(self.parentViewController)
-//        print(self.parentViewController!.parentViewController)
-//        print(self.parentViewController!.parentViewController!.presentedViewController)
-//        print(self.presentationController)
-//        let presenter = self.parentViewController!.parentViewController!
+        navigationController?.dismissViewControllerAnimated(true, completion: {})
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "composeMessage" {
             let composeMailViewController = segue.destinationViewController as? ComposeMailViewController
             if imageSelected != nil {
-                let croppedImage = self.cropImage()
+                let croppedImage = cropImage()
                 composeMailViewController?.cardImage = croppedImage
             }
             else {

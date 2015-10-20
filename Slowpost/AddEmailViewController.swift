@@ -64,7 +64,7 @@ class AddEmailViewController: UIViewController {
     }
 
     @IBAction func cancelButtonPressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: {})
+        dismissViewControllerAnimated(true, completion: {})
     }
 
     @IBAction func submitButtonPressed(sender: AnyObject) {

@@ -39,7 +39,7 @@ class PhoneContactViewController: UIViewController, UITableViewDelegate, UITable
             performSegueWithIdentifier("emailCleared", sender: nil)
         }
         else {
-            self.dismissViewControllerAnimated(true, completion: {})
+            dismissViewControllerAnimated(true, completion: {})
         }
     }
     

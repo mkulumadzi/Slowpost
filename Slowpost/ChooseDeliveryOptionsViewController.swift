@@ -64,7 +64,7 @@ class ChooseDeliveryOptionsViewController: UIViewController {
     }
     
     @IBAction func standardDeliveryChosen(sender: AnyObject) {
-        self.performSegueWithIdentifier("sendMail", sender: nil)
+        performSegueWithIdentifier("sendMail", sender: nil)
     }
     
 //    @IBAction func expressDeliveryChosen(sender: AnyObject) {
@@ -78,7 +78,7 @@ class ChooseDeliveryOptionsViewController: UIViewController {
         let currentDateTime = NSDate()
         if datePicker.date.isGreaterThanDate(currentDateTime) {
             scheduledToArrive = datePicker.date
-            self.performSegueWithIdentifier("sendMail", sender: nil)
+            performSegueWithIdentifier("sendMail", sender: nil)
         }
         else {
             print("Date cannot be in the past")

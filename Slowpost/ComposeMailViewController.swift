@@ -39,7 +39,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         composeTextToImageBottom.priority = 999
         composeTextToTopLayoutGuide.priority = 251
         
-        self.automaticallyAdjustsScrollViewInsets = false
+        automaticallyAdjustsScrollViewInsets = false
         validatePlaceholderLabel()
         composeText.textContainerInset.left = 10
         composeText.textContainerInset.right = 10
@@ -60,7 +60,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     }
     
     func validatePlaceholderLabel() {
-        if composeText.text != "" || self.keyboardShowing == true {
+        if composeText.text != "" || keyboardShowing == true {
             placeholderTextLabel.hidden = true
             print("hiding placeholder")
         }
@@ -99,8 +99,8 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     func keyboardShow(notification: NSNotification) {
         composeTextToImageBottom.priority = 251
         composeTextToTopLayoutGuide.priority = 999
-        self.keyboardShowing = true
-        self.placeholderTextLabel.hidden = true
+        keyboardShowing = true
+        placeholderTextLabel.hidden = true
         if deviceType == "iPhone 4S" {
             composeTextToTopLayoutGuide.constant = 114
         }
@@ -111,25 +111,25 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
             composeTextToTopLayoutGuide.constant = 164
         }
         else {
-            composeTextToTopLayoutGuide.constant = self.view.frame.width * 3/8 + 64
+            composeTextToTopLayoutGuide.constant = view.frame.width * 3/8 + 64
         }
         
         
         let userInfo = notification.userInfo!
         var r = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
-        r = self.composeText.convertRect(r, fromView:nil)
-        self.composeText.contentInset.bottom = r.size.height
-        self.composeText.scrollIndicatorInsets.bottom = r.size.height
+        r = composeText.convertRect(r, fromView:nil)
+        composeText.contentInset.bottom = r.size.height
+        composeText.scrollIndicatorInsets.bottom = r.size.height
     }
     
     func keyboardHide(notification:NSNotification) {
-        self.keyboardShowing = false
+        keyboardShowing = false
         composeTextToImageBottom.priority = 999
         composeTextToTopLayoutGuide.priority = 251
-        self.validatePlaceholderLabel()
-        self.composeText.contentInset = UIEdgeInsetsZero
-        self.composeText.scrollIndicatorInsets = UIEdgeInsetsZero
-        self.updateViewConstraints()
+        validatePlaceholderLabel()
+        composeText.contentInset = UIEdgeInsetsZero
+        composeText.scrollIndicatorInsets = UIEdgeInsetsZero
+        updateViewConstraints()
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
@@ -139,7 +139,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func backToCard(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: {})
+        dismissViewControllerAnimated(true, completion: {})
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
