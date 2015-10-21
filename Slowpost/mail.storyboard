@@ -45,15 +45,25 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem id="fPP-Wb-RzX">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="stop" id="d5S-oK-Sir" userLabel="Close Bar Button Item">
-                                            <connections>
-                                                <action selector="closeMailView:" destination="1sI-R9-6ng" id="nta-a9-SyE"/>
-                                            </connections>
+                                        <barButtonItem key="leftBarButtonItem" style="done" id="JWd-Uv-DwO">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cJg-Bd-cFG" userLabel="close">
+                                                <rect key="frame" x="20" y="14" width="48" height="48"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="close"/>
+                                                <connections>
+                                                    <action selector="closeMailView:" destination="1sI-R9-6ng" eventType="touchUpInside" id="XrC-hw-555"/>
+                                                </connections>
+                                            </button>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="reply" id="82w-Rw-FsS" userLabel="Reply Bar Button Item">
-                                            <connections>
-                                                <action selector="replyToMail:" destination="1sI-R9-6ng" id="ZQy-V7-5Xk"/>
-                                            </connections>
+                                        <barButtonItem key="rightBarButtonItem" id="Hx6-Jo-Zbo">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OLd-lh-4fj" userLabel="reply">
+                                                <rect key="frame" x="532" y="14" width="48" height="48"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" image="reply"/>
+                                                <connections>
+                                                    <action selector="replyToMail:" destination="1sI-R9-6ng" eventType="touchUpInside" id="Ysd-gP-h0I"/>
+                                                </connections>
+                                            </button>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
@@ -206,6 +216,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
                     <connections>
+                        <outlet property="closeButton" destination="cJg-Bd-cFG" id="cS2-xa-IBx"/>
                         <outlet property="deliveredLabel" destination="30B-PY-nyB" id="IZA-pL-ZMz"/>
                         <outlet property="fromLabel" destination="G1z-nS-mxA" id="cjG-zV-aSB"/>
                         <outlet property="fromView" destination="Tgu-49-09J" id="ha9-Z1-9DR"/>
@@ -213,6 +224,7 @@
                         <outlet property="mailContent" destination="3rD-Uv-DUz" id="FcV-4t-qAF"/>
                         <outlet property="mailImage" destination="Z0g-6G-Jyb" id="TVr-Zo-45V"/>
                         <outlet property="navItem" destination="fPP-Wb-RzX" id="T9t-6d-74x"/>
+                        <outlet property="replyButton" destination="OLd-lh-4fj" id="b2v-JI-h4i"/>
                         <outlet property="scrollView" destination="gDw-dV-fIF" id="U6o-25-g6b"/>
                         <outlet property="sentLabel" destination="cP1-Ty-omr" id="T1P-qi-2BP"/>
                         <outlet property="toLabel" destination="pf6-MY-tqg" id="PGh-ca-gJa"/>
@@ -223,4 +235,8 @@
             <point key="canvasLocation" x="1361" y="181"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="close" width="48" height="48"/>
+        <image name="reply" width="48" height="48"/>
+    </resources>
 </document>

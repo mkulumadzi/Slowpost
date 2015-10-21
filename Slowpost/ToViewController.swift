@@ -30,6 +30,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     @IBOutlet weak var personTable: UITableView!
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
+    
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
@@ -42,6 +44,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         toSearchPeople = [SearchPerson]()
         toEmails = [String]()
         searchResults = [SearchPerson]()
+        formatButtons()
         
         searchTextEntered = false
         initializeSegmentedControl()
@@ -61,6 +64,11 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         personTable.sectionIndexBackgroundColor = UIColor.clearColor()
         personTable.sectionHeaderHeight = 24.0
         
+    }
+    
+    func formatButtons() {
+        cancelButton.setImage(UIImage(named: "close")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        cancelButton.tintColor = UIColor.whiteColor()
     }
     
     // Add search bar

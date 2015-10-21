@@ -33,6 +33,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         Flurry.logEvent("Conversation_view_opened")
         
         initializeFetchedResultsController()
+        formatButtons()
         
         refreshData()
         
@@ -49,6 +50,11 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         refreshData()
+    }
+    
+    func formatButtons() {
+        composeButton.setImage(UIImage(named: "compose")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        composeButton.tintColor = UIColor.whiteColor()
     }
     
     override func didReceiveMemoryWarning() {

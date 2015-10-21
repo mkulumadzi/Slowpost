@@ -38,9 +38,9 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     
     override func viewDidLoad() {
         Flurry.logEvent("Choose_Image_View_Opened")
-        
         super.viewDidLoad()
         
+        formatButtons()
         getRecipientsFromNavController()
         
         toLabel.text = toList()
@@ -58,6 +58,18 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         if deviceType == "iPhone 4S" {
             formatForiPhone4S()
         }
+        
+    }
+    
+    func formatButtons() {
+        cardGalleryButton.setImage(UIImage(named: "view-module")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        cardGalleryButton.tintColor = slowpostGreen
+        
+        imageLibraryButton.setImage(UIImage(named: "picture-3")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        imageLibraryButton.tintColor = slowpostGreen
+        
+        takePhotoButton.setImage(UIImage(named: "camera-2")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        takePhotoButton.tintColor = slowpostGreen
         
     }
     

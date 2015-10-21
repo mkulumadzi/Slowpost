@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "cog-48.png",
+      "filename" : "cog-2.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "cog-49.png",
+      "filename" : "cog-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "cog-60.png",
+      "filename" : "cog.png",
       "scale" : "3x"
     }
   ],

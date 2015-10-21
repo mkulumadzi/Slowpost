@@ -354,13 +354,19 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="btQ-V0-3mE">
-                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="stop" id="lML-DH-sTP">
-                            <connections>
-                                <action selector="cancelButtonPressed:" destination="8xB-T9-MnV" id="aXx-tW-ZXe"/>
-                            </connections>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="YeI-hh-NlK">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RiV-Vm-1EM" userLabel="cancel">
+                                <rect key="frame" x="20" y="-2" width="48" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="close"/>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="8xB-T9-MnV" eventType="touchUpInside" id="nuR-eV-Okg"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelButton" destination="RiV-Vm-1EM" id="dUz-YW-CBd"/>
                         <outlet property="nextButton" destination="jtw-mF-8Xh" id="tl9-92-iVD"/>
                         <outlet property="nextButtonHeight" destination="kXf-8R-8IW" id="UcR-IN-kH1"/>
                         <outlet property="personTable" destination="VJD-C6-sav" id="wZ8-hJ-vVD"/>
@@ -607,6 +613,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="close" width="48" height="48"/>
         <image name="ios7-close-empty-gray.png" width="192" height="192"/>
     </resources>
 </document>

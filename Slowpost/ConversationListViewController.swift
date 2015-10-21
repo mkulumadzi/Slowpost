@@ -15,6 +15,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     
     @IBOutlet weak var conversationList: UITableView!
     @IBOutlet weak var messageLabel: MessageUILabel!
+    @IBOutlet weak var settingsButton: UIButton!
     
     var fetchedResultsController: NSFetchedResultsController!
     
@@ -30,6 +31,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         Flurry.logEvent("Conversation_View_Opened")
+        formatButtons()
         initializeFetchedResultsController()
         
         messageLabel.hide()
@@ -40,6 +42,11 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
+    }
+    
+    func formatButtons() {
+        settingsButton.setImage(UIImage(named: "settings")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        settingsButton.tintColor = UIColor.whiteColor()
     }
     
     

@@ -111,7 +111,7 @@
                     <navigationItem key="navigationItem" title="Conversations" id="0a7-jc-KbE">
                         <barButtonItem key="backBarButtonItem" id="kh6-zd-XEA"/>
                         <barButtonItem key="rightBarButtonItem" id="olK-a2-aSh">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Met-Uj-onw">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Met-Uj-onw" userLabel="Settings Button">
                                 <rect key="frame" x="550" y="7" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="settings">
@@ -127,6 +127,7 @@
                         <outlet property="conversationList" destination="NiG-s1-hET" id="OIO-3x-Au5"/>
                         <outlet property="messageLabel" destination="eKr-1q-00m" id="YB2-2k-FHB"/>
                         <outlet property="searchDisplayController" destination="J2l-PT-51R" id="WNz-qg-98I"/>
+                        <outlet property="settingsButton" destination="Met-Uj-onw" id="1ob-h8-dHf"/>
                         <segue destination="waF-C4-z8h" kind="presentation" identifier="editPassword" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="DFi-94-Xne"/>
                         <segue destination="z52-1Q-RH9" kind="presentation" identifier="editProfile" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="Z2s-tZ-DGD"/>
                     </connections>

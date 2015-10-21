@@ -241,7 +241,7 @@
                                     <constraint firstAttribute="height" constant="50" id="RUW-8j-Vdf"/>
                                     <constraint firstAttribute="width" constant="50" id="iaH-2e-Vnh"/>
                                 </constraints>
-                                <state key="normal" image="camera-green.png">
+                                <state key="normal" image="camera-2.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
@@ -256,7 +256,7 @@
                                     <constraint firstAttribute="height" constant="50" id="EhL-2B-1RO"/>
                                     <constraint firstAttribute="width" constant="50" id="rWV-E7-SZb"/>
                                 </constraints>
-                                <state key="normal" image="collection-green.png">
+                                <state key="normal" image="view-module.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
@@ -304,7 +304,7 @@
                                     <constraint firstAttribute="height" constant="50" id="8ac-mQ-ajt"/>
                                     <constraint firstAttribute="width" constant="50" id="fV5-Ow-z1m"/>
                                 </constraints>
-                                <state key="normal" image="picture-3-green.png">
+                                <state key="normal" image="picture-3.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -880,9 +880,9 @@
     <resources>
         <image name="Default Card.png" width="768" height="576"/>
         <image name="Slowpost Icon Set (green)" width="150" height="95"/>
-        <image name="camera-green.png" width="120" height="120"/>
-        <image name="collection-green.png" width="120" height="120"/>
+        <image name="camera-2.png" width="120" height="120"/>
         <image name="ios7-arrow-down-white.png" width="320" height="192"/>
-        <image name="picture-3-green.png" width="120" height="120"/>
+        <image name="picture-3.png" width="120" height="120"/>
+        <image name="view-module.png" width="120" height="120"/>
     </resources>
 </document>
