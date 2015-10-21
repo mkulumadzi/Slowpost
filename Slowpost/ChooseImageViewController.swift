@@ -29,6 +29,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var cameraLabel: UILabel!
     @IBOutlet weak var galleryLabel: UILabel!
     @IBOutlet weak var nextButton: TextUIButton!
+    @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var removeImageButtonHeight: NSLayoutConstraint!
     
@@ -70,6 +71,9 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         
         takePhotoButton.setImage(UIImage(named: "camera-2")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         takePhotoButton.tintColor = slowpostGreen
+        
+        backButton.setImage(UIImage(named: "chevron-down")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        backButton.tintColor = UIColor.whiteColor()
         
     }
     

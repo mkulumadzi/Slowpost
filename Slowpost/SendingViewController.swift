@@ -20,6 +20,7 @@ class SendingViewController: UIViewController {
     var toPeople:[Person]!
     var toSearchPeople:[SearchPerson]!
     var toEmails:[String]!
+    var manuallyCancelled:Bool!
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var cancelButtonHeight: NSLayoutConstraint!
@@ -34,6 +35,7 @@ class SendingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Flurry.logEvent("Began_Sending_Mail")
+        manuallyCancelled = false
         
         cancelButton.layer.cornerRadius = 5
         
@@ -63,7 +65,9 @@ class SendingViewController: UIViewController {
                 self.sendMailToPostoffice(imageUid)
             }
             else {
-                self.performSegueWithIdentifier("mailFailedToSend", sender: nil)
+                if self.manuallyCancelled == false {
+                    self.performSegueWithIdentifier("mailFailedToSend", sender: nil)
+                }
             }
         })
     }
@@ -142,11 +146,12 @@ class SendingViewController: UIViewController {
     }
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
+        manuallyCancelled = true
         let lastRequestEndpoint:String? = RestService.endpointForLastPostRequest()
         if lastRequestEndpoint != nil {
             if lastRequestEndpoint! == "send" || lastRequestEndpoint! == "upload" {
                 lastPostRequest.cancel()
-                dismissViewControllerAnimated(true, completion: {})
+                self.performSegueWithIdentifier("notReadyToSend", sender: nil)
             }
         }
     }

@@ -27,21 +27,15 @@
 		D206FB471B615A3C008BB412 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = D206FB3F1B615A3C008BB412 /* SIL Open Font License.txt */; };
 		D206FB4B1B61688D008BB412 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D206FB4A1B61688D008BB412 /* WelcomeScreenViewController.swift */; };
 		D206FB4F1B617504008BB412 /* BottomBorderUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D206FB4E1B617504008BB412 /* BottomBorderUITextField.swift */; };
-		D206FB511B618287008BB412 /* ios7-close-empty-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D206FB501B618287008BB412 /* ios7-close-empty-white.png */; };
 		D206FB541B619A53008BB412 /* home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D206FB531B619A53008BB412 /* home.storyboard */; };
 		D206FB561B619AA5008BB412 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D206FB551B619AA5008BB412 /* HomeTabBarController.swift */; };
 		D20D8ED41B2A510700BBF6B5 /* ToViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D8ED31B2A510700BBF6B5 /* ToViewController.swift */; };
-		D20D8EDB1B2B384E00BBF6B5 /* compose-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8ED51B2B384E00BBF6B5 /* compose-white.png */; };
-		D20D8EDC1B2B384E00BBF6B5 /* compose.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8ED61B2B384E00BBF6B5 /* compose.png */; };
-		D20D8EDF1B2B384E00BBF6B5 /* ios7-compose.png in Resources */ = {isa = PBXBuildFile; fileRef = D20D8ED91B2B384E00BBF6B5 /* ios7-compose.png */; };
 		D20D8EE21B2E448100BBF6B5 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20D8EE11B2E448100BBF6B5 /* PersonCell.swift */; };
 		D20EC2511BAC82C500E3DEA5 /* Attachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EC2501BAC82C500E3DEA5 /* Attachment.swift */; };
 		D20EC2531BAC84E500E3DEA5 /* ImageAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EC2521BAC84E500E3DEA5 /* ImageAttachment.swift */; };
 		D20EC2551BAC84FA00E3DEA5 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EC2541BAC84FA00E3DEA5 /* Note.swift */; };
 		D20EC2571BAC880C00E3DEA5 /* PostofficeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EC2561BAC880C00E3DEA5 /* PostofficeObject.swift */; };
 		D20EC2591BAC8F1400E3DEA5 /* PostofficeObjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EC2581BAC8F1400E3DEA5 /* PostofficeObjectService.swift */; };
-		D21D79D51B5093430014510E /* ios7-checkmark-not-checked.png in Resources */ = {isa = PBXBuildFile; fileRef = D21D79D41B5093430014510E /* ios7-checkmark-not-checked.png */; };
-		D21D79D71B5093490014510E /* ios7-checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = D21D79D61B5093490014510E /* ios7-checkmark.png */; };
 		D21E2C871BC09C6100E17572 /* libFlurry_7.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D21E2C861BC09C6100E17572 /* libFlurry_7.2.1.a */; };
 		D2319AC01BD16D8F00B989C0 /* RequestSubmittedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2319ABF1BD16D8F00B989C0 /* RequestSubmittedViewController.swift */; };
 		D2389E681B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E671B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift */; };
@@ -61,7 +55,6 @@
 		D24BC0F71B97C2D5000405F7 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D24BC0F61B97C2D5000405F7 /* OpenSans-LightItalic.ttf */; };
 		D24BC0FA1B98E249000405F7 /* mail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D24BC0F91B98E249000405F7 /* mail.storyboard */; };
 		D24BC0FC1B98E317000405F7 /* MailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24BC0FB1B98E317000405F7 /* MailViewController.swift */; };
-		D24BC0FE1B98F898000405F7 /* reply-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = D24BC0FD1B98F898000405F7 /* reply-gray.png */; };
 		D25130421BC425C3007541BE /* to.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D25130411BC425C3007541BE /* to.storyboard */; };
 		D25130441BC43C44007541BE /* ComposeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25130431BC43C44007541BE /* ComposeNavigationController.swift */; };
 		D251304A1BC46595007541BE /* ios7-arrow-down-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D25130491BC46595007541BE /* ios7-arrow-down-white.png */; };
@@ -84,7 +77,6 @@
 		D27C7B471BC3419B005F08BC /* SearchPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27C7B461BC3419B005F08BC /* SearchPerson.swift */; };
 		D27C7B491BC3422D005F08BC /* SearchPersonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27C7B481BC3422D005F08BC /* SearchPersonService.swift */; };
 		D27C7B4D1BC3481F005F08BC /* SearchPersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27C7B4C1BC3481F005F08BC /* SearchPersonCell.swift */; };
-		D27DA31B1B61C8EE00DF32A1 /* settings-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D27DA31A1B61C8EE00DF32A1 /* settings-white.png */; };
 		D27DA31E1B62ADB600DF32A1 /* ios7-arrow-left-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D27DA31C1B62ADB600DF32A1 /* ios7-arrow-left-white.png */; };
 		D27DA31F1B62ADB600DF32A1 /* ios7-arrow-right-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D27DA31D1B62ADB600DF32A1 /* ios7-arrow-right-white.png */; };
 		D27DA3211B62BDA900DF32A1 /* ConversationTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27DA3201B62BDA900DF32A1 /* ConversationTabViewController.swift */; };
@@ -105,9 +97,6 @@
 		D291B24C1B69AA5A00C72816 /* FileService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D291B24B1B69AA5A00C72816 /* FileService.swift */; };
 		D29D3DC01B83D28A00B3E0DA /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = D29D3DBF1B83D28A00B3E0DA /* KeychainWrapper.m */; };
 		D2A2B4291BD6ED2A0069C3E4 /* ToNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A2B4281BD6ED2A0069C3E4 /* ToNavigationController.swift */; };
-		D2A2B42B1BD7095B0069C3E4 /* picture-3-green.png in Resources */ = {isa = PBXBuildFile; fileRef = D2A2B42A1BD7095B0069C3E4 /* picture-3-green.png */; };
-		D2A2B42D1BD709610069C3E4 /* collection-green.png in Resources */ = {isa = PBXBuildFile; fileRef = D2A2B42C1BD709610069C3E4 /* collection-green.png */; };
-		D2A2B42F1BD709850069C3E4 /* camera-green.png in Resources */ = {isa = PBXBuildFile; fileRef = D2A2B42E1BD709850069C3E4 /* camera-green.png */; };
 		D2A2B4311BD81AE20069C3E4 /* view-module.png in Resources */ = {isa = PBXBuildFile; fileRef = D2A2B4301BD81AE20069C3E4 /* view-module.png */; };
 		D2A2B4331BD81D7D0069C3E4 /* picture-3.png in Resources */ = {isa = PBXBuildFile; fileRef = D2A2B4321BD81D7D0069C3E4 /* picture-3.png */; };
 		D2A2B4351BD81D920069C3E4 /* camera-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D2A2B4341BD81D920069C3E4 /* camera-2.png */; };
@@ -116,7 +105,6 @@
 		D2B2BB961B7EB7D4007377DD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B2BB951B7EB7D4007377DD /* SystemConfiguration.framework */; };
 		D2B2BB991B7EB97D007377DD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2B2BB981B7EB97D007377DD /* Security.framework */; };
 		D2B651E71B38827100134C23 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B651E61B38827100134C23 /* Extensions.swift */; };
-		D2B7CEA21B671149007F8235 /* ios7-close-empty-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = D2B7CEA11B671149007F8235 /* ios7-close-empty-gray.png */; };
 		D2B7CEA61B694C14007F8235 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7CEA51B694C14007F8235 /* GlobalVariables.swift */; };
 		D2B7CEA81B694D95007F8235 /* PersonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7CEA71B694D95007F8235 /* PersonService.swift */; };
 		D2B7CEAA1B694E55007F8235 /* MailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2B7CEA91B694E55007F8235 /* MailService.swift */; };
@@ -126,17 +114,8 @@
 		D2CEC4641B6C1F4F002CFD25 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CEC4631B6C1F4F002CFD25 /* PhotoLibraryViewController.swift */; };
 		D2CEC4661B6C1F5C002CFD25 /* TakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CEC4651B6C1F5C002CFD25 /* TakePhotoViewController.swift */; };
 		D2CEC4681B6C1F6E002CFD25 /* CardGalleryUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CEC4671B6C1F6E002CFD25 /* CardGalleryUIViewController.swift */; };
-		D2CEC46E1B7256E9002CFD25 /* grid-green.png in Resources */ = {isa = PBXBuildFile; fileRef = D2CEC46B1B7256E9002CFD25 /* grid-green.png */; };
-		D2CEC46F1B7256E9002CFD25 /* ios7-camera-green.png in Resources */ = {isa = PBXBuildFile; fileRef = D2CEC46C1B7256E9002CFD25 /* ios7-camera-green.png */; };
-		D2CEC4701B7256E9002CFD25 /* photos_green.png in Resources */ = {isa = PBXBuildFile; fileRef = D2CEC46D1B7256E9002CFD25 /* photos_green.png */; };
-		D2CEC4721B725D0C002CFD25 /* ios7-minus-outline-white-center.png in Resources */ = {isa = PBXBuildFile; fileRef = D2CEC4711B725D0C002CFD25 /* ios7-minus-outline-white-center.png */; };
 		D2CEC4741B72ACBD002CFD25 /* SendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CEC4731B72ACBD002CFD25 /* SendingViewController.swift */; };
 		D2CEC4781B73A45F002CFD25 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CEC4771B73A45F002CFD25 /* CoreDataService.swift */; };
-		D2D866261B2F4AF800847051 /* ios7-person-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866251B2F4AF800847051 /* ios7-person-outline.png */; };
-		D2D8662A1B2F4B7F00847051 /* ios7-contact-outline.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */; };
-		D2D8662C1B2F50CC00847051 /* ios7-contact-outline-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D8662B1B2F50CC00847051 /* ios7-contact-outline-white.png */; };
-		D2D866371B2F5B8D00847051 /* log-out.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866361B2F5B8D00847051 /* log-out.png */; };
-		D2D866391B2F5DF900847051 /* log-out-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D866381B2F5DF900847051 /* log-out-white.png */; };
 		D2D8663F1B2F62B200847051 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */; };
 		D2E4EDCA1B7D135900D2A028 /* Quicksand_Dash.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDC31B7D11EA00D2A028 /* Quicksand_Dash.otf */; };
 		D2E4EDCB1B7D135C00D2A028 /* Quicksand-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDC41B7D11F300D2A028 /* Quicksand-Bold.otf */; };
@@ -192,13 +171,9 @@
 		D206FB3F1B615A3C008BB412 /* SIL Open Font License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "SIL Open Font License.txt"; sourceTree = "<group>"; };
 		D206FB4A1B61688D008BB412 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
 		D206FB4E1B617504008BB412 /* BottomBorderUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomBorderUITextField.swift; sourceTree = "<group>"; };
-		D206FB501B618287008BB412 /* ios7-close-empty-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-close-empty-white.png"; sourceTree = "<group>"; };
 		D206FB531B619A53008BB412 /* home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = home.storyboard; sourceTree = "<group>"; };
 		D206FB551B619AA5008BB412 /* HomeTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		D20D8ED31B2A510700BBF6B5 /* ToViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToViewController.swift; sourceTree = "<group>"; };
-		D20D8ED51B2B384E00BBF6B5 /* compose-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "compose-white.png"; sourceTree = "<group>"; };
-		D20D8ED61B2B384E00BBF6B5 /* compose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compose.png; sourceTree = "<group>"; };
-		D20D8ED91B2B384E00BBF6B5 /* ios7-compose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-compose.png"; sourceTree = "<group>"; };
 		D20D8EE11B2E448100BBF6B5 /* PersonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 		D20EC24F1BAC818400E3DEA5 /* SlowpostModel 9.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SlowpostModel 9.xcdatamodel"; sourceTree = "<group>"; };
 		D20EC2501BAC82C500E3DEA5 /* Attachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attachment.swift; sourceTree = "<group>"; };
@@ -206,8 +181,6 @@
 		D20EC2541BAC84FA00E3DEA5 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		D20EC2561BAC880C00E3DEA5 /* PostofficeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostofficeObject.swift; sourceTree = "<group>"; };
 		D20EC2581BAC8F1400E3DEA5 /* PostofficeObjectService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostofficeObjectService.swift; sourceTree = "<group>"; };
-		D21D79D41B5093430014510E /* ios7-checkmark-not-checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-checkmark-not-checked.png"; sourceTree = "<group>"; };
-		D21D79D61B5093490014510E /* ios7-checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-checkmark.png"; sourceTree = "<group>"; };
 		D21E2C851BC09C5900E17572 /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		D21E2C861BC09C6100E17572 /* libFlurry_7.2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.2.1.a; sourceTree = "<group>"; };
 		D2222A741B588695007E74BB /* SnailMailModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SnailMailModel 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -230,7 +203,6 @@
 		D24BC0F61B97C2D5000405F7 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
 		D24BC0F91B98E249000405F7 /* mail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = mail.storyboard; sourceTree = "<group>"; };
 		D24BC0FB1B98E317000405F7 /* MailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailViewController.swift; sourceTree = "<group>"; };
-		D24BC0FD1B98F898000405F7 /* reply-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reply-gray.png"; sourceTree = "<group>"; };
 		D25130411BC425C3007541BE /* to.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = to.storyboard; sourceTree = "<group>"; };
 		D25130431BC43C44007541BE /* ComposeNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeNavigationController.swift; sourceTree = "<group>"; };
 		D25130491BC46595007541BE /* ios7-arrow-down-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-arrow-down-white.png"; sourceTree = "<group>"; };
@@ -253,7 +225,6 @@
 		D27C7B461BC3419B005F08BC /* SearchPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPerson.swift; sourceTree = "<group>"; };
 		D27C7B481BC3422D005F08BC /* SearchPersonService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPersonService.swift; sourceTree = "<group>"; };
 		D27C7B4C1BC3481F005F08BC /* SearchPersonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPersonCell.swift; sourceTree = "<group>"; };
-		D27DA31A1B61C8EE00DF32A1 /* settings-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-white.png"; sourceTree = "<group>"; };
 		D27DA31C1B62ADB600DF32A1 /* ios7-arrow-left-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-arrow-left-white.png"; sourceTree = "<group>"; };
 		D27DA31D1B62ADB600DF32A1 /* ios7-arrow-right-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-arrow-right-white.png"; sourceTree = "<group>"; };
 		D27DA3201B62BDA900DF32A1 /* ConversationTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationTabViewController.swift; sourceTree = "<group>"; };
@@ -275,9 +246,6 @@
 		D29D3DBE1B83D28200B3E0DA /* KeychainWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
 		D29D3DBF1B83D28A00B3E0DA /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		D2A2B4281BD6ED2A0069C3E4 /* ToNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToNavigationController.swift; sourceTree = "<group>"; };
-		D2A2B42A1BD7095B0069C3E4 /* picture-3-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture-3-green.png"; sourceTree = "<group>"; };
-		D2A2B42C1BD709610069C3E4 /* collection-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "collection-green.png"; sourceTree = "<group>"; };
-		D2A2B42E1BD709850069C3E4 /* camera-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-green.png"; sourceTree = "<group>"; };
 		D2A2B4301BD81AE20069C3E4 /* view-module.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "view-module.png"; sourceTree = "<group>"; };
 		D2A2B4321BD81D7D0069C3E4 /* picture-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture-3.png"; sourceTree = "<group>"; };
 		D2A2B4341BD81D920069C3E4 /* camera-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-2.png"; sourceTree = "<group>"; };
@@ -287,7 +255,6 @@
 		D2B2BB951B7EB7D4007377DD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D2B2BB981B7EB97D007377DD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D2B651E61B38827100134C23 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		D2B7CEA11B671149007F8235 /* ios7-close-empty-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-close-empty-gray.png"; sourceTree = "<group>"; };
 		D2B7CEA51B694C14007F8235 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		D2B7CEA71B694D95007F8235 /* PersonService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonService.swift; sourceTree = "<group>"; };
 		D2B7CEA91B694E55007F8235 /* MailService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailService.swift; sourceTree = "<group>"; };
@@ -297,19 +264,10 @@
 		D2CEC4631B6C1F4F002CFD25 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
 		D2CEC4651B6C1F5C002CFD25 /* TakePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoViewController.swift; sourceTree = "<group>"; };
 		D2CEC4671B6C1F6E002CFD25 /* CardGalleryUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardGalleryUIViewController.swift; sourceTree = "<group>"; };
-		D2CEC46B1B7256E9002CFD25 /* grid-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grid-green.png"; sourceTree = "<group>"; };
-		D2CEC46C1B7256E9002CFD25 /* ios7-camera-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-camera-green.png"; sourceTree = "<group>"; };
-		D2CEC46D1B7256E9002CFD25 /* photos_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photos_green.png; sourceTree = "<group>"; };
-		D2CEC4711B725D0C002CFD25 /* ios7-minus-outline-white-center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-minus-outline-white-center.png"; sourceTree = "<group>"; };
 		D2CEC4731B72ACBD002CFD25 /* SendingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendingViewController.swift; sourceTree = "<group>"; };
 		D2CEC4751B72B786002CFD25 /* SnailMailModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SnailMailModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		D2CEC4761B72DD8D002CFD25 /* SnailMailModel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SnailMailModel 4.xcdatamodel"; sourceTree = "<group>"; };
 		D2CEC4771B73A45F002CFD25 /* CoreDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
-		D2D866251B2F4AF800847051 /* ios7-person-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-person-outline.png"; sourceTree = "<group>"; };
-		D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-contact-outline.png"; sourceTree = "<group>"; };
-		D2D8662B1B2F50CC00847051 /* ios7-contact-outline-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-contact-outline-white.png"; sourceTree = "<group>"; };
-		D2D866361B2F5B8D00847051 /* log-out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log-out.png"; sourceTree = "<group>"; };
-		D2D866381B2F5DF900847051 /* log-out-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log-out-white.png"; sourceTree = "<group>"; };
 		D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		D2E4EDC31B7D11EA00D2A028 /* Quicksand_Dash.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Quicksand_Dash.otf; sourceTree = "<group>"; };
 		D2E4EDC41B7D11F300D2A028 /* Quicksand-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.otf"; sourceTree = "<group>"; };
@@ -435,36 +393,15 @@
 				D2392AC31BD1D0DD0069316F /* turtleAnimation0.png */,
 				D28266CF1BC6E4950029F57E /* grey-circle.png */,
 				D2856E421BB5C32700A454C9 /* Slowpost.png */,
-				D24BC0FD1B98F898000405F7 /* reply-gray.png */,
 				D2E4EDD11B7D1EC000D2A028 /* example_card.jpg */,
 				D2F5CAC11B8F91D900551435 /* Default Card.png */,
 				D2E4EDD31B7D307E00D2A028 /* example_photo.jpg */,
 				D2A2B4301BD81AE20069C3E4 /* view-module.png */,
-				D2CEC46B1B7256E9002CFD25 /* grid-green.png */,
-				D2A2B42E1BD709850069C3E4 /* camera-green.png */,
-				D2CEC46C1B7256E9002CFD25 /* ios7-camera-green.png */,
-				D2CEC46D1B7256E9002CFD25 /* photos_green.png */,
-				D2B7CEA11B671149007F8235 /* ios7-close-empty-gray.png */,
 				D25130491BC46595007541BE /* ios7-arrow-down-white.png */,
 				D27DA31C1B62ADB600DF32A1 /* ios7-arrow-left-white.png */,
 				D27DA31D1B62ADB600DF32A1 /* ios7-arrow-right-white.png */,
 				D2A2B4341BD81D920069C3E4 /* camera-2.png */,
-				D206FB501B618287008BB412 /* ios7-close-empty-white.png */,
-				D2A2B42C1BD709610069C3E4 /* collection-green.png */,
 				D2A2B4321BD81D7D0069C3E4 /* picture-3.png */,
-				D21D79D41B5093430014510E /* ios7-checkmark-not-checked.png */,
-				D2A2B42A1BD7095B0069C3E4 /* picture-3-green.png */,
-				D2CEC4711B725D0C002CFD25 /* ios7-minus-outline-white-center.png */,
-				D21D79D61B5093490014510E /* ios7-checkmark.png */,
-				D27DA31A1B61C8EE00DF32A1 /* settings-white.png */,
-				D2D866381B2F5DF900847051 /* log-out-white.png */,
-				D2D866361B2F5B8D00847051 /* log-out.png */,
-				D2D8662B1B2F50CC00847051 /* ios7-contact-outline-white.png */,
-				D2D866291B2F4B7F00847051 /* ios7-contact-outline.png */,
-				D2D866251B2F4AF800847051 /* ios7-person-outline.png */,
-				D20D8ED51B2B384E00BBF6B5 /* compose-white.png */,
-				D20D8ED61B2B384E00BBF6B5 /* compose.png */,
-				D20D8ED91B2B384E00BBF6B5 /* ios7-compose.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -775,7 +712,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC23DE2A1AE54C0300AFEDE4 /* login.storyboard in Resources */,
-				D20D8EDF1B2B384E00BBF6B5 /* ios7-compose.png in Resources */,
 				D251304A1BC46595007541BE /* ios7-arrow-down-white.png in Resources */,
 				D2E4EDCC1B7D135F00D2A028 /* Quicksand-BoldItalic.otf in Resources */,
 				D25A9CA01B2259D300ABBBA4 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
@@ -786,20 +722,14 @@
 				D25130421BC425C3007541BE /* to.storyboard in Resources */,
 				D206FB471B615A3C008BB412 /* SIL Open Font License.txt in Resources */,
 				D2E4EDCD1B7D136200D2A028 /* Quicksand-Italic.otf in Resources */,
-				D20D8EDC1B2B384E00BBF6B5 /* compose.png in Resources */,
 				D2A2B4351BD81D920069C3E4 /* camera-2.png in Resources */,
 				CCCB1A581AB0D48A0067F100 /* initial.storyboard in Resources */,
-				D2CEC4701B7256E9002CFD25 /* photos_green.png in Resources */,
 				CC23DE2C1AE54C1A00AFEDE4 /* mailbox.storyboard in Resources */,
 				CCCB1A5D1AB0D48A0067F100 /* LaunchScreen.xib in Resources */,
 				D2856E431BB5C32700A454C9 /* Slowpost.png in Resources */,
 				D2C071061B3A3E99000154E8 /* Configurations.plist in Resources */,
 				D2392AC71BD1D0DD0069316F /* turtleAnimation0.png in Resources */,
 				D25A9CA41B2259D300ABBBA4 /* OpenSans-Regular.ttf in Resources */,
-				D2CEC4721B725D0C002CFD25 /* ios7-minus-outline-white-center.png in Resources */,
-				D2CEC46F1B7256E9002CFD25 /* ios7-camera-green.png in Resources */,
-				D2B7CEA21B671149007F8235 /* ios7-close-empty-gray.png in Resources */,
-				D21D79D51B5093430014510E /* ios7-checkmark-not-checked.png in Resources */,
 				D2E4EDCE1B7D136500D2A028 /* Quicksand-Light.otf in Resources */,
 				D2392AC61BD1D0DD0069316F /* turtleAnimation3.png in Resources */,
 				D2389E6B1B950C0300CB19BB /* conversations.storyboard in Resources */,
@@ -808,36 +738,22 @@
 				D2E4EDD41B7D307E00D2A028 /* example_photo.jpg in Resources */,
 				D2A2B4331BD81D7D0069C3E4 /* picture-3.png in Resources */,
 				D206FB541B619A53008BB412 /* home.storyboard in Resources */,
-				D20D8EDB1B2B384E00BBF6B5 /* compose-white.png in Resources */,
 				D2E4EDCA1B7D135900D2A028 /* Quicksand_Dash.otf in Resources */,
-				D2A2B42F1BD709850069C3E4 /* camera-green.png in Resources */,
 				D27DA31E1B62ADB600DF32A1 /* ios7-arrow-left-white.png in Resources */,
 				D28266D01BC6E4950029F57E /* grey-circle.png in Resources */,
 				D2F5CAC21B8F91D900551435 /* Default Card.png in Resources */,
 				D25A9CA51B2259D300ABBBA4 /* OpenSans-Semibold.ttf in Resources */,
-				D2A2B42B1BD7095B0069C3E4 /* picture-3-green.png in Resources */,
-				D2D8662C1B2F50CC00847051 /* ios7-contact-outline-white.png in Resources */,
 				D25A9CA61B2259D300ABBBA4 /* OpenSans-SemiboldItalic.ttf in Resources */,
-				D206FB511B618287008BB412 /* ios7-close-empty-white.png in Resources */,
 				D25A9C9D1B2259D300ABBBA4 /* OpenSans-Bold.ttf in Resources */,
-				D2CEC46E1B7256E9002CFD25 /* grid-green.png in Resources */,
 				D27DA31F1B62ADB600DF32A1 /* ios7-arrow-right-white.png in Resources */,
-				D27DA31B1B61C8EE00DF32A1 /* settings-white.png in Resources */,
 				D25A9C9E1B2259D300ABBBA4 /* OpenSans-BoldItalic.ttf in Resources */,
 				D2A2B4311BD81AE20069C3E4 /* view-module.png in Resources */,
-				D2A2B42D1BD709610069C3E4 /* collection-green.png in Resources */,
 				CC23DE2E1AE54C2B00AFEDE4 /* compose.storyboard in Resources */,
-				D2D866391B2F5DF900847051 /* log-out-white.png in Resources */,
 				D2392AC51BD1D0DD0069316F /* turtleAnimation1.png in Resources */,
 				D25A9C9F1B2259D300ABBBA4 /* OpenSans-ExtraBold.ttf in Resources */,
-				D2D866261B2F4AF800847051 /* ios7-person-outline.png in Resources */,
-				D21D79D71B5093490014510E /* ios7-checkmark.png in Resources */,
-				D2D866371B2F5B8D00847051 /* log-out.png in Resources */,
-				D24BC0FE1B98F898000405F7 /* reply-gray.png in Resources */,
 				D24BC0F71B97C2D5000405F7 /* OpenSans-LightItalic.ttf in Resources */,
 				D2E4EDCF1B7D136700D2A028 /* Quicksand-LightItalic.otf in Resources */,
 				CCCB1A5A1AB0D48A0067F100 /* Images.xcassets in Resources */,
-				D2D8662A1B2F4B7F00847051 /* ios7-contact-outline.png in Resources */,
 				D2E4EDD01B7D136A00D2A028 /* Quicksand-Regular.otf in Resources */,
 				D2E4EDCB1B7D135C00D2A028 /* Quicksand-Bold.otf in Resources */,
 			);

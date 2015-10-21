@@ -103,7 +103,9 @@ class ChooseDeliveryOptionsViewController: UIViewController {
     }
     
     @IBAction func mailFailedToSend(segue: UIStoryboardSegue) {
-        
+    }
+    
+    @IBAction func notReadyToSend(segue: UIStoryboardSegue) {
     }
     
     

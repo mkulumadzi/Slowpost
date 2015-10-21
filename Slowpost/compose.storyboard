@@ -431,13 +431,13 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Image" id="7pu-pI-Kte">
-                        <barButtonItem key="leftBarButtonItem" id="0EL-lF-VVW">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="tqT-F7-FED" userLabel="Back">
-                                <rect key="frame" x="20" y="16" width="20" height="12"/>
+                        <barButtonItem key="leftBarButtonItem" style="done" id="jt7-2L-epH">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="205-qu-BLZ" userLabel="Back">
+                                <rect key="frame" x="20" y="-2" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="ios7-arrow-down-white.png"/>
+                                <state key="normal" image="chevron-down"/>
                                 <connections>
-                                    <action selector="backButtonPressed:" destination="2t1-x4-fi1" eventType="touchUpInside" id="9yM-gT-10l"/>
+                                    <action selector="backButtonPressed:" destination="2t1-x4-fi1" eventType="touchUpInside" id="7ay-NR-B9J"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -445,6 +445,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
                     <connections>
+                        <outlet property="backButton" destination="205-qu-BLZ" id="Fdf-Do-h4E"/>
                         <outlet property="cameraLabel" destination="Oaw-FG-qkO" id="mSE-ex-nkF"/>
                         <outlet property="cardGalleryButton" destination="A1v-Uj-6rd" id="vSN-oT-6Tk"/>
                         <outlet property="cropLabel" destination="45T-A0-sak" id="IAp-fe-dNJ"/>
@@ -845,9 +846,8 @@
                     <connections>
                         <outlet property="cancelButton" destination="XlB-rG-Tsl" id="caZ-AJ-IWQ"/>
                         <outlet property="cancelButtonHeight" destination="fK0-R7-jpw" id="TGF-iD-cRV"/>
-                        <segue destination="hsk-st-IZq" kind="unwind" identifier="mailSent" unwindAction="unwindCompose:" id="goE-kQ-V1a"/>
-                        <segue destination="hsk-st-IZq" kind="unwind" identifier="sendingCancelled" unwindAction="sendingCancelled:" id="Gqu-Hq-kPO"/>
-                        <segue destination="hsk-st-IZq" kind="unwind" identifier="mailFailedToSend" unwindAction="mailFailedToSend:" id="dD4-Mx-bJ9"/>
+                        <segue destination="hsk-st-IZq" kind="unwind" identifier="mailFailedToSend" unwindAction="mailFailedToSend:" id="W34-NA-8ve"/>
+                        <segue destination="hsk-st-IZq" kind="unwind" identifier="notReadyToSend" unwindAction="notReadyToSend:" id="FPL-fT-kfK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HIU-N4-2SL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -881,7 +881,7 @@
         <image name="Default Card.png" width="768" height="576"/>
         <image name="Slowpost Icon Set (green)" width="150" height="95"/>
         <image name="camera-2.png" width="120" height="120"/>
-        <image name="ios7-arrow-down-white.png" width="320" height="192"/>
+        <image name="chevron-down" width="48" height="48"/>
         <image name="picture-3.png" width="120" height="120"/>
         <image name="view-module.png" width="120" height="120"/>
     </resources>

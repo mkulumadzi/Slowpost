@@ -354,7 +354,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="btQ-V0-3mE">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="YeI-hh-NlK">
+                        <barButtonItem key="leftBarButtonItem" style="done" id="YeI-hh-NlK">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="RiV-Vm-1EM" userLabel="cancel">
                                 <rect key="frame" x="20" y="-2" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
