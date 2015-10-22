@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9058" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yOI-VH-dcG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yOI-VH-dcG">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9048"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -401,44 +401,12 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="DI3-dH-J3l">
-                                        <rect key="frame" x="0.0" y="84" width="600" height="40"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DI3-dH-J3l" id="Pm2-d2-4BO">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="39"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CoG-Dl-h4Q">
-                                                    <rect key="frame" x="10" y="11" width="90" height="18"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="90" id="F9W-aD-JgN"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
-                                                    <color key="textColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zsF-GD-xmu">
-                                                    <rect key="frame" x="100" y="9" width="490" height="21"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                                    <color key="textColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="zsF-GD-xmu" secondAttribute="trailing" constant="10" id="JvE-vm-svW"/>
-                                                <constraint firstItem="zsF-GD-xmu" firstAttribute="leading" secondItem="CoG-Dl-h4Q" secondAttribute="trailing" id="LNi-cf-S1Y"/>
-                                                <constraint firstAttribute="centerY" secondItem="zsF-GD-xmu" secondAttribute="centerY" id="SXG-I6-d0X"/>
-                                                <constraint firstItem="CoG-Dl-h4Q" firstAttribute="leading" secondItem="Pm2-d2-4BO" secondAttribute="leading" constant="10" id="VOm-9f-pzj"/>
-                                                <constraint firstAttribute="centerY" secondItem="CoG-Dl-h4Q" secondAttribute="centerY" id="uOU-cL-KDH"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle=" " id="M58-7k-9sy" userLabel="Personal details">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="WWD-ox-YxF">
-                                        <rect key="frame" x="0.0" y="146" width="600" height="40"/>
+                                        <rect key="frame" x="0.0" y="106" width="600" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WWD-ox-YxF" id="bb9-Zp-UPL">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="39"/>
@@ -462,7 +430,7 @@
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="editingChanged:" destination="z52-1Q-RH9" eventType="editingDidEnd" id="yff-9J-b7N"/>
+                                                        <action selector="editingChanged:" destination="z52-1Q-RH9" eventType="editingChanged" id="MBO-ax-BIq"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -482,7 +450,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="isb-FI-dV4">
-                                        <rect key="frame" x="0.0" y="186" width="600" height="40"/>
+                                        <rect key="frame" x="0.0" y="146" width="600" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="isb-FI-dV4" id="8Ra-e2-0pA">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="39"/>
@@ -506,7 +474,7 @@
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
-                                                        <action selector="editingChanged:" destination="z52-1Q-RH9" eventType="editingDidEnd" id="lSc-Nv-Zed"/>
+                                                        <action selector="editingChanged:" destination="z52-1Q-RH9" eventType="editingChanged" id="6Q8-zw-GpZ"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -525,6 +493,50 @@
                                             </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="2zV-NT-4uI">
+                                        <rect key="frame" x="0.0" y="186" width="600" height="40"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2zV-NT-4uI" id="7pS-JE-QT0">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="39"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwN-2n-z8u">
+                                                    <rect key="frame" x="10" y="11" width="90" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="90" id="qSV-9z-HwV"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
+                                                    <color key="textColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="lordbyron@thebyrons.com" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z7g-No-8fV" userLabel="emailField">
+                                                    <rect key="frame" x="100" y="-1" width="490" height="41"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="qL4-Gd-uRn"/>
+                                                    </constraints>
+                                                    <color key="textColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="editingChanged:" destination="z52-1Q-RH9" eventType="editingChanged" id="bhm-lD-WRu"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="z7g-No-8fV" secondAttribute="centerY" id="5rA-o2-Nok"/>
+                                                <constraint firstAttribute="centerY" secondItem="xwN-2n-z8u" secondAttribute="centerY" id="Efl-7o-Lx9"/>
+                                                <constraint firstItem="xwN-2n-z8u" firstAttribute="leading" secondItem="7pS-JE-QT0" secondAttribute="leadingMargin" constant="10" id="Ua1-8V-P5g"/>
+                                                <constraint firstAttribute="trailing" secondItem="z7g-No-8fV" secondAttribute="trailing" constant="10" id="VAV-Lb-cSy"/>
+                                                <constraint firstItem="xwN-2n-z8u" firstAttribute="leading" secondItem="7pS-JE-QT0" secondAttribute="leading" constant="10" id="p8B-Pt-Gni"/>
+                                                <constraint firstItem="z7g-No-8fV" firstAttribute="leading" secondItem="xwN-2n-z8u" secondAttribute="trailing" id="t9E-nL-ufW"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Ua1-8V-P5g"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -536,7 +548,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="emailLabel" destination="zsF-GD-xmu" id="tDg-5H-O4f"/>
+                        <outlet property="emailField" destination="z7g-No-8fV" id="NbQ-BW-9Rv"/>
                         <outlet property="familyNameField" destination="rOm-LH-dnq" id="KV5-KN-Nnh"/>
                         <outlet property="givenNameField" destination="b4k-IC-8GA" id="fZj-yw-3ZW"/>
                         <outlet property="navBar" destination="TdJ-C7-HVy" id="YFw-cY-WeC"/>

@@ -9,19 +9,20 @@
 import UIKit
 import CoreData
 import Foundation
+import SwiftyJSON
 
 class EditProfileViewController: UITableViewController {
 
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet var profileTable: UITableView!
+    var warningLabel:WarningUILabel!
     
     @IBOutlet weak var givenNameField: UITextField!
     @IBOutlet weak var familyNameField: UITextField!
-    
+    @IBOutlet weak var emailField: UITextField!
     
     var loggedInUser:Person!
     
@@ -31,13 +32,15 @@ class EditProfileViewController: UITableViewController {
         Flurry.logEvent("Began_Editing_Profile")
         
         loggedInUser = getLoggedInUser()
+        addWarningLabel()
+        warningLabel.hide()
         
         navBar.frame.size = CGSize(width: navBar.frame.width, height: 60)
         
         givenNameField.text = loggedInUser.givenName
         familyNameField.text = loggedInUser.familyName
         usernameLabel.text = loggedInUser.username
-        emailLabel.text = loggedInUser.primaryEmail
+        emailField.text = loggedInUser.primaryEmail
         
         let footerView = UIView(frame: CGRectZero)
         profileTable.tableFooterView = footerView
@@ -45,6 +48,17 @@ class EditProfileViewController: UITableViewController {
         profileTable.backgroundColor = UIColor.whiteColor()
         
         // Do any additional setup after loading the view.
+    }
+    
+    func addWarningLabel() {
+        let frame = CGRect(x: 0.0, y: 60.0, width: view.frame.width, height: 30.0)
+        warningLabel = WarningUILabel(frame: frame)
+        warningLabel.backgroundColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
+        warningLabel.font = UIFont(name: "OpenSans", size: 15.0)
+        warningLabel.textColor = UIColor.whiteColor()
+        warningLabel.text = "Consider yourself warned"
+        warningLabel.textAlignment = .Center
+        view.addSubview(warningLabel)
     }
 
     override func didReceiveMemoryWarning() {
@@ -71,22 +85,27 @@ class EditProfileViewController: UITableViewController {
         saveButton.enabled = false
         
         let updatePersonURL = "\(PostOfficeURL)/person/id/\(loggedInUser.id)"
-        let parameters = ["given_name": "\(givenNameField.text!)", "family_name": "\(familyNameField.text!)"]
+        let parameters = ["given_name": "\(givenNameField.text!)", "family_name": "\(familyNameField.text!)", "email": "\(emailField.text!)"]
         
         RestService.postRequest(updatePersonURL, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
-            print(result)
             if error != nil {
                 print(error)
             }
-            else {
+            else if let _ = result as? [AnyObject] {
                 MailService.updateAllData({(error, result) -> Void in})
                 self.performSegueWithIdentifier("updateSucceeded", sender: nil)
+            }
+            else {
+                let json = JSON(result!)
+                let message = json["message"].stringValue
+                self.warningLabel.show(message)
             }
         })
     }
 
     
     @IBAction func editingChanged(sender: AnyObject) {
+        warningLabel.hide()
         saveButton.enabled = true
     }
     

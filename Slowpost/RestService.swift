@@ -70,9 +70,6 @@ class RestService {
         print("POST to \(requestURL)")
         print(headers)
         lastPostRequest = Alamofire.request(.POST, requestURL, parameters: parameters, headers: requestHeaders, encoding: .JSON)
-            
-            // To Do: Let Alamofire get correct result status (it seems to think that an empty response is a FAILURE
-            .validate(statusCode: 200..<300)
             .responseJSON { (response) in
             var statusCode:Int!
             if response.response != nil {
@@ -86,14 +83,12 @@ class RestService {
                     completion(error: nil, result: [204, ""])
                 }
                 else {
-                    //To Do: Capture case where an error message is returned
-                    completion(error: nil, result: "Unexpected result")
+                    completion(error: nil, result: response.result.value)
                 }
             }
             else {
                 completion(error: nil, result: "Unexpected result")
             }
-            
         }
     }
     
