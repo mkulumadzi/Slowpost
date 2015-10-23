@@ -15,8 +15,6 @@ class RecipientCell: UITableViewCell {
     var searchPerson:SearchPerson!
 
     @IBOutlet weak var recipientLabel: UILabel!
-    @IBOutlet weak var cellImage: UIImageView!
-    @IBOutlet weak var labelLeadingDistance: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()

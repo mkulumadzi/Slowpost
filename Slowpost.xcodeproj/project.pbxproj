@@ -129,6 +129,7 @@
 		D2E956461B30952800CA8CC8 /* ChooseImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E956451B30952800CA8CC8 /* ChooseImageViewController.swift */; };
 		D2E9564A1B309AA100CA8CC8 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */; };
 		D2E97D8D1BC322BF00DAEB6C /* RecipientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E97D8C1BC322BF00DAEB6C /* RecipientCell.swift */; };
+		D2F061191BDAF15E005AC57F /* EditRecipientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F061181BDAF15E005AC57F /* EditRecipientsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		D2F5CAC21B8F91D900551435 /* Default Card.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F5CAC11B8F91D900551435 /* Default Card.png */; };
 /* End PBXBuildFile section */
 
@@ -281,6 +282,7 @@
 		D2E956451B30952800CA8CC8 /* ChooseImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseImageViewController.swift; sourceTree = "<group>"; };
 		D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		D2E97D8C1BC322BF00DAEB6C /* RecipientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientCell.swift; sourceTree = "<group>"; };
+		D2F061181BDAF15E005AC57F /* EditRecipientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRecipientsViewController.swift; sourceTree = "<group>"; };
 		D2F5CAC01B8F79B800551435 /* SlowpostModel 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SlowpostModel 6.xcdatamodel"; sourceTree = "<group>"; };
 		D2F5CAC11B8F91D900551435 /* Default Card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default Card.png"; sourceTree = "<group>"; };
 		D2F5CAC31B8FAA1A00551435 /* SlowpostModel 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SlowpostModel 7.xcdatamodel"; sourceTree = "<group>"; };
@@ -517,6 +519,7 @@
 			isa = PBXGroup;
 			children = (
 				D25130411BC425C3007541BE /* to.storyboard */,
+				D2F061181BDAF15E005AC57F /* EditRecipientsViewController.swift */,
 				D20D8ED31B2A510700BBF6B5 /* ToViewController.swift */,
 				D20D8EE11B2E448100BBF6B5 /* PersonCell.swift */,
 				D28CB00F1BB4CDC100111213 /* PhoneContactCell.swift */,
@@ -835,6 +838,7 @@
 				D2389E6F1B95136B00CB19BB /* ConversationCell.swift in Sources */,
 				D27E12F71BB4A98E0059FF07 /* EmailAddress.swift in Sources */,
 				D27E12F11BB4791A0059FF07 /* ContactService.swift in Sources */,
+				D2F061191BDAF15E005AC57F /* EditRecipientsViewController.swift in Sources */,
 				CC96E4C91AC0B334001E6D27 /* ComposeMailViewController.swift in Sources */,
 				D206FB4B1B61688D008BB412 /* WelcomeScreenViewController.swift in Sources */,
 				D206FB4F1B617504008BB412 /* BottomBorderUITextField.swift in Sources */,
