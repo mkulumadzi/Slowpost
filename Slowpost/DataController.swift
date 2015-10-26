@@ -36,7 +36,8 @@ class DataController: NSObject {
             */
             let storeURL = docURL.URLByAppendingPathComponent("Slowpost.sqlite")
             do {
-                try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: nil)
+                try psc.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: storeURL, options: [NSMigratePersistentStoresAutomaticallyOption: true,
+                    NSInferMappingModelAutomaticallyOption: true])
             } catch {
                 fatalError("Error migrating store: \(error)")
             }
