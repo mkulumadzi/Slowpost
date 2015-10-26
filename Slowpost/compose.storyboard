@@ -29,6 +29,7 @@
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -644,8 +645,26 @@
                             </view>
                             <view opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4g-MB-3Js" userLabel="opaqueBackground">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="304"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to confirm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mpj-KI-e26">
+                                        <rect key="frame" x="248" y="253" width="105" height="21"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="Mpj-KI-e26" firstAttribute="centerY" secondItem="C4g-MB-3Js" secondAttribute="centerY" id="4J3-01-X8M"/>
+                                    <constraint firstItem="Mpj-KI-e26" firstAttribute="centerX" secondItem="C4g-MB-3Js" secondAttribute="centerX" id="Epj-3O-AQm"/>
+                                    <constraint firstAttribute="bottom" secondItem="Mpj-KI-e26" secondAttribute="bottom" constant="30" id="Gv9-xc-hGp"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4J3-01-X8M"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="b48-wH-IAv" appends="YES" id="DCJ-bF-Oiu"/>
                                 </connections>
