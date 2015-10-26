@@ -16,8 +16,6 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
-            <string>OpenSans</string>
-            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -512,10 +510,48 @@
                                     <rect key="frame" x="10" y="358" width="210" height="18"/>
                                 </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rF8-O1-jVt">
+                                <rect key="frame" x="40" y="760" width="560" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="EOv-90-ZjL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Send (arrives in 1 to 2 days)  &gt;&gt;">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="MtH-uW-ItT" kind="presentation" identifier="sendMail" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="aiH-BU-mEk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2b-7L-VM7" userLabel="scheduleButton">
+                                <rect key="frame" x="0.0" y="760" width="40" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Jq6-eO-faz"/>
+                                    <constraint firstAttribute="height" constant="40" id="nNW-Ia-e8w"/>
+                                </constraints>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" image="calendar"/>
+                                <connections>
+                                    <segue destination="FyT-yD-Bbu" kind="presentation" identifier="scheduleDelivery" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="vpr-RU-5nF"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="warningLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udR-AJ-ciC" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="30"/>
+                                <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JMe-9P-as5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="GcV-KG-RdI" firstAttribute="top" secondItem="kTe-CR-dcv" secondAttribute="bottom" constant="10" id="0RT-1h-ueR"/>
+                            <constraint firstItem="a2b-7L-VM7" firstAttribute="leading" secondItem="CRi-0L-spj" secondAttribute="leading" id="1WW-yu-UUa"/>
                             <constraint firstAttribute="trailing" secondItem="Y8E-oQ-Oh5" secondAttribute="trailing" constant="10" id="6NA-pw-EH1">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
@@ -524,11 +560,16 @@
                             <constraint firstAttribute="trailing" secondItem="huH-mK-UMT" secondAttribute="trailing" id="Gal-gK-1Yd">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
+                            <constraint firstItem="udR-AJ-ciC" firstAttribute="leading" secondItem="CRi-0L-spj" secondAttribute="leading" id="LNd-wL-2CS"/>
                             <constraint firstItem="kiv-Wq-vjl" firstAttribute="top" secondItem="kTe-CR-dcv" secondAttribute="bottom" priority="999" constant="286" id="MlF-vg-DgR"/>
+                            <constraint firstAttribute="trailing" secondItem="udR-AJ-ciC" secondAttribute="trailing" id="Pxn-rs-sxF"/>
+                            <constraint firstItem="gNS-Nl-7MF" firstAttribute="top" secondItem="a2b-7L-VM7" secondAttribute="bottom" id="QbB-sk-0jt"/>
                             <constraint firstItem="gNS-Nl-7MF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="huH-mK-UMT" secondAttribute="bottom" constant="372" id="Rd0-cj-iaW">
                                 <variation key="heightClass=regular-widthClass=regular" constant="80"/>
                             </constraint>
                             <constraint firstItem="A0P-Az-ipI" firstAttribute="leading" secondItem="CRi-0L-spj" secondAttribute="leading" constant="10" id="SCt-Jf-QOa"/>
+                            <constraint firstItem="rF8-O1-jVt" firstAttribute="leading" secondItem="a2b-7L-VM7" secondAttribute="trailing" id="XUd-83-hTP"/>
+                            <constraint firstItem="udR-AJ-ciC" firstAttribute="top" secondItem="kTe-CR-dcv" secondAttribute="bottom" id="Xtb-Bc-INg"/>
                             <constraint firstItem="huH-mK-UMT" firstAttribute="leading" secondItem="CRi-0L-spj" secondAttribute="leading" id="YgK-d7-Pxi">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
@@ -537,11 +578,13 @@
                             <constraint firstItem="kiv-Wq-vjl" firstAttribute="top" secondItem="huH-mK-UMT" secondAttribute="bottom" priority="251" id="fYL-Sg-bqD"/>
                             <constraint firstItem="huH-mK-UMT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kTe-CR-dcv" secondAttribute="bottom" constant="64" id="jn3-1t-eX6"/>
                             <constraint firstItem="gNS-Nl-7MF" firstAttribute="top" secondItem="kiv-Wq-vjl" secondAttribute="bottom" id="lsY-X2-2SS"/>
+                            <constraint firstItem="gNS-Nl-7MF" firstAttribute="top" secondItem="rF8-O1-jVt" secondAttribute="bottom" id="ly3-eE-8io"/>
                             <constraint firstItem="Y8E-oQ-Oh5" firstAttribute="leading" secondItem="GcV-KG-RdI" secondAttribute="trailing" constant="2" id="o6T-RL-Eex"/>
                             <constraint firstItem="GcV-KG-RdI" firstAttribute="leading" secondItem="CRi-0L-spj" secondAttribute="leading" constant="10" id="reT-KW-TQE">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
                             <constraint firstItem="Y8E-oQ-Oh5" firstAttribute="centerY" secondItem="GcV-KG-RdI" secondAttribute="centerY" id="tiq-MH-ycI"/>
+                            <constraint firstAttribute="trailing" secondItem="rF8-O1-jVt" secondAttribute="trailing" id="ykd-cv-Vcj"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -556,30 +599,22 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Compose" id="NRn-yB-jrj">
-                        <barButtonItem key="rightBarButtonItem" title="Item" style="done" id="WjZ-jS-UyW">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="RIB-xu-gs6">
-                                <rect key="frame" x="530" y="7" width="50" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
-                                <state key="normal" title="Next">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="FyT-yD-Bbu" kind="show" identifier="chooseDelivery" id="zbc-zb-Fih"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Compose" id="NRn-yB-jrj"/>
                     <connections>
+                        <outlet property="bottomSpaceToScheduleButton" destination="QbB-sk-0jt" id="1p6-8O-BHO"/>
+                        <outlet property="bottomSpaceToSendButton" destination="ly3-eE-8io" id="vc1-qP-zPx"/>
                         <outlet property="composeText" destination="kiv-Wq-vjl" id="Gx8-pH-tKg"/>
                         <outlet property="composeTextToImageBottom" destination="fYL-Sg-bqD" id="Wfb-6Y-A4a"/>
                         <outlet property="composeTextToTopLayoutGuide" destination="MlF-vg-DgR" id="lWR-l7-GIU"/>
-                        <outlet property="doneButton" destination="RIB-xu-gs6" id="xUP-Gf-z1G"/>
                         <outlet property="imagePreview" destination="huH-mK-UMT" id="FrZ-wP-cSx"/>
                         <outlet property="placeholderTextLabel" destination="A0P-Az-ipI" id="Hre-2A-i9M"/>
+                        <outlet property="scheduleButton" destination="a2b-7L-VM7" id="TQM-8T-3GT"/>
+                        <outlet property="scheduleButtonHeight" destination="nNW-Ia-e8w" id="sfC-sY-7jh"/>
+                        <outlet property="scheduleButtonWidth" destination="Jq6-eO-faz" id="MCs-bh-XZ5"/>
+                        <outlet property="sendButton" destination="rF8-O1-jVt" id="uwy-Ln-sw1"/>
+                        <outlet property="sendButtonHeight" destination="EOv-90-ZjL" id="IDx-a3-zhu"/>
                         <outlet property="toLabel" destination="KiO-xd-bKI" id="UbM-XW-CnN"/>
+                        <outlet property="warningLabel" destination="udR-AJ-ciC" id="JZt-FN-fBK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wwg-pC-olF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -600,56 +635,52 @@
                         <viewControllerLayoutGuide type="bottom" id="aGy-fK-D4U"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="3OS-i5-PJr">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mPC-Bj-nIK" userLabel="whiteBackground">
+                                <rect key="frame" x="0.0" y="304" width="600" height="296"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4g-MB-3Js" userLabel="opaqueBackground">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="304"/>
+                                <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="b48-wH-IAv" appends="YES" id="DCJ-bF-Oiu"/>
+                                </connections>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Delivery" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uwj-sc-sJh">
+                                <rect key="frame" x="0.0" y="304" width="600" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="29b-9L-M2x"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhm-0k-4pj" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="125" width="540" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="560" width="600" height="40"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="TsL-no-8b7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                <state key="normal" title="Standard (1 to 2 days)">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Standard delivery (1 to 2 days)">
+                                    <color key="titleColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
                                     <rect key="frame" x="100" y="192" width="400" height="40"/>
                                 </variation>
                                 <connections>
-                                    <action selector="standardDeliveryChosen:" destination="FyT-yD-Bbu" eventType="touchUpInside" id="pEP-Ys-fdR"/>
+                                    <segue destination="yDO-6D-Qo8" kind="unwind" identifier="standardDeliveryChosen" unwindAction="standardDeliveryChosen:" id="nd0-LM-lim"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFT-Rb-cNu" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="442" width="540" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="NZN-MQ-cwe"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                <state key="normal" title="Schedule delivery">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="100" y="576" width="400" height="40"/>
-                                </variation>
-                                <connections>
-                                    <action selector="customDeliveryChosen:" destination="FyT-yD-Bbu" eventType="touchUpInside" id="WH7-oo-12z"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose standard delivery:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4A0-Za-BgN">
-                                <rect key="frame" x="30" y="94" width="540" height="21"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="100" y="164" width="400" height="18"/>
-                                </variation>
-                            </label>
                             <datePicker contentMode="scaleToFill" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="Uk2-1o-YPF">
-                                <rect key="frame" x="30" y="216" width="540" height="216"/>
+                                <rect key="frame" x="0.0" y="344" width="600" height="216"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <date key="date" timeIntervalSinceReferenceDate="462746146.04611301">
                                     <!--2015-08-31 20:35:46 +0000-->
                                 </date>
@@ -657,85 +688,63 @@
                                     <rect key="frame" x="100" y="350" width="400" height="216"/>
                                 </variation>
                             </datePicker>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or schedule it (must be at least 1 day from now):" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sbs-Lk-8bE">
-                                <rect key="frame" x="30" y="195" width="540" height="21"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="100" y="332" width="400" height="18"/>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="warningLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wj0-gO-sx1" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="21"/>
-                                <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="4A0-Za-BgN" secondAttribute="trailing" constant="30" id="0BH-1t-G3X">
+                            <constraint firstItem="Uk2-1o-YPF" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" id="1Qd-eg-ddK">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstItem="Uk2-1o-YPF" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" constant="30" id="1Qd-eg-ddK">
+                            <constraint firstItem="mPC-Bj-nIK" firstAttribute="top" secondItem="C4g-MB-3Js" secondAttribute="bottom" id="58G-st-MHh"/>
+                            <constraint firstItem="C4g-MB-3Js" firstAttribute="top" secondItem="3OS-i5-PJr" secondAttribute="top" id="AeX-3k-bR7"/>
+                            <constraint firstAttribute="trailing" secondItem="mPC-Bj-nIK" secondAttribute="trailing" id="EfD-xo-6kE"/>
+                            <constraint firstItem="C4g-MB-3Js" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" id="FsJ-Fk-Aos"/>
+                            <constraint firstItem="Uk2-1o-YPF" firstAttribute="top" secondItem="Uwj-sc-sJh" secondAttribute="bottom" id="GrK-Mu-jMC"/>
+                            <constraint firstItem="mPC-Bj-nIK" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" id="JwP-Pf-X9G"/>
+                            <constraint firstItem="aGy-fK-D4U" firstAttribute="top" secondItem="C4g-MB-3Js" secondAttribute="bottom" id="Kpt-iL-uRq"/>
+                            <constraint firstItem="aGy-fK-D4U" firstAttribute="top" secondItem="mPC-Bj-nIK" secondAttribute="bottom" id="NFf-BX-V9s"/>
+                            <constraint firstAttribute="trailing" secondItem="Uwj-sc-sJh" secondAttribute="trailing" id="O0w-Bk-pOi"/>
+                            <constraint firstAttribute="trailing" secondItem="C4g-MB-3Js" secondAttribute="trailing" id="Odv-B1-TIb"/>
+                            <constraint firstItem="fhm-0k-4pj" firstAttribute="top" secondItem="Uk2-1o-YPF" secondAttribute="bottom" id="P7Q-oC-tVA"/>
+                            <constraint firstItem="Uwj-sc-sJh" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" id="WBr-XK-Gkg"/>
+                            <constraint firstAttribute="trailing" secondItem="fhm-0k-4pj" secondAttribute="trailing" constant="30" id="WW4-FV-jhl"/>
+                            <constraint firstAttribute="trailing" secondItem="Uk2-1o-YPF" secondAttribute="trailing" id="XcT-WL-GdU">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstAttribute="trailing" secondItem="sbs-Lk-8bE" secondAttribute="trailing" constant="30" id="D6B-5z-UNb">
+                            <constraint firstItem="fhm-0k-4pj" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" constant="30" id="g4b-oc-JAH"/>
+                            <constraint firstAttribute="trailing" secondItem="fhm-0k-4pj" secondAttribute="trailing" id="h3g-co-L4c">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstItem="oFT-Rb-cNu" firstAttribute="top" secondItem="Uk2-1o-YPF" secondAttribute="bottom" constant="10" id="DA2-QI-BlE"/>
-                            <constraint firstAttribute="trailing" secondItem="Wj0-gO-sx1" secondAttribute="trailing" id="K44-O8-phd"/>
-                            <constraint firstItem="fhm-0k-4pj" firstAttribute="top" secondItem="4A0-Za-BgN" secondAttribute="bottom" constant="10" id="Suz-Mf-sea"/>
-                            <constraint firstAttribute="trailing" secondItem="Uk2-1o-YPF" secondAttribute="trailing" constant="30" id="XcT-WL-GdU">
+                            <constraint firstItem="Uwj-sc-sJh" firstAttribute="top" secondItem="C4g-MB-3Js" secondAttribute="bottom" id="hZu-v7-Q9J"/>
+                            <constraint firstItem="aGy-fK-D4U" firstAttribute="top" secondItem="fhm-0k-4pj" secondAttribute="bottom" id="q4f-sY-T1g"/>
+                            <constraint firstItem="fhm-0k-4pj" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" id="vfB-fl-v3t">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstItem="4A0-Za-BgN" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" constant="30" id="atX-hu-m9C">
-                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
-                            </constraint>
-                            <constraint firstItem="Uk2-1o-YPF" firstAttribute="top" secondItem="sbs-Lk-8bE" secondAttribute="bottom" id="fOS-RG-0M0"/>
-                            <constraint firstItem="Wj0-gO-sx1" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" id="grH-Ge-Vzl"/>
-                            <constraint firstAttribute="trailing" secondItem="fhm-0k-4pj" secondAttribute="trailing" constant="30" id="h3g-co-L4c">
-                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
-                            </constraint>
-                            <constraint firstItem="Wj0-gO-sx1" firstAttribute="top" secondItem="EPo-xN-8yt" secondAttribute="bottom" id="q1M-Wh-8Ao"/>
-                            <constraint firstItem="sbs-Lk-8bE" firstAttribute="top" secondItem="fhm-0k-4pj" secondAttribute="bottom" constant="30" id="rkt-vP-d3T">
-                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
-                            </constraint>
-                            <constraint firstItem="4A0-Za-BgN" firstAttribute="top" secondItem="EPo-xN-8yt" secondAttribute="bottom" constant="30" id="s8S-7x-AtX">
-                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
-                            </constraint>
-                            <constraint firstItem="oFT-Rb-cNu" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" constant="30" id="tBL-dB-oXn">
-                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
-                            </constraint>
-                            <constraint firstItem="fhm-0k-4pj" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" constant="30" id="vfB-fl-v3t">
-                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
-                            </constraint>
-                            <constraint firstItem="sbs-Lk-8bE" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" constant="30" id="xTT-eD-E8L">
-                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
-                            </constraint>
-                            <constraint firstAttribute="trailing" secondItem="oFT-Rb-cNu" secondAttribute="trailing" constant="30" id="zEW-kq-qdR">
-                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
-                            </constraint>
-                            <constraint firstItem="aGy-fK-D4U" firstAttribute="top" relation="greaterThanOrEqual" secondItem="oFT-Rb-cNu" secondAttribute="bottom" constant="10" id="zPs-KG-Vmt"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="WW4-FV-jhl"/>
+                                <exclude reference="g4b-oc-JAH"/>
+                                <exclude reference="Kpt-iL-uRq"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Delivery" id="6aV-fH-Z8k"/>
                     <connections>
-                        <outlet property="buttonHeight" destination="NZN-MQ-cwe" id="nbo-nv-f9H"/>
-                        <outlet property="customButton" destination="oFT-Rb-cNu" id="qTp-N4-RzT"/>
                         <outlet property="datePicker" destination="Uk2-1o-YPF" id="ttf-Gg-snq"/>
-                        <outlet property="distanceToScheduledSection" destination="rkt-vP-d3T" id="0HY-v1-Xwv"/>
+                        <outlet property="headerHeight" destination="29b-9L-M2x" id="fXV-he-wWD"/>
                         <outlet property="standardButton" destination="fhm-0k-4pj" id="Xn2-47-ina"/>
-                        <outlet property="standardDeliveryButtonHeight" destination="TsL-no-8b7" id="vs0-uX-YNx"/>
-                        <outlet property="warningLabel" destination="Wj0-gO-sx1" id="Ade-s0-M45"/>
-                        <segue destination="MtH-uW-ItT" kind="presentation" identifier="sendMail" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="fof-2k-i0C"/>
+                        <outlet property="standardButtonHeight" destination="TsL-no-8b7" id="s0r-cn-yxJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hTd-Zp-4RV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="yDO-6D-Qo8" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="b48-wH-IAv">
+                    <connections>
+                        <segue destination="yDO-6D-Qo8" kind="unwind" identifier="scheduledDeliveryChosen" unwindAction="scheduledDeliveryChosen:" id="6eD-jV-0ch"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3069" y="924"/>
+            <point key="canvasLocation" x="2388" y="1770"/>
         </scene>
         <!--Sending View Controller-->
         <scene sceneID="cZ8-Uj-tT2">
@@ -813,14 +822,14 @@
                     <connections>
                         <outlet property="cancelButton" destination="XlB-rG-Tsl" id="caZ-AJ-IWQ"/>
                         <outlet property="cancelButtonHeight" destination="fK0-R7-jpw" id="TGF-iD-cRV"/>
-                        <segue destination="hsk-st-IZq" kind="unwind" identifier="mailFailedToSend" unwindAction="mailFailedToSend:" id="W34-NA-8ve"/>
-                        <segue destination="hsk-st-IZq" kind="unwind" identifier="notReadyToSend" unwindAction="notReadyToSend:" id="FPL-fT-kfK"/>
+                        <segue destination="hsk-st-IZq" kind="unwind" identifier="mailFailedToSend" unwindAction="mailFailedToSend:" id="Tmc-6E-Zjz"/>
+                        <segue destination="hsk-st-IZq" kind="unwind" identifier="notReadyToSend" unwindAction="notReadyToSend:" id="imG-0W-FaG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HIU-N4-2SL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="hsk-st-IZq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3778" y="924"/>
+            <point key="canvasLocation" x="3120" y="924"/>
         </scene>
         <!--Compose Navigation Controller-->
         <scene sceneID="RDR-ED-QzE">
@@ -847,6 +856,7 @@
     <resources>
         <image name="Default Card.png" width="768" height="576"/>
         <image name="Slowpost Icon Set (green)" width="150" height="95"/>
+        <image name="calendar" width="48" height="48"/>
         <image name="camera-2.png" width="120" height="120"/>
         <image name="chevron-down" width="48" height="48"/>
         <image name="picture-3.png" width="120" height="120"/>

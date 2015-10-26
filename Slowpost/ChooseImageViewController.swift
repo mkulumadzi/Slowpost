@@ -151,6 +151,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBAction func selectPhotoFromLibrary(sender: AnyObject) {
         Flurry.logEvent("Chose_To_Select_Photo_From_Library")
+        chooseOptionLabel.hidden = true
         
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) {
             let imagePicker = UIImagePickerController()
@@ -170,6 +171,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     
     @IBAction func takePhoto(sender: AnyObject) {
         Flurry.logEvent("Chose_To_Take_Picture")
+        chooseOptionLabel.hidden = true
         
         if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
                 
@@ -334,6 +336,9 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
             composeMailViewController!.toPeople = toPeople
             composeMailViewController!.toSearchPeople = toSearchPeople
             composeMailViewController!.toEmails = toEmails
+        }
+        else if segue.identifier == "cardGallery" {
+            chooseOptionLabel.hidden = true
         }
     }
 

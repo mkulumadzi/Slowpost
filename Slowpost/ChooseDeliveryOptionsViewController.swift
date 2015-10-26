@@ -10,22 +10,13 @@ import UIKit
 
 class ChooseDeliveryOptionsViewController: UIViewController {
     
-    var toPeople:[Person]!
-    var toSearchPeople:[SearchPerson]!
-    var toEmails:[String]!
-    var cardImage:UIImage!
-    var content:String!
+    
     var scheduledToArrive:NSDate?
     @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBOutlet weak var standardButton: TextUIButton!
-//    @IBOutlet weak var expressButton: TextUIButton!
-    @IBOutlet weak var customButton: TextUIButton!
-    @IBOutlet weak var warningLabel: WarningUILabel!
-    
-    @IBOutlet weak var buttonHeight: NSLayoutConstraint!
-    @IBOutlet weak var standardDeliveryButtonHeight: NSLayoutConstraint!
-    @IBOutlet weak var distanceToScheduledSection: NSLayoutConstraint!
+    @IBOutlet weak var standardButtonHeight: NSLayoutConstraint!
+    @IBOutlet weak var headerHeight: NSLayoutConstraint!
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
@@ -33,11 +24,7 @@ class ChooseDeliveryOptionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        warningLabel.hide()
         
-        standardButton.layer.cornerRadius = 5
-//        expressButton.layer.cornerRadius = 5
-        customButton.layer.cornerRadius = 5
         datePicker.minimumDate = setMinimumDate()
 
         if deviceType == "iPhone 4S" {
@@ -47,9 +34,8 @@ class ChooseDeliveryOptionsViewController: UIViewController {
     }
     
     func formatForiPhone4S() {
-        standardDeliveryButtonHeight.constant = 30
-        buttonHeight.constant = 30
-        distanceToScheduledSection.constant = 10
+        standardButtonHeight.constant = 30
+        headerHeight.constant = 30
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,51 +49,17 @@ class ChooseDeliveryOptionsViewController: UIViewController {
         return minimumDate!
     }
     
-    @IBAction func standardDeliveryChosen(sender: AnyObject) {
-        performSegueWithIdentifier("sendMail", sender: nil)
-    }
-    
-//    @IBAction func expressDeliveryChosen(sender: AnyObject) {
-//        let calendar = NSCalendar.currentCalendar()
-//        let date = calendar.dateByAddingUnit(.Minute, value: 10, toDate: NSDate(), options: [])
-//        scheduledToArrive = date!
-//        self.performSegueWithIdentifier("sendMail", sender: nil)
-//    }
-    
-    @IBAction func customDeliveryChosen(sender: AnyObject) {
-        let currentDateTime = NSDate()
-        if datePicker.date.isGreaterThanDate(currentDateTime) {
-            scheduledToArrive = datePicker.date
-            performSegueWithIdentifier("sendMail", sender: nil)
-        }
-        else {
-            print("Date cannot be in the past")
-        }
-        
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "sendMail" {
-            let sendingViewController = segue.destinationViewController as? SendingViewController
-            sendingViewController!.toPeople = toPeople
-            sendingViewController!.toSearchPeople = toSearchPeople
-            sendingViewController!.toEmails = toEmails
-            sendingViewController!.image = cardImage
-            sendingViewController!.content = content
-            
-            if scheduledToArrive != nil {
-                sendingViewController!.scheduledToArrive = scheduledToArrive!
-            }
+        if segue.identifier == "scheduledDeliveryChosen" {
+            let composeMailViewController = segue.destinationViewController as! ComposeMailViewController
+            composeMailViewController.scheduledToArrive = datePicker.date
+        }
+        else if segue.identifier == "standardDeliveryChosen" {
+            let composeMailViewController = segue.destinationViewController as! ComposeMailViewController
+            composeMailViewController.scheduledToArrive = nil
         }
         
     }
-    
-    @IBAction func mailFailedToSend(segue: UIStoryboardSegue) {
-    }
-    
-    @IBAction func notReadyToSend(segue: UIStoryboardSegue) {
-    }
-    
     
 
 }

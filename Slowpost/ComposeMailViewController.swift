@@ -15,15 +15,26 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     var toEmails:[String]!
     var cardImage:UIImage!
     var keyboardShowing:Bool!
+    var scheduledToArrive:NSDate?
     
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var imagePreview: UIImageView!
     @IBOutlet weak var composeText: UITextView!
-    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var scheduleButton: UIButton!
+    @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var warningLabel: WarningUILabel!
+    
     @IBOutlet weak var composeTextToTopLayoutGuide: NSLayoutConstraint!
     @IBOutlet weak var composeTextToImageBottom: NSLayoutConstraint!
     
     @IBOutlet weak var placeholderTextLabel: UILabel!
+    
+    @IBOutlet weak var bottomSpaceToSendButton: NSLayoutConstraint!
+    @IBOutlet weak var sendButtonHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var scheduleButtonWidth: NSLayoutConstraint!
+    @IBOutlet weak var scheduleButtonHeight: NSLayoutConstraint!
+    @IBOutlet weak var bottomSpaceToScheduleButton: NSLayoutConstraint!
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
@@ -33,6 +44,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         
         Flurry.logEvent("Opened_Compose_View")
+        warningLabel.hide()
         
         keyboardShowing = false
         toLabel.text = toList()
@@ -48,10 +60,31 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
             imagePreview.image = cardImage
         }
         
+        if deviceType == "iPhone 4S" {
+            formatForiPhone4()
+        }
+        
+        formatButtons()
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
         
         resignFirstResponder()
+    }
+    
+    func formatForiPhone4() {
+        sendButtonHeight.constant = 30
+        scheduleButtonHeight.constant = 30
+        scheduleButtonWidth.constant = 30
+    }
+    
+    func formatButtons() {
+        scheduleButton.setImage(UIImage(named: "calendar")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        scheduleButton.tintColor = UIColor.whiteColor()
+        
+        sendButton.contentHorizontalAlignment = .Right
+        sendButton.contentEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -102,10 +135,10 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         keyboardShowing = true
         placeholderTextLabel.hidden = true
         if deviceType == "iPhone 4S" {
-            composeTextToTopLayoutGuide.constant = 114
+            composeTextToTopLayoutGuide.constant = 64
         }
         else if deviceType == "iPhone 5" || deviceType == "iPhone 5C" || deviceType == "iPhone 5S" {
-            composeTextToTopLayoutGuide.constant = 164
+            composeTextToTopLayoutGuide.constant = 114
         }
         else if UIDevice.currentDevice().orientation == .LandscapeLeft || UIDevice.currentDevice().orientation == .LandscapeRight {
             composeTextToTopLayoutGuide.constant = 164
@@ -114,12 +147,13 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
             composeTextToTopLayoutGuide.constant = view.frame.width * 3/8 + 64
         }
         
-        
         let userInfo = notification.userInfo!
         var r = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         r = composeText.convertRect(r, fromView:nil)
-        composeText.contentInset.bottom = r.size.height
-        composeText.scrollIndicatorInsets.bottom = r.size.height
+        composeText.contentInset.bottom = r.size.height + sendButtonHeight.constant
+        composeText.scrollIndicatorInsets.bottom = r.size.height + sendButtonHeight.constant
+        bottomSpaceToSendButton.constant = r.size.height
+        bottomSpaceToScheduleButton.constant = r.size.height
     }
     
     func keyboardHide(notification:NSNotification) {
@@ -129,6 +163,8 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         validatePlaceholderLabel()
         composeText.contentInset = UIEdgeInsetsZero
         composeText.scrollIndicatorInsets = UIEdgeInsetsZero
+        bottomSpaceToSendButton.constant = 0
+        bottomSpaceToScheduleButton.constant = 0
         updateViewConstraints()
     }
     
@@ -143,19 +179,47 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "chooseDelivery" {
-            let chooseDeliveryOptionsViewController = segue.destinationViewController as? ChooseDeliveryOptionsViewController
-            chooseDeliveryOptionsViewController!.toPeople = toPeople
-            chooseDeliveryOptionsViewController!.toSearchPeople = toSearchPeople
-            chooseDeliveryOptionsViewController!.toEmails = toEmails
-            chooseDeliveryOptionsViewController!.cardImage = cardImage
-            chooseDeliveryOptionsViewController!.content = composeText.text
+        if segue.identifier == "sendMail" {
+            let sendingViewController = segue.destinationViewController as? SendingViewController
+            sendingViewController!.toPeople = toPeople
+            sendingViewController!.toSearchPeople = toSearchPeople
+            sendingViewController!.toEmails = toEmails
+            sendingViewController!.image = cardImage
+            sendingViewController!.content = composeText.text
+            
+            if scheduledToArrive != nil {
+                sendingViewController!.scheduledToArrive = scheduledToArrive!
+            }
         }
     }
     
+    @IBAction func mailFailedToSend(segue: UIStoryboardSegue) {
+    }
+    
+    @IBAction func notReadyToSend(segue: UIStoryboardSegue) {
+    }
+    
+    @IBAction func standardDeliveryChosen(segue: UIStoryboardSegue) {
+        formatSendButton()
+    }
+    
+    @IBAction func scheduledDeliveryChosen(segue: UIStoryboardSegue) {
+        formatSendButton()
+    }
+    
+    func formatSendButton() {
+        if scheduledToArrive != nil {
+            let dateString = scheduledToArrive!.formattedAsString("yyyy-MM-dd")
+            sendButton.setTitle("Send (arrives on \(dateString)) >>", forState: .Normal)
+        }
+        else {
+            sendButton.setTitle("Send (arrives in 1 to 2 days)  >>", forState: .Normal)
+        }
+    }
+    
+    
     func textViewDidChange(textView: UITextView) {
         validatePlaceholderLabel()
-        doneButton.enabled = true
     }
 
 }
