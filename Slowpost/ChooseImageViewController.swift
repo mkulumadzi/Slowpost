@@ -30,6 +30,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var galleryLabel: UILabel!
     @IBOutlet weak var nextButton: TextUIButton!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var chooseOptionLabel: UILabel!
     
     @IBOutlet weak var removeImageButtonHeight: NSLayoutConstraint!
     
@@ -46,7 +47,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         
         toLabel.text = toList()
         
-        removePhotoButton.layer.cornerRadius = 5
+        removePhotoButton.layer.cornerRadius = 11
         nextButton.layer.cornerRadius = 5
         validateButtons()
         
@@ -74,6 +75,9 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         
         backButton.setImage(UIImage(named: "chevron-down")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         backButton.tintColor = UIColor.whiteColor()
+        
+        removePhotoButton.setImage(UIImage(named: "remove")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        removePhotoButton.tintColor = UIColor.whiteColor()
         
     }
     
@@ -277,6 +281,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         cameraLabel.hidden = true
         cardGalleryButton.hidden = true
         galleryLabel.hidden = true
+        chooseOptionLabel.hidden = true
         
         cropLabel.hidden = false
         removePhotoButton.hidden = false
@@ -290,6 +295,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         cameraLabel.hidden = false
         cardGalleryButton.hidden = false
         galleryLabel.hidden = false
+        chooseOptionLabel.hidden = false
         
         cropLabel.hidden = true
         removePhotoButton.hidden = true
