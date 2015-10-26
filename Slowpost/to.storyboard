@@ -240,7 +240,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add an email address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vja-JK-any">
                                                     <rect key="frame" x="222" y="14" width="156" height="21"/>
                                                     <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -548,7 +548,7 @@
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Oib-NE-mEN" userLabel="cancel">
                                                 <rect key="frame" x="20" y="28" width="20" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="ios7-close-empty-gray.png"/>
+                                                <state key="normal" image="close"/>
                                                 <connections>
                                                     <action selector="cancelButtonPressed:" destination="E7Y-T2-X0u" eventType="touchUpInside" id="BPx-QA-0cC"/>
                                                 </connections>
@@ -717,6 +717,5 @@
     <resources>
         <image name="close" width="48" height="48"/>
         <image name="edit" width="48" height="48"/>
-        <image name="ios7-close-empty-gray.png" width="192" height="192"/>
     </resources>
 </document>

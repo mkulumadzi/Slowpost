@@ -25,8 +25,8 @@ class PhoneContactViewController: UIViewController, UITableViewDelegate, UITable
         
         emailAddressTable.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: emailAddressTable.bounds.size.width, height: 0.01))
         name.text = person.fullName()
+        formatButtons()
 
-        // Do any additional setup after loading the view.
     }
     
     func formatButtons() {

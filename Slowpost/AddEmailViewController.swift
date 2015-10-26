@@ -23,6 +23,7 @@ class AddEmailViewController: UIViewController {
         
         emailField.addBottomLayer()
         submitButton.layer.cornerRadius = 5
+        formatButtons()
         
         validateSubmitButton()
         warningLabel.hide()
@@ -31,6 +32,11 @@ class AddEmailViewController: UIViewController {
             formatForiPhone4S()
         }
 
+    }
+    
+    func formatButtons() {
+        cancelButton.setImage(UIImage(named: "close")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        cancelButton.tintColor = slowpostDarkGrey
     }
     
     func formatForiPhone4S() {
