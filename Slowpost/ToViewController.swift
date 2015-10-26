@@ -242,23 +242,11 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         var numSections:Int = peopleController.sections!.count
-//        if recipientSection() == true {
-//            numSections += 1
-//        }
         if otherSection() == true {
             numSections += 1
         }
         return numSections
     }
-    
-//    func recipientSection() -> Bool {
-//        if (toPeople.count + toSearchPeople.count + toEmails.count) > 0 {
-//            return true
-//        }
-//        else {
-//            return false
-//        }
-//    }
     
     func otherSection() -> Bool {
         if searchTextEntered == true {
@@ -279,25 +267,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         else {
             return "Other people"
         }
-        
-//        var adjustedSection:Int!
-//        if recipientSection() == true {
-//            adjustedSection = section - 1
-//            if section == 0 {
-//                return "Recipients (tap to deselect)"
-//            }
-//        }
-//        else {
-//            adjustedSection = section
-//        }
-//        if adjustedSection < peopleSections.count {
-//            let sectionInfo = peopleSections[adjustedSection]
-//            let title = sectionInfo.name
-//            return title
-//        }
-//        else {
-//            return "Other people"
-//        }
     }
  
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -309,23 +278,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         else {
             return (searchResults.count + 1)
         }
-//        var adjustedSection:Int!
-//        if recipientSection() == true {
-//            adjustedSection = section - 1
-//            if section == 0 {
-//                return (toPeople.count + toSearchPeople.count + toEmails.count)
-//            }
-//        }
-//        else {
-//            adjustedSection = section
-//        }
-//        if adjustedSection < peopleSections.count {
-//            let sectionInfo = peopleSections[adjustedSection]
-//            return sectionInfo.numberOfObjects
-//        }
-//        else {
-//            return (searchResults.count + 1)
-//        }
     }
     
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
@@ -379,48 +331,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             let cell = otherCell(tableView, indexPath: indexPath)
             return cell
         }
-//        var adjustedIndexPath:NSIndexPath!
-//        if recipientSection() == false {
-//            adjustedIndexPath = indexPath
-//        }
-//        else {
-//            adjustedIndexPath = NSIndexPath(forRow: indexPath.row, inSection: indexPath.section - 1)
-//            if indexPath.section == 0 {
-//                let cell = cellForRecipient(tableView, indexPath: indexPath)
-//                return cell
-//            }
-//        }
-//        let peopleSections = peopleController.sections!
-//        if adjustedIndexPath.section < peopleSections.count {
-//            let cell = cellForPerson(tableView, indexPath: adjustedIndexPath)
-//            return cell
-//        }
-//        else {
-//            let cell = otherCell(tableView, indexPath: indexPath)
-//            return cell
-//        }
     }
-    
-//    func cellForRecipient(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCellWithIdentifier("recipientCell", forIndexPath: indexPath) as! RecipientCell
-//        if indexPath.row < toPeople.count {
-//            let person = toPeople[indexPath.row]
-//            configureRecipientCell(cell, object: person)
-//            return cell
-//        }
-//        else if indexPath.row < (toSearchPeople.count + toPeople.count) {
-//            let adjustedIndex = indexPath.row - toPeople.count
-//            let searchPerson = toSearchPeople[adjustedIndex]
-//            configureRecipientCell(cell, object: searchPerson)
-//            return cell
-//        }
-//        else {
-//            let adjustedIndex = indexPath.row - (toPeople.count + toSearchPeople.count)
-//            let email = toEmails[adjustedIndex]
-//            configureRecipientCell(cell, object: email)
-//            return cell
-//        }
-//    }
     
     func cellForPerson(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
         let person = peopleController.objectAtIndexPath(indexPath) as! Person
@@ -473,29 +384,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         cell.cellImage.layer.cornerRadius = 10
         cell.tintColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
     }
-    
-//    func configureRecipientCell(cell: RecipientCell, object: AnyObject) {
-//        if let person = object as? Person {
-//            cell.person = person
-//            cell.cellImage.image = UIImage(named: "Slowpost.png")
-//            cell.cellImage.layer.cornerRadius = 10
-//            cell.recipientLabel.text = "\(person.fullName()) (@\(person.username))"
-//            cell.labelLeadingDistance.constant = 31
-//        }
-//        else if let searchPerson = object as? SearchPerson {
-//            cell.searchPerson = searchPerson
-//            cell.cellImage.image = UIImage(named: "Slowpost.png")
-//            cell.cellImage.layer.cornerRadius = 10
-//            cell.recipientLabel.text = "\(searchPerson.fullName()) (@\(searchPerson.username))"
-//            cell.labelLeadingDistance.constant = 31
-//        }
-//        else if let email = object as? String {
-//            cell.cellImage.image = nil
-//            cell.email = email
-//            cell.recipientLabel.text = cell.email
-//            cell.labelLeadingDistance.constant = 8
-//        }
-//    }
     
     func personSelected(person: Person) -> Bool {
         let filter = toPeople.filter() {$0.id == person.id}
@@ -559,44 +447,12 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             handleOtherSelection(tableView, indexPath: indexPath)
         }
         
-        
-//        var adjuster:Int = 0
-//        if recipientSection() == true {
-//            adjuster = 1
-//        }
-//        let numPeopleSections = peopleController.sections!.count
-//        if recipientSection() == true && indexPath.section == 0 {
-//            Flurry.logEvent("Removed_recipient")
-//            removeRecipient(tableView, indexPath: indexPath)
-//        }
-//        else if (indexPath.section - adjuster) < numPeopleSections {
-//            handlePersonSelection(tableView, indexPath: indexPath)
-//        }
-//        else {
-//            handleOtherSelection(tableView, indexPath: indexPath)
-//        }
         searchController.dismissViewControllerAnimated(true, completion: {})
         searchController.searchBar.text = ""
         searchController.searchBar.resignFirstResponder()
         validateNextButton()
-//        let topRect = CGRect(x: 0.0, y: 0.0, width: personTable.frame.width, height: personTable.frame.height)
-//        personTable.scrollRectToVisible(topRect, animated: false)
         formatNextLabel()
     }
-    
-//    func removeRecipient(tableView: UITableView, indexPath: NSIndexPath) {
-//        if indexPath.row < toPeople.count {
-//            toPeople.removeAtIndex(indexPath.row)
-//        }
-//        else if indexPath.row < (toPeople.count + toSearchPeople.count) {
-//            let adjustedIndex = indexPath.row - toPeople.count
-//            toSearchPeople.removeAtIndex(adjustedIndex)
-//        }
-//        else {
-//            let adjustedIndex = indexPath.row - (toPeople.count + toSearchPeople.count)
-//            toEmails.removeAtIndex(adjustedIndex)
-//        }
-//    }
     
     func handlePersonSelection(tableView: UITableView, indexPath: NSIndexPath) {
         if let cell = personTable.cellForRowAtIndexPath(indexPath) as? PersonCell {
@@ -771,6 +627,12 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         nextButton.titleLabel?.numberOfLines = 1
         nextButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
+    }
+    
+    @IBAction func recipientsEdited(segue: UIStoryboardSegue) {
+        formatNextLabel()
+        validateNextButton()
+        personTable.reloadData()
     }
     
 }

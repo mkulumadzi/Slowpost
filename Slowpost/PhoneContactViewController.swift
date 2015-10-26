@@ -28,6 +28,11 @@ class PhoneContactViewController: UIViewController, UITableViewDelegate, UITable
 
         // Do any additional setup after loading the view.
     }
+    
+    func formatButtons() {
+        cancelButton.setImage(UIImage(named: "close")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        cancelButton.tintColor = slowpostDarkGrey
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

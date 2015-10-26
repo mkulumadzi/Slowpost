@@ -431,7 +431,7 @@
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="f1e-Uf-7TG" userLabel="cancel">
                                                 <rect key="frame" x="20" y="28" width="20" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" image="ios7-close-empty-gray.png"/>
+                                                <state key="normal" image="close"/>
                                                 <connections>
                                                     <action selector="cancelButtonPressed:" destination="cGy-V5-btV" eventType="touchUpInside" id="qxP-eo-l5Z"/>
                                                 </connections>
@@ -470,6 +470,7 @@
                                                 <constraint firstItem="QuX-Tz-fNt" firstAttribute="leading" secondItem="lIf-vm-5wi" secondAttribute="leading" constant="30" id="LuH-Re-jtw"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="emailAddressLabel" destination="QuX-Tz-fNt" id="utn-Bp-8vs"/>
                                         </connections>
@@ -642,11 +643,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rVs-RH-ye9">
+                            <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rVs-RH-ye9" userLabel="shadedBackground">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Mu4-UB-QkG" appends="YES" id="UqL-Le-KH8"/>
+                                </connections>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3AO-Fi-cqK">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3AO-Fi-cqK">
                                 <rect key="frame" x="0.0" y="400" width="600" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -663,7 +667,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="recipientLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbd-Ol-jjz">
                                                     <rect key="frame" x="16" y="10" width="554" height="24"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -673,6 +677,7 @@
                                                 <constraint firstItem="Bbd-Ol-jjz" firstAttribute="centerY" secondItem="hLd-21-gBG" secondAttribute="centerY" id="wX0-US-Ncz"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="recipientLabel" destination="Bbd-Ol-jjz" id="2a2-gx-VBT"/>
                                         </connections>
@@ -691,16 +696,15 @@
                             <constraint firstItem="lyZ-CV-raB" firstAttribute="top" secondItem="3AO-Fi-cqK" secondAttribute="bottom" id="nao-B1-idN"/>
                             <constraint firstAttribute="trailing" secondItem="3AO-Fi-cqK" secondAttribute="trailing" id="uog-0k-OLn"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="Mu4-UB-QkG" appends="YES" id="DI6-oT-vVG"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="recipientsTable" destination="3AO-Fi-cqK" id="MPa-uh-ANM"/>
                         <outlet property="recipientsTableHeight" destination="I8u-jc-xaS" id="Su7-yp-U4q"/>
+                        <segue destination="c4F-uO-6gP" kind="unwind" identifier="recipientsEdited" unwindAction="recipientsEdited:" id="MbN-SB-NAx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zfp-eD-i3W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="c4F-uO-6gP" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="Mu4-UB-QkG">
                     <connections>
                         <action selector="viewTapped:" destination="UZC-JV-4Ub" id="A2P-ww-SRN"/>

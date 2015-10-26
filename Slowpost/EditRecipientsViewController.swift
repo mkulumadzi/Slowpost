@@ -14,6 +14,10 @@ class EditRecipientsViewController: UIViewController, UITableViewDelegate, UITab
     var toPeople:[Person]!
     var toSearchPeople:[SearchPerson]!
     var toEmails:[String]!
+    
+    var toPeopleSelectedAtIndex:[Bool]!
+    var toSearchPeopleSelectedAtIndex:[Bool]!
+    var toEmailsSelectedAtIndex:[Bool]!
 
     @IBOutlet weak var recipientsTable: UITableView!
     @IBOutlet weak var recipientsTableHeight: NSLayoutConstraint!
@@ -21,6 +25,7 @@ class EditRecipientsViewController: UIViewController, UITableViewDelegate, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         setTableHeight()
+        initializeSelectedIndices()
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,6 +50,21 @@ class EditRecipientsViewController: UIViewController, UITableViewDelegate, UITab
         recipientsTableHeight.constant = CGFloat(numRows * 44) + 40.0
     }
     
+    func initializeSelectedIndices() {
+        toPeopleSelectedAtIndex = [Bool]()
+        toSearchPeopleSelectedAtIndex = [Bool]()
+        toEmailsSelectedAtIndex = [Bool]()
+        for _ in toPeople {
+            toPeopleSelectedAtIndex.append(true)
+        }
+        for _ in toSearchPeople {
+            toSearchPeopleSelectedAtIndex.append(true)
+        }
+        for _ in toEmails {
+            toEmailsSelectedAtIndex.append(true)
+        }
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -63,18 +83,27 @@ class EditRecipientsViewController: UIViewController, UITableViewDelegate, UITab
         if indexPath.row < toPeople.count {
             let person = toPeople[indexPath.row]
             configureRecipientCell(cell, object: person)
+            if toPeopleSelectedAtIndex[indexPath.row] == true {
+                cell.accessoryType = .Checkmark
+            }
             return cell
         }
         else if indexPath.row < (toSearchPeople.count + toPeople.count) {
             let adjustedIndex = indexPath.row - toPeople.count
             let searchPerson = toSearchPeople[adjustedIndex]
             configureRecipientCell(cell, object: searchPerson)
+            if toSearchPeopleSelectedAtIndex[adjustedIndex] == true {
+                cell.accessoryType = .Checkmark
+            }
             return cell
         }
         else {
             let adjustedIndex = indexPath.row - (toPeople.count + toSearchPeople.count)
             let email = toEmails[adjustedIndex]
             configureRecipientCell(cell, object: email)
+            if toEmailsSelectedAtIndex[adjustedIndex] == true {
+                cell.accessoryType = .Checkmark
+            }
             return cell
         }
     }
@@ -96,11 +125,89 @@ class EditRecipientsViewController: UIViewController, UITableViewDelegate, UITab
     
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
+        let cell = recipientsTable.cellForRowAtIndexPath(indexPath) as! RecipientCell
+        if indexPath.row < toPeople.count {
+            if toPeopleSelectedAtIndex[indexPath.row] == true {
+                toPeopleSelectedAtIndex[indexPath.row] = false
+                cell.accessoryType = .None
+            }
+            else {
+                toPeopleSelectedAtIndex[indexPath.row] = true
+                cell.accessoryType = .Checkmark
+            }
+        }
+        else if indexPath.row < (toSearchPeople.count + toPeople.count) {
+            let adjustedIndex = indexPath.row - toPeople.count
+            if toSearchPeopleSelectedAtIndex[adjustedIndex] == true {
+                toSearchPeopleSelectedAtIndex[adjustedIndex] = false
+                cell.accessoryType = .None
+            }
+            else {
+                toSearchPeopleSelectedAtIndex[adjustedIndex] = true
+                cell.accessoryType = .Checkmark
+            }
+            
+        }
+        else {
+            let adjustedIndex = indexPath.row - (toPeople.count + toSearchPeople.count)
+            if toEmailsSelectedAtIndex[adjustedIndex] == true {
+                toEmailsSelectedAtIndex[adjustedIndex] = false
+                cell.accessoryType = .None
+            }
+            else {
+                toEmailsSelectedAtIndex[adjustedIndex] = true
+                cell.accessoryType = .Checkmark
+            }
+        }
+        recipientsTable.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
     }
     
     @IBAction func viewTapped(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: {})
+        performSegueWithIdentifier("recipientsEdited", sender: nil)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "recipientsEdited" {
+            clearDeselectedRecipients()
+            if let toViewController = segue.destinationViewController as? ToViewController {
+                toViewController.toPeople = toPeople
+                toViewController.toSearchPeople = toSearchPeople
+                toViewController.toEmails = toEmails
+            }
+        }
+    }
+    
+    func clearDeselectedRecipients() {
+        var updatedPeople = [Person]()
+        var updatedSearchPeople = [SearchPerson]()
+        var updatedEmails = [String]()
+        
+        var i = 0
+        while i < toPeople.count {
+            if toPeopleSelectedAtIndex[i] == true {
+                updatedPeople.append(toPeople[i])
+            }
+            i += 1
+        }
+        toPeople = updatedPeople
+        
+        i = 0
+        while i < toSearchPeople.count {
+            if toSearchPeopleSelectedAtIndex[i] == true {
+                updatedSearchPeople.append(toSearchPeople[i])
+            }
+           i += 1
+        }
+        toSearchPeople = updatedSearchPeople
+        
+        i = 0
+        while i < toEmails.count {
+            if toEmailsSelectedAtIndex[i] == true {
+                updatedEmails.append(toEmails[i])
+            }
+            i += 1
+        }
+        toEmails = updatedEmails
     }
 
 
