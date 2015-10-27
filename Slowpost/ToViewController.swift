@@ -73,6 +73,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         cancelButton.tintColor = UIColor.whiteColor()
         editRecipientsButton.setImage(UIImage(named: "edit")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         editRecipientsButton.tintColor = UIColor.whiteColor()
+        nextButton.contentHorizontalAlignment = .Right
+        nextButton.contentEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)
     }
     
     // Add search bar
@@ -628,6 +630,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         else {
             title = ""
         }
+        
+        title = title! + " >>"
         
         nextButton.setTitle(title, forState: .Normal)
         nextButton.titleLabel?.numberOfLines = 1

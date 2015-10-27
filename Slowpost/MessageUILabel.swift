@@ -26,6 +26,6 @@ class MessageUILabel: UILabel {
     
     func show(message: String) {
         text = message
-        backgroundColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
+        backgroundColor = slowpostBlack
     }
 }

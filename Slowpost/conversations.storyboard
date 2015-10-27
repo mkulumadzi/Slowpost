@@ -87,8 +87,8 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="messageLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKr-1q-00m" customClass="MessageUILabel" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="570" width="600" height="30"/>
-                                <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="30"/>
+                                <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="LmP-sj-ycg"/>
                                 </constraints>
@@ -106,7 +106,13 @@
                             <constraint firstItem="eKr-1q-00m" firstAttribute="leading" secondItem="7Cu-4W-t0n" secondAttribute="leading" id="WRx-Sa-pw0"/>
                             <constraint firstItem="0gS-nt-Hk5" firstAttribute="top" secondItem="eKr-1q-00m" secondAttribute="bottom" id="Yuu-oc-UZW"/>
                             <constraint firstItem="NiG-s1-hET" firstAttribute="leading" secondItem="7Cu-4W-t0n" secondAttribute="leading" id="Z44-mM-Nrq"/>
+                            <constraint firstItem="eKr-1q-00m" firstAttribute="top" secondItem="hVh-79-c6L" secondAttribute="bottom" id="nsy-9k-FpI"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Yuu-oc-UZW"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Conversations" id="0a7-jc-KbE">
                         <barButtonItem key="backBarButtonItem" id="kh6-zd-XEA"/>
@@ -671,7 +677,7 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFK-Sz-U6A" userLabel="saveButton" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="250" width="540" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Rrz-mn-4sq"/>
                                 </constraints>

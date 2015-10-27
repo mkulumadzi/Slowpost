@@ -65,13 +65,13 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     
     func formatButtons() {
         cardGalleryButton.setImage(UIImage(named: "view-module")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        cardGalleryButton.tintColor = slowpostGreen
+        cardGalleryButton.tintColor = slowpostDarkGreen
         
         imageLibraryButton.setImage(UIImage(named: "picture-3")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        imageLibraryButton.tintColor = slowpostGreen
+        imageLibraryButton.tintColor = slowpostDarkGreen
         
         takePhotoButton.setImage(UIImage(named: "camera-2")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        takePhotoButton.tintColor = slowpostGreen
+        takePhotoButton.tintColor = slowpostDarkGreen
         
         backButton.setImage(UIImage(named: "chevron-down")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         backButton.tintColor = UIColor.whiteColor()

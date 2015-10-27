@@ -20,12 +20,12 @@ class TextUIButton: UIButton {
     
     func disable() {
         enabled = false
-        backgroundColor = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
+        backgroundColor = slowpostDarkGrey
     }
     
     func enable() {
         enabled = true
-        backgroundColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
+        backgroundColor = slowpostDarkGreen
     }
 
 }

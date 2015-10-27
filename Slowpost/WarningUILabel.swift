@@ -26,7 +26,7 @@ class WarningUILabel: UILabel {
     
     func show(message: String) {
         text = message
-        backgroundColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
+        backgroundColor = slowpostBlack
     }
     
 }

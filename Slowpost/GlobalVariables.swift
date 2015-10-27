@@ -30,6 +30,7 @@ let slowpostDarkGreen = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha
 let slowpostDarkGrey = UIColor(red: 127/255, green: 122/255, blue: 122/255, alpha: 1.0)
 let slowpostLightGrey = UIColor(red: 181/255, green: 181/255, blue: 181/255, alpha: 1.0)
 let slowpostYellow = UIColor(red: 255/255, green: 233/255, blue: 62/255, alpha: 1.0)
+let slowpostBlack = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
 
 let deviceType = getDeviceType()
 
