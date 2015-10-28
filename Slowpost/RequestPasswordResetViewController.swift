@@ -24,7 +24,6 @@ class RequestPasswordResetViewController: UIViewController {
         super.viewDidLoad()
         
         warningLabel.hide()
-        emailTextField.addBottomLayer()
         submitButton.layer.cornerRadius = 5
         validateSubmitButton()
 
@@ -37,6 +36,11 @@ class RequestPasswordResetViewController: UIViewController {
     func formatForiPhone4S() {
         distanceToEmailField.constant = 50
         submitButtonHeight.constant = 30
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        emailTextField.addBottomLayer()
     }
 
     override func didReceiveMemoryWarning() {

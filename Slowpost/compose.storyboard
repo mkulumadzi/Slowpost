@@ -373,6 +373,8 @@
                             <constraint firstItem="O8u-7p-Lgp" firstAttribute="leading" secondItem="v2Z-dH-fwH" secondAttribute="trailing" id="ejr-Iy-uTY"/>
                             <constraint firstItem="8sV-7G-sp5" firstAttribute="top" secondItem="A1v-Uj-6rd" secondAttribute="bottom" id="hgr-en-6Ht"/>
                             <constraint firstAttribute="width" secondItem="qRX-9A-uKU" secondAttribute="width" id="iJM-b3-Kah"/>
+                            <constraint firstItem="Wnd-rs-lA3" firstAttribute="leading" secondItem="qRX-9A-uKU" secondAttribute="leading" id="mzG-ct-6Q4"/>
+                            <constraint firstItem="Wnd-rs-lA3" firstAttribute="leading" secondItem="qRX-9A-uKU" secondAttribute="leading" constant="10" id="njt-aU-7zQ"/>
                             <constraint firstItem="1tY-3U-3Qe" firstAttribute="centerX" secondItem="OBl-Iz-blC" secondAttribute="centerX" constant="0.5" id="oxE-Ii-m83"/>
                             <constraint firstItem="Oaw-FG-qkO" firstAttribute="top" secondItem="plQ-dw-tew" secondAttribute="bottom" id="poT-aY-y1w"/>
                             <constraint firstItem="plQ-dw-tew" firstAttribute="centerX" secondItem="Oaw-FG-qkO" secondAttribute="centerX" constant="-0.5" id="rDB-LO-UmM"/>
@@ -389,6 +391,12 @@
                             </constraint>
                             <constraint firstItem="O8u-7p-Lgp" firstAttribute="centerY" secondItem="v2Z-dH-fwH" secondAttribute="centerY" id="z29-yB-rEh"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="WPs-8m-01m"/>
+                                <exclude reference="mzG-ct-6Q4"/>
+                            </mask>
+                        </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <mask key="constraints">
                                 <exclude reference="iJM-b3-Kah"/>

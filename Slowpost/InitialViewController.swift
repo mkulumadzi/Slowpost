@@ -95,7 +95,11 @@ class InitialViewController: UIViewController {
         iconImage.image = UIImage(named: "turtleAnimation")
         
         if deviceToken != nil {
+            print("Device token is not nil")
             registerDeviceToken()
+        }
+        else {
+            print("Device token is nil")
         }
         
         Flurry.endTimedEvent("Initial_Data_Loading_Began", withParameters: nil)
@@ -108,6 +112,7 @@ class InitialViewController: UIViewController {
         let parameters = ["device_token": deviceToken as String]
         let userId = LoginService.getUserIdFromToken()
         let updatePersonURL = "\(PostOfficeURL)/person/id/\(userId)"
+        print("Registering device token: \(deviceToken)")
         
         RestService.postRequest(updatePersonURL, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
             if error != nil {

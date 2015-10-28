@@ -938,8 +938,12 @@ We won't save your address book on our servers, but we will search for matches w
                             </constraint>
                             <constraint firstItem="y0R-1X-YfO" firstAttribute="top" secondItem="ony-8R-FTy" secondAttribute="bottom" constant="46" id="soI-pA-5xf"/>
                             <constraint firstItem="qoT-XQ-G2Z" firstAttribute="top" secondItem="ikw-33-dC8" secondAttribute="bottom" constant="30" id="tCN-34-CGI"/>
-                            <constraint firstItem="gH6-YH-ce8" firstAttribute="leading" secondItem="reT-Hu-5gT" secondAttribute="leading" constant="30" id="utH-nI-aMN"/>
-                            <constraint firstAttribute="trailing" secondItem="gH6-YH-ce8" secondAttribute="trailing" constant="30" id="wDn-gS-ihz"/>
+                            <constraint firstItem="gH6-YH-ce8" firstAttribute="leading" secondItem="reT-Hu-5gT" secondAttribute="leading" constant="30" id="utH-nI-aMN">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="gH6-YH-ce8" secondAttribute="trailing" constant="30" id="wDn-gS-ihz">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
                             <constraint firstItem="qoT-XQ-G2Z" firstAttribute="leading" secondItem="reT-Hu-5gT" secondAttribute="leading" constant="30" id="wQi-g0-rCg">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
@@ -1089,8 +1093,12 @@ We won't save your address book on our servers, but we will search for matches w
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Bbl-JX-1dV" secondAttribute="trailing" constant="30" id="8XJ-Zq-DTL"/>
-                            <constraint firstItem="Bbl-JX-1dV" firstAttribute="leading" secondItem="Ml8-4e-ODd" secondAttribute="leading" constant="30" id="Miz-6X-EJI"/>
+                            <constraint firstAttribute="trailing" secondItem="Bbl-JX-1dV" secondAttribute="trailing" constant="30" id="8XJ-Zq-DTL">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                            <constraint firstItem="Bbl-JX-1dV" firstAttribute="leading" secondItem="Ml8-4e-ODd" secondAttribute="leading" constant="30" id="Miz-6X-EJI">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
                             <constraint firstItem="Bbl-JX-1dV" firstAttribute="centerX" secondItem="Ml8-4e-ODd" secondAttribute="centerX" id="lC1-6J-Ok5"/>
                             <constraint firstItem="Bbl-JX-1dV" firstAttribute="centerY" secondItem="Ml8-4e-ODd" secondAttribute="centerY" id="pHY-yK-9IR"/>
                         </constraints>

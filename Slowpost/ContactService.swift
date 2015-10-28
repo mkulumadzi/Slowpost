@@ -66,11 +66,7 @@ class ContactService {
         }
     }
     
-    
-    
     class func addPhoneContactToPostofficePersonRecord(contact: CNContact, email: String, dataController: DataController) {
-//        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-//        let dataController = appDelegate.dataController
         let fetchRequest = NSFetchRequest(entityName: "Person")
         let predicate = NSPredicate(format: "primaryEmail == %@", email)
         fetchRequest.predicate = predicate
@@ -78,7 +74,6 @@ class ContactService {
         if personMatch != nil {
             let person = personMatch![0] as! Person
             person.contactId = contact.identifier
-//            dataController.save()
         }
         else {
             print("Error merging contact with Postoffice record")

@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import Foundation
 import CoreData
+import SwiftyJSON
 
 class SendingViewController: UIViewController {
     
@@ -21,6 +22,7 @@ class SendingViewController: UIViewController {
     var toSearchPeople:[SearchPerson]!
     var toEmails:[String]!
     var manuallyCancelled:Bool!
+    var warningMessage:String!
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var cancelButtonHeight: NSLayoutConstraint!
@@ -66,6 +68,7 @@ class SendingViewController: UIViewController {
             }
             else {
                 if self.manuallyCancelled == false {
+                    self.warningMessage = "Mail failed to send"
                     self.performSegueWithIdentifier("mailFailedToSend", sender: nil)
                 }
             }
@@ -116,6 +119,17 @@ class SendingViewController: UIViewController {
                     }
                 }
             }
+            else if let message = result as? NSDictionary {
+                let json = JSON(message)
+                self.warningMessage = json["message"].stringValue
+                self.performSegueWithIdentifier("mailFailedToSend", sender: nil)
+            }
+            else {
+                if self.manuallyCancelled == false {
+                    self.warningMessage = "Mail failed to send"
+                    self.performSegueWithIdentifier("mailFailedToSend", sender: nil)
+                }
+            }
         })
         
     }
@@ -160,7 +174,7 @@ class SendingViewController: UIViewController {
         if segue.identifier == "mailFailedToSend" {
             
             let composeMailViewController = segue.destinationViewController as? ComposeMailViewController
-            composeMailViewController!.warningLabel.show("Mail failed to send.")
+            composeMailViewController!.warningLabel.show(warningMessage)
             
             // Delay the dismissal by 5 seconds
             let delay = 5.0 * Double(NSEC_PER_SEC)

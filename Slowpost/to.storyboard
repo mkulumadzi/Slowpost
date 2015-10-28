@@ -643,7 +643,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rVs-RH-ye9" userLabel="shadedBackground">
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rVs-RH-ye9" userLabel="shadedBackground">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
@@ -692,8 +692,12 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="rVs-RH-ye9" firstAttribute="leading" secondItem="AnG-9J-qDK" secondAttribute="leading" id="Bh2-Uo-NzZ"/>
+                            <constraint firstItem="lyZ-CV-raB" firstAttribute="top" secondItem="rVs-RH-ye9" secondAttribute="bottom" id="EY6-1w-jJg"/>
+                            <constraint firstItem="rVs-RH-ye9" firstAttribute="top" secondItem="AnG-9J-qDK" secondAttribute="top" id="Hla-2J-9Zm"/>
                             <constraint firstItem="3AO-Fi-cqK" firstAttribute="leading" secondItem="AnG-9J-qDK" secondAttribute="leading" id="mFh-qX-XBt"/>
                             <constraint firstItem="lyZ-CV-raB" firstAttribute="top" secondItem="3AO-Fi-cqK" secondAttribute="bottom" id="nao-B1-idN"/>
+                            <constraint firstAttribute="trailing" secondItem="rVs-RH-ye9" secondAttribute="trailing" id="sfE-Ep-2Cq"/>
                             <constraint firstAttribute="trailing" secondItem="3AO-Fi-cqK" secondAttribute="trailing" id="uog-0k-OLn"/>
                         </constraints>
                     </view>
