@@ -57,7 +57,18 @@ class WelcomeScreenViewController: UIViewController, UIPageViewControllerDataSou
         
         pageViewController = pageController
         addChildViewController(pageViewController!)
+        
         view.addSubview(pageViewController!.view)
+        let topConstraint = NSLayoutConstraint(item: pageViewController!.view, attribute: .Top, relatedBy: .Equal, toItem: topLayoutGuide, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+        let bottomConstraint = NSLayoutConstraint(item: pageViewController!.view, attribute: .Bottom, relatedBy: .Equal, toItem: bottomLayoutGuide, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+        let leftConstraint = NSLayoutConstraint(item: pageViewController!.view, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1.0, constant: 0.0)
+        let rightConstraint = NSLayoutConstraint(item: pageViewController!.view, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
+        
+        pageViewController!.view.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addConstraints([topConstraint, bottomConstraint, leftConstraint, rightConstraint])
+        updateViewConstraints()
+        
         pageViewController!.didMoveToParentViewController(self)
         
         view.bringSubviewToFront(logInButton)

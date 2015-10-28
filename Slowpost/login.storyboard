@@ -275,7 +275,7 @@
                         <viewControllerLayoutGuide type="top" id="dMF-nz-jef"/>
                         <viewControllerLayoutGuide type="bottom" id="AFD-h1-9Qc"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tu8-GK-Ur4">
+                    <view key="view" contentMode="scaleToFill" verticalCompressionResistancePriority="749" id="tu8-GK-Ur4">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -317,6 +317,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4SC-va-dxS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -335,13 +336,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a photo and compose a message to a friend or family member." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="Q0L-Nx-1kw">
-                                <rect key="frame" x="10" y="50" width="580" height="24"/>
+                                <rect key="frame" x="10" y="10" width="580" height="24"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qhg-61-Xj8">
-                                <rect key="frame" x="0.0" y="84" width="600" height="716"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="756"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="example_card.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="YB6-vP-l6D">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
@@ -375,7 +376,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cT-RB-bol">
-                                        <rect key="frame" x="5" y="555" width="585" height="161"/>
+                                        <rect key="frame" x="5" y="555" width="585" height="201"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <string key="text">Dear George,
 
@@ -444,7 +445,7 @@ William</string>
                             <constraint firstItem="Q0L-Nx-1kw" firstAttribute="top" secondItem="WeE-KQ-aiA" secondAttribute="bottom" constant="50" id="eFt-eb-3bv"/>
                             <constraint firstAttribute="trailing" secondItem="qhg-61-Xj8" secondAttribute="trailing" id="lIN-0q-AFu"/>
                             <constraint firstItem="HEE-OB-D5D" firstAttribute="top" secondItem="qhg-61-Xj8" secondAttribute="bottom" id="vx3-4A-6Ys"/>
-                            <constraint firstItem="Q0L-Nx-1kw" firstAttribute="top" secondItem="he6-vR-GnM" secondAttribute="top" constant="50" id="xb9-bb-t7T"/>
+                            <constraint firstItem="Q0L-Nx-1kw" firstAttribute="top" secondItem="he6-vR-GnM" secondAttribute="top" constant="10" id="xb9-bb-t7T"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -453,6 +454,7 @@ William</string>
                             </mask>
                         </variation>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
                 </viewController>
@@ -473,13 +475,13 @@ William</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="With a nod to classic mail, Slowposts are delivered after a time delay, creating surprising, thoughtful moments." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEs-NT-j1O">
-                                <rect key="frame" x="30" y="50" width="540" height="47"/>
+                                <rect key="frame" x="30" y="10" width="540" height="47"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="example_photo.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="oyT-1Y-PgK">
-                                <rect key="frame" x="0.0" y="107" width="600" height="800"/>
+                                <rect key="frame" x="0.0" y="67" width="600" height="800"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="oyT-1Y-PgK" secondAttribute="height" multiplier="3:4" id="x1E-qL-4id"/>
                                 </constraints>
@@ -492,7 +494,7 @@ William</string>
                             <constraint firstItem="oyT-1Y-PgK" firstAttribute="leading" secondItem="StL-QG-wga" secondAttribute="leading" id="IxT-x0-lGi"/>
                             <constraint firstItem="oyT-1Y-PgK" firstAttribute="top" secondItem="AEs-NT-j1O" secondAttribute="bottom" constant="10" id="Lhw-JQ-hwG"/>
                             <constraint firstAttribute="trailing" secondItem="oyT-1Y-PgK" secondAttribute="trailing" id="XWi-N2-zkp"/>
-                            <constraint firstItem="AEs-NT-j1O" firstAttribute="top" secondItem="StL-QG-wga" secondAttribute="top" constant="50" id="bfh-15-A1t"/>
+                            <constraint firstItem="AEs-NT-j1O" firstAttribute="top" secondItem="StL-QG-wga" secondAttribute="top" constant="10" id="bfh-15-A1t"/>
                             <constraint firstItem="AEs-NT-j1O" firstAttribute="leading" secondItem="StL-QG-wga" secondAttribute="leadingMargin" constant="10" id="hTu-nz-4Rm"/>
                         </constraints>
                         <variation key="default">
@@ -501,6 +503,7 @@ William</string>
                             </mask>
                         </variation>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gxV-C2-pn1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -543,6 +546,7 @@ William</string>
                             </mask>
                         </variation>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QN4-FI-OSN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
