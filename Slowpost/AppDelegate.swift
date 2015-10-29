@@ -109,6 +109,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        if let type = userInfo["type"] as? NSString {
 //            if type == "New Mail" {
+//                print("New mail")
+//            }
+//            else if type == "Delivered Mail" {
+//                print("Delivered mail")
 //            }
 //        }
         
