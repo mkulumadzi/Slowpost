@@ -355,6 +355,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         cell.personNameLabel.text = cell.person.fullName()
         cell.usernameLabel.text = "@\(cell.person.username)"
         cell.cellImage.image = UIImage(named: "Slowpost.png")
+        cell.cellImage.layer.masksToBounds = true
         cell.cellImage.layer.cornerRadius = 10
         if personSelected(cell.person) {
             cell.accessoryType = .Checkmark
@@ -370,6 +371,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         cell.nameLabel.text = cell.searchPerson.fullName()
         cell.usernameLabel.text = "@\(cell.searchPerson.username)"
         cell.cellImage.image = UIImage(named: "Slowpost.png")
+        cell.cellImage.layer.masksToBounds = true
         cell.cellImage.layer.cornerRadius = 10
         cell.tintColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
     }
