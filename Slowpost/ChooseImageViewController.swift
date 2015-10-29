@@ -31,6 +31,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     @IBOutlet weak var nextButton: TextUIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var chooseOptionLabel: UILabel!
+    @IBOutlet weak var removePhotoBackground: UIView!
     
     @IBOutlet weak var removeImageButtonHeight: NSLayoutConstraint!
     
@@ -47,7 +48,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         
         toLabel.text = toList()
         
-        removePhotoButton.layer.cornerRadius = 11
+        removePhotoBackground.layer.cornerRadius = 10
         nextButton.layer.cornerRadius = 5
         validateButtons()
         
@@ -287,6 +288,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         
         cropLabel.hidden = false
         removePhotoButton.hidden = false
+        removePhotoBackground.hidden = false
         nextButton.hidden = false
     }
     
@@ -301,6 +303,7 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         
         cropLabel.hidden = true
         removePhotoButton.hidden = true
+        removePhotoBackground.hidden = true
         nextButton.hidden = true
     }
     

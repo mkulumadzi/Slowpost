@@ -105,15 +105,15 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     }
     
     func validateSendButtons() {
-        if composeText.text != "" {
-            scheduleButton.hidden = false
-            sendButton.hidden = false
-            sendArrowsButton.hidden = false
-        }
-        else {
+        if composeText.text == "" || keyboardShowing == true {
             scheduleButton.hidden = true
             sendButton.hidden = true
             sendArrowsButton.hidden = true
+        }
+        else {
+            scheduleButton.hidden = false
+            sendButton.hidden = false
+            sendArrowsButton.hidden = false
         }
     }
 
@@ -166,6 +166,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         r = composeText.convertRect(r, fromView:nil)
         composeText.contentInset.bottom = r.size.height + 30
         composeText.scrollIndicatorInsets.bottom = r.size.height + 30
+        validateSendButtons()
     }
     
     func keyboardDidShow(notification: NSNotification) {
