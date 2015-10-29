@@ -23,6 +23,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var searchController: UISearchController!
     var segmentedControl: UISegmentedControl!
     
+    @IBOutlet weak var tableToBottomLayoutGuide: NSLayoutConstraint!
+    
     let indexTitles = [">", "#", "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","?"]
     
     @IBOutlet weak var personTable: UITableView!
@@ -511,11 +513,13 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             nextButton.hidden = false
             nextButtonArrows.hidden = false
             editRecipientsButton.hidden = false
+            tableToBottomLayoutGuide.constant = 60
         }
         else {
             nextButton.hidden = true
             nextButtonArrows.hidden = true
             editRecipientsButton.hidden = true
+            tableToBottomLayoutGuide.constant = 0
         }
     }
     

@@ -374,6 +374,7 @@
                             <constraint firstAttribute="trailing" secondItem="VJD-C6-sav" secondAttribute="trailing" id="XFW-OQ-h2C"/>
                             <constraint firstItem="671-zt-FiM" firstAttribute="top" secondItem="xpv-aQ-L0V" secondAttribute="bottom" id="ai8-jK-hBB"/>
                             <constraint firstItem="NZN-WX-rSg" firstAttribute="top" secondItem="JDP-VK-qAS" secondAttribute="bottom" id="csW-oc-Kxd"/>
+                            <constraint firstItem="671-zt-FiM" firstAttribute="top" secondItem="VJD-C6-sav" secondAttribute="bottom" constant="60" id="fzb-Nl-2DU"/>
                             <constraint firstItem="VJD-C6-sav" firstAttribute="leading" secondItem="lET-vM-YuK" secondAttribute="leading" id="jLi-pY-Dtq"/>
                             <constraint firstItem="jtw-mF-8Xh" firstAttribute="leading" secondItem="xpv-aQ-L0V" secondAttribute="trailing" id="o6x-kc-OOW"/>
                             <constraint firstItem="jtw-mF-8Xh" firstAttribute="top" secondItem="VJD-C6-sav" secondAttribute="bottom" id="ohR-26-VYX"/>
@@ -386,6 +387,7 @@
                                 <exclude reference="usp-En-zJ1"/>
                                 <exclude reference="5ii-Ax-O6s"/>
                                 <exclude reference="KAg-9t-WMS"/>
+                                <exclude reference="ohR-26-VYX"/>
                                 <exclude reference="5G8-Wg-AV1"/>
                             </mask>
                         </variation>
@@ -410,6 +412,7 @@
                         <outlet property="nextButtonArrows" destination="WMt-oG-7oS" id="OeP-RC-fQr"/>
                         <outlet property="personTable" destination="VJD-C6-sav" id="wZ8-hJ-vVD"/>
                         <outlet property="searchDisplayController" destination="Bju-ge-gdj" id="0WS-lJ-ymQ"/>
+                        <outlet property="tableToBottomLayoutGuide" destination="fzb-Nl-2DU" id="9g7-EA-4JY"/>
                         <outlet property="warningLabel" destination="NZN-WX-rSg" id="XBC-ue-hg2"/>
                         <segue destination="cGy-V5-btV" kind="presentation" identifier="viewPhoneContact" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="Ag2-VN-ECi"/>
                         <segue destination="E7Y-T2-X0u" kind="presentation" identifier="addEmail" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="LRp-Kz-MWI"/>
