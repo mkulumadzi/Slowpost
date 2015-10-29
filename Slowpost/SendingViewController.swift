@@ -23,6 +23,7 @@ class SendingViewController: UIViewController {
     var toEmails:[String]!
     var manuallyCancelled:Bool!
     var warningMessage:String!
+    @IBOutlet weak var deliveryLabel: UILabel!
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var cancelButtonHeight: NSLayoutConstraint!
@@ -41,12 +42,23 @@ class SendingViewController: UIViewController {
         
         cancelButton.layer.cornerRadius = 5
         
+        formatDeliveryLabel()
         sendMail()
 
         if deviceType == "iPhone 4S" {
             formatForiPhone4S()
         }
         
+    }
+    
+    func formatDeliveryLabel() {
+        if scheduledToArrive == nil {
+            deliveryLabel.text = "Mail will arrive in 1 to 2 days"
+        }
+        else {
+            let date = scheduledToArrive!.formattedAsString("yyyy-MM-dd")
+            deliveryLabel.text = "Mail will arrive on \(date)"
+        }
     }
     
     func formatForiPhone4S() {

@@ -21,7 +21,6 @@ class AddEmailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        emailField.addBottomLayer()
         submitButton.layer.cornerRadius = 5
         formatButtons()
         
@@ -32,6 +31,11 @@ class AddEmailViewController: UIViewController {
             formatForiPhone4S()
         }
 
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        emailField.addBottomLayer()
     }
     
     func formatButtons() {

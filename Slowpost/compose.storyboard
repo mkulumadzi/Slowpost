@@ -16,8 +16,10 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
@@ -689,37 +691,51 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mPC-Bj-nIK" userLabel="whiteBackground">
-                                <rect key="frame" x="0.0" y="304" width="600" height="296"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4g-MB-3Js" userLabel="opaqueBackground">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="304"/>
+                                <rect key="frame" x="0.0" y="210" width="600" height="390"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap to confirm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mpj-KI-e26">
-                                        <rect key="frame" x="248" y="253" width="105" height="21"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QM3-md-ep9">
+                                        <rect key="frame" x="30" y="256" width="540" height="40"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="jZg-53-rXn"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Schedule Delivery">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="yDO-6D-Qo8" kind="unwind" identifier="scheduledDeliveryChosen" unwindAction="scheduledDeliveryChosen:" id="8LC-0H-H07"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- or -" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qKU-VX-hY4">
+                                        <rect key="frame" x="282" y="306" width="37" height="24"/>
+                                        <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="qKU-VX-hY4" firstAttribute="centerX" secondItem="mPC-Bj-nIK" secondAttribute="centerX" id="5ex-at-hc9"/>
+                                    <constraint firstItem="QM3-md-ep9" firstAttribute="leading" secondItem="mPC-Bj-nIK" secondAttribute="leading" constant="30" id="8m7-wA-PXC">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                                    </constraint>
+                                    <constraint firstItem="qKU-VX-hY4" firstAttribute="top" secondItem="QM3-md-ep9" secondAttribute="bottom" constant="10" id="XTh-aT-Pec"/>
+                                    <constraint firstAttribute="trailing" secondItem="QM3-md-ep9" secondAttribute="trailing" constant="30" id="bXf-nb-esA">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                                    </constraint>
+                                </constraints>
+                            </view>
+                            <view opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C4g-MB-3Js" userLabel="opaqueBackground">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="210"/>
                                 <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstItem="Mpj-KI-e26" firstAttribute="centerY" secondItem="C4g-MB-3Js" secondAttribute="centerY" id="4J3-01-X8M"/>
-                                    <constraint firstItem="Mpj-KI-e26" firstAttribute="centerX" secondItem="C4g-MB-3Js" secondAttribute="centerX" id="Epj-3O-AQm"/>
-                                    <constraint firstAttribute="bottom" secondItem="Mpj-KI-e26" secondAttribute="bottom" constant="30" id="Gv9-xc-hGp"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="4J3-01-X8M"/>
-                                    </mask>
-                                </variation>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="b48-wH-IAv" appends="YES" id="DCJ-bF-Oiu"/>
                                 </connections>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery Options" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uwj-sc-sJh">
-                                <rect key="frame" x="0.0" y="304" width="600" height="40"/>
+                                <rect key="frame" x="0.0" y="210" width="600" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="29b-9L-M2x"/>
@@ -729,32 +745,26 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fhm-0k-4pj" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="560" width="600" height="40"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="30" y="550" width="540" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="TsL-no-8b7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                <state key="normal" title="Standard delivery (1 to 2 days)">
-                                    <color key="titleColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Choose standard delivery (1 to 2 days)">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="100" y="192" width="400" height="40"/>
-                                </variation>
                                 <connections>
                                     <segue destination="yDO-6D-Qo8" kind="unwind" identifier="standardDeliveryChosen" unwindAction="standardDeliveryChosen:" id="nd0-LM-lim"/>
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="Uk2-1o-YPF">
-                                <rect key="frame" x="0.0" y="344" width="600" height="216"/>
+                                <rect key="frame" x="0.0" y="250" width="600" height="216"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <date key="date" timeIntervalSinceReferenceDate="462746146.04611301">
                                     <!--2015-08-31 20:35:46 +0000-->
                                 </date>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="100" y="350" width="400" height="216"/>
-                                </variation>
                             </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -768,38 +778,31 @@
                             <constraint firstItem="C4g-MB-3Js" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" id="FsJ-Fk-Aos"/>
                             <constraint firstItem="Uk2-1o-YPF" firstAttribute="top" secondItem="Uwj-sc-sJh" secondAttribute="bottom" id="GrK-Mu-jMC"/>
                             <constraint firstItem="mPC-Bj-nIK" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" id="JwP-Pf-X9G"/>
-                            <constraint firstItem="aGy-fK-D4U" firstAttribute="top" secondItem="C4g-MB-3Js" secondAttribute="bottom" id="Kpt-iL-uRq"/>
                             <constraint firstItem="aGy-fK-D4U" firstAttribute="top" secondItem="mPC-Bj-nIK" secondAttribute="bottom" id="NFf-BX-V9s"/>
+                            <constraint firstItem="fhm-0k-4pj" firstAttribute="top" secondItem="qKU-VX-hY4" secondAttribute="bottom" constant="10" id="NsW-7D-tMR"/>
                             <constraint firstAttribute="trailing" secondItem="Uwj-sc-sJh" secondAttribute="trailing" id="O0w-Bk-pOi"/>
                             <constraint firstAttribute="trailing" secondItem="C4g-MB-3Js" secondAttribute="trailing" id="Odv-B1-TIb"/>
-                            <constraint firstItem="fhm-0k-4pj" firstAttribute="top" secondItem="Uk2-1o-YPF" secondAttribute="bottom" id="P7Q-oC-tVA"/>
                             <constraint firstItem="Uwj-sc-sJh" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" id="WBr-XK-Gkg"/>
-                            <constraint firstAttribute="trailing" secondItem="fhm-0k-4pj" secondAttribute="trailing" constant="30" id="WW4-FV-jhl"/>
                             <constraint firstAttribute="trailing" secondItem="Uk2-1o-YPF" secondAttribute="trailing" id="XcT-WL-GdU">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstItem="fhm-0k-4pj" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" constant="30" id="g4b-oc-JAH"/>
-                            <constraint firstAttribute="trailing" secondItem="fhm-0k-4pj" secondAttribute="trailing" id="h3g-co-L4c">
+                            <constraint firstItem="QM3-md-ep9" firstAttribute="top" secondItem="Uk2-1o-YPF" secondAttribute="bottom" id="csa-qG-5xO"/>
+                            <constraint firstAttribute="trailing" secondItem="fhm-0k-4pj" secondAttribute="trailing" constant="30" id="h3g-co-L4c">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
                             <constraint firstItem="Uwj-sc-sJh" firstAttribute="top" secondItem="C4g-MB-3Js" secondAttribute="bottom" id="hZu-v7-Q9J"/>
-                            <constraint firstItem="aGy-fK-D4U" firstAttribute="top" secondItem="fhm-0k-4pj" secondAttribute="bottom" id="q4f-sY-T1g"/>
-                            <constraint firstItem="fhm-0k-4pj" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" id="vfB-fl-v3t">
+                            <constraint firstItem="aGy-fK-D4U" firstAttribute="top" secondItem="fhm-0k-4pj" secondAttribute="bottom" constant="10" id="q4f-sY-T1g"/>
+                            <constraint firstItem="fhm-0k-4pj" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" constant="30" id="vfB-fl-v3t">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="WW4-FV-jhl"/>
-                                <exclude reference="g4b-oc-JAH"/>
-                                <exclude reference="Kpt-iL-uRq"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Delivery" id="6aV-fH-Z8k"/>
                     <connections>
                         <outlet property="datePicker" destination="Uk2-1o-YPF" id="ttf-Gg-snq"/>
                         <outlet property="headerHeight" destination="29b-9L-M2x" id="fXV-he-wWD"/>
+                        <outlet property="scheduleButton" destination="QM3-md-ep9" id="YIc-8Q-RhA"/>
+                        <outlet property="scheduleButtonHeight" destination="jZg-53-rXn" id="6jJ-D0-g57"/>
                         <outlet property="standardButton" destination="fhm-0k-4pj" id="Xn2-47-ina"/>
                         <outlet property="standardButtonHeight" destination="TsL-no-8b7" id="s0r-cn-yxJ"/>
                     </connections>
@@ -808,7 +811,7 @@
                 <exit id="yDO-6D-Qo8" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="b48-wH-IAv">
                     <connections>
-                        <segue destination="yDO-6D-Qo8" kind="unwind" identifier="scheduledDeliveryChosen" unwindAction="scheduledDeliveryChosen:" id="6eD-jV-0ch"/>
+                        <action selector="viewTapped:" destination="FyT-yD-Bbu" id="4tT-uI-hAZ"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -844,16 +847,29 @@
                                             <action selector="cancelButtonPressed:" destination="MtH-uW-ItT" eventType="touchUpInside" id="Tk0-UH-uVF"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mail will arrive in 1 to 2 days." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="21r-JP-08d">
+                                        <rect key="frame" x="30" y="456" width="540" height="24"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="XlB-rG-Tsl" secondAttribute="trailing" constant="30" id="8do-7V-Q3g">
                                         <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                                     </constraint>
+                                    <constraint firstItem="21r-JP-08d" firstAttribute="leading" secondItem="JVh-TN-TvG" secondAttribute="leading" constant="30" id="Eq3-er-DaH">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                                    </constraint>
                                     <constraint firstItem="XlB-rG-Tsl" firstAttribute="leading" secondItem="JVh-TN-TvG" secondAttribute="leading" constant="30" id="Gjs-Bs-8S5">
                                         <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                                     </constraint>
+                                    <constraint firstItem="XlB-rG-Tsl" firstAttribute="top" secondItem="21r-JP-08d" secondAttribute="bottom" constant="30" id="JQg-C6-mvh"/>
                                     <constraint firstAttribute="bottom" secondItem="XlB-rG-Tsl" secondAttribute="bottom" constant="50" id="NDd-xs-kdO">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                                    </constraint>
+                                    <constraint firstAttribute="trailing" secondItem="21r-JP-08d" secondAttribute="trailing" constant="30" id="nFc-V9-foU">
                                         <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                                     </constraint>
                                 </constraints>
@@ -864,14 +880,11 @@
                                     <constraint firstAttribute="width" secondItem="2I9-8j-geo" secondAttribute="height" multiplier="151:96" id="6yo-Lz-1qH"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sending mail..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wlh-gW-3qS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sending..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wlh-gW-3qS">
                                 <rect key="frame" x="30" y="358" width="540" height="24"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="30" y="458" width="740" height="20"/>
-                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -890,6 +903,7 @@
                     <connections>
                         <outlet property="cancelButton" destination="XlB-rG-Tsl" id="caZ-AJ-IWQ"/>
                         <outlet property="cancelButtonHeight" destination="fK0-R7-jpw" id="TGF-iD-cRV"/>
+                        <outlet property="deliveryLabel" destination="21r-JP-08d" id="K3k-vO-XVM"/>
                         <segue destination="hsk-st-IZq" kind="unwind" identifier="mailFailedToSend" unwindAction="mailFailedToSend:" id="Tmc-6E-Zjz"/>
                         <segue destination="hsk-st-IZq" kind="unwind" identifier="notReadyToSend" unwindAction="notReadyToSend:" id="imG-0W-FaG"/>
                     </connections>
