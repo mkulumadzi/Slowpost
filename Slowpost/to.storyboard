@@ -406,11 +406,8 @@
                     <connections>
                         <outlet property="cancelButton" destination="RiV-Vm-1EM" id="dUz-YW-CBd"/>
                         <outlet property="editRecipientsButton" destination="xpv-aQ-L0V" id="dRF-Wf-qRu"/>
-                        <outlet property="editRecipientsButtonHeight" destination="ojM-ll-G22" id="XGY-gF-5hr"/>
                         <outlet property="nextButton" destination="jtw-mF-8Xh" id="tl9-92-iVD"/>
                         <outlet property="nextButtonArrows" destination="WMt-oG-7oS" id="OeP-RC-fQr"/>
-                        <outlet property="nextButtonArrowsHeight" destination="Brf-nR-gBx" id="BNz-pS-6DY"/>
-                        <outlet property="nextButtonHeight" destination="kXf-8R-8IW" id="UcR-IN-kH1"/>
                         <outlet property="personTable" destination="VJD-C6-sav" id="wZ8-hJ-vVD"/>
                         <outlet property="searchDisplayController" destination="Bju-ge-gdj" id="0WS-lJ-ymQ"/>
                         <outlet property="warningLabel" destination="NZN-WX-rSg" id="XBC-ue-hg2"/>
@@ -778,7 +775,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="close" width="48" height="48"/>
-        <image name="edit" width="48" height="48"/>
+        <image name="close" width="24" height="24"/>
+        <image name="edit" width="24" height="24"/>
     </resources>
 </document>

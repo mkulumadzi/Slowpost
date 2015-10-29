@@ -19,10 +19,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var searchTextEntered:Bool!
     var searchResults:[SearchPerson]!
     
-    @IBOutlet weak var nextButtonArrowsHeight: NSLayoutConstraint!
-    @IBOutlet weak var nextButtonHeight: NSLayoutConstraint!
-    @IBOutlet weak var editRecipientsButtonHeight: NSLayoutConstraint!
-    
     var peopleController: NSFetchedResultsController!
     var searchController: UISearchController!
     var segmentedControl: UISegmentedControl!
@@ -244,22 +240,9 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     // MARK: Section Configuration
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//        var numSections:Int = peopleController.sections!.count
-//        if otherSection() == true {
-//            numSections += 1
-//        }
         let numSections = peopleController.sections!.count + 1
         return numSections
     }
-    
-//    func otherSection() -> Bool {
-//        if searchTextEntered == true {
-//            return true
-//        }
-//        else {
-//            return false
-//        }
-//    }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let peopleSections = peopleController.sections!
@@ -525,14 +508,14 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func validateNextButton() {
         if toPeople.count > 0 || toSearchPeople.count > 0 || toEmails.count > 0 {
-            nextButtonHeight.constant = 60.0
-            nextButtonArrowsHeight.constant = 60.0
-            editRecipientsButtonHeight.constant = 60.0
+            nextButton.hidden = false
+            nextButtonArrows.hidden = false
+            editRecipientsButton.hidden = false
         }
         else {
-            nextButtonHeight.constant = 0.0
-            nextButtonArrowsHeight.constant = 0.0
-            editRecipientsButtonHeight.constant = 0.0
+            nextButton.hidden = true
+            nextButtonArrows.hidden = true
+            editRecipientsButton.hidden = true
         }
     }
     

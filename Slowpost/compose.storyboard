@@ -409,8 +409,10 @@
                             <constraint firstItem="Wnd-rs-lA3" firstAttribute="top" secondItem="qRX-9A-uKU" secondAttribute="top" constant="10" id="tXQ-bU-dsk"/>
                             <constraint firstItem="45T-A0-sak" firstAttribute="width" secondItem="qRX-9A-uKU" secondAttribute="width" id="tbK-U9-xyQ"/>
                             <constraint firstItem="qRX-9A-uKU" firstAttribute="centerX" secondItem="UDU-e0-SvH" secondAttribute="centerX" id="uuG-lu-UG2"/>
+                            <constraint firstItem="e2f-Id-hoE" firstAttribute="leading" secondItem="qRX-9A-uKU" secondAttribute="leading" constant="12" id="wdd-7e-Nam"/>
                             <constraint firstItem="v2Z-dH-fwH" firstAttribute="top" secondItem="VIN-ge-E2H" secondAttribute="bottom" constant="10" id="xlo-qM-guH"/>
                             <constraint firstItem="O8u-7p-Lgp" firstAttribute="centerY" secondItem="v2Z-dH-fwH" secondAttribute="centerY" id="z29-yB-rEh"/>
+                            <constraint firstItem="qRX-9A-uKU" firstAttribute="top" secondItem="e2f-Id-hoE" secondAttribute="bottom" constant="-32" id="zGO-QR-uXd"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -423,10 +425,12 @@
                                 <exclude reference="tbK-U9-xyQ"/>
                                 <exclude reference="bcV-Fm-u4G"/>
                                 <exclude reference="uuG-lu-UG2"/>
-                                <exclude reference="BNZ-Pc-hOH"/>
-                                <exclude reference="qEZ-fc-TKz"/>
                                 <exclude reference="WPs-8m-01m"/>
                                 <exclude reference="mzG-ct-6Q4"/>
+                                <exclude reference="BNZ-Pc-hOH"/>
+                                <exclude reference="dNY-f1-ef9"/>
+                                <exclude reference="qEZ-fc-TKz"/>
+                                <exclude reference="qQb-et-61I"/>
                                 <exclude reference="1fx-K3-fbC"/>
                                 <exclude reference="3FM-RR-pMX"/>
                                 <exclude reference="F4N-0c-lKD"/>
