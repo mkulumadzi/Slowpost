@@ -19,6 +19,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var searchTextEntered:Bool!
     var searchResults:[SearchPerson]!
     
+    @IBOutlet weak var nextButtonArrowsHeight: NSLayoutConstraint!
     @IBOutlet weak var nextButtonHeight: NSLayoutConstraint!
     @IBOutlet weak var editRecipientsButtonHeight: NSLayoutConstraint!
     
@@ -31,6 +32,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     @IBOutlet weak var personTable: UITableView!
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextButtonArrows: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var editRecipientsButton: UIButton!
     
@@ -72,9 +74,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         cancelButton.setImage(UIImage(named: "close")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         cancelButton.tintColor = UIColor.whiteColor()
         editRecipientsButton.setImage(UIImage(named: "edit")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        editRecipientsButton.tintColor = UIColor.whiteColor()
+        editRecipientsButton.tintColor = slowpostBlack
         nextButton.contentHorizontalAlignment = .Right
-        nextButton.contentEdgeInsets = UIEdgeInsetsMake(0.0, 10.0, 0.0, 10.0)
     }
     
     // Add search bar
@@ -102,7 +103,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func initializeSegmentedControl() {
         segmentedControl = UISegmentedControl(items: ["Slowpost", "Everyone"])
-        segmentedControl.tintColor = UIColor(red:0/255, green: 182/255, blue: 185/255, alpha: 1.0)
+        segmentedControl.tintColor = slowpostDarkGreen
         segmentedControl.backgroundColor = UIColor.whiteColor()
         segmentedControl.layer.cornerRadius = 4
         segmentedControl.selectedSegmentIndex = 0
@@ -524,11 +525,13 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func validateNextButton() {
         if toPeople.count > 0 || toSearchPeople.count > 0 || toEmails.count > 0 {
-            nextButtonHeight.constant = 40.0
-            editRecipientsButtonHeight.constant = 40.0
+            nextButtonHeight.constant = 60.0
+            nextButtonArrowsHeight.constant = 60.0
+            editRecipientsButtonHeight.constant = 60.0
         }
         else {
             nextButtonHeight.constant = 0.0
+            nextButtonArrowsHeight.constant = 0.0
             editRecipientsButtonHeight.constant = 0.0
         }
     }
@@ -631,10 +634,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             title = ""
         }
         
-        title = title! + " >>"
-        
         nextButton.setTitle(title, forState: .Normal)
-        nextButton.titleLabel?.numberOfLines = 1
+        nextButton.titleLabel?.numberOfLines = 0
         nextButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
     }

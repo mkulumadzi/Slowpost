@@ -30,6 +30,8 @@
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -520,25 +522,25 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rF8-O1-jVt">
-                                <rect key="frame" x="40" y="760" width="560" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="60" y="740" width="500" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.91372549020000005" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="EOv-90-ZjL"/>
+                                    <constraint firstAttribute="height" constant="60" id="EOv-90-ZjL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                <state key="normal" title="Send (arrives in 1 to 2 days)  &gt;&gt;">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                                <state key="normal" title="Send (arrives in 1 to 2 days)">
+                                    <color key="titleColor" red="0.043137254901960784" green="0.043137254901960784" blue="0.043137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="MtH-uW-ItT" kind="presentation" identifier="sendMail" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="aiH-BU-mEk"/>
+                                    <action selector="sendTapped:" destination="uNW-RF-l3y" eventType="touchUpInside" id="CGR-mQ-S42"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2b-7L-VM7" userLabel="scheduleButton">
-                                <rect key="frame" x="0.0" y="760" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="740" width="60" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.91372549020000005" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="Jq6-eO-faz"/>
-                                    <constraint firstAttribute="height" constant="40" id="nNW-Ia-e8w"/>
+                                    <constraint firstAttribute="width" constant="60" id="Jq6-eO-faz"/>
+                                    <constraint firstAttribute="height" constant="60" id="nNW-Ia-e8w"/>
                                 </constraints>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="calendar"/>
@@ -556,6 +558,35 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ouL-Ca-OnH">
+                                <rect key="frame" x="560" y="740" width="40" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.91372549020000005" blue="0.24313725489999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="rGu-fS-lQi"/>
+                                    <constraint firstAttribute="height" constant="60" id="tCG-iP-HzO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                                <state key="normal" title="&gt;&gt;">
+                                    <color key="titleColor" red="0.043137254899999998" green="0.043137254899999998" blue="0.043137254899999998" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendTapped:" destination="uNW-RF-l3y" eventType="touchUpInside" id="u1t-d4-8rr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyN-EA-GMd" userLabel="doneEditing">
+                                <rect key="frame" x="0.0" y="770" width="600" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Ypm-zB-Box"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneButtonTapped:" destination="uNW-RF-l3y" eventType="touchUpInside" id="cks-ib-5M8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -566,9 +597,11 @@
                             </constraint>
                             <constraint firstItem="kiv-Wq-vjl" firstAttribute="leading" secondItem="CRi-0L-spj" secondAttribute="leading" id="BCn-MU-Fqf"/>
                             <constraint firstItem="A0P-Az-ipI" firstAttribute="top" secondItem="kiv-Wq-vjl" secondAttribute="top" constant="8" id="DDz-uG-3aD"/>
+                            <constraint firstItem="ouL-Ca-OnH" firstAttribute="leading" secondItem="rF8-O1-jVt" secondAttribute="trailing" id="DEG-vu-8iI"/>
                             <constraint firstAttribute="trailing" secondItem="huH-mK-UMT" secondAttribute="trailing" id="Gal-gK-1Yd">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
+                            <constraint firstAttribute="trailing" secondItem="wyN-EA-GMd" secondAttribute="trailing" id="KJG-Nh-g48"/>
                             <constraint firstItem="udR-AJ-ciC" firstAttribute="leading" secondItem="CRi-0L-spj" secondAttribute="leading" id="LNd-wL-2CS"/>
                             <constraint firstItem="kiv-Wq-vjl" firstAttribute="top" secondItem="kTe-CR-dcv" secondAttribute="bottom" priority="999" constant="286" id="MlF-vg-DgR"/>
                             <constraint firstAttribute="trailing" secondItem="udR-AJ-ciC" secondAttribute="trailing" id="Pxn-rs-sxF"/>
@@ -577,27 +610,32 @@
                                 <variation key="heightClass=regular-widthClass=regular" constant="80"/>
                             </constraint>
                             <constraint firstItem="A0P-Az-ipI" firstAttribute="leading" secondItem="CRi-0L-spj" secondAttribute="leading" constant="10" id="SCt-Jf-QOa"/>
+                            <constraint firstItem="gNS-Nl-7MF" firstAttribute="top" secondItem="ouL-Ca-OnH" secondAttribute="bottom" id="VQE-Jy-rRU"/>
                             <constraint firstItem="rF8-O1-jVt" firstAttribute="leading" secondItem="a2b-7L-VM7" secondAttribute="trailing" id="XUd-83-hTP"/>
                             <constraint firstItem="udR-AJ-ciC" firstAttribute="top" secondItem="kTe-CR-dcv" secondAttribute="bottom" id="Xtb-Bc-INg"/>
                             <constraint firstItem="huH-mK-UMT" firstAttribute="leading" secondItem="CRi-0L-spj" secondAttribute="leading" id="YgK-d7-Pxi">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
                             <constraint firstAttribute="trailing" secondItem="kiv-Wq-vjl" secondAttribute="trailing" id="bc3-6g-DUh"/>
+                            <constraint firstAttribute="trailing" secondItem="ouL-Ca-OnH" secondAttribute="trailing" id="coU-vr-cjm"/>
+                            <constraint firstItem="wyN-EA-GMd" firstAttribute="leading" secondItem="CRi-0L-spj" secondAttribute="leading" id="dFS-Bu-twS"/>
                             <constraint firstItem="huH-mK-UMT" firstAttribute="top" secondItem="GcV-KG-RdI" secondAttribute="bottom" constant="30" id="eHV-lp-qGd"/>
                             <constraint firstItem="kiv-Wq-vjl" firstAttribute="top" secondItem="huH-mK-UMT" secondAttribute="bottom" priority="251" id="fYL-Sg-bqD"/>
                             <constraint firstItem="huH-mK-UMT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kTe-CR-dcv" secondAttribute="bottom" constant="64" id="jn3-1t-eX6"/>
                             <constraint firstItem="gNS-Nl-7MF" firstAttribute="top" secondItem="kiv-Wq-vjl" secondAttribute="bottom" id="lsY-X2-2SS"/>
                             <constraint firstItem="gNS-Nl-7MF" firstAttribute="top" secondItem="rF8-O1-jVt" secondAttribute="bottom" id="ly3-eE-8io"/>
+                            <constraint firstItem="gNS-Nl-7MF" firstAttribute="top" secondItem="wyN-EA-GMd" secondAttribute="bottom" id="mTi-IX-xQc"/>
                             <constraint firstItem="Y8E-oQ-Oh5" firstAttribute="leading" secondItem="GcV-KG-RdI" secondAttribute="trailing" constant="2" id="o6T-RL-Eex"/>
                             <constraint firstItem="GcV-KG-RdI" firstAttribute="leading" secondItem="CRi-0L-spj" secondAttribute="leading" constant="10" id="reT-KW-TQE">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
                             <constraint firstItem="Y8E-oQ-Oh5" firstAttribute="centerY" secondItem="GcV-KG-RdI" secondAttribute="centerY" id="tiq-MH-ycI"/>
-                            <constraint firstAttribute="trailing" secondItem="rF8-O1-jVt" secondAttribute="trailing" id="ykd-cv-Vcj"/>
+                            <constraint firstAttribute="trailing" secondItem="rF8-O1-jVt" secondAttribute="trailing" constant="40" id="ykd-cv-Vcj"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="jn3-1t-eX6"/>
+                                <exclude reference="ykd-cv-Vcj"/>
                                 <exclude reference="Rd0-cj-iaW"/>
                             </mask>
                         </variation>
@@ -610,20 +648,23 @@
                     </view>
                     <navigationItem key="navigationItem" title="Compose" id="NRn-yB-jrj"/>
                     <connections>
-                        <outlet property="bottomSpaceToScheduleButton" destination="QbB-sk-0jt" id="1p6-8O-BHO"/>
-                        <outlet property="bottomSpaceToSendButton" destination="ly3-eE-8io" id="vc1-qP-zPx"/>
+                        <outlet property="bottomSpaceToDoneButton" destination="mTi-IX-xQc" id="yhR-CI-Fr7"/>
                         <outlet property="composeText" destination="kiv-Wq-vjl" id="Gx8-pH-tKg"/>
                         <outlet property="composeTextToImageBottom" destination="fYL-Sg-bqD" id="Wfb-6Y-A4a"/>
                         <outlet property="composeTextToTopLayoutGuide" destination="MlF-vg-DgR" id="lWR-l7-GIU"/>
+                        <outlet property="doneEditingButton" destination="wyN-EA-GMd" id="weu-pi-CmS"/>
                         <outlet property="imagePreview" destination="huH-mK-UMT" id="FrZ-wP-cSx"/>
                         <outlet property="placeholderTextLabel" destination="A0P-Az-ipI" id="Hre-2A-i9M"/>
                         <outlet property="scheduleButton" destination="a2b-7L-VM7" id="TQM-8T-3GT"/>
                         <outlet property="scheduleButtonHeight" destination="nNW-Ia-e8w" id="sfC-sY-7jh"/>
                         <outlet property="scheduleButtonWidth" destination="Jq6-eO-faz" id="MCs-bh-XZ5"/>
+                        <outlet property="sendArrowsButton" destination="ouL-Ca-OnH" id="Vfl-rP-h49"/>
+                        <outlet property="sendArrowsHeigh" destination="tCG-iP-HzO" id="RIG-yO-9Om"/>
                         <outlet property="sendButton" destination="rF8-O1-jVt" id="uwy-Ln-sw1"/>
                         <outlet property="sendButtonHeight" destination="EOv-90-ZjL" id="IDx-a3-zhu"/>
                         <outlet property="toLabel" destination="KiO-xd-bKI" id="UbM-XW-CnN"/>
                         <outlet property="warningLabel" destination="udR-AJ-ciC" id="JZt-FN-fBK"/>
+                        <segue destination="MtH-uW-ItT" kind="presentation" identifier="sendMail" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="GA5-nW-VBo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wwg-pC-olF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -677,9 +718,9 @@
                                     <outletCollection property="gestureRecognizers" destination="b48-wH-IAv" appends="YES" id="DCJ-bF-Oiu"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Schedule Delivery" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uwj-sc-sJh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivery Options" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uwj-sc-sJh">
                                 <rect key="frame" x="0.0" y="304" width="600" height="40"/>
-                                <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="29b-9L-M2x"/>
                                 </constraints>

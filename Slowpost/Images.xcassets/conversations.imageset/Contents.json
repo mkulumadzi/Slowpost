@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "chat-double-bubble-3-48.png",
+      "filename" : "chat-double-bubble-4.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "chat-double-bubble-3-60.png",
+      "filename" : "chat-double-bubble-3.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "chat-double-bubble-3-90.png",
+      "filename" : "chat-double-bubble-2.png",
       "scale" : "3x"
     }
   ],

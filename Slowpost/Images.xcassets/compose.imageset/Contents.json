@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "email-add-2.png",
+      "filename" : "email-compose-2.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "email-add-1.png",
+      "filename" : "email-compose-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "email-add.png",
+      "filename" : "email-compose.png",
       "scale" : "3x"
     }
   ],

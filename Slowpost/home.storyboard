@@ -36,7 +36,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Compose" image="quill" id="VD2-Xd-fru"/>
+                    <tabBarItem key="tabBarItem" title="Compose" image="compose" id="VD2-Xd-fru"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="composeTabBarItem" destination="VD2-Xd-fru" id="SNH-OO-AVz"/>
@@ -94,8 +94,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="compose" width="48" height="48"/>
         <image name="conversations" width="48" height="48"/>
         <image name="mailbox" width="48" height="48"/>
-        <image name="quill" width="48" height="48"/>
     </resources>
 </document>

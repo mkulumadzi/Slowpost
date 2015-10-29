@@ -53,7 +53,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func formatButtons() {
-        composeButton.setImage(UIImage(named: "compose")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        composeButton.setImage(UIImage(named: "reply")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         composeButton.tintColor = UIColor.whiteColor()
     }
     
