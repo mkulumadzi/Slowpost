@@ -814,6 +814,9 @@
                             <datePicker contentMode="scaleToFill" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="15" translatesAutoresizingMaskIntoConstraints="NO" id="Uk2-1o-YPF">
                                 <rect key="frame" x="0.0" y="250" width="600" height="216"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="216" id="UeH-MB-3VO"/>
+                                </constraints>
                                 <date key="date" timeIntervalSinceReferenceDate="462746146.04611301">
                                     <!--2015-08-31 20:35:46 +0000-->
                                 </date>
@@ -831,7 +834,6 @@
                             <constraint firstItem="Uk2-1o-YPF" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" id="1Qd-eg-ddK">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstItem="mPC-Bj-nIK" firstAttribute="top" secondItem="Uwj-sc-sJh" secondAttribute="bottom" constant="-40" id="3El-ly-0gi"/>
                             <constraint firstItem="5v9-QP-5Yu" firstAttribute="top" secondItem="Uwj-sc-sJh" secondAttribute="bottom" constant="10" id="EFU-i0-ij3"/>
                             <constraint firstAttribute="trailing" secondItem="mPC-Bj-nIK" secondAttribute="trailing" id="EfD-xo-6kE"/>
                             <constraint firstItem="mPC-Bj-nIK" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" id="JwP-Pf-X9G"/>
@@ -849,6 +851,7 @@
                             </constraint>
                             <constraint firstItem="LQ8-oj-y3u" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" id="hUY-4j-Im3"/>
                             <constraint firstItem="Uk2-1o-YPF" firstAttribute="top" secondItem="5v9-QP-5Yu" secondAttribute="bottom" constant="10" id="hlx-M3-nMw"/>
+                            <constraint firstItem="mPC-Bj-nIK" firstAttribute="top" secondItem="Uwj-sc-sJh" secondAttribute="top" id="nLz-oD-xrc"/>
                             <constraint firstItem="Uwj-sc-sJh" firstAttribute="top" secondItem="LQ8-oj-y3u" secondAttribute="bottom" id="ney-kz-O1K"/>
                             <constraint firstItem="aGy-fK-D4U" firstAttribute="top" secondItem="fhm-0k-4pj" secondAttribute="bottom" constant="10" id="q4f-sY-T1g"/>
                             <constraint firstItem="fhm-0k-4pj" firstAttribute="leading" secondItem="3OS-i5-PJr" secondAttribute="leading" constant="30" id="vfB-fl-v3t">
@@ -860,6 +863,7 @@
                     <navigationItem key="navigationItem" title="Delivery" id="6aV-fH-Z8k"/>
                     <connections>
                         <outlet property="datePicker" destination="Uk2-1o-YPF" id="ttf-Gg-snq"/>
+                        <outlet property="datePickerHeight" destination="UeH-MB-3VO" id="hO4-Xd-gWo"/>
                         <outlet property="headerHeight" destination="29b-9L-M2x" id="fXV-he-wWD"/>
                         <outlet property="scheduleButton" destination="QM3-md-ep9" id="YIc-8Q-RhA"/>
                         <outlet property="scheduleButtonHeight" destination="jZg-53-rXn" id="6jJ-D0-g57"/>

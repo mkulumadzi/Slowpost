@@ -21,6 +21,7 @@ class ChooseDeliveryOptionsViewController: UIViewController {
     @IBOutlet weak var standardButtonHeight: NSLayoutConstraint!
     
     @IBOutlet weak var headerHeight: NSLayoutConstraint!
+    @IBOutlet weak var datePickerHeight: NSLayoutConstraint!
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
@@ -49,6 +50,7 @@ class ChooseDeliveryOptionsViewController: UIViewController {
         scheduleButtonHeight.constant = 30
         standardButtonHeight.constant = 30
         headerHeight.constant = 30
+        datePickerHeight.constant = 180
     }
 
     override func didReceiveMemoryWarning() {
