@@ -64,7 +64,7 @@ class ChooseDeliveryOptionsViewController: UIViewController {
     
     
     @IBAction func viewTapped(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: {})
+        performSegueWithIdentifier("scheduleDeliveryCancelled", sender: nil)
     }
     
     

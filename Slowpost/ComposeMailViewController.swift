@@ -17,6 +17,8 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     var keyboardShowing:Bool!
     var scheduledToArrive:NSDate?
     
+    var shadedView:UIView!
+    
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var imagePreview: UIImageView!
     @IBOutlet weak var composeText: UITextView!
@@ -55,6 +57,8 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         composeTextToImageBottom.priority = 999
         composeTextToTopLayoutGuide.priority = 251
         
+        initializeShadedView()
+        
         automaticallyAdjustsScrollViewInsets = false
         validatePlaceholderLabel()
         validateSendButtons()
@@ -87,6 +91,14 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         scheduleButton.tintColor = slowpostBlack
         sendButton.contentHorizontalAlignment = .Right
         sendButton.titleLabel?.numberOfLines = 0
+    }
+    
+    func initializeShadedView() {
+        shadedView = UIView(frame: view.frame)
+        shadedView.backgroundColor = slowpostBlack
+        shadedView.alpha = 0.5
+        view.addSubview(shadedView)
+        shadedView.hidden = true
     }
     
     override func viewDidLayoutSubviews() {
@@ -222,6 +234,9 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
                 sendingViewController!.scheduledToArrive = scheduledToArrive!
             }
         }
+        else if segue.identifier == "scheduleDelivery" {
+            shadedView.hidden = false
+        }
     }
     
     @IBAction func mailFailedToSend(segue: UIStoryboardSegue) {
@@ -231,11 +246,17 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func standardDeliveryChosen(segue: UIStoryboardSegue) {
+        shadedView.hidden = true
         formatSendButton()
     }
     
     @IBAction func scheduledDeliveryChosen(segue: UIStoryboardSegue) {
+        shadedView.hidden = true
         formatSendButton()
+    }
+    
+    @IBAction func scheduleDeliveryCancelled(segue: UIStoryboardSegue) {
+        shadedView.hidden = true
     }
     
     func formatSendButton() {
