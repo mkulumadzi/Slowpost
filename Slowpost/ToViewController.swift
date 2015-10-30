@@ -19,6 +19,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var searchTextEntered:Bool!
     var searchResults:[SearchPerson]!
     
+    var shadedView:UIView!
+    
     var peopleController: NSFetchedResultsController!
     var searchController: UISearchController!
     var segmentedControl: UISegmentedControl!
@@ -51,6 +53,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         searchTextEntered = false
         initializeSegmentedControl()
         initializePeopleController()
+        initializeShadedView()
 
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
@@ -74,6 +77,14 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         editRecipientsButton.setImage(UIImage(named: "edit")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         editRecipientsButton.tintColor = slowpostBlack
         nextButton.contentHorizontalAlignment = .Right
+    }
+    
+    func initializeShadedView() {
+        shadedView = UIView(frame: view.frame)
+        shadedView.backgroundColor = slowpostBlack
+        shadedView.alpha = 0.5
+        view.addSubview(shadedView)
+        shadedView.hidden = true
     }
     
     // Add search bar
@@ -547,6 +558,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             }
         }
         else if segue.identifier == "editRecipients" {
+            shadedView.hidden = false
             let editRecipientsViewController = segue.destinationViewController as! EditRecipientsViewController
             editRecipientsViewController.toPeople = toPeople
             editRecipientsViewController.toSearchPeople = toSearchPeople
@@ -630,9 +642,14 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     @IBAction func recipientsEdited(segue: UIStoryboardSegue) {
+        shadedView.hidden = true
         formatNextLabel()
         validateNextButton()
         personTable.reloadData()
+    }
+    
+    @IBAction func editRecipientsCancelled(segue: UIStoryboardSegue) {
+        shadedView.hidden = true
     }
     
 }

@@ -175,8 +175,8 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         let userInfo = notification.userInfo!
         var r = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
         r = composeText.convertRect(r, fromView:nil)
-        composeText.contentInset.bottom = r.size.height + 30
-        composeText.scrollIndicatorInsets.bottom = r.size.height + 30
+        composeText.contentInset.bottom = r.size.height + doneButtonHeight.constant
+        composeText.scrollIndicatorInsets.bottom = r.size.height + doneButtonHeight.constant
         validateSendButtons()
     }
     
@@ -196,9 +196,6 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         validateSendButtons()
         composeText.contentInset.bottom = 60
         composeText.scrollIndicatorInsets.bottom = 60
-//        composeText.contentInset = UIEdgeInsetsZero
-//        composeText.scrollIndicatorInsets = UIEdgeInsetsZero
-        
         doneEditingButton.hidden = true
         bottomSpaceToDoneButton.constant = 0
         updateViewConstraints()

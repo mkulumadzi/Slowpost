@@ -62,7 +62,13 @@ class EditRecipientsViewController: UIViewController, UITableViewDelegate, UITab
     
     func setTableHeight() {
         let numRows = (toPeople.count + toSearchPeople.count + toEmails.count)
-        recipientsTableHeight.constant = CGFloat(numRows * 44) + 40.0
+        let suggestedHeight = CGFloat(numRows * 44) + 40.0
+        if suggestedHeight < view.frame.height / 2 {
+            recipientsTableHeight.constant = suggestedHeight
+        }
+        else {
+            recipientsTableHeight.constant = view.frame.height / 2
+        }
     }
     
     func initializeSelectedIndices() {
@@ -179,7 +185,7 @@ class EditRecipientsViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     @IBAction func viewTapped(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: {})
+        performSegueWithIdentifier("editRecipientsCancelled", sender: nil)
     }
     
     @IBAction func confirmTapped(sender: AnyObject) {

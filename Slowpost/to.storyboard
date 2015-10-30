@@ -338,7 +338,7 @@
                                 </constraints>
                                 <state key="normal" image="edit"/>
                                 <connections>
-                                    <segue destination="UZC-JV-4Ub" kind="presentation" identifier="editRecipients" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="Ujs-n1-ite"/>
+                                    <segue destination="UZC-JV-4Ub" kind="presentation" identifier="editRecipients" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="Ujs-n1-ite"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WMt-oG-7oS">
@@ -448,8 +448,12 @@
                                     <constraint firstAttribute="height" constant="60" id="8Af-QE-7hZ"/>
                                 </constraints>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                                    <color key="textColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </textAttributes>
                                 <items>
-                                    <navigationItem id="g4D-Th-gt4">
+                                    <navigationItem title="Select email" id="g4D-Th-gt4">
                                         <barButtonItem key="leftBarButtonItem" style="done" id="VhA-0Z-5yY">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="f1e-Uf-7TG" userLabel="cancel">
                                                 <rect key="frame" x="20" y="28" width="20" height="20"/>
@@ -565,8 +569,12 @@
                                     <constraint firstAttribute="height" constant="60" id="eJ5-9d-2iG"/>
                                 </constraints>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
+                                    <color key="textColor" red="0.49803921569999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </textAttributes>
                                 <items>
-                                    <navigationItem id="dcB-rP-zRa">
+                                    <navigationItem title="Add email" id="dcB-rP-zRa">
                                         <barButtonItem key="leftBarButtonItem" style="done" id="uVI-yh-HmZ">
                                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Oib-NE-mEN" userLabel="cancel">
                                                 <rect key="frame" x="20" y="28" width="20" height="20"/>
@@ -666,14 +674,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rVs-RH-ye9" userLabel="shadedBackground">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rVs-RH-ye9" userLabel="clearBackground">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Mu4-UB-QkG" appends="YES" id="UqL-Le-KH8"/>
                                 </connections>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3AO-Fi-cqK">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3AO-Fi-cqK">
                                 <rect key="frame" x="0.0" y="340" width="600" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -764,6 +772,7 @@
                         <outlet property="recipientsTable" destination="3AO-Fi-cqK" id="MPa-uh-ANM"/>
                         <outlet property="recipientsTableHeight" destination="I8u-jc-xaS" id="Su7-yp-U4q"/>
                         <segue destination="c4F-uO-6gP" kind="unwind" identifier="recipientsEdited" unwindAction="recipientsEdited:" id="MbN-SB-NAx"/>
+                        <segue destination="c4F-uO-6gP" kind="unwind" identifier="editRecipientsCancelled" unwindAction="editRecipientsCancelled:" id="0rP-l1-XwO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zfp-eD-i3W" userLabel="First Responder" sceneMemberID="firstResponder"/>
