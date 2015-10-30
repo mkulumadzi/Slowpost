@@ -615,10 +615,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wyN-EA-GMd" userLabel="doneEditing">
-                                <rect key="frame" x="0.0" y="770" width="600" height="30"/>
+                                <rect key="frame" x="0.0" y="760" width="600" height="40"/>
                                 <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Ypm-zB-Box"/>
+                                    <constraint firstAttribute="height" constant="40" id="Ypm-zB-Box"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="Done">
@@ -693,6 +693,7 @@
                         <outlet property="composeText" destination="kiv-Wq-vjl" id="Gx8-pH-tKg"/>
                         <outlet property="composeTextToImageBottom" destination="fYL-Sg-bqD" id="Wfb-6Y-A4a"/>
                         <outlet property="composeTextToTopLayoutGuide" destination="MlF-vg-DgR" id="lWR-l7-GIU"/>
+                        <outlet property="doneButtonHeight" destination="Ypm-zB-Box" id="6re-dQ-HLb"/>
                         <outlet property="doneEditingButton" destination="wyN-EA-GMd" id="weu-pi-CmS"/>
                         <outlet property="imagePreview" destination="huH-mK-UMT" id="FrZ-wP-cSx"/>
                         <outlet property="placeholderTextLabel" destination="A0P-Az-ipI" id="Hre-2A-i9M"/>

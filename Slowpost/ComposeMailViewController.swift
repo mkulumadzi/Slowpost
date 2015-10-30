@@ -28,6 +28,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var composeTextToTopLayoutGuide: NSLayoutConstraint!
     @IBOutlet weak var composeTextToImageBottom: NSLayoutConstraint!
+    @IBOutlet weak var doneButtonHeight: NSLayoutConstraint!
     
     @IBOutlet weak var placeholderTextLabel: UILabel!
     
@@ -64,9 +65,9 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
             imagePreview.image = cardImage
         }
         
-//        if deviceType == "iPhone 4S" {
-//            formatForiPhone4()
-//        }
+        if deviceType == "iPhone 4S" {
+            formatForiPhone4()
+        }
         
         formatButtons()
         
@@ -77,11 +78,9 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         resignFirstResponder()
     }
     
-//    func formatForiPhone4() {
-//        sendButtonHeight.constant = 30
-//        scheduleButtonHeight.constant = 30
-//        scheduleButtonWidth.constant = 30
-//    }
+    func formatForiPhone4() {
+        doneButtonHeight.constant = 30  
+    }
     
     func formatButtons() {
         scheduleButton.setImage(UIImage(named: "calendar")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
