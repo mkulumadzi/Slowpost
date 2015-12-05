@@ -12,8 +12,7 @@ import Foundation
 class WelcomeScreenViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     
-    @IBOutlet weak var logInButton: UIButton!
-    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var startButton: UIButton!
     
     private var pageViewController: UIPageViewController?
     
@@ -71,8 +70,7 @@ class WelcomeScreenViewController: UIViewController, UIPageViewControllerDataSou
         
         pageViewController!.didMoveToParentViewController(self)
         
-        view.bringSubviewToFront(logInButton)
-        view.bringSubviewToFront(signUpButton)
+        view.bringSubviewToFront(startButton)
     }
     
     private func setupPageControl() {

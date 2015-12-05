@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6az-Oz-1fo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="6az-Oz-1fo">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -60,6 +60,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="e4J-qg-cDF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
@@ -68,12 +70,12 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="5Lt-wu-z72" kind="relationship" relationship="rootViewController" id="FuU-jl-xnP"/>
+                        <segue destination="WJT-E9-Tgl" kind="relationship" relationship="rootViewController" id="u1c-MT-KLK"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k5c-Hl-6yC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="839" y="-607"/>
+            <point key="canvasLocation" x="771" y="-1046"/>
         </scene>
         <!--Log In-->
         <scene sceneID="68U-Yf-3Uf">
@@ -87,19 +89,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="748" verticalHuggingPriority="751" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username or Email" minimumFontSize="8" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="1Cx-Sp-3Un" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="176" width="540" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="WLv-fW-fWb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                                <connections>
-                                    <action selector="editingChanged:" destination="5Lt-wu-z72" eventType="editingChanged" id="Vjf-60-bS5"/>
-                                </connections>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="746" verticalHuggingPriority="746" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hez-ky-lsM" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="296" width="540" height="40"/>
+                                <rect key="frame" x="30" y="236" width="540" height="40"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="YGF-2J-gq8"/>
@@ -114,7 +106,8 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="747" verticalHuggingPriority="748" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="8" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Y1L-HG-f5a" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="236" width="540" height="30"/>
+                                <rect key="frame" x="30" y="176" width="540" height="30"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="U0h-Ue-2T7"/>
                                 </constraints>
@@ -126,6 +119,7 @@
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="zkc-KO-jnT" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="30"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="nvr-2r-Qwf"/>
@@ -135,7 +129,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bw5-ht-NmV">
-                                <rect key="frame" x="30" y="366" width="540" height="40"/>
+                                <rect key="frame" x="30" y="276" width="540" height="40"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="eDa-UH-7Cv"/>
                                 </constraints>
@@ -148,9 +143,9 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="1Cx-Sp-3Un" firstAttribute="top" secondItem="CYa-XF-MvS" secondAttribute="bottom" constant="112" id="0K0-Fj-v2S"/>
                             <constraint firstItem="zkc-KO-jnT" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" id="5BT-vi-BiZ"/>
                             <constraint firstAttribute="trailing" secondItem="Hez-ky-lsM" secondAttribute="trailing" constant="30" id="EZw-aT-q09">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
@@ -158,44 +153,29 @@
                             <constraint firstItem="Y1L-HG-f5a" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" constant="30" id="MVg-aG-XpJ">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstAttribute="trailing" secondItem="1Cx-Sp-3Un" secondAttribute="trailing" constant="30" id="T26-Dd-pWw">
-                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
-                            </constraint>
-                            <constraint firstItem="1Cx-Sp-3Un" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" constant="30" id="VwY-xU-UiE">
-                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
-                            </constraint>
+                            <constraint firstItem="Y1L-HG-f5a" firstAttribute="top" secondItem="CYa-XF-MvS" secondAttribute="bottom" constant="112" id="Mwa-la-tfM"/>
+                            <constraint firstItem="zkc-KO-jnT" firstAttribute="top" secondItem="CYa-XF-MvS" secondAttribute="bottom" id="NP1-PV-ie3"/>
                             <constraint firstAttribute="trailing" secondItem="bw5-ht-NmV" secondAttribute="trailing" constant="30" id="doO-qe-GvF"/>
-                            <constraint firstItem="zkc-KO-jnT" firstAttribute="top" secondItem="CYa-XF-MvS" secondAttribute="bottom" id="eLF-7T-DdU"/>
                             <constraint firstAttribute="trailing" secondItem="Y1L-HG-f5a" secondAttribute="trailing" constant="30" id="gjP-hW-WVv">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstItem="bw5-ht-NmV" firstAttribute="top" secondItem="Hez-ky-lsM" secondAttribute="bottom" constant="30" id="oNK-Uj-P3C"/>
+                            <constraint firstItem="bw5-ht-NmV" firstAttribute="top" secondItem="Hez-ky-lsM" secondAttribute="bottom" id="oNK-Uj-P3C"/>
                             <constraint firstItem="Hez-ky-lsM" firstAttribute="top" secondItem="Y1L-HG-f5a" secondAttribute="bottom" constant="30" id="t7E-sP-gIy"/>
                             <constraint firstItem="Hez-ky-lsM" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" constant="30" id="t9o-c3-9dW">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstItem="Y1L-HG-f5a" firstAttribute="top" secondItem="1Cx-Sp-3Un" secondAttribute="bottom" constant="30" id="urM-Kt-db7"/>
                             <constraint firstItem="bw5-ht-NmV" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" constant="30" id="vsy-T9-STQ"/>
                             <constraint firstAttribute="trailing" secondItem="zkc-KO-jnT" secondAttribute="trailing" id="wEJ-uF-FH4"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Log In" id="M2x-xn-zow">
-                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="8If-Lq-ajW">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="cancel:" destination="5Lt-wu-z72" id="yR2-Z2-7b3"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Log In" id="M2x-xn-zow"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
-                        <outlet property="UsernameTextField" destination="1Cx-Sp-3Un" id="Skl-Ic-wfx"/>
                         <outlet property="logInButton" destination="Hez-ky-lsM" id="Ouv-QK-GZV"/>
                         <outlet property="logInButtonHeight" destination="YGF-2J-gq8" id="Pvi-Cu-Hf8"/>
                         <outlet property="passwordTextField" destination="Y1L-HG-f5a" id="Zei-ZG-VCf"/>
                         <outlet property="verticalSpaceToLogIn" destination="t7E-sP-gIy" id="MKG-po-hZ2"/>
-                        <outlet property="verticalSpaceToPassword" destination="urM-Kt-db7" id="2re-aJ-Nsm"/>
-                        <outlet property="verticalSpaceToUsername" destination="0K0-Fj-v2S" id="Epi-Nb-yJO"/>
+                        <outlet property="verticalSpaceToPassword" destination="Mwa-la-tfM" id="p61-yP-kA8"/>
                         <outlet property="warningLabel" destination="zkc-KO-jnT" id="gvs-yx-OMN"/>
                         <segue destination="nb6-T8-URq" kind="unwind" identifier="loginCompleted" unwindAction="signUpOrLogInCompleted:" id="Eyt-DZ-v1T"/>
                     </connections>
@@ -204,7 +184,7 @@
                 <exit id="nb6-T8-URq" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="ruy-vO-V81"/>
             </objects>
-            <point key="canvasLocation" x="1501" y="-607"/>
+            <point key="canvasLocation" x="2228" y="-623"/>
         </scene>
         <!--Welcome Screen View Controller-->
         <scene sceneID="blT-42-FqB">
@@ -218,49 +198,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Km0-Gd-8QW">
-                                <rect key="frame" x="0.0" y="560" width="100" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="bZQ-nG-7eG"/>
-                                    <constraint firstAttribute="height" constant="40" id="mt7-St-ff6"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                <state key="normal" title="Log in">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Ad4-oR-7aV" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="av2-j3-cgU"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTS-NF-cJa">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTS-NF-cJa" userLabel="Start Button">
                                 <rect key="frame" x="500" y="560" width="100" height="40"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="5XR-t3-I0h"/>
                                     <constraint firstAttribute="height" constant="40" id="CYa-dg-tL8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
-                                <state key="normal" title="Sign up">
+                                <state key="normal" title="Start">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="x1t-f9-P3i" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="Tgy-8e-yQt"/>
+                                    <segue destination="Ad4-oR-7aV" kind="show" id="Sva-z9-foL"/>
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="BeG-BJ-kuz" firstAttribute="top" secondItem="fTS-NF-cJa" secondAttribute="bottom" id="1IL-SQ-jIM"/>
-                            <constraint firstItem="BeG-BJ-kuz" firstAttribute="top" secondItem="Km0-Gd-8QW" secondAttribute="bottom" id="VW9-Ak-ziR"/>
                             <constraint firstAttribute="trailing" secondItem="fTS-NF-cJa" secondAttribute="trailing" id="oQb-YY-gif"/>
-                            <constraint firstItem="Km0-Gd-8QW" firstAttribute="leading" secondItem="NAm-uN-6Ak" secondAttribute="leading" id="soc-Sy-7xv"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="logInButton" destination="Km0-Gd-8QW" id="94u-pV-f99"/>
-                        <outlet property="signUpButton" destination="fTS-NF-cJa" id="4Yp-mR-3gr"/>
+                        <outlet property="startButton" destination="fTS-NF-cJa" id="MTh-Z1-jTb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NHd-Oh-yPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -281,20 +245,24 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Slowpost Icon Set" translatesAutoresizingMaskIntoConstraints="NO" id="cyp-Yi-AeK">
                                 <rect key="frame" x="225" y="495" width="150" height="95"/>
+                                <animations/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="8ja-GC-cGh">
                                 <rect key="frame" x="245" y="235" width="111" height="28"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Slowpost" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YMF-v3-1t9">
                                 <rect key="frame" x="154" y="263" width="292" height="75"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="64"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerY" secondItem="cyp-Yi-AeK" secondAttribute="centerY" id="C1X-dH-pdH"/>
@@ -337,6 +305,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a photo and compose a message to a friend or family member." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="1" translatesAutoresizingMaskIntoConstraints="NO" id="Q0L-Nx-1kw">
                                 <rect key="frame" x="10" y="10" width="580" height="24"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -346,12 +315,14 @@
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="example_card.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="YB6-vP-l6D">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="450"/>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="YB6-vP-l6D" secondAttribute="height" multiplier="4:3" id="lqS-bg-yVB"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grey-circle.png" translatesAutoresizingMaskIntoConstraints="NO" id="chf-f3-3Ot">
                                         <rect key="frame" x="10" y="457" width="30" height="30"/>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="011-At-BNi"/>
                                             <constraint firstAttribute="height" constant="30" id="kEC-tR-2d3"/>
@@ -359,24 +330,28 @@
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To: George Byron" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICn-xH-enn">
                                         <rect key="frame" x="10" y="492" width="121" height="21"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                         <color key="textColor" red="0.043137254901960784" green="0.043137254901960784" blue="0.043137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sent on June 24th, 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cun-9y-qCd">
                                         <rect key="frame" x="10" y="513" width="157" height="21"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="15"/>
                                         <color key="textColor" red="0.49803921568627452" green="0.47843137254901957" blue="0.47843137254901957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delivered on June 26th, 2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5Y-II-NOd">
                                         <rect key="frame" x="10" y="534" width="190" height="21"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="15"/>
                                         <color key="textColor" red="0.49803921568627452" green="0.47843137254901957" blue="0.47843137254901957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cT-RB-bol">
                                         <rect key="frame" x="5" y="555" width="585" height="201"/>
+                                        <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <string key="text">Dear George,
 
@@ -389,17 +364,20 @@ William</string>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="William Lovelace" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l1Q-zv-05U">
                                         <rect key="frame" x="45" y="460" width="131" height="24"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NIG-va-OIK">
                                         <rect key="frame" x="15" y="463" width="20" height="18"/>
+                                        <animations/>
                                         <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="13"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="2cT-RB-bol" firstAttribute="top" secondItem="Cun-9y-qCd" secondAttribute="bottom" constant="10" id="0Ao-hu-ip2"/>
@@ -434,6 +412,7 @@ William</string>
                                 </variation>
                             </view>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="Q0L-Nx-1kw" secondAttribute="centerX" id="0am-pU-8PT"/>
@@ -476,17 +455,20 @@ William</string>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="With a nod to classic mail, Slowposts are delivered after a time delay, creating surprising, thoughtful moments." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEs-NT-j1O">
                                 <rect key="frame" x="30" y="10" width="540" height="47"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="example_photo.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="oyT-1Y-PgK">
                                 <rect key="frame" x="0.0" y="67" width="600" height="800"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="oyT-1Y-PgK" secondAttribute="height" multiplier="3:4" id="x1E-qL-4id"/>
                                 </constraints>
                             </imageView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="AEs-NT-j1O" firstAttribute="top" secondItem="GgE-TR-gH9" secondAttribute="bottom" constant="50" id="2Fu-yt-jcC"/>
@@ -523,14 +505,17 @@ William</string>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enjoy the deeper form of communication that happens when people stop chatting and start saying something meaningful." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2i-YZ-JeQ">
                                 <rect key="frame" x="10" y="273" width="580" height="55"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Slowpost Icon Set (green)" translatesAutoresizingMaskIntoConstraints="NO" id="RV3-5A-hVZ">
                                 <rect key="frame" x="225" y="495" width="150" height="95"/>
+                                <animations/>
                             </imageView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="x2i-YZ-JeQ" firstAttribute="leading" secondItem="ukF-M8-GLN" secondAttribute="leading" constant="10" id="ALY-iQ-04h"/>
@@ -552,29 +537,6 @@ William</string>
             </objects>
             <point key="canvasLocation" x="96" y="1898"/>
         </scene>
-        <!--Slowpost-->
-        <scene sceneID="hcN-in-cT2">
-            <objects>
-                <navigationController title="Slowpost" id="x1t-f9-P3i" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YpK-4J-WdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="barTintColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="17"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <color key="textShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </textAttributes>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="cqE-Qh-T2s" kind="relationship" relationship="rootViewController" id="FWQ-dW-A3w"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hpw-V3-jLi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="839" y="-1300"/>
-        </scene>
         <!--Name-->
         <scene sceneID="FC7-Kj-SAs">
             <objects>
@@ -589,6 +551,7 @@ William</string>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="8aQ-qm-rHK" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="30"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="PR5-HP-wUd"/>
@@ -605,12 +568,14 @@ William</string>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us about yourself." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="EJb-Ir-fa9">
                                 <rect key="frame" x="30" y="110" width="540" height="24"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Given Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VGQ-6a-6wA" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="164" width="540" height="30"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Sa5-ec-ezx"/>
                                 </constraints>
@@ -623,6 +588,7 @@ William</string>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOu-Ii-hWQ" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="304" width="540" height="40"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="IsH-bf-IGC"/>
@@ -638,6 +604,7 @@ William</string>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="P5I-cq-lFh" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="244" width="540" height="30"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Tco-OY-Y9H"/>
                                 </constraints>
@@ -650,6 +617,7 @@ William</string>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Family Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Zal-kx-u8W" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="204" width="540" height="30"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="5er-Fr-WXK"/>
                                 </constraints>
@@ -661,6 +629,7 @@ William</string>
                                 </connections>
                             </textField>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="VGQ-6a-6wA" firstAttribute="top" secondItem="EJb-Ir-fa9" secondAttribute="bottom" constant="30" id="1I8-Zk-R8Z"/>
@@ -712,14 +681,7 @@ William</string>
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Name" id="HAR-GI-gwi" userLabel="Navigation Item">
-                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="dvh-52-NFX">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="cancel:" destination="cqE-Qh-T2s" id="H9X-Ep-1wT"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Name" id="HAR-GI-gwi" userLabel="Navigation Item"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="buttonHeight" destination="IsH-bf-IGC" id="RPc-P6-YS0"/>
@@ -735,7 +697,7 @@ William</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Zp-98-wzK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1501" y="-1300"/>
+            <point key="canvasLocation" x="2228" y="-1292"/>
         </scene>
         <!--Sign Up Complete View Controller-->
         <scene sceneID="b0k-vm-4Cb">
@@ -751,6 +713,7 @@ William</string>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ul4-3K-flw">
                                 <rect key="frame" x="30" y="70" width="540" height="139"/>
+                                <animations/>
                                 <string key="text">Would you like us to find your contacts who have already registered with Slowpost? If so, please give Slowpost access to your address book when you are prompted!
 
 We won't save your address book on our servers, but we will search for matches with registered users when you compose a message.</string>
@@ -760,6 +723,7 @@ We won't save your address book on our servers, but we will search for matches w
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w4s-zz-Gj1">
                                 <rect key="frame" x="30" y="239" width="540" height="40"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="I6z-iY-HDa"/>
@@ -774,6 +738,7 @@ We won't save your address book on our servers, but we will search for matches w
                                 </connections>
                             </button>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ul4-3K-flw" firstAttribute="top" secondItem="4IF-iz-Hs8" secondAttribute="bottom" constant="50" id="9Tr-gx-Dho"/>
@@ -810,7 +775,7 @@ We won't save your address book on our servers, but we will search for matches w
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kkx-io-WIk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="UMc-SG-qDW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2925" y="-1300"/>
+            <point key="canvasLocation" x="3590" y="-1292"/>
         </scene>
         <!--Username-->
         <scene sceneID="PaQ-Zj-z4W">
@@ -826,6 +791,7 @@ We won't save your address book on our servers, but we will search for matches w
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ikw-33-dC8" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="244" width="540" height="30"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Ivq-f5-C5L"/>
                                 </constraints>
@@ -838,6 +804,7 @@ We won't save your address book on our servers, but we will search for matches w
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="8DA-LN-k4L" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="30"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="B7a-mU-I0i"/>
@@ -854,6 +821,7 @@ We won't save your address book on our servers, but we will search for matches w
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fyz-vB-IcF" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="164" width="540" height="30"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="fvi-sQ-oaY"/>
                                 </constraints>
@@ -866,12 +834,14 @@ We won't save your address book on our servers, but we will search for matches w
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a unique username and a secure password." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="y0R-1X-YfO">
                                 <rect key="frame" x="30" y="110" width="540" height="24"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qoT-XQ-G2Z" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="304" width="540" height="40"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="9Jt-1d-rNd"/>
@@ -887,6 +857,7 @@ We won't save your address book on our servers, but we will search for matches w
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ca5-x4-yba" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="204" width="540" height="30"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="0ol-Dg-Zkr"/>
                                 </constraints>
@@ -899,6 +870,7 @@ We won't save your address book on our servers, but we will search for matches w
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="By clicking 'Sign up' I confirm I agree to the Privacy Policy." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gH6-YH-ce8">
                                 <rect key="frame" x="30" y="352" width="540" height="34"/>
+                                <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
@@ -906,6 +878,7 @@ We won't save your address book on our servers, but we will search for matches w
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ikw-33-dC8" firstAttribute="top" secondItem="Ca5-x4-yba" secondAttribute="bottom" constant="10" id="BFV-Bh-1cN"/>
@@ -979,7 +952,7 @@ We won't save your address book on our servers, but we will search for matches w
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="coA-1v-Wbb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2213" y="-1300"/>
+            <point key="canvasLocation" x="2907" y="-1292"/>
         </scene>
         <!--Reset Password-->
         <scene sceneID="LiR-H3-FS7">
@@ -995,6 +968,7 @@ We won't save your address book on our servers, but we will search for matches w
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="748" verticalHuggingPriority="751" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" minimumFontSize="8" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fsL-7X-rqQ" userLabel="emailTextField" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="176" width="540" height="30"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Ah8-oa-UNW"/>
                                 </constraints>
@@ -1006,6 +980,7 @@ We won't save your address book on our servers, but we will search for matches w
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="746" verticalHuggingPriority="746" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sQd-Tl-hEi" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="236" width="540" height="40"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="9Ca-29-4z6"/>
@@ -1021,6 +996,7 @@ We won't save your address book on our servers, but we will search for matches w
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="I1c-j4-KBD" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="30"/>
+                                <animations/>
                                 <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="NKq-fy-gNU"/>
@@ -1030,6 +1006,7 @@ We won't save your address book on our servers, but we will search for matches w
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fsL-7X-rqQ" firstAttribute="top" secondItem="IAK-o1-M5h" secondAttribute="bottom" constant="112" id="1Ak-lO-7s8"/>
@@ -1074,7 +1051,7 @@ We won't save your address book on our servers, but we will search for matches w
                 <exit id="GjK-R8-VUg" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="gRm-Tr-RbT"/>
             </objects>
-            <point key="canvasLocation" x="2166" y="-607"/>
+            <point key="canvasLocation" x="2907" y="-623"/>
         </scene>
         <!--Request Submitted View Controller-->
         <scene sceneID="j9t-Y0-biB">
@@ -1090,11 +1067,13 @@ We won't save your address book on our servers, but we will search for matches w
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check your email! You should get a message with instructions for resetting you password." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbl-JX-1dV">
                                 <rect key="frame" x="30" y="276" width="540" height="47"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Bbl-JX-1dV" secondAttribute="trailing" constant="30" id="8XJ-Zq-DTL">
@@ -1114,7 +1093,98 @@ We won't save your address book on our servers, but we will search for matches w
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bTP-y0-0ma" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="J29-95-eme" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2848" y="-607"/>
+            <point key="canvasLocation" x="3590" y="-623"/>
+        </scene>
+        <!--Start-->
+        <scene sceneID="kwC-4z-g8R">
+            <objects>
+                <viewController storyboardIdentifier="StartView" id="WJT-E9-Tgl" customClass="StartViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="65c-B6-4tw"/>
+                        <viewControllerLayoutGuide type="bottom" id="pjI-2c-MVF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ruh-Tw-TO2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="748" verticalHuggingPriority="751" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="8" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0F8-Gw-2PI" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="176" width="540" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="awP-7S-vqF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <connections>
+                                    <action selector="editingChanged:" destination="WJT-E9-Tgl" eventType="editingChanged" id="fDo-mV-qow"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="746" verticalHuggingPriority="746" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMR-r1-INh" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="236" width="540" height="40"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="q8g-5B-XiL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkForEmailMatch:" destination="WJT-E9-Tgl" eventType="touchUpInside" id="Mna-7X-SAx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="mMR-r1-INh" firstAttribute="top" secondItem="0F8-Gw-2PI" secondAttribute="bottom" constant="30" id="2Gh-UL-aCS"/>
+                            <constraint firstItem="mMR-r1-INh" firstAttribute="top" secondItem="0F8-Gw-2PI" secondAttribute="top" id="CuS-U1-4Fq"/>
+                            <constraint firstItem="0F8-Gw-2PI" firstAttribute="leading" secondItem="ruh-Tw-TO2" secondAttribute="leading" constant="30" id="VfI-cJ-Iys">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="mMR-r1-INh" secondAttribute="trailing" constant="30" id="irW-jw-KzO">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="0F8-Gw-2PI" secondAttribute="trailing" constant="30" id="sGf-cW-BDQ">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                            <constraint firstItem="mMR-r1-INh" firstAttribute="leading" secondItem="ruh-Tw-TO2" secondAttribute="leading" constant="30" id="ufV-Zo-gT6">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                            <constraint firstItem="0F8-Gw-2PI" firstAttribute="top" secondItem="65c-B6-4tw" secondAttribute="bottom" constant="112" id="vHE-Ea-0g9"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="CuS-U1-4Fq"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Start" id="9wo-J0-8xH">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="2MI-Pg-7GL">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancel:" destination="WJT-E9-Tgl" id="Vzd-Qa-egU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="0F8-Gw-2PI" id="i3H-9x-Caa"/>
+                        <outlet property="nextButton" destination="mMR-r1-INh" id="Lew-nJ-5o9"/>
+                        <outlet property="nextButtonHeight" destination="q8g-5B-XiL" id="OWD-IE-NOv"/>
+                        <segue destination="WeV-i4-6Ay" kind="unwind" identifier="loginCompleted" unwindAction="signUpOrLogInCompleted:" id="B7V-7B-Ahw"/>
+                        <segue destination="cqE-Qh-T2s" kind="show" identifier="signUp" id="SI6-8q-mx6"/>
+                        <segue destination="5Lt-wu-z72" kind="show" identifier="logIn" id="41z-7e-me5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zMC-ZT-wyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="WeV-i4-6Ay" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="1eE-cU-O9M"/>
+            </objects>
+            <point key="canvasLocation" x="1485" y="-1046"/>
         </scene>
     </scenes>
     <resources>

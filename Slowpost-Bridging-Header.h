@@ -11,5 +11,8 @@
 
 #import "Flurry.h"
 #import "KeychainWrapper.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 
 #endif

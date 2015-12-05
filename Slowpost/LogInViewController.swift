@@ -12,12 +12,12 @@ import Foundation
 
 class LogInViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var UsernameTextField: BottomBorderUITextField!
+    var email:String!
+    
     @IBOutlet weak var passwordTextField: BottomBorderUITextField!
     @IBOutlet weak var logInButton: TextUIButton!
     @IBOutlet weak var warningLabel: WarningUILabel!
     
-    @IBOutlet weak var verticalSpaceToUsername: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToPassword: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToLogIn: NSLayoutConstraint!
     @IBOutlet weak var logInButtonHeight: NSLayoutConstraint!
@@ -48,12 +48,10 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
     func formatForiPhone4S() {
-        verticalSpaceToUsername.constant = 50
         verticalSpaceToPassword.constant = 10
         verticalSpaceToLogIn.constant = 30
         logInButtonHeight.constant = 30
         
-        UsernameTextField.font = UsernameTextField.font!.fontWithSize(15.0)
         passwordTextField.font = passwordTextField.font!.fontWithSize(15.0)
         
     }
@@ -65,7 +63,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        UsernameTextField.addBottomLayer()
         passwordTextField.addBottomLayer()
     }
     
@@ -77,7 +74,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBAction func LogIn(sender: AnyObject) {
         
         logInButton.disable()
-        let parameters = ["username": "\(UsernameTextField.text!)", "password": "\(passwordTextField.text!)"]
+        let parameters = ["username": "\(email)", "password": "\(passwordTextField.text!)"]
 
         LoginService.logIn(parameters, completion: { (error, result) -> Void in
             if  error != nil {
@@ -107,17 +104,12 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     }
     
     func validateLogInButton() {
-        if UsernameTextField.text != "" && passwordTextField.text != "" {
+        if passwordTextField.text != "" {
             logInButton.enable()
         }
         else {
             logInButton.disable()
         }
-    }
-    
-    @IBAction func cancel(sender: AnyObject) {
-        Flurry.logEvent("Login_Cancelled_By_User")
-        dismissViewControllerAnimated(true, completion: {})
     }
     
 }

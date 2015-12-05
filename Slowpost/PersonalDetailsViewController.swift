@@ -11,6 +11,7 @@ import Alamofire
 
 class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
     
+    var email:String!
 
     @IBOutlet weak var givenNameTextField: BottomBorderUITextField!
     @IBOutlet weak var familyNameTextField: BottomBorderUITextField!
@@ -36,6 +37,10 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
         nextButton.layer.cornerRadius = 5
         
         warningLabel.hide()
+        
+        if email != nil {
+            emailTextField.text = email
+        }
         
         validateNextButton()
         

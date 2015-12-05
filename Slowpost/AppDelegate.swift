@@ -37,7 +37,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("Got a remote notification")
         }
         
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
         return true
+    }
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        let isFacebookURL = (url.scheme.hasPrefix("fb\(FBSDKSettings.appID())") && url.host == "authorize")
+        if isFacebookURL {
+            return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+        }
+        return false
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -65,6 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
         Flurry.logEvent("Became_Active")
+        FBSDKAppEvents.activateApp()
         let notification = NSNotification(name: "appBecameActive:", object: nil)
         NSNotificationCenter.defaultCenter().postNotification(notification)
     }
