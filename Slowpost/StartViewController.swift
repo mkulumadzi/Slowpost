@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import Foundation
+import SwiftyJSON
 
 class StartViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate {
 
@@ -81,21 +82,18 @@ class StartViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
             print(error)
         }
         else {
-            returnUserData()
+            getUserInfoFromFacebook()
         }
     }
     
-    func returnUserData() {
-        let graphRequest:FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id,gender,birthday,email,age_range,name"])
+    func getUserInfoFromFacebook() {
+        let graphRequest:FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id,birthday,email,name"])
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
             if ((error) != nil) {
                 print(error)
             }
             else {
-                print(result)
-                print(result.valueForKey("id") as! String)
-                print(result.valueForKey("name") as! String)
-                print(result.valueForKey("gender") as! String)
+                self.completeSignupWithFacebookResult(result)
             }
         })
     }
@@ -124,6 +122,27 @@ class StartViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                 }
                 else {
                     self.performSegueWithIdentifier("logIn", sender: nil)
+                }
+            }
+        })
+    }
+    
+    func completeSignupWithFacebookResult(result: AnyObject) {
+        let email = result.valueForKey("email") as! String
+        let params = ["email": email]
+        LoginService.checkFieldAvailability(params, completion: { (error, result) -> Void in
+            if error != nil {
+                print(error)
+            }
+            else {
+                let availability = result!["email"].stringValue
+                if availability == "available" {
+                    self.performSegueWithIdentifier("createUsername", sender: nil)
+                }
+                else {
+                    LoginService.logInWithFacebook({ (error, result) -> Void in
+                        self.performSegueWithIdentifier("loginCompleted", sender: nil)
+                    })
                 }
             }
         })

@@ -36,6 +36,7 @@
 		D20EC2551BAC84FA00E3DEA5 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EC2541BAC84FA00E3DEA5 /* Note.swift */; };
 		D20EC2571BAC880C00E3DEA5 /* PostofficeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EC2561BAC880C00E3DEA5 /* PostofficeObject.swift */; };
 		D20EC2591BAC8F1400E3DEA5 /* PostofficeObjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EC2581BAC8F1400E3DEA5 /* PostofficeObjectService.swift */; };
+		D210031D1C1657FC00E45CA3 /* UsernameFBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D210031C1C1657FC00E45CA3 /* UsernameFBViewController.swift */; };
 		D21E2C871BC09C6100E17572 /* libFlurry_7.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D21E2C861BC09C6100E17572 /* libFlurry_7.2.1.a */; };
 		D2319AC01BD16D8F00B989C0 /* RequestSubmittedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2319ABF1BD16D8F00B989C0 /* RequestSubmittedViewController.swift */; };
 		D2389E681B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E671B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift */; };
@@ -186,6 +187,7 @@
 		D20EC2541BAC84FA00E3DEA5 /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		D20EC2561BAC880C00E3DEA5 /* PostofficeObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostofficeObject.swift; sourceTree = "<group>"; };
 		D20EC2581BAC8F1400E3DEA5 /* PostofficeObjectService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostofficeObjectService.swift; sourceTree = "<group>"; };
+		D210031C1C1657FC00E45CA3 /* UsernameFBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsernameFBViewController.swift; sourceTree = "<group>"; };
 		D21E2C851BC09C5900E17572 /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		D21E2C861BC09C6100E17572 /* libFlurry_7.2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.2.1.a; sourceTree = "<group>"; };
 		D2222A741B588695007E74BB /* SnailMailModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SnailMailModel 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				D289F2171BD15517004D29FA /* RequestPasswordResetViewController.swift */,
 				D2319ABF1BD16D8F00B989C0 /* RequestSubmittedViewController.swift */,
 				D2AA1E341C126C69001F5F01 /* StartViewController.swift */,
+				D210031C1C1657FC00E45CA3 /* UsernameFBViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -844,6 +847,7 @@
 			files = (
 				D2A2B4291BD6ED2A0069C3E4 /* ToNavigationController.swift in Sources */,
 				D20EC2591BAC8F1400E3DEA5 /* PostofficeObjectService.swift in Sources */,
+				D210031D1C1657FC00E45CA3 /* UsernameFBViewController.swift in Sources */,
 				D24BC0F51B96994D000405F7 /* CustomContainerView.swift in Sources */,
 				CC96E4A91ABCD91A001E6D27 /* Mail.swift in Sources */,
 				CCCB1A7B1AB0DE780067F100 /* MyMailboxViewController.swift in Sources */,

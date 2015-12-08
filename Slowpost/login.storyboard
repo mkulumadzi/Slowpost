@@ -36,8 +36,13 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
@@ -1178,13 +1183,143 @@ We won't save your address book on our servers, but we will search for matches w
                         <segue destination="WeV-i4-6Ay" kind="unwind" identifier="loginCompleted" unwindAction="signUpOrLogInCompleted:" id="B7V-7B-Ahw"/>
                         <segue destination="cqE-Qh-T2s" kind="show" identifier="signUp" id="SI6-8q-mx6"/>
                         <segue destination="5Lt-wu-z72" kind="show" identifier="logIn" id="41z-7e-me5"/>
+                        <segue destination="NmG-rd-96O" kind="show" identifier="createUsername" id="dAE-qV-Hz8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zMC-ZT-wyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="WeV-i4-6Ay" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="1eE-cU-O9M"/>
             </objects>
-            <point key="canvasLocation" x="1485" y="-1046"/>
+            <point key="canvasLocation" x="1505" y="-1046"/>
+        </scene>
+        <!--Username-->
+        <scene sceneID="fdE-GP-Dbp">
+            <objects>
+                <viewController id="NmG-rd-96O" userLabel="Username" customClass="UsernameFBViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MC4-GR-SVu"/>
+                        <viewControllerLayoutGuide type="bottom" id="eDh-lb-0Uc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MYp-Q1-lOF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="AXE-uD-atw" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="fC4-jc-jVv"/>
+                                    <constraint firstAttribute="height" constant="30" id="q7N-iU-tDc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="q7N-iU-tDc"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ESi-Fz-CvU" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="187" width="540" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="L3U-FA-jR4"/>
+                                </constraints>
+                                <color key="textColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <connections>
+                                    <action selector="editingChanged:" destination="NmG-rd-96O" eventType="editingChanged" id="9Ti-Sy-69c"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Slowpost! Please create a unique username to help us identify you to other people:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="JTO-6f-fQ2">
+                                <rect key="frame" x="30" y="110" width="540" height="47"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uhr-Zn-m71" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="247" width="540" height="40"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="fVp-tm-Dz9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Sign up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkUsernameAvailability:" destination="NmG-rd-96O" eventType="touchUpInside" id="OUj-EK-XTk"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="By clicking 'Sign up' I confirm I agree to the Privacy Policy." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MRS-Rc-DcF">
+                                <rect key="frame" x="30" y="295" width="540" height="34"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ESi-Fz-CvU" secondAttribute="trailing" constant="30" id="5n4-XL-BNa">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                            <constraint firstItem="Uhr-Zn-m71" firstAttribute="top" secondItem="ESi-Fz-CvU" secondAttribute="bottom" constant="30" id="7Ol-wr-lhr"/>
+                            <constraint firstItem="JTO-6f-fQ2" firstAttribute="leading" secondItem="MYp-Q1-lOF" secondAttribute="leading" constant="30" id="A8a-vu-gmt">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                            <constraint firstItem="JTO-6f-fQ2" firstAttribute="top" secondItem="MC4-GR-SVu" secondAttribute="bottom" constant="46" id="DcB-Ea-i1g"/>
+                            <constraint firstAttribute="trailing" secondItem="JTO-6f-fQ2" secondAttribute="trailing" constant="30" id="EfS-LB-iOR">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="MRS-Rc-DcF" secondAttribute="trailing" constant="30" id="MYU-a2-pES">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                            <constraint firstItem="ESi-Fz-CvU" firstAttribute="top" secondItem="JTO-6f-fQ2" secondAttribute="bottom" constant="30" id="XfX-2J-Sk7"/>
+                            <constraint firstItem="Uhr-Zn-m71" firstAttribute="leading" secondItem="MYp-Q1-lOF" secondAttribute="leading" constant="30" id="cB4-yh-BYc">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                            <constraint firstItem="MRS-Rc-DcF" firstAttribute="top" secondItem="Uhr-Zn-m71" secondAttribute="bottom" constant="8" id="cvC-RA-rMJ"/>
+                            <constraint firstItem="MRS-Rc-DcF" firstAttribute="leading" secondItem="MYp-Q1-lOF" secondAttribute="leading" constant="30" id="d5W-h9-2Bq">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="AXE-uD-atw" secondAttribute="trailing" id="eA2-RN-hVJ"/>
+                            <constraint firstItem="AXE-uD-atw" firstAttribute="top" secondItem="MC4-GR-SVu" secondAttribute="bottom" id="jqv-JG-UKf"/>
+                            <constraint firstItem="AXE-uD-atw" firstAttribute="leading" secondItem="MYp-Q1-lOF" secondAttribute="leading" id="pUX-Z6-kkN"/>
+                            <constraint firstItem="ESi-Fz-CvU" firstAttribute="leading" secondItem="MYp-Q1-lOF" secondAttribute="leading" constant="30" id="tzO-3W-4Yc">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="Uhr-Zn-m71" secondAttribute="trailing" constant="30" id="y7S-FV-8mh">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Username" id="Zi7-SR-daq" userLabel="Username"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="buttonHeight" destination="fVp-tm-Dz9" id="Mfs-j2-FI3"/>
+                        <outlet property="signUpButton" destination="Uhr-Zn-m71" id="qB0-cy-9Yw"/>
+                        <outlet property="termsTextView" destination="MRS-Rc-DcF" id="Wfe-iF-VXm"/>
+                        <outlet property="usernameTextField" destination="ESi-Fz-CvU" id="Fp2-Ck-GLs"/>
+                        <outlet property="verticalSpaceToSignUp" destination="7Ol-wr-lhr" id="Wzz-Pb-COC"/>
+                        <outlet property="verticalSpaceToTitle" destination="DcB-Ea-i1g" id="WIb-Q3-qkw"/>
+                        <outlet property="warningLabel" destination="AXE-uD-atw" id="34o-Yz-8gl"/>
+                        <segue destination="w8n-Sy-2a1" kind="presentation" identifier="facebookSignUpComplete" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="5wz-dV-fDh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T1Q-te-0nY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2228" y="-2098"/>
         </scene>
     </scenes>
     <resources>
@@ -1194,4 +1329,7 @@ We won't save your address book on our servers, but we will search for matches w
         <image name="example_photo.jpg" width="720" height="960"/>
         <image name="grey-circle.png" width="120" height="120"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="5wz-dV-fDh"/>
+    </inferredMetricsTieBreakers>
 </document>

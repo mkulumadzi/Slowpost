@@ -84,6 +84,39 @@ class LoginService: PersonService {
         
     }
     
+    class func logInWithFacebook(completion: (error: ErrorType?, result: AnyObject?) -> Void) {
+        
+        let graphRequest:FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email"])
+        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            if ((error) != nil) {
+                completion(error: error, result: "Failure")
+            }
+            else {
+                let email = result!.valueForKey("email") as! String
+                let fbAccessToken = FBSDKAccessToken.currentAccessToken().tokenString
+                let parameters = ["email": "\(email)", "fb_access_token": "\(fbAccessToken)"]
+                
+                Alamofire.request(.POST, "\(PostOfficeURL)login/facebook", parameters: parameters, encoding: .JSON)
+                    .responseJSON { (response) in
+                        switch response.result {
+                        case .Success (let result):
+                            let json = JSON(result)
+                            let token = json["access_token"].stringValue
+                            saveLoginToUserDefaults(token)
+                            completion(error: nil, result: "Success")
+                        case .Failure(let error):
+                            if response.response != nil {
+                                completion(error: nil, result: "Invalid login")
+                            }
+                            else {
+                                completion(error: error, result: nil)
+                            }
+                        }
+                }
+            }
+        })
+    }
+    
     class func getTokenPayload(token: String) -> [String: AnyObject]? {
         var payload:[String: AnyObject]!
         var jwt:JWT!
