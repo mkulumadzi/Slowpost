@@ -69,6 +69,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         personTable.sectionIndexBackgroundColor = UIColor.clearColor()
         personTable.sectionHeaderHeight = 24.0
         
+        testFacebookFriends()
+        
     }
     
     func formatButtons() {
@@ -77,6 +79,18 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         editRecipientsButton.setImage(UIImage(named: "edit")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         editRecipientsButton.tintColor = slowpostBlack
         nextButton.contentHorizontalAlignment = .Right
+    }
+    
+    func testFacebookFriends() {
+        let graphRequest:FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil)
+        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+            if ((error) != nil) {
+                print(error)
+            }
+            else {
+                print(result)
+            }
+        })
     }
     
     func initializeShadedView() {

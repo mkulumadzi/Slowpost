@@ -1452,11 +1452,10 @@ We won't save your address book on our servers, but we will search for matches w
                         <outlet property="verticalSpaceToSignUp" destination="hzI-7t-o3U" id="v79-rb-uKv"/>
                         <outlet property="verticalSpaceToTitle" destination="GkH-Ek-Q4h" id="G6v-Dg-fGN"/>
                         <outlet property="warningLabel" destination="feF-mk-eQv" id="AEE-sS-LGR"/>
-                        <segue destination="oto-cD-mrl" kind="unwind" identifier="facebookSignUpComplete" unwindAction="signUpOrLogInCompleted:" id="hUW-BC-Lq0"/>
+                        <segue destination="w8n-Sy-2a1" kind="presentation" identifier="facebookSignUpComplete" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="jjP-gS-mDE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="slh-ea-dfg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="oto-cD-mrl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2894" y="-2098"/>
         </scene>
@@ -1468,4 +1467,7 @@ We won't save your address book on our servers, but we will search for matches w
         <image name="example_photo.jpg" width="720" height="960"/>
         <image name="grey-circle.png" width="120" height="120"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="jjP-gS-mDE"/>
+    </inferredMetricsTieBreakers>
 </document>

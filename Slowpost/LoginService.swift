@@ -103,6 +103,7 @@ class LoginService: PersonService {
                             let json = JSON(result)
                             let token = json["access_token"].stringValue
                             saveLoginToUserDefaults(token)
+                            updateUserFacebookId()
                             completion(error: nil, result: "Success")
                         case .Failure(let error):
                             if response.response != nil {
@@ -113,6 +114,19 @@ class LoginService: PersonService {
                             }
                         }
                 }
+            }
+        })
+    }
+    
+    class func updateUserFacebookId() {
+        let userId = getUserIdFromToken()
+        let updatePersonURL = "\(PostOfficeURL)/person/id/\(userId)"
+        let facebookId = FBSDKAccessToken.currentAccessToken().userID
+        let facebookToken = FBSDKAccessToken.currentAccessToken().tokenString
+        let parameters = ["facebook_id": "\(facebookId)", "facebook_token": "\(facebookToken)"]
+        RestService.postRequest(updatePersonURL, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
+            if error != nil {
+                print(error)
             }
         })
     }

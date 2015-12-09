@@ -163,8 +163,9 @@ class PasswordFBController: UIViewController, UITextFieldDelegate {
         let givenName = fullNameArray[0]
         let familyName = fullNameArray[1]
         let password = passwordTextField.text!
+        let facebookToken = FBSDKAccessToken.currentAccessToken().tokenString
         
-        let parameters = ["given_name": "\(givenName)", "family_name": "\(familyName)", "username": "\(username)", "email": "\(email)", "password": "\(password)", "facebook_id": "\(facebookId)"]
+        let parameters = ["given_name": "\(givenName)", "family_name": "\(familyName)", "username": "\(username)", "email": "\(email)", "password": "\(password)", "facebook_id": "\(facebookId)", "facebook_token": "\(facebookToken)"]
         
         let headers:[String: String] = ["Authorization": "Bearer \(appToken)", "Accept": "application/json"]
         

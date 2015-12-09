@@ -155,6 +155,7 @@ class EditProfileViewController: UITableViewController, FBSDKLoginButtonDelegate
             print(error)
         }
         else {
+            LoginService.updateUserFacebookId()
             validateLoginButtons()
         }
     }
