@@ -40,8 +40,15 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
@@ -1115,6 +1122,7 @@ We won't save your address book on our servers, but we will search for matches w
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="748" verticalHuggingPriority="751" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="8" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0F8-Gw-2PI" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="176" width="540" height="30"/>
                                 <animations/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="awP-7S-vqF"/>
                                 </constraints>
@@ -1140,6 +1148,23 @@ We won't save your address book on our servers, but we will search for matches w
                                     <action selector="checkForEmailMatch:" destination="WJT-E9-Tgl" eventType="touchUpInside" id="Mna-7X-SAx"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email to get started." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="oQh-Il-XCk">
+                                <rect key="frame" x="30" y="110" width="540" height="24"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- or -" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="jMh-Y8-Wyi">
+                                <rect key="frame" x="30" y="276" width="540" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="2sC-op-eCC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1147,9 +1172,14 @@ We won't save your address book on our servers, but we will search for matches w
                         <constraints>
                             <constraint firstItem="mMR-r1-INh" firstAttribute="top" secondItem="0F8-Gw-2PI" secondAttribute="bottom" constant="30" id="2Gh-UL-aCS"/>
                             <constraint firstItem="mMR-r1-INh" firstAttribute="top" secondItem="0F8-Gw-2PI" secondAttribute="top" id="CuS-U1-4Fq"/>
+                            <constraint firstItem="oQh-Il-XCk" firstAttribute="top" secondItem="65c-B6-4tw" secondAttribute="bottom" constant="46" id="DM8-pe-Uqt"/>
+                            <constraint firstAttribute="trailing" secondItem="oQh-Il-XCk" secondAttribute="trailing" constant="30" id="Nvi-lB-TB8"/>
+                            <constraint firstItem="jMh-Y8-Wyi" firstAttribute="leading" secondItem="ruh-Tw-TO2" secondAttribute="leading" constant="30" id="Rn8-yE-FVn"/>
                             <constraint firstItem="0F8-Gw-2PI" firstAttribute="leading" secondItem="ruh-Tw-TO2" secondAttribute="leading" constant="30" id="VfI-cJ-Iys">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
+                            <constraint firstItem="jMh-Y8-Wyi" firstAttribute="top" secondItem="mMR-r1-INh" secondAttribute="bottom" id="cdj-W7-lLW"/>
+                            <constraint firstItem="oQh-Il-XCk" firstAttribute="leading" secondItem="ruh-Tw-TO2" secondAttribute="leading" constant="30" id="eEd-Tq-12L"/>
                             <constraint firstAttribute="trailing" secondItem="mMR-r1-INh" secondAttribute="trailing" constant="30" id="irW-jw-KzO">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
@@ -1159,6 +1189,7 @@ We won't save your address book on our servers, but we will search for matches w
                             <constraint firstItem="mMR-r1-INh" firstAttribute="leading" secondItem="ruh-Tw-TO2" secondAttribute="leading" constant="30" id="ufV-Zo-gT6">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
+                            <constraint firstAttribute="trailing" secondItem="jMh-Y8-Wyi" secondAttribute="trailing" constant="30" id="ujr-Iz-EYB"/>
                             <constraint firstItem="0F8-Gw-2PI" firstAttribute="top" secondItem="65c-B6-4tw" secondAttribute="bottom" constant="112" id="vHE-Ea-0g9"/>
                         </constraints>
                         <variation key="default">
@@ -1183,7 +1214,7 @@ We won't save your address book on our servers, but we will search for matches w
                         <segue destination="WeV-i4-6Ay" kind="unwind" identifier="loginCompleted" unwindAction="signUpOrLogInCompleted:" id="B7V-7B-Ahw"/>
                         <segue destination="cqE-Qh-T2s" kind="show" identifier="signUp" id="SI6-8q-mx6"/>
                         <segue destination="5Lt-wu-z72" kind="show" identifier="logIn" id="41z-7e-me5"/>
-                        <segue destination="NmG-rd-96O" kind="show" identifier="createUsername" id="dAE-qV-Hz8"/>
+                        <segue destination="bB0-2T-o96" kind="show" identifier="chooseUsername" id="gFt-aM-VIV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zMC-ZT-wyY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1193,60 +1224,150 @@ We won't save your address book on our servers, but we will search for matches w
             <point key="canvasLocation" x="1505" y="-1046"/>
         </scene>
         <!--Username-->
-        <scene sceneID="fdE-GP-Dbp">
+        <scene sceneID="ykJ-MR-yqr">
             <objects>
-                <viewController id="NmG-rd-96O" userLabel="Username" customClass="UsernameFBViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bB0-2T-o96" userLabel="Username" customClass="UsernameFBViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="MC4-GR-SVu"/>
-                        <viewControllerLayoutGuide type="bottom" id="eDh-lb-0Uc"/>
+                        <viewControllerLayoutGuide type="top" id="6eO-cW-aGM"/>
+                        <viewControllerLayoutGuide type="bottom" id="Krv-PY-8Nl"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="MYp-Q1-lOF">
+                    <view key="view" contentMode="scaleToFill" id="YWx-34-CDX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="AXE-uD-atw" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warning Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ul2-YY-CGX" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="30"/>
                                 <animations/>
-                                <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.043137254901960784" green="0.043137254901960784" blue="0.043137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="fC4-jc-jVv"/>
-                                    <constraint firstAttribute="height" constant="30" id="q7N-iU-tDc"/>
+                                    <constraint firstAttribute="height" constant="30" id="kEZ-U6-il0"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="q7N-iU-tDc"/>
-                                    </mask>
-                                </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ESi-Fz-CvU" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="187" width="540" height="30"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="L3U-FA-jR4"/>
-                                </constraints>
-                                <color key="textColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                                <connections>
-                                    <action selector="editingChanged:" destination="NmG-rd-96O" eventType="editingChanged" id="9Ti-Sy-69c"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Slowpost! Please create a unique username to help us identify you to other people:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="JTO-6f-fQ2">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Slowpost! Please choose a username to help other people find you in the app." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUp-Jk-nGK">
                                 <rect key="frame" x="30" y="110" width="540" height="47"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uhr-Zn-m71" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zUK-2q-Mv0" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="187" width="540" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ajE-IQ-EBh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="editingChanged:" destination="bB0-2T-o96" eventType="editingChanged" id="cHN-T9-i7B"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5AD-mO-odO" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="30" y="247" width="540" height="40"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="fVp-tm-Dz9"/>
+                                    <constraint firstAttribute="height" constant="40" id="m8L-Zi-USA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkUsernameAvailability:" destination="bB0-2T-o96" eventType="touchUpInside" id="NZs-Qe-oTk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NUp-Jk-nGK" firstAttribute="leading" secondItem="YWx-34-CDX" secondAttribute="leading" constant="30" id="9Sd-Or-86l"/>
+                            <constraint firstAttribute="trailing" secondItem="5AD-mO-odO" secondAttribute="trailing" constant="30" id="H8O-qJ-gp8"/>
+                            <constraint firstItem="5AD-mO-odO" firstAttribute="leading" secondItem="YWx-34-CDX" secondAttribute="leading" constant="30" id="MI5-7s-Ya2"/>
+                            <constraint firstItem="ul2-YY-CGX" firstAttribute="top" secondItem="6eO-cW-aGM" secondAttribute="bottom" id="MS9-32-1k2"/>
+                            <constraint firstAttribute="trailing" secondItem="ul2-YY-CGX" secondAttribute="trailing" id="TtI-O0-YTZ"/>
+                            <constraint firstAttribute="trailing" secondItem="zUK-2q-Mv0" secondAttribute="trailing" constant="30" id="XH7-eZ-PeY"/>
+                            <constraint firstItem="ul2-YY-CGX" firstAttribute="leading" secondItem="YWx-34-CDX" secondAttribute="leading" id="c7I-mh-lvI"/>
+                            <constraint firstItem="zUK-2q-Mv0" firstAttribute="top" secondItem="NUp-Jk-nGK" secondAttribute="bottom" constant="30" id="hGw-Fk-rsL"/>
+                            <constraint firstAttribute="trailing" secondItem="NUp-Jk-nGK" secondAttribute="trailing" constant="30" id="hin-Sb-0Bi"/>
+                            <constraint firstItem="NUp-Jk-nGK" firstAttribute="top" secondItem="6eO-cW-aGM" secondAttribute="bottom" constant="46" id="i6w-yL-O93"/>
+                            <constraint firstItem="5AD-mO-odO" firstAttribute="top" secondItem="zUK-2q-Mv0" secondAttribute="bottom" constant="30" id="j4S-Ro-VIG"/>
+                            <constraint firstItem="zUK-2q-Mv0" firstAttribute="leading" secondItem="YWx-34-CDX" secondAttribute="leading" constant="30" id="v8U-XJ-qMN"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Username" id="ac6-Q3-KNr"/>
+                    <connections>
+                        <outlet property="buttonHeight" destination="m8L-Zi-USA" id="2a4-bA-pld"/>
+                        <outlet property="nextButton" destination="5AD-mO-odO" id="kjP-QB-5Bv"/>
+                        <outlet property="usernameTextField" destination="zUK-2q-Mv0" id="60M-H6-IIq"/>
+                        <outlet property="verticalSpaceToNext" destination="j4S-Ro-VIG" id="YBF-zw-mdj"/>
+                        <outlet property="verticalSpaceToTitle" destination="i6w-yL-O93" id="osP-lq-hKF"/>
+                        <outlet property="warningLabel" destination="ul2-YY-CGX" id="y45-4l-xUf"/>
+                        <segue destination="v7D-ek-AFm" kind="show" identifier="choosePassword" id="skw-YO-eGj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ohE-V4-Haz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2228" y="-2098"/>
+        </scene>
+        <!--Password-->
+        <scene sceneID="QUE-4V-OEB">
+            <objects>
+                <viewController id="v7D-ek-AFm" userLabel="Password" customClass="PasswordFBController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xlP-Zm-HL6"/>
+                        <viewControllerLayoutGuide type="bottom" id="BBT-Uj-P6n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="B8V-kz-eWh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="feF-mk-eQv" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="600" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ECU-wQ-yu6"/>
+                                    <constraint firstAttribute="height" constant="30" id="coC-Wn-snp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="coC-Wn-snp"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wKL-N1-b8X" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="187" width="540" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="MuP-hH-1gd"/>
+                                </constraints>
+                                <color key="textColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="editingChanged:" destination="v7D-ek-AFm" eventType="editingChanged" id="eET-5o-7Wh"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a secure password - you can use this to log in without Facebook in the future." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="UIH-wL-fLk">
+                                <rect key="frame" x="30" y="110" width="540" height="47"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRt-FY-am5" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="287" width="540" height="40"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="tGW-LL-bbp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="15"/>
                                 <state key="normal" title="Sign up">
@@ -1254,11 +1375,11 @@ We won't save your address book on our servers, but we will search for matches w
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="checkUsernameAvailability:" destination="NmG-rd-96O" eventType="touchUpInside" id="OUj-EK-XTk"/>
+                                    <action selector="signUpPressed:" destination="v7D-ek-AFm" eventType="touchUpInside" id="iDd-Cm-irX"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="By clicking 'Sign up' I confirm I agree to the Privacy Policy." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="MRS-Rc-DcF">
-                                <rect key="frame" x="30" y="295" width="540" height="34"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="By clicking 'Sign up' I confirm I agree to the Privacy Policy." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OAH-eI-Wfx">
+                                <rect key="frame" x="30" y="335" width="540" height="34"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1266,60 +1387,78 @@ We won't save your address book on our servers, but we will search for matches w
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9Rp-Oj-FbS" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="227" width="540" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="i2b-eG-tLm"/>
+                                </constraints>
+                                <color key="textColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="editingChanged:" destination="v7D-ek-AFm" eventType="editingChanged" id="Lsl-bB-YLB"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ESi-Fz-CvU" secondAttribute="trailing" constant="30" id="5n4-XL-BNa">
+                            <constraint firstAttribute="trailing" secondItem="UIH-wL-fLk" secondAttribute="trailing" constant="30" id="4Mt-It-TRe">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstItem="Uhr-Zn-m71" firstAttribute="top" secondItem="ESi-Fz-CvU" secondAttribute="bottom" constant="30" id="7Ol-wr-lhr"/>
-                            <constraint firstItem="JTO-6f-fQ2" firstAttribute="leading" secondItem="MYp-Q1-lOF" secondAttribute="leading" constant="30" id="A8a-vu-gmt">
+                            <constraint firstAttribute="trailing" secondItem="9Rp-Oj-FbS" secondAttribute="trailing" constant="30" id="4eV-DP-hr1"/>
+                            <constraint firstAttribute="trailing" secondItem="feF-mk-eQv" secondAttribute="trailing" id="4uo-IP-36s"/>
+                            <constraint firstItem="9Rp-Oj-FbS" firstAttribute="leading" secondItem="B8V-kz-eWh" secondAttribute="leading" constant="30" id="4ze-Gt-MkT"/>
+                            <constraint firstAttribute="trailing" secondItem="wKL-N1-b8X" secondAttribute="trailing" constant="30" id="AYC-cK-NfK">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstItem="JTO-6f-fQ2" firstAttribute="top" secondItem="MC4-GR-SVu" secondAttribute="bottom" constant="46" id="DcB-Ea-i1g"/>
-                            <constraint firstAttribute="trailing" secondItem="JTO-6f-fQ2" secondAttribute="trailing" constant="30" id="EfS-LB-iOR">
+                            <constraint firstItem="UIH-wL-fLk" firstAttribute="top" secondItem="xlP-Zm-HL6" secondAttribute="bottom" constant="46" id="GkH-Ek-Q4h"/>
+                            <constraint firstItem="UIH-wL-fLk" firstAttribute="leading" secondItem="B8V-kz-eWh" secondAttribute="leading" constant="30" id="JOP-ii-1ih">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstAttribute="trailing" secondItem="MRS-Rc-DcF" secondAttribute="trailing" constant="30" id="MYU-a2-pES">
+                            <constraint firstAttribute="trailing" secondItem="tRt-FY-am5" secondAttribute="trailing" constant="30" id="QMY-PH-zsR">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstItem="ESi-Fz-CvU" firstAttribute="top" secondItem="JTO-6f-fQ2" secondAttribute="bottom" constant="30" id="XfX-2J-Sk7"/>
-                            <constraint firstItem="Uhr-Zn-m71" firstAttribute="leading" secondItem="MYp-Q1-lOF" secondAttribute="leading" constant="30" id="cB4-yh-BYc">
+                            <constraint firstItem="OAH-eI-Wfx" firstAttribute="leading" secondItem="B8V-kz-eWh" secondAttribute="leading" constant="30" id="QSA-1p-eKz">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstItem="MRS-Rc-DcF" firstAttribute="top" secondItem="Uhr-Zn-m71" secondAttribute="bottom" constant="8" id="cvC-RA-rMJ"/>
-                            <constraint firstItem="MRS-Rc-DcF" firstAttribute="leading" secondItem="MYp-Q1-lOF" secondAttribute="leading" constant="30" id="d5W-h9-2Bq">
+                            <constraint firstItem="feF-mk-eQv" firstAttribute="leading" secondItem="B8V-kz-eWh" secondAttribute="leading" id="h5G-sD-uMa"/>
+                            <constraint firstItem="tRt-FY-am5" firstAttribute="top" secondItem="9Rp-Oj-FbS" secondAttribute="bottom" constant="30" id="hzI-7t-o3U"/>
+                            <constraint firstItem="wKL-N1-b8X" firstAttribute="top" secondItem="UIH-wL-fLk" secondAttribute="bottom" constant="30" id="iUY-0U-PRo"/>
+                            <constraint firstItem="wKL-N1-b8X" firstAttribute="leading" secondItem="B8V-kz-eWh" secondAttribute="leading" constant="30" id="mAS-gw-0t9">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstAttribute="trailing" secondItem="AXE-uD-atw" secondAttribute="trailing" id="eA2-RN-hVJ"/>
-                            <constraint firstItem="AXE-uD-atw" firstAttribute="top" secondItem="MC4-GR-SVu" secondAttribute="bottom" id="jqv-JG-UKf"/>
-                            <constraint firstItem="AXE-uD-atw" firstAttribute="leading" secondItem="MYp-Q1-lOF" secondAttribute="leading" id="pUX-Z6-kkN"/>
-                            <constraint firstItem="ESi-Fz-CvU" firstAttribute="leading" secondItem="MYp-Q1-lOF" secondAttribute="leading" constant="30" id="tzO-3W-4Yc">
+                            <constraint firstItem="tRt-FY-am5" firstAttribute="leading" secondItem="B8V-kz-eWh" secondAttribute="leading" constant="30" id="mAh-gk-Sib">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstAttribute="trailing" secondItem="Uhr-Zn-m71" secondAttribute="trailing" constant="30" id="y7S-FV-8mh">
+                            <constraint firstItem="9Rp-Oj-FbS" firstAttribute="top" secondItem="wKL-N1-b8X" secondAttribute="bottom" constant="10" id="rga-35-HQe"/>
+                            <constraint firstAttribute="trailing" secondItem="OAH-eI-Wfx" secondAttribute="trailing" constant="30" id="vJb-Xl-R9Q">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
+                            <constraint firstItem="OAH-eI-Wfx" firstAttribute="top" secondItem="tRt-FY-am5" secondAttribute="bottom" constant="8" id="vgL-yk-4CV"/>
+                            <constraint firstItem="feF-mk-eQv" firstAttribute="top" secondItem="xlP-Zm-HL6" secondAttribute="bottom" id="yit-yU-ZEZ"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Username" id="Zi7-SR-daq" userLabel="Username"/>
+                    <navigationItem key="navigationItem" title="Password" id="EwW-r5-U1M" userLabel="Username"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="buttonHeight" destination="fVp-tm-Dz9" id="Mfs-j2-FI3"/>
-                        <outlet property="signUpButton" destination="Uhr-Zn-m71" id="qB0-cy-9Yw"/>
-                        <outlet property="termsTextView" destination="MRS-Rc-DcF" id="Wfe-iF-VXm"/>
-                        <outlet property="usernameTextField" destination="ESi-Fz-CvU" id="Fp2-Ck-GLs"/>
-                        <outlet property="verticalSpaceToSignUp" destination="7Ol-wr-lhr" id="Wzz-Pb-COC"/>
-                        <outlet property="verticalSpaceToTitle" destination="DcB-Ea-i1g" id="WIb-Q3-qkw"/>
-                        <outlet property="warningLabel" destination="AXE-uD-atw" id="34o-Yz-8gl"/>
-                        <segue destination="w8n-Sy-2a1" kind="presentation" identifier="facebookSignUpComplete" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="5wz-dV-fDh"/>
+                        <outlet property="buttonHeight" destination="tGW-LL-bbp" id="qH9-YN-r2R"/>
+                        <outlet property="confirmPasswordTextField" destination="9Rp-Oj-FbS" id="b0E-Sx-9pN"/>
+                        <outlet property="passwordTextField" destination="wKL-N1-b8X" id="FhV-Mh-sq6"/>
+                        <outlet property="signUpButton" destination="tRt-FY-am5" id="5IA-7z-gJK"/>
+                        <outlet property="termsTextView" destination="OAH-eI-Wfx" id="mj0-Ny-fOZ"/>
+                        <outlet property="verticalSpaceToSignUp" destination="hzI-7t-o3U" id="v79-rb-uKv"/>
+                        <outlet property="verticalSpaceToTitle" destination="GkH-Ek-Q4h" id="G6v-Dg-fGN"/>
+                        <outlet property="warningLabel" destination="feF-mk-eQv" id="AEE-sS-LGR"/>
+                        <segue destination="oto-cD-mrl" kind="unwind" identifier="facebookSignUpComplete" unwindAction="signUpOrLogInCompleted:" id="hUW-BC-Lq0"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T1Q-te-0nY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="slh-ea-dfg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="oto-cD-mrl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2228" y="-2098"/>
+            <point key="canvasLocation" x="2894" y="-2098"/>
         </scene>
     </scenes>
     <resources>
@@ -1329,7 +1468,4 @@ We won't save your address book on our servers, but we will search for matches w
         <image name="example_photo.jpg" width="720" height="960"/>
         <image name="grey-circle.png" width="120" height="120"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="5wz-dV-fDh"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -26,6 +26,8 @@ class StartViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        logOutOfFacebookIfNecessary()
         
         modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
@@ -51,6 +53,10 @@ class StartViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         emailTextField.font = emailTextField.font!.fontWithSize(15.0)
     }
     
+    func logOutOfFacebookIfNecessary() {
+        FBSDKAccessToken.setCurrentAccessToken(nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -63,6 +69,7 @@ class StartViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     
     func addFacebookLoginButton() {
         loginView = FBSDKLoginButton()
+        loginView.layer.cornerRadius = 5
         view.addSubview(loginView)
         
         let loginViewWidth = NSLayoutConstraint(item: loginView, attribute: .Width, relatedBy: .Equal, toItem: nextButton, attribute: .Width, multiplier: 1.0, constant: 0.0)
@@ -138,7 +145,7 @@ class StartViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
             else {
                 let availability = result!["email"].stringValue
                 if availability == "available" {
-                    self.performSegueWithIdentifier("createUsername", sender: nil)
+                    self.performSegueWithIdentifier("chooseUsername", sender: nil)
                 }
                 else {
                     LoginService.logInWithFacebook({ (error, result) -> Void in

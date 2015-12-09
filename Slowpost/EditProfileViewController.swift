@@ -47,6 +47,7 @@ class EditProfileViewController: UITableViewController, FBSDKLoginButtonDelegate
         navBar.frame.size = CGSize(width: navBar.frame.width, height: 60)
         
         logOutButton.layer.cornerRadius = 5
+        facebookLoginButton.layer.cornerRadius = 5
         
         givenNameField.text = loggedInUser.givenName
         familyNameField.text = loggedInUser.familyName
