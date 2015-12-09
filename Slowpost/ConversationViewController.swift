@@ -171,7 +171,10 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         generateStatusLabel(cell, mail: cell.mail)
         
         addImageToCell(cell)
-        if cell.imageFile != nil { cell.mailImageView.image = cell.imageFile }
+        if cell.imageFile != nil {
+            cell.mailImageView.image = cell.imageFile
+            cell.mailImageView.contentMode = .ScaleAspectFill
+        }
         cell.initialsLabel.text = cell.mail.fromPerson.initials()
         
         formatMailStatusLabel(cell)
