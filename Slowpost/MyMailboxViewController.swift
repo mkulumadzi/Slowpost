@@ -51,7 +51,10 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         })
         
         NSNotificationCenter.defaultCenter().addObserverForName("appBecameActive:", object: nil, queue: nil, usingBlock: { (notification) -> Void in
-            self.refreshData()
+            let token = LoginService.getTokenFromKeychain()
+            if token != nil {
+                self.refreshData()
+            }
         })
         
     }
