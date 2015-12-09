@@ -11,7 +11,7 @@ import CoreData
 import Foundation
 import SwiftyJSON
 
-class EditProfileViewController: UITableViewController {
+class EditProfileViewController: UITableViewController, FBSDKLoginButtonDelegate {
 
     @IBOutlet weak var usernameLabel: UILabel!
 
@@ -24,10 +24,19 @@ class EditProfileViewController: UITableViewController {
     @IBOutlet weak var familyNameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     
+    @IBOutlet weak var logOutButton: TextUIButton!
+    @IBOutlet weak var facebookLoginButton: FBSDKLoginButton!
+    
+    @IBOutlet weak var spaceToFacebookButton: NSLayoutConstraint!
+    
     var loggedInUser:Person!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        validateLoginButtons()
+        
+        saveButton.enabled = false
         
         Flurry.logEvent("Began_Editing_Profile")
         
@@ -36,6 +45,8 @@ class EditProfileViewController: UITableViewController {
         warningLabel.hide()
         
         navBar.frame.size = CGSize(width: navBar.frame.width, height: 60)
+        
+        logOutButton.layer.cornerRadius = 5
         
         givenNameField.text = loggedInUser.givenName
         familyNameField.text = loggedInUser.familyName
@@ -47,7 +58,13 @@ class EditProfileViewController: UITableViewController {
         profileTable.tableFooterView?.hidden = true
         profileTable.backgroundColor = UIColor.whiteColor()
         
+        facebookLoginButton.delegate = self
+        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        validateLoginButtons()
     }
     
     func addWarningLabel() {
@@ -112,6 +129,43 @@ class EditProfileViewController: UITableViewController {
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
+    }
+    
+    func validateLoginButtons() {
+        facebookLoginButton.hidden = false
+        if FBSDKAccessToken.currentAccessToken() != nil {
+            logOutButton.hidden = true
+            spaceToFacebookButton.constant = 10
+        }
+        else {
+            logOutButton.hidden = false
+            spaceToFacebookButton.constant = 60
+        }
+    }
+    
+    func loginButtonWillLogin(loginButton: FBSDKLoginButton!) -> Bool {
+        logOutButton.hidden = true
+        facebookLoginButton.hidden = true
+        return true
+    }
+    
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        if ((error) != nil) {
+            print(error)
+        }
+        else {
+            validateLoginButtons()
+        }
+    }
+    
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        FBSDKAccessToken.setCurrentAccessToken(nil)
+        self.performSegueWithIdentifier("loggedOut", sender: nil)
+    }
+    
+    
+    @IBAction func logOutButtonPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("loggedOut", sender: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

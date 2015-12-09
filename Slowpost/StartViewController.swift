@@ -121,6 +121,7 @@ class StartViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                     self.performSegueWithIdentifier("signUp", sender: nil)
                 }
                 else {
+                    // Need to save users' facebook ID so that we know they have logged in this way before
                     self.performSegueWithIdentifier("logIn", sender: nil)
                 }
             }
