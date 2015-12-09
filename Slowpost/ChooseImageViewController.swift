@@ -9,22 +9,21 @@
 import UIKit
 import MobileCoreServices
 
-class ChooseImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate {
+class ChooseImageViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var toPeople:[Person]!
     var toSearchPeople:[SearchPerson]!
     var toEmails:[String]!
     var newMedia: Bool?
-    var imageSelected:UIImageView!
+//    var imageSelected:UIImageView!
     var imageSize = CGSizeMake(0,0)
 
-    @IBOutlet weak var cropLabel: UILabel!
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var imageLibraryButton: UIButton!
     @IBOutlet weak var takePhotoButton: UIButton!
     @IBOutlet weak var cardGalleryButton: UIButton!
     @IBOutlet weak var removePhotoButton: TextUIButton!
-    @IBOutlet weak var imageScrollView: UIScrollView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var libraryLabel: UILabel!
     @IBOutlet weak var cameraLabel: UILabel!
     @IBOutlet weak var galleryLabel: UILabel!
@@ -51,12 +50,6 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         removePhotoBackground.layer.cornerRadius = 10
         nextButton.layer.cornerRadius = 5
         validateButtons()
-        
-        automaticallyAdjustsScrollViewInsets = false
-        
-        imageScrollView.delegate = self
-        imageScrollView.showsHorizontalScrollIndicator = false
-        imageScrollView.showsVerticalScrollIndicator = false
 
         if deviceType == "iPhone 4S" {
             formatForiPhone4S()
@@ -98,31 +91,31 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         validateButtons()
     }
     
-    func setupSubview(image: UIImage) {
-        let subViews = imageScrollView.subviews
-        for subview in subViews {
-            if subview is UIImageView {
-                subview.removeFromSuperview()
-            }
-        }
-        
-        imageSelected = UIImageView(image: image)
-        imageSize = imageSelected.frame.size
-        imageScrollView.addSubview(imageSelected)
-    }
+//    func setupSubview(image: UIImage) {
+//        let subViews = imageScrollView.subviews
+//        for subview in subViews {
+//            if subview is UIImageView {
+//                subview.removeFromSuperview()
+//            }
+//        }
+//        
+//        imageSelected = UIImageView(image: image)
+//        imageSize = imageSelected.frame.size
+//        imageScrollView.addSubview(imageSelected)
+//    }
+//    
+//    override func viewDidLayoutSubviews() {
+//        imageScrollView.maximumZoomScale = 5.0
+//        imageScrollView.contentSize = imageSize
+//        let widthScale = imageScrollView.bounds.size.width / imageSize.width
+//        let heightScale = imageScrollView.bounds.size.height / imageSize.height
+//        imageScrollView.minimumZoomScale = widthScale
+//        imageScrollView.setZoomScale(max(widthScale, heightScale), animated: true )
+//    }
     
-    override func viewDidLayoutSubviews() {
-        imageScrollView.maximumZoomScale = 5.0
-        imageScrollView.contentSize = imageSize
-        let widthScale = imageScrollView.bounds.size.width / imageSize.width
-        let heightScale = imageScrollView.bounds.size.height / imageSize.height
-        imageScrollView.minimumZoomScale = widthScale
-        imageScrollView.setZoomScale(max(widthScale, heightScale), animated: true )
-    }
-    
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-        return imageSelected
-    }
+//    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+//        return imageSelected
+//    }
     
     func toList() -> String {
         var toList = ""
@@ -198,7 +191,8 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
             
             Flurry.logEvent("Got_Image_From_Library_Or_Camera")
-            setupSubview(image)
+//            setupSubview(image)
+            imageView.image = image
             
             if (newMedia == true) {
                 UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil)
@@ -220,56 +214,56 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         }
     }
     
-    func cropImage() -> UIImage {
-        let scale = 1 / imageScrollView.zoomScale
-        
-        let contextImage:UIImage = UIImage(CGImage: imageSelected.image!.CGImage!, scale: 1, orientation: imageSelected.image!.imageOrientation)
-        
-        var visibleRect:CGRect!
-        let xOffset = imageScrollView.contentOffset.x * scale
-        let yOffset = imageScrollView.contentOffset.y * scale
-        let rectWidth = imageScrollView.bounds.size.width * scale
-        let rectHeight = imageScrollView.bounds.size.height * scale
-        let totalWidth = contextImage.size.width
-        let totalHeight = contextImage.size.height
-        
-        switch contextImage.imageOrientation.hashValue {
-        case 0:
-            visibleRect = CGRectMake(xOffset, yOffset, rectWidth, rectHeight)
-        case 1:
-            visibleRect = CGRectMake(totalWidth - rectWidth - xOffset, totalHeight - rectHeight - yOffset, rectWidth, rectHeight)
-        case 2:
-            visibleRect = CGRectMake(totalHeight - rectHeight - yOffset, xOffset, rectHeight, rectWidth)
-        case 3:
-            visibleRect = CGRectMake(yOffset, totalWidth - rectWidth - xOffset, rectHeight, rectWidth)
-        default:
-            visibleRect = CGRectMake(imageScrollView.contentOffset.x * scale, imageScrollView.contentOffset.y*scale, imageScrollView.bounds.size.width*scale, imageScrollView.bounds.size.height*scale)
-        }
-        
-        let ref:CGImageRef = CGImageCreateWithImageInRect(contextImage.CGImage, visibleRect)!
-        
-        let croppedImage:UIImage = UIImage(CGImage: ref, scale: scale, orientation: contextImage.imageOrientation)
-        
-        return croppedImage
-    }
+//    func cropImage() -> UIImage {
+//        let scale = 1 / imageScrollView.zoomScale
+//        
+//        let contextImage:UIImage = UIImage(CGImage: imageSelected.image!.CGImage!, scale: 1, orientation: imageSelected.image!.imageOrientation)
+//        
+//        var visibleRect:CGRect!
+//        let xOffset = imageScrollView.contentOffset.x * scale
+//        let yOffset = imageScrollView.contentOffset.y * scale
+//        let rectWidth = imageScrollView.bounds.size.width * scale
+//        let rectHeight = imageScrollView.bounds.size.height * scale
+//        let totalWidth = contextImage.size.width
+//        let totalHeight = contextImage.size.height
+//        
+//        switch contextImage.imageOrientation.hashValue {
+//        case 0:
+//            visibleRect = CGRectMake(xOffset, yOffset, rectWidth, rectHeight)
+//        case 1:
+//            visibleRect = CGRectMake(totalWidth - rectWidth - xOffset, totalHeight - rectHeight - yOffset, rectWidth, rectHeight)
+//        case 2:
+//            visibleRect = CGRectMake(totalHeight - rectHeight - yOffset, xOffset, rectHeight, rectWidth)
+//        case 3:
+//            visibleRect = CGRectMake(yOffset, totalWidth - rectWidth - xOffset, rectHeight, rectWidth)
+//        default:
+//            visibleRect = CGRectMake(imageScrollView.contentOffset.x * scale, imageScrollView.contentOffset.y*scale, imageScrollView.bounds.size.width*scale, imageScrollView.bounds.size.height*scale)
+//        }
+//        
+//        let ref:CGImageRef = CGImageCreateWithImageInRect(contextImage.CGImage, visibleRect)!
+//        
+//        let croppedImage:UIImage = UIImage(CGImage: ref, scale: scale, orientation: contextImage.imageOrientation)
+//        
+//        return croppedImage
+//    }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func removePhoto(sender: AnyObject) {
-        let subViews = imageScrollView.subviews
-        for subview in subViews {
-            if subview is UIImageView {
-                subview.removeFromSuperview()
-            }
-        }
-        imageSelected = nil
+//        let subViews = imageScrollView.subviews
+//        for subview in subViews {
+//            if subview is UIImageView {
+//                subview.removeFromSuperview()
+//            }
+//        }
+        imageView.image = nil
         validateButtons()
     }
     
     func validateButtons() {
-        if imageSelected != nil {
+        if imageView.image != nil {
             imageAdded()
         }
         else {
@@ -286,7 +280,6 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         galleryLabel.hidden = true
         chooseOptionLabel.hidden = true
         
-        cropLabel.hidden = false
         removePhotoButton.hidden = false
         removePhotoBackground.hidden = false
         nextButton.hidden = false
@@ -301,7 +294,6 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
         galleryLabel.hidden = false
         chooseOptionLabel.hidden = false
         
-        cropLabel.hidden = true
         removePhotoButton.hidden = true
         removePhotoBackground.hidden = true
         nextButton.hidden = true
@@ -329,9 +321,8 @@ class ChooseImageViewController: UIViewController, UIImagePickerControllerDelega
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "composeMessage" {
             let composeMailViewController = segue.destinationViewController as? ComposeMailViewController
-            if imageSelected != nil {
-                let croppedImage = cropImage()
-                composeMailViewController?.cardImage = croppedImage
+            if imageView.image != nil {
+                composeMailViewController?.cardImage = imageView.image
             }
             else {
                 composeMailViewController?.cardImage = UIImage(named: "Default Card.png")

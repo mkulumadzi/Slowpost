@@ -59,9 +59,7 @@ class ChooseDeliveryOptionsViewController: UIViewController {
     }
     
     func setMinimumDate() -> NSDate {
-        let userCalendar = NSCalendar.currentCalendar()
-        let minimumDate = userCalendar.dateByAddingUnit(.Day, value: 1, toDate: NSDate(), options: .MatchFirst)
-        return minimumDate!
+        return NSDate()
     }
     
     

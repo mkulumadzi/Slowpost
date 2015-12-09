@@ -124,7 +124,7 @@ class CardGalleryUIViewController: UIViewController, UICollectionViewDataSource,
         if segue.identifier == "imageSelected" {
 //            Flurry.logEvent("Chose_Image_From_Gallery")
             let chooseImageViewController = segue.destinationViewController as? ChooseImageViewController
-            chooseImageViewController!.setupSubview(imageSelected)
+            chooseImageViewController!.imageView.image = imageSelected
         }
     }
     

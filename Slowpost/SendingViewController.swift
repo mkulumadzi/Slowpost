@@ -53,7 +53,7 @@ class SendingViewController: UIViewController {
     
     func formatDeliveryLabel() {
         if scheduledToArrive == nil {
-            deliveryLabel.text = "Mail will arrive in 1 to 2 days"
+            deliveryLabel.text = ""
         }
         else {
             let date = scheduledToArrive!.formattedAsString("yyyy-MM-dd")
@@ -95,8 +95,7 @@ class SendingViewController: UIViewController {
     
     func sendMailToPostoffice(imageUid: String) {
         
-        let userId = LoginService.getUserIdFromToken()
-        let sendMailEndpoint = "\(PostOfficeURL)person/id/\(userId)/mail/send"
+        let mailURL = getMailURL()
         let correspondents = formatCorrespondents()
         var parameters:[String : AnyObject] = ["correspondents": correspondents, "attachments": ["notes": [content], "image_attachments": [imageUid]]]
         
@@ -110,7 +109,7 @@ class SendingViewController: UIViewController {
             parameters["scheduled_to_arrive"] = scheduledToArriveString
         }
         
-        RestService.postRequest(sendMailEndpoint, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
+        RestService.postRequest(mailURL, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
             if let response = result as? [AnyObject] {
                 if response[0] as? Int == 201 {
                     MailService.updateAllData( {error, result -> Void in
@@ -144,6 +143,16 @@ class SendingViewController: UIViewController {
             }
         })
         
+    }
+    
+    func getMailURL() -> String {
+        let userId = LoginService.getUserIdFromToken()
+        if scheduledToArrive != nil {
+            return "\(PostOfficeURL)person/id/\(userId)/mail/send"
+        }
+        else {
+            return "\(PostOfficeURL)person/id/\(userId)/mail/instant"
+        }
     }
     
     func formatCorrespondents() -> [String : [String]] {

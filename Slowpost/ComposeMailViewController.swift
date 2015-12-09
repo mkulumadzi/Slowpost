@@ -262,7 +262,7 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
             sendButton.setTitle("Send (arrives on \(dateString))", forState: .Normal)
         }
         else {
-            sendButton.setTitle("Send (arrives in 1 to 2 days)", forState: .Normal)
+            sendButton.setTitle("Send now", forState: .Normal)
         }
     }
     
