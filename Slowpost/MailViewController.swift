@@ -33,6 +33,8 @@ class MailViewController: UIViewController {
     @IBOutlet weak var navItem: UINavigationItem!
     @IBOutlet weak var closeButton: UIButton!
     
+    @IBOutlet weak var imageHeight: NSLayoutConstraint!
+    
     var managedContext:NSManagedObjectContext!
     var mail:Mail!
     var fromPerson:Person!
@@ -49,6 +51,7 @@ class MailViewController: UIViewController {
         
         formatButtons()
         addImage()
+        sizeImageViewToFitImage()
         fromView.layer.cornerRadius = 15
 
         fromPerson = mail.fromPerson
@@ -99,6 +102,12 @@ class MailViewController: UIViewController {
                 self.mailImage.image = image
             }
         })
+    }
+    
+    func sizeImageViewToFitImage() {
+        let width = mailImage.image!.size.width
+        let height = mailImage.image!.size.height
+        imageHeight.constant = view.frame.width * (height / width)
     }
     
     func readMail(mail:Mail) {
