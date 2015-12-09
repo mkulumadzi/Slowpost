@@ -113,6 +113,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         addImageToCell(cell)
         if cell.imageFile != nil {
             cell.mailImage.image = cell.imageFile
+            cell.mailImage.contentMode = .ScaleAspectFill
         }
         let deliveredDateString = mail.dateDelivered.formattedAsString("yyyy-MM-dd")
         cell.deliveredLabel.text = "Delivered on \(deliveredDateString)"
