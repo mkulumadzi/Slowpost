@@ -53,8 +53,8 @@ class CardGalleryUIViewController: UIViewController, UICollectionViewDataSource,
     
     func getImagesFromCameraRoll() {
         
-        
-        let targetSize: CGSize = CGSize(width: 200.0, height: 200.0)
+        let maxDimension = (cardCollection.frame.width - 30) / 2
+        let targetSize: CGSize = CGSize(width: maxDimension, height: maxDimension)
         let contentMode: PHImageContentMode = .AspectFit
         
         // Trying to fetch the photos
@@ -63,9 +63,9 @@ class CardGalleryUIViewController: UIViewController, UICollectionViewDataSource,
         
         let fetchOptions:PHFetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        fetchOptions.fetchLimit = 50
+        fetchOptions.fetchLimit = 200
         
-//        let fetchResult = PHAssetCollection.fetchAssetCollectionsWithType(PHAssetCollectionType.SmartAlbum, subtype: PHAssetCollectionSubtype.SmartAlbumUserLibrary, options: fetchOptions)
+//        fetchResult = PHAsset.fetchAssetsInAssetCollection(assetCollections, options: fetchOptions)
         
         fetchResult = PHAsset.fetchAssetsWithMediaType(.Image, options: fetchOptions)
         
@@ -74,7 +74,7 @@ class CardGalleryUIViewController: UIViewController, UICollectionViewDataSource,
             object, index, stop in
             
             let options = PHImageRequestOptions()
-            options.synchronous = false
+            options.synchronous = true
             options.deliveryMode = .HighQualityFormat
             
             PHImageManager.defaultManager().requestImageForAsset(object as! PHAsset, targetSize: targetSize, contentMode: contentMode, options: options) {
