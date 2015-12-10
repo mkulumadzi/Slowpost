@@ -50,25 +50,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="TopLeft" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ra4-CK-oJ7" userLabel="cardCollection">
-                                <rect key="frame" x="0.0" y="60" width="600" height="540"/>
+                                <rect key="frame" x="0.0" y="60" width="600" height="496"/>
                                 <animations/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="QM5-am-YK2">
-                                    <size key="itemSize" width="320" height="240"/>
+                                    <size key="itemSize" width="320" height="320"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" reuseIdentifier="CardCell" id="Gnk-y3-ba1" customClass="CardCollectionViewCell" customModule="Slowpost" customModuleProvider="target">
-                                        <rect key="frame" x="140" y="10" width="320" height="240"/>
+                                        <rect key="frame" x="140" y="10" width="320" height="320"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tnB-P3-OLy">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="tnB-P3-OLy" secondAttribute="height" multiplier="4:3" id="NPZ-Sp-LTH"/>
@@ -143,6 +143,31 @@
                                 <rect key="frame" x="0.0" y="100" width="600" height="20"/>
                                 <animations/>
                             </activityIndicatorView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9UU-Wg-Ryi">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <animations/>
+                                <items>
+                                    <barButtonItem style="plain" id="s6P-zT-T6M">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="1" id="y0A-83-Wwf">
+                                            <rect key="frame" x="20" y="7" width="200" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <segments>
+                                                <segment title="My Photos"/>
+                                                <segment title="Gallery"/>
+                                            </segments>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="cBA-cy-lrC">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pNo-3X-Xqv">
+                                            <rect key="frame" x="230" y="2" width="40" height="40"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <state key="normal" image="camera-2.png"/>
+                                        </button>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -152,17 +177,22 @@
                             <constraint firstItem="ocL-C9-no7" firstAttribute="leading" secondItem="KBQ-d2-vI0" secondAttribute="leading" id="Jn5-HI-em2"/>
                             <constraint firstItem="ra4-CK-oJ7" firstAttribute="leading" secondItem="KBQ-d2-vI0" secondAttribute="leading" id="NCi-rz-g35"/>
                             <constraint firstItem="ocL-C9-no7" firstAttribute="top" secondItem="Eej-wH-HxO" secondAttribute="bottom" constant="80" id="RCn-q6-NiY"/>
+                            <constraint firstItem="PjK-zz-hIw" firstAttribute="top" secondItem="9UU-Wg-Ryi" secondAttribute="bottom" id="STs-pq-xhc"/>
+                            <constraint firstItem="9UU-Wg-Ryi" firstAttribute="top" secondItem="ra4-CK-oJ7" secondAttribute="bottom" id="US4-ap-qdJ"/>
                             <constraint firstAttribute="bottom" secondItem="ra4-CK-oJ7" secondAttribute="bottom" id="W5c-vC-gO7"/>
                             <constraint firstAttribute="trailing" secondItem="ocL-C9-no7" secondAttribute="trailing" id="Weu-Js-jej"/>
                             <constraint firstItem="ocL-C9-no7" firstAttribute="top" secondItem="Vbe-WO-Wvv" secondAttribute="bottom" constant="40" id="Wfh-WE-O9F"/>
                             <constraint firstItem="ra4-CK-oJ7" firstAttribute="top" secondItem="Vbe-WO-Wvv" secondAttribute="bottom" id="eHI-cY-WtU"/>
                             <constraint firstAttribute="trailing" secondItem="ra4-CK-oJ7" secondAttribute="trailing" id="g2U-GY-YS5"/>
+                            <constraint firstItem="9UU-Wg-Ryi" firstAttribute="leading" secondItem="KBQ-d2-vI0" secondAttribute="leading" id="neH-z0-Tus"/>
                             <constraint firstItem="ra4-CK-oJ7" firstAttribute="leading" secondItem="KBQ-d2-vI0" secondAttribute="leading" id="o8W-O4-IdF"/>
                             <constraint firstItem="Vbe-WO-Wvv" firstAttribute="top" secondItem="KBQ-d2-vI0" secondAttribute="top" id="u3a-uv-uzG"/>
                             <constraint firstAttribute="trailing" secondItem="Vbe-WO-Wvv" secondAttribute="trailing" id="v1M-le-pdh"/>
+                            <constraint firstAttribute="trailing" secondItem="9UU-Wg-Ryi" secondAttribute="trailing" id="vt5-3G-oQc"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="W5c-vC-gO7"/>
                                 <exclude reference="g2U-GY-YS5"/>
                                 <exclude reference="o8W-O4-IdF"/>
                                 <exclude reference="RCn-q6-NiY"/>
@@ -172,6 +202,7 @@
                     <connections>
                         <outlet property="activityIndicator" destination="ocL-C9-no7" id="Wbc-qC-eKM"/>
                         <outlet property="cardCollection" destination="ra4-CK-oJ7" id="ekh-wb-5sf"/>
+                        <outlet property="segmentedControl" destination="y0A-83-Wwf" id="wEv-w0-5g5"/>
                         <segue destination="hLo-Nf-4Zf" kind="unwind" identifier="imageSelected" unwindAction="cardGalleryImageSelected:" id="UYM-Kk-zWR"/>
                     </connections>
                 </viewController>

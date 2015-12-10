@@ -55,6 +55,7 @@
                                                                 </imageView>
                                                             </subviews>
                                                             <animations/>
+                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="MWW-SY-i8M" firstAttribute="centerY" secondItem="PWa-Or-BgO" secondAttribute="centerY" id="8DF-q6-cx2"/>
                                                                 <constraint firstAttribute="width" secondItem="PWa-Or-BgO" secondAttribute="height" multiplier="4:3" id="Gsn-hm-dAY"/>

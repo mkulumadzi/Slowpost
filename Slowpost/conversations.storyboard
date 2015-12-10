@@ -230,6 +230,7 @@
                                                                 </imageView>
                                                             </subviews>
                                                             <animations/>
+                                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstItem="jak-f8-lAn" firstAttribute="centerX" secondItem="2ty-jL-4zJ" secondAttribute="centerX" id="0OU-Qk-3Lc"/>
                                                                 <constraint firstItem="jak-f8-lAn" firstAttribute="leading" secondItem="2ty-jL-4zJ" secondAttribute="leading" id="Fxb-xU-1ko"/>
