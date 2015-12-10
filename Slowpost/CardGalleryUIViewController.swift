@@ -56,17 +56,9 @@ class CardGalleryUIViewController: UIViewController, UICollectionViewDataSource,
         let maxDimension = (cardCollection.frame.width - 30) / 2
         let targetSize: CGSize = CGSize(width: maxDimension, height: maxDimension)
         let contentMode: PHImageContentMode = .AspectFit
-        
-        // Trying to fetch the photos
-        
-        //Please try with the collection type PHAssetCollectionType.SmartAlbum with the subtype PHAssetCollectionSubtype.SmartAlbumUserLibrary
-        
         let fetchOptions:PHFetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         fetchOptions.fetchLimit = 200
-        
-//        fetchResult = PHAsset.fetchAssetsInAssetCollection(assetCollections, options: fetchOptions)
-        
         fetchResult = PHAsset.fetchAssetsWithMediaType(.Image, options: fetchOptions)
         
         // photoAsset is an object of type PHFetchResult

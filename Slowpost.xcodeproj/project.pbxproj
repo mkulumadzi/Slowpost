@@ -38,6 +38,8 @@
 		D20EC2591BAC8F1400E3DEA5 /* PostofficeObjectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20EC2581BAC8F1400E3DEA5 /* PostofficeObjectService.swift */; };
 		D210031D1C1657FC00E45CA3 /* UsernameFBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D210031C1C1657FC00E45CA3 /* UsernameFBViewController.swift */; };
 		D210031F1C17A8B900E45CA3 /* PasswordFBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D210031E1C17A8B900E45CA3 /* PasswordFBController.swift */; };
+		D21003211C1A0CF100E45CA3 /* ChooseImageAndComposeMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21003201C1A0CF100E45CA3 /* ChooseImageAndComposeMailViewController.swift */; };
+		D21003231C1A127E00E45CA3 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21003221C1A127E00E45CA3 /* PhotoCollectionViewCell.swift */; };
 		D21E2C871BC09C6100E17572 /* libFlurry_7.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D21E2C861BC09C6100E17572 /* libFlurry_7.2.1.a */; };
 		D2319AC01BD16D8F00B989C0 /* RequestSubmittedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2319ABF1BD16D8F00B989C0 /* RequestSubmittedViewController.swift */; };
 		D2389E681B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E671B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift */; };
@@ -190,6 +192,8 @@
 		D20EC2581BAC8F1400E3DEA5 /* PostofficeObjectService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostofficeObjectService.swift; sourceTree = "<group>"; };
 		D210031C1C1657FC00E45CA3 /* UsernameFBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsernameFBViewController.swift; sourceTree = "<group>"; };
 		D210031E1C17A8B900E45CA3 /* PasswordFBController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordFBController.swift; sourceTree = "<group>"; };
+		D21003201C1A0CF100E45CA3 /* ChooseImageAndComposeMailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseImageAndComposeMailViewController.swift; sourceTree = "<group>"; };
+		D21003221C1A127E00E45CA3 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		D21E2C851BC09C5900E17572 /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		D21E2C861BC09C6100E17572 /* libFlurry_7.2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.2.1.a; sourceTree = "<group>"; };
 		D2222A741B588695007E74BB /* SnailMailModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SnailMailModel 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -374,6 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				CC23DE2D1AE54C2B00AFEDE4 /* compose.storyboard */,
+				D21003201C1A0CF100E45CA3 /* ChooseImageAndComposeMailViewController.swift */,
 				D2CEC4731B72ACBD002CFD25 /* SendingViewController.swift */,
 				D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */,
 				CC96E4C81AC0B334001E6D27 /* ComposeMailViewController.swift */,
@@ -383,6 +388,7 @@
 				D2CEC4671B6C1F6E002CFD25 /* CardGalleryUIViewController.swift */,
 				D2389E671B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift */,
 				D25130431BC43C44007541BE /* ComposeNavigationController.swift */,
+				D21003221C1A127E00E45CA3 /* PhotoCollectionViewCell.swift */,
 			);
 			name = Compose;
 			sourceTree = "<group>";
@@ -889,6 +895,7 @@
 				D289F2181BD15517004D29FA /* RequestPasswordResetViewController.swift in Sources */,
 				D26726301B7D524100FE651F /* UsernameViewController.swift in Sources */,
 				D2319AC01BD16D8F00B989C0 /* RequestSubmittedViewController.swift in Sources */,
+				D21003231C1A127E00E45CA3 /* PhotoCollectionViewCell.swift in Sources */,
 				D2B7CEAE1B696DBC007F8235 /* RestService.swift in Sources */,
 				D2A361381B3CB52B00811D14 /* WarningUILabel.swift in Sources */,
 				D27DA32D1B66C51900DF32A1 /* MessageUILabel.swift in Sources */,
@@ -902,6 +909,7 @@
 				D24BC0FC1B98E317000405F7 /* MailViewController.swift in Sources */,
 				CC96E4AD1ABCDEB5001E6D27 /* MailCell.swift in Sources */,
 				D2389E731B95157700CB19BB /* ConversationViewController.swift in Sources */,
+				D21003211C1A0CF100E45CA3 /* ChooseImageAndComposeMailViewController.swift in Sources */,
 				D27C7B491BC3422D005F08BC /* SearchPersonService.swift in Sources */,
 				D2389E681B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift in Sources */,
 				D2B651E71B38827100134C23 /* Extensions.swift in Sources */,
