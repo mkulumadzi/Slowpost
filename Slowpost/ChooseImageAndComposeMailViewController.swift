@@ -665,8 +665,8 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
             placeholderText.hidden = true
             
             // This isn't working...
-            defaultComposeViewBottom.priority = 251
-            sendComposeViewBottom.priority = 999
+            defaultComposeViewBottom.constant = 60
+//            sendComposeViewBottom.priority = 999
             updateViewConstraints()
         }
         else {
@@ -674,8 +674,8 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
             placeholderText.hidden = false
             
             // This isn't working...
-            defaultComposeViewBottom.priority = 999
-            sendComposeViewBottom.priority = 251
+            defaultComposeViewBottom.constant = 0
+//            sendComposeViewBottom.priority = 251
             updateViewConstraints()
         }
     }
@@ -743,8 +743,5 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     
     @IBAction func notReadyToSend(segue: UIStoryboardSegue) {
     }
-    
-    
-    
 
 }

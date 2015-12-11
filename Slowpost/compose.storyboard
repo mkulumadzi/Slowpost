@@ -10,6 +10,9 @@
             <string>OpenSans-Light</string>
             <string>OpenSans-Light</string>
         </mutableArray>
+        <mutableArray key="OpenSans-LightItalic.ttf">
+            <string>OpenSansLight-Italic</string>
+        </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
             <string>OpenSans</string>
             <string>OpenSans</string>
@@ -1097,7 +1100,7 @@
                                 </constraints>
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cDL-EV-1Vn" userLabel="photoCollection">
-                                <rect key="frame" x="0.0" y="108" width="600" height="448"/>
+                                <rect key="frame" x="0.0" y="129" width="600" height="427"/>
                                 <animations/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rBR-AQ-bKB">
@@ -1139,6 +1142,14 @@
                                     <outlet property="delegate" destination="DuY-Ib-j4y" id="WA6-9a-yOb"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select an image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nKr-k3-HFB">
+                                <rect key="frame" x="0.0" y="108" width="600" height="21"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.49803921568627452" green="0.47843137254901957" blue="0.47843137254901957" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSansLight-Italic" family="Open Sans" pointSize="15"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qKN-zP-oSU">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <animations/>
@@ -1188,14 +1199,23 @@
                             <constraint firstAttribute="trailing" secondItem="qKN-zP-oSU" secondAttribute="trailing" id="9WF-gQ-4Q0"/>
                             <constraint firstItem="WWo-3r-Ieh" firstAttribute="top" secondItem="qKN-zP-oSU" secondAttribute="bottom" id="AWN-tH-aQt"/>
                             <constraint firstAttribute="trailing" secondItem="cDL-EV-1Vn" secondAttribute="trailing" id="Atc-e8-WKZ"/>
+                            <constraint firstItem="nKr-k3-HFB" firstAttribute="top" secondItem="4VL-bp-GRR" secondAttribute="bottom" constant="10" id="CDN-oi-Ifi"/>
+                            <constraint firstAttribute="trailing" secondItem="nKr-k3-HFB" secondAttribute="trailing" id="M39-os-xqd"/>
+                            <constraint firstItem="nKr-k3-HFB" firstAttribute="leading" secondItem="uCO-QL-wV1" secondAttribute="leading" id="S2w-I1-aFm"/>
                             <constraint firstItem="4VL-bp-GRR" firstAttribute="centerY" secondItem="hr5-6Z-Cz1" secondAttribute="centerY" id="VpB-AU-jSP"/>
                             <constraint firstItem="qKN-zP-oSU" firstAttribute="top" secondItem="cDL-EV-1Vn" secondAttribute="bottom" id="aK9-do-dT8"/>
                             <constraint firstAttribute="trailing" secondItem="4VL-bp-GRR" secondAttribute="trailing" constant="10" id="aNi-7l-YGt"/>
                             <constraint firstItem="hr5-6Z-Cz1" firstAttribute="top" secondItem="P7q-4x-Bf3" secondAttribute="bottom" constant="10" id="bSb-Ff-Zhj"/>
                             <constraint firstItem="qKN-zP-oSU" firstAttribute="leading" secondItem="uCO-QL-wV1" secondAttribute="leading" id="pr1-BM-YNu"/>
+                            <constraint firstItem="cDL-EV-1Vn" firstAttribute="top" secondItem="nKr-k3-HFB" secondAttribute="bottom" id="rKk-Hg-bjl"/>
                             <constraint firstItem="hr5-6Z-Cz1" firstAttribute="leading" secondItem="uCO-QL-wV1" secondAttribute="leading" constant="10" id="weP-Hy-qcB"/>
                             <constraint firstItem="4VL-bp-GRR" firstAttribute="leading" secondItem="hr5-6Z-Cz1" secondAttribute="trailing" id="zHt-iS-JNH"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0fk-FK-nX8"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="mtg-v3-bKx">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="mPT-GM-Kw4">
