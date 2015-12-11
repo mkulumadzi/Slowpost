@@ -40,6 +40,7 @@
 		D210031F1C17A8B900E45CA3 /* PasswordFBController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D210031E1C17A8B900E45CA3 /* PasswordFBController.swift */; };
 		D21003211C1A0CF100E45CA3 /* ChooseImageAndComposeMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21003201C1A0CF100E45CA3 /* ChooseImageAndComposeMailViewController.swift */; };
 		D21003231C1A127E00E45CA3 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21003221C1A127E00E45CA3 /* PhotoCollectionViewCell.swift */; };
+		D21003251C1A36A800E45CA3 /* ComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21003241C1A36A800E45CA3 /* ComposeView.swift */; };
 		D21E2C871BC09C6100E17572 /* libFlurry_7.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D21E2C861BC09C6100E17572 /* libFlurry_7.2.1.a */; };
 		D2319AC01BD16D8F00B989C0 /* RequestSubmittedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2319ABF1BD16D8F00B989C0 /* RequestSubmittedViewController.swift */; };
 		D2389E681B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E671B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift */; };
@@ -194,6 +195,7 @@
 		D210031E1C17A8B900E45CA3 /* PasswordFBController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordFBController.swift; sourceTree = "<group>"; };
 		D21003201C1A0CF100E45CA3 /* ChooseImageAndComposeMailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseImageAndComposeMailViewController.swift; sourceTree = "<group>"; };
 		D21003221C1A127E00E45CA3 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		D21003241C1A36A800E45CA3 /* ComposeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeView.swift; sourceTree = "<group>"; };
 		D21E2C851BC09C5900E17572 /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		D21E2C861BC09C6100E17572 /* libFlurry_7.2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.2.1.a; sourceTree = "<group>"; };
 		D2222A741B588695007E74BB /* SnailMailModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SnailMailModel 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -597,6 +599,7 @@
 				D2389E811B9674AB00CB19BB /* CellLabelUIView.swift */,
 				D24BC0F41B96994D000405F7 /* CustomContainerView.swift */,
 				D28266CD1BC6DEA10029F57E /* AvatarView.swift */,
+				D21003241C1A36A800E45CA3 /* ComposeView.swift */,
 			);
 			name = Customizations;
 			sourceTree = "<group>";
@@ -893,6 +896,7 @@
 				CC96E4A01ABCCBF2001E6D27 /* LogInViewController.swift in Sources */,
 				D2E97D8D1BC322BF00DAEB6C /* RecipientCell.swift in Sources */,
 				D289F2181BD15517004D29FA /* RequestPasswordResetViewController.swift in Sources */,
+				D21003251C1A36A800E45CA3 /* ComposeView.swift in Sources */,
 				D26726301B7D524100FE651F /* UsernameViewController.swift in Sources */,
 				D2319AC01BD16D8F00B989C0 /* RequestSubmittedViewController.swift in Sources */,
 				D21003231C1A127E00E45CA3 /* PhotoCollectionViewCell.swift in Sources */,
