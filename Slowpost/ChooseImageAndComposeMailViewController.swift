@@ -8,12 +8,14 @@
 
 import UIKit
 import Photos
+import MobileCoreServices
 
 class ChooseImageAndComposeMailViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     var toPeople:[Person]!
     var toSearchPeople:[SearchPerson]!
     var toEmails:[String]!
+    var newMedia: Bool?
     var imageSelected:UIImage!
     var cardNames:[String]!
     var cardPhotos = [UIImage]()
@@ -21,11 +23,18 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     var fetchResult:PHFetchResult!
     var clearPhotoButton:UIButton!
     var textEntered:String!
+    var defaultComposeViewBottom = NSLayoutConstraint()
+    var sendComposeViewBottom = NSLayoutConstraint()
     var composeTopBorder = UIView()
     var composeTopBorderDefaultTop = NSLayoutConstraint()
     var composeTopBorderKeyboardTop = NSLayoutConstraint()
     var composeTextView = UITextView()
+    var placeholderText = UILabel()
     var doneEditingButton:UIButton!
+    var sendButtonView = UIView()
+    var sendButtonLabel = UILabel()
+    var warningLabel = WarningUILabel()
+    var scheduledToArrive:NSDate?
     
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var photoCollection: UICollectionView!
@@ -46,16 +55,14 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         
         initializeClearPhotoButton()
         initializeDoneEditingButton()
+        initializeSendButton()
+        initializeWarningLabel()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
         resignFirstResponder()
         
-    }
-    
-    override func viewDidLayoutSubviews() {
-
     }
     
     // Initializing buttons
@@ -65,11 +72,11 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         clearPhotoButton = UIButton(frame: rect)
         clearPhotoButton.setImage(UIImage(named: "remove")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         clearPhotoButton.tintColor = UIColor.whiteColor()
-        clearPhotoButton.addTarget(self, action: "clearPhoto", forControlEvents: .TouchUpInside)
+        clearPhotoButton.addTarget(self, action: "clearComposeView", forControlEvents: .TouchUpInside)
         
     }
     
-    func clearPhoto() {
+    func clearComposeView() {
         print("Photo being cleared!")
         for subview in view.subviews {
             if let composeView = subview as? ComposeView {
@@ -81,6 +88,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
                 composeView.removeFromSuperview()
             }
         }
+        sendButtonView.hidden = true
     }
     
     func initializeDoneEditingButton() {
@@ -96,6 +104,79 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     
     func doneEditing() {
         view.endEditing(true)
+    }
+    
+    func initializeSendButton() {
+        view.addSubview(sendButtonView)
+        sendButtonView.backgroundColor = slowpostDarkGreen
+        
+        let sendLeading = NSLayoutConstraint(item: sendButtonView, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1.0, constant: 0.0)
+        let sendTrailing = NSLayoutConstraint(item: sendButtonView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
+        let sendBottom = NSLayoutConstraint(item: sendButtonView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+        let sendHeight = NSLayoutConstraint(item: sendButtonView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 60.0)
+        sendButtonView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([sendLeading, sendTrailing, sendBottom, sendHeight])
+        
+        sendButtonView.addSubview(sendButtonLabel)
+        sendButtonLabel.text = "Send now >>"
+        sendButtonLabel.font = UIFont(name: "OpenSans-Semibold", size: 15.0)
+        sendButtonLabel.textColor = UIColor.whiteColor()
+        
+        let labelHorizontal = NSLayoutConstraint(item: sendButtonLabel, attribute: .CenterY, relatedBy: .Equal, toItem: sendButtonView, attribute: .CenterY, multiplier: 1.0, constant: 1.0)
+        let labelTrailing = NSLayoutConstraint(item: sendButtonLabel, attribute: .Trailing, relatedBy: .Equal, toItem: sendButtonView, attribute: .Trailing, multiplier: 1.0, constant: -10.0)
+        sendButtonLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activateConstraints([labelHorizontal, labelTrailing])
+        
+        let sendMask = UIButton()
+        sendButtonView.addSubview(sendMask)
+        sendMask.backgroundColor = UIColor.clearColor()
+        sendMask.addTarget(self, action: "sendTapped", forControlEvents: .TouchUpInside)
+        
+        let sendMaskLeading = NSLayoutConstraint(item: sendMask, attribute: .Leading, relatedBy: .Equal, toItem: sendButtonView, attribute: .Leading, multiplier: 1.0, constant: 60.0)
+        let sendMaskTrailing = NSLayoutConstraint(item: sendMask, attribute: .Trailing, relatedBy: .Equal, toItem: sendButtonView, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
+        let sendMaskTop = NSLayoutConstraint(item: sendMask, attribute: .Top, relatedBy: .Equal, toItem: sendButtonView, attribute: .Top, multiplier: 1.0, constant: 0.0)
+        let sendMaskBottom = NSLayoutConstraint(item: sendMask, attribute: .Bottom, relatedBy: .Equal, toItem: sendButtonView, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+        sendMask.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([sendMaskLeading, sendMaskTrailing, sendMaskTop, sendMaskBottom])
+        
+        let scheduleDeliveryButton = UIButton()
+        sendButtonView.addSubview(scheduleDeliveryButton)
+        scheduleDeliveryButton.backgroundColor = UIColor.clearColor()
+        scheduleDeliveryButton.setImage(UIImage(named: "calendar")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        scheduleDeliveryButton.tintColor = UIColor.whiteColor()
+        scheduleDeliveryButton.addTarget(self, action: "scheduleDelivery", forControlEvents: .TouchUpInside)
+        
+        let scheduleLeading = NSLayoutConstraint(item: scheduleDeliveryButton, attribute: .Leading, relatedBy: .Equal, toItem: sendButtonView, attribute: .Leading, multiplier: 1.0, constant: 0.0)
+        let scheduleTrailing = NSLayoutConstraint(item: scheduleDeliveryButton, attribute: .Trailing, relatedBy: .Equal, toItem: sendMask, attribute: .Leading, multiplier: 1.0, constant: 0.0)
+        let scheduleTop = NSLayoutConstraint(item: scheduleDeliveryButton, attribute: .Top, relatedBy: .Equal, toItem: sendButtonView, attribute: .Top, multiplier: 1.0, constant: 0.0)
+        let scheduleBottom = NSLayoutConstraint(item: scheduleDeliveryButton, attribute: .Bottom, relatedBy: .Equal, toItem: sendButtonView, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+        scheduleDeliveryButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([scheduleLeading, scheduleTrailing, scheduleTop, scheduleBottom])
+        
+        sendButtonView.hidden = true
+    }
+    
+    func sendTapped() {
+        performSegueWithIdentifier("sendMail", sender: nil)
+    }
+    
+    func initializeWarningLabel() {
+        view.addSubview(warningLabel)
+        warningLabel.backgroundColor = slowpostBlack
+        warningLabel.textColor = UIColor.whiteColor()
+        warningLabel.font = UIFont(name: "OpenSans", size: 15.0)
+        warningLabel.textAlignment = .Center
+        
+        let warningLeading = NSLayoutConstraint(item: warningLabel, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1.0, constant: 0.0)
+        let warningTrailing = NSLayoutConstraint(item: warningLabel, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
+        let warningTop = NSLayoutConstraint(item: warningLabel, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 60.0)
+        let warningHeight = NSLayoutConstraint(item: warningLabel, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 30.0)
+        warningLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([warningLeading, warningTrailing, warningTop, warningHeight])
+        
+        warningLabel.hide()
+
     }
     
     //
@@ -218,6 +299,60 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     func toggleResults() {
         photoCollection.reloadData()
     }
+    
+    // Camera configuration
+    
+
+    @IBAction func takePhoto(sender: AnyObject) {
+        Flurry.logEvent("Chose_To_Take_Picture")
+        
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+            
+            let imagePicker = UIImagePickerController()
+            
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+            imagePicker.mediaTypes = [kUTTypeImage as String]
+            imagePicker.allowsEditing = false
+            
+            presentViewController(imagePicker, animated: true, completion: nil)
+            newMedia = true
+        }
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        let mediaType = info[UIImagePickerControllerMediaType] as! String
+        
+        dismissViewControllerAnimated(true, completion: nil)
+        
+        if mediaType == (kUTTypeImage as String) {
+            let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+            
+            Flurry.logEvent("Got_Image_From_Camera")
+            imageSelected = image
+            addComposeView()
+            
+            if (newMedia == true) {
+                UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil)
+            } else if mediaType == (kUTTypeMovie as String) {
+                // Code to support video here
+            }
+            
+        }
+    }
+    
+    func image(image: UIImage, didFinishSavingWithError error: NSErrorPointer, contextInfo:UnsafePointer<Void>) {
+        if error != nil {
+            let alert = UIAlertController(title: "Save Failed", message: "Failed to save image", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+            
+            alert.addAction(cancelAction)
+            presentViewController(alert, animated: true, completion: nil)
+        }
+    }
+    
 
     // Collection view configuration
     
@@ -303,6 +438,15 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         addComposeView()
     }
     
+    // Handling case where person does not want to send a photo
+    
+    
+    @IBAction func textOnlyOptionSelected(sender: AnyObject) {
+        imageSelected = nil
+        addComposeView()
+    }
+    
+    
     // Set up compose view
     
     func addComposeView() {
@@ -313,10 +457,29 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         let top = NSLayoutConstraint(item: composeView, attribute: .Top, relatedBy: .Equal, toItem: toLabel, attribute: .Bottom, multiplier: 1.0, constant: 10.0)
         let leading = NSLayoutConstraint(item: composeView, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1.0, constant: 0.0)
         let trailing = NSLayoutConstraint(item: composeView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
-        let bottom = NSLayoutConstraint(item: composeView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
-        composeView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([top, leading, trailing, bottom])
+        defaultComposeViewBottom = NSLayoutConstraint(item: composeView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+        sendComposeViewBottom = NSLayoutConstraint(item: composeView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 60.0)
         
+        defaultComposeViewBottom.priority = 999
+        sendComposeViewBottom.priority = 251
+        
+        composeView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([top, leading, trailing, defaultComposeViewBottom, sendComposeViewBottom])
+        
+        if imageSelected != nil {
+            let imageContainerView = addImageContainerView(composeView)
+            addComposeTextView(composeView, topView: imageContainerView)
+        }
+        else {
+            let imageOptionView = addImageOptionView(composeView)
+            addComposeTextView(composeView, topView: imageOptionView)
+        }
+        
+        validateSendAndPlaceholder()
+        
+    }
+    
+    func addImageContainerView(composeView: UIView) -> UIView {
         let imageContainerView = UIView()
         composeView.addSubview(imageContainerView)
         imageContainerView.backgroundColor = UIColor.lightGrayColor()
@@ -339,7 +502,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         let imageContainerHeight = NSLayoutConstraint(item: imageContainerView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: maxImageHeight)
         
         imageContainerView.translatesAutoresizingMaskIntoConstraints = false
-    
+        
         NSLayoutConstraint.activateConstraints([topImageContainer, leadingImageContainer, trailingImageContainer, imageContainerHeight])
         
         let imageView = UIImageView(image: imageSelected)
@@ -364,15 +527,51 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         let clearBackgroundHeight = NSLayoutConstraint(item: clearButtonBackground, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 20.0)
         
         clearButtonBackground.translatesAutoresizingMaskIntoConstraints = false
-    
+        
         NSLayoutConstraint.activateConstraints([topClearBackground, leadingClearBackground, clearBackgroundWidth, clearBackgroundHeight])
         
         clearButtonBackground.addSubview(clearPhotoButton)
         
-        composeTopBorder.backgroundColor = UIColor.lightGrayColor()
+        return imageContainerView
+    }
+    
+    func addImageOptionView(composeView: UIView) -> UIView {
+        let imageOptionView = UIView()
+        composeView.addSubview(imageOptionView)
+        imageOptionView.backgroundColor = UIColor.whiteColor()
+        
+        let topOptionView = NSLayoutConstraint(item: imageOptionView, attribute: .Top, relatedBy: .Equal, toItem: composeView, attribute: .Top, multiplier: 1.0, constant: 0.0)
+        let leadingOptionView = NSLayoutConstraint(item: imageOptionView, attribute: .Leading, relatedBy: .Equal, toItem: composeView, attribute: .Leading, multiplier: 1.0, constant: -1.0)
+        let trailingOptionView = NSLayoutConstraint(item: imageOptionView, attribute: .Trailing, relatedBy: .Equal, toItem: composeView, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
+        let heightOptionView = NSLayoutConstraint(item: imageOptionView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 40.0)
+        imageOptionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([topOptionView, leadingOptionView, trailingOptionView, heightOptionView])
+        
+        let imageOptionButton = UIButton()
+        imageOptionView.addSubview(imageOptionButton)
+        imageOptionButton.backgroundColor = slowpostDarkGreen
+        imageOptionButton.setTitle("Add image", forState: .Normal)
+        imageOptionButton.titleLabel!.font = UIFont(name: "OpenSans-Semibold", size: 15.0)
+        imageOptionButton.titleLabel!.textColor = UIColor.whiteColor()
+        imageOptionButton.addTarget(self, action: "clearComposeView", forControlEvents: .TouchUpInside)
+        let topOptionButton = NSLayoutConstraint(item: imageOptionButton, attribute: .Top, relatedBy: .Equal, toItem: imageOptionView, attribute: .Top, multiplier: 1.0, constant: 1.0)
+        let leadingOptionButton = NSLayoutConstraint(item: imageOptionButton, attribute: .Leading, relatedBy: .Equal, toItem: imageOptionView, attribute: .Leading, multiplier: 1.0, constant: 1.0)
+        let trailingOptionButton = NSLayoutConstraint(item: imageOptionButton, attribute: .Trailing, relatedBy: .Equal, toItem: imageOptionView, attribute: .Trailing, multiplier: 1.0, constant: 1.0)
+        let bottomOptionButton = NSLayoutConstraint(item: imageOptionButton, attribute: .Bottom, relatedBy: .Equal, toItem: imageOptionView, attribute: .Bottom, multiplier: 1.0, constant: 1.0)
+        imageOptionButton.translatesAutoresizingMaskIntoConstraints = false
+    
+        NSLayoutConstraint.activateConstraints([topOptionButton, leadingOptionButton, trailingOptionButton, bottomOptionButton])
+        
+        
+        return imageOptionView
+    }
+
+    
+    func addComposeTextView(composeView: UIView, topView: UIView) {
+        composeTopBorder.backgroundColor = UIColor.darkGrayColor()
         composeView.addSubview(composeTopBorder)
         
-        composeTopBorderDefaultTop = NSLayoutConstraint(item: composeTopBorder, attribute: .Top, relatedBy: .Equal, toItem: imageContainerView, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+        composeTopBorderDefaultTop = NSLayoutConstraint(item: composeTopBorder, attribute: .Top, relatedBy: .Equal, toItem: topView, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
         composeTopBorderKeyboardTop = NSLayoutConstraint(item: composeTopBorder, attribute: .Top, relatedBy: .Equal, toItem: toLabel, attribute: .Bottom, multiplier: 1.0, constant: 10.0)
         let leadingBorder = NSLayoutConstraint(item: composeTopBorder, attribute: .Leading, relatedBy: .Equal, toItem: composeView, attribute: .Leading, multiplier: 1.0, constant: 0.0)
         let trailingBorder = NSLayoutConstraint(item: composeTopBorder, attribute: .Trailing, relatedBy: .Equal, toItem: composeView, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
@@ -400,8 +599,17 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         
         NSLayoutConstraint.activateConstraints([topCompose, leadingCompose, trailingCompose, bottomCompose])
         
+        composeTextView.addSubview(placeholderText)
+        placeholderText.text = "Compose your message"
+        placeholderText.font = UIFont(name: "OpenSans-Italic", size: 15.0)
+        placeholderText.textColor = slowpostLightGrey
         
-        
+        let topPlaceholder = NSLayoutConstraint(item: placeholderText, attribute: .Top, relatedBy: .Equal, toItem: composeTextView, attribute: .Top, multiplier: 1.0, constant: 10.0)
+        let leadingPlaceholder = NSLayoutConstraint(item: placeholderText, attribute: .Leading, relatedBy: .Equal, toItem: composeTextView, attribute: .Leading, multiplier: 1.0, constant: 10.0)
+        let placeholderHeight = NSLayoutConstraint(item: placeholderText, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 21)
+        placeholderText.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([topPlaceholder, leadingPlaceholder, placeholderHeight])
+
     }
     
     // Modifying view when keyboard is shown
@@ -416,6 +624,8 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         r = composeTextView.convertRect(r, fromView:nil)
         composeTextView.contentInset.bottom = r.size.height + 60.0
         composeTextView.scrollIndicatorInsets.bottom = r.size.height + 60.0
+        
+        placeholderText.hidden = true
     }
     
     func keyboardHide(notification:NSNotification) {
@@ -423,6 +633,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         composeTopBorderKeyboardTop.priority = 251
         updateViewConstraints()
         doneEditingButton.hidden = true
+        validateSendAndPlaceholder()
     }
     
     func keyboardDidShow(notification:NSNotification) {
@@ -436,5 +647,71 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         doneEditingButton.frame = CGRect(x: 0, y: y, width: view.frame.width, height: 40.0)
         doneEditingButton.hidden = false
     }
+    
+    func validateSendAndPlaceholder() {
+        if composeTextView.text != nil && composeTextView.text != "" {
+            sendButtonView.hidden = false
+            view.bringSubviewToFront(sendButtonView)
+            placeholderText.hidden = true
+            
+            // This isn't working...
+            defaultComposeViewBottom.priority = 251
+            sendComposeViewBottom.priority = 999
+            updateViewConstraints()
+        }
+        else {
+            sendButtonView.hidden = true
+            placeholderText.hidden = false
+            
+            // This isn't working...
+            defaultComposeViewBottom.priority = 999
+            sendComposeViewBottom.priority = 251
+            updateViewConstraints()
+        }
+    }
+    
+    // Scheduling delivery
+    
+    func scheduleDelivery() {
+        print("Scheduling delivery!")
+    }
+    
+    
+    //
+    
+    
+    @IBAction func cancel(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: {})
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "sendMail" {
+            let sendingViewController = segue.destinationViewController as? SendingViewController
+            sendingViewController!.toPeople = toPeople
+            sendingViewController!.toSearchPeople = toSearchPeople
+            sendingViewController!.toEmails = toEmails
+            sendingViewController!.content = composeTextView.text
+            
+            if imageSelected != nil {
+                sendingViewController!.image = imageSelected
+            }
+            
+            
+//            if scheduledToArrive != nil {
+//                sendingViewController!.scheduledToArrive = scheduledToArrive!
+//            }
+        }
+//        else if segue.identifier == "scheduleDelivery" {
+//            shadedView.hidden = false
+//        }
+    }
+    
+    @IBAction func mailFailedToSend(segue: UIStoryboardSegue) {
+    }
+    
+    @IBAction func notReadyToSend(segue: UIStoryboardSegue) {
+    }
+    
+    
 
 }

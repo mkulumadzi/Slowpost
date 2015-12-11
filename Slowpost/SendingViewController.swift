@@ -67,20 +67,25 @@ class SendingViewController: UIViewController {
     }
     
     func sendMail() {
-        
-        let fileName = generateFileName()
-        FileService.uploadImage(image, filename: fileName, completion: { (error, result) -> Void in
-            if let imageUid = result as? String {
-                FileService.saveImageToDirectory(self.image, fileName: fileName)
-                self.sendMailToPostoffice(imageUid)
-            }
-            else {
-                if self.manuallyCancelled == false {
-                    self.warningMessage = "Mail failed to send"
-                    self.performSegueWithIdentifier("mailFailedToSend", sender: nil)
+        if image != nil {
+            let fileName = generateFileName()
+            FileService.uploadImage(image, filename: fileName, completion: { (error, result) -> Void in
+                if let imageUid = result as? String {
+                    FileService.saveImageToDirectory(self.image, fileName: fileName)
+                    self.sendMailToPostoffice(imageUid)
                 }
-            }
-        })
+                else {
+                    if self.manuallyCancelled == false {
+                        self.warningMessage = "Mail failed to send"
+                        self.performSegueWithIdentifier("mailFailedToSend", sender: nil)
+                    }
+                }
+            })
+        }
+        else {
+            self.sendMailToPostoffice(nil)
+        }
+    
     }
     
     func generateFileName() -> String {
@@ -89,12 +94,19 @@ class SendingViewController: UIViewController {
         return fileName
     }
     
-    func sendMailToPostoffice(imageUid: String) {
+    func sendMailToPostoffice(imageUid: String?) {
         
         let mailURL = getMailURL()
         let correspondents = formatCorrespondents()
-        var parameters:[String : AnyObject] = ["correspondents": correspondents, "attachments": ["notes": [content], "image_attachments": [imageUid]]]
+        var parameters:[String : AnyObject]!
         
+        if imageUid != nil {
+            parameters = ["correspondents": correspondents, "attachments": ["notes": [content], "image_attachments": [imageUid!]]]
+        }
+        else {
+            parameters = ["correspondents": correspondents, "attachments": ["notes": [content]]]
+        }
+            
         if scheduledToArrive != nil {
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
@@ -190,14 +202,14 @@ class SendingViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "mailFailedToSend" {
             
-            let composeMailViewController = segue.destinationViewController as? ComposeMailViewController
-            composeMailViewController!.warningLabel.show(warningMessage)
+            let destinationController = segue.destinationViewController as? ChooseImageAndComposeMailViewController
+            destinationController!.warningLabel.show(warningMessage)
             
             // Delay the dismissal by 5 seconds
             let delay = 5.0 * Double(NSEC_PER_SEC)
             let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
             dispatch_after(time, dispatch_get_main_queue(), {
-                composeMailViewController!.warningLabel.hide()
+                destinationController!.warningLabel.hide()
             })
         }
     }

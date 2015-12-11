@@ -236,11 +236,11 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    @IBAction func mailFailedToSend(segue: UIStoryboardSegue) {
-    }
-    
-    @IBAction func notReadyToSend(segue: UIStoryboardSegue) {
-    }
+//    @IBAction func mailFailedToSend(segue: UIStoryboardSegue) {
+//    }
+//    
+//    @IBAction func notReadyToSend(segue: UIStoryboardSegue) {
+//    }
     
     @IBAction func standardDeliveryChosen(segue: UIStoryboardSegue) {
         shadedView.hidden = true

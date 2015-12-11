@@ -736,7 +736,6 @@
                         <outlet property="sendButtonHeight" destination="EOv-90-ZjL" id="IDx-a3-zhu"/>
                         <outlet property="toLabel" destination="KiO-xd-bKI" id="UbM-XW-CnN"/>
                         <outlet property="warningLabel" destination="udR-AJ-ciC" id="JZt-FN-fBK"/>
-                        <segue destination="MtH-uW-ItT" kind="presentation" identifier="sendMail" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="GA5-nW-VBo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wwg-pC-olF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1027,7 +1026,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HIU-N4-2SL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="hsk-st-IZq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3130" y="1862"/>
+            <point key="canvasLocation" x="2407" y="924"/>
         </scene>
         <!--Compose Navigation Controller-->
         <scene sceneID="RDR-ED-QzE">
@@ -1100,23 +1099,6 @@
                                     <constraint firstAttribute="trailing" secondItem="Opl-C7-tC0" secondAttribute="trailing" id="zL1-iF-6Q5"/>
                                 </constraints>
                             </scrollView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qKN-zP-oSU">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
-                                <animations/>
-                                <items>
-                                    <barButtonItem style="plain" id="t8x-3B-CKd">
-                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="1" id="lLN-xr-tg4">
-                                            <rect key="frame" x="20" y="7" width="200" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <animations/>
-                                            <segments>
-                                                <segment title="My Photos"/>
-                                                <segment title="Card Gallery"/>
-                                            </segments>
-                                        </segmentedControl>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cDL-EV-1Vn" userLabel="photoCollection">
                                 <rect key="frame" x="0.0" y="108" width="600" height="448"/>
                                 <animations/>
@@ -1160,6 +1142,46 @@
                                     <outlet property="delegate" destination="DuY-Ib-j4y" id="WA6-9a-yOb"/>
                                 </connections>
                             </collectionView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qKN-zP-oSU">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <animations/>
+                                <items>
+                                    <barButtonItem style="plain" id="t8x-3B-CKd">
+                                        <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="1" id="lLN-xr-tg4">
+                                            <rect key="frame" x="20" y="7" width="160" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <segments>
+                                                <segment title="My Photos"/>
+                                                <segment title="Card Gallery"/>
+                                            </segments>
+                                        </segmentedControl>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="rGQ-3D-BSo">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hAw-qO-VcA" userLabel="takePhoto">
+                                            <rect key="frame" x="190" y="10" width="78" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <state key="normal" image="camera"/>
+                                            <connections>
+                                                <action selector="takePhoto:" destination="DuY-Ib-j4y" eventType="touchUpInside" id="bLT-wp-5BB"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="064-14-yKB">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="BB4-Vi-wjh" userLabel="Text">
+                                            <rect key="frame" x="278" y="10" width="78" height="24"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
+                                            <state key="normal" image="text"/>
+                                            <connections>
+                                                <action selector="textOnlyOptionSelected:" destination="DuY-Ib-j4y" eventType="touchUpInside" id="LYI-wr-ODs"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                </items>
+                                <color key="barTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1178,11 +1200,24 @@
                             <constraint firstItem="4VL-bp-GRR" firstAttribute="leading" secondItem="hr5-6Z-Cz1" secondAttribute="trailing" id="zHt-iS-JNH"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="mtg-v3-bKx"/>
+                    <navigationItem key="navigationItem" id="mtg-v3-bKx">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="mPT-GM-Kw4">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="J1g-Yq-npq">
+                                <rect key="frame" x="20" y="9" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <animations/>
+                                <state key="normal" image="chevron-down"/>
+                                <connections>
+                                    <action selector="cancel:" destination="DuY-Ib-j4y" eventType="touchUpInside" id="1RD-20-QX2"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="photoCollection" destination="cDL-EV-1Vn" id="BnJ-hw-fL9"/>
                         <outlet property="segmentedControl" destination="lLN-xr-tg4" id="rtW-Er-tmu"/>
                         <outlet property="toLabel" destination="Opl-C7-tC0" id="z6o-gm-afB"/>
+                        <segue destination="MtH-uW-ItT" kind="presentation" identifier="sendMail" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="D27-aS-fkK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lQx-I9-OWX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1194,10 +1229,12 @@
         <image name="Default Card.png" width="768" height="576"/>
         <image name="Slowpost Icon Set (green)" width="150" height="95"/>
         <image name="calendar" width="24" height="24"/>
+        <image name="camera" width="24" height="24"/>
         <image name="camera-2.png" width="120" height="120"/>
         <image name="chevron-down" width="25" height="25"/>
         <image name="picture-3.png" width="120" height="120"/>
         <image name="remove" width="24" height="24"/>
+        <image name="text" width="24" height="24"/>
         <image name="view-module.png" width="120" height="120"/>
     </resources>
 </document>
