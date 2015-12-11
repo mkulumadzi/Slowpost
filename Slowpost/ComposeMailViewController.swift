@@ -242,19 +242,19 @@ class ComposeMailViewController: UIViewController, UITextViewDelegate {
 //    @IBAction func notReadyToSend(segue: UIStoryboardSegue) {
 //    }
     
-    @IBAction func standardDeliveryChosen(segue: UIStoryboardSegue) {
-        shadedView.hidden = true
-        formatSendButton()
-    }
-    
-    @IBAction func scheduledDeliveryChosen(segue: UIStoryboardSegue) {
-        shadedView.hidden = true
-        formatSendButton()
-    }
-    
-    @IBAction func scheduleDeliveryCancelled(segue: UIStoryboardSegue) {
-        shadedView.hidden = true
-    }
+//    @IBAction func standardDeliveryChosen(segue: UIStoryboardSegue) {
+//        shadedView.hidden = true
+//        formatSendButton()
+//    }
+//    
+//    @IBAction func scheduledDeliveryChosen(segue: UIStoryboardSegue) {
+//        shadedView.hidden = true
+//        formatSendButton()
+//    }
+//    
+//    @IBAction func scheduleDeliveryCancelled(segue: UIStoryboardSegue) {
+//        shadedView.hidden = true
+//    }
     
     func formatSendButton() {
         if scheduledToArrive != nil {

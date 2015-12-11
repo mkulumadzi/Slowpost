@@ -211,7 +211,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M80-pT-5by" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="hLo-Nf-4Zf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1729" y="2896"/>
+            <point key="canvasLocation" x="1060" y="3600"/>
         </scene>
         <!--Image-->
         <scene sceneID="REo-Uv-ZRU">
@@ -513,7 +513,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zo8-kX-mww" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1729" y="1862"/>
+            <point key="canvasLocation" x="1060" y="2566"/>
         </scene>
         <!--Compose-->
         <scene sceneID="BaF-2i-HAc">
@@ -611,9 +611,6 @@
                                 </constraints>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" image="calendar"/>
-                                <connections>
-                                    <segue destination="FyT-yD-Bbu" kind="presentation" identifier="scheduleDelivery" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="vpr-RU-5nF"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="warningLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udR-AJ-ciC" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="600" height="30"/>
@@ -745,7 +742,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2398" y="1862"/>
+            <point key="canvasLocation" x="1729" y="2566"/>
         </scene>
         <!--Delivery-->
         <scene sceneID="8yP-rX-UdV">
@@ -918,7 +915,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2398" y="2896"/>
+            <point key="canvasLocation" x="1729" y="1674"/>
         </scene>
         <!--Sending View Controller-->
         <scene sceneID="cZ8-Uj-tT2">
@@ -1218,6 +1215,7 @@
                         <outlet property="segmentedControl" destination="lLN-xr-tg4" id="rtW-Er-tmu"/>
                         <outlet property="toLabel" destination="Opl-C7-tC0" id="z6o-gm-afB"/>
                         <segue destination="MtH-uW-ItT" kind="presentation" identifier="sendMail" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="D27-aS-fkK"/>
+                        <segue destination="FyT-yD-Bbu" kind="presentation" identifier="scheduleDelivery" modalPresentationStyle="overFullScreen" id="g4Q-LI-mrw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lQx-I9-OWX" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -70,12 +70,12 @@ class ChooseDeliveryOptionsViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "scheduledDeliveryChosen" {
-            let composeMailViewController = segue.destinationViewController as! ComposeMailViewController
-            composeMailViewController.scheduledToArrive = datePicker.date
+            let destinationController = segue.destinationViewController as! ChooseImageAndComposeMailViewController
+            destinationController.scheduledToArrive = datePicker.date
         }
         else if segue.identifier == "standardDeliveryChosen" {
-            let composeMailViewController = segue.destinationViewController as! ComposeMailViewController
-            composeMailViewController.scheduledToArrive = nil
+            let destinationController = segue.destinationViewController as! ChooseImageAndComposeMailViewController
+            destinationController.scheduledToArrive = nil
         }
         
     }

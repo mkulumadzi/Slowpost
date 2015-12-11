@@ -35,6 +35,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     var sendButtonLabel = UILabel()
     var warningLabel = WarningUILabel()
     var scheduledToArrive:NSDate?
+    var shadedView:UIView!
     
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var photoCollection: UICollectionView!
@@ -57,6 +58,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         initializeDoneEditingButton()
         initializeSendButton()
         initializeWarningLabel()
+        initializeShadedView()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
@@ -177,6 +179,14 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         
         warningLabel.hide()
 
+    }
+    
+    func initializeShadedView() {
+        shadedView = UIView(frame: view.frame)
+        shadedView.backgroundColor = slowpostBlack
+        shadedView.alpha = 0.5
+        view.addSubview(shadedView)
+        shadedView.hidden = true
     }
     
     //
@@ -673,9 +683,32 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     // Scheduling delivery
     
     func scheduleDelivery() {
-        print("Scheduling delivery!")
+        performSegueWithIdentifier("scheduleDelivery", sender: nil)
     }
     
+    @IBAction func standardDeliveryChosen(segue: UIStoryboardSegue) {
+            shadedView.hidden = true
+            formatSendButton()
+    }
+    
+    @IBAction func scheduledDeliveryChosen(segue: UIStoryboardSegue) {
+            shadedView.hidden = true
+            formatSendButton()
+    }
+    
+    @IBAction func scheduleDeliveryCancelled(segue: UIStoryboardSegue) {
+            shadedView.hidden = true
+    }
+    
+    func formatSendButton() {
+        if scheduledToArrive != nil {
+            let dateString = scheduledToArrive!.formattedAsString("yyyy-MM-dd")
+            sendButtonLabel.text = "Send (arrives on \(dateString)) >>"
+        }
+        else {
+            sendButtonLabel.text = "Send right now >>"
+        }
+    }
     
     //
     
@@ -695,15 +728,14 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
             if imageSelected != nil {
                 sendingViewController!.image = imageSelected
             }
-            
-            
-//            if scheduledToArrive != nil {
-//                sendingViewController!.scheduledToArrive = scheduledToArrive!
-//            }
+            if scheduledToArrive != nil {
+                sendingViewController!.scheduledToArrive = scheduledToArrive!
+            }
         }
-//        else if segue.identifier == "scheduleDelivery" {
-//            shadedView.hidden = false
-//        }
+        else if segue.identifier == "scheduleDelivery" {
+            view.bringSubviewToFront(shadedView)
+            shadedView.hidden = false
+        }
     }
     
     @IBAction func mailFailedToSend(segue: UIStoryboardSegue) {
@@ -711,6 +743,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     
     @IBAction func notReadyToSend(segue: UIStoryboardSegue) {
     }
+    
     
     
 
