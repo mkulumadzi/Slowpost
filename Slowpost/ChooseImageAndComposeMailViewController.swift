@@ -27,6 +27,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     var composeView:ComposeView!
     var imageContainerView:UIView!
     var imageContainerHeight:NSLayoutConstraint!
+    var imageView:UIImageView!
     var composeViewBottom:NSLayoutConstraint!
     var composeTopBorder:UIView!
     var composeTopBorderDefaultTop:NSLayoutConstraint!
@@ -39,7 +40,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     var scheduledToArrive:NSDate?
     var shadedView:UIView!
     var leadingCardOverlayContainer:NSLayoutConstraint!
-    var overlayContainer:UIView!
+    var cardOverlayContainer:OverlayContainerView!
     var overlayIndex:Int!
     
     @IBOutlet weak var toLabel: UILabel!
@@ -69,6 +70,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardWillHideNotification, object: nil)
         resignFirstResponder()
         
     }
@@ -527,7 +529,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         
         NSLayoutConstraint.activateConstraints([topImageContainer, leadingImageContainer, trailingImageContainer, imageContainerHeight])
         
-        let imageView = UIImageView(image: imageSelected)
+        imageView = UIImageView(image: imageSelected)
         composeView.addSubview(imageView)
         let aspectRatio = imageSelected.size.width / imageSelected.size.height
         let topImage = NSLayoutConstraint(item: imageView, attribute: .Top, relatedBy: .Equal, toItem: composeView, attribute: .Top, multiplier: 1.0, constant: 0.0)
@@ -539,7 +541,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         NSLayoutConstraint.activateConstraints([topImage, bottomImage, alignImage, imageAspectRatio])
         
         //Card overlay view
-        let cardOverlayContainer = OverlayContainerView()
+        cardOverlayContainer = OverlayContainerView()
         composeView.addSubview(cardOverlayContainer)
         cardOverlayContainer.backgroundColor = UIColor.clearColor()
         
@@ -550,6 +552,8 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         cardOverlayContainer.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activateConstraints([topCardOverlayContainer, leadingCardOverlayContainer, heightCardOverlayContainer, widthCardOverlayContainer])
         
+        let renderedImageWidth = imageSelected.size.width * maxImageHeight / imageSelected.size.height
+        
         let overlay1image = UIImage(named: "holiday-lights.png")!
         let overlay1 = UIImageView(image: overlay1image)
         overlay1.backgroundColor = UIColor.clearColor()
@@ -557,7 +561,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         let overlay1Width = NSLayoutConstraint(item: overlay1, attribute: .Width, relatedBy: .Equal, toItem: imageView, attribute: .Width, multiplier: 1.0, constant: 1.0)
         let overlay1Height = NSLayoutConstraint(item: overlay1, attribute: .Height, relatedBy: .Equal, toItem: overlay1, attribute: .Width, multiplier: (overlay1image.size.height / overlay1image.size.width), constant: 1.0)
         let overlay1Top = NSLayoutConstraint(item: overlay1, attribute: .Top, relatedBy: .Equal, toItem: composeView, attribute: .Top, multiplier: 1.0, constant: 1.0)
-        let overlay1Leading = NSLayoutConstraint(item: overlay1, attribute: .Leading, relatedBy: .Equal, toItem: imageView, attribute: .Leading, multiplier: 1.0, constant: view.frame.width)
+        let overlay1Leading = NSLayoutConstraint(item: overlay1, attribute: .Leading, relatedBy: .Equal, toItem: cardOverlayContainer, attribute: .Leading, multiplier: 1.0, constant: view.frame.width + (view.frame.width - renderedImageWidth) / 2)
         overlay1.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activateConstraints([overlay1Width, overlay1Height, overlay1Top, overlay1Leading])
         
@@ -568,7 +572,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         let overlay2Width = NSLayoutConstraint(item: overlay2, attribute: .Width, relatedBy: .Equal, toItem: imageView, attribute: .Width, multiplier: 1.0, constant: 1.0)
         let overlay2Height = NSLayoutConstraint(item: overlay2, attribute: .Height, relatedBy: .Equal, toItem: overlay2, attribute: .Width, multiplier: (overlay2image.size.height / overlay2image.size.width), constant: 1.0)
         let overlay2Bottom = NSLayoutConstraint(item: overlay2, attribute: .Bottom, relatedBy: .Equal, toItem: imageContainerView, attribute: .Bottom, multiplier: 1.0, constant: 1.0)
-        let overlay2Leading = NSLayoutConstraint(item: overlay2, attribute: .Leading, relatedBy: .Equal, toItem: imageView, attribute: .Leading, multiplier: 1.0, constant: 2 * view.frame.width)
+        let overlay2Leading = NSLayoutConstraint(item: overlay2, attribute: .Leading, relatedBy: .Equal, toItem: cardOverlayContainer, attribute: .Leading, multiplier: 1.0, constant: 2 * view.frame.width + (view.frame.width - renderedImageWidth)/2)
         overlay2.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activateConstraints([overlay2Width, overlay2Height, overlay2Bottom, overlay2Leading])
         
@@ -582,8 +586,6 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         overlaySwipeRight.direction = .Right
         overlaySwipeRight.delegate = self
         cardOverlayContainer.addGestureRecognizer(overlaySwipeRight)
-        
-        overlayContainer = cardOverlayContainer
         
         //
         
@@ -638,35 +640,20 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     }
     
     func handleSwipeLeft(recognizer: UISwipeGestureRecognizer) {
-        for subview in view.subviews {
-            if let composeView = subview as? ComposeView {
-                for subview in composeView.subviews {
-                    if let overlayContainer = subview as? OverlayContainerView {
-                        UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {
-                            overlayContainer.frame.offsetInPlace(dx: -self.view.frame.width, dy: 0.0)
-                            }, completion: nil)
-                        print(overlayContainer.frame)
-                    }
-                }
-            }
-        }
+        print(cardOverlayContainer.frame)
+        leadingCardOverlayContainer.constant -= view.frame.width
+        UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {
+            self.view.layoutIfNeeded()
+                }, completion: nil)
         overlayIndex = overlayIndex + 1
         print("Swipe left")
     }
     
     func handleSwipeRight(recognizer: UISwipeGestureRecognizer) {
-        for subview in view.subviews {
-            if let composeView = subview as? ComposeView {
-                for subview in composeView.subviews {
-                    if let overlayContainer = subview as? OverlayContainerView {
-                        UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {
-                            overlayContainer.frame.offsetInPlace(dx: self.view.frame.width, dy: 0.0)
-                            }, completion: nil)
-                        print(overlayContainer.frame)
-                    }
-                }
-            }
-        }
+        leadingCardOverlayContainer.constant += view.frame.width
+        UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {
+            self.view.layoutIfNeeded()
+            }, completion: nil)
         overlayIndex = overlayIndex - 1
         print("Swipe right")
     }
@@ -721,14 +708,14 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     // Modifying view when keyboard is shown
     
     func keyboardShow(notification: NSNotification) {
-        UIView.animateWithDuration(0.5, delay: 0.0, options: [.CurveEaseInOut, .Repeat], animations: {
-            if self.imageSelected != nil {
-                self.composeTopBorderDefaultTop.constant -= self.imageContainerView.frame.height
-            }
-            else {
-                self.composeTopBorderDefaultTop.constant -= 40.0
-            }
-            self.updateViewConstraints()
+        if self.imageSelected != nil {
+            self.composeTopBorderDefaultTop.constant -= self.imageContainerView.frame.height
+        }
+        else {
+            self.composeTopBorderDefaultTop.constant -= 40.0
+        }
+        UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {
+            self.view.layoutIfNeeded()
             }, completion: nil)
         
         
@@ -742,20 +729,21 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     }
     
     func keyboardHide(notification:NSNotification) {
+        if self.imageSelected != nil {
+            self.composeTopBorderDefaultTop.constant += self.imageContainerView.frame.height
+        }
+        else {
+            self.composeTopBorderDefaultTop.constant += 40.0
+        }
         UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {
-            if self.imageSelected != nil {
-                self.composeTopBorderDefaultTop.constant += self.imageContainerView.frame.height
-            }
-            else {
-                self.composeTopBorderDefaultTop.constant += 40.0
-            }
-            
-            self.updateViewConstraints()
+            self.view.layoutIfNeeded()
             }, completion: nil)
         
         doneEditingButton.hidden = true
         validateSendAndPlaceholder()
-        adjustPositionOfCardOverlay()
+    }
+    
+    func keyboardDidHide(notification:NSNotification) {
     }
     
     func keyboardDidShow(notification:NSNotification) {
@@ -780,19 +768,6 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         else {
             sendButtonView.hidden = true
             placeholderText.hidden = false
-        }
-    }
-    
-    func adjustPositionOfCardOverlay() {
-        for subview in view.subviews {
-            if let composeView = subview as? ComposeView {
-                for subview in composeView.subviews {
-                    if let overlayContainer = subview as? OverlayContainerView {
-                        overlayContainer.frame.offsetInPlace(dx: -self.view.frame.width * CGFloat(self.overlayIndex), dy: 0.0)
-                        self.view.layoutIfNeeded()
-                    }
-                }
-            }
         }
     }
     
