@@ -479,7 +479,8 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     
     func addComposeView() {
         composeView = ComposeView()
-        composeView.backgroundColor = UIColor.lightGrayColor()
+//        composeView.backgroundColor = UIColor.lightGrayColor()
+        composeView.backgroundColor = UIColor.orangeColor()
         view.addSubview(composeView)
         
         let top = NSLayoutConstraint(item: composeView, attribute: .Top, relatedBy: .Equal, toItem: toLabel, attribute: .Bottom, multiplier: 1.0, constant: 10.0)
@@ -511,9 +512,9 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         let suggestedImageHeight = view.frame.width * imageSelected.size.height / imageSelected.size.width
         var maxImageHeight:CGFloat!
         
-        if view.frame.height - suggestedImageHeight < 200.0 {
+        if view.frame.height - suggestedImageHeight < 240.0 {
             print("Setting gap to 80")
-            maxImageHeight = view.frame.height - 200.0
+            maxImageHeight = view.frame.height - 240.0
         }
         else {
             print("Using suggested height")
@@ -741,6 +742,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         
         doneEditingButton.hidden = true
         validateSendAndPlaceholder()
+        composeTextView.scrollRangeToVisible(NSMakeRange(0,0))
     }
     
     func keyboardDidHide(notification:NSNotification) {
