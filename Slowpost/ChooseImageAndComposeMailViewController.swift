@@ -18,6 +18,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     var newMedia: Bool?
     var imageSelected:UIImage!
     var cardUrls:[String]!
+    var overlayUrls:[String]!
     var cardPhotos = [UIImage]()
     var userPhotos = [UIImage]()
     var cardOverlays = [[String: AnyObject]]()
@@ -336,8 +337,55 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         photoCollection.reloadData()
     }
     
+    // Card overlays
+    
     func initializeCardOverlays() {
-        cardOverlays = [["image": UIImage(named: "holiday-lights")!, "edge": "TOP"], ["image": UIImage(named: "snowman-happy-holidays")!, "edge": "BOTTOM"]]
+        let overlaysURL = "\(PostOfficeURL)overlays"
+        
+        RestService.getRequest(overlaysURL, headers: nil, completion: { (error, result) -> Void in
+            if error != nil {
+                print(error)
+            }
+            else {
+                if let overlayArray = result as? [String] {
+                    print(overlayArray)
+                    self.overlayUrls = overlayArray
+                    self.populateOverlayPhotos()
+                }
+                else {
+                    print("Unexpected JSON result getting cards")
+                }
+            }
+        })
+    }
+    
+    func populateOverlayPhotos() {
+        for url in overlayUrls {
+            let overlayName = url.characters.split{$0 == "/"}.map(String.init).last
+            let imageFile = FileService.getImageFromDirectory(overlayName)
+            if imageFile != nil {
+                self.addCardOverlay(imageFile!, name: overlayName)
+            }
+            else {
+                let newOverlayName = url.stringByReplacingOccurrencesOfString(" ", withString: "%20")
+                let imageURL = "\(PostOfficeURL)/image/\(newOverlayName)"
+                print(imageURL)
+                FileService.downloadImage(imageURL, completion: { (error, result) -> Void in
+                    if error != nil {
+                        print(error)
+                    }
+                    else if let image = result as? UIImage {
+                        FileService.savePNGToDirectory(image, fileName: overlayName)
+                        self.addCardOverlay(image, name: overlayName)
+                    }
+                })
+            }
+        }
+    }
+    
+    func addCardOverlay(image: UIImage, name: String) {
+        let edge = name.characters.split{$0 == "-"}.map(String.init).first!.uppercaseString
+        cardOverlays.append(["image": image, "edge": edge])
     }
     
     // Camera configuration

@@ -107,6 +107,13 @@ class FileService {
         return success
     }
     
+    class func savePNGToDirectory(image: UIImage, fileName: String) -> Bool {
+        let path = convertFileNameToNSURL(fileName)
+        let imageData = UIImagePNGRepresentation(image)!
+        let success = imageData.writeToURL(path, atomically: true)
+        return success
+    }
+    
     class func getImageFromDirectory(fileName: String) -> UIImage? {
         let path = convertFileNameToNSURL(fileName)
         var image:UIImage?
