@@ -17,10 +17,10 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     var toEmails:[String]!
     var newMedia: Bool?
     var imageSelected:UIImage!
-    var cardNames:[String]!
+    var cardUrls:[String]!
     var cardPhotos = [UIImage]()
     var userPhotos = [UIImage]()
-    var cardOverlays = [UIImage]()
+    var cardOverlays = [[String: AnyObject]]()
     var fetchResult:PHFetchResult!
     var clearPhotoButton:UIButton!
     var textEntered:String!
@@ -42,6 +42,8 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     var leadingCardOverlayContainer:NSLayoutConstraint!
     var cardOverlayContainer:OverlayContainerView!
     var overlayIndex:Int!
+    var overlaysAllowed:Bool!
+    var overlayInstructions:UILabel!
     
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var photoCollection: UICollectionView!
@@ -251,7 +253,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
             }
             else {
                 if let cardArray = result as? [String] {
-                    self.cardNames = cardArray
+                    self.cardUrls = cardArray
                     self.populateCardPhotos()
                 }
                 else {
@@ -263,21 +265,31 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     
     func populateCardPhotos() {
         
-        for card in cardNames {
-            let newCardName = card.stringByReplacingOccurrencesOfString(" ", withString: "%20")
-            let imageURL = "\(PostOfficeURL)/image/\(newCardName)"
-            FileService.downloadImage(imageURL, completion: { (error, result) -> Void in
-                if error != nil {
-                    print(error)
-                }
-                else if let image = result as? UIImage {
-//                    if self.activityIndicator.isAnimating() {
-//                        self.activityIndicator.stopAnimating()
-//                    }
-                    self.cardPhotos.append(image)
-                    self.photoCollection.reloadData()
-                }
-            })
+        for url in cardUrls {
+            // First check for local file, use that if it is found
+            let cardName = url.characters.split{$0 == "/"}.map(String.init).last
+            let imageFile = FileService.getImageFromDirectory(cardName)
+            if imageFile != nil {
+                self.cardPhotos.append(imageFile!)
+                self.photoCollection.reloadData()
+            }
+            else {
+                let newCardName = url.stringByReplacingOccurrencesOfString(" ", withString: "%20")
+                let imageURL = "\(PostOfficeURL)/image/\(newCardName)"
+                FileService.downloadImage(imageURL, completion: { (error, result) -> Void in
+                    if error != nil {
+                        print(error)
+                    }
+                    else if let image = result as? UIImage {
+                        //                    if self.activityIndicator.isAnimating() {
+                        //                        self.activityIndicator.stopAnimating()
+                        //                    }
+                        FileService.saveImageToDirectory(image, fileName: cardName)
+                        self.cardPhotos.append(image)
+                        self.photoCollection.reloadData()
+                    }
+                })
+            }
         }
         
     }
@@ -325,7 +337,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     }
     
     func initializeCardOverlays() {
-        cardOverlays = [UIImage(named: "holiday-lights")!]
+        cardOverlays = [["image": UIImage(named: "holiday-lights")!, "edge": "TOP"], ["image": UIImage(named: "snowman-happy-holidays")!, "edge": "BOTTOM"]]
     }
     
     // Camera configuration
@@ -358,6 +370,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
             let image = info[UIImagePickerControllerOriginalImage] as! UIImage
             
             Flurry.logEvent("Got_Image_From_Camera")
+            overlaysAllowed = true
             imageSelected = image
             addComposeView()
             
@@ -456,10 +469,12 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             image = getFullSizePhoto(indexPath.row)
+            overlaysAllowed = true
         default:
             image = cardPhotos[indexPath.row]
-            let parameters:[String: String] = ["Name": cardNames[indexPath.row]]
+            let parameters:[String: String] = ["Name": cardUrls[indexPath.row]]
             Flurry.logEvent("Chose_Image_From_Gallery", withParameters: parameters)
+            overlaysAllowed = false
         }
         imageSelected = image
         print("Image selected")
@@ -479,8 +494,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     
     func addComposeView() {
         composeView = ComposeView()
-//        composeView.backgroundColor = UIColor.lightGrayColor()
-        composeView.backgroundColor = UIColor.orangeColor()
+        composeView.backgroundColor = UIColor.lightGrayColor()
         view.addSubview(composeView)
         
         let top = NSLayoutConstraint(item: composeView, attribute: .Top, relatedBy: .Equal, toItem: toLabel, attribute: .Bottom, multiplier: 1.0, constant: 10.0)
@@ -541,54 +555,9 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activateConstraints([topImage, bottomImage, alignImage, imageAspectRatio])
         
-        //Card overlay view
-        cardOverlayContainer = OverlayContainerView()
-        composeView.addSubview(cardOverlayContainer)
-        cardOverlayContainer.backgroundColor = UIColor.clearColor()
-        
-        let topCardOverlayContainer = NSLayoutConstraint(item: cardOverlayContainer, attribute: .Top, relatedBy: .Equal, toItem: composeView, attribute: .Top, multiplier: 1.0, constant: 0.0)
-        leadingCardOverlayContainer = NSLayoutConstraint(item: cardOverlayContainer, attribute: .Leading, relatedBy: .Equal, toItem: composeView, attribute: .Leading, multiplier: 1.0, constant: 0.0)
-        let heightCardOverlayContainer = NSLayoutConstraint(item: cardOverlayContainer, attribute: .Height, relatedBy: .Equal, toItem: imageContainerView, attribute: .Height, multiplier: 1.0, constant: 1.0)
-        let widthCardOverlayContainer = NSLayoutConstraint(item: cardOverlayContainer, attribute: .Width, relatedBy: .Equal, toItem: imageContainerView, attribute: .Width, multiplier: 3.0, constant: 1.0)
-        cardOverlayContainer.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([topCardOverlayContainer, leadingCardOverlayContainer, heightCardOverlayContainer, widthCardOverlayContainer])
-        
-        let renderedImageWidth = imageSelected.size.width * maxImageHeight / imageSelected.size.height
-        
-        let overlay1image = UIImage(named: "holiday-lights.png")!
-        let overlay1 = UIImageView(image: overlay1image)
-        overlay1.backgroundColor = UIColor.clearColor()
-        cardOverlayContainer.addSubview(overlay1)
-        let overlay1Width = NSLayoutConstraint(item: overlay1, attribute: .Width, relatedBy: .Equal, toItem: imageView, attribute: .Width, multiplier: 1.0, constant: 1.0)
-        let overlay1Height = NSLayoutConstraint(item: overlay1, attribute: .Height, relatedBy: .Equal, toItem: overlay1, attribute: .Width, multiplier: (overlay1image.size.height / overlay1image.size.width), constant: 1.0)
-        let overlay1Top = NSLayoutConstraint(item: overlay1, attribute: .Top, relatedBy: .Equal, toItem: composeView, attribute: .Top, multiplier: 1.0, constant: 1.0)
-        let overlay1Leading = NSLayoutConstraint(item: overlay1, attribute: .Leading, relatedBy: .Equal, toItem: cardOverlayContainer, attribute: .Leading, multiplier: 1.0, constant: view.frame.width + (view.frame.width - renderedImageWidth) / 2)
-        overlay1.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([overlay1Width, overlay1Height, overlay1Top, overlay1Leading])
-        
-        let overlay2image = UIImage(named: "snowman-happy-holidays.png")!
-        let overlay2 = UIImageView(image: overlay2image)
-        overlay2.backgroundColor = UIColor.clearColor()
-        cardOverlayContainer.addSubview(overlay2)
-        let overlay2Width = NSLayoutConstraint(item: overlay2, attribute: .Width, relatedBy: .Equal, toItem: imageView, attribute: .Width, multiplier: 1.0, constant: 1.0)
-        let overlay2Height = NSLayoutConstraint(item: overlay2, attribute: .Height, relatedBy: .Equal, toItem: overlay2, attribute: .Width, multiplier: (overlay2image.size.height / overlay2image.size.width), constant: 1.0)
-        let overlay2Bottom = NSLayoutConstraint(item: overlay2, attribute: .Bottom, relatedBy: .Equal, toItem: imageContainerView, attribute: .Bottom, multiplier: 1.0, constant: 1.0)
-        let overlay2Leading = NSLayoutConstraint(item: overlay2, attribute: .Leading, relatedBy: .Equal, toItem: cardOverlayContainer, attribute: .Leading, multiplier: 1.0, constant: 2 * view.frame.width + (view.frame.width - renderedImageWidth)/2)
-        overlay2.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([overlay2Width, overlay2Height, overlay2Bottom, overlay2Leading])
-        
-        overlayIndex = 0
-        let overlaySwipeLeft = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipeLeft:"))
-        overlaySwipeLeft.direction = .Left
-        overlaySwipeLeft.delegate = self
-        cardOverlayContainer.addGestureRecognizer(overlaySwipeLeft)
-        
-        let overlaySwipeRight = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipeRight:"))
-        overlaySwipeRight.direction = .Right
-        overlaySwipeRight.delegate = self
-        cardOverlayContainer.addGestureRecognizer(overlaySwipeRight)
-        
-        //
+        if overlaysAllowed == true {
+            addOverlayContainer(maxImageHeight)
+        }
         
         let clearButtonBackground = UIView()
         clearButtonBackground.backgroundColor = UIColor.darkGrayColor()
@@ -607,6 +576,73 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         clearButtonBackground.addSubview(clearPhotoButton)
         
         return imageContainerView
+    }
+    
+    func addOverlayContainer(maxImageHeight: CGFloat) {
+        cardOverlayContainer = OverlayContainerView()
+        composeView.addSubview(cardOverlayContainer)
+        cardOverlayContainer.backgroundColor = UIColor.clearColor()
+        
+        let topCardOverlayContainer = NSLayoutConstraint(item: cardOverlayContainer, attribute: .Top, relatedBy: .Equal, toItem: composeView, attribute: .Top, multiplier: 1.0, constant: 0.0)
+        leadingCardOverlayContainer = NSLayoutConstraint(item: cardOverlayContainer, attribute: .Leading, relatedBy: .Equal, toItem: composeView, attribute: .Leading, multiplier: 1.0, constant: 0.0)
+        let heightCardOverlayContainer = NSLayoutConstraint(item: cardOverlayContainer, attribute: .Height, relatedBy: .Equal, toItem: imageContainerView, attribute: .Height, multiplier: 1.0, constant: 1.0)
+        let widthCardOverlayContainer = NSLayoutConstraint(item: cardOverlayContainer, attribute: .Width, relatedBy: .Equal, toItem: imageContainerView, attribute: .Width, multiplier: CGFloat(cardOverlays.count + 1), constant: 1.0)
+        cardOverlayContainer.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([topCardOverlayContainer, leadingCardOverlayContainer, heightCardOverlayContainer, widthCardOverlayContainer])
+        
+        addCardOverlayImages(maxImageHeight)
+        
+        overlayInstructions = UILabel()
+        composeView.addSubview(overlayInstructions)
+        overlayInstructions.text = "Swipe to add overlay image"
+        overlayInstructions.font = UIFont(name: "OpenSans-Italic", size: 15.0)
+        overlayInstructions.textColor = UIColor.whiteColor()
+        overlayInstructions.backgroundColor = slowpostDarkGrey
+        
+        let bottomOverlayContainer = NSLayoutConstraint(item: overlayInstructions, attribute: .Bottom, relatedBy: .Equal, toItem: imageContainerView, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+        let leadingOverlayContainer = NSLayoutConstraint(item: overlayInstructions, attribute: .Leading, relatedBy: .Equal, toItem: imageContainerView, attribute: .Leading, multiplier: 1.0, constant: 0.0)
+        let trailingOverlayContainer = NSLayoutConstraint(item: overlayInstructions, attribute: .Trailing, relatedBy: .Equal, toItem: imageContainerView, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
+        overlayInstructions.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints([bottomOverlayContainer, leadingOverlayContainer, trailingOverlayContainer])
+        
+        overlayIndex = 0
+        let overlaySwipeLeft = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipeLeft:"))
+        overlaySwipeLeft.direction = .Left
+        overlaySwipeLeft.delegate = self
+        cardOverlayContainer.addGestureRecognizer(overlaySwipeLeft)
+        
+        let overlaySwipeRight = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipeRight:"))
+        overlaySwipeRight.direction = .Right
+        overlaySwipeRight.delegate = self
+        cardOverlayContainer.addGestureRecognizer(overlaySwipeRight)
+    }
+    
+    func addCardOverlayImages(maxImageHeight: CGFloat) {
+        let renderedImageWidth = imageSelected.size.width * maxImageHeight / imageSelected.size.height
+        var offsetIndex = CGFloat(1.0)
+        for overlayImageDictionary in cardOverlays {
+            
+            let overlayImage = (overlayImageDictionary["image"] as? UIImage)!
+            var edge:NSLayoutAttribute!
+            let edgeString = overlayImageDictionary["edge"] as! String
+            if edgeString == "TOP" {
+                edge = NSLayoutAttribute.Top
+            } else {
+                edge = NSLayoutAttribute.Bottom
+            }
+            
+            let overlay = UIImageView(image: overlayImage)
+            overlay.backgroundColor = UIColor.clearColor()
+            cardOverlayContainer.addSubview(overlay)
+            let overlayWidth = NSLayoutConstraint(item: overlay, attribute: .Width, relatedBy: .Equal, toItem: imageView, attribute: .Width, multiplier: 1.0, constant: 1.0)
+            let overlayHeight = NSLayoutConstraint(item: overlay, attribute: .Height, relatedBy: .Equal, toItem: overlay, attribute: .Width, multiplier: (overlayImage.size.height / overlayImage.size.width), constant: 1.0)
+            let overlayEdge = NSLayoutConstraint(item: overlay, attribute: edge, relatedBy: .Equal, toItem: imageContainerView, attribute: edge, multiplier: 1.0, constant: 1.0)
+            let overlayLeading = NSLayoutConstraint(item: overlay, attribute: .Leading, relatedBy: .Equal, toItem: cardOverlayContainer, attribute: .Leading, multiplier: 1.0, constant: offsetIndex * view.frame.width + (view.frame.width - renderedImageWidth) / 2)
+            overlay.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activateConstraints([overlayWidth, overlayHeight, overlayEdge, overlayLeading])
+            offsetIndex += CGFloat(1.0)
+        }
+
     }
     
     func addImageOptionView() -> UIView {
@@ -641,22 +677,40 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     }
     
     func handleSwipeLeft(recognizer: UISwipeGestureRecognizer) {
-        print(cardOverlayContainer.frame)
+        if overlayInstructions.hidden == false {
+            UIView.animateWithDuration(0.5, animations: {
+                self.overlayInstructions.hidden = true
+            })
+        }
         leadingCardOverlayContainer.constant -= view.frame.width
         UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {
             self.view.layoutIfNeeded()
-                }, completion: nil)
-        overlayIndex = overlayIndex + 1
-        print("Swipe left")
+            self.overlayIndex = self.overlayIndex + 1
+            }, completion: { _ -> Void in
+                if self.overlayIndex > self.cardOverlays.count {
+                    self.leadingCardOverlayContainer.constant = 0
+                    self.view.layoutIfNeeded()
+                    self.overlayIndex = 0
+                }
+        })
     }
     
     func handleSwipeRight(recognizer: UISwipeGestureRecognizer) {
+        if overlayInstructions.hidden == false {
+            UIView.animateWithDuration(0.5, animations: {
+                self.overlayInstructions.hidden = true
+            })
+        }
+        if overlayIndex == 0 {
+            leadingCardOverlayContainer.constant = -(view.frame.width * CGFloat(cardOverlays.count + 1))
+            view.layoutIfNeeded()
+            overlayIndex = cardOverlays.count + 1
+        }
         leadingCardOverlayContainer.constant += view.frame.width
         UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {
             self.view.layoutIfNeeded()
+            self.overlayIndex = self.overlayIndex - 1
             }, completion: nil)
-        overlayIndex = overlayIndex - 1
-        print("Swipe right")
     }
 
     
