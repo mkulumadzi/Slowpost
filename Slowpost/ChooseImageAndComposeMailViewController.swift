@@ -598,7 +598,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         let topImage = NSLayoutConstraint(item: imageView, attribute: .Top, relatedBy: .Equal, toItem: composeView, attribute: .Top, multiplier: 1.0, constant: 0.0)
         let bottomImage = NSLayoutConstraint(item: imageView, attribute: .Bottom, relatedBy: .Equal, toItem: imageContainerView, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
         let alignImage = NSLayoutConstraint(item: imageView, attribute: .CenterX, relatedBy: .Equal, toItem: imageContainerView, attribute: .CenterX, multiplier: 1.0, constant: 0.0)
-        let imageAspectRatio = NSLayoutConstraint(item: imageView, attribute: .Width, relatedBy: .Equal, toItem: imageView, attribute: .Height, multiplier: aspectRatio, constant: 1.0)
+        let imageAspectRatio = NSLayoutConstraint(item: imageView, attribute: .Width, relatedBy: .Equal, toItem: imageView, attribute: .Height, multiplier: aspectRatio, constant: 0.0)
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activateConstraints([topImage, bottomImage, alignImage, imageAspectRatio])
@@ -633,8 +633,8 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         
         let topCardOverlayContainer = NSLayoutConstraint(item: cardOverlayContainer, attribute: .Top, relatedBy: .Equal, toItem: composeView, attribute: .Top, multiplier: 1.0, constant: 0.0)
         leadingCardOverlayContainer = NSLayoutConstraint(item: cardOverlayContainer, attribute: .Leading, relatedBy: .Equal, toItem: composeView, attribute: .Leading, multiplier: 1.0, constant: 0.0)
-        let heightCardOverlayContainer = NSLayoutConstraint(item: cardOverlayContainer, attribute: .Height, relatedBy: .Equal, toItem: imageContainerView, attribute: .Height, multiplier: 1.0, constant: 1.0)
-        let widthCardOverlayContainer = NSLayoutConstraint(item: cardOverlayContainer, attribute: .Width, relatedBy: .Equal, toItem: imageContainerView, attribute: .Width, multiplier: CGFloat(cardOverlays.count + 1), constant: 1.0)
+        let heightCardOverlayContainer = NSLayoutConstraint(item: cardOverlayContainer, attribute: .Height, relatedBy: .Equal, toItem: imageContainerView, attribute: .Height, multiplier: 1.0, constant: 0.0)
+        let widthCardOverlayContainer = NSLayoutConstraint(item: cardOverlayContainer, attribute: .Width, relatedBy: .Equal, toItem: imageContainerView, attribute: .Width, multiplier: CGFloat(cardOverlays.count + 1), constant: 0.0)
         cardOverlayContainer.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activateConstraints([topCardOverlayContainer, leadingCardOverlayContainer, heightCardOverlayContainer, widthCardOverlayContainer])
         
@@ -679,13 +679,21 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
                 edge = NSLayoutAttribute.Bottom
             }
             
+            print("Numbers for the overlays")
+            print(view.frame.width)
+            print(renderedImageWidth)
+            print(maxImageHeight)
+            
+            let leadingConstant = offsetIndex * view.frame.width + (view.frame.width - renderedImageWidth) / 2
+            print(leadingConstant)
+            
             let overlay = UIImageView(image: overlayImage)
             overlay.backgroundColor = UIColor.clearColor()
             cardOverlayContainer.addSubview(overlay)
-            let overlayWidth = NSLayoutConstraint(item: overlay, attribute: .Width, relatedBy: .Equal, toItem: imageView, attribute: .Width, multiplier: 1.0, constant: 1.0)
-            let overlayHeight = NSLayoutConstraint(item: overlay, attribute: .Height, relatedBy: .Equal, toItem: overlay, attribute: .Width, multiplier: (overlayImage.size.height / overlayImage.size.width), constant: 1.0)
+            let overlayWidth = NSLayoutConstraint(item: overlay, attribute: .Width, relatedBy: .Equal, toItem: imageView, attribute: .Width, multiplier: 1.0, constant: 0.0)
+            let overlayHeight = NSLayoutConstraint(item: overlay, attribute: .Height, relatedBy: .Equal, toItem: overlay, attribute: .Width, multiplier: (overlayImage.size.height / overlayImage.size.width), constant: 0.0)
             let overlayEdge = NSLayoutConstraint(item: overlay, attribute: edge, relatedBy: .Equal, toItem: imageContainerView, attribute: edge, multiplier: 1.0, constant: 1.0)
-            let overlayLeading = NSLayoutConstraint(item: overlay, attribute: .Leading, relatedBy: .Equal, toItem: cardOverlayContainer, attribute: .Leading, multiplier: 1.0, constant: offsetIndex * view.frame.width + (view.frame.width - renderedImageWidth) / 2)
+            let overlayLeading = NSLayoutConstraint(item: overlay, attribute: .Leading, relatedBy: .Equal, toItem: cardOverlayContainer, attribute: .Leading, multiplier: 1.0, constant: leadingConstant)
             overlay.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activateConstraints([overlayWidth, overlayHeight, overlayEdge, overlayLeading])
             offsetIndex += CGFloat(1.0)
@@ -907,7 +915,9 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     
     // Merging images if needed
     
-    func mergeImages(bottomImage: UIImage, topImage: UIImage, edge: String) -> UIImage {
+    func mergeImages(bottomImage: UIImage, index: Int) -> UIImage {
+        let topImage = cardOverlays[index]["image"] as! UIImage
+        let edge = cardOverlays[index]["edge"] as! String
         
         let size = bottomImage.size
         UIGraphicsBeginImageContext(size)
@@ -918,7 +928,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         let topWidth = size.width
         let topHeight = topImage.size.height * size.width / topImage.size.width
         var offset:CGFloat!
-        if edge == "Top" {
+        if edge == "TOP" {
             offset = 0.0
         }
         else {
@@ -950,16 +960,10 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
             
             if imageSelected != nil {
                 var imageToSend:UIImage!
-                if overlayIndex == 1 {
-                    print("lights!")
-                    imageToSend = mergeImages(imageSelected, topImage: UIImage(named: "holiday-lights.png")!, edge: "Top")
-                }
-                else if overlayIndex == 2 {
-                    print("snownamn!")
-                    imageToSend = mergeImages(imageSelected, topImage: UIImage(named: "snowman-happy-holidays.png")!, edge: "Bottom")
+                if overlayIndex > 0 {
+                    imageToSend = mergeImages(imageSelected, index: overlayIndex - 1)
                 }
                 else {
-                    print("just the image.")
                     imageToSend = imageSelected
                 }
                 sendingViewController!.image = imageToSend
