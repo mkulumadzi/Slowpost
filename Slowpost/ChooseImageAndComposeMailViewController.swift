@@ -46,6 +46,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     var overlaysAllowed:Bool!
     var overlayInstructions:UILabel!
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var photoCollection: UICollectionView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -246,6 +247,8 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     // Getting images
     
     func getCards() {
+        activityIndicator.hidden = false
+        activityIndicator.startAnimating()
         let cardsURL = "\(PostOfficeURL)cards"
         
         RestService.getRequest(cardsURL, headers: nil, completion: { (error, result) -> Void in
@@ -282,17 +285,22 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
                         print(error)
                     }
                     else if let image = result as? UIImage {
-                        //                    if self.activityIndicator.isAnimating() {
-                        //                        self.activityIndicator.stopAnimating()
-                        //                    }
                         FileService.saveImageToDirectory(image, fileName: cardName)
                         self.cardPhotos.append(image)
                         self.photoCollection.reloadData()
                     }
                 })
             }
+            stopActivityIndicator()
         }
         
+    }
+    
+    func stopActivityIndicator() {
+        if activityIndicator.isAnimating() {
+            activityIndicator.stopAnimating()
+            activityIndicator.hidden = true
+        }
     }
     
     func getImagesFromCameraRoll() {
@@ -335,6 +343,9 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     }
     
     func toggleResults() {
+        if segmentedControl.selectedSegmentIndex == 0 {
+            self.activityIndicator.hidden = true
+        }
         photoCollection.reloadData()
     }
     
@@ -390,7 +401,6 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     }
     
     // Camera configuration
-    
 
     @IBAction func takePhoto(sender: AnyObject) {
         Flurry.logEvent("Chose_To_Take_Picture")
@@ -460,32 +470,13 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize {
-        
         var width:CGFloat!
         var height:CGFloat!
-//        let maxDimension = (view.frame.width - 15) / 2
-//        var image:UIImage!
-        
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-//            image = userPhotos[indexPath.row]
             width = (view.frame.width - 25) / 4
             height = width
         default:
-//            image = cardPhotos[indexPath.row]
-//            let imageAspectRatio = image.size.width / image.size.height
-//            if imageAspectRatio > 1 {
-//                width = maxDimension
-//                height = width / imageAspectRatio
-//            }
-//            else if imageAspectRatio < 1 {
-//                height = maxDimension
-//                width = maxDimension * imageAspectRatio
-//            }
-//            else {
-//                width = maxDimension
-//                height = maxDimension
-//            }
             width = (view.frame.width - 15) / 2
             height = width
         }
