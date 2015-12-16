@@ -960,12 +960,18 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
             
             if imageSelected != nil {
                 var imageToSend:UIImage!
-                if overlayIndex > 0 {
-                    imageToSend = mergeImages(imageSelected, index: overlayIndex - 1)
+                if overlayIndex != nil {
+                    if overlayIndex > 0 {
+                        imageToSend = mergeImages(imageSelected, index: overlayIndex - 1)
+                    }
+                    else {
+                        imageToSend = imageSelected
+                    }
                 }
                 else {
                     imageToSend = imageSelected
                 }
+                
                 sendingViewController!.image = imageToSend
             }
             if scheduledToArrive != nil {

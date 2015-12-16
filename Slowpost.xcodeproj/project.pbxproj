@@ -41,8 +41,6 @@
 		D21003211C1A0CF100E45CA3 /* ChooseImageAndComposeMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21003201C1A0CF100E45CA3 /* ChooseImageAndComposeMailViewController.swift */; };
 		D21003231C1A127E00E45CA3 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21003221C1A127E00E45CA3 /* PhotoCollectionViewCell.swift */; };
 		D21003251C1A36A800E45CA3 /* ComposeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D21003241C1A36A800E45CA3 /* ComposeView.swift */; };
-		D21003271C1B7E8D00E45CA3 /* snowman-happy-holidays.png in Resources */ = {isa = PBXBuildFile; fileRef = D21003261C1B7E8D00E45CA3 /* snowman-happy-holidays.png */; };
-		D21003291C1B7E9900E45CA3 /* holiday-lights.png in Resources */ = {isa = PBXBuildFile; fileRef = D21003281C1B7E9900E45CA3 /* holiday-lights.png */; };
 		D210032B1C1BA51F00E45CA3 /* OverlayContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D210032A1C1BA51F00E45CA3 /* OverlayContainerView.swift */; };
 		D21E2C871BC09C6100E17572 /* libFlurry_7.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D21E2C861BC09C6100E17572 /* libFlurry_7.2.1.a */; };
 		D2319AC01BD16D8F00B989C0 /* RequestSubmittedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2319ABF1BD16D8F00B989C0 /* RequestSubmittedViewController.swift */; };
@@ -199,8 +197,6 @@
 		D21003201C1A0CF100E45CA3 /* ChooseImageAndComposeMailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseImageAndComposeMailViewController.swift; sourceTree = "<group>"; };
 		D21003221C1A127E00E45CA3 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		D21003241C1A36A800E45CA3 /* ComposeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeView.swift; sourceTree = "<group>"; };
-		D21003261C1B7E8D00E45CA3 /* snowman-happy-holidays.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "snowman-happy-holidays.png"; sourceTree = "<group>"; };
-		D21003281C1B7E9900E45CA3 /* holiday-lights.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "holiday-lights.png"; sourceTree = "<group>"; };
 		D210032A1C1BA51F00E45CA3 /* OverlayContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayContainerView.swift; sourceTree = "<group>"; };
 		D21E2C851BC09C5900E17572 /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		D21E2C861BC09C6100E17572 /* libFlurry_7.2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.2.1.a; sourceTree = "<group>"; };
@@ -429,9 +425,7 @@
 				D2856E421BB5C32700A454C9 /* Slowpost.png */,
 				D2E4EDD11B7D1EC000D2A028 /* example_card.jpg */,
 				D2F5CAC11B8F91D900551435 /* Default Card.png */,
-				D21003281C1B7E9900E45CA3 /* holiday-lights.png */,
 				D2E4EDD31B7D307E00D2A028 /* example_photo.jpg */,
-				D21003261C1B7E8D00E45CA3 /* snowman-happy-holidays.png */,
 				D2A2B4301BD81AE20069C3E4 /* view-module.png */,
 				D25130491BC46595007541BE /* ios7-arrow-down-white.png */,
 				D27DA31C1B62ADB600DF32A1 /* ios7-arrow-left-white.png */,
@@ -771,8 +765,6 @@
 				CCCB1A581AB0D48A0067F100 /* initial.storyboard in Resources */,
 				CC23DE2C1AE54C1A00AFEDE4 /* mailbox.storyboard in Resources */,
 				CCCB1A5D1AB0D48A0067F100 /* LaunchScreen.xib in Resources */,
-				D21003271C1B7E8D00E45CA3 /* snowman-happy-holidays.png in Resources */,
-				D21003291C1B7E9900E45CA3 /* holiday-lights.png in Resources */,
 				D2856E431BB5C32700A454C9 /* Slowpost.png in Resources */,
 				D2C071061B3A3E99000154E8 /* Configurations.plist in Resources */,
 				D2392AC71BD1D0DD0069316F /* turtleAnimation0.png in Resources */,

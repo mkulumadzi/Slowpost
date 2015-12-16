@@ -179,6 +179,8 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         mailViewController.mail = mail
         mailViewController.runOnClose = {self.refreshData()}
         
+        
+        
         presentViewController(mailViewController, animated: true, completion: {})
     }
 
