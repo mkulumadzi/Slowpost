@@ -45,6 +45,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     var overlayIndex:Int!
     var overlaysAllowed:Bool!
     var overlayInstructions:UILabel!
+    var deliveryMethod:String!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var toLabel: UILabel!
@@ -71,6 +72,8 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         initializeShadedView()
         initializeCardOverlays()
         
+        deliveryMethod = defaultDeliveryMethod()
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
@@ -80,6 +83,10 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     }
     
     override func viewDidLayoutSubviews() {
+    }
+    
+    func defaultDeliveryMethod() -> String {
+        return "express"
     }
     
     // Initializing buttons
@@ -883,27 +890,24 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         performSegueWithIdentifier("scheduleDelivery", sender: nil)
     }
     
-    @IBAction func standardDeliveryChosen(segue: UIStoryboardSegue) {
-            shadedView.hidden = true
-            formatSendButton()
+    @IBAction func deliveryOptionChosen(segue: UIStoryboardSegue) {
+        shadedView.hidden = true
+        formatSendButton()
     }
     
-    @IBAction func scheduledDeliveryChosen(segue: UIStoryboardSegue) {
-            shadedView.hidden = true
-            formatSendButton()
-    }
-    
-    @IBAction func scheduleDeliveryCancelled(segue: UIStoryboardSegue) {
+    @IBAction func deliveryOptionsCancelled(segue: UIStoryboardSegue) {
             shadedView.hidden = true
     }
     
     func formatSendButton() {
-        if scheduledToArrive != nil {
+        switch deliveryMethod {
+        case "express":
+            sendButtonLabel.text = "Send now >>"
+        case "scheduled":
             let dateString = scheduledToArrive!.formattedAsString("yyyy-MM-dd")
             sendButtonLabel.text = "Send (arrives on \(dateString)) >>"
-        }
-        else {
-            sendButtonLabel.text = "Send right now >>"
+        default:
+            sendButtonLabel.text = "Send (arrives in 1 to 2 days) >>"
         }
     }
     
@@ -951,6 +955,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
             sendingViewController!.toSearchPeople = toSearchPeople
             sendingViewController!.toEmails = toEmails
             sendingViewController!.content = composeTextView.text
+            sendingViewController!.deliveryMethod = deliveryMethod
             
             if imageSelected != nil {
                 var imageToSend:UIImage!
@@ -973,6 +978,8 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
             }
         }
         else if segue.identifier == "scheduleDelivery" {
+            let chooseDeliveryOptions = segue.destinationViewController as! ChooseDeliveryOptionsViewController
+            chooseDeliveryOptions.deliveryMethod = self.deliveryMethod
             view.bringSubviewToFront(shadedView)
             shadedView.hidden = false
         }

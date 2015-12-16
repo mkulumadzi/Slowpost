@@ -8,20 +8,13 @@
 
 import UIKit
 
-class ChooseDeliveryOptionsViewController: UIViewController {
+class ChooseDeliveryOptionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     
     var scheduledToArrive:NSDate?
-    @IBOutlet weak var datePicker: UIDatePicker!
-    
-    @IBOutlet weak var scheduleButton: UIButton!
-    @IBOutlet weak var scheduleButtonHeight: NSLayoutConstraint!
-    
-    @IBOutlet weak var standardButton: TextUIButton!
-    @IBOutlet weak var standardButtonHeight: NSLayoutConstraint!
-    
-    @IBOutlet weak var headerHeight: NSLayoutConstraint!
-    @IBOutlet weak var datePickerHeight: NSLayoutConstraint!
+    var deliveryMethod:String!
+    @IBOutlet weak var optionsTable: UITableView!
+    @IBOutlet weak var confirmButton: UIButton!
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
@@ -29,30 +22,11 @@ class ChooseDeliveryOptionsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        datePicker.minimumDate = setMinimumDate()
-        scheduleButton.layer.cornerRadius = 5
-        standardButton.layer.cornerRadius = 5
-        formatButtons()
-
-        if deviceType == "iPhone 4S" {
-            formatForiPhone4S()
-        }
-        
+        formatCells()
+        confirmButton.layer.cornerRadius = 5
+        optionsTable.separatorStyle = UITableViewCellSeparatorStyle.None
     }
     
-    func formatButtons() {
-        scheduleButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        standardButton.titleLabel?.adjustsFontSizeToFitWidth = true
-    }
-    
-    func formatForiPhone4S() {
-        scheduleButtonHeight.constant = 30
-        standardButtonHeight.constant = 30
-        headerHeight.constant = 30
-        datePickerHeight.constant = 180
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -62,22 +36,94 @@ class ChooseDeliveryOptionsViewController: UIViewController {
         return NSDate()
     }
     
-    
-    @IBAction func viewTapped(sender: AnyObject) {
-        performSegueWithIdentifier("scheduleDeliveryCancelled", sender: nil)
+    // Table configuration
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCellWithIdentifier("express", forIndexPath: indexPath) as! ExpressDeliveryTableViewCell
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCellWithIdentifier("standard", forIndexPath: indexPath) as! StandardDeliveryTableViewCell
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCellWithIdentifier("scheduled", forIndexPath: indexPath) as! ScheduleTableViewCell
+            if scheduledToArrive != nil {
+                cell.datePicker.date = scheduledToArrive!
+            }
+            else {
+                cell.datePicker.date = setMinimumDate()
+            }
+            cell.datePicker.addTarget(self, action: "dateUpdated:", forControlEvents: UIControlEvents.ValueChanged)
+            return cell
+        }
+    }
+    
+    func dateUpdated(sender: UIDatePicker) {
+        deliveryMethod = "scheduled"
+        scheduledToArrive = sender.date
+        formatCells()
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        switch indexPath.row {
+        case 2:
+            return 270
+        default:
+            return 44
+        }
+    }
+    
+    func formatCells() {
+        for index in 0...(optionsTable.numberOfRowsInSection(0)-1) {
+            let indexPath = NSIndexPath(forRow: index, inSection: 0)
+            let cell = optionsTable.cellForRowAtIndexPath(indexPath)!
+            if cell.reuseIdentifier == deliveryMethod {
+                cell.accessoryType = .Checkmark
+            }
+            else {
+                cell.accessoryType = .None
+            }
+        }
+    }
+
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print(indexPath)
+        print("Row tapped")
+        let cell = tableView.cellForRowAtIndexPath(indexPath)!
+        deliveryMethod = cell.reuseIdentifier
+        print("Selected \(deliveryMethod)")
+        formatCells()
+        optionsTable.reloadData()
+    }
+    
+    @IBAction func viewTapped(sender: AnyObject) {
+        performSegueWithIdentifier("deliveryOptionsCancelled", sender: nil)
+    }    
+    
+
+    @IBAction func confirmButtonTapped(sender: AnyObject) {
+        performSegueWithIdentifier("deliveryOptionChosen", sender: nil)
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "scheduledDeliveryChosen" {
+        if segue.identifier == "deliveryOptionChosen" {
             let destinationController = segue.destinationViewController as! ChooseImageAndComposeMailViewController
-            destinationController.scheduledToArrive = datePicker.date
+            destinationController.deliveryMethod = self.deliveryMethod
+            if deliveryMethod == "scheduled" {
+                destinationController.scheduledToArrive = self.scheduledToArrive
+            }
+            else {
+                destinationController.scheduledToArrive = nil
+            }
         }
-        else if segue.identifier == "standardDeliveryChosen" {
-            let destinationController = segue.destinationViewController as! ChooseImageAndComposeMailViewController
-            destinationController.scheduledToArrive = nil
-        }
-        
     }
     
 

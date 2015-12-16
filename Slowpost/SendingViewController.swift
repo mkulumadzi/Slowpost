@@ -23,6 +23,7 @@ class SendingViewController: UIViewController {
     var toEmails:[String]!
     var manuallyCancelled:Bool!
     var warningMessage:String!
+    var deliveryMethod:String!
     @IBOutlet weak var deliveryLabel: UILabel!
     
     @IBOutlet weak var cancelButton: UIButton!
@@ -48,12 +49,14 @@ class SendingViewController: UIViewController {
     }
     
     func formatDeliveryLabel() {
-        if scheduledToArrive == nil {
+        switch deliveryMethod {
+        case "express":
             deliveryLabel.text = ""
-        }
-        else {
+        case "scheduled":
             let date = scheduledToArrive!.formattedAsString("yyyy-MM-dd")
             deliveryLabel.text = "Mail will arrive on \(date)"
+        default:
+            deliveryLabel.text = "Sending (arrives in 1 to 2 days)"
         }
     }
     
@@ -155,11 +158,11 @@ class SendingViewController: UIViewController {
     
     func getMailURL() -> String {
         let userId = LoginService.getUserIdFromToken()
-        if scheduledToArrive != nil {
-            return "\(PostOfficeURL)person/id/\(userId)/mail/send"
-        }
-        else {
+        switch deliveryMethod {
+        case "express":
             return "\(PostOfficeURL)person/id/\(userId)/mail/instant"
+        default:
+            return "\(PostOfficeURL)person/id/\(userId)/mail/send"
         }
     }
     
