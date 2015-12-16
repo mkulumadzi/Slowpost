@@ -297,24 +297,25 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     
     func getImagesFromCameraRoll() {
         
-        let maxDimension = (photoCollection.frame.width - 30) / 2
-        let targetSize: CGSize = CGSize(width: maxDimension, height: maxDimension)
-        let contentMode: PHImageContentMode = .AspectFit
-        let fetchOptions:PHFetchOptions = PHFetchOptions()
-        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        fetchOptions.fetchLimit = 200
-        fetchResult = PHAsset.fetchAssetsWithMediaType(.Image, options: fetchOptions)
-        
-        fetchResult.enumerateObjectsUsingBlock {
-            object, index, stop in
-            
-            let options = PHImageRequestOptions()
-            options.synchronous = true
-            options.deliveryMode = .HighQualityFormat
-            
-            PHImageManager.defaultManager().requestImageForAsset(object as! PHAsset, targetSize: targetSize, contentMode: contentMode, options: options) {
-                image, info in
-                self.userPhotos.append(image!)
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            let collectionDimension = (self.view.frame.width - 25) / 2
+            let maxDimension = collectionDimension * 1.25
+            let targetSize: CGSize = CGSize(width: maxDimension, height: maxDimension)
+            let contentMode: PHImageContentMode = .AspectFill
+            let fetchOptions:PHFetchOptions = PHFetchOptions()
+            fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+            self.fetchResult = PHAsset.fetchAssetsWithMediaType(.Image, options: fetchOptions)
+            self.fetchResult.enumerateObjectsUsingBlock {
+                object, index, stop in
+                
+                let options = PHImageRequestOptions()
+                options.synchronous = true
+                options.deliveryMode = .HighQualityFormat
+                PHImageManager.defaultManager().requestImageForAsset(object as! PHAsset, targetSize: targetSize, contentMode: contentMode, options: options) {
+                    image, info in
+                    self.userPhotos.append(image!)
+                }
             }
         }
     }
@@ -460,32 +461,33 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize {
         
-        let maxDimension = (photoCollection.frame.width - 30) / 2
-        var image:UIImage!
+        var width:CGFloat!
+        var height:CGFloat!
+//        let maxDimension = (view.frame.width - 15) / 2
+//        var image:UIImage!
         
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            image = userPhotos[indexPath.row]
+//            image = userPhotos[indexPath.row]
+            width = (view.frame.width - 25) / 4
+            height = width
         default:
-            image = cardPhotos[indexPath.row]
-        }
-        
-        let imageAspectRatio = image.size.width / image.size.height
-        
-        var width:CGFloat!
-        var height:CGFloat!
-        
-        if imageAspectRatio > 1 {
-            width = maxDimension
-            height = width / imageAspectRatio
-        }
-        else if imageAspectRatio < 1 {
-            height = maxDimension
-            width = maxDimension * imageAspectRatio
-        }
-        else {
-            width = maxDimension
-            height = maxDimension
+//            image = cardPhotos[indexPath.row]
+//            let imageAspectRatio = image.size.width / image.size.height
+//            if imageAspectRatio > 1 {
+//                width = maxDimension
+//                height = width / imageAspectRatio
+//            }
+//            else if imageAspectRatio < 1 {
+//                height = maxDimension
+//                width = maxDimension * imageAspectRatio
+//            }
+//            else {
+//                width = maxDimension
+//                height = maxDimension
+//            }
+            width = (view.frame.width - 15) / 2
+            height = width
         }
         
         return CGSize.init(width: width, height: height)
@@ -644,6 +646,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         composeView.addSubview(overlayInstructions)
         overlayInstructions.text = "Swipe to add overlay image"
         overlayInstructions.font = UIFont(name: "OpenSans-Italic", size: 15.0)
+        overlayInstructions.textAlignment = .Center
         overlayInstructions.textColor = UIColor.whiteColor()
         overlayInstructions.backgroundColor = slowpostDarkGrey
         
