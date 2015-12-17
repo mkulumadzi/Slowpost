@@ -376,7 +376,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
             let targetSize: CGSize = CGSize(width: maxDimension, height: maxDimension)
             let contentMode: PHImageContentMode = .AspectFill
             let fetchOptions:PHFetchOptions = PHFetchOptions()
-//            fetchOptions.fetchLimit = 100
+            fetchOptions.fetchLimit = 50
             fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
             self.fetchResult = PHAsset.fetchAssetsWithMediaType(.Image, options: fetchOptions)
             self.fetchResult.enumerateObjectsUsingBlock {
