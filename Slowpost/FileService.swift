@@ -11,7 +11,7 @@ import Alamofire
 import CoreData
 import SwiftyJSON
 
-let defaultImageSize:CGSize = CGSize(width: 768.0, height: 577.0)
+//let defaultImageSize:CGSize = CGSize(width: 768.0, height: 577.0)
 
 class FileService {
 
@@ -53,9 +53,17 @@ class FileService {
 
     
     class func resizeImage(image: UIImage, completion: (error: NSError?, result: AnyObject?) -> Void) {
-            image.resize(defaultImageSize, completionHandler: {(resizedImage, data) -> () in
-                completion(error: nil, result: resizedImage)
-            })
+        let maxDimension = CGFloat(1024.0)
+        var imageSize:CGSize!
+        if image.size.width > image.size.height {
+            imageSize = CGSize(width: maxDimension, height: maxDimension * image.size.height / image.size.width)
+        }
+        else {
+            imageSize = CGSize(width: maxDimension * image.size.width / image.size.height, height: maxDimension)
+        }
+        image.resize(imageSize, completionHandler: {(resizedImage, data) -> () in
+            completion(error: nil, result: resizedImage)
+        })
     }
     
     class func encodeImageAsBase64String(image: UIImage) -> String {

@@ -16,7 +16,6 @@
 		CC96E4A01ABCCBF2001E6D27 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E49F1ABCCBF2001E6D27 /* LogInViewController.swift */; };
 		CC96E4A91ABCD91A001E6D27 /* Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E4A81ABCD91A001E6D27 /* Mail.swift */; };
 		CC96E4AD1ABCDEB5001E6D27 /* MailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E4AC1ABCDEB5001E6D27 /* MailCell.swift */; };
-		CC96E4C91AC0B334001E6D27 /* ComposeMailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E4C81AC0B334001E6D27 /* ComposeMailViewController.swift */; };
 		CCCB1A531AB0D48A0067F100 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCB1A521AB0D48A0067F100 /* AppDelegate.swift */; };
 		CCCB1A551AB0D48A0067F100 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCB1A541AB0D48A0067F100 /* ViewController.swift */; };
 		CCCB1A581AB0D48A0067F100 /* initial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCCB1A561AB0D48A0067F100 /* initial.storyboard */; };
@@ -127,7 +126,6 @@
 		D2C071061B3A3E99000154E8 /* Configurations.plist in Resources */ = {isa = PBXBuildFile; fileRef = D2C071051B3A3E99000154E8 /* Configurations.plist */; };
 		D2CEC4641B6C1F4F002CFD25 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CEC4631B6C1F4F002CFD25 /* PhotoLibraryViewController.swift */; };
 		D2CEC4661B6C1F5C002CFD25 /* TakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CEC4651B6C1F5C002CFD25 /* TakePhotoViewController.swift */; };
-		D2CEC4681B6C1F6E002CFD25 /* CardGalleryUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CEC4671B6C1F6E002CFD25 /* CardGalleryUIViewController.swift */; };
 		D2CEC4741B72ACBD002CFD25 /* SendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CEC4731B72ACBD002CFD25 /* SendingViewController.swift */; };
 		D2CEC4781B73A45F002CFD25 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2CEC4771B73A45F002CFD25 /* CoreDataService.swift */; };
 		D2D8663F1B2F62B200847051 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D8663E1B2F62B200847051 /* EditProfileViewController.swift */; };
@@ -140,7 +138,6 @@
 		D2E4EDD01B7D136A00D2A028 /* Quicksand-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDC91B7D11F300D2A028 /* Quicksand-Regular.otf */; };
 		D2E4EDD21B7D1EC000D2A028 /* example_card.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDD11B7D1EC000D2A028 /* example_card.jpg */; };
 		D2E4EDD41B7D307E00D2A028 /* example_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDD31B7D307E00D2A028 /* example_photo.jpg */; };
-		D2E956461B30952800CA8CC8 /* ChooseImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E956451B30952800CA8CC8 /* ChooseImageViewController.swift */; };
 		D2E9564A1B309AA100CA8CC8 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */; };
 		D2E97D8D1BC322BF00DAEB6C /* RecipientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E97D8C1BC322BF00DAEB6C /* RecipientCell.swift */; };
 		D2F061191BDAF15E005AC57F /* EditRecipientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F061181BDAF15E005AC57F /* EditRecipientsViewController.swift */; };
@@ -170,7 +167,6 @@
 		CC96E49F1ABCCBF2001E6D27 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		CC96E4A81ABCD91A001E6D27 /* Mail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mail.swift; sourceTree = "<group>"; };
 		CC96E4AC1ABCDEB5001E6D27 /* MailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailCell.swift; sourceTree = "<group>"; };
-		CC96E4C81AC0B334001E6D27 /* ComposeMailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeMailViewController.swift; sourceTree = "<group>"; };
 		CCCB1A4D1AB0D48A0067F100 /* Slowpost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slowpost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCCB1A511AB0D48A0067F100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCCB1A521AB0D48A0067F100 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -292,7 +288,6 @@
 		D2C071051B3A3E99000154E8 /* Configurations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Configurations.plist; sourceTree = "<group>"; };
 		D2CEC4631B6C1F4F002CFD25 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
 		D2CEC4651B6C1F5C002CFD25 /* TakePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TakePhotoViewController.swift; sourceTree = "<group>"; };
-		D2CEC4671B6C1F6E002CFD25 /* CardGalleryUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardGalleryUIViewController.swift; sourceTree = "<group>"; };
 		D2CEC4731B72ACBD002CFD25 /* SendingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendingViewController.swift; sourceTree = "<group>"; };
 		D2CEC4751B72B786002CFD25 /* SnailMailModel 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SnailMailModel 3.xcdatamodel"; sourceTree = "<group>"; };
 		D2CEC4761B72DD8D002CFD25 /* SnailMailModel 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SnailMailModel 4.xcdatamodel"; sourceTree = "<group>"; };
@@ -307,7 +302,6 @@
 		D2E4EDC91B7D11F300D2A028 /* Quicksand-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.otf"; sourceTree = "<group>"; };
 		D2E4EDD11B7D1EC000D2A028 /* example_card.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = example_card.jpg; sourceTree = "<group>"; };
 		D2E4EDD31B7D307E00D2A028 /* example_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = example_photo.jpg; sourceTree = "<group>"; };
-		D2E956451B30952800CA8CC8 /* ChooseImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseImageViewController.swift; sourceTree = "<group>"; };
 		D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		D2E97D8C1BC322BF00DAEB6C /* RecipientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientCell.swift; sourceTree = "<group>"; };
 		D2F061181BDAF15E005AC57F /* EditRecipientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRecipientsViewController.swift; sourceTree = "<group>"; };
@@ -394,11 +388,8 @@
 				D21003201C1A0CF100E45CA3 /* ChooseImageAndComposeMailViewController.swift */,
 				D2CEC4731B72ACBD002CFD25 /* SendingViewController.swift */,
 				D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */,
-				CC96E4C81AC0B334001E6D27 /* ComposeMailViewController.swift */,
-				D2E956451B30952800CA8CC8 /* ChooseImageViewController.swift */,
 				D2CEC4631B6C1F4F002CFD25 /* PhotoLibraryViewController.swift */,
 				D2CEC4651B6C1F5C002CFD25 /* TakePhotoViewController.swift */,
-				D2CEC4671B6C1F6E002CFD25 /* CardGalleryUIViewController.swift */,
 				D2389E671B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift */,
 				D25130431BC43C44007541BE /* ComposeNavigationController.swift */,
 				D21003221C1A127E00E45CA3 /* PhotoCollectionViewCell.swift */,
@@ -881,14 +872,12 @@
 				D20EC2551BAC84FA00E3DEA5 /* Note.swift in Sources */,
 				D206FB561B619AA5008BB412 /* HomeTabBarController.swift in Sources */,
 				D27DA3211B62BDA900DF32A1 /* ConversationTabViewController.swift in Sources */,
-				D2E956461B30952800CA8CC8 /* ChooseImageViewController.swift in Sources */,
 				D27DA32B1B66B74800DF32A1 /* EditPasswordViewController.swift in Sources */,
 				D2CEC4781B73A45F002CFD25 /* CoreDataService.swift in Sources */,
 				D2389E6F1B95136B00CB19BB /* ConversationCell.swift in Sources */,
 				D27E12F71BB4A98E0059FF07 /* EmailAddress.swift in Sources */,
 				D27E12F11BB4791A0059FF07 /* ContactService.swift in Sources */,
 				D2F061191BDAF15E005AC57F /* EditRecipientsViewController.swift in Sources */,
-				CC96E4C91AC0B334001E6D27 /* ComposeMailViewController.swift in Sources */,
 				D206FB4B1B61688D008BB412 /* WelcomeScreenViewController.swift in Sources */,
 				D206FB4F1B617504008BB412 /* BottomBorderUITextField.swift in Sources */,
 				D29D3DC01B83D28A00B3E0DA /* KeychainWrapper.m in Sources */,
@@ -907,7 +896,6 @@
 				D25A9CAC1B225D3400ABBBA4 /* PersonalDetailsViewController.swift in Sources */,
 				D27C7B451BC33820005F08BC /* AddEmailViewController.swift in Sources */,
 				CCCB1A751AB0D87F0067F100 /* Person.swift in Sources */,
-				D2CEC4681B6C1F6E002CFD25 /* CardGalleryUIViewController.swift in Sources */,
 				D2AA1E351C126C69001F5F01 /* StartViewController.swift in Sources */,
 				CC96E4A01ABCCBF2001E6D27 /* LogInViewController.swift in Sources */,
 				D2E97D8D1BC322BF00DAEB6C /* RecipientCell.swift in Sources */,
