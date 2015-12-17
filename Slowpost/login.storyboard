@@ -46,6 +46,8 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -65,10 +67,10 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Login Navigation View Controller-->
         <scene sceneID="lRb-OR-fHs">
             <objects>
-                <navigationController id="Ad4-oR-7aV" sceneMemberID="viewController">
+                <navigationController id="Ad4-oR-7aV" customClass="LoginNavigationViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="e4J-qg-cDF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -102,7 +104,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="746" verticalHuggingPriority="746" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hez-ky-lsM" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="236" width="540" height="40"/>
+                                <rect key="frame" x="30" y="188" width="540" height="40"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -118,7 +120,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="747" verticalHuggingPriority="748" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="8" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Y1L-HG-f5a" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="176" width="540" height="30"/>
+                                <rect key="frame" x="30" y="148" width="540" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="U0h-Ue-2T7"/>
@@ -141,7 +143,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bw5-ht-NmV">
-                                <rect key="frame" x="30" y="276" width="540" height="40"/>
+                                <rect key="frame" x="30" y="228" width="540" height="40"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="eDa-UH-7Cv"/>
@@ -154,31 +156,47 @@
                                     <segue destination="aQL-Ky-hSH" kind="show" id="9nP-Oz-q1B"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your Slowpost password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="SGr-Ra-qPg">
+                                <rect key="frame" x="30" y="94" width="540" height="24"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="zkc-KO-jnT" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" id="5BT-vi-BiZ"/>
+                            <constraint firstAttribute="trailing" secondItem="SGr-Ra-qPg" secondAttribute="trailing" constant="30" id="5Ff-zO-Bua"/>
+                            <constraint firstItem="SGr-Ra-qPg" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" constant="30" id="8hi-jM-fT1"/>
                             <constraint firstAttribute="trailing" secondItem="Hez-ky-lsM" secondAttribute="trailing" constant="30" id="EZw-aT-q09">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
+                            <constraint firstItem="Y1L-HG-f5a" firstAttribute="top" secondItem="SGr-Ra-qPg" secondAttribute="bottom" constant="30" id="Lud-7E-DYt"/>
                             <constraint firstItem="Y1L-HG-f5a" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" constant="30" id="MVg-aG-XpJ">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
                             <constraint firstItem="Y1L-HG-f5a" firstAttribute="top" secondItem="CYa-XF-MvS" secondAttribute="bottom" constant="112" id="Mwa-la-tfM"/>
                             <constraint firstItem="zkc-KO-jnT" firstAttribute="top" secondItem="CYa-XF-MvS" secondAttribute="bottom" id="NP1-PV-ie3"/>
+                            <constraint firstItem="SGr-Ra-qPg" firstAttribute="top" secondItem="CYa-XF-MvS" secondAttribute="bottom" constant="30" id="cpH-u8-Rgv"/>
                             <constraint firstAttribute="trailing" secondItem="bw5-ht-NmV" secondAttribute="trailing" constant="30" id="doO-qe-GvF"/>
                             <constraint firstAttribute="trailing" secondItem="Y1L-HG-f5a" secondAttribute="trailing" constant="30" id="gjP-hW-WVv">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
                             <constraint firstItem="bw5-ht-NmV" firstAttribute="top" secondItem="Hez-ky-lsM" secondAttribute="bottom" id="oNK-Uj-P3C"/>
-                            <constraint firstItem="Hez-ky-lsM" firstAttribute="top" secondItem="Y1L-HG-f5a" secondAttribute="bottom" constant="30" id="t7E-sP-gIy"/>
+                            <constraint firstItem="Hez-ky-lsM" firstAttribute="top" secondItem="Y1L-HG-f5a" secondAttribute="bottom" constant="10" id="t7E-sP-gIy"/>
                             <constraint firstItem="Hez-ky-lsM" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" constant="30" id="t9o-c3-9dW">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
                             <constraint firstItem="bw5-ht-NmV" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" constant="30" id="vsy-T9-STQ"/>
                             <constraint firstAttribute="trailing" secondItem="zkc-KO-jnT" secondAttribute="trailing" id="wEJ-uF-FH4"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Mwa-la-tfM"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Log In" id="M2x-xn-zow"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
@@ -465,7 +483,7 @@ William</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="With a nod to classic mail, Slowposts are delivered after a time delay, creating surprising, thoughtful moments." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEs-NT-j1O">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose to send your Slowpost right away, or have it delivered at a later time." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AEs-NT-j1O">
                                 <rect key="frame" x="30" y="10" width="540" height="47"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
@@ -579,27 +597,27 @@ William</string>
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tell us about yourself." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="EJb-Ir-fa9">
-                                <rect key="frame" x="30" y="110" width="540" height="24"/>
+                                <rect key="frame" x="30" y="94" width="540" height="24"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Given Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VGQ-6a-6wA" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="164" width="540" height="30"/>
+                                <rect key="frame" x="30" y="148" width="540" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Sa5-ec-ezx"/>
                                 </constraints>
                                 <color key="textColor" red="0.058823529411764705" green="0.058823529411764705" blue="0.058823529411764705" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" spellCheckingType="no"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="Mvm-sb-IE6"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOu-Ii-hWQ" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="304" width="540" height="40"/>
+                                <rect key="frame" x="30" y="268" width="540" height="40"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -615,7 +633,7 @@ William</string>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="P5I-cq-lFh" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="244" width="540" height="30"/>
+                                <rect key="frame" x="30" y="228" width="540" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Tco-OY-Y9H"/>
@@ -628,14 +646,14 @@ William</string>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Family Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Zal-kx-u8W" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="204" width="540" height="30"/>
+                                <rect key="frame" x="30" y="188" width="540" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="5er-Fr-WXK"/>
                                 </constraints>
                                 <color key="textColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" spellCheckingType="no"/>
                                 <connections>
                                     <action selector="editingChanged:" destination="cqE-Qh-T2s" eventType="editingChanged" id="1qC-Tt-8lk"/>
                                 </connections>
@@ -672,14 +690,14 @@ William</string>
                             <constraint firstItem="VOu-Ii-hWQ" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="aHq-dx-1N4">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstItem="EJb-Ir-fa9" firstAttribute="top" secondItem="5ay-1r-pEx" secondAttribute="bottom" constant="46" id="c7W-KK-wsb"/>
+                            <constraint firstItem="EJb-Ir-fa9" firstAttribute="top" secondItem="5ay-1r-pEx" secondAttribute="bottom" constant="30" id="c7W-KK-wsb"/>
                             <constraint firstAttribute="trailing" secondItem="VOu-Ii-hWQ" secondAttribute="trailing" constant="30" id="eyq-GC-f9l">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
                             <constraint firstAttribute="trailing" secondItem="Zal-kx-u8W" secondAttribute="trailing" constant="30" id="gaW-bx-cr1">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstItem="VOu-Ii-hWQ" firstAttribute="top" secondItem="P5I-cq-lFh" secondAttribute="bottom" constant="30" id="jJc-a7-f2S"/>
+                            <constraint firstItem="VOu-Ii-hWQ" firstAttribute="top" secondItem="P5I-cq-lFh" secondAttribute="bottom" constant="10" id="jJc-a7-f2S"/>
                             <constraint firstItem="Zal-kx-u8W" firstAttribute="leading" secondItem="YL5-63-9jW" secondAttribute="leading" constant="30" id="lDc-fQ-GJY">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
@@ -802,7 +820,7 @@ We won't save your address book on our servers, but we will search for matches w
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ikw-33-dC8" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="244" width="540" height="30"/>
+                                <rect key="frame" x="30" y="228" width="540" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Ivq-f5-C5L"/>
@@ -832,7 +850,7 @@ We won't save your address book on our servers, but we will search for matches w
                                 </variation>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fyz-vB-IcF" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="164" width="540" height="30"/>
+                                <rect key="frame" x="30" y="148" width="540" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="fvi-sQ-oaY"/>
@@ -845,14 +863,14 @@ We won't save your address book on our servers, but we will search for matches w
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a unique username and a secure password." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="y0R-1X-YfO">
-                                <rect key="frame" x="30" y="110" width="540" height="24"/>
+                                <rect key="frame" x="30" y="94" width="540" height="24"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qoT-XQ-G2Z" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="304" width="540" height="40"/>
+                                <rect key="frame" x="30" y="268" width="540" height="40"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -868,7 +886,7 @@ We won't save your address book on our servers, but we will search for matches w
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Ca5-x4-yba" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="204" width="540" height="30"/>
+                                <rect key="frame" x="30" y="188" width="540" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="0ol-Dg-Zkr"/>
@@ -881,7 +899,7 @@ We won't save your address book on our servers, but we will search for matches w
                                 </connections>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="By clicking 'Sign up' I confirm I agree to the Privacy Policy." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gH6-YH-ce8">
-                                <rect key="frame" x="30" y="352" width="540" height="34"/>
+                                <rect key="frame" x="30" y="316" width="540" height="34"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -925,8 +943,8 @@ We won't save your address book on our servers, but we will search for matches w
                             <constraint firstItem="ikw-33-dC8" firstAttribute="leading" secondItem="reT-Hu-5gT" secondAttribute="leading" constant="30" id="riA-0Z-7Yn">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstItem="y0R-1X-YfO" firstAttribute="top" secondItem="ony-8R-FTy" secondAttribute="bottom" constant="46" id="soI-pA-5xf"/>
-                            <constraint firstItem="qoT-XQ-G2Z" firstAttribute="top" secondItem="ikw-33-dC8" secondAttribute="bottom" constant="30" id="tCN-34-CGI"/>
+                            <constraint firstItem="y0R-1X-YfO" firstAttribute="top" secondItem="ony-8R-FTy" secondAttribute="bottom" constant="30" id="soI-pA-5xf"/>
+                            <constraint firstItem="qoT-XQ-G2Z" firstAttribute="top" secondItem="ikw-33-dC8" secondAttribute="bottom" constant="10" id="tCN-34-CGI"/>
                             <constraint firstItem="gH6-YH-ce8" firstAttribute="leading" secondItem="reT-Hu-5gT" secondAttribute="leading" constant="30" id="utH-nI-aMN">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
@@ -979,7 +997,7 @@ We won't save your address book on our servers, but we will search for matches w
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="748" verticalHuggingPriority="751" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" minimumFontSize="8" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fsL-7X-rqQ" userLabel="emailTextField" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="176" width="540" height="30"/>
+                                <rect key="frame" x="30" y="148" width="540" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Ah8-oa-UNW"/>
@@ -991,7 +1009,7 @@ We won't save your address book on our servers, but we will search for matches w
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="746" verticalHuggingPriority="746" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sQd-Tl-hEi" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="236" width="540" height="40"/>
+                                <rect key="frame" x="30" y="188" width="540" height="40"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -1017,12 +1035,19 @@ We won't save your address book on our servers, but we will search for matches w
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your Slowpost password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="EAD-OA-rbp">
+                                <rect key="frame" x="30" y="94" width="540" height="24"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="fsL-7X-rqQ" firstAttribute="top" secondItem="IAK-o1-M5h" secondAttribute="bottom" constant="112" id="1Ak-lO-7s8"/>
-                            <constraint firstItem="sQd-Tl-hEi" firstAttribute="top" secondItem="fsL-7X-rqQ" secondAttribute="bottom" constant="30" id="Dja-B7-i7K"/>
+                            <constraint firstAttribute="trailing" secondItem="EAD-OA-rbp" secondAttribute="trailing" constant="30" id="2RV-UD-0NP"/>
+                            <constraint firstItem="sQd-Tl-hEi" firstAttribute="top" secondItem="fsL-7X-rqQ" secondAttribute="bottom" constant="10" id="Dja-B7-i7K"/>
                             <constraint firstItem="fsL-7X-rqQ" firstAttribute="leading" secondItem="KPW-SZ-vhY" secondAttribute="leading" constant="30" id="Dx6-nX-GCL">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
@@ -1035,9 +1060,12 @@ We won't save your address book on our servers, but we will search for matches w
                             <constraint firstAttribute="trailing" secondItem="fsL-7X-rqQ" secondAttribute="trailing" constant="30" id="QHk-Nm-z4b">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
+                            <constraint firstItem="fsL-7X-rqQ" firstAttribute="top" secondItem="EAD-OA-rbp" secondAttribute="bottom" constant="30" id="S86-be-l5c"/>
+                            <constraint firstItem="EAD-OA-rbp" firstAttribute="top" secondItem="IAK-o1-M5h" secondAttribute="bottom" constant="30" id="Z2m-Vk-246"/>
                             <constraint firstAttribute="trailing" secondItem="sQd-Tl-hEi" secondAttribute="trailing" constant="30" id="cb5-CX-xDk">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
+                            <constraint firstItem="EAD-OA-rbp" firstAttribute="leading" secondItem="KPW-SZ-vhY" secondAttribute="leading" constant="30" id="fwb-Mp-ioE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Reset Password" id="P8r-ma-Kjy">
@@ -1050,7 +1078,6 @@ We won't save your address book on our servers, but we will search for matches w
                     </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
-                        <outlet property="distanceToEmailField" destination="1Ak-lO-7s8" id="acp-vc-Zps"/>
                         <outlet property="emailTextField" destination="fsL-7X-rqQ" id="gkC-bT-wBe"/>
                         <outlet property="submitButton" destination="sQd-Tl-hEi" id="lUF-DN-Bsp"/>
                         <outlet property="submitButtonHeight" destination="9Ca-29-4z6" id="Xc5-rT-QQZ"/>
@@ -1247,14 +1274,14 @@ We won't save your address book on our servers, but we will search for matches w
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Slowpost! Please choose a username to help other people find you in the app." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUp-Jk-nGK">
-                                <rect key="frame" x="30" y="110" width="540" height="47"/>
+                                <rect key="frame" x="30" y="94" width="540" height="47"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zUK-2q-Mv0" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="187" width="540" height="30"/>
+                                <rect key="frame" x="30" y="171" width="540" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ajE-IQ-EBh"/>
@@ -1266,7 +1293,7 @@ We won't save your address book on our servers, but we will search for matches w
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5AD-mO-odO" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="247" width="540" height="40"/>
+                                <rect key="frame" x="30" y="211" width="540" height="40"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -1293,8 +1320,8 @@ We won't save your address book on our servers, but we will search for matches w
                             <constraint firstItem="ul2-YY-CGX" firstAttribute="leading" secondItem="YWx-34-CDX" secondAttribute="leading" id="c7I-mh-lvI"/>
                             <constraint firstItem="zUK-2q-Mv0" firstAttribute="top" secondItem="NUp-Jk-nGK" secondAttribute="bottom" constant="30" id="hGw-Fk-rsL"/>
                             <constraint firstAttribute="trailing" secondItem="NUp-Jk-nGK" secondAttribute="trailing" constant="30" id="hin-Sb-0Bi"/>
-                            <constraint firstItem="NUp-Jk-nGK" firstAttribute="top" secondItem="6eO-cW-aGM" secondAttribute="bottom" constant="46" id="i6w-yL-O93"/>
-                            <constraint firstItem="5AD-mO-odO" firstAttribute="top" secondItem="zUK-2q-Mv0" secondAttribute="bottom" constant="30" id="j4S-Ro-VIG"/>
+                            <constraint firstItem="NUp-Jk-nGK" firstAttribute="top" secondItem="6eO-cW-aGM" secondAttribute="bottom" constant="30" id="i6w-yL-O93"/>
+                            <constraint firstItem="5AD-mO-odO" firstAttribute="top" secondItem="zUK-2q-Mv0" secondAttribute="bottom" constant="10" id="j4S-Ro-VIG"/>
                             <constraint firstItem="zUK-2q-Mv0" firstAttribute="leading" secondItem="YWx-34-CDX" secondAttribute="leading" constant="30" id="v8U-XJ-qMN"/>
                         </constraints>
                     </view>
@@ -1343,7 +1370,7 @@ We won't save your address book on our servers, but we will search for matches w
                                 </variation>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wKL-N1-b8X" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="187" width="540" height="30"/>
+                                <rect key="frame" x="30" y="171" width="540" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="MuP-hH-1gd"/>
@@ -1356,14 +1383,14 @@ We won't save your address book on our servers, but we will search for matches w
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a secure password - you can use this to log in without Facebook in the future." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="UIH-wL-fLk">
-                                <rect key="frame" x="30" y="110" width="540" height="47"/>
+                                <rect key="frame" x="30" y="94" width="540" height="47"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tRt-FY-am5" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="287" width="540" height="40"/>
+                                <rect key="frame" x="30" y="251" width="540" height="40"/>
                                 <animations/>
                                 <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -1379,7 +1406,7 @@ We won't save your address book on our servers, but we will search for matches w
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="By clicking 'Sign up' I confirm I agree to the Privacy Policy." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OAH-eI-Wfx">
-                                <rect key="frame" x="30" y="335" width="540" height="34"/>
+                                <rect key="frame" x="30" y="299" width="540" height="34"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1388,7 +1415,7 @@ We won't save your address book on our servers, but we will search for matches w
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9Rp-Oj-FbS" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="30" y="227" width="540" height="30"/>
+                                <rect key="frame" x="30" y="211" width="540" height="30"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="i2b-eG-tLm"/>
@@ -1413,7 +1440,7 @@ We won't save your address book on our servers, but we will search for matches w
                             <constraint firstAttribute="trailing" secondItem="wKL-N1-b8X" secondAttribute="trailing" constant="30" id="AYC-cK-NfK">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
-                            <constraint firstItem="UIH-wL-fLk" firstAttribute="top" secondItem="xlP-Zm-HL6" secondAttribute="bottom" constant="46" id="GkH-Ek-Q4h"/>
+                            <constraint firstItem="UIH-wL-fLk" firstAttribute="top" secondItem="xlP-Zm-HL6" secondAttribute="bottom" constant="30" id="GkH-Ek-Q4h"/>
                             <constraint firstItem="UIH-wL-fLk" firstAttribute="leading" secondItem="B8V-kz-eWh" secondAttribute="leading" constant="30" id="JOP-ii-1ih">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
@@ -1424,7 +1451,7 @@ We won't save your address book on our servers, but we will search for matches w
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
                             <constraint firstItem="feF-mk-eQv" firstAttribute="leading" secondItem="B8V-kz-eWh" secondAttribute="leading" id="h5G-sD-uMa"/>
-                            <constraint firstItem="tRt-FY-am5" firstAttribute="top" secondItem="9Rp-Oj-FbS" secondAttribute="bottom" constant="30" id="hzI-7t-o3U"/>
+                            <constraint firstItem="tRt-FY-am5" firstAttribute="top" secondItem="9Rp-Oj-FbS" secondAttribute="bottom" constant="10" id="hzI-7t-o3U"/>
                             <constraint firstItem="wKL-N1-b8X" firstAttribute="top" secondItem="UIH-wL-fLk" secondAttribute="bottom" constant="30" id="iUY-0U-PRo"/>
                             <constraint firstItem="wKL-N1-b8X" firstAttribute="leading" secondItem="B8V-kz-eWh" secondAttribute="leading" constant="30" id="mAS-gw-0t9">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
@@ -1468,6 +1495,6 @@ We won't save your address book on our servers, but we will search for matches w
         <image name="grey-circle.png" width="120" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jjP-gS-mDE"/>
+        <segue reference="fMY-FY-hbH"/>
     </inferredMetricsTieBreakers>
 </document>

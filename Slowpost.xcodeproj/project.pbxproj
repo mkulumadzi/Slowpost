@@ -45,6 +45,7 @@
 		D215D8061C21EAF000CA0B4A /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215D8051C21EAF000CA0B4A /* ScheduleTableViewCell.swift */; };
 		D215D8081C21EB0D00CA0B4A /* StandardDeliveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215D8071C21EB0D00CA0B4A /* StandardDeliveryTableViewCell.swift */; };
 		D215D80A1C21EB2100CA0B4A /* ExpressDeliveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215D8091C21EB2100CA0B4A /* ExpressDeliveryTableViewCell.swift */; };
+		D215D80C1C227F5600CA0B4A /* LoginNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215D80B1C227F5600CA0B4A /* LoginNavigationViewController.swift */; };
 		D21E2C871BC09C6100E17572 /* libFlurry_7.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D21E2C861BC09C6100E17572 /* libFlurry_7.2.1.a */; };
 		D2319AC01BD16D8F00B989C0 /* RequestSubmittedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2319ABF1BD16D8F00B989C0 /* RequestSubmittedViewController.swift */; };
 		D2389E681B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E671B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift */; };
@@ -204,6 +205,7 @@
 		D215D8051C21EAF000CA0B4A /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		D215D8071C21EB0D00CA0B4A /* StandardDeliveryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardDeliveryTableViewCell.swift; sourceTree = "<group>"; };
 		D215D8091C21EB2100CA0B4A /* ExpressDeliveryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpressDeliveryTableViewCell.swift; sourceTree = "<group>"; };
+		D215D80B1C227F5600CA0B4A /* LoginNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginNavigationViewController.swift; sourceTree = "<group>"; };
 		D21E2C851BC09C5900E17572 /* Flurry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		D21E2C861BC09C6100E17572 /* libFlurry_7.2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.2.1.a; sourceTree = "<group>"; };
 		D2222A741B588695007E74BB /* SnailMailModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SnailMailModel 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 				D2AA1E341C126C69001F5F01 /* StartViewController.swift */,
 				D210031C1C1657FC00E45CA3 /* UsernameFBViewController.swift */,
 				D210031E1C17A8B900E45CA3 /* PasswordFBController.swift */,
+				D215D80B1C227F5600CA0B4A /* LoginNavigationViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -911,6 +914,7 @@
 				D289F2181BD15517004D29FA /* RequestPasswordResetViewController.swift in Sources */,
 				D215D8061C21EAF000CA0B4A /* ScheduleTableViewCell.swift in Sources */,
 				D21003251C1A36A800E45CA3 /* ComposeView.swift in Sources */,
+				D215D80C1C227F5600CA0B4A /* LoginNavigationViewController.swift in Sources */,
 				D26726301B7D524100FE651F /* UsernameViewController.swift in Sources */,
 				D2319AC01BD16D8F00B989C0 /* RequestSubmittedViewController.swift in Sources */,
 				D21003231C1A127E00E45CA3 /* PhotoCollectionViewCell.swift in Sources */,

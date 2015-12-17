@@ -49,6 +49,9 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     var overlayInstructions:UILabel!
     var deliveryMethod:String!
     
+    
+    @IBOutlet weak var takePhoto: UIButton!
+    @IBOutlet weak var textOnly: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var toLabel: UILabel!
@@ -109,6 +112,12 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     func formatButtons() {
         cancelButton.setImage(UIImage(named: "chevron-down")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         cancelButton.tintColor = UIColor.whiteColor()
+        
+        takePhoto.setImage(UIImage(named: "camera")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        takePhoto.tintColor = slowpostDarkGreen
+        
+        textOnly.setImage(UIImage(named: "text")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        textOnly.tintColor = slowpostDarkGreen
     }
     
     // Initializing buttons

@@ -24,7 +24,7 @@ class ChooseDeliveryOptionsViewController: UIViewController, UITableViewDelegate
         super.viewDidLoad()
         formatCells()
         confirmButton.layer.cornerRadius = 5
-        optionsTable.separatorStyle = UITableViewCellSeparatorStyle.None
+        optionsTable.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
     }
     
     override func didReceiveMemoryWarning() {
@@ -60,6 +60,7 @@ class ChooseDeliveryOptionsViewController: UIViewController, UITableViewDelegate
             }
             else {
                 cell.datePicker.date = setMinimumDate()
+                cell.datePicker.minimumDate = setMinimumDate()
             }
             cell.datePicker.addTarget(self, action: "dateUpdated:", forControlEvents: UIControlEvents.ValueChanged)
             return cell
@@ -99,7 +100,6 @@ class ChooseDeliveryOptionsViewController: UIViewController, UITableViewDelegate
         print("Row tapped")
         let cell = tableView.cellForRowAtIndexPath(indexPath)!
         deliveryMethod = cell.reuseIdentifier
-        print("Selected \(deliveryMethod)")
         formatCells()
         optionsTable.reloadData()
     }
