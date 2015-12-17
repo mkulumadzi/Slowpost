@@ -22,7 +22,6 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     var cardUrls:[String]!
     var overlayUrls:[String]!
     var cardPhotos = [UIImage]()
-    var userPhotos = [UIImage]()
     var cardOverlays = [[String: AnyObject]]()
     var fetchResult:PHFetchResult!
     var clearPhotoButton:UIButton!
@@ -49,14 +48,13 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     var overlayInstructions:UILabel!
     var deliveryMethod:String!
     
-    
+    @IBOutlet weak var photoLibrary: UIButton!
     @IBOutlet weak var takePhoto: UIButton!
     @IBOutlet weak var textOnly: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var photoCollection: UICollectionView!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
@@ -67,9 +65,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         
         getRecipientsFromNavController()
         toLabel.text = toList()
-        segmentedControl.addTarget(self, action:"toggleResults", forControlEvents: .ValueChanged)
         getCards()
-        getImagesFromCameraRoll()
         
         initializeClearPhotoButton()
         initializeDoneEditingButton()
@@ -119,6 +115,10 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     func formatButtons() {
         cancelButton.setImage(UIImage(named: "chevron-down")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         cancelButton.tintColor = UIColor.whiteColor()
+        
+        photoLibrary.setImage(UIImage(named: "photo-library")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        photoLibrary.tintColor = slowpostDarkGreen
+
         
         takePhoto.setImage(UIImage(named: "camera")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         takePhoto.tintColor = slowpostDarkGreen
@@ -210,7 +210,6 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         scheduleDeliveryButton.titleLabel!.font = UIFont(name: "OpenSans-Semibold", size: 15.0)
         scheduleDeliveryButton.titleLabel!.textColor = UIColor.whiteColor()
         
-//        scheduleDeliveryButton.setImage(UIImage(named: "calendar")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         scheduleDeliveryButton.tintColor = UIColor.whiteColor()
         scheduleDeliveryButton.addTarget(self, action: "scheduleDelivery", forControlEvents: .TouchUpInside)
         
@@ -294,13 +293,6 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     
     // Getting images
     
-    func numLibraryPhotos() -> CGFloat {
-        let width = Double(view.frame.width)
-        let size = Double(100.0)
-        let numPhotos = CGFloat(round(width / size))
-        return numPhotos
-    }
-    
     func numCards() -> CGFloat {
         let width = Double(view.frame.width)
         let size = Double(160.0)
@@ -365,55 +357,6 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         }
     }
     
-    func getImagesFromCameraRoll() {
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            let num = self.numLibraryPhotos()
-            let spaces = CGFloat((num + 1) * 5)
-            let collectionDimension = (self.view.frame.width - spaces) / num
-            print("The view is \(self.view.frame)")
-            let maxDimension = collectionDimension * 1.25
-            let targetSize: CGSize = CGSize(width: maxDimension, height: maxDimension)
-            let contentMode: PHImageContentMode = .AspectFill
-            let fetchOptions:PHFetchOptions = PHFetchOptions()
-            fetchOptions.fetchLimit = 50
-            fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-            self.fetchResult = PHAsset.fetchAssetsWithMediaType(.Image, options: fetchOptions)
-            self.fetchResult.enumerateObjectsUsingBlock {
-                object, index, stop in
-                
-                let options = PHImageRequestOptions()
-                options.synchronous = true
-                options.deliveryMode = .HighQualityFormat
-                PHImageManager.defaultManager().requestImageForAsset(object as! PHAsset, targetSize: targetSize, contentMode: contentMode, options: options) {
-                    image, info in
-                    self.userPhotos.append(image!)
-                }
-            }
-        }
-    }
-    
-    func getFullSizePhoto(index: Int) -> UIImage {
-        var image:UIImage!
-        let object = self.fetchResult.objectAtIndex(index)
-        let targetSize: CGSize = CGSize(width: 1024.0, height: 1024.0)
-        let options = PHImageRequestOptions()
-        options.synchronous = true
-        options.deliveryMode = .HighQualityFormat
-        PHImageManager.defaultManager().requestImageForAsset(object as! PHAsset, targetSize: targetSize, contentMode: .AspectFit, options: options) {
-            imageFetched, info in
-            image = imageFetched
-        }
-        return image
-    }
-    
-    func toggleResults() {
-        if segmentedControl.selectedSegmentIndex == 0 {
-            self.activityIndicator.hidden = true
-        }
-        photoCollection.reloadData()
-    }
-    
     // Card overlays
     
     func initializeCardOverlays() {
@@ -464,6 +407,13 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         let edge = name.characters.split{$0 == "-"}.map(String.init).first!.uppercaseString
         cardOverlays.append(["image": image, "edge": edge])
     }
+    
+    // Photo Library
+    
+    @IBAction func goToPhotoLibrary(sender: AnyObject) {
+        
+    }
+    
     
     // Camera configuration
 
@@ -526,30 +476,16 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            return userPhotos.count
-        default:
-            return cardPhotos.count
-        }
+        return cardPhotos.count
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath:NSIndexPath) -> CGSize {
         var width:CGFloat!
         var height:CGFloat!
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            let num = numLibraryPhotos()
-            let spaces = (num + 1) * 5
-            width = (view.frame.width - spaces) / num
-            height = width
-        default:
-            let num = numCards()
-            let spaces = (num + 1) * 5
-            width = (view.frame.width - spaces) / num
-            height = width
-        }
-        
+        let num = numCards()
+        let spaces = (num + 1) * 5
+        width = (view.frame.width - spaces) / num
+        height = width
         return CGSize.init(width: width, height: height)
         
     }
@@ -558,13 +494,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("photoCell", forIndexPath: indexPath) as! PhotoCollectionViewCell
         
         var image:UIImage!
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            image = userPhotos[indexPath.row]
-        default:
-            image = cardPhotos[indexPath.row]
-        }
-        
+        image = cardPhotos[indexPath.row]
         cell.cellImage.image = image
         
         return cell
@@ -576,18 +506,11 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         var image:UIImage!
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            image = getFullSizePhoto(indexPath.row)
-            overlaysAllowed = true
-        default:
-            image = cardPhotos[indexPath.row]
-            let parameters:[String: String] = ["Name": cardUrls[indexPath.row]]
-            Flurry.logEvent("Chose_Image_From_Gallery", withParameters: parameters)
-            overlaysAllowed = false
-        }
+        image = cardPhotos[indexPath.row]
+        let parameters:[String: String] = ["Name": cardUrls[indexPath.row]]
+        Flurry.logEvent("Chose_Image_From_Gallery", withParameters: parameters)
+        overlaysAllowed = false
         imageSelected = image
-        print("Image selected")
         addComposeView()
     }
     
