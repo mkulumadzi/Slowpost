@@ -9,6 +9,8 @@
 import UIKit
 import Photos
 import MobileCoreServices
+import SwiftyJSON
+import Alamofire
 
 class ChooseImageAndComposeMailViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate {
     
@@ -72,7 +74,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         initializeShadedView()
         initializeCardOverlays()
         
-        deliveryMethod = defaultDeliveryMethod()
+        setDefaultDeliveryMethod()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
@@ -85,8 +87,21 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     override func viewDidLayoutSubviews() {
     }
     
-    func defaultDeliveryMethod() -> String {
-        return "express"
+    func setDefaultDeliveryMethod() {
+        deliveryMethod = "express"
+        let userId = LoginService.getUserIdFromToken()
+        let defaultsUrl = "\(PostOfficeURL)/person/id/\(userId)/defaults"
+        let headers = ["Authorization": RestService.addAuthHeader()]
+        Alamofire.request(.GET, defaultsUrl, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case .Failure:
+                print("Error getting defaults")
+            case .Success:
+                let json = JSON(response.result.value!)
+                self.deliveryMethod = json["default_delivery_method"].stringValue
+                print(self.deliveryMethod)
+            }
+        }
     }
     
     // Initializing buttons
@@ -144,7 +159,6 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         
         sendButtonLabel = UILabel()
         sendButtonView.addSubview(sendButtonLabel)
-        sendButtonLabel.text = "Send now >>"
         sendButtonLabel.font = UIFont(name: "OpenSans-Semibold", size: 15.0)
         sendButtonLabel.textColor = UIColor.whiteColor()
         
@@ -875,6 +889,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     func validateSendAndPlaceholder() {
         if composeTextView.text != nil && composeTextView.text != "" {
             sendButtonView.hidden = false
+            formatSendButton()
             view.bringSubviewToFront(sendButtonView)
             placeholderText.hidden = true
         }
@@ -900,6 +915,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     }
     
     func formatSendButton() {
+        print("formattingSendButton")
         switch deliveryMethod {
         case "express":
             sendButtonLabel.text = "Send now >>"
