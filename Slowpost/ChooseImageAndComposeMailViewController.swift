@@ -49,6 +49,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     var overlayInstructions:UILabel!
     var deliveryMethod:String!
     
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var photoCollection: UICollectionView!
@@ -73,6 +74,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         initializeWarningLabel()
         initializeShadedView()
         initializeCardOverlays()
+        formatButtons()
         
         setDefaultDeliveryMethod()
         
@@ -102,6 +104,11 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
                 print(self.deliveryMethod)
             }
         }
+    }
+    
+    func formatButtons() {
+        cancelButton.setImage(UIImage(named: "chevron-down")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        cancelButton.tintColor = UIColor.whiteColor()
     }
     
     // Initializing buttons
@@ -183,7 +190,11 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         let scheduleDeliveryButton = UIButton()
         sendButtonView.addSubview(scheduleDeliveryButton)
         scheduleDeliveryButton.backgroundColor = UIColor.clearColor()
-        scheduleDeliveryButton.setImage(UIImage(named: "calendar")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        scheduleDeliveryButton.setTitle("Edit", forState: .Normal)
+        scheduleDeliveryButton.titleLabel!.font = UIFont(name: "OpenSans-Semibold", size: 15.0)
+        scheduleDeliveryButton.titleLabel!.textColor = UIColor.whiteColor()
+        
+//        scheduleDeliveryButton.setImage(UIImage(named: "calendar")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         scheduleDeliveryButton.tintColor = UIColor.whiteColor()
         scheduleDeliveryButton.addTarget(self, action: "scheduleDelivery", forControlEvents: .TouchUpInside)
         

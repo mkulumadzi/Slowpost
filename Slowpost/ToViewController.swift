@@ -76,8 +76,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     func formatButtons() {
         cancelButton.setImage(UIImage(named: "close")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         cancelButton.tintColor = UIColor.whiteColor()
-        editRecipientsButton.setImage(UIImage(named: "edit")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        editRecipientsButton.tintColor = slowpostBlack
         nextButton.contentHorizontalAlignment = .Right
     }
     

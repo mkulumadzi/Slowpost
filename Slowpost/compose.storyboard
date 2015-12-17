@@ -1278,6 +1278,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="activityIndicator" destination="CsD-Oe-VlG" id="KJh-DB-qXA"/>
+                        <outlet property="cancelButton" destination="J1g-Yq-npq" id="bc7-PW-F4g"/>
                         <outlet property="photoCollection" destination="cDL-EV-1Vn" id="BnJ-hw-fL9"/>
                         <outlet property="segmentedControl" destination="lLN-xr-tg4" id="rtW-Er-tmu"/>
                         <outlet property="toLabel" destination="Opl-C7-tC0" id="z6o-gm-afB"/>
