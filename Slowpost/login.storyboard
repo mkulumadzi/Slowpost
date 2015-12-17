@@ -179,8 +179,10 @@
                             </constraint>
                             <constraint firstItem="Y1L-HG-f5a" firstAttribute="top" secondItem="CYa-XF-MvS" secondAttribute="bottom" constant="112" id="Mwa-la-tfM"/>
                             <constraint firstItem="zkc-KO-jnT" firstAttribute="top" secondItem="CYa-XF-MvS" secondAttribute="bottom" id="NP1-PV-ie3"/>
+                            <constraint firstItem="SGr-Ra-qPg" firstAttribute="leading" secondItem="55F-o5-Mq3" secondAttribute="leading" constant="100" id="Tsv-ef-WWQ"/>
                             <constraint firstItem="SGr-Ra-qPg" firstAttribute="top" secondItem="CYa-XF-MvS" secondAttribute="bottom" constant="30" id="cpH-u8-Rgv"/>
                             <constraint firstAttribute="trailing" secondItem="bw5-ht-NmV" secondAttribute="trailing" constant="30" id="doO-qe-GvF"/>
+                            <constraint firstAttribute="trailing" secondItem="SGr-Ra-qPg" secondAttribute="trailing" constant="100" id="dtF-jJ-k0H"/>
                             <constraint firstAttribute="trailing" secondItem="Y1L-HG-f5a" secondAttribute="trailing" constant="30" id="gjP-hW-WVv">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
@@ -194,7 +196,17 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="Tsv-ef-WWQ"/>
+                                <exclude reference="dtF-jJ-k0H"/>
                                 <exclude reference="Mwa-la-tfM"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="5Ff-zO-Bua"/>
+                                <exclude reference="8hi-jM-fT1"/>
+                                <include reference="Tsv-ef-WWQ"/>
+                                <include reference="dtF-jJ-k0H"/>
                             </mask>
                         </variation>
                     </view>
@@ -1047,6 +1059,7 @@ We won't save your address book on our servers, but we will search for matches w
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="EAD-OA-rbp" secondAttribute="trailing" constant="30" id="2RV-UD-0NP"/>
+                            <constraint firstAttribute="trailing" secondItem="EAD-OA-rbp" secondAttribute="trailing" constant="100" id="AVd-Ge-M3p"/>
                             <constraint firstItem="sQd-Tl-hEi" firstAttribute="top" secondItem="fsL-7X-rqQ" secondAttribute="bottom" constant="10" id="Dja-B7-i7K"/>
                             <constraint firstItem="fsL-7X-rqQ" firstAttribute="leading" secondItem="KPW-SZ-vhY" secondAttribute="leading" constant="30" id="Dx6-nX-GCL">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
@@ -1055,6 +1068,7 @@ We won't save your address book on our servers, but we will search for matches w
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
                             <constraint firstItem="I1c-j4-KBD" firstAttribute="leading" secondItem="KPW-SZ-vhY" secondAttribute="leading" id="FBh-AX-8OY"/>
+                            <constraint firstItem="EAD-OA-rbp" firstAttribute="leading" secondItem="KPW-SZ-vhY" secondAttribute="leading" constant="100" id="Ffh-B3-QaV"/>
                             <constraint firstItem="I1c-j4-KBD" firstAttribute="top" secondItem="IAK-o1-M5h" secondAttribute="bottom" id="G8M-ru-5ca"/>
                             <constraint firstAttribute="trailing" secondItem="I1c-j4-KBD" secondAttribute="trailing" id="LJ0-Mg-VtX"/>
                             <constraint firstAttribute="trailing" secondItem="fsL-7X-rqQ" secondAttribute="trailing" constant="30" id="QHk-Nm-z4b">
@@ -1067,6 +1081,20 @@ We won't save your address book on our servers, but we will search for matches w
                             </constraint>
                             <constraint firstItem="EAD-OA-rbp" firstAttribute="leading" secondItem="KPW-SZ-vhY" secondAttribute="leading" constant="30" id="fwb-Mp-ioE"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="AVd-Ge-M3p"/>
+                                <exclude reference="Ffh-B3-QaV"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="2RV-UD-0NP"/>
+                                <include reference="AVd-Ge-M3p"/>
+                                <include reference="Ffh-B3-QaV"/>
+                                <exclude reference="fwb-Mp-ioE"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Reset Password" id="P8r-ma-Kjy">
                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="WPS-1u-sg5">
@@ -1105,7 +1133,7 @@ We won't save your address book on our servers, but we will search for matches w
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check your email! You should get a message with instructions for resetting you password." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bbl-JX-1dV">
-                                <rect key="frame" x="30" y="276" width="540" height="47"/>
+                                <rect key="frame" x="30" y="277" width="540" height="47"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1198,15 +1226,19 @@ We won't save your address book on our servers, but we will search for matches w
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="mMR-r1-INh" firstAttribute="top" secondItem="0F8-Gw-2PI" secondAttribute="bottom" constant="30" id="2Gh-UL-aCS"/>
+                            <constraint firstAttribute="trailing" secondItem="oQh-Il-XCk" secondAttribute="trailing" constant="30" id="4pq-xf-18g"/>
                             <constraint firstItem="mMR-r1-INh" firstAttribute="top" secondItem="0F8-Gw-2PI" secondAttribute="top" id="CuS-U1-4Fq"/>
                             <constraint firstItem="oQh-Il-XCk" firstAttribute="top" secondItem="65c-B6-4tw" secondAttribute="bottom" constant="46" id="DM8-pe-Uqt"/>
                             <constraint firstAttribute="trailing" secondItem="oQh-Il-XCk" secondAttribute="trailing" constant="30" id="Nvi-lB-TB8"/>
+                            <constraint firstItem="oQh-Il-XCk" firstAttribute="leading" secondItem="ruh-Tw-TO2" secondAttribute="leading" constant="30" id="RHI-dp-4Ci"/>
                             <constraint firstItem="jMh-Y8-Wyi" firstAttribute="leading" secondItem="ruh-Tw-TO2" secondAttribute="leading" constant="30" id="Rn8-yE-FVn"/>
                             <constraint firstItem="0F8-Gw-2PI" firstAttribute="leading" secondItem="ruh-Tw-TO2" secondAttribute="leading" constant="30" id="VfI-cJ-Iys">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
                             <constraint firstItem="jMh-Y8-Wyi" firstAttribute="top" secondItem="mMR-r1-INh" secondAttribute="bottom" id="cdj-W7-lLW"/>
+                            <constraint firstAttribute="trailing" secondItem="oQh-Il-XCk" secondAttribute="trailing" constant="100" id="d0t-6C-JNy"/>
                             <constraint firstItem="oQh-Il-XCk" firstAttribute="leading" secondItem="ruh-Tw-TO2" secondAttribute="leading" constant="30" id="eEd-Tq-12L"/>
+                            <constraint firstItem="oQh-Il-XCk" firstAttribute="leading" secondItem="ruh-Tw-TO2" secondAttribute="leading" constant="100" id="ecI-JL-HSt"/>
                             <constraint firstAttribute="trailing" secondItem="mMR-r1-INh" secondAttribute="trailing" constant="30" id="irW-jw-KzO">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
@@ -1221,7 +1253,19 @@ We won't save your address book on our servers, but we will search for matches w
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="Nvi-lB-TB8"/>
+                                <exclude reference="d0t-6C-JNy"/>
+                                <exclude reference="eEd-Tq-12L"/>
+                                <exclude reference="ecI-JL-HSt"/>
                                 <exclude reference="CuS-U1-4Fq"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="4pq-xf-18g"/>
+                                <exclude reference="RHI-dp-4Ci"/>
+                                <include reference="d0t-6C-JNy"/>
+                                <include reference="ecI-JL-HSt"/>
                             </mask>
                         </variation>
                     </view>
@@ -1248,7 +1292,7 @@ We won't save your address book on our servers, but we will search for matches w
                 <exit id="WeV-i4-6Ay" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="1eE-cU-O9M"/>
             </objects>
-            <point key="canvasLocation" x="1505" y="-1046"/>
+            <point key="canvasLocation" x="1467" y="-1046"/>
         </scene>
         <!--Username-->
         <scene sceneID="ykJ-MR-yqr">
@@ -1311,19 +1355,51 @@ We won't save your address book on our servers, but we will search for matches w
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="5AD-mO-odO" firstAttribute="leading" secondItem="YWx-34-CDX" secondAttribute="leading" constant="100" id="2Td-jY-9yc"/>
+                            <constraint firstAttribute="trailing" secondItem="zUK-2q-Mv0" secondAttribute="trailing" constant="100" id="78Q-0w-yem"/>
                             <constraint firstItem="NUp-Jk-nGK" firstAttribute="leading" secondItem="YWx-34-CDX" secondAttribute="leading" constant="30" id="9Sd-Or-86l"/>
+                            <constraint firstAttribute="trailing" secondItem="5AD-mO-odO" secondAttribute="trailing" constant="100" id="AGK-Iy-dP3"/>
+                            <constraint firstAttribute="trailing" secondItem="NUp-Jk-nGK" secondAttribute="trailing" constant="100" id="Dhs-em-tMk"/>
                             <constraint firstAttribute="trailing" secondItem="5AD-mO-odO" secondAttribute="trailing" constant="30" id="H8O-qJ-gp8"/>
                             <constraint firstItem="5AD-mO-odO" firstAttribute="leading" secondItem="YWx-34-CDX" secondAttribute="leading" constant="30" id="MI5-7s-Ya2"/>
                             <constraint firstItem="ul2-YY-CGX" firstAttribute="top" secondItem="6eO-cW-aGM" secondAttribute="bottom" id="MS9-32-1k2"/>
                             <constraint firstAttribute="trailing" secondItem="ul2-YY-CGX" secondAttribute="trailing" id="TtI-O0-YTZ"/>
                             <constraint firstAttribute="trailing" secondItem="zUK-2q-Mv0" secondAttribute="trailing" constant="30" id="XH7-eZ-PeY"/>
+                            <constraint firstItem="zUK-2q-Mv0" firstAttribute="leading" secondItem="YWx-34-CDX" secondAttribute="leading" constant="100" id="baa-7e-1DT"/>
                             <constraint firstItem="ul2-YY-CGX" firstAttribute="leading" secondItem="YWx-34-CDX" secondAttribute="leading" id="c7I-mh-lvI"/>
                             <constraint firstItem="zUK-2q-Mv0" firstAttribute="top" secondItem="NUp-Jk-nGK" secondAttribute="bottom" constant="30" id="hGw-Fk-rsL"/>
                             <constraint firstAttribute="trailing" secondItem="NUp-Jk-nGK" secondAttribute="trailing" constant="30" id="hin-Sb-0Bi"/>
                             <constraint firstItem="NUp-Jk-nGK" firstAttribute="top" secondItem="6eO-cW-aGM" secondAttribute="bottom" constant="30" id="i6w-yL-O93"/>
                             <constraint firstItem="5AD-mO-odO" firstAttribute="top" secondItem="zUK-2q-Mv0" secondAttribute="bottom" constant="10" id="j4S-Ro-VIG"/>
                             <constraint firstItem="zUK-2q-Mv0" firstAttribute="leading" secondItem="YWx-34-CDX" secondAttribute="leading" constant="30" id="v8U-XJ-qMN"/>
+                            <constraint firstItem="NUp-Jk-nGK" firstAttribute="leading" secondItem="YWx-34-CDX" secondAttribute="leading" constant="100" id="x7D-S2-XEx"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Dhs-em-tMk"/>
+                                <exclude reference="x7D-S2-XEx"/>
+                                <exclude reference="78Q-0w-yem"/>
+                                <exclude reference="baa-7e-1DT"/>
+                                <exclude reference="2Td-jY-9yc"/>
+                                <exclude reference="AGK-Iy-dP3"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="9Sd-Or-86l"/>
+                                <include reference="Dhs-em-tMk"/>
+                                <exclude reference="hin-Sb-0Bi"/>
+                                <include reference="x7D-S2-XEx"/>
+                                <include reference="78Q-0w-yem"/>
+                                <exclude reference="XH7-eZ-PeY"/>
+                                <include reference="baa-7e-1DT"/>
+                                <exclude reference="v8U-XJ-qMN"/>
+                                <include reference="2Td-jY-9yc"/>
+                                <include reference="AGK-Iy-dP3"/>
+                                <exclude reference="H8O-qJ-gp8"/>
+                                <exclude reference="MI5-7s-Ya2"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Username" id="ac6-Q3-KNr"/>
                     <connections>
@@ -1450,6 +1526,8 @@ We won't save your address book on our servers, but we will search for matches w
                             <constraint firstItem="OAH-eI-Wfx" firstAttribute="leading" secondItem="B8V-kz-eWh" secondAttribute="leading" constant="30" id="QSA-1p-eKz">
                                 <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                             </constraint>
+                            <constraint firstAttribute="trailing" secondItem="9Rp-Oj-FbS" secondAttribute="trailing" constant="100" id="TFf-ji-h3J"/>
+                            <constraint firstItem="9Rp-Oj-FbS" firstAttribute="leading" secondItem="B8V-kz-eWh" secondAttribute="leading" constant="100" id="aS7-w0-Opn"/>
                             <constraint firstItem="feF-mk-eQv" firstAttribute="leading" secondItem="B8V-kz-eWh" secondAttribute="leading" id="h5G-sD-uMa"/>
                             <constraint firstItem="tRt-FY-am5" firstAttribute="top" secondItem="9Rp-Oj-FbS" secondAttribute="bottom" constant="10" id="hzI-7t-o3U"/>
                             <constraint firstItem="wKL-N1-b8X" firstAttribute="top" secondItem="UIH-wL-fLk" secondAttribute="bottom" constant="30" id="iUY-0U-PRo"/>
@@ -1466,6 +1544,20 @@ We won't save your address book on our servers, but we will search for matches w
                             <constraint firstItem="OAH-eI-Wfx" firstAttribute="top" secondItem="tRt-FY-am5" secondAttribute="bottom" constant="8" id="vgL-yk-4CV"/>
                             <constraint firstItem="feF-mk-eQv" firstAttribute="top" secondItem="xlP-Zm-HL6" secondAttribute="bottom" id="yit-yU-ZEZ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="TFf-ji-h3J"/>
+                                <exclude reference="aS7-w0-Opn"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="4eV-DP-hr1"/>
+                                <exclude reference="4ze-Gt-MkT"/>
+                                <include reference="TFf-ji-h3J"/>
+                                <include reference="aS7-w0-Opn"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Password" id="EwW-r5-U1M" userLabel="Username"/>
@@ -1495,6 +1587,6 @@ We won't save your address book on our servers, but we will search for matches w
         <image name="grey-circle.png" width="120" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fMY-FY-hbH"/>
+        <segue reference="jjP-gS-mDE"/>
     </inferredMetricsTieBreakers>
 </document>

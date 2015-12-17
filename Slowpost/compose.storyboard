@@ -198,10 +198,26 @@
                                     <constraint firstAttribute="bottom" secondItem="Ve4-0i-2xR" secondAttribute="bottom" constant="50" id="Ahl-L7-xIx"/>
                                     <constraint firstAttribute="trailing" secondItem="Ve4-0i-2xR" secondAttribute="trailing" id="Kyl-mT-70U"/>
                                     <constraint firstAttribute="bottom" secondItem="FDp-88-ivh" secondAttribute="bottom" constant="5" id="Kzb-2u-iJa"/>
+                                    <constraint firstItem="FDp-88-ivh" firstAttribute="leading" secondItem="mPC-Bj-nIK" secondAttribute="leading" constant="100" id="OwY-Uv-uLY"/>
+                                    <constraint firstAttribute="trailing" secondItem="FDp-88-ivh" secondAttribute="trailing" constant="100" id="ZZe-kV-A7c"/>
                                     <constraint firstItem="Ve4-0i-2xR" firstAttribute="leading" secondItem="mPC-Bj-nIK" secondAttribute="leading" id="jCD-cg-iX0"/>
                                     <constraint firstItem="FDp-88-ivh" firstAttribute="leading" secondItem="mPC-Bj-nIK" secondAttribute="leading" constant="30" id="lkS-LP-k0f"/>
                                     <constraint firstAttribute="trailing" secondItem="FDp-88-ivh" secondAttribute="trailing" constant="30" id="mas-SP-J1Y"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="OwY-Uv-uLY"/>
+                                        <exclude reference="ZZe-kV-A7c"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="OwY-Uv-uLY"/>
+                                        <include reference="ZZe-kV-A7c"/>
+                                        <exclude reference="lkS-LP-k0f"/>
+                                        <exclude reference="mas-SP-J1Y"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Delivery Preference" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uwj-sc-sJh">
                                 <rect key="frame" x="0.0" y="210" width="600" height="40"/>

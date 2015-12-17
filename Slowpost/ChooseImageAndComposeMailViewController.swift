@@ -85,11 +85,18 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardWillHideNotification, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "rotated", name: UIDeviceOrientationDidChangeNotification, object: nil)
+        
         resignFirstResponder()
         
     }
     
     override func viewDidLayoutSubviews() {
+    }
+    
+    func rotated() {
+        view.layoutIfNeeded()
     }
     
     func setDefaultDeliveryMethod() {
@@ -287,6 +294,20 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     
     // Getting images
     
+    func numLibraryPhotos() -> CGFloat {
+        let width = Double(view.frame.width)
+        let size = Double(100.0)
+        let numPhotos = CGFloat(round(width / size))
+        return numPhotos
+    }
+    
+    func numCards() -> CGFloat {
+        let width = Double(view.frame.width)
+        let size = Double(160.0)
+        let numPhotos = CGFloat(round(width / size))
+        return numPhotos
+    }
+    
     func getCards() {
         activityIndicator.hidden = false
         activityIndicator.startAnimating()
@@ -345,14 +366,17 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     }
     
     func getImagesFromCameraRoll() {
-        
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            let collectionDimension = (self.view.frame.width - 25) / 2
+            let num = self.numLibraryPhotos()
+            let spaces = CGFloat((num + 1) * 5)
+            let collectionDimension = (self.view.frame.width - spaces) / num
+            print("The view is \(self.view.frame)")
             let maxDimension = collectionDimension * 1.25
             let targetSize: CGSize = CGSize(width: maxDimension, height: maxDimension)
             let contentMode: PHImageContentMode = .AspectFill
             let fetchOptions:PHFetchOptions = PHFetchOptions()
+//            fetchOptions.fetchLimit = 100
             fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
             self.fetchResult = PHAsset.fetchAssetsWithMediaType(.Image, options: fetchOptions)
             self.fetchResult.enumerateObjectsUsingBlock {
@@ -371,8 +395,8 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     
     func getFullSizePhoto(index: Int) -> UIImage {
         var image:UIImage!
-        let object = fetchResult.objectAtIndex(index)
-        let targetSize: CGSize = CGSize(width: 800.0, height: 800.0)
+        let object = self.fetchResult.objectAtIndex(index)
+        let targetSize: CGSize = CGSize(width: 1024.0, height: 1024.0)
         let options = PHImageRequestOptions()
         options.synchronous = true
         options.deliveryMode = .HighQualityFormat
@@ -515,10 +539,14 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         var height:CGFloat!
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            width = (view.frame.width - 25) / 4
+            let num = numLibraryPhotos()
+            let spaces = (num + 1) * 5
+            width = (view.frame.width - spaces) / num
             height = width
         default:
-            width = (view.frame.width - 15) / 2
+            let num = numCards()
+            let spaces = (num + 1) * 5
+            width = (view.frame.width - spaces) / num
             height = width
         }
         
@@ -1016,6 +1044,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         else if segue.identifier == "scheduleDelivery" {
             let chooseDeliveryOptions = segue.destinationViewController as! ChooseDeliveryOptionsViewController
             chooseDeliveryOptions.deliveryMethod = self.deliveryMethod
+            initializeShadedView()
             view.bringSubviewToFront(shadedView)
             shadedView.hidden = false
         }
