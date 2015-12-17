@@ -196,7 +196,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         sendMask.backgroundColor = UIColor.clearColor()
         sendMask.addTarget(self, action: "sendTapped", forControlEvents: .TouchUpInside)
         
-        let sendMaskLeading = NSLayoutConstraint(item: sendMask, attribute: .Leading, relatedBy: .Equal, toItem: sendButtonView, attribute: .Leading, multiplier: 1.0, constant: 60.0)
+        let sendMaskLeading = NSLayoutConstraint(item: sendMask, attribute: .Leading, relatedBy: .Equal, toItem: sendButtonView, attribute: .Leading, multiplier: 1.0, constant: 80.0)
         let sendMaskTrailing = NSLayoutConstraint(item: sendMask, attribute: .Trailing, relatedBy: .Equal, toItem: sendButtonView, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
         let sendMaskTop = NSLayoutConstraint(item: sendMask, attribute: .Top, relatedBy: .Equal, toItem: sendButtonView, attribute: .Top, multiplier: 1.0, constant: 0.0)
         let sendMaskBottom = NSLayoutConstraint(item: sendMask, attribute: .Bottom, relatedBy: .Equal, toItem: sendButtonView, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
@@ -206,7 +206,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         let scheduleDeliveryButton = UIButton()
         sendButtonView.addSubview(scheduleDeliveryButton)
         scheduleDeliveryButton.backgroundColor = UIColor.clearColor()
-        scheduleDeliveryButton.setTitle("Edit", forState: .Normal)
+        scheduleDeliveryButton.setTitle("Options", forState: .Normal)
         scheduleDeliveryButton.titleLabel!.font = UIFont(name: "OpenSans-Semibold", size: 15.0)
         scheduleDeliveryButton.titleLabel!.textColor = UIColor.whiteColor()
         
@@ -411,9 +411,23 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     // Photo Library
     
     @IBAction func goToPhotoLibrary(sender: AnyObject) {
+        Flurry.logEvent("Chose_To_Select_Photo_From_Library")
         
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) {
+            let imagePicker = UIImagePickerController()
+            
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            imagePicker.mediaTypes = [kUTTypeImage as String]
+            imagePicker.allowsEditing = false
+            
+            imagePicker.navigationBar.tintColor = UIColor.whiteColor()
+            imagePicker.navigationBar.barTintColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
+            
+            presentViewController(imagePicker, animated: true, completion: nil)
+            newMedia = false
+        }
     }
-    
     
     // Camera configuration
 
@@ -775,7 +789,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         if textEntered != nil {
             composeTextView.text = textEntered
         }
-        composeTextView.font = UIFont(name: "OpenSans-Light", size: 17.0)
+        composeTextView.font = UIFont(name: "OpenSans", size: 17.0)
         composeTextView.textColor = slowpostBlack
         composeView.addSubview(composeTextView)
         
