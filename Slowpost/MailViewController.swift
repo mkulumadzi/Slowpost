@@ -51,7 +51,6 @@ class MailViewController: UIViewController {
         
         formatButtons()
         addImage()
-        sizeImageViewToFitImage()
         fromView.layer.cornerRadius = 15
         
         fromPerson = mail.fromPerson
@@ -100,6 +99,7 @@ class MailViewController: UIViewController {
         mail.getImage({error, result -> Void in
             if let image = result as? UIImage {
                 self.mailImage.image = image
+                self.sizeImageViewToFitImage()
             }
         })
     }
@@ -108,6 +108,7 @@ class MailViewController: UIViewController {
         let width = mailImage.image!.size.width
         let height = mailImage.image!.size.height
         imageHeight.constant = view.frame.width * (height / width)
+        view.layoutIfNeeded()
     }
     
     func readMail(mail:Mail) {
