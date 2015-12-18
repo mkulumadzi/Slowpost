@@ -32,6 +32,10 @@ class SendingViewController: UIViewController {
     var imageRequest: Alamofire.Request?
     var sendRequest: Alamofire.Request?
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.Default
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Flurry.logEvent("Began_Sending_Mail")

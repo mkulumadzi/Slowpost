@@ -47,6 +47,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     var overlaysAllowed:Bool!
     var overlayInstructions:UILabel!
     var deliveryMethod:String!
+    var shouldAdjustComposeHeight:Bool!
     
     @IBOutlet weak var photoLibrary: UIButton!
     @IBOutlet weak var takePhoto: UIButton!
@@ -813,30 +814,36 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         let placeholderHeight = NSLayoutConstraint(item: placeholderText, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 21)
         placeholderText.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activateConstraints([topPlaceholder, leadingPlaceholder, placeholderHeight])
+        
+        shouldAdjustComposeHeight = true
 
     }
     
     // Modifying view when keyboard is shown
     
     func keyboardShow(notification: NSNotification) {
-        if self.imageSelected != nil {
-            self.composeTopBorderDefaultTop.constant -= self.imageContainerView.frame.height
+        if shouldAdjustComposeHeight == true {
+            if self.imageSelected != nil {
+                self.composeTopBorderDefaultTop.constant -= self.imageContainerView.frame.height
+            }
+            else {
+                self.composeTopBorderDefaultTop.constant -= 40.0
+            }
+            UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {
+                self.view.layoutIfNeeded()
+                }, completion: nil)
+            
+            
+            let userInfo = notification.userInfo!
+            var r = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
+            r = composeTextView.convertRect(r, fromView:nil)
+            composeTextView.contentInset.bottom = r.size.height + 60.0
+            composeTextView.scrollIndicatorInsets.bottom = r.size.height + 60.0
+            
+            placeholderText.hidden = true
+            shouldAdjustComposeHeight = false
         }
-        else {
-            self.composeTopBorderDefaultTop.constant -= 40.0
-        }
-        UIView.animateWithDuration(0.5, delay: 0.0, options: .CurveEaseInOut, animations: {
-            self.view.layoutIfNeeded()
-            }, completion: nil)
-        
-        
-        let userInfo = notification.userInfo!
-        var r = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).CGRectValue()
-        r = composeTextView.convertRect(r, fromView:nil)
-        composeTextView.contentInset.bottom = r.size.height + 60.0
-        composeTextView.scrollIndicatorInsets.bottom = r.size.height + 60.0
-        
-        placeholderText.hidden = true
+
     }
     
     func keyboardHide(notification:NSNotification) {
@@ -853,6 +860,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         doneEditingButton.hidden = true
         validateSendAndPlaceholder()
         composeTextView.scrollRangeToVisible(NSMakeRange(0,0))
+        shouldAdjustComposeHeight = true
     }
     
     func keyboardDidHide(notification:NSNotification) {
