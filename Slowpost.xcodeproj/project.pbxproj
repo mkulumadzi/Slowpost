@@ -17,7 +17,6 @@
 		CC96E4A91ABCD91A001E6D27 /* Mail.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E4A81ABCD91A001E6D27 /* Mail.swift */; };
 		CC96E4AD1ABCDEB5001E6D27 /* MailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC96E4AC1ABCDEB5001E6D27 /* MailCell.swift */; };
 		CCCB1A531AB0D48A0067F100 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCB1A521AB0D48A0067F100 /* AppDelegate.swift */; };
-		CCCB1A551AB0D48A0067F100 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCB1A541AB0D48A0067F100 /* ViewController.swift */; };
 		CCCB1A581AB0D48A0067F100 /* initial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCCB1A561AB0D48A0067F100 /* initial.storyboard */; };
 		CCCB1A5A1AB0D48A0067F100 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CCCB1A591AB0D48A0067F100 /* Images.xcassets */; };
 		CCCB1A5D1AB0D48A0067F100 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCCB1A5B1AB0D48A0067F100 /* LaunchScreen.xib */; };
@@ -168,7 +167,6 @@
 		CCCB1A4D1AB0D48A0067F100 /* Slowpost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Slowpost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCCB1A511AB0D48A0067F100 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CCCB1A521AB0D48A0067F100 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CCCB1A541AB0D48A0067F100 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CCCB1A571AB0D48A0067F100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/initial.storyboard; sourceTree = "<group>"; };
 		CCCB1A591AB0D48A0067F100 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CCCB1A5C1AB0D48A0067F100 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -459,22 +457,14 @@
 		CCCB1A4F1AB0D48A0067F100 /* Slowpost */ = {
 			isa = PBXGroup;
 			children = (
-				D2AA1E2E1C124739001F5F01 /* FBSDKLoginKit.framework */,
-				D2AA1E2F1C124739001F5F01 /* FBSDKShareKit.framework */,
-				D2AA1E301C124739001F5F01 /* FBSDKCoreKit.framework */,
 				D2A361341B3CAC2500811D14 /* Customizations */,
 				D2B651E01B37BC5900134C23 /* Services */,
 				CC23DE2F1AE54C4900AFEDE4 /* Models */,
 				CC23DE241AE54BB100AFEDE4 /* Features */,
+				CCCB1A501AB0D48A0067F100 /* Supporting Files */,
 				CCCB1A521AB0D48A0067F100 /* AppDelegate.swift */,
-				D21E2C851BC09C5900E17572 /* Flurry.h */,
-				D21E2C861BC09C6100E17572 /* libFlurry_7.2.1.a */,
-				D29D3DBE1B83D28200B3E0DA /* KeychainWrapper.h */,
-				D29D3DBF1B83D28A00B3E0DA /* KeychainWrapper.m */,
-				CCCB1A541AB0D48A0067F100 /* ViewController.swift */,
 				CCCB1A591AB0D48A0067F100 /* Images.xcassets */,
 				CCCB1A5B1AB0D48A0067F100 /* LaunchScreen.xib */,
-				CCCB1A501AB0D48A0067F100 /* Supporting Files */,
 				D27E194C1B3B770C0052687F /* SlowpostModel.xcdatamodeld */,
 			);
 			path = Slowpost;
@@ -483,6 +473,7 @@
 		CCCB1A501AB0D48A0067F100 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D250E8EE1C7CF38200BC5F78 /* Resources */,
 				CC96E4A31ABCD5AB001E6D27 /* Images */,
 				D25A9C741B2256D400ABBBA4 /* Fonts */,
 				CCCB1A511AB0D48A0067F100 /* Info.plist */,
@@ -543,6 +534,20 @@
 				D24BC0FB1B98E317000405F7 /* MailViewController.swift */,
 			);
 			name = Mail;
+			sourceTree = "<group>";
+		};
+		D250E8EE1C7CF38200BC5F78 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D21E2C851BC09C5900E17572 /* Flurry.h */,
+				D21E2C861BC09C6100E17572 /* libFlurry_7.2.1.a */,
+				D29D3DBE1B83D28200B3E0DA /* KeychainWrapper.h */,
+				D29D3DBF1B83D28A00B3E0DA /* KeychainWrapper.m */,
+				D2AA1E2E1C124739001F5F01 /* FBSDKLoginKit.framework */,
+				D2AA1E2F1C124739001F5F01 /* FBSDKShareKit.framework */,
+				D2AA1E301C124739001F5F01 /* FBSDKCoreKit.framework */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		D25130401BC4255E007541BE /* To */ = {
@@ -882,7 +887,6 @@
 				D215D8081C21EB0D00CA0B4A /* StandardDeliveryTableViewCell.swift in Sources */,
 				D291B24C1B69AA5A00C72816 /* FileService.swift in Sources */,
 				D27C7B4D1BC3481F005F08BC /* SearchPersonCell.swift in Sources */,
-				CCCB1A551AB0D48A0067F100 /* ViewController.swift in Sources */,
 				D2D8663F1B2F62B200847051 /* EditProfileViewController.swift in Sources */,
 				D25453841BBB437600BA2A50 /* PhoneContactViewController.swift in Sources */,
 				D25A9CAC1B225D3400ABBBA4 /* PersonalDetailsViewController.swift in Sources */,
