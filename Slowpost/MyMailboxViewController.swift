@@ -31,11 +31,14 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         Flurry.logEvent("Mailbox_opened")
-        
         initializeFetchedResultsController()
-        
+        configure()
         refreshData()
-        
+    }
+    
+    //MARK: Setup
+    
+    private func configure() {
         navBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Quicksand-Regular", size: 24)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
         
         mailTable.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: mailTable.bounds.size.width, height: 0.01))
@@ -45,7 +48,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         
         mailTable.estimatedRowHeight = 85 + (view.frame.width - 20) * 0.75
         mailTable.rowHeight = UITableViewAutomaticDimension
-
+        
         NSNotificationCenter.defaultCenter().addObserverForName("imageDownloaded:", object: nil, queue: nil, usingBlock: { (notification) -> Void in
             self.mailTable.reloadData()
         })
@@ -56,22 +59,15 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.refreshData()
             }
         })
-        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         mailTable.reloadData()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     override func willAnimateRotationToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval)
     {
-        print("this happened")
         mailTable.reloadData()
     }
     
@@ -98,9 +94,42 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    //
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        mailTable.reloadData()
+    }
     
-    func configureCell(cell: MailCell, indexPath: NSIndexPath) {
+    //MARK: Table setup
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        guard let sections = fetchedResultsController.sections else {
+            return 0
+        }
+        return sections.count
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let sections = fetchedResultsController.sections!
+        let sectionInfo = sections[section]
+        return sectionInfo.numberOfObjects
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("MailCell", forIndexPath: indexPath) as! MailCell
+        configureCell(cell, indexPath: indexPath)
+        return cell
+        
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let mail = fetchedResultsController.objectAtIndexPath(indexPath) as! Mail
+        let storyboard = UIStoryboard(name: "mail", bundle: nil)
+        let mailViewController = storyboard.instantiateInitialViewController() as! MailViewController
+        mailViewController.mail = mail
+        mailViewController.runOnClose = {self.refreshData()}
+        presentViewController(mailViewController, animated: true, completion: {})
+    }
+    
+    private func configureCell(cell: MailCell, indexPath: NSIndexPath) {
         
         let mail = fetchedResultsController.objectAtIndexPath(indexPath) as! Mail
         cell.mail = mail
@@ -121,7 +150,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
     
-    func addImageToCell(cell: MailCell) {
+    private func addImageToCell(cell: MailCell) {
         cell.mail.getImage({error, result -> Void in
             if let image = result as? UIImage {
                 cell.imageFile = image
@@ -129,24 +158,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         })
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return fetchedResultsController.sections!.count
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sections = fetchedResultsController.sections!
-        let sectionInfo = sections[section]
-        return sectionInfo.numberOfObjects
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MailCell", forIndexPath: indexPath) as! MailCell
-        configureCell(cell, indexPath: indexPath)
-        return cell
-        
-    }
-    
-    func formatMailCellBasedOnMailStatus(cell: MailCell, mail: Mail) {
+    private func formatMailCellBasedOnMailStatus(cell: MailCell, mail: Mail) {
         if mail.myStatus == "READ" {
             cell.fromLabel.font = UIFont(name: "OpenSans-Regular", size: 17.0)
             cell.statusIndicator.backgroundColor = UIColor.whiteColor()
@@ -161,31 +173,17 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    func handleRefresh(refreshControl: UIRefreshControl) {
+    //MARK: Private
+    
+    private func handleRefresh(refreshControl: UIRefreshControl) {
         refreshData()
         refreshControl.endRefreshing()
     }
     
-    func refreshData() {
+    private func refreshData() {
         MailService.updateAllData( { error, result -> Void in
             if let error = error { print(error) }
         })
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let mail = fetchedResultsController.objectAtIndexPath(indexPath) as! Mail
-        let storyboard = UIStoryboard(name: "mail", bundle: nil)
-        let mailViewController = storyboard.instantiateInitialViewController() as! MailViewController
-        mailViewController.mail = mail
-        mailViewController.runOnClose = {self.refreshData()}
-        
-        
-        
-        presentViewController(mailViewController, animated: true, completion: {})
-    }
-
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        mailTable.reloadData()
     }
 
 

@@ -369,8 +369,8 @@
 			isa = PBXGroup;
 			children = (
 				CC23DE2B1AE54C1A00AFEDE4 /* mailbox.storyboard */,
-				CC96E4AC1ABCDEB5001E6D27 /* MailCell.swift */,
 				CCCB1A7A1AB0DE780067F100 /* MyMailboxViewController.swift */,
+				CC96E4AC1ABCDEB5001E6D27 /* MailCell.swift */,
 			);
 			name = Mailbox;
 			sourceTree = "<group>";

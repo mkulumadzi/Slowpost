@@ -6,14 +6,6 @@
 //  Copyright (c) 2015 Evan Waters. All rights reserved.
 //
 
-//
-//  ConversationMailViewController.swift
-//  Slowpost
-//
-//  Created by Evan Waters on 8/31/15.
-//  Copyright (c) 2015 Evan Waters. All rights reserved.
-//
-
 import UIKit
 import CoreData
 import Foundation
@@ -43,24 +35,37 @@ class MailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        Flurry.logEvent("Mail_Opened")
+        fromPerson = mail.fromPerson
+        configure()
+        readMailIfNecessary()
+    }
+    
+    //MARK: Setup
+    
+    private func configure() {
         modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
-        
-        Flurry.logEvent("Mail_Opened")
-        
-        formatButtons()
-        addImage()
         fromView.layer.cornerRadius = 15
-        
-        fromPerson = mail.fromPerson
         fromLabel.text = fromPerson.fullName()
         fromViewInitials.text = fromPerson.initials()
         toLabel.text = mail.toList()
+        mailContent.text = mail.content()
         
         let sentDateString = mail.dateSent.formattedAsString("yyyy-MM-dd")
         sentLabel.text = "Sent on \(sentDateString)"
         
+        let userId = LoginService.getUserIdFromToken()
+        if fromPerson.id == userId {
+            navItem.rightBarButtonItem = nil
+        }
+        
+        formatDeliveredLabel()
+        formatButtons()
+        addImage()
+    }
+    
+    private func formatDeliveredLabel() {
         if mail.status != "SENT" {
             let deliveredDateString = mail.dateDelivered.formattedAsString("yyyy-MM-dd")
             deliveredLabel.text = "Delivered on \(deliveredDateString)"
@@ -68,26 +73,9 @@ class MailViewController: UIViewController {
         else {
             deliveredLabel.text = ""
         }
-        
-        mailContent.text = mail.content()
-        
-        if mail.myStatus != "READ" && mail.toLoggedInUser() {
-            readMail(mail)
-        }
-        
-        let userId = LoginService.getUserIdFromToken()
-        if fromPerson.id == userId {
-            navItem.rightBarButtonItem = nil
-        }
-        
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func formatButtons() {
+    private func formatButtons() {
         replyButton.setImage(UIImage(named: "reply")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         replyButton.tintColor = slowpostDarkGrey
         
@@ -95,7 +83,7 @@ class MailViewController: UIViewController {
         closeButton.tintColor = slowpostDarkGrey
     }
     
-    func addImage() {
+    private func addImage() {
         mail.getImage({error, result -> Void in
             if let image = result as? UIImage {
                 self.mailImage.image = image
@@ -104,22 +92,14 @@ class MailViewController: UIViewController {
         })
     }
     
-    func sizeImageViewToFitImage() {
+    private func sizeImageViewToFitImage() {
         let width = mailImage.image!.size.width
         let height = mailImage.image!.size.height
         imageHeight.constant = view.frame.width * (height / width)
         view.layoutIfNeeded()
     }
     
-    func readMail(mail:Mail) {
-        mail.markAsRead()
-        let readMailURL = "\(PostOfficeURL)/mail/id/\(mail.id)/read"
-        RestService.postRequest(readMailURL, parameters: nil, headers: nil, completion: { (error, result) -> Void in
-            if let error = error {
-                print(error)
-            }
-        })
-    }
+    //MARK: User actions
     
     @IBAction func replyToMail(sender: AnyObject) {
         Flurry.logEvent("Replied_to_mail")
@@ -147,8 +127,25 @@ class MailViewController: UIViewController {
     }
     
     @IBAction func closeMailView(sender: AnyObject) {
-        print("Close pressed")
         if let runOnClose = runOnClose { runOnClose() }
         dismissViewControllerAnimated(true, completion: {})
+    }
+    
+    //MARK: Private
+    
+    private func readMailIfNecessary() {
+        if mail.myStatus != "READ" && mail.toLoggedInUser() {
+            readMail(mail)
+        }
+    }
+    
+    private func readMail(mail:Mail) {
+        mail.markAsRead()
+        let readMailURL = "\(PostOfficeURL)/mail/id/\(mail.id)/read"
+        RestService.postRequest(readMailURL, parameters: nil, headers: nil, completion: { (error, result) -> Void in
+            if let error = error {
+                print(error)
+            }
+        })
     }
 }
