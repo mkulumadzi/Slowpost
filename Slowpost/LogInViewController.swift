@@ -28,37 +28,30 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        Flurry.logEvent("Login_Screen_Opened")
+        passwordTextField.delegate = self
+        configure()
+        validateLogInButton()
+    }
+    
+    //MARK: Setup
+    
+    private func configure() {
         modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
-        
-        Flurry.logEvent("Login_Screen_Opened")
-        
-        passwordTextField.delegate = self
-        
         logInButton.layer.cornerRadius = 5
-        
-        validateLogInButton()
         warningLabel.hide()
         
         if deviceType == "iPhone 4S" {
             formatForiPhone4S()
         }
-        
     }
     
-    func formatForiPhone4S() {
+    private func formatForiPhone4S() {
         verticalSpaceToPassword.constant = 10
         verticalSpaceToLogIn.constant = 30
         logInButtonHeight.constant = 30
-        
         passwordTextField.font = passwordTextField.font!.fontWithSize(15.0)
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewDidLayoutSubviews() {
@@ -70,6 +63,22 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         LogIn(self)
         return true
     }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
+    
+    private func validateLogInButton() {
+        if passwordTextField.text != "" {
+            logInButton.enable()
+        }
+        else {
+            logInButton.disable()
+        }
+    }
+    
+    //MARK: User actions
     
     @IBAction func LogIn(sender: AnyObject) {
         
@@ -93,23 +102,9 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        view.endEditing(true)
-        super.touchesBegan(touches, withEvent: event)
-    }
-    
     @IBAction func editingChanged(sender: AnyObject) {
         warningLabel.hide()
         validateLogInButton()
-    }
-    
-    func validateLogInButton() {
-        if passwordTextField.text != "" {
-            logInButton.enable()
-        }
-        else {
-            logInButton.disable()
-        }
     }
     
 }

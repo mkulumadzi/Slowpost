@@ -12,7 +12,6 @@ import SwiftyJSON
 
 class RequestPasswordResetViewController: UIViewController {
     
-    
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var emailTextField: BottomBorderUITextField!
     @IBOutlet weak var submitButton: TextUIButton!
@@ -22,18 +21,21 @@ class RequestPasswordResetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configure()
+        validateSubmitButton()
+    }
+    
+    //MARK: Setup
+    
+    private func configure() {
         warningLabel.hide()
         submitButton.layer.cornerRadius = 5
-        validateSubmitButton()
-
         if deviceType == "iPhone 4S" {
             formatForiPhone4S()
         }
-        
     }
     
-    func formatForiPhone4S() {
+    private func formatForiPhone4S() {
         distanceToEmailField.constant = 50
         submitButtonHeight.constant = 30
     }
@@ -48,7 +50,7 @@ class RequestPasswordResetViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func validateSubmitButton() {
+    private func validateSubmitButton() {
         if emailTextField.text != "" {
             submitButton.enable()
         }
@@ -57,12 +59,12 @@ class RequestPasswordResetViewController: UIViewController {
         }
     }
     
+    //MARK: User actions
     
     @IBAction func editingChanged(sender: AnyObject) {
         warningLabel.hide()
         validateSubmitButton()
     }
-    
     
     @IBAction func submitButtonPressed(sender: AnyObject) {
         submitButton.disable()
@@ -92,6 +94,5 @@ class RequestPasswordResetViewController: UIViewController {
     @IBAction func cancelButtonPressed(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
     }
-
 
 }

@@ -31,25 +31,25 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         Flurry.logEvent("Username_View_Opened")
-        
         passwordTextField.delegate = self
-        
-        warningLabel.hide()
+        configure()
         validateNextButton()
-        
+    }
+    
+    //MARK: Setup
+    
+    private func configure() {
+        warningLabel.hide()
         nextButton.layer.cornerRadius = 5
+        formatTermsString()
         
         if deviceType == "iPhone 4S" {
             formatForiPhone4S()
         }
-        
-        formatTermsString()
-        
     }
     
-    func formatTermsString() {
+    private func formatTermsString() {
         termsTextView.text = ""
         let termsString = "By clicking 'Sign up' I confirm I agree to the Terms and Privacy Policy."
         let greenColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
@@ -68,8 +68,7 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
         termsTextView.linkTextAttributes = [NSForegroundColorAttributeName: darkGreenColor]
     }
     
-    func formatForiPhone4S() {
-        
+    private func formatForiPhone4S() {
         verticalSpaceToTitle.constant = 10
         verticalSpaceToNext.constant = 10
         buttonHeight.constant = 30
@@ -77,7 +76,6 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
         usernameTextField.font = usernameTextField.font!.fontWithSize(15.0)
         passwordTextField.font = passwordTextField.font!.fontWithSize(15.0)
         confirmPasswordTextField.font = confirmPasswordTextField.font!.fontWithSize(15.0)
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -91,22 +89,12 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
         confirmPasswordTextField.addBottomLayer()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
     }
     
-    @IBAction func editingChanged(sender: AnyObject) {
-        validateNextButton()
-        warningLabel.hide()
-    }
-    
-    func validateNextButton() {
+    private func validateNextButton() {
         if usernameTextField.text != "" && passwordTextField.text != "" && confirmPasswordTextField.text != "" {
             nextButton.enable()
         }
@@ -118,6 +106,13 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         checkUsernameAvailability(self)
         return true
+    }
+    
+    //MARK: User actions
+    
+    @IBAction func editingChanged(sender: AnyObject) {
+        validateNextButton()
+        warningLabel.hide()
     }
     
     @IBAction func checkUsernameAvailability(sender: AnyObject) {
@@ -145,7 +140,9 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func passwordsMatch() -> Bool {
+    //MARK: Private
+    
+    private func passwordsMatch() -> Bool {
         if passwordTextField.text! == confirmPasswordTextField.text! {
             return true
         }
@@ -155,7 +152,7 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
     }
 
     
-    func signUp() {
+    private func signUp() {
         
         let newPersonURL = "\(PostOfficeURL)person/new"
         let username = usernameTextField.text!
@@ -175,6 +172,12 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
                 else if let error_message = response[1] as? String {
                     self.warningLabel.show(error_message)
                 }
+                else {
+                    print(response)
+                }
+            }
+            else {
+                print("Unexpected result creating new account")
             }
         })
     }

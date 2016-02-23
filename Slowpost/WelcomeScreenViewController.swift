@@ -27,22 +27,20 @@ class WelcomeScreenViewController: UIViewController, UIPageViewControllerDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         Flurry.logEvent("Welcome_Screen_Displayed")
-        
+        configure()
+    }
+
+    //MARK: Setup
+    
+    private func configure() {
         pageOne = storyboard!.instantiateViewControllerWithIdentifier("pageOne")
         pageTwo = storyboard!.instantiateViewControllerWithIdentifier("pageTwo")
         pageThree = storyboard!.instantiateViewControllerWithIdentifier("pageThree")
         pageFour = storyboard!.instantiateViewControllerWithIdentifier("pageFour")
-
+        
         createPageViewController()
         setupPageControl()
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     private func createPageViewController() {
@@ -126,7 +124,7 @@ class WelcomeScreenViewController: UIViewController, UIPageViewControllerDataSou
         return 0
     }
     
-    // MARK: Unwind segues
+    // MARK: Segues
     @IBAction func passwordResetEmailSent(segue: UIStoryboardSegue) {
     }
 

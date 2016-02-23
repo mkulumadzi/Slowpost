@@ -334,14 +334,14 @@
 		CC23DE241AE54BB100AFEDE4 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				D24BC0F81B98E237000405F7 /* Mail */,
-				D2389E691B950BF200CB19BB /* Conversations */,
-				D206FB521B619A3D008BB412 /* Home */,
 				D2B651E11B37BC7500134C23 /* Initial */,
+				CC23DE251AE54BB800AFEDE4 /* Login */,
+				D206FB521B619A3D008BB412 /* Home */,
+				CC23DE271AE54BC700AFEDE4 /* Mailbox */,
+				D24BC0F81B98E237000405F7 /* Mail */,
 				D25130401BC4255E007541BE /* To */,
 				CC23DE281AE54BD100AFEDE4 /* Compose */,
-				CC23DE271AE54BC700AFEDE4 /* Mailbox */,
-				CC23DE251AE54BB800AFEDE4 /* Login */,
+				D2389E691B950BF200CB19BB /* Conversations */,
 			);
 			name = Features;
 			sourceTree = "<group>";
@@ -349,18 +349,18 @@
 		CC23DE251AE54BB800AFEDE4 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				CC96E49F1ABCCBF2001E6D27 /* LogInViewController.swift */,
 				CC23DE291AE54C0300AFEDE4 /* login.storyboard */,
-				D25A9CAB1B225D3400ABBBA4 /* PersonalDetailsViewController.swift */,
 				D206FB4A1B61688D008BB412 /* WelcomeScreenViewController.swift */,
-				D267262D1B7D3E3700FE651F /* SignUpCompleteViewController.swift */,
-				D267262F1B7D524100FE651F /* UsernameViewController.swift */,
-				D289F2171BD15517004D29FA /* RequestPasswordResetViewController.swift */,
-				D2319ABF1BD16D8F00B989C0 /* RequestSubmittedViewController.swift */,
+				D215D80B1C227F5600CA0B4A /* LoginNavigationViewController.swift */,
 				D2AA1E341C126C69001F5F01 /* StartViewController.swift */,
 				D210031C1C1657FC00E45CA3 /* UsernameFBViewController.swift */,
 				D210031E1C17A8B900E45CA3 /* PasswordFBController.swift */,
-				D215D80B1C227F5600CA0B4A /* LoginNavigationViewController.swift */,
+				D25A9CAB1B225D3400ABBBA4 /* PersonalDetailsViewController.swift */,
+				D267262F1B7D524100FE651F /* UsernameViewController.swift */,
+				D267262D1B7D3E3700FE651F /* SignUpCompleteViewController.swift */,
+				CC96E49F1ABCCBF2001E6D27 /* LogInViewController.swift */,
+				D289F2171BD15517004D29FA /* RequestPasswordResetViewController.swift */,
+				D2319ABF1BD16D8F00B989C0 /* RequestSubmittedViewController.swift */,
 			);
 			name = Login;
 			sourceTree = "<group>";

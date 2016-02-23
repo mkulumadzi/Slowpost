@@ -18,20 +18,21 @@ class InitialViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configure()
         
-        loadingLabel.hidden = true
         print("Initial view loaded at \(NSDate())")
         Flurry.logEvent("Initial_View_Loaded")
         
     }
     
+    //MARK: Initial setup
+
+    func configure() {
+        loadingLabel.hidden = true
+    }
+    
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -39,7 +40,9 @@ class InitialViewController: UIViewController {
         checkLogin()
     }
     
-    func checkLogin() {
+    //MARK: Private
+    
+    private func checkLogin() {
         print("Checking login at \(NSDate())")
         let token = LoginService.getTokenFromKeychain()
         if token != nil {
@@ -57,14 +60,14 @@ class InitialViewController: UIViewController {
         }
     }
     
-    func goToLoginScreen() {
+    private func goToLoginScreen() {
         Flurry.logEvent("Sending_User_To_Login_Screen")
         let storyboard = UIStoryboard(name: "login", bundle: nil)
         let controller = storyboard.instantiateViewControllerWithIdentifier("InitialController") 
         presentViewController(controller, animated: true, completion: nil)
     }
     
-    func beginLoadingInitialData() {
+    private func beginLoadingInitialData() {
         let interval = NSTimeInterval(1.0)
         iconImage.image = UIImage.animatedImageNamed("turtleAnimation", duration: interval)
         loadingLabel.hidden = false
@@ -84,13 +87,13 @@ class InitialViewController: UIViewController {
         
     }
     
-    func getContactsIfAuthorized() {
+    private func getContactsIfAuthorized() {
         Flurry.logEvent("Attempting_to_fetch_contacts")
         ContactService.fetchContactsIfAuthorized()
     }
 
 
-    func goToHomeScreen() {
+    private func goToHomeScreen() {
         loadingLabel.hidden = true
         iconImage.image = UIImage(named: "turtleAnimation")
         
@@ -104,7 +107,7 @@ class InitialViewController: UIViewController {
         presentViewController(controller, animated: false, completion: nil)
     }
     
-    func registerDeviceToken() {
+    private func registerDeviceToken() {
         let parameters = ["device_token": deviceToken as String]
         let userId = LoginService.getUserIdFromToken()
         let updatePersonURL = "\(PostOfficeURL)/person/id/\(userId)"
@@ -116,6 +119,8 @@ class InitialViewController: UIViewController {
             }
         })
     }
+    
+    //MARK: Segues
     
     @IBAction func signUpOrLogInCompleted(segue: UIStoryboardSegue) {
         print("Got here after signup or login")

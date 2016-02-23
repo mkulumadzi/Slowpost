@@ -29,37 +29,35 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         Flurry.logEvent("Personal_Details_View_Opened")
-        
         emailTextField.delegate = self
-        
+        configure()
+        validateNextButton()
+    }
+    
+    //MARK: Setup
+    
+    private func configure() {
         nextButton.layer.cornerRadius = 5
-        
         warningLabel.hide()
         
         if let email = email {
             emailTextField.text = email
         }
         
-        validateNextButton()
-        
         if deviceType == "iPhone 4S" {
             formatForiPhone4S()
         }
-        
     }
     
     func formatForiPhone4S() {
-    
         verticalSpaceToTitle.constant = 10
         verticalSpaceToNext.constant = 10
         buttonHeight.constant = 30
-        
+    
         givenNameTextField.font = givenNameTextField.font!.fontWithSize(15.0)
         familyNameTextField.font = familyNameTextField.font!.fontWithSize(15.0)
         emailTextField.font = emailTextField.font!.fontWithSize(15.0)
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -73,22 +71,12 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
         emailTextField.addBottomLayer()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
     }
     
-    @IBAction func editingChanged(sender: AnyObject) {
-        validateNextButton()
-        warningLabel.hide()
-    }
-    
-    func validateNextButton() {
+    private func validateNextButton() {
         if (givenNameTextField.text != "" || familyNameTextField.text != "") && emailTextField.text != "" {
             nextButton.enable()
         }
@@ -97,14 +85,21 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func cancel(sender: AnyObject) {
-        Flurry.logEvent("Signup_Cancelled")
-        dismissViewControllerAnimated(true, completion: {})
-    }
-    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         checkEmailAvailability(self)
         return true
+    }
+    
+    //MARK: User actions
+    
+    @IBAction func editingChanged(sender: AnyObject) {
+        validateNextButton()
+        warningLabel.hide()
+    }
+    
+    @IBAction func cancel(sender: AnyObject) {
+        Flurry.logEvent("Signup_Cancelled")
+        dismissViewControllerAnimated(true, completion: {})
     }
     
     @IBAction func checkEmailAvailability(sender: AnyObject) {
@@ -126,6 +121,8 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
             }
         })
     }
+    
+    //MARK: Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "enterUsername" {

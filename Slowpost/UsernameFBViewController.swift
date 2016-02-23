@@ -24,30 +24,28 @@ class UsernameFBViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         Flurry.logEvent("Facebook_Username_View_Opened")
-        
         usernameTextField.delegate = self
-        
-        warningLabel.hide()
+        configure()
         validateNextButton()
-        
+    }
+    
+    //MARK: Setup
+    
+    private func configure() {
         nextButton.layer.cornerRadius = 5
+        warningLabel.hide()
         
         if deviceType == "iPhone 4S" {
             formatForiPhone4S()
         }
-        
     }
     
-    func formatForiPhone4S() {
-        
+    private func formatForiPhone4S() {
         verticalSpaceToTitle.constant = 10
         verticalSpaceToNext.constant = 10
         buttonHeight.constant = 30
-        
         usernameTextField.font = usernameTextField.font!.fontWithSize(15.0)
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -59,22 +57,12 @@ class UsernameFBViewController: UIViewController, UITextFieldDelegate {
         usernameTextField.addBottomLayer()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
     }
     
-    @IBAction func editingChanged(sender: AnyObject) {
-        validateNextButton()
-        warningLabel.hide()
-    }
-    
-    func validateNextButton() {
+    private func validateNextButton() {
         if usernameTextField.text! != "" {
             nextButton.enable()
         }
@@ -86,6 +74,13 @@ class UsernameFBViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         checkUsernameAvailability(self)
         return true
+    }
+    
+    //MARK: User actions
+    
+    @IBAction func editingChanged(sender: AnyObject) {
+        validateNextButton()
+        warningLabel.hide()
     }
     
     @IBAction func checkUsernameAvailability(sender: AnyObject) {
@@ -107,6 +102,8 @@ class UsernameFBViewController: UIViewController, UITextFieldDelegate {
         })
     }
     
+    //MARK: Segues
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "choosePassword" {
             let choosePasswordController = segue.destinationViewController as! PasswordFBController
@@ -114,6 +111,4 @@ class UsernameFBViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
-
 }

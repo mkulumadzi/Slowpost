@@ -32,25 +32,25 @@ class PasswordFBController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         Flurry.logEvent("Username_View_Opened")
-        
         confirmPasswordTextField.delegate = self
-        
-        warningLabel.hide()
+        configure()
         validateNextButton()
-        
+    }
+    
+    //MARK: Setup
+    
+    private func configure() {
+        warningLabel.hide()
         signUpButton.layer.cornerRadius = 5
+        formatTermsString()
         
         if deviceType == "iPhone 4S" {
             formatForiPhone4S()
         }
-        
-        formatTermsString()
-        
     }
     
-    func formatTermsString() {
+    private func formatTermsString() {
         termsTextView.text = ""
         let termsString = "By clicking 'Sign up' I confirm I agree to the Terms and Privacy Policy."
         let greenColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
@@ -69,12 +69,10 @@ class PasswordFBController: UIViewController, UITextFieldDelegate {
         termsTextView.linkTextAttributes = [NSForegroundColorAttributeName: darkGreenColor]
     }
     
-    func formatForiPhone4S() {
-        
+    private func formatForiPhone4S() {
         buttonHeight.constant = 30
         verticalSpaceToSignUp.constant = 10
         verticalSpaceToTitle.constant = 10
-        
         passwordTextField.font = passwordTextField.font!.fontWithSize(15.0)
         confirmPasswordTextField.font = confirmPasswordTextField.font!.fontWithSize(15.0)
         
@@ -90,22 +88,13 @@ class PasswordFBController: UIViewController, UITextFieldDelegate {
         confirmPasswordTextField.addBottomLayer()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, withEvent: event)
     }
     
-    @IBAction func editingChanged(sender: AnyObject) {
-        validateNextButton()
-        warningLabel.hide()
-    }
     
-    func validateNextButton() {
+    private func validateNextButton() {
         if passwordTextField.text != "" && confirmPasswordTextField.text != "" {
             signUpButton.enable()
         }
@@ -119,7 +108,20 @@ class PasswordFBController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func passwordsMatch() -> Bool {
+    //MARK: User actions
+    
+    @IBAction func editingChanged(sender: AnyObject) {
+        validateNextButton()
+        warningLabel.hide()
+    }
+    
+    @IBAction func signUpPressed(sender: AnyObject) {
+        getFacebookInfoAndSignUp()
+    }
+    
+    //MARK: Private
+    
+    private func passwordsMatch() -> Bool {
         if passwordTextField.text! == confirmPasswordTextField.text! {
             return true
         }
@@ -128,12 +130,7 @@ class PasswordFBController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
-    @IBAction func signUpPressed(sender: AnyObject) {
-        getFacebookInfoAndSignUp()
-    }
-    
-    func getFacebookInfoAndSignUp() {
+    private func getFacebookInfoAndSignUp() {
         if passwordsMatch() {
             let graphRequest:FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id,email,name"])
             graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
@@ -155,7 +152,7 @@ class PasswordFBController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func signUp(facebookId: String, name: String, username: String, email: String) {
+    private func signUp(facebookId: String, name: String, username: String, email: String) {
         signUpButton.disable()
         
         let newPersonURL = "\(PostOfficeURL)person/new"

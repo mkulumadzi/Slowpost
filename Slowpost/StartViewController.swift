@@ -21,48 +21,49 @@ class StartViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     
     var loginView:FBSDKLoginButton!
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        Flurry.logEvent("Login_Screen_Opened")
         logOutOfFacebookIfNecessary()
-        
+        addFacebookLoginButton()
+        emailTextField.delegate = self
+        configure()
+        validateNextButton()
+    }
+    
+    //MARK: Setup
+    
+    private func configure() {
         modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
-        
-        Flurry.logEvent("Login_Screen_Opened")
-        
-        addFacebookLoginButton()
-        
-        emailTextField.delegate = self
-        
         nextButton.layer.cornerRadius = 5
-        
-        validateNextButton()
+        shadedView.hidden = true
         
         if deviceType == "iPhone 4S" {
             formatForiPhone4S()
         }
-        
-        shadedView.hidden = true
-        
     }
     
-    func formatForiPhone4S() {
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
+    
+    private func formatForiPhone4S() {
         nextButtonHeight.constant = 30
         emailTextField.font = emailTextField.font!.fontWithSize(15.0)
     }
     
-    func logOutOfFacebookIfNecessary() {
-        FBSDKAccessToken.setCurrentAccessToken(nil)
+    private func validateNextButton() {
+        if emailTextField.text != "" {
+            nextButton.enable()
+        }
+        else {
+            nextButton.disable()
+        }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    private func logOutOfFacebookIfNecessary() {
+        FBSDKAccessToken.setCurrentAccessToken(nil)
     }
     
     override func viewDidLayoutSubviews() {
@@ -70,7 +71,7 @@ class StartViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         emailTextField.addBottomLayer()
     }
     
-    func addFacebookLoginButton() {
+    private func addFacebookLoginButton() {
         loginView = FBSDKLoginButton()
         loginView.layer.cornerRadius = 5
         view.addSubview(loginView)
@@ -87,6 +88,13 @@ class StartViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         loginView.delegate = self
         
     }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        checkForEmailMatch(self)
+        return true
+    }
+    
+    //MARK: User actions
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         if let error = error {
@@ -113,12 +121,6 @@ class StartViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        print("User Logged Out")
-    }
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        checkForEmailMatch(self)
-        return true
     }
     
     @IBAction func checkForEmailMatch(sender: AnyObject) {
@@ -176,19 +178,12 @@ class StartViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         validateNextButton()
     }
     
-    func validateNextButton() {
-        if emailTextField.text != "" {
-            nextButton.enable()
-        }
-        else {
-            nextButton.disable()
-        }
-    }
-    
     @IBAction func cancel(sender: AnyObject) {
         Flurry.logEvent("Start_Cancelled_By_User")
         dismissViewControllerAnimated(true, completion: {})
     }
+    
+    //MARK: Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "logIn" {
