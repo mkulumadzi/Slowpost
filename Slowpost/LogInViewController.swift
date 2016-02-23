@@ -77,7 +77,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         let parameters = ["username": "\(email)", "password": "\(passwordTextField.text!)"]
 
         LoginService.logIn(parameters, completion: { (error, result) -> Void in
-            if  error != nil {
+            if let error = error {
                 print(error)
                 self.warningLabel.show("Cannot connect...")
             }

@@ -106,7 +106,7 @@ class EditProfileViewController: UITableViewController, FBSDKLoginButtonDelegate
         let parameters = ["given_name": "\(givenNameField.text!)", "family_name": "\(familyNameField.text!)", "email": "\(emailField.text!)"]
         
         RestService.postRequest(updatePersonURL, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
-            if error != nil {
+            if let error = error {
                 print(error)
             }
             else if let _ = result as? [AnyObject] {
@@ -151,7 +151,7 @@ class EditProfileViewController: UITableViewController, FBSDKLoginButtonDelegate
     }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        if ((error) != nil) {
+        if let error = error {
             print(error)
         }
         else {

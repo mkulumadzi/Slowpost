@@ -24,7 +24,7 @@ class SearchPersonService {
     
     class func searchPeople(searchURL: String, completion: (error: ErrorType?, result: AnyObject?) -> Void) {
         RestService.getRequest(searchURL, headers: nil, completion: { (error, result) -> Void in
-            if error != nil {
+            if let error = error {
                 completion(error: error, result: nil)
             }
             else if let jsonArray = result as? [AnyObject] {

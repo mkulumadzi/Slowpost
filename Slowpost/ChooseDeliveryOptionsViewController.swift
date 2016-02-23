@@ -55,8 +55,8 @@ class ChooseDeliveryOptionsViewController: UIViewController, UITableViewDelegate
             return cell
         default:
             let cell = tableView.dequeueReusableCellWithIdentifier("scheduled", forIndexPath: indexPath) as! ScheduleTableViewCell
-            if scheduledToArrive != nil {
-                cell.datePicker.date = scheduledToArrive!
+            if let scheduledToArrive = scheduledToArrive {
+                cell.datePicker.date = scheduledToArrive
             }
             else {
                 cell.datePicker.date = setMinimumDate()

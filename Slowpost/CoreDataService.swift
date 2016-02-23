@@ -18,8 +18,8 @@ class CoreDataService {
         fetchRequest.fetchLimit = 1
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "updatedAt", ascending: false)]
         let fetchedResults = executeFetchRequest(managedContext, fetchRequest: fetchRequest)
-        if fetchedResults != nil {
-            let maxUpdatedAt = fetchedResults![0].valueForKey("updatedAt") as! NSDate
+        if let fetchedResults = fetchedResults {
+            let maxUpdatedAt = fetchedResults[0].valueForKey("updatedAt") as! NSDate
             let maxUpdatedAtString = maxUpdatedAt.formattedAsUTCString()
             let headers = ["IF_MODIFIED_SINCE": maxUpdatedAtString]
             return headers

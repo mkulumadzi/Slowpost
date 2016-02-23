@@ -307,7 +307,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         let cardsURL = "\(PostOfficeURL)cards"
         
         RestService.getRequest(cardsURL, headers: nil, completion: { (error, result) -> Void in
-            if error != nil {
+            if let error = error {
                 print(error)
             }
             else {
@@ -328,15 +328,15 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
             // First check for local file, use that if it is found
             let cardName = url.characters.split{$0 == "/"}.map(String.init).last
             let imageFile = FileService.getImageFromDirectory(cardName)
-            if imageFile != nil {
-                self.cardPhotos.append(imageFile!)
+            if let imageFile = imageFile {
+                self.cardPhotos.append(imageFile)
                 self.photoCollection.reloadData()
             }
             else {
                 let newCardName = url.stringByReplacingOccurrencesOfString(" ", withString: "%20")
                 let imageURL = "\(PostOfficeURL)/image/\(newCardName)"
                 FileService.downloadImage(imageURL, completion: { (error, result) -> Void in
-                    if error != nil {
+                    if let error = error {
                         print(error)
                     }
                     else if let image = result as? UIImage {
@@ -364,7 +364,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         let overlaysURL = "\(PostOfficeURL)overlays"
         
         RestService.getRequest(overlaysURL, headers: nil, completion: { (error, result) -> Void in
-            if error != nil {
+            if let error = error {
                 print(error)
             }
             else {
@@ -384,15 +384,15 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         for url in overlayUrls {
             let overlayName = url.characters.split{$0 == "/"}.map(String.init).last
             let imageFile = FileService.getImageFromDirectory(overlayName)
-            if imageFile != nil {
-                self.addCardOverlay(imageFile!, name: overlayName)
+            if let imageFile = imageFile {
+                self.addCardOverlay(imageFile, name: overlayName)
             }
             else {
                 let newOverlayName = url.stringByReplacingOccurrencesOfString(" ", withString: "%20")
                 let imageURL = "\(PostOfficeURL)/image/\(newOverlayName)"
                 print(imageURL)
                 FileService.downloadImage(imageURL, completion: { (error, result) -> Void in
-                    if error != nil {
+                    if let error = error {
                         print(error)
                     }
                     else if let image = result as? UIImage {
@@ -473,14 +473,12 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     }
     
     func image(image: UIImage, didFinishSavingWithError error: NSErrorPointer, contextInfo:UnsafePointer<Void>) {
-        if error != nil {
-            let alert = UIAlertController(title: "Save Failed", message: "Failed to save image", preferredStyle: UIAlertControllerStyle.Alert)
-            
-            let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
-            
-            alert.addAction(cancelAction)
-            presentViewController(alert, animated: true, completion: nil)
-        }
+        let alert = UIAlertController(title: "Save Failed", message: "Failed to save image", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let cancelAction = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+        
+        alert.addAction(cancelAction)
+        presentViewController(alert, animated: true, completion: nil)
     }
     
 
@@ -847,7 +845,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     }
     
     func keyboardHide(notification:NSNotification) {
-        if self.imageSelected != nil {
+        if imageSelected != nil {
             self.composeTopBorderDefaultTop.constant += self.imageContainerView.frame.height
         }
         else {
@@ -982,8 +980,8 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
                 
                 sendingViewController!.image = imageToSend
             }
-            if scheduledToArrive != nil {
-                sendingViewController!.scheduledToArrive = scheduledToArrive!
+            if let scheduledToArrive = scheduledToArrive {
+                sendingViewController!.scheduledToArrive = scheduledToArrive
             }
         }
         else if segue.identifier == "scheduleDelivery" {

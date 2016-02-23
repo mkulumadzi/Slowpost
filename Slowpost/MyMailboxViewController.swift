@@ -111,8 +111,8 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         cell.fromViewInitials.text = fromPerson.initials()
         cell.fromLabel.text = fromPerson.fullName()
         addImageToCell(cell)
-        if cell.imageFile != nil {
-            cell.mailImage.image = cell.imageFile
+        if let imageFile = cell.imageFile {
+            cell.mailImage.image = imageFile
             cell.mailImage.contentMode = .ScaleAspectFill
         }
         let deliveredDateString = mail.dateDelivered.formattedAsString("yyyy-MM-dd")
@@ -168,7 +168,7 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func refreshData() {
         MailService.updateAllData( { error, result -> Void in
-            if error != nil { print(error) }
+            if let error = error { print(error) }
         })
     }
     

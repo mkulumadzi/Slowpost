@@ -11,7 +11,7 @@ import Alamofire
 
 class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
     
-    var email:String!
+    var email:String?
 
     @IBOutlet weak var givenNameTextField: BottomBorderUITextField!
     @IBOutlet weak var familyNameTextField: BottomBorderUITextField!
@@ -38,7 +38,7 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
         
         warningLabel.hide()
         
-        if email != nil {
+        if let email = email {
             emailTextField.text = email
         }
         
@@ -112,7 +112,7 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
         let params = ["email": emailTextField.text!]
         
         LoginService.checkFieldAvailability(params, completion: { (error, result) -> Void in
-            if error != nil {
+            if let error = error {
                 print(error)
             }
             else {

@@ -107,19 +107,19 @@ class SendingViewController: UIViewController {
         let correspondents = formatCorrespondents()
         var parameters:[String : AnyObject]!
         
-        if imageUid != nil {
-            parameters = ["correspondents": correspondents, "attachments": ["notes": [content], "image_attachments": [imageUid!]]]
+        if let imageUid = imageUid {
+            parameters = ["correspondents": correspondents, "attachments": ["notes": [content], "image_attachments": [imageUid]]]
         }
         else {
             parameters = ["correspondents": correspondents, "attachments": ["notes": [content]]]
         }
             
-        if scheduledToArrive != nil {
+        if let scheduledToArrive = scheduledToArrive {
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
             dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
             dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
-            let scheduledToArriveString = dateFormatter.stringFromDate(scheduledToArrive!)
+            let scheduledToArriveString = dateFormatter.stringFromDate(scheduledToArrive)
             print(scheduledToArriveString)
             parameters["scheduled_to_arrive"] = scheduledToArriveString
         }
@@ -128,13 +128,11 @@ class SendingViewController: UIViewController {
             if let response = result as? [AnyObject] {
                 if response[0] as? Int == 201 {
                     MailService.updateAllData( {error, result -> Void in
-                        if error != nil { print (error) }
+                        if let error = error { print (error) }
                     })
                     Flurry.logEvent("Finished_Sending_Mail")
                     
-                    let greatgrandparent = self.presentingViewController!.presentingViewController!.presentingViewController!
-                    print(greatgrandparent)
-                    if let _ = greatgrandparent as? UITabBarController {
+                    if let greatgrandparent = self.presentingViewController?.presentingViewController?.presentingViewController as? UITabBarController {
                         greatgrandparent.dismissViewControllerAnimated(true, completion: {})
                     }
                     else {
@@ -198,8 +196,8 @@ class SendingViewController: UIViewController {
     @IBAction func cancelButtonPressed(sender: AnyObject) {
         manuallyCancelled = true
         let lastRequestEndpoint:String? = RestService.endpointForLastPostRequest()
-        if lastRequestEndpoint != nil {
-            if lastRequestEndpoint! == "send" || lastRequestEndpoint! == "upload" {
+        if let lastRequestEndpoint = lastRequestEndpoint {
+            if lastRequestEndpoint == "send" || lastRequestEndpoint == "upload" {
                 lastPostRequest.cancel()
                 self.performSegueWithIdentifier("notReadyToSend", sender: nil)
             }

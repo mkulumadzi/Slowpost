@@ -137,7 +137,7 @@ class PasswordFBController: UIViewController, UITextFieldDelegate {
         if passwordsMatch() {
             let graphRequest:FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"id,email,name"])
             graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-                if ((error) != nil) {
+                if let error = error {
                     print(error)
                 }
                 else {

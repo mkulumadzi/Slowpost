@@ -32,9 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Flurry.startSession("FT74F5GW8XVG66BQBXW8")
         
         
-        if launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] != nil {
+        if let _ = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] {
             Flurry.logEvent("Opened_App_From_Notification")
-            print("Got a remote notification")
         }
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
@@ -84,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         Flurry.logEvent("Application_Terminated")
         
-        if dataController != nil {
+        if let dataController = dataController {
             dataController.save()
         }
 

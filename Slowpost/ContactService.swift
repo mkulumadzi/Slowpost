@@ -71,8 +71,8 @@ class ContactService {
         let predicate = NSPredicate(format: "primaryEmail == %@", email)
         fetchRequest.predicate = predicate
         let personMatch = CoreDataService.executeFetchRequest(dataController.moc, fetchRequest: fetchRequest)
-        if personMatch != nil {
-            let person = personMatch![0] as! Person
+        if let personMatch = personMatch {
+            let person = personMatch[0] as! Person
             person.contactId = contact.identifier
         }
         else {

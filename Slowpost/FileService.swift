@@ -19,7 +19,7 @@ class FileService {
         let uploadURL = "\(PostOfficeURL)upload"
         
         resizeImage(image, completion: { (error, result) -> Void in
-            if error != nil {
+            if let error = error {
                 print(error)
             }
             else if let contextImage = result as? UIImage {
@@ -28,22 +28,18 @@ class FileService {
                 let parameters = ["file": base64String, "filename": filename]
                 
                 RestService.postRequest(uploadURL, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
-                    if error != nil {
-                        print("Got error")
+                    if let error = error {
                         completion(error: error, result: nil)
                     }
                     if let response = result as? [AnyObject] {
                         if let location = response[1] as? String {
-                            print("Uploaded image!")
                             completion(error: nil, result: location)
                         }
                         else {
-                            print("Got an unexpected result")
                             completion(error: nil, result: nil)
                         }
                     }
                     else {
-                        print("Something else happened")
                         completion(error: nil, result: nil)
                     }
                 })
@@ -88,8 +84,8 @@ class FileService {
                 completion(error: nil, result: image)
             case .Failure(let error):
                 var statusCode:Int!
-                if response.response != nil {
-                    statusCode = response.response!.statusCode
+                if let response = response.response {
+                    statusCode = response.statusCode
                 }
                 completion(error: error, result: statusCode)
             }

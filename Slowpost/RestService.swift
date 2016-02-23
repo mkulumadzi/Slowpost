@@ -43,8 +43,8 @@ class RestService {
                 }
             case .Failure(let error):
                 var statusCode:Int!
-                if response.response != nil {
-                    statusCode = response.response!.statusCode
+                if let response = response.response {
+                    statusCode = response.statusCode
                 }
                 completion(error: error, result: statusCode)
             }
@@ -70,24 +70,22 @@ class RestService {
         print("POST to \(requestURL)")
         print(headers)
         lastPostRequest = Alamofire.request(.POST, requestURL, parameters: parameters, headers: requestHeaders, encoding: .JSON)
-            .responseJSON { (response) in
+            .responseJSON { (responseJSON) in
             var statusCode:Int!
-            if response.response != nil {
-                statusCode = response.response!.statusCode
-            }
-            if statusCode != nil {
+            if let response = responseJSON.response {
+                statusCode = response.statusCode
                 if statusCode == 201 {
-                    completion(error: nil, result: [201, response.response!.allHeaderFields["Location"] as! String])
+                    completion(error: nil, result: [201, response.allHeaderFields["Location"] as! String])
                 }
                 else if statusCode == 204 {
                     completion(error: nil, result: [204, ""])
                 }
                 else {
-                    completion(error: nil, result: response.result.value)
+                    completion(error: nil, result: responseJSON.result.value)
                 }
             }
             else {
-                completion(error: nil, result: "Unexpected result")
+                completion(error: nil, result: nil)
             }
         }
     }

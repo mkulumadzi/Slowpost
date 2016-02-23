@@ -115,7 +115,7 @@ class MailViewController: UIViewController {
         mail.markAsRead()
         let readMailURL = "\(PostOfficeURL)/mail/id/\(mail.id)/read"
         RestService.postRequest(readMailURL, parameters: nil, headers: nil, completion: { (error, result) -> Void in
-            if error != nil {
+            if let error = error {
                 print(error)
             }
         })
@@ -148,7 +148,7 @@ class MailViewController: UIViewController {
     
     @IBAction func closeMailView(sender: AnyObject) {
         print("Close pressed")
-        if runOnClose != nil { runOnClose!() }
+        if let runOnClose = runOnClose { runOnClose() }
         dismissViewControllerAnimated(true, completion: {})
     }
 }

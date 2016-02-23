@@ -68,27 +68,12 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         personTable.sectionIndexColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
         personTable.sectionIndexBackgroundColor = UIColor.clearColor()
         personTable.sectionHeaderHeight = 24.0
-        
-        testFacebookFriends()
-        
     }
     
     func formatButtons() {
         cancelButton.setImage(UIImage(named: "close")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         cancelButton.tintColor = UIColor.whiteColor()
         nextButton.contentHorizontalAlignment = .Right
-    }
-    
-    func testFacebookFriends() {
-        let graphRequest:FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me/friends", parameters: nil)
-        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            if ((error) != nil) {
-                print(error)
-            }
-            else {
-                print(result)
-            }
-        })
     }
     
     func initializeShadedView() {
@@ -193,7 +178,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         let searchPeopleURL = "\(PostOfficeURL)people/search?term=\(searchTerm)&limit=10"
         
         SearchPersonService.searchPeople(searchPeopleURL, completion: { (error, result) -> Void in
-            if error != nil {
+            if let error = error {
                 print(error)
             }
             else if let peopleArray = result as? [SearchPerson] {
@@ -310,16 +295,15 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     // Come back to this...
     func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
         let peopleIndex = peopleController.sectionIndexTitles.indexOf(title)
-        if peopleIndex != nil {
-            return peopleIndex!
+        if let peopleIndex = peopleIndex {
+            return peopleIndex
         }
         else {
             var i = index + 1
             while i < indexTitles.count {
                 let nextTitle = indexTitles[i]
-                let nextIndex = peopleController.sectionIndexTitles.indexOf(nextTitle)
-                if nextIndex != nil {
-                    return nextIndex!
+                if let nextIndex = peopleController.sectionIndexTitles.indexOf(nextTitle) {
+                    return nextIndex
                 }
                 else {
                     i += 1
@@ -609,8 +593,8 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         Flurry.logEvent("Removed_email_for_person_with_multiple")
         if let contactView = segue.sourceViewController as? PhoneContactViewController {
             clearSelectedEmailsForPerson(contactView.person)
-            if contactView.emailSelected != nil {
-                toEmails.append(contactView.emailSelected.email)
+            if let email = contactView.emailSelected?.email {
+                toEmails.append(email)
             }
             personTable.reloadData()
             validateNextButton()

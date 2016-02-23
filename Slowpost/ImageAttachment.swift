@@ -22,8 +22,8 @@ class ImageAttachment: Attachment {
         if !fileName.isEmpty && fileName != "" {
             existingImage = FileService.getImageFromDirectory(fileName)
         }
-        if existingImage != nil {
-            completion(error: nil, result: existingImage!)
+        if let existingImage = existingImage {
+            completion(error: nil, result: existingImage)
         }
         else {
             var fileName = getFileNameFromURL()
@@ -33,7 +33,7 @@ class ImageAttachment: Attachment {
                 fileName = uuid + ".jpg"
             }
             let image = FileService.getImageFromDirectory(fileName)
-            if image != nil {
+            if let image = image {
                 self.fileName = fileName
                 dataController.save()
                 completion(error: nil, result: image)

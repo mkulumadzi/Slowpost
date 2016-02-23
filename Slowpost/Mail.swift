@@ -25,13 +25,13 @@ class Mail: PostofficeObject {
     @NSManaged var myStatus:String!
     
     func getImage(completion: (error: ErrorType?, result: AnyObject?) -> Void ) {
-        var mailImageAttachment:ImageAttachment!
+        var mailImageAttachment:ImageAttachment?
         for attachment in attachments.allObjects {
             if let imageAttachment = attachment as? ImageAttachment {
                 mailImageAttachment = imageAttachment
             }
         }
-        if mailImageAttachment != nil {
+        if let mailImageAttachment = mailImageAttachment {
             mailImageAttachment.image({error, result -> Void in
                 if let image = result as? UIImage {
                     completion(error: nil, result: image)

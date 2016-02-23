@@ -43,8 +43,7 @@ class LoginService: PersonService {
         let userId = getUserIdFromToken()
         let url = "\(PostOfficeURL)/person/id/\(userId)"
         RestService.getRequest(url, headers: nil, completion: { error, result -> Void in
-            if error != nil {
-                print("Token does not match valid user")
+            if let error = error {
                 completion(error: error, result: nil)
             }
             else {
@@ -88,7 +87,7 @@ class LoginService: PersonService {
         
         let graphRequest:FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email"])
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-            if ((error) != nil) {
+            if let error = error {
                 completion(error: error, result: "Failure")
             }
             else {
@@ -125,7 +124,7 @@ class LoginService: PersonService {
         let facebookToken = FBSDKAccessToken.currentAccessToken().tokenString
         let parameters = ["facebook_id": "\(facebookId)", "facebook_token": "\(facebookToken)"]
         RestService.postRequest(updatePersonURL, parameters: parameters, headers: nil, completion: { (error, result) -> Void in
-            if error != nil {
+            if let error = error {
                 print(error)
             }
         })
@@ -139,8 +138,8 @@ class LoginService: PersonService {
         } catch _ {
             print("Could not decode token")
         }
-        if jwt != nil {
-            payload = jwt!.body
+        if let jwt = jwt {
+            payload = jwt.body
         }
         return payload
     }
@@ -173,7 +172,7 @@ class LoginService: PersonService {
         let headers = ["Authorization": "Bearer \(appToken)"]
         
         RestService.getRequest(availableURL, headers: headers, completion: { (error, result) -> Void in
-            if error != nil {
+            if let error = error {
                 completion(error: error, result: nil)
             }
             else {
