@@ -452,7 +452,6 @@
 		CCCB1A4F1AB0D48A0067F100 /* Slowpost */ = {
 			isa = PBXGroup;
 			children = (
-				D2A361341B3CAC2500811D14 /* Customizations */,
 				D2B651E01B37BC5900134C23 /* Services */,
 				CC23DE2F1AE54C4900AFEDE4 /* Models */,
 				D250E8EF1C7D223900BC5F78 /* Shared */,
@@ -552,6 +551,15 @@
 				D250E8F21C7D23AF00BC5F78 /* BaseNavigationController.swift */,
 				D250E8F41C7D245300BC5F78 /* BaseTabBarController.swift */,
 				D250E8F61C7D273E00BC5F78 /* BaseTableViewController.swift */,
+				D2B651E61B38827100134C23 /* Extensions.swift */,
+				D2A361351B3CAC5D00811D14 /* TextUIButton.swift */,
+				D2A361371B3CB52B00811D14 /* WarningUILabel.swift */,
+				D206FB4E1B617504008BB412 /* BottomBorderUITextField.swift */,
+				D27DA32C1B66C51900DF32A1 /* MessageUILabel.swift */,
+				D2389E811B9674AB00CB19BB /* CellLabelUIView.swift */,
+				D21003241C1A36A800E45CA3 /* ComposeView.swift */,
+				D210032A1C1BA51F00E45CA3 /* OverlayContainerView.swift */,
+				D2B7CEA51B694C14007F8235 /* GlobalVariables.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -599,26 +607,10 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
-		D2A361341B3CAC2500811D14 /* Customizations */ = {
-			isa = PBXGroup;
-			children = (
-				D2B651E61B38827100134C23 /* Extensions.swift */,
-				D2A361351B3CAC5D00811D14 /* TextUIButton.swift */,
-				D2A361371B3CB52B00811D14 /* WarningUILabel.swift */,
-				D206FB4E1B617504008BB412 /* BottomBorderUITextField.swift */,
-				D27DA32C1B66C51900DF32A1 /* MessageUILabel.swift */,
-				D2389E811B9674AB00CB19BB /* CellLabelUIView.swift */,
-				D21003241C1A36A800E45CA3 /* ComposeView.swift */,
-				D210032A1C1BA51F00E45CA3 /* OverlayContainerView.swift */,
-			);
-			name = Customizations;
-			sourceTree = "<group>";
-		};
 		D2B651E01B37BC5900134C23 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				CC6105F41AC3941900D15150 /* LoginService.swift */,
-				D2B7CEA51B694C14007F8235 /* GlobalVariables.swift */,
 				D2B7CEA71B694D95007F8235 /* PersonService.swift */,
 				D2B7CEA91B694E55007F8235 /* MailService.swift */,
 				D2B7CEAB1B6951CE007F8235 /* ConfigurationService.swift */,
