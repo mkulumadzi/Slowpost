@@ -107,8 +107,6 @@ extension UITextView {
     
 }
 
-import UIKit
-
 private let DeviceList = [
     /* iPod 5 */          "iPod5,1": "iPod Touch 5",
     /* iPhone 4 */        "iPhone3,1":  "iPhone 4", "iPhone3,2": "iPhone 4", "iPhone3,3": "iPhone 4",

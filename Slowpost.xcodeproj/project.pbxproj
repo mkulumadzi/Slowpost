@@ -60,7 +60,6 @@
 		D2392AC51BD1D0DD0069316F /* turtleAnimation1.png in Resources */ = {isa = PBXBuildFile; fileRef = D2392AC11BD1D0DD0069316F /* turtleAnimation1.png */; };
 		D2392AC61BD1D0DD0069316F /* turtleAnimation3.png in Resources */ = {isa = PBXBuildFile; fileRef = D2392AC21BD1D0DD0069316F /* turtleAnimation3.png */; };
 		D2392AC71BD1D0DD0069316F /* turtleAnimation0.png in Resources */ = {isa = PBXBuildFile; fileRef = D2392AC31BD1D0DD0069316F /* turtleAnimation0.png */; };
-		D24BC0F51B96994D000405F7 /* CustomContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24BC0F41B96994D000405F7 /* CustomContainerView.swift */; };
 		D24BC0F71B97C2D5000405F7 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D24BC0F61B97C2D5000405F7 /* OpenSans-LightItalic.ttf */; };
 		D24BC0FA1B98E249000405F7 /* mail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D24BC0F91B98E249000405F7 /* mail.storyboard */; };
 		D24BC0FC1B98E317000405F7 /* MailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24BC0FB1B98E317000405F7 /* MailViewController.swift */; };
@@ -97,7 +96,6 @@
 		D27E12F11BB4791A0059FF07 /* ContactService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27E12F01BB4791A0059FF07 /* ContactService.swift */; };
 		D27E12F71BB4A98E0059FF07 /* EmailAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27E12F61BB4A98E0059FF07 /* EmailAddress.swift */; };
 		D27E194E1B3B770C0052687F /* SlowpostModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D27E194C1B3B770C0052687F /* SlowpostModel.xcdatamodeld */; };
-		D28266CE1BC6DEA10029F57E /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D28266CD1BC6DEA10029F57E /* AvatarView.swift */; };
 		D28266D01BC6E4950029F57E /* grey-circle.png in Resources */ = {isa = PBXBuildFile; fileRef = D28266CF1BC6E4950029F57E /* grey-circle.png */; };
 		D2856E431BB5C32700A454C9 /* Slowpost.png in Resources */ = {isa = PBXBuildFile; fileRef = D2856E421BB5C32700A454C9 /* Slowpost.png */; };
 		D289F2181BD15517004D29FA /* RequestPasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D289F2171BD15517004D29FA /* RequestPasswordResetViewController.swift */; };
@@ -220,7 +218,6 @@
 		D2392AC11BD1D0DD0069316F /* turtleAnimation1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = turtleAnimation1.png; sourceTree = "<group>"; };
 		D2392AC21BD1D0DD0069316F /* turtleAnimation3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = turtleAnimation3.png; sourceTree = "<group>"; };
 		D2392AC31BD1D0DD0069316F /* turtleAnimation0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = turtleAnimation0.png; sourceTree = "<group>"; };
-		D24BC0F41B96994D000405F7 /* CustomContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomContainerView.swift; sourceTree = "<group>"; };
 		D24BC0F61B97C2D5000405F7 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
 		D24BC0F91B98E249000405F7 /* mail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = mail.storyboard; sourceTree = "<group>"; };
 		D24BC0FB1B98E317000405F7 /* MailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailViewController.swift; sourceTree = "<group>"; };
@@ -257,7 +254,6 @@
 		D27E12F01BB4791A0059FF07 /* ContactService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactService.swift; sourceTree = "<group>"; };
 		D27E12F61BB4A98E0059FF07 /* EmailAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailAddress.swift; sourceTree = "<group>"; };
 		D27E194D1B3B770C0052687F /* SnailMailModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SnailMailModel.xcdatamodel; sourceTree = "<group>"; };
-		D28266CD1BC6DEA10029F57E /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		D28266CF1BC6E4950029F57E /* grey-circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grey-circle.png"; sourceTree = "<group>"; };
 		D2856E421BB5C32700A454C9 /* Slowpost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slowpost.png; sourceTree = "<group>"; };
 		D289F2171BD15517004D29FA /* RequestPasswordResetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestPasswordResetViewController.swift; sourceTree = "<group>"; };
@@ -602,8 +598,6 @@
 				D206FB4E1B617504008BB412 /* BottomBorderUITextField.swift */,
 				D27DA32C1B66C51900DF32A1 /* MessageUILabel.swift */,
 				D2389E811B9674AB00CB19BB /* CellLabelUIView.swift */,
-				D24BC0F41B96994D000405F7 /* CustomContainerView.swift */,
-				D28266CD1BC6DEA10029F57E /* AvatarView.swift */,
 				D21003241C1A36A800E45CA3 /* ComposeView.swift */,
 				D210032A1C1BA51F00E45CA3 /* OverlayContainerView.swift */,
 			);
@@ -866,7 +860,6 @@
 				D2A2B4291BD6ED2A0069C3E4 /* ToNavigationController.swift in Sources */,
 				D20EC2591BAC8F1400E3DEA5 /* PostofficeObjectService.swift in Sources */,
 				D210031D1C1657FC00E45CA3 /* UsernameFBViewController.swift in Sources */,
-				D24BC0F51B96994D000405F7 /* CustomContainerView.swift in Sources */,
 				CC96E4A91ABCD91A001E6D27 /* Mail.swift in Sources */,
 				CCCB1A7B1AB0DE780067F100 /* MyMailboxViewController.swift in Sources */,
 				D20EC2551BAC84FA00E3DEA5 /* Note.swift in Sources */,
@@ -884,7 +877,6 @@
 				D210031F1C17A8B900E45CA3 /* PasswordFBController.swift in Sources */,
 				CC6105F51AC3941900D15150 /* LoginService.swift in Sources */,
 				D2A361361B3CAC5D00811D14 /* TextUIButton.swift in Sources */,
-				D28266CE1BC6DEA10029F57E /* AvatarView.swift in Sources */,
 				D20D8EE21B2E448100BBF6B5 /* PersonCell.swift in Sources */,
 				D20EC2531BAC84E500E3DEA5 /* ImageAttachment.swift in Sources */,
 				D215D8081C21EB0D00CA0B4A /* StandardDeliveryTableViewCell.swift in Sources */,
