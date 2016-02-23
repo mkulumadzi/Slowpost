@@ -22,31 +22,25 @@ class PhoneContactViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configure()
+    }
+    
+    //MARK: Setup
+    
+    private func configure() {
         emailAddressTable.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: emailAddressTable.bounds.size.width, height: 0.01))
         name.text = person.fullName()
         formatButtons()
 
     }
     
-    func formatButtons() {
+    private func formatButtons() {
         cancelButton.setImage(UIImage(named: "close")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         cancelButton.tintColor = slowpostDarkGrey
     }
+    
+    //MARK: Table view setup
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    @IBAction func cancelButtonPressed(sender: AnyObject) {
-        if emailSelected == nil {
-            performSegueWithIdentifier("emailCleared", sender: nil)
-        }
-        else {
-            dismissViewControllerAnimated(true, completion: {})
-        }
-    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -89,7 +83,20 @@ class PhoneContactViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
-    func clearCheckMark() {
+    //MARK: User actions
+    
+    @IBAction func cancelButtonPressed(sender: AnyObject) {
+        if emailSelected == nil {
+            performSegueWithIdentifier("emailCleared", sender: nil)
+        }
+        else {
+            dismissViewControllerAnimated(true, completion: {})
+        }
+    }
+    
+    //MARK: Private
+    
+    private func clearCheckMark() {
         if checkedIndexPath != nil {
             let cell = emailAddressTable.cellForRowAtIndexPath(checkedIndexPath) as! EmailAddressTableViewCell
             cell.checked = false

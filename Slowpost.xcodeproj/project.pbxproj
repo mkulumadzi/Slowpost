@@ -554,16 +554,16 @@
 			isa = PBXGroup;
 			children = (
 				D25130411BC425C3007541BE /* to.storyboard */,
-				D2F061181BDAF15E005AC57F /* EditRecipientsViewController.swift */,
+				D2A2B4281BD6ED2A0069C3E4 /* ToNavigationController.swift */,
 				D20D8ED31B2A510700BBF6B5 /* ToViewController.swift */,
 				D20D8EE11B2E448100BBF6B5 /* PersonCell.swift */,
 				D28CB00F1BB4CDC100111213 /* PhoneContactCell.swift */,
+				D2E97D8C1BC322BF00DAEB6C /* RecipientCell.swift */,
+				D27C7B4C1BC3481F005F08BC /* SearchPersonCell.swift */,
 				D25453831BBB437600BA2A50 /* PhoneContactViewController.swift */,
 				D25453851BBB482900BA2A50 /* EmailAddressTableViewCell.swift */,
-				D2E97D8C1BC322BF00DAEB6C /* RecipientCell.swift */,
 				D27C7B441BC33820005F08BC /* AddEmailViewController.swift */,
-				D27C7B4C1BC3481F005F08BC /* SearchPersonCell.swift */,
-				D2A2B4281BD6ED2A0069C3E4 /* ToNavigationController.swift */,
+				D2F061181BDAF15E005AC57F /* EditRecipientsViewController.swift */,
 			);
 			name = To;
 			sourceTree = "<group>";

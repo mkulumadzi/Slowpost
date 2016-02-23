@@ -14,64 +14,39 @@ class EditRecipientsViewController: UIViewController, UITableViewDelegate, UITab
     var toPeople:[Person]!
     var toSearchPeople:[SearchPerson]!
     var toEmails:[String]!
-    
-    @IBOutlet weak var confirmButton: TextUIButton!
-    
     var toPeopleSelectedAtIndex:[Bool]!
     var toSearchPeopleSelectedAtIndex:[Bool]!
     var toEmailsSelectedAtIndex:[Bool]!
 
+    @IBOutlet weak var confirmButton: TextUIButton!
     @IBOutlet weak var recipientsTable: UITableView!
     @IBOutlet weak var recipientsTableHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var confirmButtonHeight: NSLayoutConstraint!
     @IBOutlet weak var confirmViewHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        recipientsTable.delegate = self
+        configure()
+        initializeSelectedIndices()
+    }
+    
+    //MARK: Setup
+    
+    private func configure() {
         setTableHeight()
         confirmButton.layer.cornerRadius = 5
-        initializeSelectedIndices()
-        
         if deviceType == "iPhone 4S" {
             formatForiPhone4S()
         }
     }
     
-    func formatForiPhone4S() {
+    private func formatForiPhone4S() {
         confirmButtonHeight.constant = 30
         confirmViewHeight.constant = 40
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: recipientsTable.bounds.size.width, height: 40.0))
-        headerView.backgroundColor = slowpostGreen
-        let headerLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: recipientsTable.bounds.size.width, height: 40.0))
-        headerLabel.textAlignment = .Center
-        headerLabel.text = "Edit Recipients"
-        headerLabel.font = UIFont(name: "OpenSans-Semibold", size: 15.0)
-        headerLabel.textColor = UIColor.whiteColor()
-        headerView.addSubview(headerLabel)
-        return headerView
-    }
-    
-    func setTableHeight() {
-        let numRows = (toPeople.count + toSearchPeople.count + toEmails.count)
-        let suggestedHeight = CGFloat(numRows * 44) + 40.0
-        if suggestedHeight < view.frame.height / 2 {
-            recipientsTableHeight.constant = suggestedHeight
-        }
-        else {
-            recipientsTableHeight.constant = view.frame.height / 2
-        }
-    }
-    
-    func initializeSelectedIndices() {
+    private func initializeSelectedIndices() {
         toPeopleSelectedAtIndex = [Bool]()
         toSearchPeopleSelectedAtIndex = [Bool]()
         toEmailsSelectedAtIndex = [Bool]()
@@ -84,6 +59,31 @@ class EditRecipientsViewController: UIViewController, UITableViewDelegate, UITab
         for _ in toEmails {
             toEmailsSelectedAtIndex.append(true)
         }
+    }
+    
+    private func setTableHeight() {
+        let numRows = (toPeople.count + toSearchPeople.count + toEmails.count)
+        let suggestedHeight = CGFloat(numRows * 44) + 40.0
+        if suggestedHeight < view.frame.height / 2 {
+            recipientsTableHeight.constant = suggestedHeight
+        }
+        else {
+            recipientsTableHeight.constant = view.frame.height / 2
+        }
+    }
+
+    //MARK: Table view setup
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: recipientsTable.bounds.size.width, height: 40.0))
+        headerView.backgroundColor = slowpostGreen
+        let headerLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: recipientsTable.bounds.size.width, height: 40.0))
+        headerLabel.textAlignment = .Center
+        headerLabel.text = "Edit Recipients"
+        headerLabel.font = UIFont(name: "OpenSans-Semibold", size: 15.0)
+        headerLabel.textColor = UIColor.whiteColor()
+        headerView.addSubview(headerLabel)
+        return headerView
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -138,7 +138,7 @@ class EditRecipientsViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
-    func configureRecipientCell(cell: RecipientCell, object: AnyObject) {
+    private func configureRecipientCell(cell: RecipientCell, object: AnyObject) {
         if let person = object as? Person {
             cell.person = person
             cell.recipientLabel.text = "\(person.fullName()) (@\(person.username))"
@@ -152,7 +152,6 @@ class EditRecipientsViewController: UIViewController, UITableViewDelegate, UITab
             cell.recipientLabel.text = cell.email
         }
     }
-    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row < toPeople.count {
@@ -184,6 +183,8 @@ class EditRecipientsViewController: UIViewController, UITableViewDelegate, UITab
         recipientsTable.reloadData()
     }
     
+    //MARK: User actions
+    
     @IBAction func viewTapped(sender: AnyObject) {
         performSegueWithIdentifier("editRecipientsCancelled", sender: nil)
     }
@@ -192,6 +193,7 @@ class EditRecipientsViewController: UIViewController, UITableViewDelegate, UITab
         performSegueWithIdentifier("recipientsEdited", sender: nil)
     }
     
+    //MARK: Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "recipientsEdited" {
@@ -204,7 +206,9 @@ class EditRecipientsViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
-    func clearDeselectedRecipients() {
+    //MARK: Private
+    
+    private func clearDeselectedRecipients() {
         var updatedPeople = [Person]()
         var updatedSearchPeople = [SearchPerson]()
         var updatedEmails = [String]()

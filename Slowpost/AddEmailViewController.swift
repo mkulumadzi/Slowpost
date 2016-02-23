@@ -10,27 +10,27 @@ import UIKit
 
 class AddEmailViewController: UIViewController {
     
-    
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var emailField: BottomBorderUITextField!
     @IBOutlet weak var submitButton: TextUIButton!
     @IBOutlet weak var warningLabel: WarningUILabel!
-    
     @IBOutlet weak var submitButtonHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        configure()
+        validateSubmitButton()
+    }
+    
+    //MARK: Setup
+    
+    private func configure() {
         submitButton.layer.cornerRadius = 5
         formatButtons()
-        
-        validateSubmitButton()
         warningLabel.hide()
-        
         if deviceType == "iPhone 4S" {
             formatForiPhone4S()
         }
-
     }
     
     override func viewDidLayoutSubviews() {
@@ -38,19 +38,14 @@ class AddEmailViewController: UIViewController {
         emailField.addBottomLayer()
     }
     
-    func formatButtons() {
+    private func formatButtons() {
         cancelButton.setImage(UIImage(named: "close")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         cancelButton.tintColor = slowpostDarkGrey
     }
     
-    func formatForiPhone4S() {
+    private func formatForiPhone4S() {
         submitButtonHeight.constant = 30
         emailField.font = emailField.font!.fontWithSize(15.0)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -58,19 +53,12 @@ class AddEmailViewController: UIViewController {
         return true
     }
     
+    //MARK: User actions
+    
     
     @IBAction func editingChanged(sender: AnyObject) {
         warningLabel.hide()
         validateSubmitButton()
-    }
-    
-    func validateSubmitButton() {
-        if emailField.text != "" {
-            submitButton.enable()
-        }
-        else {
-            submitButton.disable()
-        }
     }
 
     @IBAction func cancelButtonPressed(sender: AnyObject) {
@@ -82,7 +70,18 @@ class AddEmailViewController: UIViewController {
         addEmail()
     }
     
-    func addEmail() {
+    //MARK: Private
+    
+    private func validateSubmitButton() {
+        if emailField.text != "" {
+            submitButton.enable()
+        }
+        else {
+            submitButton.disable()
+        }
+    }
+    
+    private func addEmail() {
         performSegueWithIdentifier("emailAdded", sender: nil)
     }
     

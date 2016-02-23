@@ -26,15 +26,14 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var segmentedControl: UISegmentedControl!
     
     @IBOutlet weak var tableToBottomLayoutGuide: NSLayoutConstraint!
-    
-    let indexTitles = [">", "#", "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","?"]
-    
     @IBOutlet weak var personTable: UITableView!
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var nextButtonArrows: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var editRecipientsButton: UIButton!
+    
+    let indexTitles = [">", "#", "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","?"]
     
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -48,35 +47,41 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         toSearchPeople = [SearchPerson]()
         toEmails = [String]()
         searchResults = [SearchPerson]()
-        formatButtons()
-        
         searchTextEntered = false
         initializeSegmentedControl()
+        initializeSearchController()
         initializePeopleController()
+        configure()
+        validateNextButton()
+    }
+    
+    //MARK: Setup
+    
+    private func configure() {
+        personTable.sectionIndexColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
+        personTable.sectionIndexBackgroundColor = UIColor.clearColor()
+        personTable.sectionHeaderHeight = 24.0
+        warningLabel.hide()
+        addSearchBar()
+        addSegmentedControlToHeader()
+        formatButtons()
         initializeShadedView()
-
+    }
+    
+    private func initializeSearchController() {
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
-        addSearchBar()
-        addSegmentedControlToHeader()
-
-        validateNextButton()
-        
-        warningLabel.hide()
-        personTable.sectionIndexColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
-        personTable.sectionIndexBackgroundColor = UIColor.clearColor()
-        personTable.sectionHeaderHeight = 24.0
     }
     
-    func formatButtons() {
+    private func formatButtons() {
         cancelButton.setImage(UIImage(named: "close")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         cancelButton.tintColor = UIColor.whiteColor()
         nextButton.contentHorizontalAlignment = .Right
     }
     
-    func initializeShadedView() {
+    private func initializeShadedView() {
         shadedView = UIView(frame: view.frame)
         shadedView.backgroundColor = slowpostBlack
         shadedView.alpha = 0.5
@@ -84,8 +89,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         shadedView.hidden = true
     }
     
-    // Add search bar
-    func addSearchBar() {
+    private func addSearchBar() {
         searchController.searchBar.sizeToFit()
         searchController.searchBar.showsCancelButton = false
         searchController.searchBar.searchBarStyle = .Minimal
@@ -104,10 +108,9 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         iconView.tintColor = UIColor.whiteColor()
         
         textField.attributedPlaceholder = attributedString
-        
     }
     
-    func initializeSegmentedControl() {
+    private func initializeSegmentedControl() {
         segmentedControl = UISegmentedControl(items: ["Slowpost", "Everyone"])
         segmentedControl.tintColor = slowpostDarkGreen
         segmentedControl.backgroundColor = UIColor.whiteColor()
@@ -115,7 +118,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         segmentedControl.selectedSegmentIndex = 0
     }
 
-    func addSegmentedControlToHeader() {
+    private func addSegmentedControlToHeader() {
         let headerView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: personTable.bounds.size.width, height: 40.0))
         headerView.backgroundColor = UIColor.whiteColor()
         headerView.addSubview(segmentedControl)
@@ -127,9 +130,28 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         segmentedControl.addTarget(self, action:"toggleResults", forControlEvents: .ValueChanged)
     }
     
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        searchController.searchBar.resignFirstResponder()
+    }
+    
+    private func validateNextButton() {
+        if toPeople.count > 0 || toSearchPeople.count > 0 || toEmails.count > 0 {
+            nextButton.hidden = false
+            nextButtonArrows.hidden = false
+            editRecipientsButton.hidden = false
+            tableToBottomLayoutGuide.constant = 60
+        }
+        else {
+            nextButton.hidden = true
+            nextButtonArrows.hidden = true
+            editRecipientsButton.hidden = true
+            tableToBottomLayoutGuide.constant = 0
+        }
+    }
+    
     // Mark: Set up Core Data
     
-    func initializePeopleController() {
+    private func initializePeopleController() {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let dataController = appDelegate.dataController
         
@@ -173,56 +195,14 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
-    func searchPeopleOnSlowpost(term: String) {
-        let searchTerm = RestService.normalizeSearchTerm(searchController.searchBar.text!)
-        let searchPeopleURL = "\(PostOfficeURL)people/search?term=\(searchTerm)&limit=10"
-        
-        SearchPersonService.searchPeople(searchPeopleURL, completion: { (error, result) -> Void in
-            if let error = error {
-                print(error)
-            }
-            else if let peopleArray = result as? [SearchPerson] {
-                if peopleArray.count > 0 {
-                    if self.toSearchPeople.count == 0 {
-                        self.searchResults = peopleArray
-                        self.personTable.reloadData()
-                    }
-                    else {
-                        self.filterSelectedPeopleFromSearchResults(peopleArray)
-                    }
-                }
-                else {
-                    self.searchResults = [SearchPerson]()
-                }
-            }
-        })
-    }
-    
-    func filterSelectedPeopleFromSearchResults(results:[SearchPerson]) {
-        var selectedIds = [String]()
-        for selectedPerson in toSearchPeople {
-            selectedIds.append(selectedPerson.id)
-        }
-        var filteredResults = [SearchPerson]()
-        for person in results {
-            if selectedIds.indexOf(person.id) == nil {
-                filteredResults.append(person)
-            }
-        }
-        searchResults = filteredResults
+    func toggleResults() {
+        Flurry.logEvent("Toggled_list_of_people")
+        initializePeopleController()
         personTable.reloadData()
     }
+
+    //MARK: Search controller configuration
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
-        searchController.searchBar.resignFirstResponder()
-    }
-    
-    //MARK: search configuration
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         if searchController.searchBar.text == "" {
             searchTextEntered = false
@@ -234,20 +214,22 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             }
             searchTextEntered = true
         }
-
         
         initializePeopleController()
         personTable.reloadData()
     }
+
     
-    //MARK: segmented control configuration
-    func toggleResults() {
-        Flurry.logEvent("Toggled_list_of_people")
-        initializePeopleController()
-        personTable.reloadData()
+    // MARK: Table view configuration
+    
+    // Table sections
+    
+    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.contentView.backgroundColor = UIColor.whiteColor()
+        header.textLabel!.textColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
+        header.textLabel!.font = UIFont(name: "OpenSans-Semibold", size: 13)
     }
-    
-    // MARK: Section Configuration
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         let numSections = peopleController.sections!.count + 1
@@ -265,17 +247,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             return "Other people"
         }
     }
- 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let peopleSections = peopleController.sections!
-        if section < peopleSections.count {
-            let sectionInfo = peopleSections[section]
-            return sectionInfo.numberOfObjects
-        }
-        else {
-            return (searchResults.count + 1)
-        }
-    }
     
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
         return indexTitles
@@ -285,14 +256,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         return 30.0
     }
     
-    func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        let header = view as! UITableViewHeaderFooterView
-        header.contentView.backgroundColor = UIColor.whiteColor()
-        header.textLabel!.textColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
-        header.textLabel!.font = UIFont(name: "OpenSans-Semibold", size: 13)
-    }
-    
-    // Come back to this...
     func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
         let peopleIndex = peopleController.sectionIndexTitles.indexOf(title)
         if let peopleIndex = peopleIndex {
@@ -315,7 +278,18 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
 
-    // MARK: Row configuration
+    // Table rows
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let peopleSections = peopleController.sections!
+        if section < peopleSections.count {
+            let sectionInfo = peopleSections[section]
+            return sectionInfo.numberOfObjects
+        }
+        else {
+            return (searchResults.count + 1)
+        }
+    }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let peopleSections = peopleController.sections!
@@ -329,7 +303,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
-    func cellForPerson(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
+    private func cellForPerson(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
         let person = peopleController.objectAtIndexPath(indexPath) as! Person
         if !person.id.isEmpty {
             let cell = tableView.dequeueReusableCellWithIdentifier("personCell") as! PersonCell
@@ -345,7 +319,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
-    func otherCell(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
+    private func otherCell(tableView: UITableView, indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row < searchResults.count {
             let cell = tableView.dequeueReusableCellWithIdentifier("searchPersonCell") as! SearchPersonCell
             cell.searchPerson = searchResults[indexPath.row]
@@ -358,7 +332,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
-    func configurePersonCell(cell: PersonCell) {
+    private func configurePersonCell(cell: PersonCell) {
         cell.personNameLabel.text = cell.person.fullName()
         cell.usernameLabel.text = "@\(cell.person.username)"
         cell.cellImage.image = UIImage(named: "Slowpost.png")
@@ -374,7 +348,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
     }
     
-    func configureSearchPersonCell(cell: SearchPersonCell) {
+    private func configureSearchPersonCell(cell: SearchPersonCell) {
         cell.nameLabel.text = cell.searchPerson.fullName()
         cell.usernameLabel.text = "@\(cell.searchPerson.username)"
         cell.cellImage.image = UIImage(named: "Slowpost.png")
@@ -383,15 +357,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         cell.tintColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
     }
     
-    func personSelected(person: Person) -> Bool {
-        let filter = toPeople.filter() {$0.id == person.id}
-        if filter.count > 0 {
-            return true
-        }
-        return false
-    }
-    
-    func configurePhoneContactCell(cell: PhoneContactCell) {
+    private func configurePhoneContactCell(cell: PhoneContactCell) {
         cell.personNameLabel.text = cell.person.fullName()
         configureEmailLabel(cell)
         if personEmailSelected(cell.person) != "" {
@@ -404,21 +370,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         cell.tintColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
     }
     
-    func personEmailSelected(person: Person) -> String {
-        let selectedSet = Set(toEmails)
-        var personEmails = [String]()
-        for object in person.emails.allObjects {
-            let emailAddress = object as! EmailAddress
-            personEmails.append(emailAddress.email)
-        }
-        let personSet = Set(personEmails)
-        if selectedSet.intersect(personSet).count > 0 {
-            return Array(selectedSet)[0]
-        }
-        else {
-            return ""
-        }
-    }
+
     
     func configureEmailLabel(cell: PhoneContactCell) {
         if cell.person.emails.count == 1 {
@@ -452,7 +404,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         formatNextLabel()
     }
     
-    func handlePersonSelection(tableView: UITableView, indexPath: NSIndexPath) {
+    private func handlePersonSelection(tableView: UITableView, indexPath: NSIndexPath) {
         if let cell = personTable.cellForRowAtIndexPath(indexPath) as? PersonCell {
             if !personSelected(cell.person) {
                 Flurry.logEvent("Added_person")
@@ -492,7 +444,7 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
-    func handleOtherSelection(tableView: UITableView, indexPath: NSIndexPath) {
+    private func handleOtherSelection(tableView: UITableView, indexPath: NSIndexPath) {
         if let searchPersonCell = tableView.cellForRowAtIndexPath(indexPath) as? SearchPersonCell {
             Flurry.logEvent("Added_person_searched_on_slowpost")
             let searchPerson = searchPersonCell.searchPerson
@@ -512,24 +464,11 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
+    //MARK: User actions
+    
     @IBAction func cancelButtonPressed(sender: AnyObject) {
         Flurry.logEvent("Compose_Cancelled")
         dismissViewControllerAnimated(true, completion: {})
-    }
-    
-    func validateNextButton() {
-        if toPeople.count > 0 || toSearchPeople.count > 0 || toEmails.count > 0 {
-            nextButton.hidden = false
-            nextButtonArrows.hidden = false
-            editRecipientsButton.hidden = false
-            tableToBottomLayoutGuide.constant = 60
-        }
-        else {
-            nextButton.hidden = true
-            nextButtonArrows.hidden = true
-            editRecipientsButton.hidden = true
-            tableToBottomLayoutGuide.constant = 0
-        }
     }
     
     @IBAction func nextButtonPressed(sender: AnyObject) {
@@ -539,27 +478,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         controller.toSearchPeople = toSearchPeople
         controller.toEmails = toEmails
         presentViewController(controller, animated: true, completion: {})
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "viewPhoneContact" {
-            let cell = sender as! PhoneContactCell
-            let phoneContactViewController = segue.destinationViewController as! PhoneContactViewController
-            phoneContactViewController.person = cell.person
-            let email = personEmailSelected(cell.person)
-            if email != "" {
-                let personEmails = cell.person.emails.allObjects as! [EmailAddress]
-                let emailSelected = personEmails.filter() {$0.email == personEmailSelected(cell.person) }[0]
-                phoneContactViewController.emailSelected = emailSelected
-            }
-        }
-        else if segue.identifier == "editRecipients" {
-            shadedView.hidden = false
-            let editRecipientsViewController = segue.destinationViewController as! EditRecipientsViewController
-            editRecipientsViewController.toPeople = toPeople
-            editRecipientsViewController.toSearchPeople = toSearchPeople
-            editRecipientsViewController.toEmails = toEmails
-        }
     }
     
     @IBAction func emailAddressSelected(segue:UIStoryboardSegue) {
@@ -602,7 +520,107 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
     }
     
-    func formatNextLabel() {
+    @IBAction func recipientsEdited(segue: UIStoryboardSegue) {
+        shadedView.hidden = true
+        formatNextLabel()
+        validateNextButton()
+        personTable.reloadData()
+    }
+    
+    @IBAction func editRecipientsCancelled(segue: UIStoryboardSegue) {
+        shadedView.hidden = true
+    }
+    
+    //MARK: Segues
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "viewPhoneContact" {
+            let cell = sender as! PhoneContactCell
+            let phoneContactViewController = segue.destinationViewController as! PhoneContactViewController
+            phoneContactViewController.person = cell.person
+            let email = personEmailSelected(cell.person)
+            if email != "" {
+                let personEmails = cell.person.emails.allObjects as! [EmailAddress]
+                let emailSelected = personEmails.filter() {$0.email == personEmailSelected(cell.person) }[0]
+                phoneContactViewController.emailSelected = emailSelected
+            }
+        }
+        else if segue.identifier == "editRecipients" {
+            shadedView.hidden = false
+            let editRecipientsViewController = segue.destinationViewController as! EditRecipientsViewController
+            editRecipientsViewController.toPeople = toPeople
+            editRecipientsViewController.toSearchPeople = toSearchPeople
+            editRecipientsViewController.toEmails = toEmails
+        }
+    }
+    
+    //MARK: Private
+    
+    private func searchPeopleOnSlowpost(term: String) {
+        let searchTerm = RestService.normalizeSearchTerm(searchController.searchBar.text!)
+        let searchPeopleURL = "\(PostOfficeURL)people/search?term=\(searchTerm)&limit=10"
+        
+        SearchPersonService.searchPeople(searchPeopleURL, completion: { (error, result) -> Void in
+            if let error = error {
+                print(error)
+            }
+            else if let peopleArray = result as? [SearchPerson] {
+                if peopleArray.count > 0 {
+                    if self.toSearchPeople.count == 0 {
+                        self.searchResults = peopleArray
+                        self.personTable.reloadData()
+                    }
+                    else {
+                        self.filterSelectedPeopleFromSearchResults(peopleArray)
+                    }
+                }
+                else {
+                    self.searchResults = [SearchPerson]()
+                }
+            }
+        })
+    }
+    
+    private func filterSelectedPeopleFromSearchResults(results:[SearchPerson]) {
+        var selectedIds = [String]()
+        for selectedPerson in toSearchPeople {
+            selectedIds.append(selectedPerson.id)
+        }
+        var filteredResults = [SearchPerson]()
+        for person in results {
+            if selectedIds.indexOf(person.id) == nil {
+                filteredResults.append(person)
+            }
+        }
+        searchResults = filteredResults
+        personTable.reloadData()
+    }
+    
+    private func personSelected(person: Person) -> Bool {
+        let filter = toPeople.filter() {$0.id == person.id}
+        if filter.count > 0 {
+            return true
+        }
+        return false
+    }
+    
+    private func personEmailSelected(person: Person) -> String {
+        let selectedSet = Set(toEmails)
+        var personEmails = [String]()
+        for object in person.emails.allObjects {
+            let emailAddress = object as! EmailAddress
+            personEmails.append(emailAddress.email)
+        }
+        let personSet = Set(personEmails)
+        if selectedSet.intersect(personSet).count > 0 {
+            return Array(selectedSet)[0]
+        }
+        else {
+            return ""
+        }
+    }
+    
+    private func formatNextLabel() {
         let numSlowposts = toPeople.count + toSearchPeople.count
         let numEmails = toEmails.count
         var title:String?
@@ -635,17 +653,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         nextButton.titleLabel?.numberOfLines = 0
         nextButton.titleLabel?.adjustsFontSizeToFitWidth = true
         
-    }
-    
-    @IBAction func recipientsEdited(segue: UIStoryboardSegue) {
-        shadedView.hidden = true
-        formatNextLabel()
-        validateNextButton()
-        personTable.reloadData()
-    }
-    
-    @IBAction func editRecipientsCancelled(segue: UIStoryboardSegue) {
-        shadedView.hidden = true
     }
     
 }
