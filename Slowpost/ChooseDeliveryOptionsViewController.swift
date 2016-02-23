@@ -10,9 +10,9 @@ import UIKit
 
 class ChooseDeliveryOptionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    
     var scheduledToArrive:NSDate?
     var deliveryMethod:String!
+    
     @IBOutlet weak var optionsTable: UITableView!
     @IBOutlet weak var confirmButton: UIButton!
     
@@ -22,18 +22,28 @@ class ChooseDeliveryOptionsViewController: UIViewController, UITableViewDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        formatCells()
+        configure()
+    }
+    
+    //MARK: Setup
+    
+    private func configure() {
         confirmButton.layer.cornerRadius = 5
         optionsTable.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+        formatCells()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func setMinimumDate() -> NSDate {
-        return NSDate()
+    private func formatCells() {
+        for index in 0...(optionsTable.numberOfRowsInSection(0)-1) {
+            let indexPath = NSIndexPath(forRow: index, inSection: 0)
+            let cell = optionsTable.cellForRowAtIndexPath(indexPath)!
+            if cell.reuseIdentifier == deliveryMethod {
+                cell.accessoryType = .Checkmark
+            }
+            else {
+                cell.accessoryType = .None
+            }
+        }
     }
     
     // Table configuration
@@ -67,31 +77,12 @@ class ChooseDeliveryOptionsViewController: UIViewController, UITableViewDelegate
         }
     }
     
-    func dateUpdated(sender: UIDatePicker) {
-        deliveryMethod = "scheduled"
-        scheduledToArrive = sender.date
-        formatCells()
-    }
-    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         switch indexPath.row {
         case 2:
             return 270
         default:
             return 44
-        }
-    }
-    
-    func formatCells() {
-        for index in 0...(optionsTable.numberOfRowsInSection(0)-1) {
-            let indexPath = NSIndexPath(forRow: index, inSection: 0)
-            let cell = optionsTable.cellForRowAtIndexPath(indexPath)!
-            if cell.reuseIdentifier == deliveryMethod {
-                cell.accessoryType = .Checkmark
-            }
-            else {
-                cell.accessoryType = .None
-            }
         }
     }
 
@@ -104,6 +95,14 @@ class ChooseDeliveryOptionsViewController: UIViewController, UITableViewDelegate
         optionsTable.reloadData()
     }
     
+    //MARK: User actions
+    
+    func dateUpdated(sender: UIDatePicker) {
+        deliveryMethod = "scheduled"
+        scheduledToArrive = sender.date
+        formatCells()
+    }
+    
     @IBAction func viewTapped(sender: AnyObject) {
         performSegueWithIdentifier("deliveryOptionsCancelled", sender: nil)
     }    
@@ -112,6 +111,8 @@ class ChooseDeliveryOptionsViewController: UIViewController, UITableViewDelegate
     @IBAction func confirmButtonTapped(sender: AnyObject) {
         performSegueWithIdentifier("deliveryOptionChosen", sender: nil)
     }
+    
+    //MARK: Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "deliveryOptionChosen" {
@@ -124,6 +125,12 @@ class ChooseDeliveryOptionsViewController: UIViewController, UITableViewDelegate
                 destinationController.scheduledToArrive = nil
             }
         }
+    }
+    
+    //MARK: Private
+    
+    private func setMinimumDate() -> NSDate {
+        return NSDate()
     }
     
 

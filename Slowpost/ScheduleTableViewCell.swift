@@ -12,16 +12,5 @@ class ScheduleTableViewCell: UITableViewCell {
 
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var scheduleButton: UIButton!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
 }

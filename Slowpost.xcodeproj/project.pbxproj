@@ -135,7 +135,6 @@
 		D2E4EDD01B7D136A00D2A028 /* Quicksand-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDC91B7D11F300D2A028 /* Quicksand-Regular.otf */; };
 		D2E4EDD21B7D1EC000D2A028 /* example_card.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDD11B7D1EC000D2A028 /* example_card.jpg */; };
 		D2E4EDD41B7D307E00D2A028 /* example_photo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D2E4EDD31B7D307E00D2A028 /* example_photo.jpg */; };
-		D2E9564A1B309AA100CA8CC8 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */; };
 		D2E97D8D1BC322BF00DAEB6C /* RecipientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E97D8C1BC322BF00DAEB6C /* RecipientCell.swift */; };
 		D2F061191BDAF15E005AC57F /* EditRecipientsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F061181BDAF15E005AC57F /* EditRecipientsViewController.swift */; };
 		D2F5CAC21B8F91D900551435 /* Default Card.png in Resources */ = {isa = PBXBuildFile; fileRef = D2F5CAC11B8F91D900551435 /* Default Card.png */; };
@@ -296,7 +295,6 @@
 		D2E4EDC91B7D11F300D2A028 /* Quicksand-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Regular.otf"; sourceTree = "<group>"; };
 		D2E4EDD11B7D1EC000D2A028 /* example_card.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = example_card.jpg; sourceTree = "<group>"; };
 		D2E4EDD31B7D307E00D2A028 /* example_photo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = example_photo.jpg; sourceTree = "<group>"; };
-		D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		D2E97D8C1BC322BF00DAEB6C /* RecipientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientCell.swift; sourceTree = "<group>"; };
 		D2F061181BDAF15E005AC57F /* EditRecipientsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditRecipientsViewController.swift; sourceTree = "<group>"; };
 		D2F5CAC01B8F79B800551435 /* SlowpostModel 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SlowpostModel 6.xcdatamodel"; sourceTree = "<group>"; };
@@ -379,17 +377,16 @@
 			isa = PBXGroup;
 			children = (
 				CC23DE2D1AE54C2B00AFEDE4 /* compose.storyboard */,
+				D25130431BC43C44007541BE /* ComposeNavigationController.swift */,
 				D21003201C1A0CF100E45CA3 /* ChooseImageAndComposeMailViewController.swift */,
-				D2CEC4731B72ACBD002CFD25 /* SendingViewController.swift */,
-				D2E956491B309AA100CA8CC8 /* CardCollectionViewCell.swift */,
+				D21003221C1A127E00E45CA3 /* PhotoCollectionViewCell.swift */,
 				D2CEC4631B6C1F4F002CFD25 /* PhotoLibraryViewController.swift */,
 				D2CEC4651B6C1F5C002CFD25 /* TakePhotoViewController.swift */,
 				D2389E671B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift */,
-				D25130431BC43C44007541BE /* ComposeNavigationController.swift */,
-				D21003221C1A127E00E45CA3 /* PhotoCollectionViewCell.swift */,
 				D215D8051C21EAF000CA0B4A /* ScheduleTableViewCell.swift */,
 				D215D8071C21EB0D00CA0B4A /* StandardDeliveryTableViewCell.swift */,
 				D215D8091C21EB2100CA0B4A /* ExpressDeliveryTableViewCell.swift */,
+				D2CEC4731B72ACBD002CFD25 /* SendingViewController.swift */,
 			);
 			name = Compose;
 			sourceTree = "<group>";
@@ -905,7 +902,6 @@
 				D2B7CEAE1B696DBC007F8235 /* RestService.swift in Sources */,
 				D2A361381B3CB52B00811D14 /* WarningUILabel.swift in Sources */,
 				D27DA32D1B66C51900DF32A1 /* MessageUILabel.swift in Sources */,
-				D2E9564A1B309AA100CA8CC8 /* CardCollectionViewCell.swift in Sources */,
 				D20D8ED41B2A510700BBF6B5 /* ToViewController.swift in Sources */,
 				D2389E7D1B962B7000CB19BB /* Conversation.swift in Sources */,
 				D2CEC4741B72ACBD002CFD25 /* SendingViewController.swift in Sources */,

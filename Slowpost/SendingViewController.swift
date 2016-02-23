@@ -24,8 +24,8 @@ class SendingViewController: UIViewController {
     var manuallyCancelled:Bool!
     var warningMessage:String!
     var deliveryMethod:String!
-    @IBOutlet weak var deliveryLabel: UILabel!
     
+    @IBOutlet weak var deliveryLabel: UILabel!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var cancelButtonHeight: NSLayoutConstraint!
     
@@ -40,19 +40,21 @@ class SendingViewController: UIViewController {
         super.viewDidLoad()
         Flurry.logEvent("Began_Sending_Mail")
         manuallyCancelled = false
-        
-        cancelButton.layer.cornerRadius = 5
-        
-        formatDeliveryLabel()
+        configure()
         sendMail()
-
+    }
+    
+    //MARK: Setup
+    
+    private func configure() {
+        cancelButton.layer.cornerRadius = 5
+        formatDeliveryLabel()
         if deviceType == "iPhone 4S" {
             formatForiPhone4S()
         }
-        
     }
     
-    func formatDeliveryLabel() {
+    private func formatDeliveryLabel() {
         switch deliveryMethod {
         case "express":
             deliveryLabel.text = ""
@@ -64,16 +66,43 @@ class SendingViewController: UIViewController {
         }
     }
     
-    func formatForiPhone4S() {
+    private func formatForiPhone4S() {
         cancelButtonHeight.constant = 30
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    //MARK: User actions
+    
+    @IBAction func cancelButtonPressed(sender: AnyObject) {
+        manuallyCancelled = true
+        let lastRequestEndpoint:String? = RestService.endpointForLastPostRequest()
+        if let lastRequestEndpoint = lastRequestEndpoint {
+            if lastRequestEndpoint == "send" || lastRequestEndpoint == "upload" {
+                lastPostRequest.cancel()
+                self.performSegueWithIdentifier("notReadyToSend", sender: nil)
+            }
+        }
     }
     
-    func sendMail() {
+    //MARK: Segues
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "mailFailedToSend" {
+            
+            let destinationController = segue.destinationViewController as? ChooseImageAndComposeMailViewController
+            destinationController!.warningLabel.show(warningMessage)
+            
+            // Delay the dismissal by 5 seconds
+            let delay = 5.0 * Double(NSEC_PER_SEC)
+            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+            dispatch_after(time, dispatch_get_main_queue(), {
+                destinationController!.warningLabel.hide()
+            })
+        }
+    }
+
+    //MARK: Private
+    
+    private func sendMail() {
         if image != nil {
             let fileName = generateFileName()
             FileService.uploadImage(image, filename: fileName, completion: { (error, result) -> Void in
@@ -95,13 +124,13 @@ class SendingViewController: UIViewController {
     
     }
     
-    func generateFileName() -> String {
+    private func generateFileName() -> String {
         let uuid = NSUUID().UUIDString
         let fileName = uuid + ".jpg"
         return fileName
     }
     
-    func sendMailToPostoffice(imageUid: String?) {
+    private func sendMailToPostoffice(imageUid: String?) {
         
         let mailURL = getMailURL()
         let correspondents = formatCorrespondents()
@@ -158,7 +187,7 @@ class SendingViewController: UIViewController {
         
     }
     
-    func getMailURL() -> String {
+    private func getMailURL() -> String {
         let userId = LoginService.getUserIdFromToken()
         switch deliveryMethod {
         case "express":
@@ -168,7 +197,7 @@ class SendingViewController: UIViewController {
         }
     }
     
-    func formatCorrespondents() -> [String : [String]] {
+    private func formatCorrespondents() -> [String : [String]] {
         var correspondents = [String : [String]]()
         if (toPeople.count > 0 || toSearchPeople.count > 0) && toEmails.count > 0 {
             correspondents = ["to_people": peopleIds(), "emails": toEmails]
@@ -182,7 +211,7 @@ class SendingViewController: UIViewController {
         return correspondents
     }
     
-    func peopleIds() -> [String] {
+    private func peopleIds() -> [String] {
         var peopleIds = [String]()
         for person in toPeople {
             peopleIds.append(person.id)
@@ -192,32 +221,5 @@ class SendingViewController: UIViewController {
         }
         return peopleIds
     }
-    
-    @IBAction func cancelButtonPressed(sender: AnyObject) {
-        manuallyCancelled = true
-        let lastRequestEndpoint:String? = RestService.endpointForLastPostRequest()
-        if let lastRequestEndpoint = lastRequestEndpoint {
-            if lastRequestEndpoint == "send" || lastRequestEndpoint == "upload" {
-                lastPostRequest.cancel()
-                self.performSegueWithIdentifier("notReadyToSend", sender: nil)
-            }
-        }
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "mailFailedToSend" {
-            
-            let destinationController = segue.destinationViewController as? ChooseImageAndComposeMailViewController
-            destinationController!.warningLabel.show(warningMessage)
-            
-            // Delay the dismissal by 5 seconds
-            let delay = 5.0 * Double(NSEC_PER_SEC)
-            let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-            dispatch_after(time, dispatch_get_main_queue(), {
-                destinationController!.warningLabel.hide()
-            })
-        }
-    }
-    
 
 }

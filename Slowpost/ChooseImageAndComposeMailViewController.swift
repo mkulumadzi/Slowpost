@@ -63,57 +63,34 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         getRecipientsFromNavController()
-        toLabel.text = toList()
         getCards()
-        
-        initializeClearPhotoButton()
-        initializeDoneEditingButton()
-        initializeSendButton()
-        initializeWarningLabel()
-        initializeShadedView()
-        initializeCardOverlays()
-        formatButtons()
-        
+        configure()
         setDefaultDeliveryMethod()
+        resignFirstResponder()
         
+    }
+    
+    //MARK: Setup
+    
+    private func configure() {
+        toLabel.text = toList()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShow:", name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardWillHideNotification, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "rotated", name: UIDeviceOrientationDidChangeNotification, object: nil)
-        
-        resignFirstResponder()
-        
+        formatButtons()
+        initializeClearPhotoButton()
+        initializeDoneEditingButton()
+        initializeSendButton()
+        initializeWarningLabel()
+        initializeShadedView()
+        initializeCardOverlays()
     }
     
-    override func viewDidLayoutSubviews() {
-    }
-    
-    func rotated() {
-        view.layoutIfNeeded()
-    }
-    
-    func setDefaultDeliveryMethod() {
-        deliveryMethod = "express"
-        let userId = LoginService.getUserIdFromToken()
-        let defaultsUrl = "\(PostOfficeURL)/person/id/\(userId)/defaults"
-        let headers = ["Authorization": RestService.addAuthHeader()]
-        Alamofire.request(.GET, defaultsUrl, headers: headers).responseJSON { (response) in
-            switch response.result {
-            case .Failure:
-                print("Error getting defaults")
-            case .Success:
-                let json = JSON(response.result.value!)
-                self.deliveryMethod = json["default_delivery_method"].stringValue
-                print(self.deliveryMethod)
-            }
-        }
-    }
-    
-    func formatButtons() {
+    private func formatButtons() {
         cancelButton.setImage(UIImage(named: "chevron-down")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         cancelButton.tintColor = UIColor.whiteColor()
         
@@ -128,9 +105,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         textOnly.tintColor = slowpostDarkGreen
     }
     
-    // Initializing buttons
-    
-    func initializeClearPhotoButton() {
+    private func initializeClearPhotoButton() {
         let rect = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
         clearPhotoButton = UIButton(frame: rect)
         clearPhotoButton.setImage(UIImage(named: "remove")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
@@ -139,22 +114,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         
     }
     
-    func clearComposeView() {
-        print("Photo being cleared!")
-        for subview in view.subviews {
-            if let composeView = subview as? ComposeView {
-                for childview in composeView.subviews {
-                    if let composeTextView = childview as? UITextView {
-                        textEntered = composeTextView.text
-                    }
-                }
-                composeView.removeFromSuperview()
-            }
-        }
-        sendButtonView.hidden = true
-    }
-    
-    func initializeDoneEditingButton() {
+    private func initializeDoneEditingButton() {
         doneEditingButton = UIButton()
         view.addSubview(doneEditingButton)
         doneEditingButton.backgroundColor = slowpostDarkGreen
@@ -165,11 +125,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         doneEditingButton.hidden = true
     }
     
-    func doneEditing() {
-        view.endEditing(true)
-    }
-    
-    func initializeSendButton() {
+    private func initializeSendButton() {
         sendButtonView = UIView()
         view.addSubview(sendButtonView)
         sendButtonView.backgroundColor = slowpostDarkGreen
@@ -224,10 +180,6 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         sendButtonView.hidden = true
     }
     
-    func sendTapped() {
-        performSegueWithIdentifier("sendMail", sender: nil)
-    }
-    
     func initializeWarningLabel() {
         warningLabel = WarningUILabel()
         view.addSubview(warningLabel)
@@ -255,15 +207,22 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         shadedView.hidden = true
     }
     
-    //
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    private func validateSendAndPlaceholder() {
+        if composeTextView.text != nil && composeTextView.text != "" {
+            sendButtonView.hidden = false
+            formatSendButton()
+            view.bringSubviewToFront(sendButtonView)
+            placeholderText.hidden = true
+        }
+        else {
+            sendButtonView.hidden = true
+            placeholderText.hidden = false
+        }
     }
     
     //Recipients and ToList configuration
     
-    func getRecipientsFromNavController() {
+    private func getRecipientsFromNavController() {
         if let navController = navigationController as? ComposeNavigationController {
             toPeople = navController.toPeople
             toSearchPeople = navController.toSearchPeople
@@ -271,7 +230,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         }
     }
     
-    func toList() -> String {
+    private func toList() -> String {
         var toList = ""
         var index = 0
         for person in toPeople {
@@ -294,14 +253,14 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     
     // Getting images
     
-    func numCards() -> CGFloat {
+    private func numCards() -> CGFloat {
         let width = Double(view.frame.width)
         let size = Double(160.0)
         let numPhotos = CGFloat(round(width / size))
         return numPhotos
     }
     
-    func getCards() {
+    private func getCards() {
         activityIndicator.hidden = false
         activityIndicator.startAnimating()
         let cardsURL = "\(PostOfficeURL)cards"
@@ -322,7 +281,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         })
     }
     
-    func populateCardPhotos() {
+    private func populateCardPhotos() {
         
         for url in cardUrls {
             // First check for local file, use that if it is found
@@ -351,7 +310,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         
     }
     
-    func stopActivityIndicator() {
+    private func stopActivityIndicator() {
         if activityIndicator.isAnimating() {
             activityIndicator.stopAnimating()
             activityIndicator.hidden = true
@@ -360,7 +319,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     
     // Card overlays
     
-    func initializeCardOverlays() {
+    private func initializeCardOverlays() {
         let overlaysURL = "\(PostOfficeURL)overlays"
         
         RestService.getRequest(overlaysURL, headers: nil, completion: { (error, result) -> Void in
@@ -380,7 +339,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         })
     }
     
-    func populateOverlayPhotos() {
+    private func populateOverlayPhotos() {
         for url in overlayUrls {
             let overlayName = url.characters.split{$0 == "/"}.map(String.init).last
             let imageFile = FileService.getImageFromDirectory(overlayName)
@@ -404,50 +363,12 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         }
     }
     
-    func addCardOverlay(image: UIImage, name: String) {
+    private func addCardOverlay(image: UIImage, name: String) {
         let edge = name.characters.split{$0 == "-"}.map(String.init).first!.uppercaseString
         cardOverlays.append(["image": image, "edge": edge])
     }
     
-    // Photo Library
-    
-    @IBAction func goToPhotoLibrary(sender: AnyObject) {
-        Flurry.logEvent("Chose_To_Select_Photo_From_Library")
-        
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) {
-            let imagePicker = UIImagePickerController()
-            
-            imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-            imagePicker.mediaTypes = [kUTTypeImage as String]
-            imagePicker.allowsEditing = false
-            
-            imagePicker.navigationBar.tintColor = UIColor.whiteColor()
-            imagePicker.navigationBar.barTintColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
-            
-            presentViewController(imagePicker, animated: true, completion: nil)
-            newMedia = false
-        }
-    }
-    
-    // Camera configuration
-
-    @IBAction func takePhoto(sender: AnyObject) {
-        Flurry.logEvent("Chose_To_Take_Picture")
-        
-        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
-            
-            let imagePicker = UIImagePickerController()
-            
-            imagePicker.delegate = self
-            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
-            imagePicker.mediaTypes = [kUTTypeImage as String]
-            imagePicker.allowsEditing = false
-            
-            presentViewController(imagePicker, animated: true, completion: nil)
-            newMedia = true
-        }
-    }
+    // Configure image picker view
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
@@ -527,18 +448,10 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         addComposeView()
     }
     
-    // Handling case where person does not want to send a photo
-    
-    
-    @IBAction func textOnlyOptionSelected(sender: AnyObject) {
-        imageSelected = nil
-        addComposeView()
-    }
-    
     
     // Set up compose view
     
-    func addComposeView() {
+    private func addComposeView() {
         composeView = ComposeView()
         composeView.backgroundColor = UIColor.lightGrayColor()
         view.addSubview(composeView)
@@ -564,7 +477,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         
     }
     
-    func addImageContainerView() -> UIView {
+    private func addImageContainerView() -> UIView {
         imageContainerView = UIView()
         composeView.addSubview(imageContainerView)
         imageContainerView.backgroundColor = UIColor.lightGrayColor()
@@ -624,7 +537,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         return imageContainerView
     }
     
-    func addOverlayContainer(maxImageHeight: CGFloat) {
+    private func addOverlayContainer(maxImageHeight: CGFloat) {
         cardOverlayContainer = OverlayContainerView()
         composeView.addSubview(cardOverlayContainer)
         cardOverlayContainer.backgroundColor = UIColor.clearColor()
@@ -664,7 +577,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         cardOverlayContainer.addGestureRecognizer(overlaySwipeRight)
     }
     
-    func addCardOverlayImages(maxImageHeight: CGFloat) {
+    private func addCardOverlayImages(maxImageHeight: CGFloat) {
         let renderedImageWidth = imageSelected.size.width * maxImageHeight / imageSelected.size.height
         var offsetIndex = CGFloat(1.0)
         for overlayImageDictionary in cardOverlays {
@@ -700,7 +613,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
 
     }
     
-    func addImageOptionView() -> UIView {
+    private func addImageOptionView() -> UIView {
         let imageOptionView = UIView()
         composeView.addSubview(imageOptionView)
         imageOptionView.backgroundColor = UIColor.whiteColor()
@@ -769,7 +682,7 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     }
 
     
-    func addComposeTextView(topView: UIView) {
+    private func addComposeTextView(topView: UIView) {
         composeTopBorder = UIView()
         composeTopBorder.backgroundColor = UIColor.darkGrayColor()
         composeView.addSubview(composeTopBorder)
@@ -877,16 +790,45 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
         doneEditingButton.hidden = false
     }
     
-    func validateSendAndPlaceholder() {
-        if composeTextView.text != nil && composeTextView.text != "" {
-            sendButtonView.hidden = false
-            formatSendButton()
-            view.bringSubviewToFront(sendButtonView)
-            placeholderText.hidden = true
+    //MARK: User Actions
+    
+    // Photo Library
+    
+    @IBAction func goToPhotoLibrary(sender: AnyObject) {
+        Flurry.logEvent("Chose_To_Select_Photo_From_Library")
+        
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum) {
+            let imagePicker = UIImagePickerController()
+            
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+            imagePicker.mediaTypes = [kUTTypeImage as String]
+            imagePicker.allowsEditing = false
+            
+            imagePicker.navigationBar.tintColor = UIColor.whiteColor()
+            imagePicker.navigationBar.barTintColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
+            
+            presentViewController(imagePicker, animated: true, completion: nil)
+            newMedia = false
         }
-        else {
-            sendButtonView.hidden = true
-            placeholderText.hidden = false
+    }
+    
+    // Camera configuration
+    
+    @IBAction func takePhoto(sender: AnyObject) {
+        Flurry.logEvent("Chose_To_Take_Picture")
+        
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera) {
+            
+            let imagePicker = UIImagePickerController()
+            
+            imagePicker.delegate = self
+            imagePicker.sourceType = UIImagePickerControllerSourceType.Camera
+            imagePicker.mediaTypes = [kUTTypeImage as String]
+            imagePicker.allowsEditing = false
+            
+            presentViewController(imagePicker, animated: true, completion: nil)
+            newMedia = true
         }
     }
     
@@ -902,58 +844,47 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     }
     
     @IBAction func deliveryOptionsCancelled(segue: UIStoryboardSegue) {
-            shadedView.hidden = true
+        shadedView.hidden = true
     }
     
-    func formatSendButton() {
-        print("formattingSendButton")
-        switch deliveryMethod {
-        case "express":
-            sendButtonLabel.text = "Send now >>"
-        case "scheduled":
-            let dateString = scheduledToArrive!.formattedAsString("yyyy-MM-dd")
-            sendButtonLabel.text = "Send (arrives on \(dateString)) >>"
-        default:
-            sendButtonLabel.text = "Send (arrives in 1 to 2 days) >>"
-        }
+    // Person does not want to send a photo
+    @IBAction func textOnlyOptionSelected(sender: AnyObject) {
+        imageSelected = nil
+        addComposeView()
     }
     
-    // Merging images if needed
-    
-    func mergeImages(bottomImage: UIImage, index: Int) -> UIImage {
-        let topImage = cardOverlays[index]["image"] as! UIImage
-        let edge = cardOverlays[index]["edge"] as! String
-        
-        let size = bottomImage.size
-        UIGraphicsBeginImageContext(size)
-        
-        let areaSize = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        bottomImage.drawInRect(areaSize)
-        
-        let topWidth = size.width
-        let topHeight = topImage.size.height * size.width / topImage.size.width
-        var offset:CGFloat!
-        if edge == "TOP" {
-            offset = 0.0
-        }
-        else {
-            offset = size.height - topHeight
-        }
-        let topSize = CGRect(x: 0, y: offset, width: topWidth, height: topHeight)
-        topImage.drawInRect(topSize, blendMode: .Normal, alpha: 1.0)
-        
-        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage
+    func rotated() {
+        view.layoutIfNeeded()
     }
     
-    //
+    func doneEditing() {
+        view.endEditing(true)
+    }
     
+    func sendTapped() {
+        performSegueWithIdentifier("sendMail", sender: nil)
+    }
     
     @IBAction func cancel(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: {})
     }
+    
+    func clearComposeView() {
+        print("Photo being cleared!")
+        for subview in view.subviews {
+            if let composeView = subview as? ComposeView {
+                for childview in composeView.subviews {
+                    if let composeTextView = childview as? UITextView {
+                        textEntered = composeTextView.text
+                    }
+                }
+                composeView.removeFromSuperview()
+            }
+        }
+        sendButtonView.hidden = true
+    }
+    
+    //MARK: Segues
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "sendMail" {
@@ -998,5 +929,66 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     
     @IBAction func notReadyToSend(segue: UIStoryboardSegue) {
     }
+    
+    //MARK: Private
+    
+    private func setDefaultDeliveryMethod() {
+        deliveryMethod = "express"
+        let userId = LoginService.getUserIdFromToken()
+        let defaultsUrl = "\(PostOfficeURL)/person/id/\(userId)/defaults"
+        let headers = ["Authorization": RestService.addAuthHeader()]
+        Alamofire.request(.GET, defaultsUrl, headers: headers).responseJSON { (response) in
+            switch response.result {
+            case .Failure:
+                print("Error getting defaults")
+            case .Success:
+                let json = JSON(response.result.value!)
+                self.deliveryMethod = json["default_delivery_method"].stringValue
+                print(self.deliveryMethod)
+            }
+        }
+    }
+    
+    private func formatSendButton() {
+        print("formattingSendButton")
+        switch deliveryMethod {
+        case "express":
+            sendButtonLabel.text = "Send now >>"
+        case "scheduled":
+            let dateString = scheduledToArrive!.formattedAsString("yyyy-MM-dd")
+            sendButtonLabel.text = "Send (arrives on \(dateString)) >>"
+        default:
+            sendButtonLabel.text = "Send (arrives in 1 to 2 days) >>"
+        }
+    }
+    
+    private func mergeImages(bottomImage: UIImage, index: Int) -> UIImage {
+        let topImage = cardOverlays[index]["image"] as! UIImage
+        let edge = cardOverlays[index]["edge"] as! String
+        
+        let size = bottomImage.size
+        UIGraphicsBeginImageContext(size)
+        
+        let areaSize = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        bottomImage.drawInRect(areaSize)
+        
+        let topWidth = size.width
+        let topHeight = topImage.size.height * size.width / topImage.size.width
+        var offset:CGFloat!
+        if edge == "TOP" {
+            offset = 0.0
+        }
+        else {
+            offset = size.height - topHeight
+        }
+        let topSize = CGRect(x: 0, y: offset, width: topWidth, height: topHeight)
+        topImage.drawInRect(topSize, blendMode: .Normal, alpha: 1.0)
+        
+        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+
 
 }
