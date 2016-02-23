@@ -13,7 +13,6 @@ import Foundation
 class ConversationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
     var conversation:Conversation!
-
     var fetchedResultsController: NSFetchedResultsController!
     
     @IBOutlet weak var mailTable: UITableView!
@@ -31,20 +30,20 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         Flurry.logEvent("Conversation_view_opened")
-        
+        configure()
+    }
+    
+    //MARK: Setup
+    
+    private func configure() {
         initializeFetchedResultsController()
         formatButtons()
-        
-        refreshData()
-        
+
         mailTable.addSubview(refreshControl)
-        
         mailTable.estimatedRowHeight = 45 + view.frame.width / 2
         mailTable.rowHeight = UITableViewAutomaticDimension
-        
         mailTable.tableHeaderView = createTableHeader()
         mailTable.separatorStyle = UITableViewCellSeparatorStyle.None
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -52,17 +51,13 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         refreshData()
     }
     
-    func formatButtons() {
+    private func formatButtons() {
         composeButton.setImage(UIImage(named: "reply")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         composeButton.tintColor = UIColor.whiteColor()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    func createTableHeader() -> UIView {
+    private func createTableHeader() -> UIView {
         let conversationList = conversation.conversationList()
         let headerView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: 30.0))
         headerView.backgroundColor = UIColor.whiteColor()
@@ -90,7 +85,8 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
     
     
     // Mark: Set up Core Data
-    func initializeFetchedResultsController() {
+    
+    private func initializeFetchedResultsController() {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let dataController = appDelegate.dataController
         let fetchRequest = NSFetchRequest(entityName: "Mail")
@@ -107,6 +103,26 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         } catch {
             fatalError("Failed to initialize FetchedResultsController: \(error)")
         }
+    }
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        refreshData()
+        refreshControl.endRefreshing()
+    }
+    
+    func refreshData() {
+        MailService.updateAllData( { error, result -> Void in
+            if result as? String == "Success" {
+                self.mailTable.reloadData()
+            }
+            else {
+                print(error)
+            }
+        })
+    }
+    
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        mailTable.reloadData()
     }
     
     // MARK: Section Configuration
@@ -162,7 +178,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         return cell
     }
     
-    func configureCell(cell: ConversationMailCell, indexPath: NSIndexPath) {
+    private func configureCell(cell: ConversationMailCell, indexPath: NSIndexPath) {
         let mail = fetchedResultsController.objectAtIndexPath(indexPath) as! Mail
         cell.mail = mail
         cell.imageFile = nil
@@ -194,7 +210,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         
     }
     
-    func addImageToCell(cell: ConversationMailCell) {
+    private func addImageToCell(cell: ConversationMailCell) {
         cell.mail.getImage({error, result -> Void in
             if let image = result as? UIImage {
                 cell.imageFile = image
@@ -202,7 +218,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         })
     }
     
-    func generateStatusLabel(cell: ConversationMailCell, mail: Mail) {
+    private func generateStatusLabel(cell: ConversationMailCell, mail: Mail) {
         if mail.status == "SENT" {
             let sentString = mail.dateSent.formattedAsString("yyyy-MM-dd")
             cell.statusLabel.text = "Sent on \(sentString)"
@@ -213,7 +229,7 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
-    func formatMailStatusLabel(cell: ConversationMailCell) {
+    private func formatMailStatusLabel(cell: ConversationMailCell) {
         if cell.mail.toLoggedInUser() == true {
             if cell.mail.myStatus != "READ" {
                 cell.mailStatusLabel.backgroundColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0)
@@ -241,12 +257,6 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
 
     }
     
-    
-    func handleRefresh(refreshControl: UIRefreshControl) {
-        refreshData()
-        refreshControl.endRefreshing()
-    }
-    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let mail = fetchedResultsController.objectAtIndexPath(indexPath) as! Mail
         let storyboard = UIStoryboard(name: "mail", bundle: nil)
@@ -256,21 +266,8 @@ class ConversationViewController: UIViewController, UITableViewDelegate, UITable
         presentViewController(mailViewController, animated: true, completion: {})
     }
     
-    func refreshData() {
-        MailService.updateAllData( { error, result -> Void in
-            if result as? String == "Success" {
-                self.mailTable.reloadData()
-            }
-            else {
-                print(error)
-            }
-        })
-    }
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        mailTable.reloadData()
-    }
-    
+
+    //MARK: User actions
     
     @IBAction func composeMessage(sender: AnyObject) {
         Flurry.logEvent("Clicked_compose_from_conversation_view")

@@ -12,7 +12,6 @@ import Foundation
 
 class ConversationListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, NSFetchedResultsControllerDelegate {
     
-    
     @IBOutlet weak var conversationList: UITableView!
     @IBOutlet weak var messageLabel: MessageUILabel!
     @IBOutlet weak var settingsButton: UIButton!
@@ -31,27 +30,38 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
     override func viewDidLoad() {
         super.viewDidLoad()
         Flurry.logEvent("Conversation_View_Opened")
+        configure()
+        refreshData()
+    }
+    
+    //MARK: Setup
+    
+    private func configure() {
         formatButtons()
         initializeFetchedResultsController()
-        
         messageLabel.hide()
         conversationList.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: conversationList.bounds.size.width, height: 0.01))
-        refreshData()
         conversationList.addSubview(refreshControl)
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(true)
-    }
-    
-    func formatButtons() {
+    private func formatButtons() {
         settingsButton.setImage(UIImage(named: "settings")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         settingsButton.tintColor = UIColor.whiteColor()
     }
     
+    func refreshData() {
+        MailService.updateAllData( { error, result -> Void in
+            if result as? String == "Success" {
+                self.conversationList.reloadData()
+            }
+            else {
+                print(error)
+            }
+        })
+    }
     
     // Mark: Set up Core Data
-    func initializeFetchedResultsController() {
+    private func initializeFetchedResultsController() {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let dataController = appDelegate.dataController
         
@@ -68,16 +78,15 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         }
     }
 
-    
     func handleRefresh(refreshControl: UIRefreshControl) {
         refreshData()
         refreshControl.endRefreshing()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        self.conversationList.reloadData()
     }
+    
     
     // MARK: Section Configuration
     
@@ -110,7 +119,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         return cell!
     }
     
-    func formatConversationCellLabel(cell: ConversationCell) {
+    private func formatConversationCellLabel(cell: ConversationCell) {
         
         for view in cell.subviews {
             if let cellLabel = view as? CellLabelUIView {
@@ -140,25 +149,7 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         Flurry.logEvent("Conversation_Opened")
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "viewConversation" {
-            if let conversationCell = sender as? ConversationCell {
-                let conversationViewController = segue.destinationViewController as? ConversationViewController
-                conversationViewController!.conversation = conversationCell.conversation
-            }
-        }
-    }
-    
-    func refreshData() {
-        MailService.updateAllData( { error, result -> Void in
-            if result as? String == "Success" {
-                self.conversationList.reloadData()
-            }
-            else {
-                print(error)
-            }
-        })
-    }
+    //MARK: User actions
     
     @IBAction func settingsMenuItemSelected(segue:UIStoryboardSegue) {
         dismissSourceViewController(segue)
@@ -182,15 +173,23 @@ class ConversationListViewController: UIViewController, UITableViewDelegate, UIT
         dismissViewControllerAnimated(true, completion: {})
     }
     
+    //MARK: Segues
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "viewConversation" {
+            if let conversationCell = sender as? ConversationCell {
+                let conversationViewController = segue.destinationViewController as? ConversationViewController
+                conversationViewController!.conversation = conversationCell.conversation
+            }
+        }
+    }
+    
+    //MARK: Private
+    
     func dismissSourceViewController(segue: UIStoryboardSegue) {
         if !segue.sourceViewController.isBeingDismissed() {
             segue.sourceViewController.dismissViewControllerAnimated(true, completion: nil)
         }
     }
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        self.conversationList.reloadData()
-    }
-
     
 }

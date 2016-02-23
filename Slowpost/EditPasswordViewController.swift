@@ -10,40 +10,36 @@ import UIKit
 
 class EditPasswordViewController: UIViewController {
     
-    
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var existingPasswordField: BottomBorderUITextField!
     @IBOutlet weak var newPasswordField: BottomBorderUITextField!
     @IBOutlet weak var confirmPasswordField: BottomBorderUITextField!
     @IBOutlet weak var saveButton: TextUIButton!
-
     @IBOutlet weak var verticalSpaceToNewPasswordLabel1: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToNewPasswordField1: NSLayoutConstraint!
-    
-    
     @IBOutlet weak var saveButtonHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         Flurry.logEvent("Began_Editing_Password")
-
+        configure()
+        validateSaveButton()
+    }
+    
+    //MARK: Setup
+    
+    private func configure() {
         existingPasswordField.addBottomLayer()
         newPasswordField.addBottomLayer()
         confirmPasswordField.addBottomLayer()
-        
         saveButton.layer.cornerRadius = 5
-        
         warningLabel.hide()
-        validateSaveButton()
-        
         if deviceType == "iPhone 4S" {
             formatForiPhone4S()
         }
-        
     }
     
-    func formatForiPhone4S() {
+    private func formatForiPhone4S() {
         verticalSpaceToNewPasswordLabel1.constant = 10
         verticalSpaceToNewPasswordField1.constant = 10
         saveButtonHeight.constant = 30
@@ -55,13 +51,8 @@ class EditPasswordViewController: UIViewController {
         newPasswordField.addBottomLayer()
         confirmPasswordField.addBottomLayer()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    func validateSaveButton() {
+    private func validateSaveButton() {
         if existingPasswordField.text != "" && newPasswordField.text != "" && confirmPasswordField.text != "" {
             saveButton.enable()
         }
@@ -69,6 +60,13 @@ class EditPasswordViewController: UIViewController {
             saveButton.disable()
         }
     }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
+    
+    //MARK: User actions
     
     @IBAction func editingChanged(sender: AnyObject) {
         warningLabel.hide()
@@ -106,6 +104,8 @@ class EditPasswordViewController: UIViewController {
         performSegueWithIdentifier("passwordChanged", sender: nil)
     }
     
+    //MARK: Segues
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "passwordChanged" {
             
@@ -119,11 +119,6 @@ class EditPasswordViewController: UIViewController {
                 conversationListViewController!.messageLabel.hide()
             })
         }
-    }
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        view.endEditing(true)
-        super.touchesBegan(touches, withEvent: event)
     }
 
 }

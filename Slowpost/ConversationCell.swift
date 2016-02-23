@@ -15,19 +15,17 @@ class ConversationCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+        configure()
+    }
+
+    //MARK: Setup
+    
+    private func configure() {
         let cellLabel = addConversationCellLabel()
         addSubview(cellLabel)
-
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
-    func addConversationCellLabel() -> CellLabelUIView {
+    private func addConversationCellLabel() -> CellLabelUIView {
         let cellLabel:CellLabelUIView = CellLabelUIView(frame: CGRect(x: 10, y: 16, width: 12, height: 12))
         cellLabel.layer.cornerRadius = 6
         cellLabel.backgroundColor = UIColor.clearColor()

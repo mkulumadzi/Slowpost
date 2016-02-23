@@ -19,18 +19,17 @@ class SettingsMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Flurry.logEvent("Settings_opened")
-        
+        configure()
+    }
+    
+    //MARK: Setup
+    
+    private func configure() {
         logOutButton.layer.cornerRadius = 5
         editProfileButton.layer.cornerRadius = 5
         editPasswordButton.layer.cornerRadius = 5
         cancelButton.layer.cornerRadius = 5
-        
-        // Do any additional setup after loading the view.
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }
