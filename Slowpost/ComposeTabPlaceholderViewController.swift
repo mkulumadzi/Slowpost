@@ -23,13 +23,10 @@ class ComposeTabPlaceholderViewController: UIViewController, UITabBarDelegate {
     override func viewDidAppear(animated: Bool) {
         composeMessage()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
-    func composeMessage() {
+    //MARK: Private
+    
+    private func composeMessage() {
         let storyboard = UIStoryboard(name: "to", bundle: nil)
         let controller = storyboard.instantiateInitialViewController() as! ToNavigationController
         presentViewController(controller, animated: true, completion: { () -> Void in
