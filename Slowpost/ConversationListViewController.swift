@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import Foundation
 
-class ConversationListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, NSFetchedResultsControllerDelegate {
+class ConversationListViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var conversationList: UITableView!
     @IBOutlet weak var messageLabel: MessageUILabel!

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddEmailViewController: UIViewController {
+class AddEmailViewController: BaseViewController {
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var emailField: BottomBorderUITextField!
@@ -51,6 +51,10 @@ class AddEmailViewController: UIViewController {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         addEmail()
         return true
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
     //MARK: User actions

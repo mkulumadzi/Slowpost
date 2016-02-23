@@ -11,7 +11,7 @@ import Alamofire
 import Foundation
 import SwiftyJSON
 
-class StartViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate {
+class StartViewController: BaseViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate {
 
     @IBOutlet weak var emailTextField: BottomBorderUITextField!
     @IBOutlet weak var nextButton: TextUIButton!
@@ -42,10 +42,6 @@ class StartViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         if deviceType == "iPhone 4S" {
             formatForiPhone4S()
         }
-    }
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
     }
     
     private func formatForiPhone4S() {

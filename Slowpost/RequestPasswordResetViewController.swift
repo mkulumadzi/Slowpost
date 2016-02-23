@@ -10,12 +10,11 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class RequestPasswordResetViewController: UIViewController {
+class RequestPasswordResetViewController: BaseViewController {
     
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var emailTextField: BottomBorderUITextField!
     @IBOutlet weak var submitButton: TextUIButton!
-
     @IBOutlet weak var submitButtonHeight: NSLayoutConstraint!
     @IBOutlet weak var distanceToEmailField: NSLayoutConstraint!
     

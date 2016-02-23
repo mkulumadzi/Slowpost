@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import Foundation
 
-class MailViewController: UIViewController {
+class MailViewController: BaseViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var mailImage: UIImageView!

@@ -10,17 +10,14 @@ import UIKit
 import CoreData
 import Foundation
 
-class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, NSFetchedResultsControllerDelegate , UISearchControllerDelegate, UISearchResultsUpdating {
+class ToViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, NSFetchedResultsControllerDelegate , UISearchControllerDelegate, UISearchResultsUpdating {
 
     var toPeople:[Person]!
     var toSearchPeople:[SearchPerson]!
     var toEmails:[String]!
-    
     var searchTextEntered:Bool!
     var searchResults:[SearchPerson]!
-    
     var shadedView:UIView!
-    
     var peopleController: NSFetchedResultsController!
     var searchController: UISearchController!
     var segmentedControl: UISegmentedControl!
@@ -34,11 +31,6 @@ class ToViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     @IBOutlet weak var editRecipientsButton: UIButton!
     
     let indexTitles = [">", "#", "A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","?"]
-    
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

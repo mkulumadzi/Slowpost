@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import Foundation
 
-class ConversationViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+class ConversationViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
     
     var conversation:Conversation!
     var fetchedResultsController: NSFetchedResultsController!

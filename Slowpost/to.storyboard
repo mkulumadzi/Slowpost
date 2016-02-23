@@ -36,10 +36,10 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--To Navigation Controller-->
+        <!--Base Navigation Controller-->
         <scene sceneID="v4c-ps-piy">
             <objects>
-                <navigationController id="DGY-Of-daF" customClass="ToNavigationController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="DGY-Of-daF" customClass="BaseNavigationController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7Gb-W8-Va2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

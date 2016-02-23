@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignUpCompleteViewController: UIViewController {
+class SignUpCompleteViewController: BaseViewController {
     
     @IBOutlet weak var gotItButton: UIButton!
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!
@@ -29,7 +29,7 @@ class SignUpCompleteViewController: UIViewController {
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+        return UIStatusBarStyle.Default
     }
     
     func formatForiPhone4S() {

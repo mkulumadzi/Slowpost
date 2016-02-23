@@ -8,14 +8,10 @@
 
 import UIKit
 
-class ComposeNavigationController: UINavigationController {
+class ComposeNavigationController: BaseNavigationController {
     
     var toPeople:[Person]!
     var toSearchPeople:[SearchPerson]!
     var toEmails:[String]!
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
 
 }

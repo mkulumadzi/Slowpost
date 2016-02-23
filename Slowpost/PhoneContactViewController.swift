@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import Foundation
 
-class PhoneContactViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class PhoneContactViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     var person:Person!
     var emailSelected:EmailAddress!
@@ -37,6 +37,10 @@ class PhoneContactViewController: UIViewController, UITableViewDelegate, UITable
     private func formatButtons() {
         cancelButton.setImage(UIImage(named: "close")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         cancelButton.tintColor = slowpostDarkGrey
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.Default
     }
     
     //MARK: Table view setup

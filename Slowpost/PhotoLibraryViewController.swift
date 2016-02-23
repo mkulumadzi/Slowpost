@@ -9,13 +9,8 @@
 import UIKit
 import MobileCoreServices
 
-class PhotoLibraryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class PhotoLibraryViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var newMedia: Bool?
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
-
-
 }

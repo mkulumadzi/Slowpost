@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class SettingsMenuViewController: UIViewController {
+class SettingsMenuViewController: BaseViewController {
     
     @IBOutlet weak var logOutButton: UIButton!
     @IBOutlet weak var editProfileButton: UIButton!

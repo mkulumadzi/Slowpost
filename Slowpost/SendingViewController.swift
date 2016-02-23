@@ -12,7 +12,7 @@ import Foundation
 import CoreData
 import SwiftyJSON
 
-class SendingViewController: UIViewController {
+class SendingViewController: BaseViewController {
     
     var image:UIImage!
     var username:String!

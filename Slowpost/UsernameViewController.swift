@@ -8,7 +8,11 @@
 
 import UIKit
 
-class UsernameViewController: UIViewController, UITextFieldDelegate {
+class UsernameViewController: BaseViewController, UITextFieldDelegate {
+    
+    var givenName:String!
+    var familyName:String!
+    var email:String!
 
     @IBOutlet weak var usernameTextField: BottomBorderUITextField!
     @IBOutlet weak var passwordTextField: BottomBorderUITextField!
@@ -16,18 +20,9 @@ class UsernameViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var nextButton: TextUIButton!
     @IBOutlet weak var termsTextView: UITextView!
-    
-    var givenName:String!
-    var familyName:String!
-    var email:String!
-
     @IBOutlet weak var verticalSpaceToTitle: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToNext: NSLayoutConstraint!
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,11 +8,7 @@
 
 import UIKit
 
-class MailboxTabPlaceholderViewController: UIViewController {
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
+class MailboxTabPlaceholderViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

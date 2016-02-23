@@ -8,19 +8,14 @@
 
 import UIKit
 
-class UsernameFBViewController: UIViewController, UITextFieldDelegate {
+class UsernameFBViewController: BaseViewController, UITextFieldDelegate {
 
     @IBOutlet weak var usernameTextField: BottomBorderUITextField!
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var nextButton: TextUIButton!
-    
     @IBOutlet weak var verticalSpaceToTitle: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToNext: NSLayoutConstraint!
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

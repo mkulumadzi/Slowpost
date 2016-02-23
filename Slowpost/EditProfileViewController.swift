@@ -11,7 +11,7 @@ import CoreData
 import Foundation
 import SwiftyJSON
 
-class EditProfileViewController: UITableViewController, FBSDKLoginButtonDelegate {
+class EditProfileViewController: BaseTableViewController, FBSDKLoginButtonDelegate {
     
     var warningLabel:WarningUILabel!
     var loggedInUser:Person!

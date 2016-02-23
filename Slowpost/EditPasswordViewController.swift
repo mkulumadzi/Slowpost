@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditPasswordViewController: UIViewController {
+class EditPasswordViewController: BaseViewController {
     
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var existingPasswordField: BottomBorderUITextField!

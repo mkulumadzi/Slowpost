@@ -10,21 +10,16 @@ import UIKit
 import Alamofire
 import Foundation
 
-class LogInViewController: UIViewController, UITextFieldDelegate {
+class LogInViewController: BaseViewController, UITextFieldDelegate {
     
     var email:String!
     
     @IBOutlet weak var passwordTextField: BottomBorderUITextField!
     @IBOutlet weak var logInButton: TextUIButton!
     @IBOutlet weak var warningLabel: WarningUILabel!
-    
     @IBOutlet weak var verticalSpaceToPassword: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToLogIn: NSLayoutConstraint!
     @IBOutlet weak var logInButtonHeight: NSLayoutConstraint!
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

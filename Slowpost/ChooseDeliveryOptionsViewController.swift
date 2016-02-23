@@ -8,17 +8,13 @@
 
 import UIKit
 
-class ChooseDeliveryOptionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ChooseDeliveryOptionsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     var scheduledToArrive:NSDate?
     var deliveryMethod:String!
     
     @IBOutlet weak var optionsTable: UITableView!
     @IBOutlet weak var confirmButton: UIButton!
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

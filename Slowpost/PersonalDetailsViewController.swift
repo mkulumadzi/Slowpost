@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
+class PersonalDetailsViewController: BaseViewController, UITextFieldDelegate {
     
     var email:String?
 
@@ -18,14 +18,9 @@ class PersonalDetailsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: BottomBorderUITextField!
     @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var nextButton: TextUIButton!
-
     @IBOutlet weak var verticalSpaceToTitle: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToNext: NSLayoutConstraint!
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

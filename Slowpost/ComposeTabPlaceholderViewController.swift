@@ -8,11 +8,7 @@
 
 import UIKit
 
-class ComposeTabPlaceholderViewController: UIViewController, UITabBarDelegate {
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
+class ComposeTabPlaceholderViewController: BaseViewController, UITabBarDelegate {
     
     @IBOutlet weak var composeTabBarItem: UITabBarItem!
 
@@ -28,7 +24,7 @@ class ComposeTabPlaceholderViewController: UIViewController, UITabBarDelegate {
     
     private func composeMessage() {
         let storyboard = UIStoryboard(name: "to", bundle: nil)
-        let controller = storyboard.instantiateInitialViewController() as! ToNavigationController
+        let controller = storyboard.instantiateInitialViewController() as! BaseNavigationController
         presentViewController(controller, animated: true, completion: { () -> Void in
             self.tabBarController!.selectedIndex = 0
         })

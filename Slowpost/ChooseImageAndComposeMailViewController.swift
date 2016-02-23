@@ -12,7 +12,7 @@ import MobileCoreServices
 import SwiftyJSON
 import Alamofire
 
-class ChooseImageAndComposeMailViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate {
+class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate {
     
     var toPeople:[Person]!
     var toSearchPeople:[SearchPerson]!
@@ -56,10 +56,6 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var photoCollection: UICollectionView!
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -870,7 +866,6 @@ class ChooseImageAndComposeMailViewController: UIViewController, UINavigationCon
     }
     
     func clearComposeView() {
-        print("Photo being cleared!")
         for subview in view.subviews {
             if let composeView = subview as? ComposeView {
                 for childview in composeView.subviews {

@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class WelcomeScreenViewController: UIViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+class WelcomeScreenViewController: BaseViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
     
     @IBOutlet weak var startButton: UIButton!
@@ -20,10 +20,6 @@ class WelcomeScreenViewController: UIViewController, UIPageViewControllerDataSou
     var pageTwo:UIViewController!
     var pageThree:UIViewController!
     var pageFour:UIViewController!
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

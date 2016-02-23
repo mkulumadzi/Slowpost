@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rsQ-Dm-iR8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="rsQ-Dm-iR8">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
         <!--Conversations-->
@@ -65,10 +65,10 @@
             </objects>
             <point key="canvasLocation" x="-244" y="646"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Base Tab Bar Controller-->
         <scene sceneID="E1f-FD-Djq">
             <objects>
-                <tabBarController storyboardIdentifier="InitialController" id="rsQ-Dm-iR8" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="InitialController" id="rsQ-Dm-iR8" customClass="BaseTabBarController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" itemPositioning="fill" id="Rdl-xo-ahk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -94,8 +94,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="compose" width="48" height="48"/>
-        <image name="conversations" width="48" height="48"/>
-        <image name="mailbox" width="48" height="48"/>
+        <image name="compose" width="24" height="24"/>
+        <image name="conversations" width="24" height="24"/>
+        <image name="mailbox" width="24" height="24"/>
     </resources>
 </document>

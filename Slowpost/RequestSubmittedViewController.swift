@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RequestSubmittedViewController: UIViewController {
+class RequestSubmittedViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +24,10 @@ class RequestSubmittedViewController: UIViewController {
                 Int64(delay * Double(NSEC_PER_SEC))
             ),
             dispatch_get_main_queue(), closure)
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.Default
     }
 
 }

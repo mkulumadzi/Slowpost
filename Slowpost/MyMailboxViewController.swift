@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import Foundation
 
-class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+class MyMailboxViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
 
     @IBOutlet weak var mailTable: UITableView!
     @IBOutlet weak var navBar: UINavigationBar!
@@ -23,10 +23,6 @@ class MyMailboxViewController: UIViewController, UITableViewDelegate, UITableVie
         
         return refreshControl
         }()
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

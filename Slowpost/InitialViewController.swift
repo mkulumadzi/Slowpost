@@ -11,7 +11,7 @@ import CoreData
 import AddressBook
 import SwiftyJSON
 
-class InitialViewController: UIViewController {
+class InitialViewController: BaseViewController {
 
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var loadingLabel: UILabel!
@@ -29,10 +29,6 @@ class InitialViewController: UIViewController {
 
     func configure() {
         loadingLabel.hidden = true
-    }
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
     }
     
     override func viewDidAppear(animated: Bool) {

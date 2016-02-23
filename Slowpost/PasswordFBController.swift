@@ -8,27 +8,21 @@
 
 import UIKit
 
-class PasswordFBController: UIViewController, UITextFieldDelegate {
-
-    @IBOutlet weak var passwordTextField: BottomBorderUITextField!
-    @IBOutlet weak var confirmPasswordTextField: BottomBorderUITextField!
-    
-    @IBOutlet weak var warningLabel: WarningUILabel!
-    @IBOutlet weak var signUpButton: TextUIButton!
-    @IBOutlet weak var termsTextView: UITextView!
+class PasswordFBController: BaseViewController, UITextFieldDelegate {
     
     var givenName:String!
     var familyName:String!
     var email:String!
     var username:String!
-    
+
+    @IBOutlet weak var passwordTextField: BottomBorderUITextField!
+    @IBOutlet weak var confirmPasswordTextField: BottomBorderUITextField!
+    @IBOutlet weak var warningLabel: WarningUILabel!
+    @IBOutlet weak var signUpButton: TextUIButton!
+    @IBOutlet weak var termsTextView: UITextView!
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToTitle: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToSignUp: NSLayoutConstraint!
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
