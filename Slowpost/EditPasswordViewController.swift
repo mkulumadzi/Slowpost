@@ -108,14 +108,15 @@ class EditPasswordViewController: BaseViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "passwordChanged" {
             
-            let conversationListViewController = segue.destinationViewController as? ConversationListViewController
-            conversationListViewController!.messageLabel.show("Password changed successfully")
+            let conversationListViewController = segue.destinationViewController as! ConversationListViewController
+            let messageLabel = conversationListViewController.messageLabel
+            conversationListViewController.showLabelWithMessage(messageLabel, message: "Password changed successfully")
             
             // Delay the dismissal by 5 seconds
             let delay = 5.0 * Double(NSEC_PER_SEC)
             let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
             dispatch_after(time, dispatch_get_main_queue(), {
-                conversationListViewController!.messageLabel.hide()
+                conversationListViewController.hideItem(messageLabel)
             })
         }
     }

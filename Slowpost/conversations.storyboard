@@ -26,7 +26,6 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
-            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -86,33 +85,14 @@
                                     <outlet property="delegate" destination="auR-xQ-yYd" id="7FQ-TE-Uvs"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="messageLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eKr-1q-00m" customClass="MessageUILabel" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="600" height="30"/>
-                                <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="LmP-sj-ycg"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="eKr-1q-00m" secondAttribute="trailing" id="158-JR-IiP"/>
                             <constraint firstAttribute="trailing" secondItem="NiG-s1-hET" secondAttribute="trailing" id="6oK-Ev-xXl"/>
                             <constraint firstItem="NiG-s1-hET" firstAttribute="top" secondItem="hVh-79-c6L" secondAttribute="bottom" id="KZU-Rt-9tK"/>
                             <constraint firstItem="0gS-nt-Hk5" firstAttribute="top" secondItem="NiG-s1-hET" secondAttribute="bottom" id="Oyy-Rk-5sa"/>
-                            <constraint firstItem="eKr-1q-00m" firstAttribute="leading" secondItem="7Cu-4W-t0n" secondAttribute="leading" id="WRx-Sa-pw0"/>
-                            <constraint firstItem="0gS-nt-Hk5" firstAttribute="top" secondItem="eKr-1q-00m" secondAttribute="bottom" id="Yuu-oc-UZW"/>
                             <constraint firstItem="NiG-s1-hET" firstAttribute="leading" secondItem="7Cu-4W-t0n" secondAttribute="leading" id="Z44-mM-Nrq"/>
-                            <constraint firstItem="eKr-1q-00m" firstAttribute="top" secondItem="hVh-79-c6L" secondAttribute="bottom" id="nsy-9k-FpI"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Yuu-oc-UZW"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Conversations" id="0a7-jc-KbE">
                         <barButtonItem key="backBarButtonItem" id="kh6-zd-XEA"/>
@@ -131,7 +111,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="conversationList" destination="NiG-s1-hET" id="OIO-3x-Au5"/>
-                        <outlet property="messageLabel" destination="eKr-1q-00m" id="YB2-2k-FHB"/>
                         <outlet property="searchDisplayController" destination="J2l-PT-51R" id="WNz-qg-98I"/>
                         <outlet property="settingsButton" destination="Met-Uj-onw" id="1ob-h8-dHf"/>
                         <segue destination="waF-C4-z8h" kind="presentation" identifier="editPassword" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="DFi-94-Xne"/>

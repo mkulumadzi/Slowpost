@@ -13,7 +13,6 @@ import Foundation
 class ConversationListViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, NSFetchedResultsControllerDelegate {
     
     @IBOutlet weak var conversationList: UITableView!
-    @IBOutlet weak var messageLabel: MessageUILabel!
     @IBOutlet weak var settingsButton: UIButton!
     
     var fetchedResultsController: NSFetchedResultsController!
@@ -39,7 +38,7 @@ class ConversationListViewController: BaseViewController, UITableViewDelegate, U
     private func configure() {
         formatButtons()
         initializeFetchedResultsController()
-        messageLabel.hide()
+        addMessageLabel()
         conversationList.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: conversationList.bounds.size.width, height: 0.01))
         conversationList.addSubview(refreshControl)
     }

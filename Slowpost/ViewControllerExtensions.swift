@@ -19,6 +19,31 @@ extension UIViewController {
         NSLayoutConstraint.activateConstraints([leading, trailing, top, height])
     }
     
+    func initializeWarningLabel() -> UILabel {
+        let warningLabel = initializeHeaderLabel()
+        warningLabel.backgroundColor = slowpostBlack
+        return warningLabel
+    }
+    
+    func initializeMessageLabel() -> UILabel {
+        let messageLabel = initializeHeaderLabel()
+        messageLabel.backgroundColor = slowpostDarkGrey
+        return messageLabel
+    }
+    
+    func initializeHeaderLabel() -> UILabel {
+        let headerLabel = UILabel()
+        view.addSubview(headerLabel)
+        headerLabel.backgroundColor = slowpostBlack
+        headerLabel.textColor = UIColor.whiteColor()
+        headerLabel.font = UIFont(name: "OpenSans", size: 15.0)
+        headerLabel.textAlignment = .Center
+        addEdgeConstraintsToItem(headerLabel)
+        headerLabel.alpha = 0.0
+        return headerLabel
+    }
+    
+    
     func showLabelWithMessage(label: UILabel, message: String) {
         label.text = message
         UIView.animateWithDuration(0.5, animations: {

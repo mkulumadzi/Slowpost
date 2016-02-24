@@ -11,6 +11,7 @@ import UIKit
 class BaseViewController: UIViewController {
     
     var warningLabel:UILabel!
+    var messageLabel:UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,17 +21,12 @@ class BaseViewController: UIViewController {
         return UIStatusBarStyle.LightContent
     }
     
-    //MARK: UI Accessories
-    
     func addWarningLabel() {
-        warningLabel = UILabel()
-        view.addSubview(warningLabel)
-        warningLabel.backgroundColor = slowpostBlack
-        warningLabel.textColor = UIColor.whiteColor()
-        warningLabel.font = UIFont(name: "OpenSans", size: 15.0)
-        warningLabel.textAlignment = .Center
-        addEdgeConstraintsToItem(warningLabel)
-        warningLabel.alpha = 0.0
+        warningLabel = initializeWarningLabel()
+    }
+    
+    func addMessageLabel() {
+        messageLabel = initializeMessageLabel()
     }
 
 }
