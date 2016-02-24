@@ -64,6 +64,7 @@
 		D250E8F31C7D23AF00BC5F78 /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250E8F21C7D23AF00BC5F78 /* BaseNavigationController.swift */; };
 		D250E8F51C7D245300BC5F78 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250E8F41C7D245300BC5F78 /* BaseTabBarController.swift */; };
 		D250E8F71C7D273E00BC5F78 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250E8F61C7D273E00BC5F78 /* BaseTableViewController.swift */; };
+		D250E8F91C7D5A0600BC5F78 /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D250E8F81C7D5A0600BC5F78 /* ViewControllerExtensions.swift */; };
 		D25130421BC425C3007541BE /* to.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D25130411BC425C3007541BE /* to.storyboard */; };
 		D25130441BC43C44007541BE /* ComposeNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25130431BC43C44007541BE /* ComposeNavigationController.swift */; };
 		D251304A1BC46595007541BE /* ios7-arrow-down-white.png in Resources */ = {isa = PBXBuildFile; fileRef = D25130491BC46595007541BE /* ios7-arrow-down-white.png */; };
@@ -219,6 +220,7 @@
 		D250E8F21C7D23AF00BC5F78 /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		D250E8F41C7D245300BC5F78 /* BaseTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		D250E8F61C7D273E00BC5F78 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		D250E8F81C7D5A0600BC5F78 /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
 		D25130411BC425C3007541BE /* to.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = to.storyboard; sourceTree = "<group>"; };
 		D25130431BC43C44007541BE /* ComposeNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeNavigationController.swift; sourceTree = "<group>"; };
 		D25130491BC46595007541BE /* ios7-arrow-down-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ios7-arrow-down-white.png"; sourceTree = "<group>"; };
@@ -557,6 +559,7 @@
 				D21003241C1A36A800E45CA3 /* ComposeView.swift */,
 				D210032A1C1BA51F00E45CA3 /* OverlayContainerView.swift */,
 				D2B7CEA51B694C14007F8235 /* GlobalVariables.swift */,
+				D250E8F81C7D5A0600BC5F78 /* ViewControllerExtensions.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -918,6 +921,7 @@
 				D27DA3251B62C04E00DF32A1 /* ComposeTabPlaceholderViewController.swift in Sources */,
 				D2B7CEA61B694C14007F8235 /* GlobalVariables.swift in Sources */,
 				D28CB0101BB4CDC100111213 /* PhoneContactCell.swift in Sources */,
+				D250E8F91C7D5A0600BC5F78 /* ViewControllerExtensions.swift in Sources */,
 				D27E194E1B3B770C0052687F /* SlowpostModel.xcdatamodeld in Sources */,
 				D250E8F51C7D245300BC5F78 /* BaseTabBarController.swift in Sources */,
 				CC96E49C1ABCC8EB001E6D27 /* InitialViewController.swift in Sources */,

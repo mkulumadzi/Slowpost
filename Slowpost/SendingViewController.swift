@@ -88,14 +88,15 @@ class SendingViewController: BaseViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "mailFailedToSend" {
             
-            let destinationController = segue.destinationViewController as? ChooseImageAndComposeMailViewController
-            destinationController!.showWarningLabel(warningMessage)
+            let destinationController = segue.destinationViewController as! ChooseImageAndComposeMailViewController
+            let warningLabel = destinationController.warningLabel
+            destinationController.showLabelWithMessage(warningLabel, message: warningMessage)
             
             // Delay the dismissal by 5 seconds
             let delay = 5.0 * Double(NSEC_PER_SEC)
             let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
             dispatch_after(time, dispatch_get_main_queue(), {
-                destinationController!.hideWarningLabel()
+                destinationController.hideItem(warningLabel)
             })
         }
     }

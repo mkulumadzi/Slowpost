@@ -60,7 +60,7 @@ class AddEmailViewController: BaseViewController {
     
     
     @IBAction func editingChanged(sender: AnyObject) {
-        hideWarningLabel()
+        hideItem(warningLabel)
         validateSubmitButton()
     }
 

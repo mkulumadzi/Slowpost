@@ -105,7 +105,7 @@ class PasswordFBController: BaseViewController, UITextFieldDelegate {
     
     @IBAction func editingChanged(sender: AnyObject) {
         validateNextButton()
-        hideWarningLabel()
+        hideItem(warningLabel)
     }
     
     @IBAction func signUpPressed(sender: AnyObject) {
@@ -140,7 +140,7 @@ class PasswordFBController: BaseViewController, UITextFieldDelegate {
             })
         }
         else {
-            self.showWarningLabel("Passwords must match.")
+            self.showLabelWithMessage(self.warningLabel, message: "Passwords must match")
         }
         
     }
@@ -167,7 +167,7 @@ class PasswordFBController: BaseViewController, UITextFieldDelegate {
                     })
                 }
                 else if let error_message = response[1] as? String {
-                    self.showWarningLabel(error_message)
+                    self.showLabelWithMessage(self.warningLabel, message: error_message)
                 }
                 else {
                     print(response)

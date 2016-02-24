@@ -68,7 +68,7 @@ class EditPasswordViewController: BaseViewController {
     //MARK: User actions
     
     @IBAction func editingChanged(sender: AnyObject) {
-        hideWarningLabel()
+        hideItem(warningLabel)
         validateSaveButton()
     }
     
@@ -88,13 +88,13 @@ class EditPasswordViewController: BaseViewController {
                         self.passwordChanged()
                     }
                     else if let error_message = response[1] as? String {
-                        self.showWarningLabel(error_message)
+                        self.showLabelWithMessage(self.warningLabel, message: error_message)
                     }
                 }
             })
         }
         else {
-            self.showWarningLabel("New passwords must match")
+            self.showLabelWithMessage(self.warningLabel, message: "New passwords must match")
         }
     }
     

@@ -88,7 +88,7 @@ class PersonalDetailsViewController: BaseViewController, UITextFieldDelegate {
     
     @IBAction func editingChanged(sender: AnyObject) {
         validateNextButton()
-        hideWarningLabel()
+        hideItem(warningLabel)
     }
     
     @IBAction func cancel(sender: AnyObject) {
@@ -110,7 +110,7 @@ class PersonalDetailsViewController: BaseViewController, UITextFieldDelegate {
                     self.performSegueWithIdentifier("enterUsername", sender: nil)
                 }
                 else {
-                    self.showWarningLabel("An account with that email already exists.")
+                    self.showLabelWithMessage(self.warningLabel, message: "An account with that email already exists.")
                 }
             }
         })

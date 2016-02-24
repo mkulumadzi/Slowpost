@@ -82,14 +82,14 @@ class LogInViewController: BaseViewController, UITextFieldDelegate {
         LoginService.logIn(parameters, completion: { (error, result) -> Void in
             if let error = error {
                 print(error)
-                self.showWarningLabel("Cannot connect...")
+                self.showLabelWithMessage(self.warningLabel, message: "Cannot connect...")
             }
             else if let result: AnyObject = result {
                 if result as? String == "Success" {
                     self.performSegueWithIdentifier("loginCompleted", sender: nil)
                 }
                 else {
-                    self.showWarningLabel("Invalid login")
+                    self.showLabelWithMessage(self.warningLabel, message: "Invalid login")
                 }
             }
         })
@@ -97,7 +97,7 @@ class LogInViewController: BaseViewController, UITextFieldDelegate {
     }
     
     @IBAction func editingChanged(sender: AnyObject) {
-        hideWarningLabel()
+        hideItem(warningLabel)
         validateLogInButton()
     }
     

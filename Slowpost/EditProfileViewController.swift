@@ -114,14 +114,14 @@ class EditProfileViewController: BaseTableViewController, FBSDKLoginButtonDelega
             else {
                 let json = JSON(result!)
                 let message = json["message"].stringValue
-                self.showWarningLabel(message)
+                self.showLabelWithMessage(self.warningLabel, message: message)
             }
         })
     }
 
     
     @IBAction func editingChanged(sender: AnyObject) {
-        hideWarningLabel()
+        hideItem(warningLabel)
         saveButton.enabled = true
     }
     

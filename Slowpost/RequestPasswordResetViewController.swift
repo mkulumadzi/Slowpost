@@ -60,7 +60,7 @@ class RequestPasswordResetViewController: BaseViewController {
     //MARK: User actions
     
     @IBAction func editingChanged(sender: AnyObject) {
-        hideWarningLabel()
+        hideItem(warningLabel)
         validateSubmitButton()
     }
     
@@ -81,7 +81,8 @@ class RequestPasswordResetViewController: BaseViewController {
                 switch response.result {
                 case .Success(let result):
                     let warning = JSON(result)
-                    self.showWarningLabel(warning["message"].stringValue)
+                    
+                    self.showLabelWithMessage(self.warningLabel, message: warning["message"].stringValue)
                 case .Failure(let error):
                     print(error)
                 }

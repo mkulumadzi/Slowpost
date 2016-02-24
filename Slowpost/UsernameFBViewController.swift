@@ -74,7 +74,7 @@ class UsernameFBViewController: BaseViewController, UITextFieldDelegate {
     
     @IBAction func editingChanged(sender: AnyObject) {
         validateNextButton()
-        hideWarningLabel()
+        hideItem(warningLabel)
     }
     
     @IBAction func checkUsernameAvailability(sender: AnyObject) {
@@ -90,7 +90,7 @@ class UsernameFBViewController: BaseViewController, UITextFieldDelegate {
                     self.performSegueWithIdentifier("choosePassword", sender: nil)
                 }
                 else {
-                    self.showWarningLabel("An account with that username already exists.")
+                    self.showLabelWithMessage(self.warningLabel, message: "An account with that username already exists.")
                 }
             }
         })
