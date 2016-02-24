@@ -15,7 +15,6 @@ class StartViewController: BaseViewController, UITextFieldDelegate, FBSDKLoginBu
 
     @IBOutlet weak var emailTextField: BottomBorderUITextField!
     @IBOutlet weak var nextButton: TextUIButton!
-    
     @IBOutlet weak var shadedView: UIView!
     @IBOutlet weak var nextButtonHeight: NSLayoutConstraint!
     

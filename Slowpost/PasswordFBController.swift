@@ -17,7 +17,6 @@ class PasswordFBController: BaseViewController, UITextFieldDelegate {
 
     @IBOutlet weak var passwordTextField: BottomBorderUITextField!
     @IBOutlet weak var confirmPasswordTextField: BottomBorderUITextField!
-    @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var signUpButton: TextUIButton!
     @IBOutlet weak var termsTextView: UITextView!
     @IBOutlet weak var buttonHeight: NSLayoutConstraint!
@@ -35,7 +34,7 @@ class PasswordFBController: BaseViewController, UITextFieldDelegate {
     //MARK: Setup
     
     private func configure() {
-        warningLabel.hide()
+        addWarningLabel()
         signUpButton.layer.cornerRadius = 5
         formatTermsString()
         
@@ -106,7 +105,7 @@ class PasswordFBController: BaseViewController, UITextFieldDelegate {
     
     @IBAction func editingChanged(sender: AnyObject) {
         validateNextButton()
-        warningLabel.hide()
+        hideWarningLabel()
     }
     
     @IBAction func signUpPressed(sender: AnyObject) {
@@ -141,7 +140,7 @@ class PasswordFBController: BaseViewController, UITextFieldDelegate {
             })
         }
         else {
-            self.warningLabel.show("Passwords must match.")
+            self.showWarningLabel("Passwords must match.")
         }
         
     }
@@ -168,7 +167,7 @@ class PasswordFBController: BaseViewController, UITextFieldDelegate {
                     })
                 }
                 else if let error_message = response[1] as? String {
-                    self.warningLabel.show(error_message)
+                    self.showWarningLabel(error_message)
                 }
                 else {
                     print(response)

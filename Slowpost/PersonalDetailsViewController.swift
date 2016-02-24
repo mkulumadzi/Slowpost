@@ -16,7 +16,6 @@ class PersonalDetailsViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var givenNameTextField: BottomBorderUITextField!
     @IBOutlet weak var familyNameTextField: BottomBorderUITextField!
     @IBOutlet weak var emailTextField: BottomBorderUITextField!
-    @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var nextButton: TextUIButton!
     @IBOutlet weak var verticalSpaceToTitle: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToNext: NSLayoutConstraint!
@@ -34,7 +33,7 @@ class PersonalDetailsViewController: BaseViewController, UITextFieldDelegate {
     
     private func configure() {
         nextButton.layer.cornerRadius = 5
-        warningLabel.hide()
+        addWarningLabel()
         
         if let email = email {
             emailTextField.text = email
@@ -89,7 +88,7 @@ class PersonalDetailsViewController: BaseViewController, UITextFieldDelegate {
     
     @IBAction func editingChanged(sender: AnyObject) {
         validateNextButton()
-        warningLabel.hide()
+        hideWarningLabel()
     }
     
     @IBAction func cancel(sender: AnyObject) {
@@ -111,7 +110,7 @@ class PersonalDetailsViewController: BaseViewController, UITextFieldDelegate {
                     self.performSegueWithIdentifier("enterUsername", sender: nil)
                 }
                 else {
-                    self.warningLabel.show("An account with that email already exists.")
+                    self.showWarningLabel("An account with that email already exists.")
                 }
             }
         })

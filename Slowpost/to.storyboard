@@ -22,8 +22,6 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
-            <string>OpenSans</string>
-            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -309,13 +307,6 @@
                                     <outlet property="delegate" destination="8xB-T9-MnV" id="NsP-FM-cWt"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NZN-WX-rSg" userLabel="warningLabel" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="24"/>
-                                <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtw-mF-8Xh" userLabel="nextButton">
                                 <rect key="frame" x="60" y="476" width="500" height="60"/>
                                 <color key="backgroundColor" red="0.0" green="0.47058823529999999" blue="0.47843137250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -366,26 +357,21 @@
                             <constraint firstItem="jtw-mF-8Xh" firstAttribute="leading" secondItem="lET-vM-YuK" secondAttribute="leading" id="5ii-Ax-O6s"/>
                             <constraint firstItem="671-zt-FiM" firstAttribute="top" secondItem="jtw-mF-8Xh" secondAttribute="bottom" id="9fH-ZZ-RgC"/>
                             <constraint firstItem="VJD-C6-sav" firstAttribute="top" secondItem="JDP-VK-qAS" secondAttribute="bottom" id="GGg-6Q-jKx"/>
-                            <constraint firstItem="NZN-WX-rSg" firstAttribute="leading" secondItem="lET-vM-YuK" secondAttribute="leading" id="GWt-3j-RW6"/>
                             <constraint firstAttribute="trailing" secondItem="jtw-mF-8Xh" secondAttribute="trailing" id="KAg-9t-WMS"/>
                             <constraint firstAttribute="trailing" secondItem="WMt-oG-7oS" secondAttribute="trailing" id="LqR-HJ-a1P"/>
                             <constraint firstItem="xpv-aQ-L0V" firstAttribute="leading" secondItem="lET-vM-YuK" secondAttribute="leading" id="N9W-ar-XXN"/>
-                            <constraint firstItem="NZN-WX-rSg" firstAttribute="top" secondItem="JDP-VK-qAS" secondAttribute="bottom" id="RnC-DP-S52"/>
                             <constraint firstItem="671-zt-FiM" firstAttribute="top" secondItem="WMt-oG-7oS" secondAttribute="bottom" id="TuF-6T-1YW"/>
                             <constraint firstItem="WMt-oG-7oS" firstAttribute="leading" secondItem="jtw-mF-8Xh" secondAttribute="trailing" id="WmH-gg-TEy"/>
                             <constraint firstAttribute="trailing" secondItem="VJD-C6-sav" secondAttribute="trailing" id="XFW-OQ-h2C"/>
                             <constraint firstItem="671-zt-FiM" firstAttribute="top" secondItem="xpv-aQ-L0V" secondAttribute="bottom" id="ai8-jK-hBB"/>
-                            <constraint firstItem="NZN-WX-rSg" firstAttribute="top" secondItem="JDP-VK-qAS" secondAttribute="bottom" id="csW-oc-Kxd"/>
                             <constraint firstItem="671-zt-FiM" firstAttribute="top" secondItem="VJD-C6-sav" secondAttribute="bottom" constant="60" id="fzb-Nl-2DU"/>
                             <constraint firstItem="VJD-C6-sav" firstAttribute="leading" secondItem="lET-vM-YuK" secondAttribute="leading" id="jLi-pY-Dtq"/>
                             <constraint firstItem="jtw-mF-8Xh" firstAttribute="leading" secondItem="xpv-aQ-L0V" secondAttribute="trailing" id="o6x-kc-OOW"/>
                             <constraint firstItem="jtw-mF-8Xh" firstAttribute="top" secondItem="VJD-C6-sav" secondAttribute="bottom" id="ohR-26-VYX"/>
                             <constraint firstItem="VJD-C6-sav" firstAttribute="top" secondItem="JDP-VK-qAS" secondAttribute="bottom" id="usp-En-zJ1"/>
-                            <constraint firstAttribute="trailing" secondItem="NZN-WX-rSg" secondAttribute="trailing" id="x0g-UL-vTS"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="RnC-DP-S52"/>
                                 <exclude reference="usp-En-zJ1"/>
                                 <exclude reference="5ii-Ax-O6s"/>
                                 <exclude reference="KAg-9t-WMS"/>
@@ -415,7 +401,6 @@
                         <outlet property="personTable" destination="VJD-C6-sav" id="wZ8-hJ-vVD"/>
                         <outlet property="searchDisplayController" destination="Bju-ge-gdj" id="0WS-lJ-ymQ"/>
                         <outlet property="tableToBottomLayoutGuide" destination="fzb-Nl-2DU" id="9g7-EA-4JY"/>
-                        <outlet property="warningLabel" destination="NZN-WX-rSg" id="XBC-ue-hg2"/>
                         <segue destination="cGy-V5-btV" kind="presentation" identifier="viewPhoneContact" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="Ag2-VN-ECi"/>
                         <segue destination="E7Y-T2-X0u" kind="presentation" identifier="addEmail" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="LRp-Kz-MWI"/>
                     </connections>
@@ -615,36 +600,17 @@
                                     <action selector="submitButtonPressed:" destination="E7Y-T2-X0u" eventType="touchUpInside" id="iJs-vl-xGw"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="udX-Ad-7Ug" customClass="WarningUILabel" customModule="Slowpost" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="60" width="600" height="30"/>
-                                <color key="backgroundColor" red="0.058823529409999999" green="0.058823529409999999" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="5AI-oW-8rj"/>
-                                    <constraint firstAttribute="height" constant="30" id="umz-SI-Gxc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="5AI-oW-8rj"/>
-                                    </mask>
-                                </variation>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="f9Q-LI-3bC" firstAttribute="leading" secondItem="Ngx-hf-mye" secondAttribute="leading" constant="30" id="0B5-gi-vAT"/>
-                            <constraint firstItem="udX-Ad-7Ug" firstAttribute="leading" secondItem="Ngx-hf-mye" secondAttribute="leading" id="1Sz-TA-wD2"/>
                             <constraint firstAttribute="trailing" secondItem="uFB-pq-CwD" secondAttribute="trailing" constant="30" id="4cK-gp-Uq4"/>
                             <constraint firstItem="ae9-uZ-fVw" firstAttribute="leading" secondItem="Ngx-hf-mye" secondAttribute="leading" id="9Xv-oj-MPw"/>
                             <constraint firstAttribute="trailing" secondItem="f9Q-LI-3bC" secondAttribute="trailing" constant="30" id="Aoj-Je-gwz"/>
                             <constraint firstAttribute="trailing" secondItem="ae9-uZ-fVw" secondAttribute="trailing" id="LED-fh-zy0"/>
                             <constraint firstItem="ae9-uZ-fVw" firstAttribute="top" secondItem="Ngx-hf-mye" secondAttribute="top" id="Lod-yb-jI3"/>
-                            <constraint firstItem="udX-Ad-7Ug" firstAttribute="top" secondItem="ae9-uZ-fVw" secondAttribute="bottom" id="TuL-Vm-1Fe"/>
                             <constraint firstItem="uFB-pq-CwD" firstAttribute="top" secondItem="f9Q-LI-3bC" secondAttribute="bottom" constant="30" id="UUY-UF-oEH"/>
                             <constraint firstItem="f9Q-LI-3bC" firstAttribute="top" secondItem="ae9-uZ-fVw" secondAttribute="bottom" constant="80" id="bfR-v5-UGy"/>
-                            <constraint firstAttribute="trailing" secondItem="udX-Ad-7Ug" secondAttribute="trailing" id="eln-IX-9Zg"/>
                             <constraint firstItem="uFB-pq-CwD" firstAttribute="leading" secondItem="Ngx-hf-mye" secondAttribute="leading" constant="30" id="kaW-Bp-eVD"/>
                         </constraints>
                     </view>
@@ -653,7 +619,6 @@
                         <outlet property="emailField" destination="f9Q-LI-3bC" id="9Cu-5n-hIY"/>
                         <outlet property="submitButton" destination="uFB-pq-CwD" id="xGL-wQ-odt"/>
                         <outlet property="submitButtonHeight" destination="S37-WL-BG2" id="qNI-iy-mwu"/>
-                        <outlet property="warningLabel" destination="udX-Ad-7Ug" id="Upw-AY-sXD"/>
                         <segue destination="l87-0O-eoX" kind="unwind" identifier="emailAddressSelected" unwindAction="emailAddressSelected:" id="38L-9E-MkN"/>
                         <segue destination="l87-0O-eoX" kind="unwind" identifier="emailCleared" unwindAction="cancelledWithNoEmailSelected:" id="LbF-AR-N6g"/>
                         <segue destination="l87-0O-eoX" kind="unwind" identifier="emailAdded" unwindAction="emailAdded:" id="wvQ-mB-7cB"/>

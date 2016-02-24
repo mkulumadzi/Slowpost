@@ -13,7 +13,6 @@ class AddEmailViewController: BaseViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var emailField: BottomBorderUITextField!
     @IBOutlet weak var submitButton: TextUIButton!
-    @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var submitButtonHeight: NSLayoutConstraint!
     
     override func viewDidLoad() {
@@ -27,7 +26,7 @@ class AddEmailViewController: BaseViewController {
     private func configure() {
         submitButton.layer.cornerRadius = 5
         formatButtons()
-        warningLabel.hide()
+        addWarningLabel()
         if deviceType == "iPhone 4S" {
             formatForiPhone4S()
         }
@@ -61,7 +60,7 @@ class AddEmailViewController: BaseViewController {
     
     
     @IBAction func editingChanged(sender: AnyObject) {
-        warningLabel.hide()
+        hideWarningLabel()
         validateSubmitButton()
     }
 

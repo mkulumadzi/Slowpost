@@ -24,7 +24,6 @@ class ToViewController: BaseViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableToBottomLayoutGuide: NSLayoutConstraint!
     @IBOutlet weak var personTable: UITableView!
-    @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var nextButtonArrows: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
@@ -35,14 +34,6 @@ class ToViewController: BaseViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         Flurry.logEvent("Compose_Message_Workflow_Began")
-        toPeople = [Person]()
-        toSearchPeople = [SearchPerson]()
-        toEmails = [String]()
-        searchResults = [SearchPerson]()
-        searchTextEntered = false
-        initializeSegmentedControl()
-        initializeSearchController()
-        initializePeopleController()
         configure()
         validateNextButton()
     }
@@ -53,7 +44,16 @@ class ToViewController: BaseViewController, UITableViewDelegate, UITableViewData
         personTable.sectionIndexColor = UIColor(red: 0/255, green: 120/255, blue: 122/255, alpha: 1.0)
         personTable.sectionIndexBackgroundColor = UIColor.clearColor()
         personTable.sectionHeaderHeight = 24.0
-        warningLabel.hide()
+        toPeople = [Person]()
+        toSearchPeople = [SearchPerson]()
+        toEmails = [String]()
+        searchResults = [SearchPerson]()
+        searchTextEntered = false
+        
+        initializeSegmentedControl()
+        initializeSearchController()
+        initializePeopleController()
+        addWarningLabel()
         addSearchBar()
         addSegmentedControlToHeader()
         formatButtons()

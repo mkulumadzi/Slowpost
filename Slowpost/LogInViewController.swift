@@ -16,7 +16,6 @@ class LogInViewController: BaseViewController, UITextFieldDelegate {
     
     @IBOutlet weak var passwordTextField: BottomBorderUITextField!
     @IBOutlet weak var logInButton: TextUIButton!
-    @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var verticalSpaceToPassword: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToLogIn: NSLayoutConstraint!
     @IBOutlet weak var logInButtonHeight: NSLayoutConstraint!
@@ -35,7 +34,7 @@ class LogInViewController: BaseViewController, UITextFieldDelegate {
         modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
         modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
         logInButton.layer.cornerRadius = 5
-        warningLabel.hide()
+        addWarningLabel()
         
         if deviceType == "iPhone 4S" {
             formatForiPhone4S()
@@ -83,14 +82,14 @@ class LogInViewController: BaseViewController, UITextFieldDelegate {
         LoginService.logIn(parameters, completion: { (error, result) -> Void in
             if let error = error {
                 print(error)
-                self.warningLabel.show("Cannot connect...")
+                self.showWarningLabel("Cannot connect...")
             }
             else if let result: AnyObject = result {
                 if result as? String == "Success" {
                     self.performSegueWithIdentifier("loginCompleted", sender: nil)
                 }
                 else {
-                    self.warningLabel.show("Invalid login")
+                    self.showWarningLabel("Invalid login")
                 }
             }
         })
@@ -98,7 +97,7 @@ class LogInViewController: BaseViewController, UITextFieldDelegate {
     }
     
     @IBAction func editingChanged(sender: AnyObject) {
-        warningLabel.hide()
+        hideWarningLabel()
         validateLogInButton()
     }
     

@@ -12,7 +12,6 @@ import SwiftyJSON
 
 class RequestPasswordResetViewController: BaseViewController {
     
-    @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var emailTextField: BottomBorderUITextField!
     @IBOutlet weak var submitButton: TextUIButton!
     @IBOutlet weak var submitButtonHeight: NSLayoutConstraint!
@@ -27,7 +26,7 @@ class RequestPasswordResetViewController: BaseViewController {
     //MARK: Setup
     
     private func configure() {
-        warningLabel.hide()
+        addWarningLabel()
         submitButton.layer.cornerRadius = 5
         if deviceType == "iPhone 4S" {
             formatForiPhone4S()
@@ -61,7 +60,7 @@ class RequestPasswordResetViewController: BaseViewController {
     //MARK: User actions
     
     @IBAction func editingChanged(sender: AnyObject) {
-        warningLabel.hide()
+        hideWarningLabel()
         validateSubmitButton()
     }
     
@@ -82,7 +81,7 @@ class RequestPasswordResetViewController: BaseViewController {
                 switch response.result {
                 case .Success(let result):
                     let warning = JSON(result)
-                    self.warningLabel.show(warning["message"].stringValue)
+                    self.showWarningLabel(warning["message"].stringValue)
                 case .Failure(let error):
                     print(error)
                 }

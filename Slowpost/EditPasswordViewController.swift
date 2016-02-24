@@ -10,7 +10,6 @@ import UIKit
 
 class EditPasswordViewController: BaseViewController {
     
-    @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var existingPasswordField: BottomBorderUITextField!
     @IBOutlet weak var newPasswordField: BottomBorderUITextField!
     @IBOutlet weak var confirmPasswordField: BottomBorderUITextField!
@@ -33,7 +32,7 @@ class EditPasswordViewController: BaseViewController {
         newPasswordField.addBottomLayer()
         confirmPasswordField.addBottomLayer()
         saveButton.layer.cornerRadius = 5
-        warningLabel.hide()
+        addWarningLabel()
         if deviceType == "iPhone 4S" {
             formatForiPhone4S()
         }
@@ -69,7 +68,7 @@ class EditPasswordViewController: BaseViewController {
     //MARK: User actions
     
     @IBAction func editingChanged(sender: AnyObject) {
-        warningLabel.hide()
+        hideWarningLabel()
         validateSaveButton()
     }
     
@@ -89,13 +88,13 @@ class EditPasswordViewController: BaseViewController {
                         self.passwordChanged()
                     }
                     else if let error_message = response[1] as? String {
-                        self.warningLabel.show(error_message)
+                        self.showWarningLabel(error_message)
                     }
                 }
             })
         }
         else {
-            warningLabel.show("New passwords must match")
+            self.showWarningLabel("New passwords must match")
         }
     }
     

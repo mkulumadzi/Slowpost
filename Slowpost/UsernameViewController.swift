@@ -17,7 +17,6 @@ class UsernameViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameTextField: BottomBorderUITextField!
     @IBOutlet weak var passwordTextField: BottomBorderUITextField!
     @IBOutlet weak var confirmPasswordTextField: BottomBorderUITextField!
-    @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var nextButton: TextUIButton!
     @IBOutlet weak var termsTextView: UITextView!
     @IBOutlet weak var verticalSpaceToTitle: NSLayoutConstraint!
@@ -35,7 +34,7 @@ class UsernameViewController: BaseViewController, UITextFieldDelegate {
     //MARK: Setup
     
     private func configure() {
-        warningLabel.hide()
+        addWarningLabel()
         nextButton.layer.cornerRadius = 5
         formatTermsString()
         
@@ -107,7 +106,7 @@ class UsernameViewController: BaseViewController, UITextFieldDelegate {
     
     @IBAction func editingChanged(sender: AnyObject) {
         validateNextButton()
-        warningLabel.hide()
+        hideWarningLabel()
     }
     
     @IBAction func checkUsernameAvailability(sender: AnyObject) {
@@ -125,13 +124,13 @@ class UsernameViewController: BaseViewController, UITextFieldDelegate {
                         self.signUp()
                     }
                     else {
-                        self.warningLabel.show("An account with that username already exists.")
+                        self.showWarningLabel("An account with that username already exists.")
                     }
                 }
             })
         }
         else {
-            self.warningLabel.show("Passwords must match.")
+            self.showWarningLabel("Passwords must match.")
         }
     }
     
@@ -165,7 +164,7 @@ class UsernameViewController: BaseViewController, UITextFieldDelegate {
                     })
                 }
                 else if let error_message = response[1] as? String {
-                    self.warningLabel.show(error_message)
+                    self.showWarningLabel(error_message)
                 }
                 else {
                     print(response)

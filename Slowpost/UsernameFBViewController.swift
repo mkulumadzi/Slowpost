@@ -11,7 +11,6 @@ import UIKit
 class UsernameFBViewController: BaseViewController, UITextFieldDelegate {
 
     @IBOutlet weak var usernameTextField: BottomBorderUITextField!
-    @IBOutlet weak var warningLabel: WarningUILabel!
     @IBOutlet weak var nextButton: TextUIButton!
     @IBOutlet weak var verticalSpaceToTitle: NSLayoutConstraint!
     @IBOutlet weak var verticalSpaceToNext: NSLayoutConstraint!
@@ -29,7 +28,7 @@ class UsernameFBViewController: BaseViewController, UITextFieldDelegate {
     
     private func configure() {
         nextButton.layer.cornerRadius = 5
-        warningLabel.hide()
+        addWarningLabel()
         
         if deviceType == "iPhone 4S" {
             formatForiPhone4S()
@@ -75,7 +74,7 @@ class UsernameFBViewController: BaseViewController, UITextFieldDelegate {
     
     @IBAction func editingChanged(sender: AnyObject) {
         validateNextButton()
-        warningLabel.hide()
+        hideWarningLabel()
     }
     
     @IBAction func checkUsernameAvailability(sender: AnyObject) {
@@ -91,7 +90,7 @@ class UsernameFBViewController: BaseViewController, UITextFieldDelegate {
                     self.performSegueWithIdentifier("choosePassword", sender: nil)
                 }
                 else {
-                    self.warningLabel.show("An account with that username already exists.")
+                    self.showWarningLabel("An account with that username already exists.")
                 }
             }
         })
