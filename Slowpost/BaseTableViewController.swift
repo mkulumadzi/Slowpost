@@ -17,16 +17,6 @@ class BaseTableViewController: UITableViewController {
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
     }
-
-    // MARK: - Table view data source #Child implementations will override these
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 0
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-    }
     
     //// TO DO: Stop duplicating this functionality from BaseViewController
     

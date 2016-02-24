@@ -12,6 +12,8 @@ class BaseTabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+        modalPresentationStyle = UIModalPresentationStyle.OverFullScreen
     }
 
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
