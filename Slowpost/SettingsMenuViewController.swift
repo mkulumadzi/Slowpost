@@ -29,7 +29,6 @@ class SettingsMenuViewController: BaseViewController {
         editProfileButton.layer.cornerRadius = 5
         editPasswordButton.layer.cornerRadius = 5
         cancelButton.layer.cornerRadius = 5
-
     }
 
 }

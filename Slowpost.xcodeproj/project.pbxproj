@@ -108,7 +108,6 @@
 		D2A2B4331BD81D7D0069C3E4 /* picture-3.png in Resources */ = {isa = PBXBuildFile; fileRef = D2A2B4321BD81D7D0069C3E4 /* picture-3.png */; };
 		D2A2B4351BD81D920069C3E4 /* camera-2.png in Resources */ = {isa = PBXBuildFile; fileRef = D2A2B4341BD81D920069C3E4 /* camera-2.png */; };
 		D2A361361B3CAC5D00811D14 /* TextUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A361351B3CAC5D00811D14 /* TextUIButton.swift */; };
-		D2A361381B3CB52B00811D14 /* WarningUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A361371B3CB52B00811D14 /* WarningUILabel.swift */; };
 		D2AA1E311C124739001F5F01 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AA1E2E1C124739001F5F01 /* FBSDKLoginKit.framework */; };
 		D2AA1E321C12473A001F5F01 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AA1E2F1C124739001F5F01 /* FBSDKShareKit.framework */; };
 		D2AA1E331C12473A001F5F01 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AA1E301C124739001F5F01 /* FBSDKCoreKit.framework */; };
@@ -265,7 +264,6 @@
 		D2A2B4321BD81D7D0069C3E4 /* picture-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture-3.png"; sourceTree = "<group>"; };
 		D2A2B4341BD81D920069C3E4 /* camera-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "camera-2.png"; sourceTree = "<group>"; };
 		D2A361351B3CAC5D00811D14 /* TextUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextUIButton.swift; sourceTree = "<group>"; };
-		D2A361371B3CB52B00811D14 /* WarningUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WarningUILabel.swift; sourceTree = "<group>"; };
 		D2AA1E2E1C124739001F5F01 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		D2AA1E2F1C124739001F5F01 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		D2AA1E301C124739001F5F01 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -553,7 +551,6 @@
 				D250E8F61C7D273E00BC5F78 /* BaseTableViewController.swift */,
 				D2B651E61B38827100134C23 /* Extensions.swift */,
 				D2A361351B3CAC5D00811D14 /* TextUIButton.swift */,
-				D2A361371B3CB52B00811D14 /* WarningUILabel.swift */,
 				D206FB4E1B617504008BB412 /* BottomBorderUITextField.swift */,
 				D27DA32C1B66C51900DF32A1 /* MessageUILabel.swift */,
 				D2389E811B9674AB00CB19BB /* CellLabelUIView.swift */,
@@ -898,7 +895,6 @@
 				D2319AC01BD16D8F00B989C0 /* RequestSubmittedViewController.swift in Sources */,
 				D21003231C1A127E00E45CA3 /* PhotoCollectionViewCell.swift in Sources */,
 				D2B7CEAE1B696DBC007F8235 /* RestService.swift in Sources */,
-				D2A361381B3CB52B00811D14 /* WarningUILabel.swift in Sources */,
 				D27DA32D1B66C51900DF32A1 /* MessageUILabel.swift in Sources */,
 				D20D8ED41B2A510700BBF6B5 /* ToViewController.swift in Sources */,
 				D2389E7D1B962B7000CB19BB /* Conversation.swift in Sources */,

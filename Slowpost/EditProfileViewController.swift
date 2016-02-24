@@ -13,7 +13,6 @@ import SwiftyJSON
 
 class EditProfileViewController: BaseTableViewController, FBSDKLoginButtonDelegate {
     
-    var warningLabel:WarningUILabel!
     var loggedInUser:Person!
 
     @IBOutlet weak var usernameLabel: UILabel!
@@ -50,23 +49,11 @@ class EditProfileViewController: BaseTableViewController, FBSDKLoginButtonDelega
         
         validateLoginButtons()
         addWarningLabel()
-        warningLabel.hide()
         addFooterView()
     }
     
     override func viewDidAppear(animated: Bool) {
         validateLoginButtons()
-    }
-    
-    private func addWarningLabel() {
-        let frame = CGRect(x: 0.0, y: 60.0, width: view.frame.width, height: 30.0)
-        warningLabel = WarningUILabel(frame: frame)
-        warningLabel.backgroundColor = UIColor(red: 15/255, green: 15/255, blue: 15/255, alpha: 1.0)
-        warningLabel.font = UIFont(name: "OpenSans", size: 15.0)
-        warningLabel.textColor = UIColor.whiteColor()
-        warningLabel.text = "Consider yourself warned"
-        warningLabel.textAlignment = .Center
-        view.addSubview(warningLabel)
     }
     
     private func addFooterView() {
@@ -127,14 +114,14 @@ class EditProfileViewController: BaseTableViewController, FBSDKLoginButtonDelega
             else {
                 let json = JSON(result!)
                 let message = json["message"].stringValue
-                self.warningLabel.show(message)
+                self.showWarningLabel(message)
             }
         })
     }
 
     
     @IBAction func editingChanged(sender: AnyObject) {
-        warningLabel.hide()
+        hideWarningLabel()
         saveButton.enabled = true
     }
     
