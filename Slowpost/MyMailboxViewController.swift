@@ -160,7 +160,6 @@ class MyMailboxViewController: BaseViewController, UITableViewDelegate, UITableV
             cell.statusIndicator.backgroundColor = UIColor.whiteColor()
             cell.statusIndicator.layer.borderColor = UIColor(red: 0/255, green: 182/255, blue: 185/255, alpha: 1.0).CGColor
             cell.statusIndicator.layer.borderWidth = 1.0
-            
         }
         else {
             cell.fromLabel.font = UIFont(name: "OpenSans-Semibold", size: 17.0)

@@ -74,7 +74,6 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHide:", name: UIKeyboardWillHideNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide:", name: UIKeyboardWillHideNotification, object: nil)
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "rotated", name: UIDeviceOrientationDidChangeNotification, object: nil)
         formatButtons()
         initializeClearPhotoButton()
@@ -121,8 +120,6 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
         
         let scheduleDeliveryButton = UIButton.textButton(UIColor.clearColor(), title: "Options", textColor: UIColor.whiteColor(), target: self, action: "scheduleDelivery")
         sendButtonView.addSubview(scheduleDeliveryButton)
-
-        
         let scheduleDeliveryConstraints = [
             NSLayoutConstraint.leading(scheduleDeliveryButton, toItem: sendButtonView, constant: 0.0),
             NSLayoutConstraint.trailingToLeading(scheduleDeliveryButton, toItem: sendMask, constant: 0.0),
