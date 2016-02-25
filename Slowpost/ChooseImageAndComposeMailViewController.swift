@@ -119,10 +119,7 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
         sendButtonView = view.newSubview(slowpostDarkGreen, cornerRadius: nil)
         pinItemToBottomWithHeight(sendButtonView, toItem: view, height: 60.0)
         
-        sendButtonLabel = UILabel()
-        sendButtonView.addSubview(sendButtonLabel)
-        sendButtonLabel.font = UIFont(name: "OpenSans-Semibold", size: 15.0)
-        sendButtonLabel.textColor = UIColor.whiteColor()
+        sendButtonLabel = sendButtonView.newLabel(UIFont.buttonFont(), textColor: UIColor.whiteColor(), text: nil, alignment: nil, backgroundColor: nil)
         centerVerticallyPinTrailing(sendButtonLabel, toItem: sendButtonView, trailingConstant: -10.0)
         
         let sendMask = UIButton()
@@ -429,11 +426,9 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
         let suggestedImageHeight = view.frame.width * imageSelected.size.height / imageSelected.size.width
         var maxImageHeight:CGFloat!
         if view.frame.height - suggestedImageHeight < 240.0 {
-            print("Setting gap to 80")
             maxImageHeight = view.frame.height - 240.0
         }
         else {
-            print("Using suggested height")
             maxImageHeight = suggestedImageHeight
         }
         pinItemToTopWithHeight(imageContainerView, toItem: composeView, height: maxImageHeight)
@@ -483,13 +478,7 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
         
         addCardOverlayImages(maxImageHeight)
         
-        overlayInstructions = UILabel()
-        composeView.addSubview(overlayInstructions)
-        overlayInstructions.text = "Swipe to add overlay image"
-        overlayInstructions.font = UIFont(name: "OpenSans-Italic", size: 15.0)
-        overlayInstructions.textAlignment = .Center
-        overlayInstructions.textColor = UIColor.whiteColor()
-        overlayInstructions.backgroundColor = slowpostDarkGrey
+        overlayInstructions = composeView.newLabel(UIFont.italicFont(), textColor: UIColor.whiteColor(), text: "Swipe to add overlay image", alignment: .Center, backgroundColor: slowpostDarkGrey)
         pinItemToBottom(overlayInstructions, toItem: imageContainerView)
         
         overlayIndex = 0
@@ -612,11 +601,7 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
         composeTextView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activateConstraints([topCompose, leadingCompose, trailingCompose, bottomCompose])
         
-        placeholderText = UILabel()
-        composeTextView.addSubview(placeholderText)
-        placeholderText.text = "Compose your message"
-        placeholderText.font = UIFont(name: "OpenSans-Italic", size: 15.0)
-        placeholderText.textColor = slowpostLightGrey
+        placeholderText = composeTextView.newLabel(UIFont.italicFont(), textColor: slowpostLightGrey, text: "Compose your message", alignment: nil, backgroundColor: nil)
         
         let topPlaceholder = NSLayoutConstraint(item: placeholderText, attribute: .Top, relatedBy: .Equal, toItem: composeTextView, attribute: .Top, multiplier: 1.0, constant: 10.0)
         let leadingPlaceholder = NSLayoutConstraint(item: placeholderText, attribute: .Leading, relatedBy: .Equal, toItem: composeTextView, attribute: .Leading, multiplier: 1.0, constant: 10.0)

@@ -170,7 +170,21 @@ extension UIButton {
 extension UIFont {
     
     class func buttonFont() -> UIFont {
-        return UIFont(name: "OpenSans-Semibold", size: 15.0)!
+        if let font = UIFont(name: "OpenSans-Semibold", size: 15.0) {
+            return font
+        }
+        else {
+            return UIFont.boldSystemFontOfSize(15.0)
+        }
+    }
+    
+    class func italicFont() -> UIFont {
+        if let font = UIFont(name: "OpenSans-Italic", size: 15.0) {
+            return font
+        }
+        else {
+            return UIFont.italicSystemFontOfSize(15.0)
+        }
     }
     
 }
@@ -185,6 +199,17 @@ extension UIView {
         }
         addSubview(view)
         return view
+    }
+    
+    func newLabel(font: UIFont, textColor: UIColor, text: String?, alignment: NSTextAlignment?, backgroundColor: UIColor?) -> UILabel {
+        let label = UILabel()
+        label.font = font
+        label.textColor = textColor
+        if let text = text { label.text = text }
+        if let alignment = alignment { label.textAlignment = alignment }
+        if let backgroundColor = backgroundColor { label.backgroundColor = backgroundColor }
+        addSubview(label)
+        return label
     }
     
 }
