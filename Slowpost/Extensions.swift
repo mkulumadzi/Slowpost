@@ -174,3 +174,17 @@ extension UIFont {
     }
     
 }
+
+extension UIView {
+    
+    func newSubview(backgroundColor: UIColor, cornerRadius: CGFloat?) -> UIView {
+        let view = UIView()
+        view.backgroundColor = backgroundColor
+        if let cornerRadius = cornerRadius {
+            view.layer.cornerRadius = cornerRadius
+        }
+        addSubview(view)
+        return view
+    }
+    
+}

@@ -116,9 +116,7 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
     }
     
     private func initializeSendButton() {
-        sendButtonView = UIView()
-        view.addSubview(sendButtonView)
-        sendButtonView.backgroundColor = slowpostDarkGreen
+        sendButtonView = view.newSubview(slowpostDarkGreen, cornerRadius: nil)
         pinItemToBottomWithHeight(sendButtonView, toItem: view, height: 60.0)
         
         sendButtonLabel = UILabel()
@@ -427,9 +425,7 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
     }
     
     private func addImageContainerView() -> UIView {
-        imageContainerView = UIView()
-        composeView.addSubview(imageContainerView)
-        imageContainerView.backgroundColor = UIColor.lightGrayColor()
+        imageContainerView = composeView.newSubview(UIColor.lightGrayColor(), cornerRadius: nil)
         let suggestedImageHeight = view.frame.width * imageSelected.size.height / imageSelected.size.width
         var maxImageHeight:CGFloat!
         if view.frame.height - suggestedImageHeight < 240.0 {
@@ -457,10 +453,7 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
             addOverlayContainer(maxImageHeight)
         }
         
-        let clearButtonBackground = UIView()
-        clearButtonBackground.backgroundColor = UIColor.darkGrayColor()
-        clearButtonBackground.layer.cornerRadius = 10
-        composeView.addSubview(clearButtonBackground)
+        let clearButtonBackground = composeView.newSubview(UIColor.darkGrayColor(), cornerRadius: 10.0)
         
         let topClearBackground = NSLayoutConstraint(item: clearButtonBackground, attribute: .Top, relatedBy: .Equal, toItem: imageView, attribute: .Top, multiplier: 1.0, constant: 10.0)
         let leadingClearBackground = NSLayoutConstraint(item: clearButtonBackground, attribute: .Leading, relatedBy: .Equal, toItem: imageView, attribute: .Leading, multiplier: 1.0, constant: 10.0)
@@ -543,9 +536,7 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
     }
     
     private func addImageOptionView() -> UIView {
-        let imageOptionView = UIView()
-        composeView.addSubview(imageOptionView)
-        imageOptionView.backgroundColor = UIColor.whiteColor()
+        let imageOptionView = composeView.newSubview(UIColor.whiteColor(), cornerRadius: nil)
         pinItemToTopWithHeight(imageOptionView, toItem: composeView, height: 40.0)
         
         let imageOptionButton = UIButton.standardTextButton("Add image", target: self, action: "clearComposeView")
@@ -594,10 +585,7 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
 
     
     private func addComposeTextView(topView: UIView) {
-        composeTopBorder = UIView()
-        composeTopBorder.backgroundColor = UIColor.darkGrayColor()
-        composeView.addSubview(composeTopBorder)
-        
+        composeTopBorder = composeView.newSubview(UIColor.darkGrayColor(), cornerRadius: nil)
         composeTopBorderDefaultTop = NSLayoutConstraint(item: composeTopBorder, attribute: .Top, relatedBy: .Equal, toItem: topView, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
         let leadingBorder = NSLayoutConstraint(item: composeTopBorder, attribute: .Leading, relatedBy: .Equal, toItem: composeView, attribute: .Leading, multiplier: 1.0, constant: 0.0)
         let trailingBorder = NSLayoutConstraint(item: composeTopBorder, attribute: .Trailing, relatedBy: .Equal, toItem: composeView, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
