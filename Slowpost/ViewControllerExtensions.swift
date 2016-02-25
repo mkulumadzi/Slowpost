@@ -10,14 +10,7 @@ import Foundation
 
 extension UIViewController {
     
-    func addEdgeConstraintsToItem(item: UIView) {
-        let leading = NSLayoutConstraint(item: item, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1.0, constant: 0.0)
-        let trailing = NSLayoutConstraint(item: item, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
-        let top = NSLayoutConstraint(item: item, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 60.0)
-        let height = NSLayoutConstraint(item: item, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 30.0)
-        item.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([leading, trailing, top, height])
-    }
+    //MARK: Warning and Message Labels
     
     func initializeWarningLabel() -> UILabel {
         let warningLabel = initializeHeaderLabel()
@@ -38,7 +31,7 @@ extension UIViewController {
         headerLabel.textColor = UIColor.whiteColor()
         headerLabel.font = UIFont(name: "OpenSans", size: 15.0)
         headerLabel.textAlignment = .Center
-        addEdgeConstraintsToItem(headerLabel)
+        pinItemToTopWithHeight(headerLabel, toItem: view, height: 30.0)
         headerLabel.alpha = 0.0
         return headerLabel
     }
@@ -55,6 +48,90 @@ extension UIViewController {
         UIView.animateWithDuration(0.5, animations: {
             item.alpha = 0.0
         })
+    }
+    
+    //MARK: Autolayout helpers
+    
+    func activateConstraintsForItem(item: UIView, constraints: [NSLayoutConstraint]) {
+        item.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activateConstraints(constraints)
+    }
+    
+    func pinItemToTopWithHeight(item: UIView, toItem: UIView, height: CGFloat) {
+        let leading = NSLayoutConstraint.leading(item, toItem: toItem, constant: 0.0)
+        let trailing = NSLayoutConstraint.trailing(item, toItem: toItem, constant: 0.0)
+        let top = NSLayoutConstraint.top(item, toItem: toItem, constant: 0.0)
+        let height = NSLayoutConstraint.height(item, height: height)
+        activateConstraintsForItem(item, constraints: [leading, trailing, top, height])
+    }
+    
+    func pinItemToBottomWithHeight(item: UIView, toItem: UIView, height: CGFloat) {
+        let leading = NSLayoutConstraint.leading(item, toItem: toItem, constant: 0.0)
+        let trailing = NSLayoutConstraint.trailing(item, toItem: toItem, constant: 0.0)
+        let bottom = NSLayoutConstraint.bottom(item, toItem: toItem, constant: 0.0)
+        let height = NSLayoutConstraint.height(item, height: height)
+        activateConstraintsForItem(item, constraints: [leading, trailing, bottom, height])
+    }
+    
+    func pinItemToBottom(item: UIView, toItem: UIView) {
+        let leading = NSLayoutConstraint.leading(item, toItem: toItem, constant: 0.0)
+        let trailing = NSLayoutConstraint.trailing(item, toItem: toItem, constant: 0.0)
+        let bottom = NSLayoutConstraint.bottom(item, toItem: toItem, constant: 0.0)
+        activateConstraintsForItem(item, constraints: [leading, trailing, bottom])
+    }
+    
+    func centerVerticallyPinTrailing(item: UIView, toItem: UIView, trailingConstant: CGFloat) {
+        let centerVertically = NSLayoutConstraint.centerVertically(item, toItem: toItem)
+        let trailing = NSLayoutConstraint.trailing(item, toItem: toItem, constant: -10.0)
+        activateConstraintsForItem(item, constraints: [centerVertically, trailing])
+    }
+    
+    func embedItem(item: UIView, toItem: UIView) {
+        addConstraintsForItemInContainer(item, toItem: toItem, leadingConstant: 0.0, trailingConstant: 0.0, topConstant: 0.0, bottomConstant: 0.0)
+    }
+    
+    func addConstraintsForItemInContainer(item: UIView, toItem: UIView, leadingConstant: CGFloat, trailingConstant: CGFloat, topConstant: CGFloat, bottomConstant: CGFloat) {
+        let leading = NSLayoutConstraint.leading(item, toItem: toItem, constant: leadingConstant)
+        let trailing = NSLayoutConstraint.trailing(item, toItem: toItem, constant: trailingConstant)
+        let top = NSLayoutConstraint.top(item, toItem: toItem, constant: topConstant)
+        let bottom = NSLayoutConstraint.bottom(item, toItem: toItem, constant: bottomConstant)
+        activateConstraintsForItem(item, constraints: [leading, trailing, top, bottom])
+    }
+    
+}
+
+extension NSLayoutConstraint {
+    
+    class func height(item: UIView, height: CGFloat) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: item, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: height)
+    }
+    
+    class func leading(item: UIView, toItem: UIView, constant: CGFloat) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: item, attribute: .Leading, relatedBy: .Equal, toItem: toItem, attribute: .Leading, multiplier: 1.0, constant: constant)
+    }
+    
+    class func trailing(item: UIView, toItem: UIView, constant: CGFloat) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: item, attribute: .Trailing, relatedBy: .Equal, toItem: toItem, attribute: .Trailing, multiplier: 1.0, constant: constant)
+    }
+    
+    class func top(item: UIView, toItem: UIView, constant: CGFloat) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: item, attribute: .Top, relatedBy: .Equal, toItem: toItem, attribute: .Top, multiplier: 1.0, constant: constant)
+    }
+    
+    class func bottom(item: UIView, toItem: UIView, constant: CGFloat) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: item, attribute: .Bottom, relatedBy: .Equal, toItem: toItem, attribute: .Bottom, multiplier: 1.0, constant: constant)
+    }
+    
+    class func centerVertically(item: UIView, toItem: UIView) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: item, attribute: .CenterY, relatedBy: .Equal, toItem: toItem, attribute: .CenterY, multiplier: 1.0, constant: 0.0)
+    }
+    
+    class func centerHorizontally(item: UIView, toItem: UIView) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: item, attribute: .CenterX, relatedBy: .Equal, toItem: toItem, attribute: .CenterX, multiplier: 1.0, constant: 0.0)
+    }
+    
+    class func trailingToLeading(item: UIView, toItem: UIView, constant: CGFloat) -> NSLayoutConstraint {
+        return NSLayoutConstraint(item: item, attribute: .Trailing, relatedBy: .Equal, toItem: toItem, attribute: .Leading, multiplier: 1.0, constant: constant)
     }
     
 }

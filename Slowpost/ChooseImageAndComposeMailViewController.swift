@@ -124,53 +124,37 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
         sendButtonView = UIView()
         view.addSubview(sendButtonView)
         sendButtonView.backgroundColor = slowpostDarkGreen
-        
-        let sendLeading = NSLayoutConstraint(item: sendButtonView, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1.0, constant: 0.0)
-        let sendTrailing = NSLayoutConstraint(item: sendButtonView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
-        let sendBottom = NSLayoutConstraint(item: sendButtonView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
-        let sendHeight = NSLayoutConstraint(item: sendButtonView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 60.0)
-        sendButtonView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([sendLeading, sendTrailing, sendBottom, sendHeight])
+        pinItemToBottomWithHeight(sendButtonView, toItem: view, height: 60.0)
         
         sendButtonLabel = UILabel()
         sendButtonView.addSubview(sendButtonLabel)
         sendButtonLabel.font = UIFont(name: "OpenSans-Semibold", size: 15.0)
         sendButtonLabel.textColor = UIColor.whiteColor()
-        
-        let labelHorizontal = NSLayoutConstraint(item: sendButtonLabel, attribute: .CenterY, relatedBy: .Equal, toItem: sendButtonView, attribute: .CenterY, multiplier: 1.0, constant: 1.0)
-        let labelTrailing = NSLayoutConstraint(item: sendButtonLabel, attribute: .Trailing, relatedBy: .Equal, toItem: sendButtonView, attribute: .Trailing, multiplier: 1.0, constant: -10.0)
-        sendButtonLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activateConstraints([labelHorizontal, labelTrailing])
+        centerVerticallyPinTrailing(sendButtonLabel, toItem: sendButtonView, trailingConstant: -10.0)
         
         let sendMask = UIButton()
         sendButtonView.addSubview(sendMask)
         sendMask.backgroundColor = UIColor.clearColor()
         sendMask.addTarget(self, action: "sendTapped", forControlEvents: .TouchUpInside)
+        addConstraintsForItemInContainer(sendMask, toItem: sendButtonView, leadingConstant: 80.0, trailingConstant: 0.0, topConstant: 0.0, bottomConstant: 0.0)
         
-        let sendMaskLeading = NSLayoutConstraint(item: sendMask, attribute: .Leading, relatedBy: .Equal, toItem: sendButtonView, attribute: .Leading, multiplier: 1.0, constant: 80.0)
-        let sendMaskTrailing = NSLayoutConstraint(item: sendMask, attribute: .Trailing, relatedBy: .Equal, toItem: sendButtonView, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
-        let sendMaskTop = NSLayoutConstraint(item: sendMask, attribute: .Top, relatedBy: .Equal, toItem: sendButtonView, attribute: .Top, multiplier: 1.0, constant: 0.0)
-        let sendMaskBottom = NSLayoutConstraint(item: sendMask, attribute: .Bottom, relatedBy: .Equal, toItem: sendButtonView, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
-        sendMask.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([sendMaskLeading, sendMaskTrailing, sendMaskTop, sendMaskBottom])
-        
+
         let scheduleDeliveryButton = UIButton()
         sendButtonView.addSubview(scheduleDeliveryButton)
         scheduleDeliveryButton.backgroundColor = UIColor.clearColor()
         scheduleDeliveryButton.setTitle("Options", forState: .Normal)
         scheduleDeliveryButton.titleLabel!.font = UIFont(name: "OpenSans-Semibold", size: 15.0)
         scheduleDeliveryButton.titleLabel!.textColor = UIColor.whiteColor()
-        
         scheduleDeliveryButton.tintColor = UIColor.whiteColor()
         scheduleDeliveryButton.addTarget(self, action: "scheduleDelivery", forControlEvents: .TouchUpInside)
         
-        let scheduleLeading = NSLayoutConstraint(item: scheduleDeliveryButton, attribute: .Leading, relatedBy: .Equal, toItem: sendButtonView, attribute: .Leading, multiplier: 1.0, constant: 0.0)
-        let scheduleTrailing = NSLayoutConstraint(item: scheduleDeliveryButton, attribute: .Trailing, relatedBy: .Equal, toItem: sendMask, attribute: .Leading, multiplier: 1.0, constant: 0.0)
-        let scheduleTop = NSLayoutConstraint(item: scheduleDeliveryButton, attribute: .Top, relatedBy: .Equal, toItem: sendButtonView, attribute: .Top, multiplier: 1.0, constant: 0.0)
-        let scheduleBottom = NSLayoutConstraint(item: scheduleDeliveryButton, attribute: .Bottom, relatedBy: .Equal, toItem: sendButtonView, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
-        scheduleDeliveryButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([scheduleLeading, scheduleTrailing, scheduleTop, scheduleBottom])
+        let scheduleDeliveryConstraints = [
+            NSLayoutConstraint.leading(scheduleDeliveryButton, toItem: sendButtonView, constant: 0.0),
+            NSLayoutConstraint.trailingToLeading(scheduleDeliveryButton, toItem: sendMask, constant: 0.0),
+            NSLayoutConstraint.top(scheduleDeliveryButton, toItem: sendButtonView, constant: 0.0),
+            NSLayoutConstraint.bottom(scheduleDeliveryButton, toItem: sendButtonView, constant: 0.0)
+        ]
+        activateConstraintsForItem(scheduleDeliveryButton, constraints: scheduleDeliveryConstraints)
         
         sendButtonView.hidden = true
     }
@@ -457,10 +441,8 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
         imageContainerView = UIView()
         composeView.addSubview(imageContainerView)
         imageContainerView.backgroundColor = UIColor.lightGrayColor()
-        
         let suggestedImageHeight = view.frame.width * imageSelected.size.height / imageSelected.size.width
         var maxImageHeight:CGFloat!
-        
         if view.frame.height - suggestedImageHeight < 240.0 {
             print("Setting gap to 80")
             maxImageHeight = view.frame.height - 240.0
@@ -469,15 +451,7 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
             print("Using suggested height")
             maxImageHeight = suggestedImageHeight
         }
-        
-        let topImageContainer = NSLayoutConstraint(item: imageContainerView, attribute: .Top, relatedBy: .Equal, toItem: composeView, attribute: .Top, multiplier: 1.0, constant: 0.0)
-        let leadingImageContainer = NSLayoutConstraint(item: imageContainerView, attribute: .Leading, relatedBy: .Equal, toItem: composeView, attribute: .Leading, multiplier: 1.0, constant: 0.0)
-        let trailingImageContainer = NSLayoutConstraint(item: imageContainerView, attribute: .Trailing, relatedBy: .Equal, toItem: composeView, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
-        imageContainerHeight = NSLayoutConstraint(item: imageContainerView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: maxImageHeight)
-        
-        imageContainerView.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activateConstraints([topImageContainer, leadingImageContainer, trailingImageContainer, imageContainerHeight])
+        pinItemToTopWithHeight(imageContainerView, toItem: composeView, height: maxImageHeight)
         
         imageView = UIImageView(image: imageSelected)
         composeView.addSubview(imageView)
@@ -534,12 +508,7 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
         overlayInstructions.textAlignment = .Center
         overlayInstructions.textColor = UIColor.whiteColor()
         overlayInstructions.backgroundColor = slowpostDarkGrey
-        
-        let bottomOverlayContainer = NSLayoutConstraint(item: overlayInstructions, attribute: .Bottom, relatedBy: .Equal, toItem: imageContainerView, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
-        let leadingOverlayContainer = NSLayoutConstraint(item: overlayInstructions, attribute: .Leading, relatedBy: .Equal, toItem: imageContainerView, attribute: .Leading, multiplier: 1.0, constant: 0.0)
-        let trailingOverlayContainer = NSLayoutConstraint(item: overlayInstructions, attribute: .Trailing, relatedBy: .Equal, toItem: imageContainerView, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
-        overlayInstructions.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([bottomOverlayContainer, leadingOverlayContainer, trailingOverlayContainer])
+        pinItemToBottom(overlayInstructions, toItem: imageContainerView)
         
         overlayIndex = 0
         let overlaySwipeLeft = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipeLeft:"))
@@ -567,11 +536,6 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
                 edge = NSLayoutAttribute.Bottom
             }
             
-            print("Numbers for the overlays")
-            print(view.frame.width)
-            print(renderedImageWidth)
-            print(maxImageHeight)
-            
             let leadingConstant = offsetIndex * view.frame.width + (view.frame.width - renderedImageWidth) / 2
             print(leadingConstant)
             
@@ -593,13 +557,7 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
         let imageOptionView = UIView()
         composeView.addSubview(imageOptionView)
         imageOptionView.backgroundColor = UIColor.whiteColor()
-        
-        let topOptionView = NSLayoutConstraint(item: imageOptionView, attribute: .Top, relatedBy: .Equal, toItem: composeView, attribute: .Top, multiplier: 1.0, constant: 0.0)
-        let leadingOptionView = NSLayoutConstraint(item: imageOptionView, attribute: .Leading, relatedBy: .Equal, toItem: composeView, attribute: .Leading, multiplier: 1.0, constant: -1.0)
-        let trailingOptionView = NSLayoutConstraint(item: imageOptionView, attribute: .Trailing, relatedBy: .Equal, toItem: composeView, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
-        let heightOptionView = NSLayoutConstraint(item: imageOptionView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 40.0)
-        imageOptionView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([topOptionView, leadingOptionView, trailingOptionView, heightOptionView])
+        pinItemToTopWithHeight(imageOptionView, toItem: composeView, height: 40.0)
         
         let imageOptionButton = UIButton()
         imageOptionView.addSubview(imageOptionButton)
@@ -608,14 +566,8 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
         imageOptionButton.titleLabel!.font = UIFont(name: "OpenSans-Semibold", size: 15.0)
         imageOptionButton.titleLabel!.textColor = UIColor.whiteColor()
         imageOptionButton.addTarget(self, action: "clearComposeView", forControlEvents: .TouchUpInside)
-        let topOptionButton = NSLayoutConstraint(item: imageOptionButton, attribute: .Top, relatedBy: .Equal, toItem: imageOptionView, attribute: .Top, multiplier: 1.0, constant: 1.0)
-        let leadingOptionButton = NSLayoutConstraint(item: imageOptionButton, attribute: .Leading, relatedBy: .Equal, toItem: imageOptionView, attribute: .Leading, multiplier: 1.0, constant: 1.0)
-        let trailingOptionButton = NSLayoutConstraint(item: imageOptionButton, attribute: .Trailing, relatedBy: .Equal, toItem: imageOptionView, attribute: .Trailing, multiplier: 1.0, constant: 1.0)
-        let bottomOptionButton = NSLayoutConstraint(item: imageOptionButton, attribute: .Bottom, relatedBy: .Equal, toItem: imageOptionView, attribute: .Bottom, multiplier: 1.0, constant: 1.0)
-        imageOptionButton.translatesAutoresizingMaskIntoConstraints = false
-    
-        NSLayoutConstraint.activateConstraints([topOptionButton, leadingOptionButton, trailingOptionButton, bottomOptionButton])
         
+        embedItem(imageOptionButton, toItem: imageOptionView)
         
         return imageOptionView
     }
@@ -687,7 +639,6 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
         let bottomCompose = NSLayoutConstraint(item: composeTextView, attribute: .Bottom, relatedBy: .Equal, toItem: composeView, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
         
         composeTextView.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activateConstraints([topCompose, leadingCompose, trailingCompose, bottomCompose])
         
         placeholderText = UILabel()
