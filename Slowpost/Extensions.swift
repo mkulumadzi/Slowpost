@@ -145,3 +145,32 @@ public extension UIDevice {
     }
     
 }
+
+extension UIButton {
+    
+    class func textButton(backgroundColor: UIColor, title: String, textColor: UIColor, target: AnyObject, action: String) -> UIButton {
+        let button = UIButton()
+        button.backgroundColor = backgroundColor
+        button.setTitle(title, forState: .Normal)
+        if let titleLabel = button.titleLabel {
+            titleLabel.textColor = textColor
+            titleLabel.font = UIFont.buttonFont()
+        }
+        button.addTarget(target, action: Selector(action), forControlEvents: .TouchUpInside)
+        return button
+    }
+    
+    class func standardTextButton(title: String, target: AnyObject, action: String) -> UIButton {
+        let button = UIButton.textButton(slowpostDarkGreen, title: title, textColor: UIColor.whiteColor(), target: target, action: action)
+        return button
+    }
+    
+}
+
+extension UIFont {
+    
+    class func buttonFont() -> UIFont {
+        return UIFont(name: "OpenSans-Semibold", size: 15.0)!
+    }
+    
+}

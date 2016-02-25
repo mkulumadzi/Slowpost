@@ -110,13 +110,8 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
     }
     
     private func initializeDoneEditingButton() {
-        doneEditingButton = UIButton()
+        doneEditingButton = UIButton.standardTextButton("Done", target: self, action: "doneEditing")
         view.addSubview(doneEditingButton)
-        doneEditingButton.backgroundColor = slowpostDarkGreen
-        doneEditingButton.setTitle("Done", forState: .Normal)
-        doneEditingButton.titleLabel!.font = UIFont(name: "OpenSans-Semibold", size: 15.0)
-        doneEditingButton.titleLabel!.textColor = UIColor.whiteColor()
-        doneEditingButton.addTarget(self, action: "doneEditing", forControlEvents: .TouchUpInside)
         doneEditingButton.hidden = true
     }
     
@@ -138,15 +133,9 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
         sendMask.addTarget(self, action: "sendTapped", forControlEvents: .TouchUpInside)
         addConstraintsForItemInContainer(sendMask, toItem: sendButtonView, leadingConstant: 80.0, trailingConstant: 0.0, topConstant: 0.0, bottomConstant: 0.0)
         
-
-        let scheduleDeliveryButton = UIButton()
+        let scheduleDeliveryButton = UIButton.textButton(UIColor.clearColor(), title: "Options", textColor: UIColor.whiteColor(), target: self, action: "scheduleDelivery")
         sendButtonView.addSubview(scheduleDeliveryButton)
-        scheduleDeliveryButton.backgroundColor = UIColor.clearColor()
-        scheduleDeliveryButton.setTitle("Options", forState: .Normal)
-        scheduleDeliveryButton.titleLabel!.font = UIFont(name: "OpenSans-Semibold", size: 15.0)
-        scheduleDeliveryButton.titleLabel!.textColor = UIColor.whiteColor()
-        scheduleDeliveryButton.tintColor = UIColor.whiteColor()
-        scheduleDeliveryButton.addTarget(self, action: "scheduleDelivery", forControlEvents: .TouchUpInside)
+
         
         let scheduleDeliveryConstraints = [
             NSLayoutConstraint.leading(scheduleDeliveryButton, toItem: sendButtonView, constant: 0.0),
@@ -559,14 +548,8 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
         imageOptionView.backgroundColor = UIColor.whiteColor()
         pinItemToTopWithHeight(imageOptionView, toItem: composeView, height: 40.0)
         
-        let imageOptionButton = UIButton()
+        let imageOptionButton = UIButton.standardTextButton("Add image", target: self, action: "clearComposeView")
         imageOptionView.addSubview(imageOptionButton)
-        imageOptionButton.backgroundColor = slowpostDarkGreen
-        imageOptionButton.setTitle("Add image", forState: .Normal)
-        imageOptionButton.titleLabel!.font = UIFont(name: "OpenSans-Semibold", size: 15.0)
-        imageOptionButton.titleLabel!.textColor = UIColor.whiteColor()
-        imageOptionButton.addTarget(self, action: "clearComposeView", forControlEvents: .TouchUpInside)
-        
         embedItem(imageOptionButton, toItem: imageOptionView)
         
         return imageOptionView
