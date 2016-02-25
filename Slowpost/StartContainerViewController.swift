@@ -14,6 +14,7 @@ class StartContainerViewController: UIViewController {
     @IBOutlet weak var slowpostText: UILabel!
     @IBOutlet weak var slowpostIcon: UIImageView!
     @IBOutlet weak var logoLabelCenterY: NSLayoutConstraint!
+    @IBOutlet weak var containerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,21 +28,22 @@ class StartContainerViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         startAnimation()
-        scaleFontAnimation()
     }
     
     private func startAnimation() {
         UIView.animateKeyframesWithDuration(1.0, delay: 0.0, options: [], animations: {
             self.welcomeText.alpha = 0.0
             self.slowpostIcon.alpha = 0.0
-            }, completion: { (values: Bool) in
-                
+            }, completion: {(values: Bool) in
+                self.scaleFontAnimation()
         })
         
         logoLabelCenterY.constant = (view.frame.height / 2) - 30
         UIView.animateKeyframesWithDuration(1.0, delay: 1.0, options: [], animations: {
             self.view.layoutIfNeeded()
-            }, completion: nil)
+            }, completion: {(values: Bool) in
+                self.showEmailEntryController()
+        })
     }
     
     private func scaleFontAnimation() {
@@ -52,6 +54,15 @@ class StartContainerViewController: UIViewController {
         scaleAnimation.removedOnCompletion = false
         scaleAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         slowpostText.layer.addAnimation(scaleAnimation, forKey: "transform")
+    }
+    
+    private func showEmailEntryController() {
+        containerView.alpha = 0.0
+        let emailController = fetchViewControllerFromStoryboard("login", storyboardIdentifier: "emailEntry")
+        embedViewController(emailController, intoView: containerView)
+        UIView.animateWithDuration(1.0, animations: {
+            self.containerView.alpha = 1.0
+        })
     }
 
 }

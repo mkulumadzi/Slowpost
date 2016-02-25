@@ -4,13 +4,19 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="OpenSans-Italic.ttf">
             <string>OpenSans-Italic</string>
             <string>OpenSans-Italic</string>
         </mutableArray>
+        <mutableArray key="OpenSans-Light.ttf">
+            <string>OpenSans-Light</string>
+        </mutableArray>
         <mutableArray key="OpenSans-Regular.ttf">
+            <string>OpenSans</string>
+            <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
@@ -66,6 +72,7 @@
         <!--Base Navigation Controller-->
         <scene sceneID="lRb-OR-fHs">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k5c-Hl-6yC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="Ad4-oR-7aV" customClass="BaseNavigationController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="e4J-qg-cDF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -82,7 +89,6 @@
                         <segue destination="WJT-E9-Tgl" kind="relationship" relationship="rootViewController" id="u1c-MT-KLK"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="k5c-Hl-6yC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1487" y="-1044"/>
         </scene>
@@ -1422,17 +1428,21 @@ We won't save your address book on our servers, but we will search for matches w
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kkZ-5Q-sJJ" userLabel="containerView">
+                                <rect key="frame" x="0.0" y="60" width="600" height="260"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Slowpost Icon Set" translatesAutoresizingMaskIntoConstraints="NO" id="Mdv-eo-3ij">
-                                <rect key="frame" x="225" y="495" width="150" height="95"/>
+                                <rect key="frame" x="225" y="459" width="150" height="95"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="63f-k8-cKF">
-                                <rect key="frame" x="245" y="235" width="111" height="28"/>
+                                <rect key="frame" x="245" y="225" width="111" height="28"/>
                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Slowpost" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4fd-OB-MjX">
-                                <rect key="frame" x="154" y="263" width="292" height="75"/>
+                                <rect key="frame" x="154" y="253" width="292" height="75"/>
                                 <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="64"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -1443,13 +1453,17 @@ We won't save your address book on our servers, but we will search for matches w
                             <constraint firstAttribute="centerY" secondItem="Mdv-eo-3ij" secondAttribute="centerY" id="3Oo-Qg-e3Z"/>
                             <constraint firstAttribute="centerX" secondItem="4fd-OB-MjX" secondAttribute="centerX" id="7MB-OT-HNC"/>
                             <constraint firstItem="4fd-OB-MjX" firstAttribute="top" secondItem="63f-k8-cKF" secondAttribute="bottom" id="KAJ-X4-wNb"/>
+                            <constraint firstItem="kkZ-5Q-sJJ" firstAttribute="centerX" secondItem="zXz-Ns-5ne" secondAttribute="centerX" id="NCU-rI-E4d"/>
                             <constraint firstItem="63f-k8-cKF" firstAttribute="top" secondItem="dAH-WT-9pl" secondAttribute="bottom" constant="50" id="TdK-32-esY"/>
                             <constraint firstItem="4fd-OB-MjX" firstAttribute="top" secondItem="63f-k8-cKF" secondAttribute="bottom" id="Wti-JO-9Bq"/>
+                            <constraint firstItem="kkZ-5Q-sJJ" firstAttribute="top" secondItem="dAH-WT-9pl" secondAttribute="bottom" constant="40" id="cz6-eB-rFl"/>
                             <constraint firstAttribute="centerX" secondItem="63f-k8-cKF" secondAttribute="centerX" id="eIg-rV-0PR"/>
-                            <constraint firstAttribute="centerY" secondItem="4fd-OB-MjX" secondAttribute="centerY" id="mvf-aJ-yp1"/>
+                            <constraint firstItem="kkZ-5Q-sJJ" firstAttribute="width" secondItem="zXz-Ns-5ne" secondAttribute="width" id="m4a-cw-5IN"/>
+                            <constraint firstAttribute="centerY" secondItem="4fd-OB-MjX" secondAttribute="centerY" constant="10" id="mvf-aJ-yp1"/>
                             <constraint firstItem="63f-k8-cKF" firstAttribute="top" secondItem="zXz-Ns-5ne" secondAttribute="top" constant="50" id="nc3-Jd-efn"/>
-                            <constraint firstItem="9Ie-Ri-pVP" firstAttribute="top" secondItem="Mdv-eo-3ij" secondAttribute="bottom" constant="10" id="tVP-1O-wm0"/>
+                            <constraint firstItem="9Ie-Ri-pVP" firstAttribute="top" secondItem="Mdv-eo-3ij" secondAttribute="bottom" constant="46" id="tVP-1O-wm0"/>
                             <constraint firstAttribute="centerX" secondItem="Mdv-eo-3ij" secondAttribute="centerX" id="vma-lX-hod"/>
+                            <constraint firstItem="kkZ-5Q-sJJ" firstAttribute="height" secondItem="zXz-Ns-5ne" secondAttribute="height" multiplier="0.5" constant="-40" id="z0u-DK-1uM"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -1462,6 +1476,7 @@ We won't save your address book on our servers, but we will search for matches w
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <connections>
+                        <outlet property="containerView" destination="kkZ-5Q-sJJ" id="B2g-m8-Kkq"/>
                         <outlet property="logoLabelCenterY" destination="mvf-aJ-yp1" id="HrZ-DE-ZcB"/>
                         <outlet property="slowpostIcon" destination="Mdv-eo-3ij" id="tD8-63-wxA"/>
                         <outlet property="slowpostText" destination="4fd-OB-MjX" id="K5r-b6-nEs"/>
@@ -1472,10 +1487,129 @@ We won't save your address book on our servers, but we will search for matches w
             </objects>
             <point key="canvasLocation" x="811" y="-1046"/>
         </scene>
+        <!--Start-->
+        <scene sceneID="FAN-45-SD9">
+            <objects>
+                <viewController storyboardIdentifier="emailEntry" id="q6r-WO-5PA" customClass="EmailEntryViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZJE-WA-tBF"/>
+                        <viewControllerLayoutGuide type="bottom" id="eXV-IY-bTS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ysp-l9-5wc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="748" verticalHuggingPriority="751" horizontalCompressionResistancePriority="752" verticalCompressionResistancePriority="755" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="8" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="X25-Xy-QLu" customClass="BottomBorderUITextField" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="30" y="480" width="490" height="30"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="J1O-Xk-gHJ"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                <connections>
+                                    <action selector="editingChanged:" destination="q6r-WO-5PA" eventType="editingChanged" id="ese-zF-vyE"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email to get started." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="WnM-dJ-r0I">
+                                <rect key="frame" x="30" y="30" width="540" height="33"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- or -" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.60000002384185791" translatesAutoresizingMaskIntoConstraints="NO" id="EoI-Ho-SJB">
+                                <rect key="frame" x="30" y="520" width="540" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="BTG-4e-YZD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="746" verticalHuggingPriority="746" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G7S-tz-wtj" customClass="TextUIButton" customModule="Slowpost" customModuleProvider="target">
+                                <rect key="frame" x="530" y="475" width="40" height="40"/>
+                                <color key="backgroundColor" red="0.0" green="0.49803921568627452" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="bay-N8-6fx"/>
+                                    <constraint firstAttribute="width" constant="40" id="t0e-AO-VxJ"/>
+                                </constraints>
+                                <state key="normal" image="chevron-right">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.71372549019607845" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="G7S-tz-wtj" secondAttribute="trailing" constant="30" id="5Pq-jC-v9l"/>
+                            <constraint firstAttribute="trailing" secondItem="EoI-Ho-SJB" secondAttribute="trailing" constant="30" id="5dn-cq-iAk"/>
+                            <constraint firstAttribute="trailing" secondItem="WnM-dJ-r0I" secondAttribute="trailing" constant="30" id="HcF-Kv-PrJ"/>
+                            <constraint firstItem="EoI-Ho-SJB" firstAttribute="top" secondItem="G7S-tz-wtj" secondAttribute="bottom" id="IRh-Ee-KSS"/>
+                            <constraint firstAttribute="trailing" secondItem="WnM-dJ-r0I" secondAttribute="trailing" constant="100" id="LEg-m5-LCY"/>
+                            <constraint firstItem="G7S-tz-wtj" firstAttribute="top" secondItem="X25-Xy-QLu" secondAttribute="top" id="Qbg-Ou-qWe"/>
+                            <constraint firstItem="G7S-tz-wtj" firstAttribute="leading" secondItem="X25-Xy-QLu" secondAttribute="trailing" constant="10" id="aVp-uf-PbE"/>
+                            <constraint firstItem="eXV-IY-bTS" firstAttribute="top" secondItem="EoI-Ho-SJB" secondAttribute="bottom" constant="50" id="cTy-z3-L5H"/>
+                            <constraint firstItem="WnM-dJ-r0I" firstAttribute="leading" secondItem="ysp-l9-5wc" secondAttribute="leading" constant="30" id="hug-99-h2u"/>
+                            <constraint firstItem="X25-Xy-QLu" firstAttribute="leading" secondItem="ysp-l9-5wc" secondAttribute="leading" constant="30" id="j0b-Pr-hxs">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                            <constraint firstItem="G7S-tz-wtj" firstAttribute="centerY" secondItem="X25-Xy-QLu" secondAttribute="centerY" id="jZy-3f-30j"/>
+                            <constraint firstItem="EoI-Ho-SJB" firstAttribute="leading" secondItem="ysp-l9-5wc" secondAttribute="leading" constant="30" id="nnU-6A-3HB"/>
+                            <constraint firstItem="X25-Xy-QLu" firstAttribute="top" relation="greaterThanOrEqual" secondItem="WnM-dJ-r0I" secondAttribute="bottom" constant="10" id="pCq-gD-R7f"/>
+                            <constraint firstAttribute="trailing" secondItem="WnM-dJ-r0I" secondAttribute="trailing" constant="30" id="qQ5-GX-390"/>
+                            <constraint firstItem="WnM-dJ-r0I" firstAttribute="leading" secondItem="ysp-l9-5wc" secondAttribute="leading" constant="30" id="tHY-Vp-4Km"/>
+                            <constraint firstItem="WnM-dJ-r0I" firstAttribute="leading" secondItem="ysp-l9-5wc" secondAttribute="leading" constant="100" id="ti0-vq-NUs"/>
+                            <constraint firstItem="WnM-dJ-r0I" firstAttribute="top" secondItem="ZJE-WA-tBF" secondAttribute="bottom" constant="10" id="w6h-of-5Vc"/>
+                            <constraint firstItem="EoI-Ho-SJB" firstAttribute="top" secondItem="X25-Xy-QLu" secondAttribute="bottom" constant="10" id="wbb-U1-vPI"/>
+                            <constraint firstAttribute="trailing" secondItem="X25-Xy-QLu" secondAttribute="trailing" constant="60" id="xDO-PM-WCL">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="LEg-m5-LCY"/>
+                                <exclude reference="hug-99-h2u"/>
+                                <exclude reference="qQ5-GX-390"/>
+                                <exclude reference="ti0-vq-NUs"/>
+                                <exclude reference="xDO-PM-WCL"/>
+                                <exclude reference="IRh-Ee-KSS"/>
+                                <exclude reference="Qbg-Ou-qWe"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="HcF-Kv-PrJ"/>
+                                <include reference="LEg-m5-LCY"/>
+                                <exclude reference="tHY-Vp-4Km"/>
+                                <include reference="ti0-vq-NUs"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Start" id="NAP-KI-Liy">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="gh7-xp-F0q">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="X25-Xy-QLu" id="pg2-jK-3Mb"/>
+                        <outlet property="nextButton" destination="G7S-tz-wtj" id="YBq-q7-j3y"/>
+                        <segue destination="G5S-3I-ocm" kind="unwind" identifier="loginCompleted" unwindAction="signUpOrLogInCompleted:" id="OSj-e1-zFv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uqw-kN-Luv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="G5S-3I-ocm" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="cxE-xa-l8J"/>
+            </objects>
+            <point key="canvasLocation" x="811" y="-1720"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Slowpost Icon Set" width="150" height="95"/>
         <image name="Slowpost Icon Set (green)" width="150" height="95"/>
+        <image name="chevron-right" width="24" height="24"/>
         <image name="example_card.jpg" width="1024" height="768"/>
         <image name="example_photo.jpg" width="720" height="960"/>
         <image name="grey-circle.png" width="120" height="120"/>

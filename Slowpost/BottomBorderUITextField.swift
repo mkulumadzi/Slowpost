@@ -21,5 +21,15 @@ class BottomBorderUITextField: UITextField {
         layer.addSublayer(border)
         layer.masksToBounds = true
     }
+    
+    func addWhiteBottomLayer() {
+        let border = CALayer()
+        let thickness = CGFloat(1.0)
+        border.borderColor = UIColor.whiteColor().CGColor
+        border.frame = CGRect(x: 0, y: frame.size.height - thickness, width:  frame.size.width, height: frame.size.height)
+        border.borderWidth = thickness
+        layer.addSublayer(border)
+        layer.masksToBounds = true
+    }
 
 }

@@ -45,6 +45,7 @@
 		D21E2C871BC09C6100E17572 /* libFlurry_7.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D21E2C861BC09C6100E17572 /* libFlurry_7.2.1.a */; };
 		D2319AC01BD16D8F00B989C0 /* RequestSubmittedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2319ABF1BD16D8F00B989C0 /* RequestSubmittedViewController.swift */; };
 		D23879581C7F973600774994 /* StartContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23879571C7F973600774994 /* StartContainerViewController.swift */; };
+		D238795C1C7FA6FA00774994 /* EmailEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D238795B1C7FA6FA00774994 /* EmailEntryViewController.swift */; };
 		D2389E681B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E671B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift */; };
 		D2389E6B1B950C0300CB19BB /* conversations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2389E6A1B950C0300CB19BB /* conversations.storyboard */; };
 		D2389E6D1B9511E100CB19BB /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E6C1B9511E100CB19BB /* ConversationListViewController.swift */; };
@@ -200,6 +201,7 @@
 		D2222A741B588695007E74BB /* SnailMailModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SnailMailModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		D2319ABF1BD16D8F00B989C0 /* RequestSubmittedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestSubmittedViewController.swift; sourceTree = "<group>"; };
 		D23879571C7F973600774994 /* StartContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartContainerViewController.swift; sourceTree = "<group>"; };
+		D238795B1C7FA6FA00774994 /* EmailEntryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailEntryViewController.swift; sourceTree = "<group>"; };
 		D2389E671B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseDeliveryOptionsViewController.swift; sourceTree = "<group>"; };
 		D2389E6A1B950C0300CB19BB /* conversations.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = conversations.storyboard; sourceTree = "<group>"; };
 		D2389E6C1B9511E100CB19BB /* ConversationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 				CC23DE291AE54C0300AFEDE4 /* login.storyboard */,
 				D206FB4A1B61688D008BB412 /* WelcomeScreenViewController.swift */,
 				D23879571C7F973600774994 /* StartContainerViewController.swift */,
+				D238795B1C7FA6FA00774994 /* EmailEntryViewController.swift */,
 				D2AA1E341C126C69001F5F01 /* StartViewController.swift */,
 				D210031C1C1657FC00E45CA3 /* UsernameFBViewController.swift */,
 				D210031E1C17A8B900E45CA3 /* PasswordFBController.swift */,
@@ -893,6 +896,7 @@
 				CC96E4A01ABCCBF2001E6D27 /* LogInViewController.swift in Sources */,
 				D2E97D8D1BC322BF00DAEB6C /* RecipientCell.swift in Sources */,
 				D289F2181BD15517004D29FA /* RequestPasswordResetViewController.swift in Sources */,
+				D238795C1C7FA6FA00774994 /* EmailEntryViewController.swift in Sources */,
 				D215D8061C21EAF000CA0B4A /* ScheduleTableViewCell.swift in Sources */,
 				D21003251C1A36A800E45CA3 /* ComposeView.swift in Sources */,
 				D26726301B7D524100FE651F /* UsernameViewController.swift in Sources */,

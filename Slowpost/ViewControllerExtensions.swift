@@ -10,6 +10,47 @@ import Foundation
 
 extension UIViewController {
     
+    //MARK: Embedding view controllers
+    
+    func fillSubview(subview : UIView, inSuperView superview : UIView) {
+        let views : [ String : AnyObject ] = ["subview" : subview]
+        let options = NSLayoutFormatOptions(rawValue: 0)
+        superview.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[subview]|", options: options, metrics: nil, views: views))
+        superview.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[subview]|", options: options, metrics: nil, views: views))
+    }
+    
+    func embedViewController(vc : UIViewController, intoView superview : UIView) {
+        self.embedViewController(vc, intoView: superview, placementBlock: nil)
+    }
+    
+    func embedViewController(vc : UIViewController, intoView superview : UIView, placementBlock : ((UIView) -> Void)?) {
+        vc.view.translatesAutoresizingMaskIntoConstraints = false
+        self.addChildViewController(vc)
+        superview.addSubview(vc.view)
+        
+        if let placementBlock = placementBlock {
+            placementBlock(vc.view)
+        }
+        else {
+            self.fillSubview(vc.view, inSuperView: view)
+        }
+        
+        vc.didMoveToParentViewController(self)
+    }
+    
+    func removeEmbeddedViewController(vc : UIViewController) {
+        vc.willMoveToParentViewController(self)
+        vc.view.removeFromSuperview()
+        vc.removeFromParentViewController()
+    }
+    
+    func fetchViewControllerFromStoryboard(storyboardName: String, storyboardIdentifier: String) -> UIViewController {
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier(storyboardIdentifier)
+        return vc
+    }
+    
+    
     //MARK: Warning and Message Labels
     
     func initializeWarningLabel() -> UILabel {
@@ -71,6 +112,14 @@ extension UIViewController {
         let bottom = NSLayoutConstraint.bottom(item, toItem: toItem, constant: 0.0)
         let height = NSLayoutConstraint.height(item, height: height)
         activateConstraintsForItem(item, constraints: [leading, trailing, bottom, height])
+    }
+    
+    func pinItemToBottomWithOptions(item: UIView, toItem: UIView, leading: CGFloat, trailing: CGFloat, bottom: CGFloat, height: CGFloat) {
+        let leadingConstraint = NSLayoutConstraint.leading(item, toItem: toItem, constant: leading)
+        let trailingConstraint = NSLayoutConstraint.trailing(item, toItem: toItem, constant: trailing)
+        let bottomConstraint = NSLayoutConstraint.bottom(item, toItem: toItem, constant: bottom)
+        let heightConstraint = NSLayoutConstraint.height(item, height: height)
+        activateConstraintsForItem(item, constraints: [leadingConstraint, trailingConstraint, bottomConstraint, heightConstraint])
     }
     
     func pinItemToBottom(item: UIView, toItem: UIView) {
