@@ -44,6 +44,7 @@
 		D215D80A1C21EB2100CA0B4A /* ExpressDeliveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D215D8091C21EB2100CA0B4A /* ExpressDeliveryTableViewCell.swift */; };
 		D21E2C871BC09C6100E17572 /* libFlurry_7.2.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D21E2C861BC09C6100E17572 /* libFlurry_7.2.1.a */; };
 		D2319AC01BD16D8F00B989C0 /* RequestSubmittedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2319ABF1BD16D8F00B989C0 /* RequestSubmittedViewController.swift */; };
+		D23879581C7F973600774994 /* StartContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23879571C7F973600774994 /* StartContainerViewController.swift */; };
 		D2389E681B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E671B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift */; };
 		D2389E6B1B950C0300CB19BB /* conversations.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2389E6A1B950C0300CB19BB /* conversations.storyboard */; };
 		D2389E6D1B9511E100CB19BB /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2389E6C1B9511E100CB19BB /* ConversationListViewController.swift */; };
@@ -198,6 +199,7 @@
 		D21E2C861BC09C6100E17572 /* libFlurry_7.2.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_7.2.1.a; sourceTree = "<group>"; };
 		D2222A741B588695007E74BB /* SnailMailModel 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SnailMailModel 2.xcdatamodel"; sourceTree = "<group>"; };
 		D2319ABF1BD16D8F00B989C0 /* RequestSubmittedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestSubmittedViewController.swift; sourceTree = "<group>"; };
+		D23879571C7F973600774994 /* StartContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartContainerViewController.swift; sourceTree = "<group>"; };
 		D2389E671B94D18300CB19BB /* ChooseDeliveryOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseDeliveryOptionsViewController.swift; sourceTree = "<group>"; };
 		D2389E6A1B950C0300CB19BB /* conversations.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = conversations.storyboard; sourceTree = "<group>"; };
 		D2389E6C1B9511E100CB19BB /* ConversationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
@@ -347,6 +349,7 @@
 			children = (
 				CC23DE291AE54C0300AFEDE4 /* login.storyboard */,
 				D206FB4A1B61688D008BB412 /* WelcomeScreenViewController.swift */,
+				D23879571C7F973600774994 /* StartContainerViewController.swift */,
 				D2AA1E341C126C69001F5F01 /* StartViewController.swift */,
 				D210031C1C1657FC00E45CA3 /* UsernameFBViewController.swift */,
 				D210031E1C17A8B900E45CA3 /* PasswordFBController.swift */,
@@ -871,6 +874,7 @@
 				D206FB4B1B61688D008BB412 /* WelcomeScreenViewController.swift in Sources */,
 				D206FB4F1B617504008BB412 /* BottomBorderUITextField.swift in Sources */,
 				D29D3DC01B83D28A00B3E0DA /* KeychainWrapper.m in Sources */,
+				D23879581C7F973600774994 /* StartContainerViewController.swift in Sources */,
 				D210031F1C17A8B900E45CA3 /* PasswordFBController.swift in Sources */,
 				CC6105F51AC3941900D15150 /* LoginService.swift in Sources */,
 				D2A361361B3CAC5D00811D14 /* TextUIButton.swift in Sources */,

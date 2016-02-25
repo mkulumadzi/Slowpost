@@ -194,6 +194,15 @@ extension UIFont {
         }
     }
     
+    class func logoHeaderFont() -> UIFont {
+        if let font = UIFont(name: "Quicksand-Regular", size: 24.0) {
+            return font
+        }
+        else {
+            return UIFont.systemFontOfSize(24.0)
+        }
+    }
+    
 }
 
 extension UIView {

@@ -35,7 +35,7 @@ class MyMailboxViewController: BaseViewController, UITableViewDelegate, UITableV
     //MARK: Setup
     
     private func configure() {
-        navBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "Quicksand-Regular", size: 24)!, NSForegroundColorAttributeName : UIColor.whiteColor()]
+        navBar.titleTextAttributes = [NSFontAttributeName : UIFont.logoHeaderFont(), NSForegroundColorAttributeName : UIColor.whiteColor()]
         
         mailTable.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: mailTable.bounds.size.width, height: 0.01))
         mailTable.separatorStyle = UITableViewCellSeparatorStyle.None

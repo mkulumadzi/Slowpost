@@ -42,6 +42,7 @@
             <string>OpenSans</string>
             <string>OpenSans</string>
             <string>OpenSans</string>
+            <string>OpenSans</string>
         </mutableArray>
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
@@ -57,6 +58,7 @@
             <string>OpenSans-Semibold</string>
         </mutableArray>
         <mutableArray key="Quicksand-Regular.otf">
+            <string>Quicksand-Regular</string>
             <string>Quicksand-Regular</string>
         </mutableArray>
     </customFonts>
@@ -82,7 +84,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k5c-Hl-6yC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="771" y="-1046"/>
+            <point key="canvasLocation" x="1487" y="-1044"/>
         </scene>
         <!--Log In-->
         <scene sceneID="68U-Yf-3Uf">
@@ -199,7 +201,7 @@
                 <exit id="nb6-T8-URq" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="ruy-vO-V81"/>
             </objects>
-            <point key="canvasLocation" x="2228" y="-623"/>
+            <point key="canvasLocation" x="2944" y="-621"/>
         </scene>
         <!--Welcome Screen View Controller-->
         <scene sceneID="blT-42-FqB">
@@ -225,7 +227,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Ad4-oR-7aV" kind="show" id="Sva-z9-foL"/>
+                                    <action selector="startButtonPressed:" destination="6az-Oz-1fo" eventType="touchUpInside" id="3zg-eT-ckf"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -238,6 +240,7 @@
                     </view>
                     <connections>
                         <outlet property="startButton" destination="fTS-NF-cJa" id="MTh-Z1-jTb"/>
+                        <segue destination="Sk9-Dn-DsM" kind="presentation" identifier="goToStartContainer" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="Kr5-Sv-OQq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NHd-Oh-yPw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -662,7 +665,7 @@ William</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Zp-98-wzK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2228" y="-1292"/>
+            <point key="canvasLocation" x="2944" y="-1290"/>
         </scene>
         <!--Sign Up Complete View Controller-->
         <scene sceneID="b0k-vm-4Cb">
@@ -737,7 +740,7 @@ We won't save your address book on our servers, but we will search for matches w
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kkx-io-WIk" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="UMc-SG-qDW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3590" y="-1292"/>
+            <point key="canvasLocation" x="4306" y="-1290"/>
         </scene>
         <!--Username-->
         <scene sceneID="PaQ-Zj-z4W">
@@ -886,7 +889,7 @@ We won't save your address book on our servers, but we will search for matches w
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="coA-1v-Wbb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2907" y="-1292"/>
+            <point key="canvasLocation" x="3623" y="-1290"/>
         </scene>
         <!--Reset Password-->
         <scene sceneID="LiR-H3-FS7">
@@ -991,7 +994,7 @@ We won't save your address book on our servers, but we will search for matches w
                 <exit id="GjK-R8-VUg" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="gRm-Tr-RbT"/>
             </objects>
-            <point key="canvasLocation" x="2907" y="-623"/>
+            <point key="canvasLocation" x="3623" y="-621"/>
         </scene>
         <!--Request Submitted View Controller-->
         <scene sceneID="j9t-Y0-biB">
@@ -1031,7 +1034,7 @@ We won't save your address book on our servers, but we will search for matches w
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bTP-y0-0ma" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="J29-95-eme" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3590" y="-623"/>
+            <point key="canvasLocation" x="4306" y="-621"/>
         </scene>
         <!--Start-->
         <scene sceneID="kwC-4z-g8R">
@@ -1167,7 +1170,7 @@ We won't save your address book on our servers, but we will search for matches w
                 <exit id="WeV-i4-6Ay" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="1eE-cU-O9M"/>
             </objects>
-            <point key="canvasLocation" x="1467" y="-1046"/>
+            <point key="canvasLocation" x="2183" y="-1044"/>
         </scene>
         <!--Username-->
         <scene sceneID="ykJ-MR-yqr">
@@ -1270,7 +1273,7 @@ We won't save your address book on our servers, but we will search for matches w
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ohE-V4-Haz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2228" y="-2098"/>
+            <point key="canvasLocation" x="2944" y="-2096"/>
         </scene>
         <!--Password-->
         <scene sceneID="QUE-4V-OEB">
@@ -1405,7 +1408,69 @@ We won't save your address book on our servers, but we will search for matches w
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="slh-ea-dfg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2894" y="-2098"/>
+            <point key="canvasLocation" x="3610" y="-2096"/>
+        </scene>
+        <!--Start Container View Controller-->
+        <scene sceneID="q8e-yR-c5G">
+            <objects>
+                <viewController storyboardIdentifier="startContainer" id="Sk9-Dn-DsM" customClass="StartContainerViewController" customModule="Slowpost" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dAH-WT-9pl"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Ie-Ri-pVP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" verticalCompressionResistancePriority="749" id="zXz-Ns-5ne">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Slowpost Icon Set" translatesAutoresizingMaskIntoConstraints="NO" id="Mdv-eo-3ij">
+                                <rect key="frame" x="225" y="495" width="150" height="95"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="63f-k8-cKF">
+                                <rect key="frame" x="245" y="235" width="111" height="28"/>
+                                <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Slowpost" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="4fd-OB-MjX">
+                                <rect key="frame" x="154" y="263" width="292" height="75"/>
+                                <fontDescription key="fontDescription" name="Quicksand-Regular" family="Quicksand" pointSize="64"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.71372549019999998" blue="0.72549019609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="Mdv-eo-3ij" secondAttribute="centerY" id="3Oo-Qg-e3Z"/>
+                            <constraint firstAttribute="centerX" secondItem="4fd-OB-MjX" secondAttribute="centerX" id="7MB-OT-HNC"/>
+                            <constraint firstItem="4fd-OB-MjX" firstAttribute="top" secondItem="63f-k8-cKF" secondAttribute="bottom" id="KAJ-X4-wNb"/>
+                            <constraint firstItem="63f-k8-cKF" firstAttribute="top" secondItem="dAH-WT-9pl" secondAttribute="bottom" constant="50" id="TdK-32-esY"/>
+                            <constraint firstItem="4fd-OB-MjX" firstAttribute="top" secondItem="63f-k8-cKF" secondAttribute="bottom" id="Wti-JO-9Bq"/>
+                            <constraint firstAttribute="centerX" secondItem="63f-k8-cKF" secondAttribute="centerX" id="eIg-rV-0PR"/>
+                            <constraint firstAttribute="centerY" secondItem="4fd-OB-MjX" secondAttribute="centerY" id="mvf-aJ-yp1"/>
+                            <constraint firstItem="63f-k8-cKF" firstAttribute="top" secondItem="zXz-Ns-5ne" secondAttribute="top" constant="50" id="nc3-Jd-efn"/>
+                            <constraint firstItem="9Ie-Ri-pVP" firstAttribute="top" secondItem="Mdv-eo-3ij" secondAttribute="bottom" constant="10" id="tVP-1O-wm0"/>
+                            <constraint firstAttribute="centerX" secondItem="Mdv-eo-3ij" secondAttribute="centerX" id="vma-lX-hod"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="KAJ-X4-wNb"/>
+                                <exclude reference="TdK-32-esY"/>
+                                <exclude reference="nc3-Jd-efn"/>
+                                <exclude reference="3Oo-Qg-e3Z"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <connections>
+                        <outlet property="logoLabelCenterY" destination="mvf-aJ-yp1" id="HrZ-DE-ZcB"/>
+                        <outlet property="slowpostIcon" destination="Mdv-eo-3ij" id="tD8-63-wxA"/>
+                        <outlet property="slowpostText" destination="4fd-OB-MjX" id="K5r-b6-nEs"/>
+                        <outlet property="welcomeText" destination="63f-k8-cKF" id="XN3-wd-pRt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wGi-WN-Lto" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="811" y="-1046"/>
         </scene>
     </scenes>
     <resources>

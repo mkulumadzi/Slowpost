@@ -11,7 +11,6 @@ import Foundation
 
 class WelcomeScreenViewController: BaseViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
     
-    
     @IBOutlet weak var startButton: UIButton!
     
     private var pageViewController: UIPageViewController?
@@ -119,6 +118,13 @@ class WelcomeScreenViewController: BaseViewController, UIPageViewControllerDataS
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
         return 0
     }
+    
+    // MARK: User actions
+    
+    @IBAction func startButtonPressed(sender: AnyObject) {
+        performSegueWithIdentifier("goToStartContainer", sender: nil)
+    }
+    
     
     // MARK: Segues
     @IBAction func passwordResetEmailSent(segue: UIStoryboardSegue) {
