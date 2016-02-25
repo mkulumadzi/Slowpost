@@ -35,8 +35,7 @@ class PhoneContactViewController: BaseViewController, UITableViewDelegate, UITab
     }
     
     private func formatButtons() {
-        cancelButton.setImage(UIImage(named: "close")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        cancelButton.tintColor = slowpostDarkGrey
+        cancelButton.setTintedImage("close", tintColor: slowpostDarkGrey)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

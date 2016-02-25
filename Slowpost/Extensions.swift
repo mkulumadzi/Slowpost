@@ -165,6 +165,13 @@ extension UIButton {
         return button
     }
     
+    func setTintedImage(imageName: String, tintColor: UIColor) {
+        if let image = UIImage(named: imageName) {
+            setImage(image.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+            self.tintColor = tintColor
+        }
+    }
+    
 }
 
 extension UIFont {

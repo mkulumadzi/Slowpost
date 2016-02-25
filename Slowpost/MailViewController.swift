@@ -76,11 +76,8 @@ class MailViewController: BaseViewController {
     }
     
     private func formatButtons() {
-        replyButton.setImage(UIImage(named: "reply")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        replyButton.tintColor = slowpostDarkGrey
-        
-        closeButton.setImage(UIImage(named: "close")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        closeButton.tintColor = slowpostDarkGrey
+        replyButton.setTintedImage("reply", tintColor: slowpostDarkGrey)
+        closeButton.setTintedImage("clonse", tintColor: slowpostDarkGrey)
     }
     
     private func addImage() {

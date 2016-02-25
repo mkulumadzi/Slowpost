@@ -86,25 +86,16 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
     }
     
     private func formatButtons() {
-        cancelButton.setImage(UIImage(named: "chevron-down")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        cancelButton.tintColor = UIColor.whiteColor()
-        
-        photoLibrary.setImage(UIImage(named: "photo-library")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        photoLibrary.tintColor = slowpostDarkGreen
-
-        
-        takePhoto.setImage(UIImage(named: "camera")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        takePhoto.tintColor = slowpostDarkGreen
-        
-        textOnly.setImage(UIImage(named: "text")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        textOnly.tintColor = slowpostDarkGreen
+        cancelButton.setTintedImage("chevron-down", tintColor: UIColor.whiteColor())
+        photoLibrary.setTintedImage("photo-library", tintColor: slowpostDarkGreen)
+        takePhoto.setTintedImage("camera", tintColor: slowpostDarkGreen)
+        textOnly.setTintedImage("text", tintColor: slowpostDarkGreen)
     }
     
     private func initializeClearPhotoButton() {
         let rect = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
         clearPhotoButton = UIButton(frame: rect)
-        clearPhotoButton.setImage(UIImage(named: "remove")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        clearPhotoButton.tintColor = UIColor.whiteColor()
+        clearPhotoButton.setTintedImage("remove", tintColor: UIColor.whiteColor())
         clearPhotoButton.addTarget(self, action: "clearComposeView", forControlEvents: .TouchUpInside)
         
     }
@@ -404,9 +395,7 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
         let leading = NSLayoutConstraint(item: composeView, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1.0, constant: 0.0)
         let trailing = NSLayoutConstraint(item: composeView, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
         composeViewBottom = NSLayoutConstraint(item: composeView, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
-        
-        composeView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([top, leading, trailing, composeViewBottom])
+        activateConstraintsForItem(composeView, constraints: [top, leading, trailing, composeViewBottom])
         
         if imageSelected != nil {
             let imageContainerView = addImageContainerView()
@@ -440,9 +429,7 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
         let bottomImage = NSLayoutConstraint(item: imageView, attribute: .Bottom, relatedBy: .Equal, toItem: imageContainerView, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
         let alignImage = NSLayoutConstraint(item: imageView, attribute: .CenterX, relatedBy: .Equal, toItem: imageContainerView, attribute: .CenterX, multiplier: 1.0, constant: 0.0)
         let imageAspectRatio = NSLayoutConstraint(item: imageView, attribute: .Width, relatedBy: .Equal, toItem: imageView, attribute: .Height, multiplier: aspectRatio, constant: 0.0)
-        
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([topImage, bottomImage, alignImage, imageAspectRatio])
+        activateConstraintsForItem(imageView, constraints: [topImage, bottomImage, alignImage, imageAspectRatio])
         
         if overlaysAllowed == true {
             addOverlayContainer(maxImageHeight)
@@ -454,10 +441,7 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
         let leadingClearBackground = NSLayoutConstraint(item: clearButtonBackground, attribute: .Leading, relatedBy: .Equal, toItem: imageView, attribute: .Leading, multiplier: 1.0, constant: 10.0)
         let clearBackgroundWidth = NSLayoutConstraint(item: clearButtonBackground, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 20.0)
         let clearBackgroundHeight = NSLayoutConstraint(item: clearButtonBackground, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 20.0)
-        
-        clearButtonBackground.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activateConstraints([topClearBackground, leadingClearBackground, clearBackgroundWidth, clearBackgroundHeight])
+        activateConstraintsForItem(clearButtonBackground, constraints:[topClearBackground, leadingClearBackground, clearBackgroundWidth, clearBackgroundHeight])
         
         clearButtonBackground.addSubview(clearPhotoButton)
         
@@ -473,8 +457,7 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
         leadingCardOverlayContainer = NSLayoutConstraint(item: cardOverlayContainer, attribute: .Leading, relatedBy: .Equal, toItem: composeView, attribute: .Leading, multiplier: 1.0, constant: 0.0)
         let heightCardOverlayContainer = NSLayoutConstraint(item: cardOverlayContainer, attribute: .Height, relatedBy: .Equal, toItem: imageContainerView, attribute: .Height, multiplier: 1.0, constant: 0.0)
         let widthCardOverlayContainer = NSLayoutConstraint(item: cardOverlayContainer, attribute: .Width, relatedBy: .Equal, toItem: imageContainerView, attribute: .Width, multiplier: CGFloat(cardOverlays.count + 1), constant: 0.0)
-        cardOverlayContainer.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([topCardOverlayContainer, leadingCardOverlayContainer, heightCardOverlayContainer, widthCardOverlayContainer])
+        activateConstraintsForItem(cardOverlayContainer, constraints: [topCardOverlayContainer, leadingCardOverlayContainer, heightCardOverlayContainer, widthCardOverlayContainer])
         
         addCardOverlayImages(maxImageHeight)
         
@@ -517,8 +500,7 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
             let overlayHeight = NSLayoutConstraint(item: overlay, attribute: .Height, relatedBy: .Equal, toItem: overlay, attribute: .Width, multiplier: (overlayImage.size.height / overlayImage.size.width), constant: 0.0)
             let overlayEdge = NSLayoutConstraint(item: overlay, attribute: edge, relatedBy: .Equal, toItem: imageContainerView, attribute: edge, multiplier: 1.0, constant: 1.0)
             let overlayLeading = NSLayoutConstraint(item: overlay, attribute: .Leading, relatedBy: .Equal, toItem: cardOverlayContainer, attribute: .Leading, multiplier: 1.0, constant: leadingConstant)
-            overlay.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activateConstraints([overlayWidth, overlayHeight, overlayEdge, overlayLeading])
+            activateConstraintsForItem(overlay, constraints: [overlayWidth, overlayHeight, overlayEdge, overlayLeading])
             offsetIndex += CGFloat(1.0)
         }
 
@@ -579,11 +561,8 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
         let leadingBorder = NSLayoutConstraint(item: composeTopBorder, attribute: .Leading, relatedBy: .Equal, toItem: composeView, attribute: .Leading, multiplier: 1.0, constant: 0.0)
         let trailingBorder = NSLayoutConstraint(item: composeTopBorder, attribute: .Trailing, relatedBy: .Equal, toItem: composeView, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
         let borderHeight = NSLayoutConstraint(item: composeTopBorder, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 3.0)
-        
         composeTopBorderDefaultTop.priority = 999
-        
-        composeTopBorder.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([composeTopBorderDefaultTop, leadingBorder, trailingBorder, borderHeight])
+        activateConstraintsForItem(composeTopBorder, constraints: [composeTopBorderDefaultTop, leadingBorder, trailingBorder, borderHeight])
         
         composeTextView = UITextView()
         if textEntered != nil {
@@ -597,17 +576,13 @@ class ChooseImageAndComposeMailViewController: BaseViewController, UINavigationC
         let leadingCompose = NSLayoutConstraint(item: composeTextView, attribute: .Leading, relatedBy: .Equal, toItem: composeView, attribute: .Leading, multiplier: 1.0, constant: 0.0)
         let trailingCompose = NSLayoutConstraint(item: composeTextView, attribute: .Trailing, relatedBy: .Equal, toItem: composeView, attribute: .Trailing, multiplier: 1.0, constant: 0.0)
         let bottomCompose = NSLayoutConstraint(item: composeTextView, attribute: .Bottom, relatedBy: .Equal, toItem: composeView, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
-        
-        composeTextView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([topCompose, leadingCompose, trailingCompose, bottomCompose])
+        activateConstraintsForItem(composeTextView, constraints: [topCompose, leadingCompose, trailingCompose, bottomCompose])
         
         placeholderText = composeTextView.newLabel(UIFont.italicFont(), textColor: slowpostLightGrey, text: "Compose your message", alignment: nil, backgroundColor: nil)
-        
         let topPlaceholder = NSLayoutConstraint(item: placeholderText, attribute: .Top, relatedBy: .Equal, toItem: composeTextView, attribute: .Top, multiplier: 1.0, constant: 10.0)
         let leadingPlaceholder = NSLayoutConstraint(item: placeholderText, attribute: .Leading, relatedBy: .Equal, toItem: composeTextView, attribute: .Leading, multiplier: 1.0, constant: 10.0)
         let placeholderHeight = NSLayoutConstraint(item: placeholderText, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 21)
-        placeholderText.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activateConstraints([topPlaceholder, leadingPlaceholder, placeholderHeight])
+        activateConstraintsForItem(placeholderText, constraints: [topPlaceholder, leadingPlaceholder, placeholderHeight])
         
         shouldAdjustComposeHeight = true
 

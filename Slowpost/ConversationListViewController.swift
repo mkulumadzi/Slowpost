@@ -44,8 +44,7 @@ class ConversationListViewController: BaseViewController, UITableViewDelegate, U
     }
     
     private func formatButtons() {
-        settingsButton.setImage(UIImage(named: "settings")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        settingsButton.tintColor = UIColor.whiteColor()
+        settingsButton.setTintedImage("settings", tintColor: UIColor.whiteColor())
     }
     
     func refreshData() {

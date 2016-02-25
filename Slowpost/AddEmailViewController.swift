@@ -38,8 +38,7 @@ class AddEmailViewController: BaseViewController {
     }
     
     private func formatButtons() {
-        cancelButton.setImage(UIImage(named: "close")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        cancelButton.tintColor = slowpostDarkGrey
+        cancelButton.setTintedImage("clonse", tintColor: slowpostDarkGrey)
     }
     
     private func formatForiPhone4S() {

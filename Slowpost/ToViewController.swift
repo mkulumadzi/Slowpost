@@ -68,8 +68,7 @@ class ToViewController: BaseViewController, UITableViewDelegate, UITableViewData
     }
     
     private func formatButtons() {
-        cancelButton.setImage(UIImage(named: "close")!.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        cancelButton.tintColor = UIColor.whiteColor()
+        cancelButton.setTintedImage("close", tintColor: UIColor.whiteColor())
         nextButton.contentHorizontalAlignment = .Right
     }
     
