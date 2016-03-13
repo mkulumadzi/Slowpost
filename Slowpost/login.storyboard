@@ -1538,6 +1538,9 @@ We won't save your address book on our servers, but we will search for matches w
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="nextButtonTapped:" destination="q6r-WO-5PA" eventType="touchUpInside" id="1iC-Ba-gqL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.71372549019607845" blue="0.72549019607843135" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1597,6 +1600,7 @@ We won't save your address book on our servers, but we will search for matches w
                         <outlet property="emailTextField" destination="X25-Xy-QLu" id="pg2-jK-3Mb"/>
                         <outlet property="nextButton" destination="G7S-tz-wtj" id="YBq-q7-j3y"/>
                         <segue destination="G5S-3I-ocm" kind="unwind" identifier="loginCompleted" unwindAction="signUpOrLogInCompleted:" id="OSj-e1-zFv"/>
+                        <segue destination="G5S-3I-ocm" kind="unwind" identifier="emailEntered" unwindAction="emailEntered:" id="MmA-It-wXv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uqw-kN-Luv" userLabel="First Responder" sceneMemberID="firstResponder"/>

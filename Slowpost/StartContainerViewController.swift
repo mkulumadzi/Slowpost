@@ -10,6 +10,8 @@ import UIKit
 
 class StartContainerViewController: UIViewController {
     
+    var embeddedViewController: UIViewController!
+    
     @IBOutlet weak var welcomeText: UILabel!
     @IBOutlet weak var slowpostText: UILabel!
     @IBOutlet weak var slowpostIcon: UIImageView!
@@ -58,11 +60,25 @@ class StartContainerViewController: UIViewController {
     
     private func showEmailEntryController() {
         containerView.alpha = 0.0
-        let emailController = fetchViewControllerFromStoryboard("login", storyboardIdentifier: "emailEntry")
-        embedViewController(emailController, intoView: containerView)
+        embeddedViewController = fetchViewControllerFromStoryboard("login", storyboardIdentifier: "emailEntry") as! EmailEntryViewController
+        embedViewController(embeddedViewController, intoView: containerView)
         UIView.animateWithDuration(1.0, animations: {
             self.containerView.alpha = 1.0
         })
     }
+    
+    // MARK: Segues
+    
+    @IBAction func emailEntered(segue: UIStoryboardSegue) {
+        removeEmbeddedViewController(embeddedViewController)
+    }
 
+}
+
+struct LoginPerson {
+    var email:String!
+    var givenName:String!
+    var fullName:String!
+    var username:String!
+    var password:String!
 }

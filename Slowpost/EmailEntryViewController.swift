@@ -63,6 +63,11 @@ class EmailEntryViewController: UIViewController, UITextFieldDelegate, FBSDKLogi
         validateNextButton()
     }
     
+    
+    @IBAction func nextButtonTapped(sender: AnyObject) {
+        performSegueWithIdentifier("emailEntered", sender: nil)
+    }
+    
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
         if let error = error {
             print(error)
